@@ -1,2 +1,81 @@
-# ESI_2CS_TALN
-Cours du module "Traitement automatique du langage naturel"
+# Cours Bureatique et Web
+
+[![Type](https://img.shields.io/badge/Type-Cours-0014A8.svg?style=flat)](https://github.com/projeduc/ESI_2CS_TALN)
+[![License](https://img.shields.io/badge/Licence-CC--BY_4.0-0014A8.svg?style=flat)](https://creativecommons.org/licenses/by/4.0/deed.fr)
+[![GitHub release](https://img.shields.io/github/release/projeduc/ESI_2CS_TALN.svg)](https://github.com/projeduc/ESI_2CS_TALN/releases)
+[![Github All Releases](https://img.shields.io/github/downloads/projeduc/ESI_2CS_TALN/total.svg)](https://github.com/projeduc/ESI_2CS_TALN/releases)
+[![Github Release](https://img.shields.io/github/downloads/projeduc/ESI_2CS_TALN/latest/total.svg)](https://github.com/projeduc/ESI_2CS_TALN/releases/latest)
+
+Ceci est le répo contenant les cours et les TD/TP du module "Bureatique et Web" destiné aux deuxièmes années cycle supérieur au sein de l'école nationale supérieure d'informatique (ESI), Alger, Algérie.
+
+[Télécharger les cours ICI](https://github.com/projeduc/ESI_2CS_TALN/releases/latest)
+
+## Contenu du module
+
+1. **Introduction**
+    - Définition et motivation du TALN
+    - Histoire
+    - Les niveaux de traitement d'une langue (phonologie, morphologie, syntaxe, sémantique, )
+    - Les applications du TALN
+    - Les défis du TALN
+1. **Traitements basiques du texte**
+    - Les expressions régulières
+    - Distance d'édition
+    - Segmentation du texte
+    - Affixation des mots
+    - Réduction des formes des mots
+    - Filtrage des mots vides
+1. **Modèles de langues**
+    - Les modèles NGram
+    - Lissage (smothing)
+    - Évaluation des modèles (Perplexité)
+1. **Étiquetage morpho-syntaxique**
+    - Les informations grammaticales d'un mot
+    - Approches d'étiquetage morpho-syntaxique
+1. **Analyse syntaxique**
+    - Structures syntaxiques
+    - Méthodes classiques : CKY Parsing
+    - Méthodes statistiques : Probabilistic CKY Parsing
+1. **Sens des mots et désambiguïsation lexicale**
+    - Représentation vectorielle des mots : LSA, TF-IDF
+    - Word embedding :  word2vec, GloVe, BERT
+    - Bases de données lexicales : Relations sémantiques, Wordnet
+    - Désambiguïsation lexicale : Lesk algorithm, Most frequent sense, Contextual Embeddings
+1. **Analyse sémantique**
+    - Rôles sémantiques
+    - Ressources linguistiques : VerbNet, PropBank, FrameNet
+    - Représentation sémantique des phrases : Logique du premier ordre, Graphes (AMR)
+    - Étiquetage de rôles sémantiques (Semantic role labeling)
+1. **Détection de la coréférence**
+    - Les formes des références : Pronoms, Syntagmes nominaux, Zero anaphora, Noms propres
+    - Algorithmes pour la résolution des coréférences : Modèles Mention-Pair, Modèles Mention-Rank, Modèles Entity-based
+    - Annotation sémantique (Entity linking)
+1. **La cohérence du discours**
+    - Les modèles de discours : Rhetorical Structure Theory (RST), Penn Discourse TreeBank (PDTB)
+    - Analyse de discours : Segmentation des unités élémentaires de discours, Analyse RST
+1. **Quelques applications**
+    - Traduction automatique de textes
+    - Résumé automatique de textes
+    - Analyse des sentiments
+    - Systèmes de dialogue et chatbots
+1. **Reconnaissance et synthèse de la parole**
+    - Phonétique
+    - Reconnaissance de paroles
+    - Synthèse de paroles
+
+## Licence
+
+Copyright (C) 2020  Abdelkrime Aries
+
+
+Attribution 4.0 International (CC BY 4.0)
+
+https://creativecommons.org/licenses/by/4.0/deed.fr
+
+Vous êtes autorisé à :
+- **Partager** — copier, distribuer et communiquer le matériel par tous moyens et sous tous formats
+- **Adapter** — remixer, transformer et créer à partir du matériel pour toute utilisation, y compris commerciale.
+
+Selon les conditions suivantes :
+- **Attribution** — Vous devez créditer l'Œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'Oeuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'Offrant vous soutient ou soutient la façon dont vous avez utilisé son Oeuvre.
+- **Pas de restrictions complémentaires** — Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Oeuvre dans les conditions décrites par la licence.
