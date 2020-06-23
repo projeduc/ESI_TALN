@@ -1,0 +1,506 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{natbib}
+
+\usepackage{turnstile}%Induction symbole
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+%\usepackage{etoolbox}
+%\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+\fancyhf{}
+
+\lfoot{ARIES Abdelkrime}
+\cfoot{ESI/TALN}
+\rfoot{\textbf{\thepage}}
+
+\renewcommand{\headrulewidth}{0pt} % remove lines as well
+\renewcommand{\footrulewidth}{1pt}
+
+\newcommand\repeatstr[1]{\leavevmode\xleaders\hbox{#1}\hfill\kern0pt}
+
+\renewcommand{\bibsection}{}
+\bibliographystyle{humannat}
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+\pagestyle{fancy}
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& 2ème année cycle supérieure\\
+& Traitement automatique du langage naturel (TALN)
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{Proposition d'un programme pour TALN}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+\begin{abstract}
+	Le traitement automatique du langage naturel (TALN), aussi connu comme "traitement automatique des langues" (TAL), est un domaine qui implique la linguistique et l'informatique (et l'intelligence artificiel pour ceux qui séparent entre l'IA et l'informatique). Il fait partie des domaines de l'intelligence artificiel.
+	
+	Récemment, TALN commence à recevoir plus d'attention à cause de ces applications surtout dans les entreprises. Parmi les bénéfices du TALN dans le domaine d'affaires, on peut citer : 
+	\begin{itemize}
+		\item Augmenter la productivité en utilisant des applications comme la traduction automatique et le résumé automatique (pourtant ces deux applications sont loin d'être parfaites)
+		\item Service Clientèle : la réponse automatique aux questions des clients en utilisant les chatbots (question-réponse et reconnaissance de voix). 
+		\item Surveillance de la réputation : on utilise l'analyse des sentiments pour savoir si les clients sont heureux avec ses produits ou non. 
+		\item La publicité : on scannant les réseaux sociaux et les courriels, on peut savoir qui est intéressé par ses produits. Ceci permet aux entreprises de viser l'audience de la publicité. 
+		\item Connaissance du marché (Market intelligence) : surveiller les compétiteurs afin de se tenir au courant des évènements liés à l'industrie.
+		
+	\end{itemize}
+\end{abstract}
+
+\section{Informations générales}
+
+\begin{minipage}{0.49\textwidth}
+
+\subsection{Pré-requis}
+
+\begin{itemize}
+	\item Théorie des langages de programmation et applications (THP)
+	\item Probabilités et statistiques
+	\item Algèbre et analyse 
+	\item Logique des prédicats du premier ordre
+	\item Apprentissage automatique 
+	\item Programmation (surtout en Python et Java)
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+
+
+\subsection{Objectifs}
+
+\begin{itemize}
+	\item Appliquer des notions mathématiques apprises au long du cursus sur des problèmes réels de la langue 
+	\item Apprendre quelques notions linguistiques et un peu de philosophie (représentation de connaissance) 
+	\item Découvrir quelques outils et ressources du TALN, et programmer des solutions simples à quelques problèmes
+	\item Savoir appliquer les concepts vus en THP sur des différentes langues (langages naturels)
+%	\item Avoir une idée sur quelques travaux TALN réalisés au sein de l'ESI
+\end{itemize}
+\end{minipage}
+
+\section{Plan du module}
+
+Les estimations horaires sont optimistes ; les cours peuvent prendre plus du temps que prévu. 
+Les derniers chapitres (concernant les applications du TALN) sont optionnels ; ils seront présentés selon la disponibilité temps. On estime 30 heurs du cours, ce qui fait 15 séances de 2h. 
+
+\begin{itemize}
+	\item Chapitre 1. Introduction (0.5h)
+	\item Chapitre 2. Traitements basiques du texte (3.5h)
+	\item Chapitre 3. Les modèles de langages (2h)
+	\item Chapitre 4. Étiquetage morpho-syntaxique (2h)
+	\item Chapitre 5. Analyse syntaxique (4h)
+	\item Chapitre 6. Sens des mots et désambiguïsation lexicale (4h)
+	\item Chapitre 7. Analyse sémantique (4h)
+	\item Chapitre 8. Détection de la coréférence (2h)
+	\item Chapitre 9. La cohérence du discours (2h)
+	\item Chapitre 10. Quelques applications (4h)
+	\item Chapitre 11. Reconnaissance et synthèse de la parole (2h)
+\end{itemize}
+
+%\clearpage
+
+\section{Plan détaillé des cours}
+
+\begin{tcolorbox}
+
+\subsection*{Chapitre 1. Introduction} %\repeatstr{.}
+
+\begin{multicols}{2}
+\begin{itemize}
+	\item Définition et motivation du TALN
+	\item Histoire
+	\item Les niveaux de traitement d'une langue (phonologie, morphologie, syntaxe, sémantique, )
+	\item Les applications du TALN
+	\item Les défis du TALN
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\subsection*{\uppercase{Morphologie et lexique}}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 2. Traitements basiques du texte}
+
+\begin{multicols}{2}
+\begin{itemize}
+	
+	\item Les expressions régulières 
+
+	\item Distance d'édition 
+	\begin{itemize}
+		\item Opérations d'édition : insertion, suppression, substitution et transposition. 
+		\item Types : distance de Levenstein, plus longue sous-séquence commune, distance de Hamming, distance de Demerau-Lavenstein et distance de Jaro.
+%		\item Applications : correction des erreurs d'orthographe ; comparaison entre les séquences ADN (bio-informatique)
+	\end{itemize}
+
+	\item Segmentation du texte 
+	\begin{itemize}
+		\item Délimitation de la phrase  
+		\item Séparation des mots (tokenization)
+	\end{itemize}
+
+	\item Affixation des mots
+	\begin{itemize}
+		\item Affixation dérivationnelle
+		\item Affixation flexionnelle 
+		\item Autres moyens de formation des mots : composition, troncation, acronyme, etc.
+	\end{itemize}
+
+	\item Réduction des formes des mots
+	\begin{itemize}
+		\item Racinisation : supprimer les affixes pour avoir le radical (racine) du mot
+		\item Lemmatisation : trouver la forme canonique d'un mot (lemme)
+	\end{itemize}
+
+	\item Filtrage des mots vides
+
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 3. Modèles de langues}
+
+\begin{multicols}{2}
+\begin{itemize}
+	
+	\item Les modèles NGram
+	
+	\item Lissage (smothing)
+	
+	\item Évaluation des modèles (Perplexité)
+	
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\subsection*{\uppercase{Syntaxe}}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 4. Étiquetage morpho-syntaxique}
+
+\begin{multicols}{2}
+\begin{itemize}
+	
+	\item Les informations grammaticales d'un mot
+	\begin{itemize}
+		\item Annotation morphosyntaxique : catégories lexicales (Verbe, Nom, etc.)
+		\item Classes ouvertes/fermées lexicalement
+	\end{itemize}
+	
+	\item Approches d'étiquetage morpho-syntaxique
+	\begin{itemize}
+		\item à base de règles
+		\item modèle de Markov
+		\item entropie maximale
+	\end{itemize}
+	
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 5. Analyse syntaxique}
+
+\begin{multicols}{2}
+	\begin{itemize}
+		
+		\item Structures syntaxiques
+		\begin{itemize}
+			\item Grammaires à contexte libre
+			\item Annotation morphosyntaxique (Déjà vue)
+			\item Annotation constituante : catégories des syntagmes (VP, NP, etc.)
+			\item Annotation fonctionnelles : catégories des fonctions (SUB, OBJ, etc.)
+		\end{itemize}
+		
+		\item Méthodes classiques
+		\begin{itemize}
+			\item CKY Parsing
+		\end{itemize}
+	
+		\item Méthodes statistiques
+		\begin{itemize}
+			\item Probabilistic CKY Parsing
+		\end{itemize}
+		
+	\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\subsection*{\uppercase{Sémantique}}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 6. Sens des mots et désambiguïsation lexicale}
+
+\begin{multicols}{2}
+\begin{itemize}
+	
+	\item Représentation vectorielle des mots
+	\begin{itemize}
+		\item mot-document (LSA)
+		\item mot-mot (TF-IDF)
+	\end{itemize}
+
+	\item Word embedding
+	\begin{itemize}
+		\item word2vec
+		\item GloVe
+		\item BERT
+	\end{itemize}
+
+	\item Bases de données lexicales
+	\begin{itemize}
+		\item Relations sémantiques (synonyme, antonyme, etc.)
+		\item Wordnet (Anglais)
+		\item Autres langues
+	\end{itemize}
+
+	\item Désambiguïsation lexicale
+	\begin{itemize}
+		\item Lesk algorithm
+		\item Most frequent sense
+		\item Contextual Embeddings
+	\end{itemize}
+	
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 7. Analyse sémantique}
+
+\begin{multicols}{2}
+	\begin{itemize}
+		
+		\item Rôles sémantiques
+		\begin{itemize}
+			\item Rôles thématiques
+			\item Évènements et états 
+			\item Temps et locations	
+		\end{itemize}
+	
+		\item Ressources linguistiques
+		\begin{itemize}
+			\item VerbNet
+			\item PropBank
+			\item FrameNet	
+		\end{itemize}
+		
+		\item Représentation sémantique des phrases
+		\begin{itemize}
+			\item Logique du premier ordre
+			\item Graphes (AMR)
+		\end{itemize}
+	
+	%https://medium.com/explorations-in-language-and-learning/trends-in-semantic-parsing-part-1-ba11888523cb
+		\item Étiquetage de rôles sémantiques (Semantic role labeling)
+		\begin{itemize}
+			\item En utilisant des caractéristiques
+			\item En utilisant les réseaux de neurones
+		\end{itemize}
+		
+	\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\subsection*{\uppercase{Énonciation et pragmatique}}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 8. Détection de la coréférence}
+
+\begin{multicols}{2}
+	\begin{itemize}
+		
+		\item Les formes des références
+		\begin{itemize}
+			\item Pronoms 
+			\item Syntagmes nominaux
+			\item Zero anaphora 
+			\item Noms propres
+		\end{itemize}
+	
+		\item Algorithmes pour la résolution des coréférences
+		\begin{itemize}
+			\item Modèles Mention-Pair
+			\item Modèles Mention-Rank
+			\item Modèles Entity-based 
+		\end{itemize}
+	
+		\item Annotation sémantique (Entity linking)
+		
+	\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 9. La cohérence du discours}
+
+\begin{multicols}{2}
+	\begin{itemize}
+	
+		\item Les modèles de discours
+		\begin{itemize}
+			\item Rhetorical Structure Theory (RST)
+			\item Penn Discourse TreeBank (PDTB)
+		\end{itemize}
+	
+		\item Analyse de discours
+		\begin{enumerate}
+			\item Segmentation des unités élémentaires de discours
+			\item Analyse RST
+		\end{enumerate}
+		
+	\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\subsection*{\uppercase{Quelques applications}}
+
+\begin{tcolorbox}
+\subsubsection*{Chapitre 10. Quelques applications}
+
+\begin{multicols}{2}
+	\begin{itemize}	
+		\item Traduction automatique de textes
+		\item Résumé automatique de textes
+		\item Analyse des sentiments
+		\item Systèmes de dialogue et chatbots
+	\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\subsubsection*{Chapitre 11. Reconnaissance et synthèse de la parole}
+	
+	\begin{multicols}{2}
+		\begin{itemize}	
+			\item Phonétique
+			\item Reconnaissance de paroles
+			\item Synthèse de paroles
+		\end{itemize}
+	\end{multicols}
+\end{tcolorbox}
+%\clearpage
+
+\section{Plan des TPs}
+
+On choisit seulement une ou deux applications par chapitre, selon la difficulté et le nombre de séances.
+
+\begin{itemize}
+	
+	\item Chapitre 2. Traitements basiques du texte
+	\begin{itemize}
+		\item Fouille des contacts en utilisant les expressions régulières
+		\item Correction des fautes d'orthographe OU comparaison des séquences d'ADN
+		\item Réalisation d'un programme de racinisation en utilisant Snowball
+		\item Réalisation d'un petit moteur de recherche pour une langue aux choix (sans utiliser des APIs comme elasticsearch)
+	\end{itemize}
+
+	\item Chapitre 3. Modèles de langues
+	\begin{itemize}
+		\item Système d'auto-complétion
+		\item Classification des documents (spam/non spam)
+		\item Identification de la langue : fréquences des mot vs. NGrams (caractères) %http://www.practicalcryptography.com/miscellaneous/machine-learning/tutorial-automatic-language-identification-ngram-b/
+	\end{itemize}
+
+	\item Chapitre 4. Étiquetage morpho-syntaxique
+	\begin{itemize}
+		%https://github.com/amjha/HMM-POS-Tagger
+		\item Réalisation d'un programme d'étiquetage morpho-syntaxique en utilisant les modèles de Markov cachés
+	\end{itemize}
+
+	\item Chapitre 5. Analyse syntaxique
+	\begin{itemize}
+		\item Implémentation de l'algorithme CKY et application sur une forme simplifiée d'une langue 
+	\end{itemize}
+
+	\item Chapitre 6. Sens des mots et désambiguïsation lexicale
+	\begin{itemize}
+		%https://addi.ehu.es/bitstream/handle/10810/23867/TESIS_GONZALEZ_AGIRRE_AITOR.pdf?sequence=1
+		\item Réalisation d'un programme simple de détection de plagiat en utilisant la similarité entre les phrases. Trois variantes : lexicale (Similarité cosinus), sémantique (Wordnet), statistique (réseaux de neurones : encoder-decoder)
+		\item Désambiguïsation lexicale (Wordnet, Réseaux de neurones)
+	\end{itemize}
+
+	\item Chapitre 7. Analyse sémantique
+	\begin{itemize}
+		\item Réalisation d'un système de question-réponse simple (réponse automatique)
+	\end{itemize}
+
+	\item Chapitre 8. Détection de la coréférence
+	\begin{itemize}
+		\item Amélioration du système de question-réponse en utilisant la détection de la coréférence
+	\end{itemize}
+
+	\item Chapitre 9. La cohérence du discours
+	\begin{itemize}
+		\item Ordonnancement des phrases
+		\item Évaluation de la cohérence
+	\end{itemize}
+
+	Chapitre 10. Quelques applications
+	\begin{itemize}
+		\item Traduction automatique en utilisant un réseaux de neurones Seq2Seq avec Attention
+		\item Résumé automatique (comparaison entre plusieurs méthodes)
+		\item Analyse des sentiments 
+		\item Chabot 
+	\end{itemize}
+	%http://naacl.org/naacl-hlt-2015/tutorial-framenet.html
+	\item Chapitre 11. Reconnaissance et synthèse de la parole
+	\begin{itemize}
+		\item Réalisation d'un système de reconnaissance de paroles (deep learning)
+		\item Utilisation d'un API pour synthétiser le son (par exemple, pyttsx)
+		\item Fusionner avec le système question réponse
+	\end{itemize}
+
+\end{itemize}
+
+%\section{Outils}
+%
+%L'utilisation des outils dépend des TPs proposés. Cette liste contient 
+%
+%\begin{itemize}
+%	\item  
+%\end{itemize}
+
+\section{Bibliographie}
+
+\nocite{*}
+
+%\bibliographystyle{apalike}
+
+\bibliography{biblio}
+
+\end{document}

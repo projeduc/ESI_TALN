@@ -274,3 +274,8 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+*.pdf
+.directory
+
+!td/diffusion-collecte/publi-example.pdf
