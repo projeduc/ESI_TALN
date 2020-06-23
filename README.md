@@ -1,4 +1,4 @@
-# Cours Bureatique et Web
+# Cours "Traitement automatique du langage naturel"
 
 [![Type](https://img.shields.io/badge/Type-Cours-0014A8.svg?style=flat)](https://github.com/projeduc/ESI_2CS_TALN)
 [![License](https://img.shields.io/badge/Licence-CC--BY_4.0-0014A8.svg?style=flat)](https://creativecommons.org/licenses/by/4.0/deed.fr)
@@ -6,7 +6,7 @@
 [![Github All Releases](https://img.shields.io/github/downloads/projeduc/ESI_2CS_TALN/total.svg)](https://github.com/projeduc/ESI_2CS_TALN/releases)
 [![Github Release](https://img.shields.io/github/downloads/projeduc/ESI_2CS_TALN/latest/total.svg)](https://github.com/projeduc/ESI_2CS_TALN/releases/latest)
 
-Ceci est le répo contenant les cours et les TD/TP du module "Bureatique et Web" destiné aux deuxièmes années cycle supérieur au sein de l'école nationale supérieure d'informatique (ESI), Alger, Algérie.
+Ceci est le répo contenant les cours et les TD/TP du module "Traitement automatique du langage naturel" destiné aux deuxièmes années cycle supérieur au sein de l'école nationale supérieure d'informatique (ESI), Alger, Algérie.
 
 [Télécharger les cours ICI](https://github.com/projeduc/ESI_2CS_TALN/releases/latest)
 
