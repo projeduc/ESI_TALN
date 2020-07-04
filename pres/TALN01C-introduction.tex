@@ -213,11 +213,19 @@
 
 \begin{minipage}{0.5\textwidth}
 \begin{itemize}
-	\item \optword{labial} à l'aide des lèvres
-	\item \optword{apicale} avec la pointe de la langue ou sa partie antérieure
-	\item \optword{dorsal} avec la partie postérieure de la langue
-	\item \optword{pharyngale} au niveau du pharynx
-	\item \optword{glottale} au niveau de la glotte
+	\item \optword{labial} à l'aide des lèvres. Exemple, \expword{\textipa{[b], [p], [m], [f], [v]}}
+	\item \optword{apicale} avec la pointe de la langue ou sa partie antérieure. 
+	Exemple, \expword{%
+		\textipa{[t], [d], [n], [r], }
+		\RL{^s} \textipa{[S],} 
+		\RL{_t} \textipa{[T],} 
+		\RL{_d} \textipa{[D]}
+	}
+	\item \optword{dorsal} avec la partie postérieure de la langue. Exemple, \expword{\textipa{[c], [k], [g], [q],} \RL{.g} \textipa{[G]}}
+	\item \optword{pharyngale} au niveau du pharynx. 
+	Exemple, \expword{\RL{.h} \textipa{[\*h],} \RL{`} \textipa{[Q]}}
+	\item \optword{glottale} au niveau de la glotte. 
+	Exemple, \expword{\textipa{[h],} \RL{'} \textipa{[P]}}
 \end{itemize}
 \end{minipage}
 \begin{minipage}{0.48\textwidth}
@@ -233,12 +241,24 @@
 \framesubtitle{Phonétique, phonologie et orthographe : Phonétique (Modes d'articulation des consonnes)}
 
 \begin{itemize}
-	\item \optword{occlusive} blocage complet de l'écoulement de l'air
-	\item \optword{fricative} resserrement de la bouche, du pharynx ou de la glotte sans qu'il y ait fermeture complète de ceux-ci
-	\item \optword{affriquée} le flux d'air est bloqué ensuite relâché
-	\item \optword{latérale} écoulement de l'air par un canal latéral (parfois bilatéral)
-	\item \optword{nasale} en abaissant le voile du palais
-	\item \optword{clic} avec la langue ou les lèvres sans l'aide des poumons
+	\item \optword{occlusive} blocage complet de l'écoulement de l'air.
+	Exemple, \expword{\textipa{[p], [k], [b], [m], [n]}}
+	
+	\item \optword{fricative} resserrement de la bouche, du pharynx ou de la glotte sans qu'il y ait fermeture complète de ceux-ci.
+	Exemple, \expword{\textipa{[f], [v], [s]}}
+	
+	\item \optword{affriquée} le flux d'air est bloqué ensuite relâché.
+	Exemple, \expword{\textipa{[\t{\textteshlig}]}}
+	
+	\item \optword{latérale} écoulement de l'air par un canal latéral (parfois bilatéral).
+	Exemple, \expword{\textipa{[l]}}
+	
+	\item \optword{nasale} en abaissant le voile du palais.
+	Exemple, \expword{\textipa{[m], [n]}}
+	
+	\item \optword{clic} avec la langue ou les lèvres sans l'aide des poumons.
+	Exemple, \expword{\textipa{[!]} (claquement de langue)}
+	
 \end{itemize}
 
 \end{frame}
@@ -314,7 +334,23 @@
 	\item \keyword{Morphème} la plus petite unité de langage qui a sa propre signification. Exemple, \expword{Les noms propres, les suffixes, etc.}
 	\item \keyword{Lexème} un ensemble de toutes les formes grammaticales qui ont le même sens
 	\item \keyword{Lemme} un mot choisi parmi ces formes pour représenter le lexème
-	\item Les catégories grammaticales : \optword{adjectif}, \optword{adverbe}, \optword{article}, \optword{conjonction}, \optword{interjection}, \optword{nom}, \optword{préposition}, \optword{pronom} et \optword{verbe}.
+	\item Les catégories grammaticales : classe ouverte (\optword{adjectif}, \optword{nom}, \optword{verbe}) et classe fermée (\optword{adverbe}, \optword{article}, \optword{conjonction}, \optword{interjection},  \optword{préposition}, \optword{pronom}).
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Morphologie (Typologie morphologique des langues)}
+
+\begin{itemize}
+	\item \optword{Langues isolantes/analytiques} chaque mot est constitué d'un et d'un seul morphème. les modifications morphologiques sont peu nombreuses, voire absentes : \expword{mandarin, vietnamien, thaï, khmer, etc.}. Exemple, \expword{\begin{CJK}{UTF8}{min}四个男孩\end{CJK} /sì ge nánhái/ "quatre garçons" (lit. "quatre [entité de] masculin enfant")}
+	\item \optword{Les langues flexionnelles/synthétiques} les mots sont formés d'une \keyword{racine} en plus de morphèmes supplémentaires.
+	\begin{itemize}
+		\item \optword{Langues agglutinantes} les morphèmes sont toujours clairement différentiables phonétiquement l'un de l'autre : \expword{finnois, turc, japonais, langues berbères, etc.}. Exemple, \expword{\begin{CJK}{UTF8}{min}行く, 行きます\end{CJK}} 
+		\item \optword{Langues fusionnelles} il n'est pas toujours aisé de distinguer les morphèmes de la racine, ou les morphèmes les uns des autres : \expword{arabe, anglais, français, etc.}. Exemple, \expword{\RL{kitAb, kutub, 'wa'`.taynAkumuwh}, foot, feet}
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -325,15 +361,18 @@
 
 \begin{itemize}
 	\item la formation de mots sans changer de catégorie ou créer de nouveaux lexèmes 
-%	\item modification de la forme des lexèmes afin qu'ils s'adaptent à différents contextes grammaticaux
+	\item modification de la forme des lexèmes afin qu'ils s'adaptent à différents contextes grammaticaux
 	\item la flexion peut être une \optword{déclinaison} ou une \optword{conjugaison}
 	\item \optword{affixation}
 	\begin{itemize}
-		\item \optword{préfixe} 
+		\item \optword{préfixe} \expword{\RL{_dhb}} (passé), \expword{\RL{y_dhb}} (présent)
 		\item \optword{infixe}
 		\item \optword{suffixe} \expword{étudiant} (masculin-singulier), \expword{étudiantes} (féminin-pluriel)
 	\end{itemize}
+	\item \optword{redoublement} \expword{super-duper, bye-bye, \begin{CJK}{UTF8}{min}きらきら\end{CJK}} 
+	
 \end{itemize}
+
 
 \end{frame}
 
@@ -351,6 +390,30 @@
 	\item \optword{Voix} : active, moyenne, passive, etc.
 	\item \optword{Polarité} : affirmative, négative
 	\item \optword{Politesse} : informelle, formelle, etc.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Morphologie dérivationnelle}
+
+\begin{itemize}
+	\item la formation de mots en changeant de catégorie (\expword{jouer, joueur}) ou en créant de nouveaux lexèmes (\expword{connecter, déconnecter})
+	
+	\item \optword{affixation} en utilisant des préfixes, infixes et/ou suffixes. 
+	Exemple, \expword{happy (ADJ), unhappy (ADJ), unhapyness (N)}; \expword{\RL{jhd} (V), \RL{ijthd} (V)}
+	\item \optword{composition} en fusionnant des mots  dans un seul. 
+	Exemple, \expword{porter (V) + manteau (N) = portemanteau (N)}; \expword{wind (N), mill (N), windmill (N)}
+	
+	\item \optword{conversion} le mot change de catégorie grammaticale sans aucune modification. 
+	Exemple, \expword{orange (fruit, N), orange (couleur, ADJ)}; \expword{visit-er (V), visite (N)}; \expword{fish (N), to fish (V)}
+	
+	\item \optword{troncation} le mot est tronqué. 
+	Exemple, \expword{bibliographie, biblio}, \expword{information, info}, \expword{fish (N), to fish (V)}
+	
+	\item \optword{redoublement} Exemple, \expword{\RL{kr} (V), \RL{krkr} (V)} 
+	
 \end{itemize}
 
 \end{frame}
