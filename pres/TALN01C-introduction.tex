@@ -3,7 +3,7 @@
 % !TEX encoding = UTF-8
 % !TEX spellcheck = fr
 
-\documentclass{beamer}
+\documentclass[xcolor=table]{beamer}
 
 \input{options}
 
@@ -423,8 +423,69 @@
 \framesubtitle{Morphologie et syntaxe : Syntaxe}
 
 \begin{itemize}
+	\item étude de la structure des phrases : comment les mots se combinent pour former des phrases
+	\item les catégories grammaticales ou parties du discours (verb, Nom, Adjectif, etc) des mots de la phrase.
+	\item l'ordre des mots selon le \keyword{sujet (S)}, le \keyword{Verb (V)} et l'\keyword{Objet (O)}
 	\item 
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Syntaxe (Ordre des mots)}
+
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow}
+	\begin{tabular}{p{.1\textwidth}p{.15\textwidth}p{.65\textwidth}}
+		\rowcolor{darkblue}
+		\textcolor{white}{Ordre} & \textcolor{white}{Proportion} & \textcolor{white}{Exemples} \\
+		SOV & 44.78\% & japonais, latin, tamoul, basque, ourdou, grec ancien, bengali, hindi, sanskrit, persan, coréen \\
+		SVO & 41.79\% & français, mandarin, russe, anglais, haoussa, italien, malais (langue), espagnol, thaï \\
+		VSO & 9.20\% & irlandais, arabe, hébreu biblique, philippin, langues touarègues, gallois \\
+		VOS & 2.99\% & malgache, baure, car (langue) \\
+		OVS & 1.24 \% & apalai, hixkaryana, klingon (langue) \\
+	\end{tabular}
+	\caption{Proportions d'après l'étude de 402 langues \cite{1988-blake}}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Syntaxe (Ordre des mots, exemples)}
+
+\begin{itemize}
+	\item \textcolor{blue}{Sujet}, \textcolor{red}{Verbe}, \textcolor{green}{Objet}
+\end{itemize}
+
+\begin{columns}
+\begin{column}{0.52\textwidth}
+	\begin{exampleblock}{Exemple SOV [japonais]}
+		\begin{CJK}{UTF8}{min}
+			\textcolor{blue}{カリムさん}は\textcolor{green}{日本語}を\textcolor{red}{勉強します}。
+		\end{CJK}
+	\end{exampleblock}
+\end{column}
+%
+\begin{column}{0.42\textwidth}
+	\begin{exampleblock}{Exemple SVO [français]}
+		\textcolor{blue}{Karim} \textcolor{red}{apprend} \textcolor{green}{le français}.
+	\end{exampleblock}
+\end{column}%
+\end{columns}
+\begin{columns}
+\begin{column}{0.49\textwidth}
+	\begin{exampleblock}{Exemple VSO [arabe]}
+		\begin{RLtext}
+			\acolor{everything}{red} \RL{yt`lm} 
+			\acolor{everything}{blue} \RL{krym} 
+			\acolor{everything}{green} \RL{al-`rbyT}%
+			\acolor{everything}{black}.
+		\end{RLtext}
+	\end{exampleblock}
+\end{column}
+\end{columns}
 
 \end{frame}
 
