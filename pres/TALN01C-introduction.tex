@@ -345,7 +345,7 @@
 \framesubtitle{Morphologie et syntaxe : Morphologie (Typologie morphologique des langues)}
 
 \begin{itemize}
-	\item \optword{Langues isolantes/analytiques} chaque mot est constitué d'un et d'un seul morphème. les modifications morphologiques sont peu nombreuses, voire absentes : \expword{mandarin, vietnamien, thaï, khmer, etc.}. Exemple, \expword{\begin{CJK}{UTF8}{min}四个男孩\end{CJK} /sì ge nánhái/ "quatre garçons" (lit. "quatre [entité de] masculin enfant")}
+	\item \optword{Langues isolantes/analytiques} chaque mot est constitué d'un et d'un seul morphème. les modifications morphologiques sont peu nombreuses, voire absentes : \expword{mandarin, vietnamien, thaï, khmer, etc.}. Exemple, \expword{\begin{CJK}{UTF8}{min}四个男孩\end{CJK} /sì ge nánhái/ ``quatre garçons" (lit. ``quatre [entité de] masculin enfant")}
 	\item \optword{Les langues flexionnelles/synthétiques} les mots sont formés d'une \keyword{racine} en plus de morphèmes supplémentaires.
 	\begin{itemize}
 		\item \optword{Langues agglutinantes} les morphèmes sont toujours clairement différentiables phonétiquement l'un de l'autre : \expword{finnois, turc, japonais, langues berbères, etc.}. Exemple, \expword{\begin{CJK}{UTF8}{min}行く, 行きます\end{CJK}} 
@@ -424,9 +424,9 @@
 
 \begin{itemize}
 	\item étude de la structure des phrases : comment les mots se combinent pour former des phrases
-	\item les catégories grammaticales ou parties du discours (verb, Nom, Adjectif, etc) des mots de la phrase.
+	\item les catégories grammaticales ou parties du discours (verb, Nom, Adjectif, etc) des mots de la phrase (étiquetage morphosyntaxique).
 	\item l'ordre des mots selon le \keyword{sujet (S)}, le \keyword{Verb (V)} et l'\keyword{Objet (O)}
-	\item 
+	\item les fonctions grammaticales
 \end{itemize}
 
 \end{frame}
@@ -486,6 +486,66 @@
 	\end{exampleblock}
 \end{column}
 \end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Syntaxe (Grammaire de constituants)}
+
+\begin{itemize}
+	\item Une \keyword{phrase} est constituée de plusieurs \keyword{syntagmes} qui sont constitués des mots et d'autres syntagmes.
+	\item Un syntagme contient un \keyword{noyau} qui est l'élément central 
+	\item Selon le noyau, le syntagme peut être : nominal (\keyword{NP}), adjectival (\keyword{AP}), verbal (\keyword{VP}) ou prépositionnel (\keyword{PP})
+	\item Le système formel le plus utilisé pour modéliser la structure des constituants d'une phrase est la \keyword{grammaire hors-contexte} (Niveau 2 dans la hiérarchie de \keyword{Chomsky})
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Syntaxe (Grammaire de constituants, exemple)}
+
+\begin{columns}
+	\begin{column}{0.52\textwidth}
+	La grammaire qui a généré cet arbre syntaxique peut être écrite : 
+	
+	\begin{enumerate}
+		\item P $ \rightarrow $ NP VP
+		\item NP $ \rightarrow $ DET NP'
+		\item NP $ \rightarrow $ DET N
+		\item NP' $ \rightarrow $ ADJ N
+		\item VP $ \rightarrow $ V NP
+	\end{enumerate}
+
+	La deuxième règle n'ai pas écrite \\(NP $ \rightarrow $ DET NP)\\ sinon on peut avoir plusieurs déterminants à un nom.
+	
+	\end{column}
+	%
+	\begin{column}{0.42\textwidth}
+		\hgraphpage{gram_const.pdf}
+	\end{column}%
+\end{columns}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Morphologie et syntaxe : Syntaxe (Grammaire de dépendances)}
+
+\begin{itemize}
+	\item la structure syntaxique est décrite en terme de mots et pas des syntagmes
+	\item c'est un ensemble des relations binaires entre les mots de la phrase
+	\item les relations peuvent être : un sujet nominal (\optword{nsubj}), un objet (\optword{obj}), un modificateur d'adjectif (\optword{amod}), déterminant (\optword{det}), etc.
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{gram_dep.pdf}
+	\caption{Un exemple de dépendances généré par \url{https://corenlp.run/}}
+\end{figure}
 
 \end{frame}
 
