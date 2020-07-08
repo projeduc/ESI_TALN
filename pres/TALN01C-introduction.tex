@@ -299,7 +299,7 @@
 
 \begin{itemize}
 	\item étude des types et de la forme des lemmes/monèmes 
-	\item Système d'écriture
+	\item Système d'écriture (selon le \keyword{graphème})
 	\begin{itemize}
 		\item \optword{logographique} : logogrammes, chacun est un unique graphème notant un lemme (mot).
 		Exemple, \expword{
@@ -556,7 +556,69 @@
 \framesubtitle{Sémantique}
 
 \begin{itemize}
-	\item 
+	\item La sémantique est l'étude du sens dans les langages
+	\item le sens des mots 
+	\item les relations sémantiques entre les mots 
+	\item le sens des phrases
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Sémantique : Le sens des mots}
+
+\begin{itemize}
+	\item Dans les systèmes logographiques, un \keyword{graphème} représente un ou plusieurs sens (en général, avec plusieurs prononciations)
+	
+	\begin{CJK}{UTF8}{min}
+		\expword{川} (rivière), \expword{山} (montagne), 
+		
+		\expword{音} (son, bruit) + \expword{楽} (musique, confort, facilité) = \expword{音楽} (musique)
+	\end{CJK}
+
+	\item Un mot peut avoir plusieurs sens
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Sémantique : Le sens des mots (analyse sémique)}
+
+\begin{itemize}
+	\item \keyword{Sème} une unité minimale de signification (trait sémantique minimal)
+	\item \keyword{Sémème} un faisceau de sèmes correspondant à une unité lexicale
+\end{itemize}
+
+\begin{exampleblock}{Un exemple de l'analyse sémique }
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Mot/Sème & animé & domestique & félin \\
+		\hline
+		Chat & + & + & + \\
+		\hline
+		Lion & + & - & + \\
+		\hline
+		Chien & + & + & - \\
+		\hline
+	\end{tabular}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Les niveaux}
+\framesubtitle{Sémantique : Les relations sémantiques entre les mots}
+
+\begin{itemize}
+	\item \optword{Synonyme} si on substitue un mot par un autre dans une phrase sans changer le sens, donc les mots sont des synonymes
+	\item \optword{Antonyme} le sens opposé. Les deux mots doivent exprimer deux valeurs d'une même propriété. ar exemple, \expword{grand} et \expword{petit} expriment la propriété \expword{taille}
+	\item \optword{Hyponyme} un mot ayant un sens plus spécifique qu'un autre. Par exemple, \expword{chat} est l'hyponyme de \expword{félin} hyponyme de \expword{animal}. 
+	\item \optword{Hyperonyme} un mot avec un sens plus générique. Exemple, \expword{félin} est l'hyperonyme de \expword{chat}
+	\item \optword{Méronyme} un mot qui désigne une partie d'un autre. Exemple, \expword{roue} est un méronyme de \expword{voiture}
 \end{itemize}
 
 \end{frame}
@@ -568,7 +630,8 @@
 \framesubtitle{Pragmatique et discours : Pragmatique}
 
 \begin{itemize}
-	\item 
+	\item implicature conversationnelle
+	\item implication
 \end{itemize}
 
 \end{frame}
