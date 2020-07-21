@@ -823,17 +823,93 @@
 
 \end{frame}
 
+\subsection{Extraction d'information}
+
+\subsection{Traduction}
+
+\subsection{Génération de texte}
+
 %===================================================================================
-\section{Les défis du TALN}
+\section{Défis du TALN}
 %===================================================================================
 
+%\begin{frame}
+%\frametitle{Introduction au TALN}
+%\framesubtitle{Défis du TALN}
+%
+%\end{frame}
+
+\subsection{Ressources}
+
 \begin{frame}
-\frametitle{Introduction au TALN}
-\framesubtitle{Les défis du TALN}
+\frametitle{Introduction au TALN : Défis}
+\framesubtitle{Ressources}
+
+\begin{itemize}
+	\item Manque des outils et des datasets pour les langues moins parlées
+	\item Annotation manuelle des corpus d'entraînement et de test
+	\item Traitement des documents larges : l'apprentissage automatique est limité lorsqu'il s'agit de représenter des contextes longs 
+\end{itemize}
+\end{frame}
+
+\subsection{Compréhension de la langue}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Défis}
+\framesubtitle{Compréhension de la langue : Ambigüité et Coréférence}
+
+\begin{itemize}
+	\item polysémie : un mot ayant plusieurs sens. Ex. \expword{Indien : de l'Inde, indigène des Amériques}
+	\item énantiosémie : un terme polysémique ayant deux sens antonymes. Ex. \expword{Regret, désigne la plainte ou la nostalgie : ``Je regrette mon enfance".}
+	\item Trope (langage figuratif) : métaphores (\expword{``It's raining cats and dogs"}), métonomie (\expword{``La salle a applaudi" [les gens dans la salle]}), ironie (``Quelle belle journée !" [pour signifier qu'il pleut des cordes.])
+	\item Les coréférences dans les textes longs (ambigüité dans le choix de référence). 
+	Ex. \expword{\underline{Table data} is dumped into \underline{a delimited text file}, which is sent to \underline{the remote site} where \underline{it} is
+		loaded into the destination database. }
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Défis}
+\framesubtitle{Compréhension de la langue : Aspect humain}
+
+\begin{itemize}
+	\item Personnalité : comment modéliser une personnalité ? comment la personnalité affect le discours ?
+	\item Variations et communication non standard. \expword{langue de chat, arabizi, franglais, etc.}
+	\item Intention 
+	\item Émotions 
+\end{itemize}
 
 \end{frame}
 
 
+\subsection{Évaluation}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Défis}
+\framesubtitle{Évaluation}
+
+\begin{itemize}
+	\item l'évaluation manuelle prend du temps et parfois nécessite des experts (coût élevé en terme de temps et de dépenses)
+	\item problème de subjectivité de l'évaluateur et de l'agrément inter-évaluateurs
+	\item l'évaluation automatique est limitée : plusieurs aspects sont difficiles à évaluer automatiquement
+\end{itemize}
+
+\end{frame}
+
+\subsection{Éthique}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Défis}
+\framesubtitle{Éthique}
+
+\begin{itemize}
+	\item la vie privée : les données collectées peuvent contenir des informations privées des individus. Des entreprises peuvent stocker des informations sur leurs utilisateurs. 
+	\item biais et discrimination : les corpus utilisés pour entraîner un système peuvent causer du biais.
+	\item utilisation : espionnage et ingénierie sociale, perte d'emplois à cause de l'automatisation, etc.
+\end{itemize}
+
+\end{frame}
 
 \insertbibliography{TALN01}{*}
 
