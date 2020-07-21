@@ -814,20 +814,187 @@
 \end{frame}
 
 %===================================================================================
-\section{Les applications du TALN}
+\section{Applications du TALN}
 %===================================================================================
 
+%\begin{frame}
+%\frametitle{Introduction au TALN}
+%\framesubtitle{Applications du TALN}
+%
+%\end{frame}
+
+\subsection{Tâches}
+
 \begin{frame}
-\frametitle{Introduction au TALN}
-\framesubtitle{Les applications du TALN}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Tâches : Morphosyntaxe}
+
+\begin{itemize}
+	\item Délimitation de la phrase et séparation des mots 
+	\item Lemmatisation et racinisation
+	\item Étiquetage morpho-syntaxique
+	\item Analyse syntaxique
+	\item Extraction terminologique
+\end{itemize}
 
 \end{frame}
 
-\subsection{Extraction d'information}
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Tâches : Sémantique}
 
-\subsection{Traduction}
+\begin{itemize}
+	\item Désambiguïsation lexicale : trouver le sens d'un mot et sa fonction grammaticale
+	\item Étiquetage des rôles sémantiques : chercher le rôle sémantique (agent, thème, etc.) des mots et syntagmes
+	\item Reconnaissance d'entités nommées : extraire les noms de personnes, noms d'organisations ou d'entreprises, noms de lieux, quantités, distances, valeurs, dates, etc.
+	\item Analyse sémantique : trouver la représentation sémantique du texte
+	\item Paraphrase : formuler un texte différemment 
+	\item Implication textuelle : vérifier si un segment du texte est vrai implique qu'un autre est vrai aussi.
+	\item Génération automatique de textes
+\end{itemize}
 
-\subsection{Génération de texte}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Tâches : Discours}
+
+\begin{itemize}
+	\item Résolution de coréférence : trouver les différentes références
+	\item Analyse du discours : chercher les relations entre les phrases
+	\item Résolution d'ellipse : trouver les éléments omis du texte. Exemple d'ellipse : \expword{``Pierre mange des cerises, Paul des fraises"}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Systèmes}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Systèmes : Traduction automatique}
+
+\begin{itemize}
+	\item Traduction d'une langue vers une autre
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{traduction_exp.png}
+	\caption{Exemple du système Google translate}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Systèmes : Résumé automatique}
+
+\begin{itemize}
+	\item Produire une version compacte du texte
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{resume.png}
+	\caption{Exemple du système esummarizer}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Systèmes : Questions-réponses}
+
+\begin{itemize}
+	\item Chercher des réponses aux questions formulées en langage naturel
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{QR.png}
+	\caption{Exemple du système START}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Systèmes : Agents conversationnels (chatbots)}
+
+\begin{itemize}
+	\item Dialoguer avec un utilisateur
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{chatbot.png}
+	\caption{Exemple du système Cleverbot}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Systèmes : Extraction d'informations}
+
+\begin{itemize}
+	\item Fouille de textes : 
+	\item Analyse de sentiment : par exemple, \expword{vérification si des utilisateurs sont satisfaits par un produit ou non}
+	\item Recommandation automatique de documents : par exemple, \expword{recommander des livres}
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Affaires (business)}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Affaires (business) : Commerce}
+
+\begin{itemize}
+	\item Publicité : identifier de nouveaux publics potentiellement intéressés par certains produits.
+	\item Service clientèle : utiliser des chatbots pour répondre aux questions potentielles des clients. Aussi, utiliser l'analyse des sentiments pour avoir une idée sur l'opinion des clients sur les produits de l'entreprise.
+	\item Intelligence de marché : surveiller des blogs, des sites web et des réseaux sociaux pour analyser les tendances du marché et pour avoir une idée sur la compétition.
+	\item Recrutement : filtrer des CVs pour trouver des candidats plus rapidement et sans biais
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Affaires (business) : E-Governance}
+
+\begin{itemize}
+	\item Communication gouvernement/citoyens : les citoyens analphabètes peuvent partager leurs opinions en utilisant des audio/vidéo, qui peuvent être traduites en texte. De même, un message au citoyens peut être transformé à un message vocal.
+	\item Fouille des opinions : extraire des commentaires, des plaintes et des critiques sur une politique particulière, déterminant ainsi le consensus général à ce sujet.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Affaires (business) : Santé}
+
+\begin{itemize}
+	\item Structurer les documents médicaux afin de faciliter leur exploitation
+	\item Rechercher, analyser et interpréter des quantités gigantesques d'ensembles de données de patients
+	\item Prédire des maladies en se basant sur les symptômes et des documents médicaux
+	\item Générer des rapports 
+	\item Utiliser des assistants virtuels pour monitorer et aider les patients
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction au TALN : Applications}
+\framesubtitle{Affaires (business) : Éducation}
+
+\begin{itemize}
+	\item Évaluation de la langue : lire, écrire et parler.
+	\item Correction des erreurs d'orthographe 
+	\item Évaluation automatique des travaux des élèves, tels que les essais et les réponses
+	\item Apprentissage en ligne en intégrant des chatbots avec des jeux, ce qui favorise un environnement d'apprentissage actif
+\end{itemize}
+
+\end{frame}
 
 %===================================================================================
 \section{Défis du TALN}
