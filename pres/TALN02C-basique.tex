@@ -57,12 +57,12 @@
 \end{frame}
 
 %===================================================================================
-\section{Graphèmes}
+\section{Caractères}
 %===================================================================================
 
 \begin{frame}
 \frametitle{Traitements basiques du texte}
-\framesubtitle{Graphèmes}
+\framesubtitle{Caractères}
 
 
 \end{frame}
@@ -70,19 +70,94 @@
 \subsection{Expressions régulières}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Graphèmes}
-\framesubtitle{Expressions régulières}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Expressions régulières (1)}
 
 \begin{itemize}
-	\item 
+	\item utilisées pour chercher des chaînes de caractères dans un texte
 \end{itemize}
+
+\rowcolors{2}{lightblue}{lightyellow}
+\begin{tabular}{p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}}
+	\rowcolor{darkblue}
+	\textcolor{white}{ER} & \textcolor{white}{Sens} & \textcolor{white}{Exemple} \\
+	
+	. & n'importe quel caractère & \keyword{beg.n} : I \expword{begun} at the \expword{begin}ning. \\
+	
+	 \empty [aeuio] & caractères spécifiques & \keyword{[Ll][ae]} : \expword{Le} chat mange \expword{la} sourie. \\
+	 
+	\empty [a-e] & plage de caractères & \keyword{[A-Z]..} : \expword{J'a}i vu \expword{Kar}im. \\
+	
+	\empty [\textasciicircum aeuio] & exclure des caractères & \keyword{[\textasciicircum A-Z]a.} : J\expword{'ai} vu Karim. \\
+	
+	c? & un ou zéro & \keyword{colou?r} : It is \expword{colour} or \expword{color}. \\
+	
+	c* & zéro ou plus & \keyword{No*n} : \expword{Nn}! \expword{Non}! \expword{Nooooooon}! \\
+	
+	c+ & un ou plus & \keyword{No+n} : Nn! \expword{Non}! \expword{Nooooooon}! \\
+	
+	c\{n\} & n occurrences & \keyword{No\{3\}n} : Nn! Non! Noon! \expword{Nooon}! \\
+	
+	c\{n,m\} & de n à m occurrences & \keyword{No\{1,2\}n} : Nn! \expword{Non}! \expword{Noon}! Nooon! \\
+	
+	c\{n,\} & au moins n occurrences & \keyword{No\{2,\}n} : Nn! Non! \expword{Noon}! \expword{Nooon}! \\
+	
+	c\{,m\} & au plus m occurrences & \keyword{No\{,2\}n} : \expword{Nn}! \expword{Non}! \expword{Noon}! Nooon! \\
+	
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Expressions régulières (2)}
+
+\begin{itemize}
+	\item pour le groupement, utiliser \keyword{( )}
+	\begin{itemize}
+		\item Exemple, \expword{/(bla)+/} : Ceci est du \expword{blabla}.
+	\end{itemize}
+	\item pour la disjonction, utiliser \keyword{\textbar}
+	\begin{itemize}
+		\item Exemple, \expword{/continu(er\textbar ation\textbar el(le)?s?)/}
+	\end{itemize}
+\end{itemize}
+
+%\rowcolors{2}{lightblue}{lightyellow}
+%\begin{tabular}{p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}}
+%	\rowcolor{darkblue}
+%	\textcolor{white}{ER} & \textcolor{white}{Sens} & \textcolor{white}{Exemple} \\
+%	
+%	. & n'importe quel caractère & \keyword{beg.n} : I \expword{begun} at the \expword{begin}ning. \\
+%	
+%	\empty [aeuio] & caractères spécifiques & \keyword{[Ll][ae]} : \expword{Le} chat mange \expword{la} sourie. \\
+%	
+%	\empty [a-e] & plage de caractères & \keyword{[A-Z]..} : \expword{J'a}i vu \expword{Kar}im. \\
+%	
+%	\empty [\textasciicircum aeuio] & exclure des caractères & \keyword{[\textasciicircum A-Z]a.} : J\expword{'ai} vu Karim. \\
+%	
+%	c? & un ou zéro & \keyword{colou?r} : It is \expword{colour} or \expword{color}. \\
+%	
+%	c* & zéro ou plus & \keyword{No*n} : \expword{Nn}! \expword{Non}! \expword{Nooooooon}! \\
+%	
+%	c+ & un ou plus & \keyword{No+n} : Nn! \expword{Non}! \expword{Nooooooon}! \\
+%	
+%	c\{n\} & n occurrences & \keyword{No\{3\}n} : Nn! Non! Noon! \expword{Nooon}! \\
+%	
+%	c\{n,m\} & de n à m occurrences & \keyword{No\{1,2\}n} : Nn! \expword{Non}! \expword{Noon}! Nooon! \\
+%	
+%	c\{n,\} & au moins n occurrences & \keyword{No\{2,\}n} : Nn! Non! \expword{Noon}! \expword{Nooon}! \\
+%	
+%	c\{,m\} & au plus m occurrences & \keyword{No\{,2\}n} : \expword{Nn}! \expword{Non}! \expword{Noon}! Nooon! \\
+%	
+%\end{tabular}
 
 \end{frame}
 
 \subsection{Distance d'édition}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Graphèmes}
+\frametitle{Traitements basiques du texte : Caractères}
 \framesubtitle{Distance d'édition}
 
 \begin{itemize}
