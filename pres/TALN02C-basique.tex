@@ -112,6 +112,7 @@
 \frametitle{Traitements basiques du texte : Caractères}
 \framesubtitle{Expressions régulières (2)}
 
+\begin{minipage}{.6\textwidth}
 \begin{itemize}
 	\item pour le groupement, utiliser \keyword{( )}
 	\begin{itemize}
@@ -121,36 +122,54 @@
 	\begin{itemize}
 		\item Exemple, \expword{/continu(er\textbar ation\textbar el(le)?s?)/}
 	\end{itemize}
+	\item pour le début du texte, utiliser \keyword{\textasciicircum}
+	\begin{itemize}
+		\item Exemple, \expword{/\textasciicircum K/} :  \expword{K}ill Karim.
+	\end{itemize}
+	\item pour la fin du texte, utiliser \keyword{\$}
+	\begin{itemize}
+		\item Exemple, \expword{/\textbackslash .[\textasciicircum .]+\$/} :  fichier.tar\expword{.gz}
+	\end{itemize}
+	\item pour capturer un groupe, utiliser le regroupement avec \keyword{\$n} ou \keyword{\textbackslash n} où \expword{n} est la position du groupe
+	\begin{itemize}
+		\item Exemple, \expword{/(.*)(ement\textbar ation)\$/\textbackslash 1er/}
+	\end{itemize}
 \end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+\rowcolors{2}{lightblue}{lightyellow}
+\begin{tabular}{p{.2\textwidth}p{.6\textwidth}}
+	\rowcolor{darkblue}
+	\textcolor{white}{ER} & \textcolor{white}{Équivalence} \\
+	
+	\textbackslash d & [0-9] \\
+	\textbackslash D & [\textasciicircum 0-9] \\
+	\textbackslash w & [a-zA-Z0-9\_] \\
+	\textbackslash W & [\textasciicircum \textbackslash w] \\
+	\textbackslash s & [ \textbackslash r\textbackslash t\textbackslash n\textbackslash f] \\
+	\textbackslash S & [\textasciicircum \textbackslash s] \\
+\end{tabular}
 
-%\rowcolors{2}{lightblue}{lightyellow}
-%\begin{tabular}{p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}}
-%	\rowcolor{darkblue}
-%	\textcolor{white}{ER} & \textcolor{white}{Sens} & \textcolor{white}{Exemple} \\
-%	
-%	. & n'importe quel caractère & \keyword{beg.n} : I \expword{begun} at the \expword{begin}ning. \\
-%	
-%	\empty [aeuio] & caractères spécifiques & \keyword{[Ll][ae]} : \expword{Le} chat mange \expword{la} sourie. \\
-%	
-%	\empty [a-e] & plage de caractères & \keyword{[A-Z]..} : \expword{J'a}i vu \expword{Kar}im. \\
-%	
-%	\empty [\textasciicircum aeuio] & exclure des caractères & \keyword{[\textasciicircum A-Z]a.} : J\expword{'ai} vu Karim. \\
-%	
-%	c? & un ou zéro & \keyword{colou?r} : It is \expword{colour} or \expword{color}. \\
-%	
-%	c* & zéro ou plus & \keyword{No*n} : \expword{Nn}! \expword{Non}! \expword{Nooooooon}! \\
-%	
-%	c+ & un ou plus & \keyword{No+n} : Nn! \expword{Non}! \expword{Nooooooon}! \\
-%	
-%	c\{n\} & n occurrences & \keyword{No\{3\}n} : Nn! Non! Noon! \expword{Nooon}! \\
-%	
-%	c\{n,m\} & de n à m occurrences & \keyword{No\{1,2\}n} : Nn! \expword{Non}! \expword{Noon}! Nooon! \\
-%	
-%	c\{n,\} & au moins n occurrences & \keyword{No\{2,\}n} : Nn! Non! \expword{Noon}! \expword{Nooon}! \\
-%	
-%	c\{,m\} & au plus m occurrences & \keyword{No\{,2\}n} : \expword{Nn}! \expword{Non}! \expword{Noon}! Nooon! \\
-%	
-%\end{tabular}
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Expressions régulières : Cas d'utilisation}
+
+\begin{itemize}
+	\item Les éditeurs de texte utilisent les expressions régulières (ER) pour la recherche et le remplacement
+	\item La plupart des langages de programmation introduisent des mécanismes pour utiliser les ER
+	\item Extraction de données : par exemple, \expword{extraire les émails et les numéros de téléphones à partir des blogs et des réseaux sociaux}
+	\item \url{https://github.com/kariminf/aruudy}
+	\begin{itemize}
+		\item \textit{One of my crazy projects}
+		\item Détection du mètre d'une verse de poésie arabe
+		\item Avantage : les règles sont lisibles
+		\item Inconvénient : plusieurs passes pour traiter une verse 
+	\end{itemize}
+\end{itemize}
 
 \end{frame}
 
