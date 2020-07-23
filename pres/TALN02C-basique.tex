@@ -64,6 +64,11 @@
 \frametitle{Traitements basiques du texte}
 \framesubtitle{Caractères}
 
+\begin{itemize}
+	\item \optword{Expressions régulières} : utilisées pour chercher des chaînes de caractères dans un texte
+	\item \optword{Distance d'édition} : utilisée pour mesurer la différence entre deux chaînes de caractères 
+\end{itemize}
+
 
 \end{frame}
 
@@ -71,11 +76,7 @@
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Caractères}
-\framesubtitle{Expressions régulières (1)}
-
-\begin{itemize}
-	\item utilisées pour chercher des chaînes de caractères dans un texte
-\end{itemize}
+\framesubtitle{Expressions régulières : Règles (1)}
 
 \rowcolors{2}{lightblue}{lightyellow}
 \begin{tabular}{p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}}
@@ -110,7 +111,7 @@
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Caractères}
-\framesubtitle{Expressions régulières (2)}
+\framesubtitle{Expressions régulières : Règles (2)}
 
 \begin{minipage}{.6\textwidth}
 \begin{itemize}
@@ -173,15 +174,125 @@
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Expressions régulières : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-regex.jpeg}
+\end{center}
+
+\end{frame}
+
 \subsection{Distance d'édition}
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Caractères}
-\framesubtitle{Distance d'édition}
+\framesubtitle{Distance d'édition : Opérations d'édition}
 
 \begin{itemize}
-	\item 
+	\item \optword{Insertion} : insertion d'un caractère dans une chaîne\\
+	$uv \rightarrow uxv \,/\, u, v \in X^*;\, uv \in X^+;\, x \in X$
+	\begin{itemize}
+		\item \expword{courir $ \rightarrow $ courrir, entraînement $ \rightarrow $ entraînnement }
+	\end{itemize}
+	
+	\item \optword{Suppression} : suppression d'un caractère d'une chaîne\\
+	$uxv \rightarrow uv \,/\, u, v \in X^*;\, uv \in X^+;\, x \in X$
+	\begin{itemize}
+		\item \expword{héros $ \rightarrow $ héro, meilleur $ \rightarrow $ meileur}
+	\end{itemize}
+	
+	\item \optword{Substitution} : substitution d'un caractère par un autre\\
+	$uxv \rightarrow uyv \,/\, u, v \in X^*;\, x, y \in X;\, x \ne y$
+	\begin{itemize}
+		\item \expword{cela $ \rightarrow $ celà, croient $ \rightarrow $ croyent }
+	\end{itemize}
+	
+	\item \optword{Transposition} : changement de l'ordre de deux caractères\\
+	$uxwyv \rightarrow uywxv \,/\, u, v, w \in X^*;\, x, y \in X;\, x \ne y$
+	\begin{itemize}
+		\item \expword{cueillir $ \rightarrow $ ceuillir}
+	\end{itemize}
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Distance d'édition : Algorithmes}
+
+\begin{itemize}
+	\item \optword{Distance de Hamming} : permet seulement la substitution. Les chaînes doivent être de même longueur. 
+	\item \optword{Plus longue sous-séquence commune} : permet l'insertion et la suppression
+	\item \optword{Distance de Levenshtein} : permet l'insertion, la suppression et la substitution
+	\item \optword{Distance de Jaro} : permet la transposition
+	\item \optword{Distance de Damerau–Levenshtein} : permet l'insertion, la suppression, la substitution et la transposition entre deux caractères adjacents
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Distance d'édition : Distance de Levenshtein}
+
+\begin{itemize}
+	\item X est une chaîne source de longueur $n$
+	\item Y une chaîne destinataire de longueur $m$
+	\item D est une matrice où D[i, j] est la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j]
+	\item pour calculer $D[n, m]$, on utilise la programmation dynamique
+	\item $D[0, 0] = 0$
+\end{itemize}
+
+\[
+D[i, j] = \min 
+\begin{cases}
+D[i - 1, j] + 1 \text{ //Suppression}\\
+D[i, j-1] + 1 \text{ //Insertion}\\
+D[i-1, j-1] + \begin{cases}
+2 & \text{si } X[i] \ne Y[j] \\
+0 & \text{sinon}
+\end{cases}
+\end{cases}
+\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Distance d'édition : Distance de Levenshtein (exemple)}
+
+\begin{figure}
+	\centering
+	\hgraphpage{levenshtein-exp.pdf}
+	\caption{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Distance d'édition : Quelques applications}
+
+\begin{itemize}
+	\item Révision des fichiers : par exemple, la commande Unix \expword{diff} qui compare entre deux fichiers.
+	\item Correction d'orthographe : suggérer des corrections possibles d'une faute (ex. \expword{Hunspell}).
+	\item Détection du plagiat : ici, on utilise des mots à la place des caractères.
+	\item Filtrage de spam : parfois, les spammeurs commettent des fautes d'orthographe intentionnellement pour tromper l'outil de détection de spam.
+	\item Bio-informatique : quantification de la similarité entre deux séquences d'ADN.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Caractères}
+\framesubtitle{Distance d'édition : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage[.4\textheight]{humour-spell.jpg}
+	\vgraphpage[.4\textheight]{humour-spell1.jpg}
+	\vgraphpage[.4\textheight]{humour-spell2.jpg}
+\end{center}
 
 \end{frame}
 
