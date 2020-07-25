@@ -66,9 +66,15 @@
 
 \begin{itemize}
 	\item \optword{Expressions régulières} : utilisées pour chercher des chaînes de caractères dans un texte
+	\begin{itemize}
+		\item reconnaissent des langages de types 3 (langages réguliers) dans la hiérarchie de Chomsky 
+		\item utiles pour l'analyse lexicale (séparation des mots)
+	\end{itemize}
 	\item \optword{Distance d'édition} : utilisée pour mesurer la différence entre deux chaînes de caractères 
+	\begin{itemize}
+		\item utiles pour la recherche approximative
+	\end{itemize}
 \end{itemize}
-
 
 \end{frame}
 
@@ -166,7 +172,7 @@
 	\item \url{https://github.com/kariminf/aruudy}
 	\begin{itemize}
 		\item \textit{One of my crazy projects}
-		\item Détection du mètre d'une verse de poésie arabe
+		\item Détection du mètre d'une verse des poèmes arabes
 		\item Avantage : les règles sont lisibles
 		\item Inconvénient : plusieurs passes pour traiter une verse 
 	\end{itemize}
@@ -304,6 +310,20 @@ D[i-1, j-1] + \begin{cases}
 \frametitle{Traitements basiques du texte}
 \framesubtitle{Segmentation du texte}
 
+\begin{itemize}
+	\item Un nouveau paragraphe est marqué par un retour à la ligne ou en utilisant la balise \keyword{\textless p\textgreater} en HTML.
+	\begin{itemize}
+		\item Lorsqu'on utilise un outil pour extraire du texte à partir des pdfs, on aura plusieurs retours à la ligne 
+	\end{itemize}
+	\item Une nouvelle phrase est marquée par un point (ou une autre marque)
+	\begin{itemize}
+		\item Le point n'est pas seulement utilisé pour marquer une phrase
+	\end{itemize}
+	\item Un mot est délimité par une espace 
+	\begin{itemize}
+		\item Pas toujours 
+	\end{itemize}
+\end{itemize}
 
 \end{frame}
 
@@ -311,11 +331,39 @@ D[i-1, j-1] + \begin{cases}
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Segmentation du texte}
-\framesubtitle{Délimitation de la phrase} 
+\framesubtitle{Délimitation de la phrase : Problématique} 
 
 \begin{itemize}
-\item 
+	\item \expword{/[.?!]/} est une ER simple utilisée pour délimiter les phrases (français, anglais, etc.)
+	\item Le point est utilisé dans les nombres : \expword{123,456.78 (style américain) 123.456,78 (style européen)}
+	\item Les abréviations contiennent des points
+	\item Des phrases longues sont difficiles à traiter ; il faut mieux les séparer 
+	\item Les phrases entre guillemets
+	\item Des langues, comme le thaï, n'utilisent pas des marqueurs pour séparer les phrases  
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Segmentation du texte}
+\framesubtitle{Délimitation de la phrase : Facteurs de segmentation} 
+
+\begin{itemize}
+	\item La casse : les phrases commencent par un majuscule
+	\item Catégorie grammaticale
+	\item Longueur du mot 
+	\item Préfixes et suffixes 
+	\item Classes des abréviations 
+	\item Noms propres 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Segmentation du texte}
+\framesubtitle{Délimitation de la phrase : Un peu d'humour} 
+
+\hgraphpage{humour-segmentation.jpg}
 
 \end{frame}
 
@@ -323,13 +371,49 @@ D[i-1, j-1] + \begin{cases}
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Segmentation du texte}
-\framesubtitle{Séparation des mots}
+\framesubtitle{Séparation des mots : Problématique}
 
 \begin{itemize}
-\item 
+	\item \expword{/[ ]+/} est une ER simple utilisée pour séparer les mots (arabe, français, anglais, etc.)
+	\item Des langues, comme le japonais, n'utilisent pas de marques pour séparer les mots (\expword{\begin{CJK}{UTF8}{min}今年は本当に忙しかったです。\end{CJK}})
+	\item Il existe des mots composés : par attachement (allemand : ``\expword{Lebensversicherung}, assurance vie"; arabe : ``\expword{\RL{y_htbrwnhm}}, ils les testent") ou par trait d'union (\expword{va-t-il, c-à-dire})
+	\item Confusion entre des caractères : l'apostrophe est utilisée pour la citation, la contraction (\expword{She's, J'ai}) 
+	\item Les expressions avec des mots multiples : \expword{les expressions numériques comme les dates}
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Segmentation du texte}
+\framesubtitle{Séparation des mots : Approches}
+
+\begin{itemize}
+	\item Par règles : en utilisant des expressions régulières 
+	\begin{itemize}
+		\item \url{https://www.nltk.org/api/nltk.tokenize.html}
+		\item \url{https://nlp.stanford.edu/software/tokenizer.shtml}
+		\item \url{https://github.com/kariminf/jslingua}
+		\item \url{https://github.com/linuxscout/pyarabic}
+	\end{itemize}
+	\item Statistique : en utilisant un modèle de langue pour calculer la probabilité qu'un caractère marque la  fin d'un mot 
+	\begin{itemize}
+		\item \url{https://nlp.stanford.edu/software/segmenter.html}
+		\item \url{https://opennlp.apache.org/}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Segmentation du texte}
+\framesubtitle{Séparation des mots : Un peu d'humour} 
+
+\begin{center}
+	\vgraphpage{humour-punctuation.jpg}
+\end{center}
+
+\end{frame}
+
 
 %===================================================================================
 \section{Normalisation et filtrage des mots}
