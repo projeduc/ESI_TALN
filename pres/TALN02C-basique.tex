@@ -392,6 +392,7 @@ D[i-1, j-1] + \begin{cases}
 	\begin{itemize}
 		\item \url{https://www.nltk.org/api/nltk.tokenize.html}
 		\item \url{https://nlp.stanford.edu/software/tokenizer.shtml}
+		\item \url{https://spacy.io/}
 		\item \url{https://github.com/kariminf/jslingua}
 		\item \url{https://github.com/linuxscout/pyarabic}
 	\end{itemize}
@@ -416,33 +417,86 @@ D[i-1, j-1] + \begin{cases}
 
 
 %===================================================================================
-\section{Normalisation et filtrage des mots}
+\section{Normalisation et filtrage du texte}
 %===================================================================================
 
 \begin{frame}
 \frametitle{Traitements basiques du texte}
-\framesubtitle{Normalisation et filtrage des mots}
-
-
-\end{frame}
-
-\subsection{Normalisation des mots}
-
-\begin{frame}
-\frametitle{Traitements basiques du texte : Normalisation et filtrage}
-\framesubtitle{Normalisation des mots}
+\framesubtitle{Normalisation et filtrage du texte}
 
 \begin{itemize}
-\item 
+	\item \optword{Normalisation du texte}
+	\begin{itemize}
+		\item PROBLÉMATIQUE : Un texte peut contenir des variations du même terme. Aussi, dans des tâches comme la recherche d'information, on n'a pas besoin d'avoir le contenu exacte du texte.
+		\item SOLUTION : transformer le texte à une forme canonique 
+		\item \url{https://www.kaggle.com/c/text-normalization-challenge-english-language}
+	\end{itemize}
+	\item \optword{Filtrage du texte}
+	\begin{itemize}
+		\item PROBLÉMATIQUE : le texte peut contenir des caractères, des mots et des expressions qui peuvent entraver son traitement
+		\item SOLUTION : suppression
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
 
-\subsection{Filtrage des mots}
+\subsection{Normalisation du texte}
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Normalisation et filtrage}
-\framesubtitle{Filtrage des mots}
+\framesubtitle{Normalisation du texte (1)}
+
+\begin{itemize}
+%	\item \optword{Tâche} : transformer le texte à une forme canonique
+	
+	\item acronymes et les abréviations 
+	\begin{itemize}
+		\item forme standard : \expword{US \textrightarrow USA, U.S.A. \textrightarrow USA}
+		\item version longue : \expword{M. \textrightarrow Monsieur}
+	\end{itemize}
+	
+	\item formater les valeurs comme les dates et les nombres de la même façon
+	\begin{itemize}
+		\item conversion à la forme textuelle : \expword{1205 DZD \textrightarrow Mille deux cents cinq dinars algériens}
+		\item format spécifique : \expword{12 Janvier 1986, 12.01.86 \textrightarrow 1986-01-12}
+		\item remplacement par le type : \expword{12 Janvier 1986 \textrightarrow DATE, kariminfo0@gmail.com \textrightarrow EMAIL}
+	\end{itemize}
+	
+	\item transformer les majuscules en minuscules. 
+	\begin{itemize}
+		\item \expword{Texte \textrightarrow texte}
+		\item Des fois, il faut laisser la casse telle qu'elle est, comme dans les noms propres (\expword{Will})
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\framesubtitle{Normalisation du texte (2)}
+
+\begin{itemize}
+	
+	\item contractions
+	\begin{itemize}
+		\item \expword{y'll \textrightarrow you all, s'il \textrightarrow si il}
+	\end{itemize}
+	
+	\item diacritiques
+	\begin{itemize}
+		\item désaccentuation :  \expword{système \textrightarrow systeme}
+		\item dé-vocalisation :  \expword{\RL{yadrusu} \textrightarrow \RL{ydrs}}. Sauf dans les cas où on a besoin des diacritiques (poèmes)
+	\end{itemize}
+	
+\end{itemize}
+
+\end{frame}
+
+\subsection{Filtrage du texte}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\framesubtitle{Filtrage du texte}
 
 \begin{itemize}
 \item 
