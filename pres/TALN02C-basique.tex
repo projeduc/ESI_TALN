@@ -533,12 +533,12 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 %===================================================================================
-\section{Lexique}
+\section{Morphologie}
 %===================================================================================
 
 \begin{frame}
 \frametitle{Traitements basiques du texte}
-\framesubtitle{Lexique}
+\framesubtitle{Morphologie}
 
 
 \end{frame}
@@ -546,20 +546,63 @@ D[i-1, j-1] + \begin{cases}
 \subsection{Formation des mots}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Lexique}
+\frametitle{Traitements basiques du texte : Morphologie}
 \framesubtitle{Formation des mots}
 
 \begin{itemize}
-\item Flexion
-\item Dérivation
+	\item Flexion : variation morphologique d'un mot selon les traits grammaticaux (nombre, genre, etc.)
+	\begin{itemize}
+		\item Conjugaison des verbes 
+		\item Déclinaison des noms, pronoms, adjectifs et déterminants. 
+		Ex. \RL{q.t} \textrightarrow \RL{q.t.t}, 
+	\end{itemize}
+	\item Dérivation : variation morphologique d'un mot pour créer un nouveau lexème ou pour changer de catégorie
+	\begin{itemize}
+		\item Créer unn nouveau lexème : \expword{couper \textrightarrow\ découper, \RL{`ml} \textrightarrow \RL{ist`ml}}
+		\item Changer de catégorie : nominalisation (\expword{classer \textrightarrow classement, classeur ; \RL{darasa} \textrightarrow \RL{darsuN, madrasaTuN, mudarrisuN, dArisuN}}), l'adjectif (\expword{fatiguer \textrightarrow fatigant})
+	\end{itemize}
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Morphologie}
+\framesubtitle{Formation des mots : Exemple (conjugaison automatique)}
+
+\begin{itemize}
+	\item Base de données
+	\begin{itemize}
+		\item stocker la conjugaison des verbes dans une base de données
+		\item Exemple, conjugaison des verbes en arabe : \url{https://github.com/linuxscout/qutrub}
+	\end{itemize}
+	\item Modèles (\textit{template})
+	\begin{itemize}
+		\item stocker la conjugaison de certains verbes modèles et utiliser une liste pour indexer les verbes similaires
+		\item Exemple, \expword{la conjugaison des verbes en français}
+	\end{itemize}
+	\item Règles
+	\begin{itemize}
+		\item utilisation des règles SI-SINON
+		\item Exemple, conjugaison des verbes en arabe, anglais, français et japonais : \url{https://github.com/kariminf/jslingua}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Morphologie}
+\framesubtitle{Formation des mots : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-formation.jpg}
+\end{center}
 
 \end{frame}
 
 \subsection{Réduction des formes des mots}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Lexique}
+\frametitle{Traitements basiques du texte : Morphologie}
 \framesubtitle{Réduction des formes : Racinisation}
 
 \begin{itemize}
@@ -569,7 +612,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Lexique}
+\frametitle{Traitements basiques du texte : Morphologie}
 \framesubtitle{Réduction des formes : Lemmatisation}
 
 \begin{itemize}
