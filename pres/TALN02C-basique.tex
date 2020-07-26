@@ -599,14 +599,49 @@ D[i-1, j-1] + \begin{cases}
 
 \end{frame}
 
-\subsection{Réduction des formes des mots}
+\subsection{Réduction des formes}
 
 \begin{frame}
 \frametitle{Traitements basiques du texte : Morphologie}
 \framesubtitle{Réduction des formes : Racinisation}
 
 \begin{itemize}
-\item 
+	\item suppression des affixes (anglais : \keyword{stemming})
+	\item le résultat \keyword{radical} (\keyword{racine}) (anglais : \keyword{stem})
+	\item Exemple, \expword{chercher \textrightarrow cherch}
+	\item \optword{par base de données} : stocker tous les termes et leurs racines dans une table
+	\item \optword{par statistiques} : utiliser un modèle de langue (N-Gram) pour estimer la position de troncation
+	\item \optword{par règles}
+	\begin{itemize}
+		\item algorithme de Porter \cite{1980-porter}
+		\item \url{https://github.com/assem-ch/arabicstemmer}
+		\item \url{https://snowballstem.org/algorithms/}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Morphologie}
+\framesubtitle{Réduction des formes : Racinisation (exemple, algorithme de Porter)}
+
+\begin{itemize}
+	\item un ensemble de règles condition/action
+	\item un framework pour créer des racinateurs : \url{https://snowballstem.org/}
+	\item \optword{condition sur la racine}
+	\begin{itemize}
+		\item la longueur, la fin, si elle contient des voyelles, etc.
+		\item Exemple, \expword{(*v*) Y \textrightarrow I : happy \textrightarrow happi, sky \textrightarrow sky}
+	\end{itemize}
+	\item \optword{condition sur l'affixe}
+	\begin{itemize}
+		\item dans le cas de porter, il n'y a que le suffixe 
+		\item Exemple, \expword{SSES \textrightarrow SS, ATIONAL \textrightarrow ATE}
+	\end{itemize}
+	\item \optword{condition sur la règle}
+	\begin{itemize}
+		\item si une règle est exécutée, d'autres sont désactivées
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
