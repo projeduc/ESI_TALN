@@ -487,7 +487,12 @@ D[i-1, j-1] + \begin{cases}
 		\item désaccentuation :  \expword{système \textrightarrow systeme}
 		\item dé-vocalisation :  \expword{\RL{yadrusu} \textrightarrow \RL{ydrs}}. Sauf dans les cas où on a besoin des diacritiques (poèmes)
 	\end{itemize}
-	
+
+	\item encodage 
+	\begin{itemize}
+		\item il faut utiliser le même encodage supporté dans le traitement
+	\end{itemize}
+
 \end{itemize}
 
 \end{frame}
@@ -499,8 +504,31 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Filtrage du texte}
 
 \begin{itemize}
-\item 
+	\item Les caractères spéciaux comme les caractères non imprimables
+	\begin{itemize}
+		\item ils peuvent mener à des traitements erronés 
+	\end{itemize}
+	\item Les mots clés dans les formats textuelles
+	\begin{itemize}
+		\item les balises HTML, XML, etc. 
+	\end{itemize}
+	\item Les \keyword{mots vides} : les mots non significatifs comme les prépositions, articles et les pronoms.
+	\begin{itemize}
+		\item en anglais : \keyword{stop words}
+		\item dans la recherche d'information, il est inutile de les indexer
+		\item dans le résumé automatique, ces mots peuvent dégrader les scores des phrases
+	\end{itemize}
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\framesubtitle{Filtrage du texte : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-stopwords.jpg}
+\end{center}
 
 \end{frame}
 
