@@ -627,7 +627,7 @@ D[i-1, j-1] + \begin{cases}
 
 \begin{itemize}
 	\item un ensemble de règles condition/action
-	\item un framework pour créer des racinateurs : \url{https://snowballstem.org/}
+	\item \url{https://snowballstem.org/} : un framework pour créer des racinateurs
 	\item \optword{condition sur la racine}
 	\begin{itemize}
 		\item la longueur, la fin, si elle contient des voyelles, etc.
@@ -651,7 +651,20 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Réduction des formes : Lemmatisation}
 
 \begin{itemize}
-	\item 
+	\item chercher la forme canonique d'un mot (anglais : \keyword{lemmatization})
+	\item le résultat : \keyword{lemme} (anglais : \keyword{lemma})
+	\item exemple, \expword{comprennent \textrightarrow comprendre, better \textrightarrow good}
+	\item doit avoir le contexte du mot. Ex. \expword{saw \textrightarrow (V) see ou (N) saw}
+	\item \optword{basée sur des bases lexicales}
+	\begin{itemize}
+		\item \url{https://www.nltk.org/api/nltk.stem.html} (NLTK WordNetLemmatizer)
+		\item \url{https://github.com/sloria/textblob}
+	\end{itemize}
+	\item \optword{basée sur l'apprentissage automatique}
+	\begin{itemize}
+		\item \url{https://spacy.io/}
+		\item \url{https://stanfordnlp.github.io/CoreNLP/}
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
