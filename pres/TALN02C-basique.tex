@@ -19,32 +19,17 @@
 \framesubtitle{Traitements basiques du texte : Introduction}
 
 \begin{itemize}
-	\item 
+	\item Un texte est structuré en paragraphes, phrases, mots et caractères
+	\item Certaines tâches exploitent cette structure
+	\item Plusieurs tâches se basent sur les mots comme unité de traitement
+	\item Avant de procéder à un traitement, il faut d'abord exécuter une phase de prétraitement
+	\item Il faut segmenter du texte 
+	\item Il faut le filtrer des données non nécessaires
+	\item Il faut le normaliser pour limiter les variations à traiter
 \end{itemize}
-%\begin{minipage}{0.78\textwidth}
-%\begin{itemize}
-%	\item Un domaine multidisciplinaire
-%	\begin{itemize}
-%		\item \optword{Linguistique} : étude du langage
-%		\item \optword{Informatique} : Traitement automatique de l'information
-%		\item \optword{Intelligence artificielle} : Ensemble de théories et de techniques mises en œuvre en vue de réaliser des machines capables de simuler l'intelligence humaine.
-%	\end{itemize}
-%\end{itemize}
-%\end{minipage}
-%\begin{minipage}{0.20\textwidth}
-%\hgraphpage[\textwidth]{TALN.pdf}
-%\end{minipage}
-\end{frame}
-
-\begin{frame}
-\frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Traitements basiques du texte : Un peu d'humour}
-
-%\begin{center}
-%	\vgraphpage{humour.jpg}
-%\end{center}
 
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
@@ -349,10 +334,10 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Délimitation de la phrase : Facteurs de segmentation} 
 
 \begin{itemize}
-	\item La casse : les phrases commencent par un majuscule
-	\item Catégorie grammaticale
-	\item Longueur du mot 
-	\item Préfixes et suffixes 
+	\item La casse %: les phrases commencent par un majuscule
+	\item Catégorie grammaticale %: les catégories des mots avant le point peuvent aider la décision (limite ou non)
+	\item Longueur du mot %: la longueur des mots avant et après le point
+	\item Préfixes et suffixes : 
 	\item Classes des abréviations 
 	\item Noms propres 
 \end{itemize}
@@ -540,6 +525,12 @@ D[i-1, j-1] + \begin{cases}
 \frametitle{Traitements basiques du texte}
 \framesubtitle{Morphologie}
 
+\begin{itemize}
+	\item Des langues permettent la formation des mots en utilisant la flexion (ex. \expword{conjugaison}) et la dérivation (ex. \expword{nominalisation})
+	\item La  méthode la plus utilisée est l'affixation 
+	\item Automatiser cette tâche peut aider d'autres tâches, comme la génération du langage naturel (anglais : NLG)
+	\item Aussi, la tâche inverse peut aider d'autres tâches, comme la compréhension du langage naturel (anglais : NLU)
+\end{itemize}
 
 \end{frame}
 
@@ -659,13 +650,46 @@ D[i-1, j-1] + \begin{cases}
 	\begin{itemize}
 		\item \url{https://www.nltk.org/api/nltk.stem.html} (NLTK WordNetLemmatizer)
 		\item \url{https://github.com/sloria/textblob}
+		\item \url{https://spacy.io/}
 	\end{itemize}
 	\item \optword{basée sur l'apprentissage automatique}
 	\begin{itemize}
-		\item \url{https://spacy.io/}
-		\item \url{https://stanfordnlp.github.io/CoreNLP/}
+		\item \url{https://opennlp.apache.org/}
 	\end{itemize}
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Traitements basiques du texte : Morphologie}
+\framesubtitle{Réduction des formes : Lemmatisation (exemple, morphy)}
+
+\begin{block}{Lemmatisation "morphy" de Wordnet}
+	\footnotesize
+	\begin{algorithm}[H]
+		\KwData{mot, catégorie}
+		\KwResult{liste des lemmes possibles}
+		
+		\Si{mot $ \in $  list\_exceptions[catégorie]}{
+			\Return chercher\_dans\_dictionnaire(\{mot\} $ \cup $ list\_exceptions[catégorie])\;
+		}
+		
+		formes = \{mot\}
+		
+		\Tq{formes $ \ne \emptyset $}{
+			formes = supprimer\_les\_affixes(formes, catégorie)\;
+			
+			résultats = chercher\_dans\_dictionnaire(\{mot\} $ \cup $ formes)\;
+			
+			\Si{résultats $ \ne \emptyset $ }{
+				\Return résultats \;
+			}
+		}
+		
+		\Return $ \emptyset $\;
+
+	\end{algorithm}
+\end{block}
 
 \end{frame}
 
