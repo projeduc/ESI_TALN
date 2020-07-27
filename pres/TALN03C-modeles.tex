@@ -1,0 +1,171 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[xcolor=table]{beamer}
+
+\input{options}
+
+\title[TALN : 03- Modèles de langue]%
+{Traitement automatique du langage naturel\\Chapitre 03 : Modèles de langue} 
+
+\changegraphpath{../img/modeles/}
+
+\begin{document}
+	
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{Modèles de langue : Introduction}
+
+\begin{itemize}
+	\item Probabilité d'une phrase ($ P(S) = P(w_1, w_2, ..., w_n) $)
+	\begin{itemize}
+		\item Traduction automatique : \\
+		\expword{Mon grand frère \textrightarrow P(my big brother) \textgreater P(my tall brother)}
+		\item Correction des fautes grammaticales : \\
+		\expword{P(Un objet qu'on peut emporter) \textgreater P(Un objet qu'ont peut emporter)}
+		\item Reconnaissance de paroles : \\
+		\expword{P(Jeudi matin) \textgreater P(Je dit matin)}
+	\end{itemize}
+	\item Probabilité d'occurrence d'un mot ($ P(w_n | w_1, ..., w_{n-1}) $)
+	\begin{itemize}
+		\item Auto-complétion : \\
+		\expword{P(traitement automatique de l'information) > P(traitement automatique de l'eau)}
+		\item Génération automatique de textes
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{Modèles de langue : Plan}
+
+\begin{multicols}{2}
+%	\small
+\tableofcontents
+\end{multicols}
+\end{frame}
+
+%===================================================================================
+\section{Modèle ngram}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Modèles de langue}
+\framesubtitle{Modèle N-gramme}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\subsection{Estimation}
+
+\begin{frame}
+\frametitle{Modèles de langue : N-gramme}
+\framesubtitle{Estimation}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\subsection{Lissage (Smoothing)}
+
+\begin{frame}
+\frametitle{Modèles de langue : N-gramme}
+\framesubtitle{Lissage (Smoothing)}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+
+%===================================================================================
+\section{Modèles neuronaux}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Modèles de langue}
+\framesubtitle{Modèles neuronaux}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\subsection{Architecture}
+
+\begin{frame}
+\frametitle{Modèles de langue : Modèles neuronaux}
+\framesubtitle{Architecture}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\subsection{Mots hors vocabulaire}
+
+\begin{frame}
+\frametitle{Modèles de langue : Modèles neuronaux}
+\framesubtitle{Mots hors vocabulaire}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+%===================================================================================
+\section{Évaluation}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Modèles de langue}
+\framesubtitle{Évaluation}
+
+\begin{itemize}
+	\item \optword{Évaluation extrinsèque}
+	\item \optword{Évaluation intrinsèque}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Évaluation extrinsèque}
+
+\begin{frame}
+\frametitle{Modèles de langue : Évaluation}
+\framesubtitle{Évaluation extrinsèque}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\subsection{Perplexité}
+
+\begin{frame}
+\frametitle{Modèles de langue : Évaluation}
+\framesubtitle{Perplexité}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\insertbibliography{TALN03}{*}
+
+\end{document}
+
