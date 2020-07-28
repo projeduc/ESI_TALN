@@ -22,16 +22,16 @@
 	\item Probabilité d'une phrase ($ P(S) = P(w_1, w_2, ..., w_n) $)
 	\begin{itemize}
 		\item Traduction automatique : \\
-		\expword{Mon grand frère \textrightarrow P(my big brother) \textgreater P(my tall brother)}
+		\expword{My tall brother \textrightarrow P(Mon grand frère) \textgreater P(Mon haut frère)}
 		\item Correction des fautes grammaticales : \\
 		\expword{P(Un objet qu'on peut emporter) \textgreater P(Un objet qu'ont peut emporter)}
 		\item Reconnaissance de paroles : \\
 		\expword{P(Jeudi matin) \textgreater P(Je dit matin)}
 	\end{itemize}
-	\item Probabilité d'occurrence d'un mot ($ P(w_n | w_1, ..., w_{n-1}) $)
+	\item Probabilité d'occurrence d'un mot ($ P(w_n | w_1, \ldots, w_{n-1}) $)
 	\begin{itemize}
 		\item Auto-complétion : \\
-		\expword{P(traitement automatique de l'information) > P(traitement automatique de l'eau)}
+		\expword{P(traitement automatique de l'information) \textgreater P(traitement automatique de l'eau)}
 		\item Génération automatique de textes
 	\end{itemize}
 \end{itemize}
@@ -57,21 +57,118 @@
 \frametitle{Modèles de langue}
 \framesubtitle{Modèle N-gramme}
 
+\begin{block}{Formule des probabilités composées}
+	$ P(x_1 \ldots x_n) =  P(x_1) P(x_2 | x_1) P(x_3 | x_1, x_2) \ldots P(x_n | x_1, \ldots, x_{n-1})$
+\end{block}
+
+
+\begin{exampleblock}{Exemple de probabilité d'une phrase}
+	$ P(\text{\textit{je travaille à l'ESI}}) =  P(je) P(travaille | je) P(\text{\textit{à}} | \text{\textit{je travaille}}) \ldots P(ESI | \text{\textit{je travaille à l'}})$
+	
+	$P(ESI | \text{\textit{je travaille à l'}}) = \frac{N(\text{\textit{je travaille à l'ESI}})}{N( \text{\textit{je travaille à l'}})}$ 
+	
+	Où 
+	
+	$N$ est le nombre d'occurrence d'une phrase dans un corpus d'entraînement
+\end{exampleblock}
+
 \begin{itemize}
-	\item 
+	\item Plusieurs phrases possibles
+	\item Il faut faut un grand corpus pour estimer cette probabilité (infinité de phrases possibles)
 \end{itemize}
 
 \end{frame}
 
-\subsection{Estimation}
+\subsection{Formulation}
 
 \begin{frame}
 \frametitle{Modèles de langue : N-gramme}
-\framesubtitle{Estimation}
+\framesubtitle{Formulation : Propriété de Markov}
+
+\begin{block}{Propriété de Markov}
+	Un état futur ne dépend que de l'état présent. 
+	\[%
+	P(x_n | x_1,\ldots, x_{n-1}) \approx P(x_n | x_{n-1})
+	\]
+	Cas général avec $k$ états passés 
+	\[%
+	P(x_1 \ldots x_n) = P(x_n | x_{n-k}, \ldots, x_{n-1})
+	\]
+\end{block}
+
+\begin{block}{Estimation de probabilité en utilisant les N-grammes (k grammes)}
+	\[
+	P(x_n | x_1,\ldots, x_{n-1}) \approx \prod_i P(x_i | x_{i-k}, \ldots, x_{i-1})
+	\]
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Modèles de langue : N-gramme}
+\framesubtitle{Formulation : Quelques modèles}
 
 \begin{itemize}
-	\item 
+	\item \optword{Modèle uni-gramme}
+	\begin{itemize}
+		\item $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n)$
+	\end{itemize}
+	\item \optword{Modèle bi-gramme}
+	\begin{itemize}
+		\item $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n | w_{n-1})$
+	\end{itemize}
+	\item \optword{Modèle tri-gramme}
+	\begin{itemize}
+		\item $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n | w_{n-2}, w_{n-1})$
+	\end{itemize}
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Modèles de langue : N-gramme}
+\framesubtitle{Formulation : Estimation}
+
+\begin{itemize}
+	\item en utilisant un corpus d'entraînement avec suffisamment de données
+	\item on marque le début et la fin des phrases avec \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater}
+	\item \keyword{l'estimateur du maximum de vraisemblance}
+\end{itemize}
+
+\begin{block}{Estimation des probabilités en utilisant le maximum de vraisemblance}
+	\[%
+	P(w_n | w_{n-k},\ldots, w_{n-1}) = \frac{N(w_{n-k} \ldots w_{n-1} w_n)}{\sum_i N(w_{n-k} \ldots w_{n-1} w_i)}
+	= \frac{N(w_{n-k} \ldots w_{n-1} w_n)}{N(w_{n-k} \ldots w_{n-1})}
+	\]
+	Où $N$ est le nombre d'occurrences des N-grammes dans le corpus
+	\[%
+	\text{Bi-grammes : } P(w_n | w_{n-1}) = \frac{N(w_{n-1} w_n)}{N(w_{n-1})}
+	\]
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Modèles de langue : N-gramme}
+\framesubtitle{Formulation : Exemple (1)}
+
+\begin{exampleblock}{Exemple d'un corpus d'entraînement}
+	\begin{itemize}
+		\item \textless s\textgreater un ordianteur peut vous aider \textless/s\textgreater
+		\item \textless s\textgreater il veut vous aider \textless/s\textgreater
+		\item \textless s\textgreater il veut un ordinateur \textless/s\textgreater
+		\item \textless s\textgreater il peut nager \textless/s\textgreater
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item $P(peut | il) = \frac{N(il peut)}{N(il)} = \frac{1}{3}$
+	\item $P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
+	P(il|\text{\textit{\textless s\textgreater}}) P(peut|il) P(vous|peut) P(aider|vous) P(\text{\textit{\textless/s\textgreater}}|aider) = 
+	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{3}{24}
+	$
+\end{itemize}
+
 
 \end{frame}
 
@@ -82,7 +179,10 @@
 \framesubtitle{Lissage (Smoothing)}
 
 \begin{itemize}
-	\item 
+	\item $P(\text{\textit{\textless s\textgreater il veut nager \textless/s\textgreater}}) = 
+	P(il|\text{\textit{\textless s\textgreater}}) P(veut|il) P(nager|veut)  P(\text{\textit{\textless/s\textgreater}}|nager) = 
+	\frac{3}{4} \frac{2}{3} \frac{0}{1} \frac{1}{1} = 0
+	$
 \end{itemize}
 
 \end{frame}
