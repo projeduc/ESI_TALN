@@ -353,22 +353,54 @@
 
 \begin{frame}
 \frametitle{Modèles de langue : Modèles neuronaux}
-\framesubtitle{Réseau de neurones récurrents}
+\framesubtitle{Réseau de neurones récurrents : Cas d'étude}
 
 \begin{itemize}
-	\item 
+	\item On va suivre le modèle de \cite{2010-mokolov-al}
+	\item Dans un instant $t$, on calcule l'état $s_t$ en se basant sur l'état précédent $s_{t-1}$ et le mot actuel $m_t$
+	\item L'état $s_t$ est utilisé pour estimer les probabilités $y_t$ de chaque mot du vocabulaire
 \end{itemize}
+
+\begin{block}{Modèle neuronal récurrent}
+	$x_t = s_{t-1} \bullet m_t$
+	
+	$s_t = \sigma(x_t W)$
+	
+	$y_t = softmax(s_t U)$
+	
+	Où $m_t \in \mathbb{R}^{V},\, s_t \in \mathbb{R}^{H},\, W \in \mathbb{R}^{(H+V)\times H},\, U \in \mathbb{R}^{H\times V}$
+\end{block}
 
 \end{frame}
 
-\subsection{Mots hors vocabulaire}
+\begin{frame}
+\frametitle{Modèles de langue : Modèles neuronaux}
+\framesubtitle{Réseau de neurones récurrents : Modèle}
+
+\hgraphpage{rnn-model.pdf}
+
+\end{frame}
+
+\subsection{Quelques améliorations}
 
 \begin{frame}
 \frametitle{Modèles de langue : Modèles neuronaux}
-\framesubtitle{Mots hors vocabulaire}
+\framesubtitle{Quelques améliorations}
 
 \begin{itemize}
-	\item 
+	\item Taille limitée du contexte dans les réseaux à propagation avant
+	\begin{itemize}
+		\item Utiliser les réseaux récurrents
+	\end{itemize}
+	\item Problème de disparition du gradient dans les réseaux récurrents
+	\begin{itemize}
+		\item Utiliser des réseaux plus avancés : \keyword{LSTM} et \keyword{GRU}
+		\item Limiter la taille du contexte 
+	\end{itemize}
+	\item Mots hors vocabulaire
+	\begin{itemize}
+		\item Limiter le vocabulaire  et marquer le reste des mots par \optword{\textlangle UNK\textrangle}
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
