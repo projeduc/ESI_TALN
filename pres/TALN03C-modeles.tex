@@ -409,9 +409,11 @@
 \section{Évaluation}
 %===================================================================================
 
+\subsection{Approches}
+
 \begin{frame}
-\frametitle{Modèles de langue}
-\framesubtitle{Évaluation}
+\frametitle{Modèles de langue : Évaluation}
+\framesubtitle{Approches}
 
 \begin{itemize}
 	\item \optword{Évaluation extrinsèque}
@@ -430,18 +432,6 @@
 
 \end{frame}
 
-\subsection{Évaluation extrinsèque}
-
-\begin{frame}
-\frametitle{Modèles de langue : Évaluation}
-\framesubtitle{Évaluation extrinsèque}
-
-\begin{itemize}
-	\item 
-\end{itemize}
-
-\end{frame}
-
 \subsection{Perplexité}
 
 \begin{frame}
@@ -449,8 +439,17 @@
 \framesubtitle{Perplexité}
 
 \begin{itemize}
-	\item 
+	\item Mesurer la qualité de prédiction d'un modèle sur un corpus de test
+	\item Utiliser la probabilité estimée sur un corpus de test de taille $N$
+	\item Le modèle avec une perplexité minimale est le meilleur
+	\item Il faut inclure la fin d'une phrase et le début de la suivante dans l'entraînement du modèle (puisque la perplexité traite tout le corpus comme une seule chaîne)
 \end{itemize}
+
+\begin{block}{Perplexité}
+	\begin{center}
+		$PP(w) = \sqrt[N]{\frac{1}{P(w_1 w_2 \ldots w_N)}}$
+	\end{center}
+\end{block}
 
 \end{frame}
 
