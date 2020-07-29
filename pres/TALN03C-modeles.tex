@@ -194,7 +194,7 @@
 	\item Si on utilise des grands N-grammes $ \Longrightarrow $ Complexité élevée du modèle
 	\begin{itemize}
 		\item Il faut un corpus plus grand
-		\item Représentation des N-grammes : $|V|^N$ où $V$ est le vocabulaire et $N$ est le nombres de grammes
+		\item Représentation des N-grammes : $V^N$ où $V$ est la taille du vocabulaire et $N$ est le nombre de grammes
 	\end{itemize}
 
 	\item Problème des N-grammes absents dans le corpus d'entraînement
@@ -215,9 +215,9 @@
 
 \begin{block}{Lissage de Lidstone (Bi-grammes comme exemple)}
 	\[%
-	P(w_n | w_{n-1}) = \frac{N(w_{n-1} w_n) + \alpha}{N(w_{n-1}) + \alpha |V|}
+	P(w_n | w_{n-1}) = \frac{N(w_{n-1} w_n) + \alpha}{N(w_{n-1}) + \alpha V}
 	\]
-	Où $V$ est le vocabulaire du modèle
+	Où $V$ est la taille du vocabulaire du modèle
 	
 	$\alpha = 1$ : \keyword{Lissage de Laplace} 
 	
@@ -316,11 +316,36 @@
 
 \begin{frame}
 \frametitle{Modèles de langue : Modèles neuronaux}
-\framesubtitle{Réseau de neurones à propagation avant}
+\framesubtitle{Réseau de neurones à propagation avant : Cas d'étude}
 
 \begin{itemize}
-	\item 
+	\item On va suivre le modèle de \cite{2003-bengio-al}
+	\item On choisit le nombre des n-grammes $n$ ; donc, le nombre des mots en entrée c'est $n-1$
+	\item Le vecteur $m_j$ est le embedding de position $j$
+	\item On choisit la taille de vecteur de représentation (embedding) $d$
+	\item Les mots sont encodés sous forme One-Hot (un vecteur avec une taille $V$ du vocabulaire)
 \end{itemize}
+
+\begin{block}{Modèle neuronal à propagation avant}
+	$
+	P(.|h_1,\ldots, h_{n-1}) = 
+	Softmax \left(
+	(b + \sum\limits_{j=1}^{n-1} m_j A_j) 
+	+ 
+	W\ Tanh(u + \sum\limits_{j=1}^{n-1} m_j T_j)
+	\right)
+	$
+	
+	Où $b \in \mathbb{R}^{V},\, A \in \mathbb{R}^{(n-1) \times d \times V},\, u \in \mathbb{R}^{H},\, T \in \mathbb{R}^{(n-1) \times d \times H},\, W \in \mathbb{R}^{V \times H}$
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Modèles de langue : Modèles neuronaux}
+\framesubtitle{Réseau de neurones à propagation avant : Modèle}
+
+\hgraphpage{fw-model.pdf}
 
 \end{frame}
 
