@@ -86,8 +86,17 @@
 
 
 \begin{itemize}
-	\item Nature, catégorie grammatical, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours
-	\item Anglais : Part of speech 
+	\item \optword{Objectif} : trouver les catégories grammaticales de chaque mot dans une phrase
+	\item Définir les catégories grammaticales
+	\begin{itemize}
+		\item Nature, catégorie grammatical, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours
+		\item Anglais : Part of speech 
+	\end{itemize}
+	\item Annoter un corpus
+	\begin{itemize}
+		\item Annoter un texte manuellement pour le test
+		\item Un autre pour l'entraînement si on utilise l'apprentissage automatique ou on veut fixer des hyper-paramètres
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -98,35 +107,94 @@
 \frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
 \framesubtitle{Classes universelles}
 
+\url{https://universaldependencies.org/u/pos/}
 
-\begin{itemize}
-	\item 
-\end{itemize}
+\rowcolors{2}{lightblue}{lightyellow}
+\begin{tabular}{p{.3\textwidth}p{.3\textwidth}p{.3\textwidth}}
+	\rowcolor{darkblue}
+	\textcolor{white}{Classe ouverte} & \textcolor{white}{Classe fermée} & \textcolor{white}{Autres} \\
+	
+	\keyword{ADJ} :  adjectif & \keyword{ADP} : adposition & \keyword{PUNCT} : ponctuation \\
+	\keyword{ADV} :  adverbe & \keyword{AUX} : auxiliaire & \keyword{SYM} : symbole \\
+	\keyword{INTJ} : interjection & \keyword{CCONJ} : conjonction de coordination & \keyword{X} : Autres \\
+	\keyword{NOUN} : nom & \keyword{DET} : déterminant &  \\
+	\keyword{PROPN} : nom propre & \keyword{NUM} : numérique &  \\
+	\keyword{VERB} : verbe & \keyword{PART} : particule &  \\
+	 & \keyword{PRON} : pronom &  \\
+	 & \keyword{SCONJ} : conjonction de subordination &  \\
+	
+\end{tabular}
 
 \end{frame}
 
 \subsection{Treebanks}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
 \framesubtitle{Treebanks}
 
-% Penn
-% Universal https://universaldependencies.org/u/pos/
+
+\begin{figure}
+	\begin{tcolorbox}
+		\small
+\begin{alltt}
+Battle-tested\keyword{/JJ} Japanese\keyword{/JJ} industrial\keyword{/JJ} managers\keyword{/NNS}
+here\keyword{/RB} always\keyword{/RB} buck\keyword{/VBP} up\keyword{/RP} nervous\keyword{/JJ} newcomers\keyword{/NNS}
+with\keyword{/IN} the\keyword{/DT} tale\keyword{/NN} of\keyword{/IN} the\keyword{/DT} first\keyword{/JJ} of\keyword{/IN}
+their\keyword{/PP\$} countrymen\keyword{/NNS} to\keyword{/TO} visit\keyword{/VB} Mexico\keyword{/NNP} ,\keyword{/,}
+a\keyword{/DT} boatload\keyword{/NN} of\keyword{/IN} samurai\keyword{/FW} warriors\keyword{/NNS} blown\keyword{/VBN}
+ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyword{/.}
+\end{alltt}
+\end{tcolorbox}
+\caption{Exemple d'un texte annoté de Penn TreeBank \cite{2003-taylor}}
+\end{figure}
+
 \begin{itemize}
-	\item 
+	\item Universal TreeBank (\url{https://universaldependencies.org/}) \cite{2012-petrov-al}
+	\begin{itemize}
+		\item Projet à communauté ouverte
+		\item Il vise à fournir des corpus annotés pour plusieurs langues
+		\item Il utilise les mêmes classes grammaticales
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
 
-\subsection{Difficultés}
+\subsection{Difficulté et outils}
 
 \begin{frame}
 \frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
-\framesubtitle{Difficultés}
+\framesubtitle{Difficulté et outils : Difficulté}
 
 \begin{itemize}
-	\item 
+	\item \optword{Ambigüité}
+	\begin{itemize}
+		\item Il existe des mots avec plusieurs catégories grammaticales
+		\item Ex. \expword{We can can the can}
+	\end{itemize}
+	\item \optword{Mots inconnus}
+	\begin{itemize}
+		\item On peut trouver des mots hors vocabulaire (du corpus d'entraînement)
+%		\item Ex. \expword{We can can the can}
+	\end{itemize}
+	\item \optword{Inconsistance des tags} 
+	\begin{itemize}
+		\item Lorsqu'il y a plusieurs tags, on peut trouver des inconsistances dans l'annotation
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\framesubtitle{Difficulté et outils : Outils}
+
+\begin{itemize}
+	\item \url{https://nlp.stanford.edu/software/tagger.shtml}
+	\item \url{https://github.com/sloria/textblob}
+	\item \url{https://www.nltk.org/api/nltk.tag.html}
+	\item \url{https://spacy.io/}
+	\item \url{https://github.com/clips/pattern}
 \end{itemize}
 
 \end{frame}
@@ -181,7 +249,7 @@
 
 \end{frame}
 
-\insertbibliography{TALN03}{*}
+\insertbibliography{TALN04}{*}
 
 \end{document}
 
