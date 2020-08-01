@@ -40,14 +40,32 @@
 \section{Étiquetage de séquences}
 %===================================================================================
 
+\subsection{Description}
+
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique}
-\framesubtitle{Étiquetage de séquences}
+\frametitle{Étiquetage morpho-syntaxique : Étiquetage de séquences}
+\framesubtitle{Description}
 
 
 \begin{itemize}
-	\item 
+	\item \optword{But :} affecter des étiquettes à des éléments d'une séquence. 
+	\item \optword{Exemple : } \expword{affecter des catégories grammaticales à des mots dans une phrase}.
 \end{itemize}
+
+\begin{block}{Formulation du problème}
+	\begin{itemize}
+		\item $w = w_1, \ldots, w_n$ : une séquence d'entrée
+		\item $t = t_1, \ldots, t_n$ : une séquence des étiquettes
+	\end{itemize}
+	\begin{center}
+		$ \arg\max\limits_t P(t | w)$
+	\end{center}
+	
+	\begin{itemize}
+		\item \optword{Modèle génératif} $ \arg\max\limits_t P(t | w) = \arg\max\limits_t P(t) P(w | t) $
+		\item \optword{Modèle discriminatif} calculer $\arg\max\limits_t P(t | w)$ directement
+	\end{itemize}
+\end{block}
 
 \end{frame}
 
@@ -59,22 +77,52 @@
 
 %eisenstein
 \begin{itemize}
-	\item 
+	\item Reconnaissance d'entités nommées
+	\begin{itemize}
+		\item Trouver les personnes, les organisations, les places, les nombres, etc. dans une phrase
+	\end{itemize}
+	\item Étiquetage morpho-syntaxique
+	\begin{itemize}
+		\item Trouver les catégories des mots (nom, verbe, etc.) d'une phrase
+	\end{itemize}
+	\item Analyse syntaxique de surface (Chunking)
+	\begin{itemize}
+		\item Trouver les syntagmes d'une phrase sans structure d'arbre
+	\end{itemize}
 \end{itemize}
 
-\end{frame}
 
-\subsection{Évaluation}
+\end{frame}
 
 \begin{frame}
 \frametitle{Étiquetage morpho-syntaxique : Séquences}
-\framesubtitle{Évaluation}
+\framesubtitle{Applications (exemple)}
 
-\begin{itemize}
-	\item 
-\end{itemize}
+\begin{figure}
+	\centering
+	\hgraphpage{exp-ner.pdf}
+	\caption{Un exemple de la reconnaissance d'entités nommées [\url{https://corenlp.run/}]}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\hgraphpage{exp-pos.pdf}
+	\caption{Un exemple d'étiquetage morpho-syntaxique [\url{https://corenlp.run/}]}
+\end{figure}
 
 \end{frame}
+
+%\subsection{Évaluation}
+%
+%\begin{frame}
+%\frametitle{Étiquetage morpho-syntaxique : Séquences}
+%\framesubtitle{Évaluation}
+%
+%\begin{itemize}
+%	\item 
+%\end{itemize}
+%
+%\end{frame}
 
 %===================================================================================
 \section{Description de la tâche}
