@@ -65,11 +65,11 @@
 \begin{exampleblock}{Exemple de probabilité d'une phrase}
 	$ P(\text{\textit{je travaille à l'ESI}}) =  P(je) P(travaille | je) P(\text{\textit{à}} | \text{\textit{je travaille}}) \ldots P(ESI | \text{\textit{je travaille à l'}})$
 	
-	$P(ESI | \text{\textit{je travaille à l'}}) = \frac{N(\text{\textit{je travaille à l'ESI}})}{N( \text{\textit{je travaille à l'}})}$ 
+	$P(ESI | \text{\textit{je travaille à l'}}) = \frac{C(\text{\textit{je travaille à l'ESI}})}{C( \text{\textit{je travaille à l'}})}$ 
 	
 	Où 
 	
-	$N$ est le nombre d'occurrence d'une phrase dans un corpus d'entraînement
+	$C$ est la fonction qui compte le nombre d'occurrences d'une expression dans un corpus d'entraînement
 \end{exampleblock}
 
 \begin{itemize}
@@ -142,12 +142,12 @@
 
 \begin{block}{Estimation des probabilités en utilisant le maximum de vraisemblance}
 	\[%
-	P(w_n | w_{n-k},\ldots, w_{n-1}) = \frac{N(w_{n-k} \ldots w_{n-1} w_n)}{\sum_i N(w_{n-k} \ldots w_{n-1} w_i)}
-	= \frac{N(w_{n-k} \ldots w_{n-1} w_n)}{N(w_{n-k} \ldots w_{n-1})}
+	P(w_n | w_{n-k},\ldots, w_{n-1}) = \frac{C(w_{n-k} \ldots w_{n-1} w_n)}{\sum_i C(w_{n-k} \ldots w_{n-1} w_i)}
+	= \frac{C(w_{n-k} \ldots w_{n-1} w_n)}{C(w_{n-k} \ldots w_{n-1})}
 	\]
 	Où $N$ est le nombre d'occurrences des N-grammes dans le corpus
 	\[%
-	\text{Bi-grammes : } P(w_n | w_{n-1}) = \frac{N(w_{n-1} w_n)}{N(w_{n-1})}
+	\text{Bi-grammes : } P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n)}{C(w_{n-1})}
 	\]
 \end{block}
 
@@ -167,7 +167,7 @@
 \end{exampleblock}
 
 \begin{itemize}
-	\item $P(peut | il) = \frac{N(il\ peut)}{N(il)} = \frac{1}{3}$
+	\item $P(peut | il) = \frac{C(il\ peut)}{C(il)} = \frac{1}{3}$
 	\item $P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
 	P(il|\text{\textit{\textless s\textgreater}}) P(peut|il) P(vous|peut) P(aider|vous) P(\text{\textit{\textless/s\textgreater}}|aider) = 
 	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
@@ -215,7 +215,7 @@
 
 \begin{block}{Lissage de Lidstone (Bi-grammes comme exemple)}
 	\[%
-	P(w_n | w_{n-1}) = \frac{N(w_{n-1} w_n) + \alpha}{N(w_{n-1}) + \alpha V}
+	P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n) + \alpha}{C(w_{n-1}) + \alpha V}
 	\]
 	Où $V$ est la taille du vocabulaire du modèle
 	
@@ -273,7 +273,7 @@
 	\[%
 	P_{BO}(w_n | w_{n-2} w_{n-1}) = 
 	\begin{cases}
-	P^*(w_n | w_{n-2} w_{n-1}) & \text{si } N(w_{n-2} w_{n-1} w_n) > 0 \\
+	P^*(w_n | w_{n-2} w_{n-1}) & \text{si } C(w_{n-2} w_{n-1} w_n) > 0 \\
 	\alpha(w_{n-2} w_{n-1}) P_{BO}(w_n | w_{n-1}) & \text{sinon}
 	\end{cases}
 	\]

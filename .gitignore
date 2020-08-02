@@ -277,6 +277,4 @@ TSWLatexianTemp*
 
 *.pdf
 .directory
-
-!img/basique/levenshtein-exp.pdf
 !*_.pdf
