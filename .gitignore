@@ -278,9 +278,5 @@ TSWLatexianTemp*
 *.pdf
 .directory
 
-!img/intro/IPA1.pdf
-!img/intro/oraltract.pdf
-!img/intro/gram_dep.pdf
-!img/intro/sem-logique.pdf
 !img/basique/levenshtein-exp.pdf
 !*_.pdf
