@@ -431,14 +431,76 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle de Markov : Exercice}
+
+\begin{exampleblock}{Exemple d'un corpus d'entraînement}
+	\begin{itemize}
+		\item un/DET ordianteur/NOUN peut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB un/DET ordinateur/NOUN
+		\item il/PRON peut/VERB nager/VERB
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item $G = \{DET, NOUN, VERB, PRON\}$
+	\item Trouver les tags de cette phrase : \expword{il peut aider}
+	\begin{itemize}
+		\item Entraîner le modèle (seulement sur les mots et les tags nécessaires)
+		\item Appliquer Viterbi
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
 \subsection{Maximum entropy}
 
 \begin{frame}
 \frametitle{Étiquetage morpho-syntaxique : Approches}
-\framesubtitle{Maximum entropy}
+\framesubtitle{Maximum entropy : Maximum entropy Markov model (MEMM)}
 
 \begin{itemize}
-	\item 
+	\item On note $x_{n}^{m} = x_n x_{n+1} \ldots x_{m-1} x_m$
+	\item Étant donné 
+	\begin{itemize}
+		\item une séquence des observations (mots) : $w = w_1 w_2 \ldots w_n$
+		\item un ensemble des caractéristiques $f$ sur les séquences (comme : mot en majuscule)
+	\end{itemize}
+	\item Estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$
+\end{itemize}
+
+\begin{block}{Décodage des étiquètes en utilisant MEMM}
+	\[
+	\hat{t} = \arg\max\limits_t P(t | w) = \arg\max\limits_t \prod\limits_{i}  P(t_i | w_i, t_{i-1})
+	\]
+	
+	\[
+	\hat{t} = \arg\max\limits_t \prod\limits_{i}  
+	\frac{exp\left(\sum_j \theta_j f_j(t_i, w_{i-l}^{i+l}, t_{i-k}^{i-1})\right)}%
+	{\sum_{t' \in tags} exp\left(\sum_j \theta_j f_j(t'_i, w_{i-l}^{i+l}, t_{i-k}^{i-1})\right)}
+	\]
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Maximum entropy : Les caractéristiques}
+
+\begin{itemize}
+	\item $w_i$ contient un préfixe à partir d'une liste ($len(prefixe) \le 4$) 
+	\item $w_i$ contient un suffixe à partir d'une liste ($len(suffixe) \le 4$) 
+	\item $w_i$ contient un nombre 
+	\item $w_i$ contient une lettre en majuscule
+	\item $w_i$ contient un trait d'union 
+	\item $w_i$ est complètement en majuscule
+	\item La forme du mot $w_i$ (Ex. \expword{X.X.X}) 
+	\item $w_i$ est en majuscule avec un trait et un nombre (Ex. \expword{CFC-12}) 
+	\item $w_i$ est en majuscule suivi des mots Co., Inc., etc. dans 3 mots maximum
 \end{itemize}
 
 \end{frame}
