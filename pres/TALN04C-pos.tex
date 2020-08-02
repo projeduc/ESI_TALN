@@ -43,7 +43,7 @@
 \subsection{Description}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Étiquetage de séquences}
+\frametitle{Étiquetage morpho-syntaxique : Séquences}
 \framesubtitle{Description}
 
 
@@ -100,13 +100,13 @@
 
 \begin{figure}
 	\centering
-	\hgraphpage{exp-ner.pdf}
+	\hgraphpage{exp-ner_.pdf}
 	\caption{Un exemple de la reconnaissance d'entités nommées [\url{https://corenlp.run/}]}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\hgraphpage{exp-pos.pdf}
+	\hgraphpage{exp-pos_.pdf}
 	\caption{Un exemple d'étiquetage morpho-syntaxique [\url{https://corenlp.run/}]}
 \end{figure}
 
@@ -228,6 +228,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 	\item \optword{Inconsistance des tags} 
 	\begin{itemize}
 		\item Lorsqu'il y a plusieurs tags, on peut trouver des inconsistances dans l'annotation
+		\item Ex. \expword{Dans les corpus ``Brown" et ``WSJ", le mot ``to" a le tag ``TO". Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, sinon ``IN" lorsque c'est une préposition.}
 	\end{itemize}
 \end{itemize}
 
@@ -263,13 +264,170 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 \subsection{Modèle de Markov}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Étiquetage morpho-syntaxique : Approches}
 \framesubtitle{Modèle de Markov}
 
+\begin{minipage}{.64\textwidth}
+	\begin{itemize}
+		\item Hypothèse de Markov
+		\item $ P(q_i = a | q_1, \ldots, q_{i-1}) \approx P(q_i = a | q_{i-1}) $
+		\item $Q = \{q_1, q_2, \ldots, q_n\}$ : états
+		\item $A = \begin{bmatrix}%
+		a_{11} & a_{12} & \ldots & a_{1n} \\
+		a_{21} & a_{22} & \ldots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \ldots & a_{nn} \\
+		\end{bmatrix}$ : matrice des probabilités de transition
+		\item $\sum_j a_{ij} = 1,\, \forall i$
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.35\textwidth}
+	\begin{figure}
+		\hgraphpage{exp-markov_.pdf}
+		\caption{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}}
+	\end{figure}
+\end{minipage}
+
 \begin{itemize}
-	\item 
+	\item $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ : la distribution initiale des probabilités des états
+	\item $\sum_i \pi_i = 1$
+	\item Ex. \expword{Calculer la probabilité $P(HOT\, WARM\, COLD\, COLD)$ lorsque $\pi = [0.1, 0.7, 0.2]$}
 \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle de Markov : Modèle de Markov caché (HMM)}
+
+\begin{minipage}{.54\textwidth}
+	\begin{itemize}
+%		\item Hypothèse de Markov
+%		\item $ P(q_i = a | q_1, \ldots, q_{i-1}) \approx P(q_i = a | q_{i-1}) $
+		\item $Q = \{q_1, q_2, \ldots, q_n\}$ : états
+		\item $A$ : matrice des probabilités de transitions où $\sum_j a_{ij} = 1,\, \forall i$
+		\item $O = o_1 o_2 \ldots o_T$ : séquence des évènements observés (mots)
+		\item $B = b_i(o_t)$ : probabilités d'observation (\keyword{probabilités d'émission}), chacune représente la probabilité de génération d'une observation $o_t$ dans un état $q_i$
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.45\textwidth}
+	\begin{figure}
+		\hgraphpage{exp-hmm_.pdf}
+		\caption{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}}
+	\end{figure}
+\end{minipage}
+
+\begin{itemize}
+	\item $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ : la distribution initiale des probabilités des états
+	\item $\sum_i \pi_i = 1$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle de Markov : Entraînement}
+
+\begin{itemize}
+	\item Les états sont les tags (catégories) $t_i$
+	\item Les observation $o_i$ sont les mots $w_i$
+\end{itemize}
+
+\begin{block}{Entraînement du HMM pour étiquetage morpho-syntaxique}
+	\[
+	P(t_i | t_{i-1}) = \frac{C(t_{i-1}, t_i)}{t_{i-1}} 
+	\hskip2cm
+	P(w_i | t_i) = \frac{C(t_i, w_i)}{t_i}
+	\]
+	
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle de Markov : Entraînement (exemple)}
+
+\begin{exampleblock}{Exemple d'un corpus d'entraînement}
+	\begin{itemize}
+		\item un/DET ordianteur/NOUN peut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB un/DET ordinateur/NOUN
+		\item il/PRON peut/VERB nager/VERB
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item $P(VERB | NOUN) = \frac{C(NOUN,\ VERB)}{C(NOUN)} = \frac{1}{2}$
+	\item $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle de Markov : Étiquetage (décodage des tags)}
+
+\begin{itemize}
+	\item Étant donné 
+	\begin{itemize}
+		\item un modèle de Markov caché $\lambda = (A, B)$
+		\item une séquence des observations (mots) : $w = w_1 w_2 \ldots w_n$
+	\end{itemize}
+	\item Estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$
+\end{itemize}
+
+\begin{block}{Décodage des étiquètes en utilisant HMM}
+	\[
+	\hat{t} = \arg\max\limits_t P(t | w) = \arg\max\limits_t \frac{P(w|t) P(t)}{P(w)} = \arg\max\limits_t P(w|t) P(t)%\text{ tel que } t = t_1 t_2 \ldots t_n
+	\]
+	
+	\[ 
+	P(w | t) \approx \prod\limits_{i=1}^n P(w_i|t_i) 
+	\hskip2cm
+	P(t) \approx \prod\limits_{i=1}^n P(t_i|t_{i-1}) 
+	\]
+	
+	\[
+	\hat{t} = \arg\max\limits_t \prod\limits_{i=1}^n P(w_i|t_i) P(t_i|t_{i-1})
+	\]
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle de Markov : Viterbi}
+\vspace{-6pt}
+\begin{block}{Viterbi }
+	\scriptsize
+	\begin{algorithm}[H]
+		\KwData{$w = w_1 \ldots w_T$, HMM $\lambda = (A, B)$ avec $N$ états}
+		\KwResult{$meilleur\_chemin$, $prob\_chemin$}
+		
+		Créer une matrice $viterbi[N, T]$\;
+		
+		\Pour{état $ s = 1 \ldots N$}{
+			$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
+		}
+		
+		\Pour{$ t = 1 \ldots T$}{
+			\Pour{état $ s = 1 \ldots N$}{
+				$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+				$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+			}
+		}
+	
+		$prob\_chemin = \max\limits_{s=1}^N viterbi[s, T];\, pointeur\_chemin = \arg\max\limits_{s=1}^N viterbi[s, T]$\;
+		
+		$meilleur\_chemin$ est le chemin qui commence par $pointeur\_chemin$ et qui suit $backpointer$
+		
+		\Return $meilleur\_chemin$, $prob\_chemin$\;
+		
+	\end{algorithm}
+\end{block}
 
 \end{frame}
 
