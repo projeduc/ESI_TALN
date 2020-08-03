@@ -18,13 +18,33 @@
 \frametitle{Traitement automatique du langage naturel}
 \framesubtitle{Étiquetage morpho-syntaxique : Introduction}
 
+\begin{exampleblock}{Exemple d'une phrase en anglais}
+	\begin{center}
+		\Huge\bfseries
+		We can can the can
+		
+		Will Will will the will to Will?
+	\end{center}
+\end{exampleblock}
+
 \begin{itemize}
-	\item We can can the can
-	
+	\item Avez vous pu comprendre  les deux phrases ?
+	\item Essayez de trouver les noms, les verbes, les pronoms, etc.
+	\item \optword{can} : (1) pouvoir (2) mettre en boîte (3) boîte
+	\item \optword{will} : (1) exprime le futur (2) un nom propre masculin (3) vouloir (4) testament
 \end{itemize}
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{Étiquetage morpho-syntaxique : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-pos.jpg}
+\end{center}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
@@ -245,6 +265,16 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 	\item \url{https://spacy.io/}
 	\item \url{https://github.com/clips/pattern}
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\framesubtitle{Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-identify.jpg}
+\end{center}
 
 \end{frame}
 
@@ -527,12 +557,12 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 \begin{frame}
 \frametitle{Étiquetage morpho-syntaxique : Approches}
-\framesubtitle{Modèle neuronal : RNN en pile}
+\framesubtitle{Modèle neuronal : RNNs empilés}
 
 \begin{figure}
 	\centering
 	\vgraphpage[0.7\textheight]{rnn-stack_.pdf}
-	\caption{Des RNNs en pile pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+	\caption{Des RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
 \end{figure}
 
 \end{frame}
@@ -559,6 +589,16 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 	\vgraphpage[0.40\textheight]{rnn-char2_.pdf}
 	\caption{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
 \end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle neuronal : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-learn.jpg}
+\end{center}
 
 \end{frame}
 
