@@ -257,7 +257,13 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \framesubtitle{Approches}
 
 \begin{itemize}
-	\item 
+	\item Règles manuelles 
+	\item Apprentissage automatique 
+	\begin{itemize}
+		\item Apprendre les règles : \expword{Transformation-Based Learning (TBL)}
+		\item Modèles statistiques : \expword{Modèle de Markov caché, Modèle de Markov basé sur l'entropie maximale, champs aléatoires conditionnels (CRF)}
+		\item Réseaux de neurones
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -509,11 +515,50 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 \begin{frame}
 \frametitle{Étiquetage morpho-syntaxique : Approches}
-\framesubtitle{Modèle neuronal}
+\framesubtitle{Modèle neuronal : RNN simple}
 
-\begin{itemize}
-	\item 
-\end{itemize}
+\begin{figure}
+	\centering
+	\vgraphpage[0.7\textheight]{rnn-simple_.pdf}
+	\caption{Un RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle neuronal : RNN en pile}
+
+\begin{figure}
+	\centering
+	\vgraphpage[0.7\textheight]{rnn-stack_.pdf}
+	\caption{Des RNNs en pile pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle neuronal : RNN bidirectionnel}
+
+\begin{figure}
+	\centering
+	\vgraphpage[0.7\textheight]{rnn-bi_.pdf}
+	\caption{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Étiquetage morpho-syntaxique : Approches}
+\framesubtitle{Modèle neuronal : RNN avec des embedding de caractères}
+
+\begin{figure}
+	\centering
+	\vgraphpage[0.40\textheight]{rnn-char1_.pdf}
+	\vgraphpage[0.40\textheight]{rnn-char2_.pdf}
+	\caption{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
 
 \end{frame}
 
