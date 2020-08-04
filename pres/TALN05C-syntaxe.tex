@@ -18,21 +18,27 @@
 \frametitle{Traitement automatique du langage naturel}
 \framesubtitle{Analyse syntaxique : Introduction}
 
-%\begin{exampleblock}{Exemple d'une phrase en anglais}
-%	\begin{center}
-%		\Huge\bfseries
-%		We can can the can
-%		
-%		Will Will will the will to Will?
-%	\end{center}
-%\end{exampleblock}
-%
-%\begin{itemize}
-%	\item Avez vous pu comprendre  les deux phrases ?
-%	\item Essayez de trouver les noms, les verbes, les pronoms, etc.
-%	\item \optword{can} : (1) pouvoir (2) mettre en boîte (3) boîte
-%	\item \optword{will} : (1) exprime le futur (2) un nom propre masculin (3) vouloir (4) testament
-%\end{itemize}
+\begin{exampleblock}{Exemple d'une phrase en français}
+	\begin{center}
+		\Large\bfseries
+		L'élève a écrit une solution avec un stylo. 
+		
+		L'élève a écrit une solution avec une explication.
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Qui a écrit la solution ?
+	\item Quel instrument a-t-il utilisé pour l'écriture ?
+	\begin{itemize}
+		\item Un stylo ? Une explication ?
+	\end{itemize}
+	\item Est-ce qu'il y avait d'autre chose en plus de la solution ?
+	\begin{itemize}
+		\item Un stylo ? Une explication ?
+	\end{itemize}
+	\item Comment avez-vous déduit ça ?
+\end{itemize}
 
 \end{frame}
 
@@ -77,7 +83,23 @@
 \framesubtitle{Grammaires à contexte libre}
 
 \begin{itemize}
-	\item 
+	\item $G <X,V, P, S>$ est une grammaire.
+	\item $X$ est l'alphabet. Dans notre cas, c'est l'ensemble des mots.
+	\begin{itemize}
+		\item \expword{X = \{le, petit, chat, mange, un, poisson, ...\}}
+	\end{itemize}
+	\item $V$ est l'ensemble des  variables.
+	\begin{itemize}
+		\item \expword{V = \{S, NP, VP, DET, N, ADJ, ...\}}
+	\end{itemize}
+	\item $S \in V$ est l'axiome.
+	\item $P$ est l'ensemble des règles de production.
+	\item Les règles sont de la forme $A \rightarrow \beta \text{ avec } A \in V,\, \beta \in (X \cup V)^*$
+	\begin{itemize}
+		\item \expword{S \textrightarrow NP VP}
+		\item \expword{NP \textrightarrow DET ADJ N \textbar\ DET N}
+		\item \expword{VP \textrightarrow V NP}
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -114,17 +136,27 @@
 \frametitle{Analyse syntaxique}
 \framesubtitle{Analyse des constituants}
 
-\begin{itemize}
-	\item Méthodes classiques 
-	\begin{itemize}
-		\item CKY
-		\item LR 
-	\end{itemize}
-	\item Apprentissage automatique 
-	\begin{itemize}
-		\item CKY probabiliste
-	\end{itemize}
-\end{itemize}
+%\begin{itemize}
+%	\item Méthodes classiques 
+%	\begin{itemize}
+%		\item CKY
+%		\item LR 
+%	\end{itemize}
+%	\item Apprentissage automatique 
+%	\begin{itemize}
+%		\item CKY probabiliste
+%	\end{itemize}
+%\end{itemize}
+
+\begin{tabular}{|p{.3\textwidth}|p{.3\textwidth}|p{.3\textwidth}|}
+	\hline
+	& Méthodes classiques & Apprentissage automatique \\
+	\hline
+	Analyse ascendante & CKY & CKY probabiliste\\
+	\hline
+	Analyse descendante &  & \\
+	\hline
+\end{tabular}
 
 \end{frame}
 
@@ -132,11 +164,57 @@
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des constituants}
-\framesubtitle{Algorithme CKY}
+\framesubtitle{Algorithme CKY (1)}
 
 \begin{itemize}
-	\item 
+	\item Algorithme de Cocke-Younger-Kasami
+	\item Analyse ascendante
+	\item Prérequis : Forme normale de Chomsky
 \end{itemize}
+
+\begin{definition}[FNC : Forme normale de Chomsky]
+	\[
+	A \rightarrow  B C \text{ où } A, B, C \in V
+	\]
+	
+	\[
+	A \rightarrow a \text{ où } a \in X
+	\]
+\end{definition}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des constituants}
+\framesubtitle{Algorithme CKY (2)}
+
+\begin{block}{CKY}
+	\scriptsize
+	\begin{algorithm}[H]
+		\KwData{une grammaire $G <X,V, P, S>$ en FNC, une phrase $w = w_1 \ldots w_n$}
+		\KwResult{$meilleur\_chemin$, $prob\_chemin$}
+		
+%		Créer une matrice $viterbi[N, T]$\;
+%		
+%		\Pour{état $ s = 1 \ldots N$}{
+%			$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
+%		}
+%		
+%		\Pour{$ t = 1 \ldots T$}{
+%			\Pour{état $ s = 1 \ldots N$}{
+%				$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+%				$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+%			}
+%		}
+%		
+%		$prob\_chemin = \max\limits_{s=1}^N viterbi[s, T];\, pointeur\_chemin = \arg\max\limits_{s=1}^N viterbi[s, T]$\;
+%		
+%		$meilleur\_chemin$ est le chemin qui commence par $pointeur\_chemin$ et qui suit $backpointer$
+%		
+%		\Return $meilleur\_chemin$, $prob\_chemin$\;
+		
+	\end{algorithm}
+\end{block}
 
 \end{frame}
 
@@ -165,12 +243,12 @@
 \end{frame}
 
 %===================================================================================
-\section{Analyse de dépendances}
+\section{Analyse des dépendances}
 %===================================================================================
 
 \begin{frame}
 \frametitle{Analyse syntaxique}
-\framesubtitle{Analyse de dépendances}
+\framesubtitle{Analyse des dépendances}
 
 \begin{itemize}
 	\item 
@@ -181,7 +259,7 @@
 \subsection{shift-reduce}
 
 \begin{frame}
-\frametitle{Analyse syntaxique : Analyse de dépendances}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
 \framesubtitle{shift-reduce}
 
 \begin{itemize}
@@ -193,7 +271,7 @@
 \subsection{Arc-Eager}
 
 \begin{frame}
-\frametitle{Analyse syntaxique : Analyse de dépendances}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
 \framesubtitle{Arc-Eager}
 
 \begin{itemize}
@@ -205,7 +283,7 @@
 \subsection{Arbre couvrant de poids minimal}
 
 \begin{frame}
-\frametitle{Analyse syntaxique : Analyse de dépendances}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
 \framesubtitle{Arbre couvrant de poids minimal}
 
 \begin{itemize}
@@ -214,7 +292,7 @@
 
 \end{frame}
 
-\insertbibliography{TALN04}{*}
+\insertbibliography{TALN05}{*}
 
 \end{document}
 
