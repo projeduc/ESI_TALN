@@ -83,18 +83,18 @@
 \framesubtitle{Grammaires à contexte libre}
 
 \begin{itemize}
-	\item $G <X,V, P, S>$ est une grammaire.
-	\item $X$ est l'alphabet. Dans notre cas, c'est l'ensemble des mots.
+	\item $G <\Sigma, N, P, S>$ est une grammaire.
+	\item $X$ est le vocabulaire
 	\begin{itemize}
-		\item \expword{X = \{le, petit, chat, mange, un, poisson, ...\}}
+		\item \expword{$\Sigma$ = \{le, petit, chat, mange, un, poisson, ...\}}
 	\end{itemize}
 	\item $V$ est l'ensemble des  variables.
 	\begin{itemize}
-		\item \expword{V = \{S, NP, VP, DET, N, ADJ, ...\}}
+		\item \expword{$N$ = \{S, NP, VP, DET, N, ADJ, ...\}}
 	\end{itemize}
-	\item $S \in V$ est l'axiome.
+	\item $S \in N$ est l'axiome.
 	\item $P$ est l'ensemble des règles de production.
-	\item Les règles sont de la forme $A \rightarrow \beta \text{ avec } A \in V,\, \beta \in (X \cup V)^*$
+	\item Les règles sont de la forme $A \rightarrow \beta \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$
 	\begin{itemize}
 		\item \expword{S \textrightarrow NP VP}
 		\item \expword{NP \textrightarrow DET ADJ N \textbar\ DET N}
@@ -164,7 +164,7 @@
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des constituants}
-\framesubtitle{Algorithme CKY (1)}
+\framesubtitle{Algorithme CKY}
 
 \begin{itemize}
 	\item Algorithme de Cocke-Younger-Kasami
@@ -174,11 +174,11 @@
 
 \begin{definition}[FNC : Forme normale de Chomsky]
 	\[
-	A \rightarrow  B C \text{ où } A, B, C \in V
+	A \rightarrow  B C \text{ où } A, B, C \in N
 	\]
 	
 	\[
-	A \rightarrow a \text{ où } a \in X
+	A \rightarrow w \text{ où } w \in \Sigma
 	\]
 \end{definition}
 
@@ -186,32 +186,36 @@
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des constituants}
-\framesubtitle{Algorithme CKY (2)}
+\framesubtitle{Algorithme CKY : Reconnaissance d'une phrase}
 
-\begin{block}{CKY}
-	\scriptsize
+\vspace{-6pt}
+\begin{block}{CKY : Reconnaissance d'une phrase}
+	\scriptsize\vspace{-3pt}
 	\begin{algorithm}[H]
-		\Donnees{une grammaire $G <X,V, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
-		\Res{$T[n, 1 \ldots n]$}
+		\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+		\Res{$T[n, n], B[n, n, |N|]$}
 		
-		Créer une matrice triangulaire $T[n, 1 \ldots n]$\;
+		\Pour{$ i = 1 \ldots n$}{ 
+			$T[i-1, j] \leftarrow \{  A / (A \rightarrow w_j) \in P \} $\;
+		}
 		
-		\Pour{$ j = 1 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
-			\PourTous{$A$ tel que $(A \rightarrow w_j) \in P $}{ 
-				$T[j-1, j] = T[j-1, j] \cup \{A\}$ \;
-			}
-			
-			\Pour{i = (j-2) \ldots 0 et $i \ge 0$}{
-				\Pour{k = (i+1) \ldots (j-1)}{
-					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, j]$}{ 
-						$T[i, j] = T[i, j] \cup \{A\}$ \;
+		\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
+			\Pour{$ i = 0 \ldots (n - j) $}{
+				\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
+					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
+						$T[i, i+j] \leftarrow T[i, i+j] \cup \{A\}$ ;
+						$B[i, i+j, A] \leftarrow B[i, i+j, A] \cup \{(B, C, k)\}$ \;
 					}
 				}
 			}
 		}
 	
-		\Retour $T$ \;
-		
+		\Si{$``S" \notin T[0, n] $} {
+			Erreur ``La phrase n'a pas été reconnue"\;
+		}
+	
+		\Retour $T, B$ \;
+		\vspace{-3pt}
 	\end{algorithm}
 \end{block}
 
@@ -219,7 +223,44 @@
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des constituants}
-\framesubtitle{Algorithme CKY : exercice}
+\framesubtitle{Algorithme CKY : Construction de l'arbre}
+
+\vspace{-6pt}
+\begin{block}{CKY : Construction de l'arbre}
+	\scriptsize\vspace{-3pt}
+	\begin{algorithm}[H]
+		\SetKwFunction{FConst}{Construire}
+		\SetKwProg{Fn}{Fonction}{\\Début}{Fin}
+		
+		\Donnees{$T[n, n], B[n, n, |N|]$}
+		\Res{Arbre syntaxique}
+		
+		\eSi{$``S" \notin T[0, n] $} {
+			\Retour $\varnothing$ \;
+		}{
+			\Retour \FConst{$S, 0, n$}\;
+		}
+		
+		\Fn{\FConst{$A, i, j$}}{
+		
+			\eSi{j = i + 1}{
+				\Retour $A$\;
+			}{
+				$ (B, C, k) \leftarrow Choisir(B[i, j, A]) $\;
+				\Retour (\FConst{$B, i, k$}, \FConst{$C, k, j$})\;
+			}
+		}
+		
+		
+%		\vspace{-3pt}
+	\end{algorithm}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des constituants}
+\framesubtitle{Algorithme CKY : Exercice}
 
 \vspace{-6pt}
 \begin{exampleblock}{Exemple d'une grammaire}
@@ -239,6 +280,20 @@
 \begin{itemize}
 	\item Analyser la phrase suivante en utilisant CKY 
 	\item \expword{la petite forme une petite phrase}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des constituants}
+\framesubtitle{Algorithme CKY : Remarques}
+
+\begin{itemize}
+	\item L'arbre syntaxique résultante est binaire. Mais, dans la réalité elle doit suivre la grammaire conçue par les syntacticiens
+	\begin{itemize}
+		\item Ajouter une étape de post-traitement pour récupérer l'arbre originale
+		\item Laisser les productions unitaires et modifier l'algorithme CKY afin de les accepter
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
