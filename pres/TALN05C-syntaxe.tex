@@ -191,30 +191,55 @@
 \begin{block}{CKY}
 	\scriptsize
 	\begin{algorithm}[H]
-		\KwData{une grammaire $G <X,V, P, S>$ en FNC, une phrase $w = w_1 \ldots w_n$}
-		\KwResult{$meilleur\_chemin$, $prob\_chemin$}
+		\Donnees{une grammaire $G <X,V, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+		\Res{$T[n, 1 \ldots n]$}
 		
-%		Créer une matrice $viterbi[N, T]$\;
-%		
-%		\Pour{état $ s = 1 \ldots N$}{
-%			$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
-%		}
-%		
-%		\Pour{$ t = 1 \ldots T$}{
-%			\Pour{état $ s = 1 \ldots N$}{
-%				$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
-%				$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
-%			}
-%		}
-%		
-%		$prob\_chemin = \max\limits_{s=1}^N viterbi[s, T];\, pointeur\_chemin = \arg\max\limits_{s=1}^N viterbi[s, T]$\;
-%		
-%		$meilleur\_chemin$ est le chemin qui commence par $pointeur\_chemin$ et qui suit $backpointer$
-%		
-%		\Return $meilleur\_chemin$, $prob\_chemin$\;
+		Créer une matrice triangulaire $T[n, 1 \ldots n]$\;
+		
+		\Pour{$ j = 1 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
+			\PourTous{$A$ tel que $(A \rightarrow w_j) \in P $}{ 
+				$T[j-1, j] = T[j-1, j] \cup \{A\}$ \;
+			}
+			
+			\Pour{i = (j-2) \ldots 0 et $i \ge 0$}{
+				\Pour{k = (i+1) \ldots (j-1)}{
+					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, j]$}{ 
+						$T[i, j] = T[i, j] \cup \{A\}$ \;
+					}
+				}
+			}
+		}
+	
+		\Retour $T$ \;
 		
 	\end{algorithm}
 \end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des constituants}
+\framesubtitle{Algorithme CKY : exercice}
+
+\vspace{-6pt}
+\begin{exampleblock}{Exemple d'une grammaire}
+	\begin{itemize}
+		\item S \textrightarrow\ NP VP 
+		\item S \textrightarrow\ VP 
+		\item VP \textrightarrow V NP
+		\item NP \textrightarrow\ DET ADJ N \textbar\ DET N \textbar\ PRON 
+		\item PRON \textrightarrow\ je \textbar\ tu \textbar\ il \textbar\ elle
+		\item V \textrightarrow\ forme \textbar\ veut \textbar\ mange 
+		\item DET \textrightarrow\ un \textbar\ une \textbar\ la \textbar\ le
+		\item ADJ \textrightarrow\ petite \textbar\ grand \textbar\ bleu 
+		\item N \textrightarrow\ petite \textbar\ forme \textbar\ phrase \textbar\ chat \textbar\ poisson
+	\end{itemize}
+\end{exampleblock}\vspace{-6pt}
+
+\begin{itemize}
+	\item Analyser la phrase suivante en utilisant CKY 
+	\item \expword{la petite forme une petite phrase}
+\end{itemize}
 
 \end{frame}
 
