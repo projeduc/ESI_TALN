@@ -167,7 +167,7 @@
 \framesubtitle{Algorithme CKY}
 
 \begin{itemize}
-	\item Algorithme de Cocke-Younger-Kasami
+	\item Algorithme de Cocke-Kasami-Younger
 	\item Analyse ascendante
 	\item Prérequis : Forme normale de Chomsky
 \end{itemize}
@@ -294,6 +294,11 @@
 		\item Ajouter une étape de post-traitement pour récupérer l'arbre originale
 		\item Laisser les productions unitaires et modifier l'algorithme CKY afin de les accepter
 	\end{itemize}
+	\item Problème d'ambigüité syntaxique 
+	\begin{itemize}
+		\item Ex. \expword{Je mange du riz avec une fourchette.} et \expword{Je mange du riz avec de la viande.}
+%		\item 
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -305,22 +310,55 @@
 \framesubtitle{Algorithme CKY probabiliste}
 
 \begin{itemize}
-	\item 
+	\item $G<\Sigma, N, P, S>$ est une grammaire probabiliste
+	\item $w = w_1 \ldots w_n$ est un mot à analyser 
+	\item $T$ est un arbre syntaxique 
+	\item $P(T, w) = \prod\limits_{(A_i \rightarrow \beta_i) \in T} P(A_i \rightarrow \beta_i)$ est la probabilité d'une arbre syntaxique étant donné le mot analysé
+	\item $\hat{T}(w) = \arg\max\limits_{T(w)} P(T, w) $ est l'arbre syntaxique la plus adéquate pour analyser le mot $w$
 \end{itemize}
 
 \end{frame}
-
-\subsection{Algorithme LR}
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des constituants}
-\framesubtitle{Algorithme LR}
+\framesubtitle{Algorithme CKY probabiliste : Reconnaissance d'une phrase}
 
-\begin{itemize}
-	\item 
-\end{itemize}
+\vspace{-6pt}
+\begin{block}{CKY probabiliste : Reconnaissance d'une phrase}
+	\scriptsize\vspace{-3pt}
+	\begin{algorithm}[H]
+		\Donnees{une grammaire probabiliste $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+		\Res{$T[n, n, |N|], B[n, n, |N|]$}
+		
+		\Pour{$ i = 1 \ldots n$}{ 
+			\PourTous{$A / (A \rightarrow w_j) \in P$}{
+				$T[i-1, j, A] \leftarrow P(A \rightarrow w_j)$\;
+			}
+		}
+		
+		\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
+			\Pour{$ i = 0 \ldots (n - j) $}{
+				\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
+%					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
+						$T[i, i+j, A] \leftarrow \max\limits_{A \rightarrow B C \in P} P(A \rightarrow B C) * T[i, k, B] * T[k, i+j, C]$ \;
+						$B[i, i+j, A] \leftarrow (B, C, k)$\;
+%					}
+				}
+			}
+		}
+		
+		\texttt{// Si $``S" \notin T[0, n] $ : Erreur}
+%		\Si{} {
+%			Erreur ``La phrase n'a pas été reconnue"\;
+%		}
+		
+		\Retour $T, B$ \;
+		\vspace{-3pt}
+	\end{algorithm}
+\end{block}
 
 \end{frame}
+
 
 %===================================================================================
 \section{Analyse des dépendances}
