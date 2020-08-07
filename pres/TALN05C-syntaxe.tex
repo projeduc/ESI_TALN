@@ -71,24 +71,59 @@
 \framesubtitle{Structures syntaxiques}
 
 \begin{itemize}
-	\item 
+	\item Une phrase peut être bien formée syntaxiquement mais pas sémantiquement 
+	\begin{itemize}
+		\item Ex. \expword{Les idées vertes et non colorées dorment furieusement.}
+	\end{itemize}
+	\item Plusieurs théories 
+	\begin{itemize}
+		\item La grammaire générative et transformationnelle : Ex. \expword{Grammaire générative et transformationnelle (TTG)}
+		\item La grammaire de dépendance 
+		\item La grammaire catégorique
+		\item Les grammaires stochastiques
+		\item Les approches fonctionnelles de la grammaire
+	\end{itemize}
+	
 \end{itemize}
 
 \end{frame}
 
-\subsection{Grammaires à contexte libre}
+%\subsection{Grammaires à contexte libre}
+
+\subsection{Annotation constituante}
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Structures syntaxiques}
-\framesubtitle{Grammaires à contexte libre}
+\framesubtitle{Annotation constituante}
+
+\begin{itemize}
+	\item Les mots d'une phrase ont chacun \keyword{une catégorie grammaticale}
+	\begin{itemize}
+		\item Ex. \expword{Le/DET cours/NOM est/VP intéressant/ADJ}
+	\end{itemize}
+	\item Un ou plusieurs mots de certaines catégories forment \keyword{un syntagme}
+	\begin{itemize}
+		\item Ex. \expword{[Le/DET cours/NOM ]\textsubscript{NP} [est/VP intéressant/ADJ VP]\textsubscript{VP}}
+	\end{itemize}
+\end{itemize}
+
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{../img/intro/gram_const.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Structures syntaxiques}
+\framesubtitle{Annotation constituante : Grammaires à contexte libre (CFG)}
 
 \begin{itemize}
 	\item $G <\Sigma, N, P, S>$ est une grammaire.
-	\item $X$ est le vocabulaire
+	\item $\Sigma$ est le vocabulaire : ensemble des symboles terminaux
 	\begin{itemize}
 		\item \expword{$\Sigma$ = \{le, petit, chat, mange, un, poisson, ...\}}
 	\end{itemize}
-	\item $V$ est l'ensemble des  variables.
+	\item $V$ est l'ensemble des  variables : symboles non terminaux 
 	\begin{itemize}
 		\item \expword{$N$ = \{S, NP, VP, DET, N, ADJ, ...\}}
 	\end{itemize}
@@ -104,15 +139,22 @@
 
 \end{frame}
 
-\subsection{Annotation constituante}
-
 \begin{frame}
 \frametitle{Analyse syntaxique : Structures syntaxiques}
-\framesubtitle{Annotation constituante}
+\framesubtitle{Annotation constituante : CFG probabiliste (PCFG)}
 
 \begin{itemize}
-	\item 
+	\item $G <\Sigma, N, P, S>$ est une grammaire.
+	\item Les règles sont de la forme $A \rightarrow \beta\, [p] \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$
+	\item $p$ est la probabilité d'occurrence de la règle
+	\item Cette probabilité est estimée à partir d'un corpus annoté (\keyword{TreeBank})
 \end{itemize}
+
+\begin{block}{Estimation des probabilité des règles}
+	\[
+	P(A \rightarrow \beta | A) = \frac{C(A \rightarrow \beta)}{C(A)}
+	\]
+\end{block}
 
 \end{frame}
 
@@ -123,8 +165,45 @@
 \framesubtitle{Annotation fonctionnelle}
 
 \begin{itemize}
-	\item 
+	\item Un mot ou plus remplissent \keyword{une fonction syntaxique}
+	\begin{itemize}
+		\item Ex. \expword{sujet, objet, etc.}
+	\end{itemize}
+	\item Les liens syntaxiques entre les mots d'une phrase sont appelés : \keyword{dépendances}
+	\begin{itemize}
+		\item Ex. \expword{Le chat mange un poisson} : ici ``chat" est \expword{le sujet} du verbe ``mange"
+	\end{itemize}
+	\item Une relation de dépendance relie entre un mot appelé \keyword{tête syntaxique} et d'autres appelés \keyword{dépendants}
 \end{itemize}
+
+\includegraphics[width=\textwidth]{../img/intro/gram-dep_.pdf}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Structures syntaxiques}
+\framesubtitle{Annotation fonctionnelle : Relations de dépendance}
+
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow}
+	\begin{tabular}{p{.2\textwidth}p{.35\textwidth}p{.35\textwidth}}
+		\rowcolor{darkblue}
+		\textcolor{white}{Dép. de base} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
+		nsubj & sujet nominal & Le \underline{people} \textbf{gagne}\\
+		obj & objet direct & On \textbf{présente} le \underline{cours}\\
+		iobj & objet indirect & Il \underline{m'}\textbf{envoie}\\
+		csubj & sujet propositionnel & \underline{Suivre} le cours \textbf{permet} ...\\
+		
+		\rowcolor{darkblue}
+		\textcolor{white}{Dép. des noms} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
+		amod & modificateur adjectival & La \textbf{fille} \underline{modeste}\\
+		det & déterminant & \underline{La} \textbf{fille}\\
+		nmod & modificateur nominal & Le \underline{résultat} de la \textbf{course}\\
+		nummod & modificateur numérique & J'ai mangé \underline{3} \textbf{bonbons}\\
+		
+	\end{tabular}
+	\caption{Quelques relations de dépendances universelles de Stanford \cite{2014-de-marneffe-al} (\url{https://universaldependencies.org/u/dep/index.html})}
+\end{table}
 
 \end{frame}
 
@@ -311,6 +390,7 @@
 
 \begin{itemize}
 	\item $G<\Sigma, N, P, S>$ est une grammaire probabiliste
+	\item Les nouvelles règles créées par transformation en FNC ont une probabilité égale à $1$
 	\item $w = w_1 \ldots w_n$ est un mot à analyser 
 	\item $T$ est un arbre syntaxique 
 	\item $P(T, w) = \prod\limits_{(A_i \rightarrow \beta_i) \in T} P(A_i \rightarrow \beta_i)$ est la probabilité d'une arbre syntaxique étant donné le mot analysé
