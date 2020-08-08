@@ -450,17 +450,44 @@
 \frametitle{Analyse syntaxique}
 \framesubtitle{Analyse des dépendances}
 
+\begin{minipage}{.6\textwidth}
 \begin{itemize}
-	\item 
+	\item Analyse basée sur les transitions 
+	\begin{itemize}
+		\item Configuration :  $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés
+		\item $C_{initiale} = ([ROOT], w, \varnothing)$
+		\item $C_{finale} = ([ROOT], \varnothing, A)$
+		\item Un ensemble d'actions possibles
+	\end{itemize}
 \end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+	\hgraphpage{transitions.pdf}
+\end{minipage}
+
+%
+\vfill
+
+\begin{minipage}{.6\textwidth}
+	\begin{itemize}
+		\item Analyse basée sur les graphes
+		\begin{itemize}
+			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
+			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+	\hgraphpage{graphe.pdf}
+\end{minipage}
 
 \end{frame}
 
-\subsection{shift-reduce}
+\subsection{arc-standard}
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des dépendances}
-\framesubtitle{shift-reduce}
+\framesubtitle{arc-standard}
 
 \begin{itemize}
 	\item 
