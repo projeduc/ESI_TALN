@@ -658,15 +658,150 @@
 
 \end{frame}
 
-\subsection{Arbre couvrant de poids minimal}
+\subsection{Par graphe}
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des dépendances}
-\framesubtitle{Arbre couvrant de poids minimal}
+\framesubtitle{Par graphe}
+
+\begin{minipage}{.6\textwidth}
+	\begin{itemize}
+		\item Analyse basée sur les graphes
+		\begin{itemize}
+			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
+			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+	\hgraphpage{graphe.pdf}
+\end{minipage}
 
 \begin{itemize}
-	\item 
+	\item $\Psi$ est une fonction de score, $ \mathcal{T}(G) $ est l'espace des arbres de dépendance possibles sur $G$
+	\[ \hat{T} = \arg\max\limits_{T \in \mathcal{T}(G)} \Psi(T, w; \theta) \]
+	\item Ce score est calculé en se basant sur le score de chaque arc $\psi$
+	\[ \Psi(T, w; \theta) = \sum_{e \in F / T = (V, F)} \psi(e, w; \theta) \]
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
+\framesubtitle{Par graphe}
+
+\begin{minipage}{.6\textwidth}
+	\begin{itemize}
+		\item Analyse basée sur les graphes
+		\begin{itemize}
+			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
+			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+	\hgraphpage{graphe.pdf}
+\end{minipage}
+
+\begin{itemize}
+	\item $\Psi$ est une fonction de score, $ \mathcal{T}(G) $ est l'espace des arbres de dépendance possibles sur $G$
+	\[ \hat{T} = \arg\max\limits_{T \in \mathcal{T}(G)} \Psi(T, w; \theta) \]
+	\item Ce score est calculé en se basant sur le score de chaque arc $\psi$
+	\[ \Psi(T, w; \theta) = \sum_{e \in F / T = (V, F)} \psi(e, w; \theta) \]
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
+\framesubtitle{Par graphe : Score et entraînement}
+
+\begin{itemize}
+	\item Le score d'un arc dépend de certaines caractéristiques (d'ordre $K$)
+	\[ \psi(e, w; \theta) = \sum_{k = 1}^{K} \theta_k f_k(e, w)  \]
+	
+	\item Quelques caractéristiques 
+	\begin{itemize}
+		\item Le mot de l'entête, sa catégorie grammaticale, son lemme, ses préfixes et suffixes
+		\item La direction de l'arc
+		\item La distance entre l'entête et le dépendant
+		\item \ldots
+	\end{itemize}
+	
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
+\framesubtitle{Par graphe : Analyse de Chu-Liu/Edmonds}
+
+\begin{itemize}
+	\item On ajoute un nœud (ROOT) avec des arcs vers tous le reste des nœuds 
+	\item Les arcs sont pondérés où le poids d'un arc $e$ est $G.p(e)$
+	\item On construit un \keyword{Arbre couvrant} de poids maximal
+	\item \keyword{Arbre couvrant} : Un sous-graphe acyclique maximal où tous les nœuds sont connectés et il n'y a pas plus qu'un arc entrant vers un nœud
+	\item \optword{Contracter} : une fonction qui fusionne deux nœuds $u$ et $v$ composant un cycle $C$
+	\begin{itemize}
+		\item $\forall e = (u', v) \in E : G.p(e) \leftarrow G.p(e) - G.p((u, v)) $
+		\item $\forall e = (v', u) \in E : G.p(e) \leftarrow G.p(e) - G.p((v, u)) $
+	\end{itemize}
+	\item \optword{Etendre} : une fonction qui désassemble les deux nœuds $u$ et $v$ d'un cycle $C$. L'arc qui enfreint la condition ``\textit{pas de deux arcs entrants}" est supprimé
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
+\framesubtitle{Par graphe : Analyse de Chu-Liu-Edmonds (Algorithme)}
+
+\vspace{-3pt}
+\begin{block}{Analyse de Chu-Liu-Edmonds : Arbre couvrant de poids maximal}
+	\scriptsize\vspace{-6pt}
+	\begin{algorithm}[H]
+		\Donnees{un graphe pondéré $G = (V, E)$, $ ROOT $}
+		\Res{un arbre couvrant $T = (V, F)$}
+		
+		\SetKwFunction{ACM}{ArbreCouvrantMax}
+		\SetKwProg{Fn}{Fonction}{}{Fin Fonction} 
+		
+		\Fn{\ACM{$G, ROOT$}}{
+		
+		$F \leftarrow \emptyset$\;
+		
+		\PourTous{$ v \in V$}{ 
+			$meilleurInArc \leftarrow \arg\max_{e = (u, v) \in E} G.p(e) $;
+			$F \leftarrow F \cup meilleurInArc$\;
+			\PourTous{$e = (u, v) \in E$}{ 
+				$ G.p(e) \leftarrow G.p(e) - G.p(meilleurInArc) $\;
+			}
+			\eSi{$T = (V, F)$ est un arbre couvrant}{
+				\Retour $T$ \;
+			}{
+				$C \leftarrow$ un cycle de $F$;
+				$G' \leftarrow Contracter(G, C)$\;
+				$T' \leftarrow ArbreCouvrantMax(G', ROOT)$;
+				$T \leftarrow Etendre(T', C)$\;
+				\Retour $T$ \;
+			}
+		}
+	
+		}
+		\vspace{-3pt}
+	\end{algorithm}\vspace{-3pt}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Analyse syntaxique : Analyse des dépendances}
+\framesubtitle{Par graphe : Analyse de Chu-Liu-Edmonds (Exercice)}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.8\textwidth]{exp-graphe_.pdf}
+	\caption{Exemple d'un graphe de la phrase ``Book a flight" \cite{2019-jurafsky-martin}}
+\end{figure}
 
 \end{frame}
 
