@@ -42,15 +42,15 @@
 
 \end{frame}
 
-%\begin{frame}
-%\frametitle{Traitement automatique du langage naturel}
-%\framesubtitle{Analyse syntaxique : Un peu d'humour}
-%
-%\begin{center}
-%	\vgraphpage{humour-pos.jpg}
-%\end{center}
-%
-%\end{frame}
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{Analyse syntaxique : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour-parse.jpg}
+\end{center}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
@@ -117,6 +117,7 @@
 \frametitle{Analyse syntaxique : Structures syntaxiques}
 \framesubtitle{Annotation constituante : Grammaires à contexte libre (CFG)}
 
+\begin{minipage}{.68\textwidth}
 \begin{itemize}
 	\item $G <\Sigma, N, P, S>$ est une grammaire.
 	\item $\Sigma$ est le vocabulaire : ensemble des symboles terminaux
@@ -127,6 +128,13 @@
 	\begin{itemize}
 		\item \expword{$N$ = \{S, NP, VP, DET, N, ADJ, ...\}}
 	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\hgraphpage{humour-chomsky.jpg}
+\end{minipage}
+
+\begin{itemize}
 	\item $S \in N$ est l'axiome.
 	\item $P$ est l'ensemble des règles de production.
 	\item Les règles sont de la forme $A \rightarrow \beta \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$
@@ -369,6 +377,7 @@
 \frametitle{Analyse syntaxique : Analyse des constituants}
 \framesubtitle{Algorithme CKY : Remarques}
 
+\begin{minipage}{.53\textwidth}
 \begin{itemize}
 	\item L'arbre syntaxique résultante est binaire. Mais, dans la réalité elle doit suivre la grammaire conçue par les syntacticiens
 	\begin{itemize}
@@ -381,6 +390,10 @@
 %		\item 
 	\end{itemize}
 \end{itemize}
+\end{minipage}
+\begin{minipage}{.45\textwidth}
+	\hgraphpage{humour-ambiguity.jpg}
+\end{minipage}
 
 \end{frame}
 
@@ -804,6 +817,7 @@
 \end{figure}
 
 \end{frame}
+
 
 \insertbibliography{TALN05}{*}
 
