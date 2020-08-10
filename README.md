@@ -13,29 +13,73 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
 ## Contenu du module
 
 1. **Introduction**
-    - Définition et motivation du TALN
     - Histoire
-    - Les niveaux de traitement d'une langue (phonologie, morphologie, syntaxe, sémantique, )
-    - Les applications du TALN
-    - Les défis du TALN
+        - Naissance de l'IA et âge d'or
+        - Hiver de l'IA
+        - Printemps de l'IA
+    - Les niveaux de traitement d'une langue
+        - Phonétique, phonologie et orthographe
+        - Morphologie et syntaxe
+        - Sémantique
+        - Pragmatique et discours
+    - Applications du TALN
+        - Tâches
+        - Systèmes
+        - Affaires (business)
+    - Défis du TALN
+        - Ressources
+        - Compréhension de la langue
+        - Évaluation
+        - Éthique
 1. **Traitements basiques du texte**
-    - Les expressions régulières
-    - Distance d'édition
+    - Caractères
+        - Expressions régulières
+        - Distance d'édition
     - Segmentation du texte
-    - Affixation des mots
-    - Réduction des formes des mots
-    - Filtrage des mots vides
+        - Délimitation de la phrase
+        - Séparation des mots
+    - Normalisation et filtrage du texte
+        - Normalisation du texte
+        - Filtrage du texte
+    - Morphologie
+        - Formation des mots
+        - Réduction des formes
 1. **Modèles de langues**
-    - Les modèles NGram
-    - Lissage (smothing)
-    - Évaluation des modèles (Perplexité)
+    - Modèle N-gramme
+        - Formulation
+        - Lissage (Smoothing)
+    - Modèles neuronaux
+        -  Réseau de neurones à propagation avant
+        - Réseau de neurones récurrents
+        - Quelques améliorations
+    - Évaluation
+        - Approches
+        - Perplexité
 1. **Étiquetage morpho-syntaxique**
-    - Les informations grammaticales d'un mot
-    - Approches d'étiquetage morpho-syntaxique
+    - Étiquetage de séquences
+        - Description
+        - Applications
+    - Description de la tâche
+        - Classes universelles
+        - Treebanks
+        - Difficulté et outils
+    - Approches
+        - Modèle de Markov
+        - Maximum entropy
+        - Modèle neuronal
 1. **Analyse syntaxique**
     - Structures syntaxiques
-    - Méthodes classiques : CKY Parsing
-    - Méthodes statistiques : Probabilistic CKY Parsing
+        - Annotation constituante
+        - Annotation fonctionnelle
+    - Analyse des constituants
+        - Algorithme CKY
+        - Algorithme CKY probabiliste
+    - Analyse des dépendances
+        - Par transition
+        - Par graphe
+
+**PAS ENCORE**
+
 1. **Sens des mots et désambiguïsation lexicale**
     - Représentation vectorielle des mots : LSA, TF-IDF
     - Word embedding :  word2vec, GloVe, BERT
