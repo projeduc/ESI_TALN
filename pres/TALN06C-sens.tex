@@ -99,7 +99,7 @@
 \frametitle{Sens et désambigüisation : Représentation vectorielle}
 \framesubtitle{Tf-idf : Exemple d'une représentation avec Tf}
 
-\begin{exampleblock}{Exemple d'un corpus d'entraînement}
+\begin{exampleblock}{Exemple d'une collection de phrases}
 	\begin{itemize}
 		\item S1 : un ordinateur peut vous aider
 		\item S2 : il peut vous aider et il veut vous aider
@@ -143,6 +143,77 @@
 	= \frac{\sum_{i=1}^{n} a_i b_i}{\sqrt{\sum_{i=1}^{n} a_i^2} \sqrt{\sum_{i=1}^{n} b_i^2}}
 	\]
 \end{block}
+
+\end{frame}
+
+\subsection{Mot-Mot}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Représentation vectorielle}
+\framesubtitle{Mot-Mot}
+
+\begin{itemize}
+	\item On peut représenter un mot par rapport aux autres mot du vocabulaire en utilisant la co-occurrence
+	\item Pour représenter les mots d'un vocabulaire $ V $, on doit utiliser une matrice $|V| \times |V|$
+	\item Chaque mot est représenté par $|V|$ mots appelés \keyword{le contexte}
+	\item La co-occurrence peut être calculée par rapport aux documents, aux phrases ou des fenêtres auteur du mot
+	\item La fenêtre peut être 4 mots avant et 4 mots après
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Représentation vectorielle}
+\framesubtitle{Mot-Mot : Exemple avec un fenêtre de 1-1}
+
+\begin{exampleblock}{Exemple d'une collection de phrases}
+	\begin{itemize}
+		\item S1 : un ordinateur peut vous aider
+		\item S2 : il peut vous aider et il veut vous aider
+		\item S3 : il veut un ordinateur et un ordinateur pour vous
+	\end{itemize}
+\end{exampleblock}
+
+\begin{center}
+	\scriptsize
+	\begin{tabular}{llllllllll}
+		\hline\hline
+		& un & ordinateur & peut & vous & aider & il & et & veut & pour \\
+		\hline
+		un & 0 & 3 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
+		ordinateur & 3 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1\\
+		peut & 0 & 1 & 0 & 2 & 0 & 1 & 0 & 0 & 0\\
+		vous & 0 & 0 & 2 & 0 & 3 & 0 & 0 & 1 & 1\\
+		aider & 0 & 0 & 0 & 3 & 0 & 0 & 1 & 0 & 0\\
+		il & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 2 & 0\\
+		et & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+		veut & 1 & 0 & 0 & 1 & 0 & 2 & 0 & 0 & 0\\
+		pour & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		\hline\hline
+	\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Représentation vectorielle}
+\framesubtitle{Mot-Mot : Similarité cosinus}
+
+\begin{itemize}
+	\item On peut calculer la similarité entre deux mots
+	\item Une mesure de similarité est cosinus (vue précédemment)
+\end{itemize}
+
+\hgraphpage{exp-word-v1_.pdf}
+
+\begin{minipage}{.58\textwidth}
+	\begin{figure}
+		\caption{Un exemple des vecteurs de co-occurrence à partir de Wikipedia et une visualisation de deux mots \cite{2019-jurafsky-martin} }
+	\end{figure}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+	\hgraphpage{exp-word-v2_.pdf}
+\end{minipage}
 
 \end{frame}
 
