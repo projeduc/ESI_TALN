@@ -62,7 +62,30 @@
 \framesubtitle{Représentation vectorielle des mots}
 
 \begin{itemize}
-	\item 	
+	\item Un mot peut être représenté en utilisant l'encodage \keyword{One-Hot} 
+	\begin{itemize}
+		\item Ne représente pas les relations sémantiques entre les mots : similarité (Ex. \expword{chat, chien}) et proximité (Ex. \expword{café, tasse})
+		\item Comment représenter un document/phrase en utilisant cette représentation ?
+	\end{itemize}
+
+	\item \optword{Terme-document}
+	\begin{itemize}
+		\item On représente un terme par les documents le contiennent (ou l'inverse)
+		\item Ex. \expword{Term frequency - innverse document frequency (Tf-Idf)}
+	\end{itemize}
+
+	\item \optword{Document-terme}
+	\begin{itemize}
+		\item On représente un terme par d'autres termes
+	\end{itemize}
+
+	\item \optword{Terme-concept-document}
+	\begin{itemize}
+		\item On représente les termes et les documents par un vecteur de concepts
+		\item Ex. \expword{Analyse sémantique latente (LSA)}
+		\item Bienvenu dans \keyword{le plongement lexical (word embedding)}
+	\end{itemize}
+
 \end{itemize}
 
 \end{frame}
@@ -255,7 +278,7 @@
 	\end{itemize}
 	
 	\begin{block}{Décomposition en valeurs singulières (SVD) de la matrice terme-document}
-		\scriptsize
+		\scriptsize\bfseries
 		\[
 		\overbrace{
 			\begin{bmatrix}
