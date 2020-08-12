@@ -344,7 +344,7 @@
 \framesubtitle{Word embedding}
 
 \begin{itemize}
-	\item 	
+	\item king - man + woman = queen
 \end{itemize}
 
 \end{frame}
@@ -353,13 +353,55 @@
 \subsection{Word2vec}
 
 \begin{frame}
-\frametitle{Sens des mots et désambigüisation lexicale : Word embedding}
+\frametitle{Sens et désambigüisation : Word embedding}
 \framesubtitle{Word2vec}
 
 \begin{itemize}
-	\item 
+	\item Dans le modèle Mot-Mot, nous avons vu la notion du contexte 
+	\begin{itemize}
+		\item Un mot est représenté par les mots qui les entourent
+		\item Un vecteur de fréquence de co-occurrence
+		\item La longueur du vecteur est la taille du vocabulaire (trop large)
+		\item La co-occurrence d'un mot avec un petit sous-ensemble de mots (beaucoup de zéros)
+	\end{itemize}
+	\item Word2vec est un outil fourni par Google implémentant deux méthodes de \keyword{Word embedding} \cite{2013-mikolov-al}
+	\begin{itemize}
+		\item \optword{CBOW} : Continuous Bag-of-Words
+		\item \optword{Skip-gram} : Continuous Skip-gram
+	\end{itemize}
+	\item Encoder les mots sur un petit vecteur (50-1000) en se basant sur le contexte
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sens et désambigüisation : Word embedding}
+	\framesubtitle{Word2vec : CBOW}
+\begin{minipage}{.58\textwidth}
+	\begin{itemize}
+		\item Le contexte ici est deux mots avant et deux après
+		\item Inférer le mot $w_i$ étant donné son contexte
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+	\hgraphpage{word2vec-cbow.pdf}
+\end{minipage}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sens et désambigüisation : Word embedding}
+	\framesubtitle{Word2vec : Skip-gram}
+	\begin{minipage}{.58\textwidth}
+		\begin{itemize}
+			\item Le contexte ici est deux mots avant et deux après
+			\item Inférer le contexte étant donné le mot $w_i$
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{.4\textwidth}
+		\hgraphpage{word2vec-skip.pdf}
+	\end{minipage}
+	
 \end{frame}
 
 \subsection{GloVe}
