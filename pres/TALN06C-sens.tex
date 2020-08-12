@@ -217,18 +217,99 @@
 
 \end{frame}
 
-\subsection{Mot-document}
+\subsection{Analyse sémantique latente (LSA)}
 
 \begin{frame}
 \frametitle{Sens et désambigüisation : Représentation vectorielle}
-\framesubtitle{Mot-document}
+\framesubtitle{Analyse sémantique latente (LSA)}
 
 \begin{itemize}
-	\item LSA
+	\item La matrice terme-document $X[N, M]$ 
+	\begin{itemize}
+		\item dimension trop grande
+		\item beaucoup de zéros (voir l'exemple de Tf-Idf)
+	\end{itemize}
+	\item On peut utiliser $L$ concepts pour représenter
+	\begin{itemize}
+		\item les termes $T[N, L]$
+		\item les documents $D[M, L]$
+	\end{itemize}
+	\item $L \le \min(N, M)$
+	\item $X$ peut être décomposée en utilisant \keyword{décomposition en valeurs singulières (SVD)}
+	\begin{itemize}
+		\item $X = T \times S \times D^\top$
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
 
+
+\begin{frame}
+	\frametitle{Sens et désambigüisation : Représentation vectorielle}
+	\framesubtitle{Analyse sémantique latente (LSA) : Formulation SVD}
+	
+	\begin{itemize}
+		\item $T^\top T = \mathbb{I}_{N \times N}$ 
+		\item $D^\top D = \mathbb{I}_{M \times M}$ 
+		\item SVD peut être résolue en utilisant par exemple l'\keyword{algorithme de Lanczos}, la \keyword{décomposition QR}
+	\end{itemize}
+	
+	\begin{block}{Décomposition en valeurs singulières (SVD) de la matrice terme-document}
+		\scriptsize
+		\[
+		\overbrace{
+			\begin{bmatrix}
+			x_{11} & \ldots & \ldots & \ldots & x_{1M} \\ 
+			\vdots & \ddots & \ddots & \ddots &\vdots \\
+			\vdots & \ddots & \ddots & \ddots &\vdots \\
+			x_{N1} & \ldots & \ldots & \ldots & x_{NM} \\ 
+			\end{bmatrix}
+		}^{X \text{ : terme-document}}
+		=
+		\overbrace{
+			\left[
+			\begin{bmatrix}
+			t_{11} \\ 
+			\vdots \\
+			\vdots \\
+			t_{N1} \\ 
+			\end{bmatrix}
+			\begin{matrix}
+			\ldots \\ 
+			\end{matrix}
+			\begin{bmatrix}
+			t_{L1} \\ 
+			\vdots \\
+			\vdots \\
+			t_{L1} \\ 
+			\end{bmatrix}
+			\right]
+		}^{T \text{ : terme-concept}}
+		\times 
+		\overbrace{
+			\begin{bmatrix}
+			s_{11} & \ldots & 0 \\
+			0 & \ddots & 0 \\
+			0 & \ldots & s_{LL} \\
+			\end{bmatrix}
+		}^{S \text{ : concept-concept}}
+		\times 
+		\overbrace{
+			\begin{bmatrix}
+			\begin{bmatrix}
+			d_{11} & \ldots & \ldots & \ldots & d_{1M} \\
+			\end{bmatrix}\\
+			\vdots \\
+			\begin{bmatrix}
+			d_{11} & \ldots & \ldots & \ldots & d_{1M} \\
+			\end{bmatrix}\\
+			\end{bmatrix}
+		}^{D^\top \text{ : concept-document}}
+		\]
+		
+	\end{block}
+	
+\end{frame}
 
 
 %===================================================================================
