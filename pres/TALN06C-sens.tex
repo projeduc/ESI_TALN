@@ -335,6 +335,19 @@
 \end{frame}
 
 
+\subsection{Évaluation des modèles}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Représentation vectorielle}
+\framesubtitle{Évaluation des modèles}
+%TODO compléter l'évaluation
+\begin{itemize}
+	\item 
+\end{itemize}
+	
+\end{frame}
+
+
 %===================================================================================
 \section{Word embedding}
 %===================================================================================
@@ -369,7 +382,7 @@
 		\item \optword{CBOW} : Continuous Bag-of-Words
 		\item \optword{Skip-gram} : Continuous Skip-gram
 	\end{itemize}
-	\item Encoder les mots sur un petit vecteur (50-1000) en se basant sur le contexte
+	\item Encoder les mots sur un petit vecteur (50-1000) en se basant sur le contexte (en utilisant un encodeur-décodeur)
 \end{itemize}
 
 \end{frame}
@@ -382,7 +395,14 @@
 		\item Le contexte ici est deux mots avant et deux après
 		\item Inférer le mot $w_i$ étant donné son contexte
 	\end{itemize}
+	\begin{block}{Fonction du coût à minimiser}
+		\[%
+		J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
+		\]
+	\end{block}
 \end{minipage}
+\begin{minipage}{.08\textwidth}
+\end{minipage}	
 \begin{minipage}{.4\textwidth}
 	\hgraphpage{word2vec-cbow.pdf}
 \end{minipage}
@@ -397,6 +417,13 @@
 			\item Le contexte ici est deux mots avant et deux après
 			\item Inférer le contexte étant donné le mot $w_i$
 		\end{itemize}
+		\begin{block}{Fonction du coût à minimiser}
+			\[%
+			J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} \sum_{j= i-2; j \ne i}^{i+2} p(w_j |w_i)
+			\]
+		\end{block}
+	\end{minipage}
+	\begin{minipage}{.08\textwidth}
 	\end{minipage}
 	\begin{minipage}{.4\textwidth}
 		\hgraphpage{word2vec-skip.pdf}
@@ -407,13 +434,107 @@
 \subsection{GloVe}
 
 \begin{frame}
-\frametitle{Sens des mots et désambigüisation lexicale : Word embedding}
+\frametitle{Sens et désambigüisation : Word embedding}
 \framesubtitle{GloVe}
 
 \begin{itemize}
-	\item 
+	\item \keyword{GloVe} : Global Vectors
+	\item une méthode développée par Standford \cite{2014-pennington-al}
+	\item essaye d'exploiter les deux approches : matrice mot-mot (comme LSA) et apprentissage par contexte (comme CBOW)
+	\item $X[V, V]$ est la matrice Mot-Mot où $X_{ij}$ est le nombre des occurrence du mot $w_j$ dans le contexte de $w_i$, et $X_i$ est le nombre d'occurrences de $w_i$ dans le corpus
+	\item $P_ij= \frac{X_{ij}}{X_i}$ est la probabilité d'occurrence de $w_j$ dans le contexte de $w_i$
 \end{itemize}
 
+%\hgraphpage[.5\textwidth]{exp-glove_.pdf}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Word embedding}
+\framesubtitle{GloVe : Motivation}
+	
+\begin{minipage}{.5\textwidth}
+	\begin{itemize}
+		\item On veut trouver la relation entre $w_i = ice$ et $w_j = steam$
+		\item Ceci peut être représentée par un vecteur des mots $w_j$ 
+		\item On calcule le ratio $\frac{P_ik}{Pjk}$
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.48\textwidth}
+	\begin{figure}
+		\hgraphpage{exp-glove_.pdf}
+		\caption{Exemple de probabilités et un ratio \cite{2014-pennington-al}}
+	\end{figure}
+\end{minipage}
+	
+\begin{itemize}
+	\item la valeur du ratio doit suivre les relations $R(w_k, w_i)$ et $R(w_k, w_j)$
+	\begin{itemize}
+		\item Si $R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio sera grand. Ex. \expword{solid}
+		\item Si $\neg R(w_k, w_i) \wedge R(w_k, w_j)$, le ratio sera petit. Ex. \expword{gas}
+		\item Si $R(w_k, w_i) \wedge R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{water}
+		\item Si $\neg R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{fashion}
+	\end{itemize}
+	\item On veut entraîner une fonction $F$ sur les représentations de $w_i$, $w_j$ et $\tilde{w_k}$
+	\vspace{-6pt}\[F(w_i, w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Word embedding}
+\framesubtitle{GloVe : Formulation (raisonnement)}
+	
+\begin{itemize}
+	\item On peut restreindre la fonction par utilisation d'une soustraction
+	\vspace{-6pt}\[F(w_i - w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	
+	\item On peut transformer l'argument à un scalaire comme le résultat
+	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	
+	\item On veut que $w \leftrightarrow \tilde{w}$ et $X \leftrightarrow X^\top$. Donc, $F$ doit être un homomorphisme entre $(\mathbb{R}, +)$ et $(\mathbb{R}_{>0}, \times)$
+	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{F(w_i^\top \tilde{w_k})}{F(w_j^\top \tilde{w_k})}\]
+	
+	\item Donc, $F(w_i^\top \tilde{w_k}) = P_ik = \frac{X_{ik}}{X_i}$
+	
+	\item La solution est $F = exp$. Donc $w_i^\top \tilde{w_k} = \log X_{ik} - \log X_i$
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Word embedding}
+\framesubtitle{GloVe : Formulation (version finale)}
+	
+\begin{itemize}
+	\item la valeur $log X_i$ est indépendante de $k$. Donc, on peut entraîner un biais $b_i$ sur $w_i$. Pour respecter la symétrie, il faut entraîner un biais $\tilde{b_k}$ sur $\tilde{w_k}$ 
+	\item La fonction objective $J$ utilisée est \keyword{la méthode des moindres carrés}
+	\begin{itemize}
+		\item le problème est que $J$ ne doit pas pondérer les co-occurrences de la même façon : les co-occurrences rares doivent avoir moins d'impact sur $J$
+		\item un solution est de pondérer $J$ avec une fonction sur $X_{ij}$
+	\end{itemize}
+\end{itemize}
+
+\vspace{-6pt}
+\begin{block}{Formulation de la méthode GloVe}\vspace{-6pt}
+	\[w_i^\top \tilde{w_j} + b_i + \tilde{b_j} = \log X_{ij} \]
+	\[J(\theta) = \sum_{i=1}^{V} \sum_{j=1}^{V} f(X_{ij}) (w_i^\top \tilde{w_j} + b_i + \tilde{b_j} - \log X_{ij})^2\]
+	\vspace{-12pt}\[f(x) = \begin{cases}
+	\frac{x}{x_{max}} & \text{si } x < x_{max} \\
+	1 & \text{ sinon}
+	\end{cases}\]
+\vspace{-6pt}\end{block}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sens et désambigüisation : Word embedding}
+\framesubtitle{GloVe : Architecture}
+	
+\begin{center}
+	\vgraphpage{glove.pdf}
+\end{center}
+	
 \end{frame}
 
 \subsection{BERT}
