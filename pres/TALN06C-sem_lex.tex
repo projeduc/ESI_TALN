@@ -54,6 +54,56 @@
 \end{frame}
 
 %===================================================================================
+\section{Bases de données lexicales}
+%===================================================================================
+
+\begin{frame}
+	\frametitle{Sémantique lexicale}
+	\framesubtitle{Bases de données lexicales}
+	
+	\begin{itemize}
+		\item 	
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Relations sémantiques}
+
+\begin{frame}
+	\frametitle{Sémantique lexicale : BD lexicales}
+	\framesubtitle{Relations sémantiques}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Wordnet}
+
+\begin{frame}
+	\frametitle{Sémantique lexicale : BD lexicales}
+	\framesubtitle{Wordnet}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Autres ressources}
+
+\begin{frame}
+	\frametitle{Sémantique lexicale : BD lexicales}
+	\framesubtitle{Autres ressources}
+	
+	\begin{itemize}
+		\item BabelNet, FrameNet
+	\end{itemize}
+	
+\end{frame}
+
+%===================================================================================
 \section{Représentation vectorielle des mots}
 %===================================================================================
 
@@ -344,6 +394,7 @@
 \framesubtitle{Word embedding}
 
 \begin{itemize}
+	\item 
 	\item king - man + woman = queen
 \end{itemize}
 
@@ -524,28 +575,81 @@
 	
 \end{frame}
 
-\subsection{Embedding contextuel}
+\subsection{Embeddings contextuels}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embeddings contextuels}
+
+\begin{exampleblock}{Exemple de polysémie (mot avec plusieurs sens)}
+	\begin{itemize}
+		\item Le meilleur préservatif contre les \expword{souris} est un chat. (animal)
+		\item La \expword{souris} pour ordinateur est un système de pointage. (dispositif)
+		\item J'adore la \expword{souris}, c'est mon morceau favori. (Partie du gigot de mouton)
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Les représentations de word embedding comme Word2vec et GloVe, peuvent-elles refléter des relations entre le mot \expword{souris} et les mots chat, ordinateur et morceau ?
+	\item Peuvent-elles différencier entre les différents sens du mot \expword{souris} ?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embeddings contextuels : ELMo}
+
+\begin{minipage}{.65\textwidth}
+\begin{itemize}
+	\item \keyword{ELMo} : Embeddings from Language Models
+	\item \url{http://allennlp.org/elmo}
+	\item \cite{2018-peters-al}
+	\item Caractéristiques de la représentation
+	\begin{itemize}
+		\item Contextuelle :  prend en considération tout le contexte (phrase)
+		\item Profonde : combine tous les résultats des couches du réseau de neurones
+		\item Basée sur les caractères : prise en considération des caractéristiques morphologiques et des mots hors vocabulaire
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{.33\textwidth}
+	\vspace{2cm}
+	\hgraphpage{Elmo-img.jpg}
+\end{minipage}
+	
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embeddings contextuels : ELMo (architecture)}
+	
+	\hgraphpage{Elmo-arch.pdf}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embedding contextuel : ELMo (description)}
+
+\begin{itemize}
+	\item Étant donné un mot $w_k$, on calcule sa représentation $x_k$ en se basant sur les caractères qui lui composent (voir \cite{2015-kim-al})
+	
+\end{itemize}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Word embedding}
 \framesubtitle{Embedding contextuel : BERT}
-
+	
 \begin{itemize}
-	\item 
+	\item Bidirectional Encoder Representations from Transformers
 \end{itemize}
-
+	
 \end{frame}
 
-
-\begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
-\framesubtitle{Embedding contextuel : ELMo}
-
-\begin{itemize}
-	\item 
-\end{itemize}
-
-\end{frame}
 
 \subsection{Évaluation des modèles}
 
@@ -560,56 +664,7 @@
 \end{frame}
 
 %===================================================================================
-\section{Bases de données lexicales}
-%===================================================================================
 
-\begin{frame}
-\frametitle{Sémantique lexicale}
-\framesubtitle{Bases de données lexicales}
-
-\begin{itemize}
-	\item 	
-\end{itemize}
-
-\end{frame}
-
-\subsection{Relations sémantiques}
-
-\begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
-\framesubtitle{Relations sémantiques}
-
-\begin{itemize}
-	\item 
-\end{itemize}
-
-\end{frame}
-
-\subsection{Wordnet}
-
-\begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
-\framesubtitle{Wordnet}
-
-\begin{itemize}
-	\item 
-\end{itemize}
-
-\end{frame}
-
-\subsection{Autres ressources}
-
-\begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
-\framesubtitle{Autres ressources}
-
-\begin{itemize}
-	\item BabelNet, FrameNet
-\end{itemize}
-
-\end{frame}
-
-%===================================================================================
 \section{Désambigüisation lexicale}
 %===================================================================================
 
