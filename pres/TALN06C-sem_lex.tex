@@ -651,7 +651,7 @@
 	
 	\item Pour intégrer ELMo avec une tâche  $task$, on entraîne des paramètres $\Theta^{task}$ afin d'inférer une représentation liée à la tâche \\
 	\begin{center}
-		$ELMo_k^{task} = E(R_k; \Theta^{task}) = \sum_{j=0}^{L} s_j^{task} h_{LM}^{k, j}$
+		$ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} s_j^{task} h_{LM}^{k, j}$
 	\end{center}
 \end{itemize}
 
@@ -671,10 +671,24 @@
 \begin{frame}
 \frametitle{Sémantique lexicale : Word embedding}
 \framesubtitle{Embedding contextuel : BERT}
-	
-\begin{itemize}
-	\item Bidirectional Encoder Representations from Transformers
-\end{itemize}
+
+%TODO compléter BERT
+
+\begin{minipage}{.68\textwidth}
+	\begin{itemize}
+		\item \keyword{BERT} : Bidirectional Encoder Representations from Transformers
+		\item \url{https://github.com/google-research/bert}
+		\item %\cite{2018-peters-al}
+		\item Caractéristiques de la représentation
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+%	\vspace{2cm}
+	\hgraphpage{Bert-img.png}
+\end{minipage}
 	
 \end{frame}
 
@@ -682,12 +696,49 @@
 \subsection{Évaluation des modèles}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : Représentation vectorielle}
-	\framesubtitle{Évaluation des modèles}
-	%TODO compléter l'évaluation
+\frametitle{Sémantique lexicale : Représentation vectorielle}
+\framesubtitle{Évaluation des modèles : Évaluation intrinsèque}
+
+\begin{itemize}
+	\item  WordSimilarity-353 Test Collection \cite{2002-finkelstein-al}
 	\begin{itemize}
-		\item 
+		\item Des similarités entre mots annotées manuellement (0 et 10)
+		\item On calcule la corrélation de Spearman entre les similarités entre les représentations (similarité cosinus) et les similarités manuelles
 	\end{itemize}
+	
+	\item SimLex-999 \cite{2015-hill-al}
+	\begin{itemize}
+		\item Teste la similarité (\expword{coast, shore}) et pas l'association (\expword{clothes, closet})
+	\end{itemize}
+
+	\item Analogies de mots \cite{2013-mikolov-al2}
+	\begin{itemize}
+		\item Dataset de la forme $(w_{i1}:w_{j1} :: w_{i2}:w_{j2})$
+		\item Tester la capacité des embeddings à représenter des relations $w_{j2} = w_{i1} - w_{i2} + w_{j1}$
+		\item Ex. \expword{(King:Queen :: Man:Woman) \textrightarrow King - Man + Woman = Queen}
+	\end{itemize}
+
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Représentation vectorielle}
+\framesubtitle{Évaluation des modèles : Évaluation extrinsèque et biais}
+	
+\begin{itemize}
+	\item  \optword{Évaluation extrinsèque} : Évaluer les modèles en se basant sur une tâche 
+	\begin{itemize}
+		\item Évaluer un nouveau modèle par rapport à un autre connu en fonction d'une tâche
+		\item Ex. GloVe surpasse LSA dans la tâche de reconnaissance des entités nommées \cite{2014-pennington-al}
+	\end{itemize}
+	\item \optword{Biais} : Les modèles peuvent apprendre des analogies biaisées
+	\begin{itemize}
+		\item Apprendre des stéréotypes comme \expword{she} avec \expword{homemaker, nurse, receptionist} et \expword{he} avec \expword{maestro, skipper, protege} \cite{2017-caliskan-al}
+		\item Ceci peut affecter la performance de certaines tâches. 
+		\item Ex. \expword{La résolution des anaphores peut échouer à lier le pronoms ``she" avec ``doctor"}
+	\end{itemize}
+\end{itemize}
 	
 \end{frame}
 
