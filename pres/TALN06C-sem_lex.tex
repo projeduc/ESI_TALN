@@ -635,9 +635,37 @@
 
 \begin{itemize}
 	\item Étant donné un mot $w_k$, on calcule sa représentation $x_k$ en se basant sur les caractères qui lui composent (voir \cite{2015-kim-al})
+	\item On utilise $L$ couches des cellules LSTM bidirectionnelles 
+	\item Pour chaque  phrase de $N$ mot, on essaye de maximiser\\ 
+	\begin{center}
+		$\sum_{k=1}^{N} 
+	log P(w_k | w_1,\ldots,w_{k-1}; \Theta_x, \overrightarrow{\Theta}_{LSTM}, \Theta_s)
+	+
+	log P(w_k | w_{k+1},\ldots,w_{N}; \Theta_x, \overleftarrow{\Theta}_{LSTM}, \Theta_s)
+	$
+	\end{center}
 	
+	\item $R_k = \{x_k^{LM}, \overrightarrow{h}_{LM}^{k, j}, \overleftarrow{h}_{LM}^{k, j} | j= 1 \ldots L \}
+	= \{h_{LM}^{k, j} | j= 0 \ldots L \}
+	$
+	
+	\item Pour intégrer ELMo avec une tâche  $task$, on entraîne des paramètres $\Theta^{task}$ afin d'inférer une représentation liée à la tâche \\
+	\begin{center}
+		$ELMo_k^{task} = E(R_k; \Theta^{task}) = \sum_{j=0}^{L} s_j^{task} h_{LM}^{k, j}$
+	\end{center}
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embedding contextuel : ELMo (Illustration comment ça fonctionne)}
+
+\vspace{-3pt}
+\begin{center}
+	\vgraphpage{humour-elmo.png}
+\end{center}
+	
 \end{frame}
 
 \begin{frame}
