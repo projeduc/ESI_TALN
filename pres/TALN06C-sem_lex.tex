@@ -62,7 +62,7 @@
 	\framesubtitle{Bases de données lexicales}
 	
 	\begin{itemize}
-		\item 	
+		\item 
 	\end{itemize}
 	
 \end{frame}
@@ -71,10 +71,17 @@
 
 \begin{frame}
 	\frametitle{Sémantique lexicale : BD lexicales}
-	\framesubtitle{Relations sémantiques}
+	\framesubtitle{Relations sémantiques (Rappel)}
 	
 	\begin{itemize}
-		\item 
+		\item \optword{Synonymie} : avoir des sens similaires dans un contexte donné
+		\item \optword{Antonymie} : avoir des sens opposés dans un contexte donné
+		\item Les relations taxonomiques (de classification)
+		\begin{itemize}
+			\item \optword{Hyponymie} : être plus spécifique qu'un autre sens. Il entraîne un relation \keyword{IS-A}. Ex. \expword{voiture IS-A véhicule} 
+			\item \optword{Hyperonymie} : être plus générique qu'un autre sens. 
+			\item \optword{Méronymie} : être une partie d'une chose. Ex. \expword{roue est un méronyme de voiture ; voiture est le holonyme de roue}
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -82,12 +89,70 @@
 \subsection{Wordnet}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : BD lexicales}
-	\framesubtitle{Wordnet}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Wordnet}
+
+\begin{minipage}{.3\textwidth}
+	\begin{figure}
+		\caption{Un exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{.68\textwidth}
+	\hgraphpage{exp-wordnet_.pdf}
+\end{minipage}
 	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Wordnet : description}
+	
+\begin{itemize}
+	\item Base de données lexicale pour l'anglais \cite{1995-miller}
+	\item Trois parties : (1) noms (2) verbes (3) adjectifs et adverbes
+	\item Un sens est représenté par un identifiant (\keyword{synset})
 	\begin{itemize}
-		\item 
+		\item \keyword{synset} (Synonyms set) : regroupe les mots du même sens 
+		\item Ex. \expword{05659525 : reason\#3, understanding\#4, intellect\#2}
 	\end{itemize}
+	\item Un sens est défini par un glossaire (\keyword{gloss})
+	\begin{itemize}
+		\item Ex. \expword{05659525 : (the capacity for rational thought or inference or discrimination) "we are told that man is endowed with reason and capable of distinguishing good from evil"}
+	\end{itemize}
+	\item Un sens est marqué par une catégorie lexicographique (\keyword{supersense})
+	\begin{itemize}
+		\item Ex. \expword{05659525 : noun.cognition}
+	\end{itemize}
+	\item WordNet représente les relations sémantiques entre les sens
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Wordnet : Catégories lexicographiques (supersense)}
+	
+\begin{figure}
+	\hgraphpage{wordnet-supersenses_.pdf}
+	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
+\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Wordnet : Relations sémantiques}
+
+\vspace{-3pt}
+\begin{figure}
+	\hgraphpage{wordnet-rel-nom_.pdf}\vspace{-9pt}
+	\caption{Quelques relations des noms \cite{2019-jurafsky-martin}}
+\end{figure}\vspace{-6pt}
+
+\begin{figure}
+	\hgraphpage{wordnet-rel-verbe_.pdf}\vspace{-9pt}
+	\caption{Quelques relations des verbes \cite{2019-jurafsky-martin}}
+\end{figure}
 	
 \end{frame}
 
@@ -854,7 +919,7 @@
 \framesubtitle{Désambigüisation lexicale}
 
 \begin{itemize}
-	\item 	
+	\item  http://babelfy.org/papers
 \end{itemize}
 
 \end{frame}
