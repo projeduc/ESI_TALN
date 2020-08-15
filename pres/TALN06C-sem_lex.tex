@@ -401,6 +401,14 @@
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Un peu d'humour}
+	
+	
+\end{frame}
+
+
 \subsection{Word2vec}
 
 \begin{frame}
@@ -625,7 +633,7 @@
 \frametitle{Sémantique lexicale : Word embedding}
 \framesubtitle{Embeddings contextuels : ELMo (architecture)}
 	
-	\hgraphpage{Elmo-arch.pdf}
+	\hgraphpage{elmo-arch.pdf}
 	
 \end{frame}
 
@@ -672,23 +680,101 @@
 \frametitle{Sémantique lexicale : Word embedding}
 \framesubtitle{Embedding contextuel : BERT}
 
-%TODO compléter BERT
-
 \begin{minipage}{.68\textwidth}
 	\begin{itemize}
 		\item \keyword{BERT} : Bidirectional Encoder Representations from Transformers
 		\item \url{https://github.com/google-research/bert}
-		\item %\cite{2018-peters-al}
+		\item \cite{2019-devlin-al}
 		\item Caractéristiques de la représentation
 		\begin{itemize}
-			\item 
+			\item Contextuelle :  prend en considération tout le contexte (phrase)
+			\item Totalement bidirectionnelle : prend en considération les mots avant et après 
+			\item Basée sur les tokens : les mots sont séparés en radical + infixes
 		\end{itemize}
 	\end{itemize}
 \end{minipage}
 \begin{minipage}{.3\textwidth}
-%	\vspace{2cm}
+	\vspace{.5cm}
 	\hgraphpage{Bert-img.png}
 \end{minipage}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embeddings contextuels : BERT (architecture)}
+	
+	\hgraphpage{bert-arch.pdf}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embedding contextuel : BERT (entrées)}
+	
+\begin{itemize}
+	\item Le texte est séparé en tokens en utilisant \keyword{Wordpiece} (voir \cite{2016-wu-al})
+	\item En entrée une séquence de tokens de longueur maximale $T = 512$
+	\begin{itemize}
+		\item Le premier token est un marqueur spécial ``\keyword{[CLS]}" utilisé pour la classification
+		\item La séquence représente deux phrases séparées par un token ``\keyword{[SEP]}"
+	\end{itemize}
+	\item Chaque token est représenté par 3 embeddings de taille $N$ 
+	\begin{itemize}
+		\item \optword{Embedding de token} : transformation d'une vocabulaire de taille $V$ vers un vecteur de taille $N$
+		\item \optword{Embedding de position} : transformation de la position du token dans la phrase sur une taille max $T$ vers un vecteur de taille $N$
+		\item \optword{Embedding de segment} : transformation du segment du token (phrase1 ou phrase2) sur une taille de $2$ vers un vecteur de taille $N$
+	\end{itemize}
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embedding contextuel : BERT (pré-entraînement)}
+	
+\begin{itemize}
+	\item Le modèle est entraîné sur deux tâches
+	\item \optword{Modèle de langage masqué}
+	\begin{itemize}
+		\item masquer aléatoirement 15\% des tokens d'une phrase et essayer de les inférer
+		\item on utilise un token spécial \keyword{[MASK]}
+		\item puisque ce token n'apparait pas dans l'étape de réglage, on l'utilise pour 80\% des remplacements
+		\item 10\% avec un token quelconque et 10\% sans changement 
+	\end{itemize}
+	\item \optword{Prédiction de la phrase suivante}
+	\begin{itemize}
+		\item Prédire si la deuxième phrase suit la première 
+		\item Le résultat est dans la sortie du token ``\keyword{[CLS]}" ($CLS \in \{IsNext, NotNext\}$)
+	\end{itemize}
+	\item Le modèle pré-entraîné peut être entraîné sur une tâche définie
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 1)}
+
+	\begin{figure}
+		\hgraphpage{bert-taches1_.pdf}
+		\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
+		(a) Relation entre deux phrases comme la similarité (b) Classification d'une phrase comme analyse de sentiments
+	}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique lexicale : Word embedding}
+	\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 2)}
+	
+	\begin{figure}
+		\hgraphpage{bert-taches2_.pdf}
+		\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
+			(a) Tâches de Question-réponse (b) Les tâches de tagging comme reconnaissance des entités nommées
+		}
+	\end{figure}
 	
 \end{frame}
 
