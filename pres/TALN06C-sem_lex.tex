@@ -394,8 +394,12 @@
 \framesubtitle{Word embedding}
 
 \begin{itemize}
-	\item 
-	\item king - man + woman = queen
+	\item Les représentations document-mot ou mot-mot basées sur la co-occurrence occupent un grand espace mémoire 
+	\item Elle sont difficiles à gérer 
+	\item Dans \keyword{LSA}, nous avons vu que la représentation d'un mot est compactée vers un petit vecteur de nombres réels
+	\item Ceci est appelé : \keyword{Word embedding} ou en français \keyword{Plongement lexical}
+	\item Ici, on se focalise sur le Word embedding basé sur les réseaux de neurones
+	\item Cette technique permet d'apprendre à représenter des relations entre mots
 \end{itemize}
 
 \end{frame}
@@ -404,8 +408,9 @@
 \begin{frame}
 \frametitle{Sémantique lexicale : Word embedding}
 \framesubtitle{Un peu d'humour}
-	
-	
+\begin{center}
+		\vgraphpage{humour-embeddings.jpeg}	
+\end{center}
 \end{frame}
 
 
@@ -734,7 +739,8 @@
 \framesubtitle{Embedding contextuel : BERT (pré-entraînement)}
 	
 \begin{itemize}
-	\item Le modèle est entraîné sur deux tâches
+	\item Le modèle est basé sur \keyword{Transformer} (voir \cite{2017-vaswani-al})
+	\item Il est entraîné sur deux tâches
 	\item \optword{Modèle de langage masqué}
 	\begin{itemize}
 		\item masquer aléatoirement 15\% des tokens d'une phrase et essayer de les inférer
@@ -775,6 +781,16 @@
 			(a) Tâches de Question-réponse (b) Les tâches de tagging comme reconnaissance des entités nommées
 		}
 	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Word embedding}
+\framesubtitle{Embedding contextuel : BERT (un peu d'humour)}
+	\vspace{-3pt}
+	\begin{center}
+		\vgraphpage{humour-bert.jpg}
+	\end{center}
 	
 \end{frame}
 
