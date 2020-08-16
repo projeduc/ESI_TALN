@@ -156,15 +156,65 @@
 	
 \end{frame}
 
+\begin{frame}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Wordnet : Quelques ressources}
+	
+\begin{itemize}
+	\item Quelques APIs
+	\begin{itemize}
+		\item NLTK (Python) : \url{https://www.nltk.org/howto/wordnet.html}
+		\item JWI (Java) : \url{http://projects.csail.mit.edu/jwi}
+		\item Wordnet (Ruby) : \url{https://github.com/wordnet/wordnet}
+		\item OpenNlp (C\#) : \url{https://github.com/AlexPoint/OpenNlp}
+	\end{itemize}
+	\item Autres langues
+	\begin{itemize}
+		\item Global WordNet Association : \url{http://globalwordnet.org/resources/wordnets-in-the-world/}
+		\item Open Multilingual Wordnet : \url{http://compling.hss.ntu.edu.sg/omw/}
+	\end{itemize}
+\end{itemize}
+	
+\end{frame}
+
 \subsection{Autres ressources}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : BD lexicales}
-	\framesubtitle{Autres ressources}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Autres ressources : Autres BD lexicales}
 	
+\begin{itemize}
+	\item \optword{FrameNet} 
 	\begin{itemize}
-		\item BabelNet, FrameNet
+		\item Basée sur la théorie ``cadre sémantique" (frame semantic)
+		\item Un cadre peut être un évènement, une relation ou un entité avec ces participants 
+		\item Ex. \expword{Le concept ``Cuisinier" implique une personne qui cuisine, la nourriture, un récipient et une source de chaleur}
+		\item Chaque cadre est activé par un ensemble des \keyword{unités lexicales}. Ex. \expword{blanchir, bouillir, griller, dorer, mijoter, cuire}
 	\end{itemize}
+	\item \optword{VerbNet} 
+	\begin{itemize}
+		\item Une base lexicale pour verbes
+		\item Elle inclue 30 rôles thématiques principaux 
+		\item Les verbes sont organisés en classes
+	\end{itemize}
+	\item \textbf{On va revoir ces deux BD dans le chapitre suivant}
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : BD lexicales}
+\framesubtitle{Autres ressources : BabelNet}
+
+\begin{itemize}
+	\item Réseaux sémantique multilingue
+	\item \url{https://babelnet.org/}
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{babelnet.png}
+	\caption{Structure de BabelNet \cite{2012-navigli-ponzetto}}
+\end{figure}
 	
 \end{frame}
 
@@ -206,11 +256,11 @@
 \end{frame}
 
 
-\subsection{Tf-Idf}
+\subsection{TF-IDF}
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Représentation vectorielle}
-\framesubtitle{Tf-idf}
+\framesubtitle{TF-IDF}
 
 \begin{itemize}
 	\item Le sens d'un document/phrase peut être représenté par ces mots 
@@ -220,14 +270,14 @@
 	\item Les mots qui apparient dans plusieurs documents sont moins importants
 \end{itemize}
 
-\begin{block}{Calcul de Tf-Idf}
+\begin{block}{Calcul de TF-IDF}
 	\[
-	Tf_d(t) =  |\{t_i \in d / t_i = t\}|
+	TF_d(t) =  |\{t_i \in d / t_i = t\}|
 	\hskip2cm 
-	Df_D(t) = |\{d \in D / t \in d\}|
+	DF_D(t) = |\{d \in D / t \in d\}|
 	\]
-	\[Idf_D(t) = \log_{10} \left( \frac{|\{d \in D\}|}{Df_D(t)} \right)\]
-	\[Tf\text{-}Idf_{d, D}(t) = Tf_d(t) * Idf_D(t)\]
+	\[IDF_D(t) = \log_{10} \left( \frac{|\{d \in D\}|}{DF_D(t)} \right)\]
+	\[TF\text{-}IDF_{d, D}(t) = TF_d(t) * IDF_D(t)\]
 \end{block}
 
 \end{frame}
@@ -235,7 +285,7 @@
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Représentation vectorielle}
-\framesubtitle{Tf-idf : Exemple d'une représentation avec Tf}
+\framesubtitle{TF-IDF : Exemple d'une représentation avec Tf}
 
 \begin{exampleblock}{Exemple d'une collection de phrases}
 	\begin{itemize}
@@ -262,12 +312,12 @@
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Représentation vectorielle}
-\framesubtitle{Tf-idf : Similarité cosinus}
+\framesubtitle{TF-IDF : Similarité cosinus}
 
 \begin{minipage}{.68\textwidth}
 \begin{itemize}
 	\item $a$ et $b$ sont deux documents représentés par deux vecteurs $\overrightarrow{a}$ et $\overrightarrow{b}$ respectivement
-	\item La représentation peut être les mots du vocabulaire (Tf ou Tf-Idf) ou d'autres caractéristiques du document
+	\item La représentation peut être les mots du vocabulaire (TF ou TF-IDF) ou d'autres caractéristiques du document
 	\item La longueur des vecteurs est de $n$
 \end{itemize}
 \end{minipage}
