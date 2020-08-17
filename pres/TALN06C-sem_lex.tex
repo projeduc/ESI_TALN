@@ -510,10 +510,10 @@
 
 \begin{itemize}
 	\item Les représentations document-mot ou mot-mot basées sur la co-occurrence occupent un grand espace mémoire 
-	\item Elle sont difficiles à gérer 
+	\item Elles sont difficiles à gérer 
 	\item Dans \keyword{LSA}, nous avons vu que la représentation d'un mot est compactée vers un petit vecteur de nombres réels
-	\item Ceci est appelé : \keyword{Word embedding} ou en français \keyword{Plongement lexical}
-	\item Ici, on se focalise sur le Word embedding basé sur les réseaux de neurones
+	\item Ceci est appelé : \keyword{Word embedding} ou, en français, \keyword{Plongement lexical}
+	\item Dans ce cours, on se focalise sur le Word embedding basé sur les réseaux de neurones
 	\item Cette technique permet d'apprendre à représenter des relations entre mots
 \end{itemize}
 
@@ -969,7 +969,22 @@
 \framesubtitle{Désambigüisation lexicale}
 
 \begin{itemize}
-	\item  http://babelfy.org/papers
+	\item Désambigüisation lexicale : Word Sense Disambiguation (WSD)
+	\item Sélectionner le sens correct d'un mot 
+	\item Utile pour plusieurs tâches 
+	\begin{itemize}
+		\item Analyse syntaxique. 
+		
+		\expword{I \underline{fish} in the river} (Verbe ou nom ?)
+		
+		\expword{The \underline{fish} was too big} (Verbe ou nom ?)
+		
+		\item Traduction automatique. 
+		
+		\expword{I withdrawed money from the \underline{bank}} (``banque" ou ``rive" ?)
+		
+		\expword{I fish on the \underline{bank}} (``banque" ou ``rive" ?)
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -980,9 +995,30 @@
 \frametitle{Sémantique lexicale : Désambigüisation}
 \framesubtitle{Algorithme de Lesk}
 
-\begin{itemize}
-	\item 
-\end{itemize}
+\vspace{-6pt}
+\begin{block}{Algorithme de Lesk}
+	\footnotesize\vspace{-3pt}
+	\begin{algorithm}[H]
+		\Donnees{un mot $w$; une phrase $s$ contenant $w$}
+		\Res{Le sens de $w$}
+		
+		meilleur\_sens \textleftarrow plus fréquent parmi les sens de $w$\;
+		superposition\_max \textleftarrow 0\;
+		contexte \textleftarrow l'ensemble des mots de $s$\; 
+		
+		\PourTous{sens $w_i$ de $w$}{ 
+			signature \textleftarrow l'ensemble des mots dans le \textbf{gloss} et exemples du sens $w_i$\;
+			superposition \textleftarrow nombre des mots en commun entre \textbf{contexte} et \textbf{signature}\;
+			\Si{superposition $>$ superposition\_max}{
+				superposition\_max \textleftarrow superposition\;
+				meilleur\_sens \textleftarrow $w_i$\;
+			}
+		}
+		
+		\Retour meilleur\_sens \;
+		\vspace{-3pt}
+	\end{algorithm}
+\end{block}
 
 \end{frame}
 
@@ -993,7 +1029,7 @@
 \framesubtitle{Contextual Embeddings}
 
 \begin{itemize}
-	\item 
+	\item Utiliser une 
 \end{itemize}
 
 \end{frame}
