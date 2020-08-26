@@ -989,11 +989,11 @@
 
 \end{frame}
 
-\subsection{Algorithme de Lesk}
+\subsection{Basée sur des bases de connaissance}
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Désambigüisation}
-\framesubtitle{Algorithme de Lesk}
+\framesubtitle{Basée sur des bases de connaissance : Algorithme de Lesk}
 
 \vspace{-6pt}
 \begin{block}{Algorithme de Lesk}
@@ -1022,14 +1022,37 @@
 
 \end{frame}
 
-\subsection{Embeddings contextuels}
+\begin{frame}
+\frametitle{Sémantique lexicale : Désambigüisation}
+\framesubtitle{Basée sur des bases de connaissance : A base de graphes}
+	
+	
+\end{frame}
+
+\subsection{Basée sur l'apprentissage automatique}
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Désambigüisation}
-\framesubtitle{Embeddings contextuels}
+\framesubtitle{Basée sur l'apprentissage automatique: Apprentissage automatique supervisé}
+	
+\begin{itemize}
+	\item Utiliser un corpus annoté (Ex. \expword{SemCor})
+	\item Chaque mot est suivi par le numéro de son sens dans une base lexicale (WordNet)
+	\item Ex. \expword{You will find9 that avocado1 is1 unlike1 other1 fruit1 you have ever1 tasted2}
+	\item En sortie, on aura tous les sens des mots du vocabulaire encodés avec One-Hot
+	\item Les caractéristiques peuvent être les mots qui entourent le mot en question
+	\item La désambigüisation de tous les mots d'un texte est similaire à la tâche d'étiquetage morphosyntaxique
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique lexicale : Désambigüisation}
+\framesubtitle{Basée sur l'apprentissage automatique: Embeddings contextuels}
 
 \begin{itemize}
-	\item Utiliser une 
+	\item Algorithme du plus proche voisin (1-nearest-neighbor algorithm) 
+	
 \end{itemize}
 
 \end{frame}
