@@ -1050,10 +1050,21 @@
 \frametitle{Sémantique lexicale : Désambigüisation}
 \framesubtitle{Basée sur l'apprentissage automatique: Embeddings contextuels}
 
+\begin{minipage}{.68\textwidth}
 \begin{itemize}
 	\item Algorithme du plus proche voisin (1-nearest-neighbor algorithm) 
-	
+	\item Utiliser un embedding contextuel (ELMo, BERT, etc.)
+	\item Entraîner le modèle sur un corpus annoté pour avoir le embedding de chaque token
+	\item Pour avoir le embedding d'un sens $v_s$, on fait la moyenne des embeddings $c_i$ qui l'appartiennent
+	\[ v_s = \frac{1}{n} \sum_{i=1}^{n} c_i \] 
 \end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\begin{figure}
+		\hgraphpage{exp-wsd-nn_.pdf}
+		\caption{Exemple de désambigüisation avec le plus proche voisin \cite{2019-jurafsky-martin}}
+	\end{figure}
+\end{minipage}
 
 \end{frame}
 
