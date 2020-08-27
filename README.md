@@ -77,14 +77,27 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Analyse des dépendances
         - Par transition
         - Par graphe
+1. **Sématique lexicale**
+    - Bases de données lexicales
+        - Relations sémantiques
+        - Wordnet
+        - Autres ressources
+    - Représentation vectorielle des mots
+        - TF-IDF
+        - Mot-Mot
+        - Analyse sémantique latente (LSA)
+    - Word embedding
+        - Word2vec
+        - GloVe
+        - Embeddings contextuels
+        - Évaluation des modèles
+    - Désambigüisation lexicale
+        - Basée sur des bases de connaissance
+        - Basée sur l'apprentissage automatique
 
 **PAS ENCORE**
 
-1. **Sens des mots et désambiguïsation lexicale**
-    - Représentation vectorielle des mots : LSA, TF-IDF
-    - Word embedding :  word2vec, GloVe, BERT
-    - Bases de données lexicales : Relations sémantiques, Wordnet
-    - Désambiguïsation lexicale : Lesk algorithm, Most frequent sense, Contextual Embeddings
+
 1. **Analyse sémantique**
     - Rôles sémantiques
     - Ressources linguistiques : VerbNet, PropBank, FrameNet
