@@ -18,17 +18,23 @@
 \frametitle{Traitement automatique du langage naturel}
 \framesubtitle{Sémantique lexicale : Introduction}
 
-%\begin{exampleblock}{Exemple d'une phrase en français}
-%	\begin{center}
-%		\Large\bfseries
-%		L'élève a écrit une solution avec un stylo. 
-%		
-%		L'élève a écrit une solution avec une explication.
-%	\end{center}
-%\end{exampleblock}
+\begin{exampleblock}{Exemple de la polysémie en français}
+	\begin{center}
+		\Large\bfseries
+%		\begin{itemize}
+			Je veux boire du \expword{café}.
+			
+			Je veux aller au \expword{café}.
+			
+			J'ai récolter du \expword{café}.
+%		\end{itemize}
+	\end{center}
+\end{exampleblock}
 
 \begin{itemize}
-	\item 
+	\item Est-ce que le mot ``\expword{café}" veut la même chose dans les trois phrases ?
+	\item Comment peut-on savoir le sens d'un mot dans ce cas ?
+	\item Les sens du mot ``\expword{café}" : \url{https://babelnet.org/search?word=caf\%C3\%A9&lang=FR}
 \end{itemize}
 
 \end{frame}
@@ -62,8 +68,15 @@
 	\framesubtitle{Bases de données lexicales}
 	
 	\begin{itemize}
-		\item 
+		\item Une base de données contenant le vocabulaire d'une langue
+		\item Informations d'un mot : catégorie grammaticale, lemme, fréquence, etc.
 	\end{itemize}
+
+	\begin{figure}
+		\centering 
+		\hgraphpage[.5\textwidth]{exp-bd-lex_.pdf}
+		\caption{Exemple des informations et leurs relations dans une base lexicale \cite{2019-white-al}}
+	\end{figure}
 	
 \end{frame}
 
@@ -285,7 +298,7 @@
 
 \begin{frame}
 \frametitle{Sémantique lexicale : Représentation vectorielle}
-\framesubtitle{TF-IDF : Exemple d'une représentation avec Tf}
+\framesubtitle{TF-IDF : Exemple d'une représentation avec TF}
 
 \begin{exampleblock}{Exemple d'une collection de phrases}
 	\begin{itemize}
@@ -1026,7 +1039,26 @@
 \frametitle{Sémantique lexicale : Désambigüisation}
 \framesubtitle{Basée sur des bases de connaissance : A base de graphes}
 	
-	
+\begin{itemize}
+	\item Exemple : \url{http://babelfy.org/} \cite{2014-moro-al}
+	\item \optword{Étape 1 : Construction des signatures sémantiques}
+	\begin{itemize}
+		\item Attribuer un poids à chaque arc reliant deux concepts en se basant sur le nombre des triangles qui les relient (à partir d'un réseau sémantique)
+		\item Calculer la probabilité d'un concept sachant un autre en se basant sur ces poids
+		\item Minimiser le graphe en utilisant ``\keyword{Random walk with restart}"
+	\end{itemize}
+	\item \optword{Étape 2 : Identification des candidats}
+	\begin{itemize}
+		\item Appliquer l'étiquetage morphosyntaxique sur le texte d'entrée
+		\item Extraire tous les sens des mots ou des expressions
+	\end{itemize}
+	\item \optword{Étape 3 : Désambigüisation des candidats}
+	\begin{itemize}
+		\item Construire un graphe en se basant sur la signature sémantique et les candidats
+		\item Créer un sous-graphe en éliminant les liens faibles
+	\end{itemize}
+\end{itemize}
+
 \end{frame}
 
 \subsection{Basée sur l'apprentissage automatique}
