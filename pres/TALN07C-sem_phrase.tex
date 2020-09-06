@@ -7,16 +7,16 @@
 
 \input{options}
 
-\title[TALN : 07- Sémantique propositionnelle]%
-{Traitement automatique du langage naturel\\Chapitre 07 : Sémantique propositionnelle} 
+\title[TALN : 07- Sémantique de phrase]%
+{Traitement automatique du langage naturel\\Chapitre 07 : Sémantique de phrase} 
 
-\changegraphpath{../img/sem-prop/}
+\changegraphpath{../img/sem-phrase/}
 
 \begin{document}
 	
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Sémantique propositionnelle : Introduction}
+\framesubtitle{Sémantique de phrase : Introduction}
 
 %\begin{exampleblock}{Exemple de la polysémie en français}
 %	\begin{center}
@@ -44,7 +44,7 @@
 
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Sémantique propositionnelle : Plan}
+\framesubtitle{Sémantique de phrase : Plan}
 
 \begin{multicols}{2}
 %	\small
@@ -57,8 +57,8 @@
 %===================================================================================
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle}
-	\framesubtitle{Rôles sémantiques}
+\frametitle{Sémantique de phrase}
+\framesubtitle{Rôles sémantiques}
 	
 	\begin{itemize}
 		\item 
@@ -69,19 +69,65 @@
 \subsection{Rôles thématiques}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Rôles sémantiques}
-	\framesubtitle{Rôles thématiques}
+\frametitle{Sémantique de phrase : Rôles sémantiques}
+\framesubtitle{Rôles thématiques}
 	
-	\begin{itemize}
-		\item 
-	\end{itemize}
+	\vspace{-12pt}
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
+	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
+		\rowcolor{darkblue}
+		\textcolor{white}{Rôle} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
+		
+		AGENT &
+		Le causeur volontaire d'un évènement &
+		\expword{\underline{John} a cassé la fenêtre avec une pierre.}\\
+		
+		EXPERIENCER & 
+		L'expérimentateur d'un évènement & 
+		\expword{\underline{John} a mal à la tête.}\\
+		
+		FORCE &
+		Le causeur non volontaire d'un évènement &
+		\expword{\underline{Le vent} souffle les débris.}\\
+		
+		THEME &
+		The participant most directly affected by an event &
+		\expword{John a cassé \underline{la fenêtre} avec une pierre.}\\
+		
+		RESULT &
+		The end product of an event &
+		\expword{La ville a construit \underline{un terrain de baseball}.}\\
+		
+		CONTENT &
+		The proposition or content of a propositional event &
+		\expword{Mona a demandé\newline	\underline{``Vous avez rencontré Mary Ann dans un supermarché?"}}\\
+		
+		INSTRUMENT &
+		An instrument used in an event &
+		\expword{\underline{une pierre} a cassé la fenêtre.}\\
+		
+		BENEFICIARY &
+		The beneficiary of an event &
+		\expword{Ann fait des réservations d'hôtel pour \underline{son patron}.}\\
+		
+		SOURCE &
+		The origin of the object of a transfer event &
+		\expword{Je suis arrivé de \underline{Boston}.}\\
+		
+		GOAL &
+		The destination of an object of a transfer event &
+		\expword{Je suis allé à \underline{Portland}.}\\
+	\end{tabular}
+	\caption{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
+\end{table}
 	
 \end{frame}
 
 \subsection{Évènements et états}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Rôles sémantiques}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
 	\framesubtitle{Évènements et états}
 	
 	\begin{itemize}
@@ -93,7 +139,7 @@
 \subsection{Temps et locations}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Rôles sémantiques}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
 	\framesubtitle{Temps et locations}
 	
 	\begin{itemize}
@@ -107,7 +153,7 @@
 %===================================================================================
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle}
+	\frametitle{Sémantique de phrase}
 	\framesubtitle{Ressources linguistiques}
 	
 	\begin{itemize}
@@ -119,7 +165,7 @@
 \subsection{VerbNet}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Ressources linguistiques}
+	\frametitle{Sémantique de phrase : Ressources linguistiques}
 	\framesubtitle{VerbNet}
 	
 	\begin{itemize}
@@ -131,7 +177,7 @@
 \subsection{PropBank}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Ressources linguistiques}
+	\frametitle{Sémantique de phrase : Ressources linguistiques}
 	\framesubtitle{PropBank}
 	
 	\begin{itemize}
@@ -143,7 +189,7 @@
 \subsection{FrameNet}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Ressources linguistiques}
+	\frametitle{Sémantique de phrase : Ressources linguistiques}
 	\framesubtitle{FrameNet}
 	
 	\begin{itemize}
@@ -158,7 +204,7 @@
 %===================================================================================
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle}
+	\frametitle{Sémantique de phrase}
 	\framesubtitle{Représentation sémantique des phrases}
 	
 	\begin{itemize}
@@ -170,7 +216,7 @@
 \subsection{Logique du premier ordre}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Représentation sémantique des phrases}
+	\frametitle{Sémantique de phrase : Représentation}
 	\framesubtitle{Logique du premier ordre}
 	
 	\begin{itemize}
@@ -182,7 +228,7 @@
 \subsection{Graphes (AMR)}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Représentation sémantique des phrases}
+	\frametitle{Sémantique de phrase : Représentation}
 	\framesubtitle{Graphes (AMR)}
 	
 	\begin{itemize}
@@ -196,7 +242,7 @@
 %===================================================================================
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle}
+	\frametitle{Sémantique de phrase}
 	\framesubtitle{Étiquetage de rôles sémantiques}
 	
 	\begin{itemize}
@@ -208,7 +254,7 @@
 \subsection{En utilisant des caractéristiques}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Étiquetage de rôles sémantiques}
+	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
 	\framesubtitle{En utilisant des caractéristiques}
 	
 	\begin{itemize}
@@ -220,7 +266,7 @@
 \subsection{En utilisant des caractéristiques}
 
 \begin{frame}
-	\frametitle{Sémantique propositionnelle : Étiquetage de rôles sémantiques}
+	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
 	\framesubtitle{En utilisant les réseaux de neurones}
 	
 	\begin{itemize}
