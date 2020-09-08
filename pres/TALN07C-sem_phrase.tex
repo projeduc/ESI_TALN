@@ -18,17 +18,18 @@
 \frametitle{Traitement automatique du langage naturel}
 \framesubtitle{Sémantique de phrase : Introduction}
 
-%\begin{exampleblock}{Exemple de la polysémie en français}
-%	\begin{center}
-%		\Large\bfseries
-%%		\begin{itemize}
-%%		\end{itemize}
-%	\end{center}
-%\end{exampleblock}
-%
-%\begin{itemize}
-%	\item 
-%\end{itemize}
+\begin{exampleblock}{Exemple de la polysémie en français}
+	\begin{center}
+		\Large\bfseries
+%		\begin{itemize}
+%		\end{itemize}
+		
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item 
+\end{itemize}
 
 \end{frame}
 
@@ -72,7 +73,7 @@
 \frametitle{Sémantique de phrase : Rôles sémantiques}
 \framesubtitle{Rôles thématiques}
 	
-	\vspace{-12pt}
+\vspace{-12pt}
 \begin{table}
 	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
 	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
@@ -124,79 +125,307 @@
 	
 \end{frame}
 
-\subsection{Évènements et états}
-
-\begin{frame}
-	\frametitle{Sémantique de phrase : Rôles sémantiques}
-	\framesubtitle{Évènements et états}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-\subsection{Temps et locations}
-
-\begin{frame}
-	\frametitle{Sémantique de phrase : Rôles sémantiques}
-	\framesubtitle{Temps et locations}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-%===================================================================================
-\section{Ressources linguistiques}
-%===================================================================================
-
-\begin{frame}
-	\frametitle{Sémantique de phrase}
-	\framesubtitle{Ressources linguistiques}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-\subsection{VerbNet}
-
-\begin{frame}
-	\frametitle{Sémantique de phrase : Ressources linguistiques}
-	\framesubtitle{VerbNet}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-\subsection{PropBank}
-
-\begin{frame}
-	\frametitle{Sémantique de phrase : Ressources linguistiques}
-	\framesubtitle{PropBank}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
 \subsection{FrameNet}
 
 \begin{frame}
-	\frametitle{Sémantique de phrase : Ressources linguistiques}
-	\framesubtitle{FrameNet}
+\frametitle{Sémantique de phrase : Rôles sémantiques}
+\framesubtitle{FrameNet}
+
+\begin{minipage}{.68\textwidth}
+	\begin{itemize}
+		\item {\scriptsize \url{https://framenet.icsi.berkeley.edu/fndrupal/}}
+		\item {\scriptsize \url{https://www.nltk.org/howto/framenet.html}}
+		\item Ressource pour représenter le sens 
+		\item basée sur la théorie ``\keyword{Frame semantics}" (Sémantique des cadres) de \keyword{Fillmore}
+		\item annotée manuellement
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\hgraphpage{frameNet-logo.jpg}
+\end{minipage}
+
+\begin{exampleblock}{Exemple des phrases qui ont le même patron (Frame)}
+	The price of petrol increased.
+	
+	The price of petrol rose.
+	
+	There has been a rise in the price of petrol.
+\end{exampleblock}
+
+%\begin{itemize}
+%	\item 
+%\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
+	\framesubtitle{FrameNet : Structure}
 	
 	\begin{itemize}
-		\item 
+		\item \optword{Frame} (Cadre) : une représentation schématique d'une situation
+		\begin{itemize}
+			\item Contient : un nom, une définition, un type sémantique, des éléments du cadre, des unités lexicales, des exemples et des relations avec d'autres cadres
+		\end{itemize}
+	
+		\item \optword{Frame Elements} (Éléments d'un Cadre) : un rôle sémantique spécifique au cadre. 
+		\begin{itemize}
+			\item Il décrit un participant ou une situation dans le cadre
+			\item Il existe des rôles de base (\keyword{Core}) et d'autres secondaires (\keyword{Non-Core})
+		\end{itemize}
+	
+		\item \optword{Lexical Units} (Unité lexicales) : des lemmes avec leurs catégories grammaticales.
+		\begin{itemize}
+			\item Une unité lexicale déclenche le cadre lorsque rencontrée
+		\end{itemize}
+	
+		\item \optword{Relations} : des  relations inter-cadres
+		\begin{itemize}
+			\item Exemple, \expword{l'héritage}
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
+
+\begin{frame}
+\frametitle{Sémantique de phrase : Rôles sémantiques}
+\framesubtitle{FrameNet : Exemple des unités lexicales}
+
+\vspace{-12pt}
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow} \scriptsize\bfseries
+	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
+		\rowcolor{darkblue}
+		\textcolor{white}{Lexical Unit} & \textcolor{white}{Frame} & \textcolor{white}{Exemple}\\
+
+		break.n & Opportunity & \\	
+		break.v & Cause\_harm & \expword{Jolosa broke a rival player's jaw.}\\
+		break.v & Compliance & \expword{He broke his promess.}\\
+		break.v & Experience\_bodily\_harm & \expword{I broke my arm in the accident.}\\
+		break.v & Cause\_to\_fragment & \expword{Michael broke the bottle against his head}\\
+		break.v & Render\_nonfunctional & \expword{I guess I broke the doorknob by twisting it too hard.}\\
+		break.v & Breaking\_off & \expword{The handle broke off of the pot.}\\
+		break.v & Breaking\_apart & \expword{The handle broke off of the pot.}\\
+
+	\end{tabular}
+	\caption{Les cadres sémantiques activées par l'unité lexicale ``break"}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
+	\framesubtitle{FrameNet : Exemple d'un cadre sémantique (1)}
+	
+	\vspace{-6pt}
+	\begin{table}
+		\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
+		\begin{tabular}{p{.15\textwidth}p{.75\textwidth}}
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{Cause\_to\_fragment}} \\
+			
+			Définition & An \textcolor{red}{Agent} suddenly and often violently separates the \textcolor{red}{Whole\_patient} into two or more smaller \textcolor{red}{Pieces}, resulting in the \textcolor{red}{Whole\_patient} no longer existing as such. Several lexical items are marked with the semantic type Negative, which indicates that the fragmentation is necessarily judged as injurious to the original \textcolor{red}{Whole\_patient}. Compare this frame with Damaging, Render\_non-functional, and Removing. \\	
+			
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{FEs (Core)}} \\
+			
+			Agent [Agt] \newline \textcolor{blue}{Semantic Type: Sentient} & 
+			The conscious entity, generally a person, that performs the intentional action that results in the \textcolor{red}{Whole\_patient} being broken into \textcolor{red}{Pieces}. \newline \expword{\underline{I and I alone} can SHATTER the gem and break the curse.} \\
+			
+			Cause [cau] & 
+			An event which leads to the fragmentation of the \textcolor{red}{Whole\_patient}. \\
+			
+			Pieces [Pieces]	& 
+			The fragments of the \textcolor{red}{Whole\_patient} that result from the \textcolor{red}{Agent}'s action.
+			\newline
+			\expword{I SMASHED the toy boat to \underline{flinders}.} \\
+			
+			Whole\_patient [Pat] & The entity which is destroyed by the \textcolor{red}{Agent} and that ends up broken into \textcolor{red}{Pieces}.
+			\newline
+			\expword{Shattering someone's confidence is a little different than SHATTERING \underline{a dish}.} \\
+			
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core)}} \\
+			
+			Degree [Degr] \newline \textcolor{blue}{Semantic Type: Degree} &
+			The degree to which the fracturing is completed. 
+			\newline
+			\expword{I SHATTERED the vase \underline{completely}.} \\
+			
+			Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &
+			A state of affairs that the Agent is responding to in performing the action. \newline
+			\expword{He TORE the treaty UP out of frustration.}
+			
+		\end{tabular}
+		\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment"
+			\newline
+			{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
+		}
+	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
+	\framesubtitle{FrameNet : Exemple d'un cadre sémantique (2)}
+	
+	\vspace{-6pt}
+	\begin{table}
+		\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
+		\begin{tabular}{p{.15\textwidth}p{.75\textwidth}}
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{Cause\_to\_fragment}} \\
+			
+			 & \\	
+			 
+			
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core) [Suite]}} \\
+			
+			Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &	
+			A state of affairs that the \textcolor{red}{Agent} is responding to in performing the action.
+			\newline
+			\expword{He TORE the treaty UP \underline{out of frustration}.} \\
+			
+			Instrument [Ins] \newline \textcolor{blue}{Semantic Type: Physical\_entity} &
+			An entity directed by the  \textcolor{red}{Agent} that interacts with a \textcolor{red}{Whole\_patient} to accomplish its fracture. \\
+			
+			
+			\multicolumn{2}{c}{\large ...} \\
+			
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{Frame-frame Relations}} \\
+			
+			Inherits from & Transitive\_action \\
+			Uses & Destroying \\
+			Is Causative of & Breaking\_apart \\
+			
+			\rowcolor{darkblue}
+			\multicolumn{2}{c}{\textcolor{white}{Lexical Units}} \\
+			
+			& break apart.v, break down.v, break up.v, break.v, chip.v, cleave.v, dissect.v, dissolve.v, fracture.v, fragment.v, rend.v, rip up.v, rip.v, rive.v, shatter.v, shiver.v, shred.v, sliver.v, smash.v, snap.v, splinter.v, split.v, take apart.v, tear up.v, tear.v \\
+			
+		\end{tabular}
+		\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment" [suite]
+			\newline
+			{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
+		}
+	\end{table}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
+	\framesubtitle{FrameNet : Exemple d'une liste de patrons de valence}
+	
+	\vspace{-6pt}
+	\begin{table}
+		\tiny\bfseries
+		\begin{tabular}{|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|}
+			\hline
+			\rowcolor{darkblue}
+			\textcolor{white}{Number Annotated} & \multicolumn{5}{|l|}{\textcolor{white}{Patterns}}\\
+			\hline
+			\multicolumn{6}{l}{ }\\
+			
+			\hline
+			\rowcolor{lightyellow}
+			1 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Instrument} & \textcolor{red}{Pieces} & \textcolor{red}{Whole\_patient} & \\
+			\hline
+			\rowcolor{lightyellow}
+			(1) & CNI \newline - - & PP[with] \newline Dep & INI \newline - - & NP \newline Ext & \\
+			\hline
+			\multicolumn{6}{l}{ }\\
+			
+			\hline
+			\rowcolor{lightblue}
+			1 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Means} & \textcolor{red}{Pieces} & \textcolor{red}{Time} & \textcolor{red}{Whole\_patient} \\
+			\hline
+			\rowcolor{lightblue}
+			(1) & NP \newline Ext & 2nd \newline - - & INI \newline - - & Sinterrog \newline Dep & NP \newline Obj \\
+			\hline
+			\multicolumn{6}{l}{ }\\
+			
+			\hline
+			\rowcolor{lightyellow}
+			4 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Pieces} & \textcolor{red}{Whole\_patient} & & \\
+			\hline
+			\rowcolor{lightyellow}
+			(4) & NP \newline Ext & INI \newline - - & NP \newline Obj & & \\
+			\hline
+		\end{tabular}
+		\caption{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence}
+	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
+	\framesubtitle{FrameNet : Exemple des annotations lexicographiques}
+	
+	\vspace{-6pt}
+	\begin{figure}
+		\tiny\bfseries
+		
+		\begin{itemize}
+			\item 429-s20-rcoll-skull
+			\begin{enumerate}\tiny
+				\item \ [\textsubscript{\color{red}Agent} Former England Under-21 player Keith Benton] FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his son Seb 's skull] [\textsubscript{\color{red}Time} when he hit the ball into the crowd during a match in Buckingham]. [\textsubscript{\color{red}Pieces} INI] 
+				\item \ [\textsubscript{\color{red}Agent} He] hit a lamp-post and FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} Mike 's skull]. [\textsubscript{\color{red}Pieces} INI] 
+				\item When he found the man [\textsubscript{\color{red}Agent} he] threw the acid into his face and beat him with the hammer , FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his skull] and his thumb. [\textsubscript{\color{red}Pieces} INI] 
+				\item \ [\textsubscript{\color{red}Agent} A nanny] has been jailed after FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} the skulls of two new born babies in her care]. [\textsubscript{\color{red}Pieces} INI] 
+			\end{enumerate}
+			\item 520-s20-np-vping
+			\item 620-s20-np-ppother
+			\item 660-s20-trans-simple
+			\begin{enumerate}\tiny
+				\item \ [\textsubscript{\color{red}Agent} Then 17-year-old Lee Diaz, of North End Gardens, Bishop Auckland], attacked a second party-goer, Carl Gent, punching him in the face and FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his jaw]. [\textsubscript{\color{red}Pieces} INI] 
+			\end{enumerate}
+			
+%			\item 670-s20-pass-by
+			\item 680-s20-pass
+			\begin{enumerate}\tiny
+				\item \ [\textsubscript{\color{red}Whole\_patient} It] was FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Instrument} with a solvent-cleaned chisel], and the outer orange layer discarded. [\textsubscript{\color{red}Agent} CNI][\textsubscript{\color{red}Pieces} INI] 
+			\end{enumerate}
+			
+%			\item 690-s20-trans-other
+%			\item 730-s20-ppwith
+%			\item 780-s20-ppother
+%			\item 880-s20-intrans-simple
+%			\item 890-s20-intrans-adverb
+%			\item 900-s20-other
+		\end{itemize}
+		
+		\caption{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
+	\end{figure}
+	
+\end{frame}
+
+%\subsection{PropBank}
+%
+%\begin{frame}
+%	\frametitle{Sémantique de phrase : Ressources linguistiques}
+%	\framesubtitle{PropBank}
+%	
+%	\begin{itemize}
+%		\item 
+%	\end{itemize}
+%	
+%\end{frame}
+%
+%\subsection{VerbNet}
+%
+%\begin{frame}
+%	\frametitle{Sémantique de phrase : Ressources linguistiques}
+%	\framesubtitle{VerbNet}
+%	
+%	\begin{itemize}
+%		\item 
+%	\end{itemize}
+%	
+%\end{frame}
+
 
 
 %===================================================================================
