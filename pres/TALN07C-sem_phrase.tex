@@ -138,6 +138,7 @@
 		\item Ressource pour représenter le sens 
 		\item basée sur la théorie ``\keyword{Frame semantics}" (Sémantique des cadres) de \keyword{Fillmore}
 		\item annotée manuellement
+		\item Plus de rôles
 	\end{itemize}
 \end{minipage}
 \begin{minipage}{.3\textwidth}
@@ -402,18 +403,115 @@
 	
 \end{frame}
 
-%\subsection{PropBank}
-%
-%\begin{frame}
-%	\frametitle{Sémantique de phrase : Ressources linguistiques}
-%	\framesubtitle{PropBank}
+\subsection{PropBank}
+
+\begin{frame}
+\frametitle{Sémantique de phrase : Ressources linguistiques}
+\framesubtitle{PropBank}
+	
+%\begin{minipage}{.68\textwidth}
+\begin{itemize}
+	\item {\scriptsize \url{https://propbank.github.io/}}
+	\item {\scriptsize \url{https://www.nltk.org/howto/propbank.html}}
+	\item Corpus annoté en se basant sur la structure Prédicat-Arguments (verbes)
+	\item Moins de rôles 
+	\begin{itemize}
+		\item \optword{Proto-Agent}
+		\begin{itemize}
+			\item participer volontairement dans un évènement ou état
+			\item causer un évènement ou un changement d'état d'un autre participant
+		\end{itemize}
+		\item \optword{Proto-Patient}
+		\begin{itemize}
+			\item éprouver un changement d'état
+			\item être affectée par un autre participant
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+%\end{minipage}
+%\begin{minipage}{.3\textwidth}
+%	\hgraphpage{frameNet-logo.jpg}
+%\end{minipage}
+
+%\begin{exampleblock}{Exemple des phrases qui ont le même patron (Frame)}
+%	The price of petrol increased.
 %	
-%	\begin{itemize}
-%		\item 
-%	\end{itemize}
+%	The price of petrol rose.
 %	
-%\end{frame}
-%
+%	There has been a rise in the price of petrol.
+%\end{exampleblock}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Rôles sémantiques}
+	\framesubtitle{PropBank : Structure}
+	
+	\begin{itemize}
+		\item \optword{Roleset id} : Les verbes sont annotés par leurs sens 
+		\begin{itemize}
+			\item Ex. \expword{know.01 : be cognizant of, realize ; know.02 : be familiar with, have experienced}		
+		\end{itemize}
+		
+		\item \optword{Roles} : Chaque verbe/sens a un ensemble d'arguments possibles  
+		\begin{itemize}
+			\item \optword{Arg0} : PROTO-AGENT
+			\item \optword{Arg1} : PROTO-PATIENT
+			\item \optword{Arg2} : en général, benefactive, instrument, attribute, ou end state
+			\item \optword{Arg3} : en général, start point, benefactive, instrument, ou attribute
+			\item \optword{Arg4} : end point
+			\item Arg2 ... Arg5 ne sont pas consistants dans le corpus
+		\end{itemize}
+	
+		\item \optword{Modifiers} : Marqués par \keyword{ArgM}  
+		\begin{itemize}
+			\item \optword{ArgM-TMP} : Quand ?
+			\item \optword{ArgM-LOC} : Où ?
+			\item \optword{ArgM-MNR} : Comment ? 
+			\item ...
+		\end{itemize}
+		
+		\item \optword{Exemples annotés} 
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Sémantique de phrase : Rôles sémantiques}
+\framesubtitle{PropBank : Exemple des prédicats}
+	
+\vspace{-6pt}
+\begin{figure}
+%	\tiny
+	\scriptsize
+	\begin{itemize}
+		\item \textbf{Roleset id}
+		\begin{itemize}\scriptsize
+			\item \textbf{know.01} : be cognizant of, realize
+		\end{itemize}
+		\item \textbf{Roles}
+		\begin{itemize}\scriptsize
+			\item \textbf{Arg0} : knower
+			\item \textbf{Arg1} : fact that is known
+			\item \textbf{Arg2} : entity that arg1 is known ABOUT
+		\end{itemize}
+	
+		\item \textbf{Example: know-v: sentential thing known}
+		\begin{itemize}\scriptsize
+			\item \ [\textsubscript{\color{red}Arg0} The other side] knows [\textsubscript{\color{red}Arg1} that Giuliani has always been prochoice].
+		\end{itemize}
+	
+		\item \textbf{Example: know-v: attributive}
+		\begin{itemize}\scriptsize
+			\item \ [\textsubscript{\color{red}Arg0} He] did[\textsubscript{\color{red}ArgM-NEG} n't] know [\textsubscript{\color{red}Arg1} (anything)] [\textsubscript{\color{red}Arg2} about most of the cases] [\textsubscript{\color{red}ArgM-TMP} until Wednesday].
+		\end{itemize}
+	\end{itemize}
+		
+	\caption{Extrait des annotations ProBank du prédicat ``know" de \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html}}
+\end{figure}
+	
+\end{frame}
+
 %\subsection{VerbNet}
 %
 %\begin{frame}
@@ -425,46 +523,6 @@
 %	\end{itemize}
 %	
 %\end{frame}
-
-
-
-%===================================================================================
-\section{Représentation sémantique des phrases}
-%===================================================================================
-
-\begin{frame}
-	\frametitle{Sémantique de phrase}
-	\framesubtitle{Représentation sémantique des phrases}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-\subsection{Logique du premier ordre}
-
-\begin{frame}
-	\frametitle{Sémantique de phrase : Représentation}
-	\framesubtitle{Logique du premier ordre}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-\subsection{Graphes (AMR)}
-
-\begin{frame}
-	\frametitle{Sémantique de phrase : Représentation}
-	\framesubtitle{Graphes (AMR)}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
 
 %===================================================================================
 \section{Étiquetage de rôles sémantiques}
@@ -497,6 +555,44 @@
 \begin{frame}
 	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
 	\framesubtitle{En utilisant les réseaux de neurones}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+%===================================================================================
+\section{Représentation sémantique des phrases}
+%===================================================================================
+
+\begin{frame}
+	\frametitle{Sémantique de phrase}
+	\framesubtitle{Représentation sémantique des phrases}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Logique du premier ordre}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Graphes (AMR)}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Graphes (AMR)}
 	
 	\begin{itemize}
 		\item 
