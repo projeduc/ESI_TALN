@@ -529,12 +529,16 @@
 %===================================================================================
 
 \begin{frame}
-	\frametitle{Sémantique de phrase}
-	\framesubtitle{Étiquetage de rôles sémantiques}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
+\frametitle{Sémantique de phrase}
+\framesubtitle{Étiquetage de rôles sémantiques}
+
+\begin{figure}
+	\hgraphpage{exp-srl_.pdf}
+	\caption{Exemple d'étiquetage de rôles sémantiques en se basant sur ProbBank [\url{https://demo.allennlp.org/semantic-role-labeling/}]}
+\end{figure}
+%\begin{itemize}
+%	\item 
+%\end{itemize}
 	
 \end{frame}
 
@@ -550,7 +554,7 @@
 	
 \end{frame}
 
-\subsection{En utilisant des caractéristiques}
+\subsection{En utilisant les réseaux de neurones}
 
 \begin{frame}
 	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
@@ -581,6 +585,65 @@
 \begin{frame}
 	\frametitle{Sémantique de phrase : Représentation}
 	\framesubtitle{Logique du premier ordre}
+	
+	\begin{itemize}
+		\item \optword{terme} : représente un objet
+		\begin{itemize}
+			\item \optword{constante} : un objet spécifique
+			
+			\expword{Karim, ESI, Algérie}
+			
+			\item \optword{fonction} : retourne un objet en fonction d'un autre
+			
+			\expword{EmplacementDe(ESI)}
+			
+			\item \optword{variable} : référence vers un objet inconnu 
+			
+			\expword{x, y, z}
+			
+		\end{itemize}
+		\item \optword{prédicat} : représente une relation 
+		
+		\expword{Ecole(ESI), EnseignantA(Karim, ESI)}
+		
+		\item \optword{connecteur} : ET ($ \wedge $) OU ($ \vee $), NON ($ \neg $ ) et IMPLIQUE ($\rightarrow$)
+		
+		\expword{EnseignantA(Karim, ESI) $\wedge$ Ecole(ESI)}
+		
+		\item \optword{quantificateur} : 
+		
+		\expword{Je mange à un restaurant près de l'ESI.}
+		
+		\expword{$\exists$ x Restaurant(x) $\wedge$ PrèsDe(EmplacementDe(x), EmplacementDe(ESI)) $\wedge$  MangerA(Interlocuteur, x)}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre : Formalisme}
+	
+	\begin{figure}
+		\vgraphpage[0.6\textheight]{LPO-gram_.pdf}
+		\caption{La grammaire spécifiant le syntaxe du logique du premier ordre d'après \cite{2019-jurafsky-martin} (Adaptée de \cite{2002-russell-norvig})}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre : Notation Lambda}
+	
+	\begin{itemize}
+		\item Création des fonctions anonymes 
+		\item \keyword{$ \lambda $x (une expression sur x)}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre : Analyse sémantique}
 	
 	\begin{itemize}
 		\item 
