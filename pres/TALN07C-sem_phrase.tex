@@ -606,7 +606,7 @@
 		
 		\expword{Ecole(ESI), EnseignantA(Karim, ESI)}
 		
-		\item \optword{connecteur} : ET ($ \wedge $) OU ($ \vee $), NON ($ \neg $ ) et IMPLIQUE ($\rightarrow$)
+		\item \optword{connecteur} : ET ($ \wedge $) OU ($ \vee $), NON ($ \neg $ ), IMPLIQUE ($\rightarrow$) et EQUIVALENT ($ \Leftrightarrow $)
 		
 		\expword{EnseignantA(Karim, ESI) $\wedge$ Ecole(ESI)}
 		
@@ -635,8 +635,19 @@
 	\framesubtitle{Logique du premier ordre : Notation Lambda}
 	
 	\begin{itemize}
-		\item Création des fonctions anonymes 
-		\item \keyword{$ \lambda $x (une expression sur x)}
+		\item \keyword{$ \lambda $-Expression}
+		\begin{itemize}
+			\item Description des fonctions anonymes sur des variables
+			\item \keyword{$ \lambda $x.P(x)}
+			\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)} pour représenter l'expression \expword{likes Brit}
+		\end{itemize}
+	
+		\item \keyword{$ \lambda $-Reduction}
+		\begin{itemize}
+			\item Substitution de la variable par une expression
+			\item \keyword{$ \phi@\psi $}
+			\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)@ALEX = LIKES(ALEX, BRIT)}
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -645,20 +656,133 @@
 	\frametitle{Sémantique de phrase : Représentation}
 	\framesubtitle{Logique du premier ordre : Analyse sémantique}
 	
+	\begin{figure}
+		\begin{tabular}{ll}
+			\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
+			\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
+		\end{tabular}
+		\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre : Analyse sémantique (Les quantificateurs)}
+	
+	\vspace{-.6cm}
+	\begin{figure}
+		\begin{tabular}{ll}
+			\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
+			\hgraphpage[0.65\textwidth]{sem-qarbre_.pdf} \\
+		\end{tabular}
+		\caption{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
+	\end{figure}
+
+\vspace{-.6cm}
+{\small 
+	\begin{align*}
+	& VP.sem & = &V_t.sem@NP.sem \\
+	& & = & \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))@(\textcolor{blue}{\lambda P.P(ALEX)}) \\
+	& & = & \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX)@(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
+	& & = & \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{ALEX}) \\
+	& & = & \lambda x.LIKES(x, ALEX) \\
+	\end{align*}
+}
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre : Analyse sémantique avec NLTK}
+	
+	\begin{exampleblock}{Exemple d'analyse sémantique en NLTK}
+	\optword{Code :}
+	{\scriptsize
+		\begin{lstlisting}[language=Python]
+from nltk import load_parser
+parser = load_parser('grammars/book_grammars/simple-sem.fcfg', trace=0)
+sentence = 'Angus gives a bone to every dog'
+tokens = sentence.split()
+for tree in parser.parse(tokens):
+    print(tree.label()['SEM'])
+		\end{lstlisting}
+	}
+
+	\optword{Résultat :}
+	{\scriptsize\bfseries
+	\begin{lstlisting}
+all z2.(dog(z2) -> exists z1.(bone(z1) & give(angus,z1,z2)))
+	\end{lstlisting}
+	}
+	
+	\end{exampleblock}
+
 	\begin{itemize}
-		\item 
+		\item \url{https://www.nltk.org/book/ch10.html}
 	\end{itemize}
 	
 \end{frame}
 
 \subsection{Graphes (AMR)}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Sémantique de phrase : Représentation}
 	\framesubtitle{Graphes (AMR)}
 	
 	\begin{itemize}
-		\item 
+		\item Abstract Meaning Representation \cite{2013-banarescu-al}
+		\item Un graphe raciné, étiqueté, dirigé et acyclique
+		\item Il utilise les concepts de \keyword{ProbBank}
+	\end{itemize}
+
+	\begin{exampleblock}{Trois formats : Exemple ``The boy wants to go"}
+		\begin{minipage}{.3\textwidth}
+			\optword{Format logique}
+			
+			\footnotesize
+			$ \exists $ w, b, g : 
+			
+			instance(w, want-01) 
+			
+			$ \wedge $ instance(g, go-01) 
+			
+			$ \wedge $ instance(b, boy) 
+			
+			$ \wedge $ arg0(w, b) 
+			
+			$ \wedge $ arg1(w, g) 
+			
+			$ \wedge $ arg0(g, b)
+		\end{minipage}
+		\begin{minipage}{.35\textwidth}
+			\optword{Format AMR}
+			
+			\begin{verbatim}
+(w / want-01
+    :arg0 (b / boy)
+    :arg1 (g / go-01
+    :arg0 b))
+			\end{verbatim}
+			
+		\end{minipage}
+		\begin{minipage}{.3\textwidth}
+			\optword{Format Graphe}
+			
+			\hgraphpage{amr-graphe-exp.pdf}
+		\end{minipage}
+	\end{exampleblock}
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Graphes (AMR)}
+	
+	\begin{itemize}
+		\item Abstract Meaning Representation \cite{2013-banarescu-al}
+		\item Un graphe raciné, étiqueté, dirigé et acyclique
+		\item Il utilise les concepts de \keyword{ProbBank}
 	\end{itemize}
 	
 \end{frame}
