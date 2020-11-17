@@ -575,7 +575,25 @@
 	\framesubtitle{Représentation sémantique des phrases}
 	
 	\begin{itemize}
-		\item 
+		\item Il y a plusieurs façons pour expliquer le même sens
+		\begin{itemize}
+			\item \expword{L'étudiant a préparé un rapport.}
+			\item \expword{Un rapport a été préparé par l'étudiant.}
+		\end{itemize}
+	
+		\item Les phrases en langages naturels peuvent être ambigües
+		\begin{itemize}
+			\item \expword{Elle a emporté les clefs de la maison au garage.}
+		\end{itemize}
+	
+		\item Plusieurs tâches peuvent bénéficier 
+		\begin{itemize}
+			\item Compréhension du langage naturel
+			\item Questions-Réponses
+			\item Recherche d'information
+			\item Traduction automatique
+			\item Résumé automatique
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -733,7 +751,7 @@ all z2.(dog(z2) -> exists z1.(bone(z1) & give(angus,z1,z2)))
 	\begin{itemize}
 		\item Abstract Meaning Representation \cite{2013-banarescu-al}
 		\item Un graphe raciné, étiqueté, dirigé et acyclique
-		\item Il utilise les concepts de \keyword{ProbBank}
+		\item Il utilise les concepts de \keyword{PropBank}
 	\end{itemize}
 
 	\begin{exampleblock}{Trois formats : Exemple ``The boy wants to go"}
@@ -777,13 +795,44 @@ all z2.(dog(z2) -> exists z1.(bone(z1) & give(angus,z1,z2)))
 
 \begin{frame}[fragile]
 	\frametitle{Sémantique de phrase : Représentation}
-	\framesubtitle{Graphes (AMR)}
+	\framesubtitle{Graphes (AMR) : Relations}
 	
 	\begin{itemize}
-		\item Abstract Meaning Representation \cite{2013-banarescu-al}
-		\item Un graphe raciné, étiqueté, dirigé et acyclique
-		\item Il utilise les concepts de \keyword{ProbBank}
+		\item \optword{Arguments du cadre (frame)} : Selon PropBank
+		\begin{itemize}
+			\item :arg0, :arg1, :arg2, :arg3, :arg4, :arg5
+		\end{itemize}
+		\item \optword{Relations sémantiques générales}
+		\begin{itemize}
+			\item :accompanier, :age, :beneficiary, :cause, :compared-to, :concession, :condition, :consist-of, :degree, :destination, :direction, :domain, :duration, :employed-by, :example, :extent, :frequency, :instrument, :li, :location, :manner, :medium, :mod, :mode, :name, :part, :path, :polarity, :poss, :purpose, :source, :subevent, :subset, :time, :topic, :value
+		\end{itemize}
+		\item \optword{Relations de quantité}
+		\begin{itemize}
+			\item :quant, :unit, :scale
+		\end{itemize}
+		\item \optword{Relations de date}
+		\begin{itemize}
+			\item :day, :month,
+			:year, :weekday, :time, :timezone, :quarter,
+			:dayperiod, :season, :year2, :decade, :century,
+			:calendar, :era
+		\end{itemize}
+		\item \optword{Relations de liste}
+		\begin{itemize}
+			\item :op1, :op2, :op3, :op4, :op5,
+			:op6, :op7, :op8, :op9, :op10
+		\end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Un peu d'humour}
+	
+	\begin{center}
+		\vgraphpage{humour-sens.jpg}
+	\end{center}
 	
 \end{frame}
 
