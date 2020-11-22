@@ -549,7 +549,46 @@
 	\framesubtitle{En utilisant des caractéristiques}
 	
 	\begin{itemize}
-		\item 
+		\item \optword{Idée} : parcourir l'arbre syntaxique et classifier les nœuds
+		\begin{itemize}
+			\item \optword{Entrée} : des caractéristiques sur le nœud (syntagme) et le prédicat 
+			\item \optword{Sorite} : les classes sont celles de FrameNet ou PropBank + \keyword{None} pour marquer un nœud sans rôle 
+		\end{itemize} 
+		\item On peut optimiser la classification
+		\begin{itemize}
+			\item \optword{Élagage} : éliminer les constituants de la classification en utilisant des heuristiques
+			\item \optword{Identification} : classer les nœuds en \keyword{Argument} ou \keyword{None}
+			\item \optword{Classification} : les classes sont celles de FrameNet ou PropBank
+		\end{itemize} 
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
+	\framesubtitle{En utilisant des caractéristiques : Exemple d'une arbre syntaxique annotée}
+	
+	\vspace{-0.2cm}
+	\begin{figure}
+		\hgraphpage{srl-arbre_.pdf}
+		\caption{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
+	\framesubtitle{En utilisant des caractéristiques : Quelques caractéristiques}
+	
+	\begin{itemize}
+		\item Le prédicat principal de la phrase
+		\item Le type du syntagme. Ex. \expword{NP, S, PP}
+		\item Le mot d'entête (principal) du syntagme
+		\item La catégorie grammaticale du mot principal 
+		\item Le chemin du noeud concerné vers le prédicat. Ex. \expword{NP\textuparrow S\textdownarrow VP \textdownarrow VPD}
+		\item La voie : active ou passive
+		\item La position par rapport au prédicat : avant ou après
+		\item ...
 	\end{itemize}
 	
 \end{frame}
@@ -559,10 +598,21 @@
 \begin{frame}
 	\frametitle{Sémantique de phrase : Étiquetage de rôles sémantiques}
 	\framesubtitle{En utilisant les réseaux de neurones}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
+
+	\begin{minipage}{.48\textwidth}
+		\begin{itemize}
+			\item \optword{Entrée} : Embeddings des mots + indicateur si le mot est un prédicat 
+			\item \optword{Sortie} : Probabilités des étiquettes de PropBank 
+			\item \keyword{B} pour début (Begins), \keyword{I} pour intérieur (inside)
+			\item \keyword{I} doit toujours suivre \keyword{B} ou \keyword{I} de la même étiquette
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{.5\textwidth}
+		\begin{figure}
+			\hgraphpage{srl-lstm_.pdf}
+			\caption{Un système d'étiquetage de rôles sémantiques en utilisant les LSTM \cite{2017-he-al}}
+		\end{figure}
+	\end{minipage}
 	
 \end{frame}
 
