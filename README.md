@@ -94,15 +94,19 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Désambigüisation lexicale
         - Basée sur des bases de connaissance
         - Basée sur l'apprentissage automatique
-
+1. **Sémantique de phrase**
+    - Rôles sémantiques
+        - Rôles thématiques
+        - FrameNet
+        - PropBank
+    - Étiquetage de rôles sémantiques (Semantic role labeling)
+        - En utilisant des caractéristiques
+        - En utilisant les réseaux de neurones
+    - Représentation sémantique des phrases
+        - Logique du premier ordre
+        - Graphes (AMR)
 **PAS ENCORE**
 
-
-1. **Analyse sémantique**
-    - Rôles sémantiques
-    - Ressources linguistiques : VerbNet, PropBank, FrameNet
-    - Représentation sémantique des phrases : Logique du premier ordre, Graphes (AMR)
-    - Étiquetage de rôles sémantiques (Semantic role labeling)
 1. **Détection de la coréférence**
     - Les formes des références : Pronoms, Syntagmes nominaux, Zero anaphora, Noms propres
     - Algorithmes pour la résolution des coréférences : Modèles Mention-Pair, Modèles Mention-Rank, Modèles Entity-based
