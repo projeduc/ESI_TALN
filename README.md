@@ -105,6 +105,8 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Représentation sémantique des phrases
         - Logique du premier ordre
         - Graphes (AMR)
+
+
 **PAS ENCORE**
 
 1. **Détection de la coréférence**
