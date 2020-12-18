@@ -23,9 +23,11 @@
 	\item Certaines tâches exploitent cette structure
 	\item Plusieurs tâches se basent sur les mots comme unité de traitement
 	\item Avant de procéder à un traitement, il faut d'abord exécuter une phase de prétraitement
-	\item Il faut segmenter du texte 
-	\item Il faut le filtrer des données non nécessaires
-	\item Il faut le normaliser pour limiter les variations à traiter
+	\begin{itemize}
+		\item Segmenter le texte 
+		\item Filtrer les données non nécessaires
+		\item Normaliser les mots pour limiter les variations à traiter 
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -57,7 +59,7 @@
 	\end{itemize}
 	\item \optword{Distance d'édition} : utilisée pour mesurer la différence entre deux chaînes de caractères 
 	\begin{itemize}
-		\item utiles pour la recherche approximative
+		\item utile pour la recherche approximative
 	\end{itemize}
 \end{itemize}
 
@@ -214,7 +216,7 @@
 \framesubtitle{Distance d'édition : Algorithmes}
 
 \begin{itemize}
-	\item \optword{Distance de Hamming} : permet seulement la substitution. Les chaînes doivent être de même longueur. 
+	\item \optword{Distance de Hamming} : permet seulement la substitution. Les chaînes doivent être de la même longueur. 
 	\item \optword{Plus longue sous-séquence commune} : permet l'insertion et la suppression
 	\item \optword{Distance de Levenshtein} : permet l'insertion, la suppression et la substitution
 	\item \optword{Distance de Jaro} : permet la transposition
@@ -228,9 +230,9 @@
 \framesubtitle{Distance d'édition : Distance de Levenshtein}
 
 \begin{itemize}
-	\item X est une chaîne source de longueur $n$
-	\item Y une chaîne destinataire de longueur $m$
-	\item D est une matrice où D[i, j] est la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j]
+	\item X ; une chaîne source de longueur $n$
+	\item Y : chaîne destinataire de longueur $m$
+	\item D : une matrice où D[i, j] est la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j]
 	\item pour calculer $D[n, m]$, on utilise la programmation dynamique
 	\item $D[0, 0] = 0$
 \end{itemize}
@@ -334,12 +336,12 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Délimitation de la phrase : Facteurs de segmentation} 
 
 \begin{itemize}
-	\item La casse %: les phrases commencent par un majuscule
-	\item Catégorie grammaticale %: les catégories des mots avant le point peuvent aider la décision (limite ou non)
-	\item Longueur du mot %: la longueur des mots avant et après le point
-	\item Préfixes et suffixes : 
-	\item Classes des abréviations 
-	\item Noms propres 
+	\item \optword{La casse} : les phrases commencent par un majuscule
+	\item \optword{Catégorie grammaticale} : les catégories des mots avant le point peuvent aider la décision (limite ou non)
+	\item \optword{Longueur du mot} : les abréviations sont moins longues 
+	\item \optword{Préfixes et suffixes} : les mots avec des infixes sont moins probables d'être des abréviations
+	\item \optword{Classes des abréviations} 
+	\item \optword{Noms propres} : les noms propres se commencent par un majuscule ; ils peuvent ne pas être le début d'une phrase
 \end{itemize}
 
 \end{frame}
@@ -358,9 +360,11 @@ D[i-1, j-1] + \begin{cases}
 \frametitle{Traitements basiques du texte : Segmentation du texte}
 \framesubtitle{Séparation des mots : Problématique}
 
+\acolor{everything}{olivegreen}
+
 \begin{itemize}
 	\item \expword{/[ ]+/} est une ER simple utilisée pour séparer les mots (arabe, français, anglais, etc.)
-	\item Des langues, comme le japonais, n'utilisent pas de marques pour séparer les mots (\expword{\begin{CJK}{UTF8}{min}今年は本当に忙しかったです。\end{CJK}})
+	\item Des langues, comme le japonais, n'utilisent pas de marqueurs pour séparer les mots (\expword{\begin{CJK}{UTF8}{min}今年は本当に忙しかったです。\end{CJK}})
 	\item Il existe des mots composés : par attachement (allemand : ``\expword{Lebensversicherung}, assurance vie"; arabe : ``\expword{\RL{y_htbrwnhm}}, ils les testent") ou par trait d'union (\expword{va-t-il, c-à-dire})
 	\item Confusion entre des caractères : l'apostrophe est utilisée pour la citation, la contraction (\expword{She's, J'ai}) 
 	\item Les expressions avec des mots multiples : \expword{les expressions numériques comme les dates}
@@ -412,14 +416,14 @@ D[i-1, j-1] + \begin{cases}
 \begin{itemize}
 	\item \optword{Normalisation du texte}
 	\begin{itemize}
-		\item PROBLÉMATIQUE : Un texte peut contenir des variations du même terme. Aussi, dans des tâches comme la recherche d'information, on n'a pas besoin d'avoir le contenu exacte du texte.
-		\item SOLUTION : transformer le texte à une forme canonique 
+		\item \textbf{PROBLÉMATIQUE} : Un texte peut contenir des variations du même terme. Aussi, dans des tâches comme la recherche d'information, on n'a pas besoin d'avoir le contenu exacte du texte.
+		\item \textbf{SOLUTION} : transformer le texte à une forme canonique 
 		\item \url{https://www.kaggle.com/c/text-normalization-challenge-english-language}
 	\end{itemize}
 	\item \optword{Filtrage du texte}
 	\begin{itemize}
-		\item PROBLÉMATIQUE : le texte peut contenir des caractères, des mots et des expressions qui peuvent entraver son traitement
-		\item SOLUTION : suppression
+		\item \textbf{PROBLÉMATIQUE} : le texte peut contenir des caractères, des mots et des expressions qui peuvent entraver son traitement
+		\item \textbf{SOLUTION} : suppression
 	\end{itemize}
 \end{itemize}
 
@@ -434,22 +438,22 @@ D[i-1, j-1] + \begin{cases}
 \begin{itemize}
 %	\item \optword{Tâche} : transformer le texte à une forme canonique
 	
-	\item acronymes et les abréviations 
+	\item Acronymes et les abréviations 
 	\begin{itemize}
-		\item forme standard : \expword{US \textrightarrow USA, U.S.A. \textrightarrow USA}
-		\item version longue : \expword{M. \textrightarrow Monsieur}
+		\item forme standard : \expword{US \textrightarrow\ USA, U.S.A. \textrightarrow\ USA}
+		\item version longue : \expword{M. \textrightarrow\ Monsieur}
 	\end{itemize}
 	
-	\item formater les valeurs comme les dates et les nombres de la même façon
+	\item Formater les valeurs comme les dates et les nombres de la même façon
 	\begin{itemize}
-		\item conversion à la forme textuelle : \expword{1205 DZD \textrightarrow Mille deux cents cinq dinars algériens}
-		\item format spécifique : \expword{12 Janvier 1986, 12.01.86 \textrightarrow 1986-01-12}
-		\item remplacement par le type : \expword{12 Janvier 1986 \textrightarrow DATE, kariminfo0@gmail.com \textrightarrow EMAIL}
+		\item conversion à la forme textuelle : \expword{1205 DZD \textrightarrow\ Mille deux cents cinq dinars algériens}
+		\item format spécifique : \expword{12 Janvier 1986, 12.01.86 \textrightarrow\ 1986-01-12}
+		\item remplacement par le type : \expword{12 Janvier 1986 \textrightarrow\ DATE, kariminfo0@gmail.com \textrightarrow\ EMAIL}
 	\end{itemize}
 	
-	\item transformer les majuscules en minuscules. 
+	\item Transformer les majuscules en minuscules. 
 	\begin{itemize}
-		\item \expword{Texte \textrightarrow texte}
+		\item \expword{Texte \textrightarrow\ texte}
 		\item Des fois, il faut laisser la casse telle qu'elle est, comme dans les noms propres (\expword{Will})
 	\end{itemize}
 \end{itemize}
@@ -459,21 +463,21 @@ D[i-1, j-1] + \begin{cases}
 \begin{frame}
 \frametitle{Traitements basiques du texte : Normalisation et filtrage}
 \framesubtitle{Normalisation du texte (2)}
-
+\acolor{everything}{olivegreen}
 \begin{itemize}
 	
-	\item contractions
+	\item Contractions
 	\begin{itemize}
-		\item \expword{y'll \textrightarrow you all, s'il \textrightarrow si il}
+		\item \expword{y'll \textrightarrow\ you all, s'il \textrightarrow\ si il}
 	\end{itemize}
 	
-	\item diacritiques
+	\item Diacritiques
 	\begin{itemize}
-		\item désaccentuation :  \expword{système \textrightarrow systeme}
-		\item dé-vocalisation :  \expword{\RL{yadrusu} \textrightarrow \RL{ydrs}}. Sauf dans les cas où on a besoin des diacritiques (poèmes)
+		\item désaccentuation :  \expword{système \textrightarrow\ systeme}
+		\item dé-vocalisation :  \expword{\RL{yadrusu} \textrightarrow\ \RL{ydrs}}. Sauf dans les cas où on a besoin des diacritiques (poèmes)
 	\end{itemize}
 
-	\item encodage 
+	\item Encodage 
 	\begin{itemize}
 		\item il faut utiliser le même encodage supporté dans le traitement
 	\end{itemize}
@@ -539,18 +543,18 @@ D[i-1, j-1] + \begin{cases}
 \begin{frame}
 \frametitle{Traitements basiques du texte : Morphologie}
 \framesubtitle{Formation des mots}
-
+\acolor{everything}{olivegreen}
 \begin{itemize}
-	\item Flexion : variation morphologique d'un mot selon les traits grammaticaux (nombre, genre, etc.)
+	\item \optword{Flexion} : variation morphologique d'un mot selon les traits grammaticaux (nombre, genre, etc.)
 	\begin{itemize}
 		\item Conjugaison des verbes 
 		\item Déclinaison des noms, pronoms, adjectifs et déterminants. 
-		Ex. \RL{q.t} \textrightarrow \RL{q.t.t}, 
+		Ex. \expword{\RL{qi.t.t} \textrightarrow\ \RL{qi.ta.t}}, 
 	\end{itemize}
-	\item Dérivation : variation morphologique d'un mot pour créer un nouveau lexème ou pour changer de catégorie
+	\item \optword{Dérivation} : variation morphologique d'un mot pour créer un nouveau lexème ou pour changer de catégorie
 	\begin{itemize}
-		\item Créer unn nouveau lexème : \expword{couper \textrightarrow\ découper, \RL{`ml} \textrightarrow \RL{ist`ml}}
-		\item Changer de catégorie : nominalisation (\expword{classer \textrightarrow classement, classeur ; \RL{darasa} \textrightarrow \RL{darsuN, madrasaTuN, mudarrisuN, dArisuN}}), l'adjectif (\expword{fatiguer \textrightarrow fatigant})
+		\item Créer un nouveau lexème : \expword{couper \textrightarrow\ découper, \RL{`ml} \textrightarrow\ \RL{ist`ml}}
+		\item Changer de catégorie : nominalisation (\expword{classer \textrightarrow\ classement, classeur ; \RL{darasa} \textrightarrow\ \RL{darsuN, madrasaTuN, mudarrisuN, dArisuN}}), l'adjectif (\expword{fatiguer \textrightarrow\ fatigant})
 	\end{itemize}
 \end{itemize}
 
@@ -561,19 +565,19 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Formation des mots : Exemple (conjugaison automatique)}
 
 \begin{itemize}
-	\item Base de données
+	\item \optword{Base de données}
 	\begin{itemize}
 		\item stocker la conjugaison des verbes dans une base de données
 		\item Exemple, conjugaison des verbes en arabe : \url{https://github.com/linuxscout/qutrub}
 	\end{itemize}
-	\item Modèles (\textit{template})
+	\item \optword{Modèles (\textit{template})}
 	\begin{itemize}
 		\item stocker la conjugaison de certains verbes modèles et utiliser une liste pour indexer les verbes similaires
 		\item Exemple, \expword{la conjugaison des verbes en français}
 	\end{itemize}
-	\item Règles
+	\item \optword{Règles}
 	\begin{itemize}
-		\item utilisation des règles SI-SINON
+		\item utilisation des règles SI-SINON et des expressions régulières
 		\item Exemple, conjugaison des verbes en arabe, anglais, français et japonais : \url{https://github.com/kariminf/jslingua}
 	\end{itemize}
 \end{itemize}
@@ -597,12 +601,12 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Réduction des formes : Racinisation}
 
 \begin{itemize}
-	\item suppression des affixes (anglais : \keyword{stemming})
-	\item le résultat \keyword{radical} (\keyword{racine}) (anglais : \keyword{stem})
-	\item Exemple, \expword{chercher \textrightarrow cherch}
-	\item \optword{par base de données} : stocker tous les termes et leurs racines dans une table
-	\item \optword{par statistiques} : utiliser un modèle de langue (N-Gram) pour estimer la position de troncation
-	\item \optword{par règles}
+	\item Suppression des affixes (anglais : \keyword{stemming})
+	\item Résultat \keyword{radical} (\keyword{racine}) (anglais : \keyword{stem})
+	\item Exemple, \expword{chercher \textrightarrow\ cherch}
+	\item \optword{Base de données} : stocker tous les termes et leurs racines dans une table
+	\item \optword{Statistiques} : utiliser un modèle de langue (N-Gram) pour estimer la position de troncation
+	\item \optword{Règles}
 	\begin{itemize}
 		\item algorithme de Porter \cite{1980-porter}
 		\item \url{https://github.com/assem-ch/arabicstemmer}
@@ -617,19 +621,19 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Réduction des formes : Racinisation (exemple, algorithme de Porter)}
 
 \begin{itemize}
-	\item un ensemble de règles condition/action
+	\item Un ensemble de règles condition/action
 	\item \url{https://snowballstem.org/} : un framework pour créer des racinateurs
-	\item \optword{condition sur la racine}
+	\item \optword{Condition sur la racine}
 	\begin{itemize}
 		\item la longueur, la fin, si elle contient des voyelles, etc.
-		\item Exemple, \expword{(*v*) Y \textrightarrow I : happy \textrightarrow happi, sky \textrightarrow sky}
+		\item Exemple, \expword{(*v*) Y \textrightarrow\ I : happy \textrightarrow\ happi, sky \textrightarrow\ sky}
 	\end{itemize}
-	\item \optword{condition sur l'affixe}
+	\item \optword{Condition sur l'affixe}
 	\begin{itemize}
 		\item dans le cas de porter, il n'y a que le suffixe 
-		\item Exemple, \expword{SSES \textrightarrow SS, ATIONAL \textrightarrow ATE}
+		\item Exemple, \expword{SSES \textrightarrow\ SS, ATIONAL \textrightarrow\ ATE}
 	\end{itemize}
-	\item \optword{condition sur la règle}
+	\item \optword{Condition sur la règle}
 	\begin{itemize}
 		\item si une règle est exécutée, d'autres sont désactivées
 	\end{itemize}
@@ -642,17 +646,17 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Réduction des formes : Lemmatisation}
 
 \begin{itemize}
-	\item chercher la forme canonique d'un mot (anglais : \keyword{lemmatization})
-	\item le résultat : \keyword{lemme} (anglais : \keyword{lemma})
-	\item exemple, \expword{comprennent \textrightarrow comprendre, better \textrightarrow good}
-	\item doit avoir le contexte du mot. Ex. \expword{saw \textrightarrow (V) see ou (N) saw}
-	\item \optword{basée sur des bases lexicales}
+	\item Chercher la forme canonique d'un mot (anglais : \keyword{lemmatization})
+	\item Résultat : \keyword{lemme} (anglais : \keyword{lemma})
+	\item Exemple, \expword{comprennent \textrightarrow comprendre, better \textrightarrow good}
+	\item On doit avoir le contexte du mot. Ex. \expword{saw \textrightarrow\ (V) see ou (N) saw}
+	\item \optword{Bases lexicales}
 	\begin{itemize}
 		\item \url{https://www.nltk.org/api/nltk.stem.html} (NLTK WordNetLemmatizer)
 		\item \url{https://github.com/sloria/textblob}
 		\item \url{https://spacy.io/}
 	\end{itemize}
-	\item \optword{basée sur l'apprentissage automatique}
+	\item \optword{Apprentissage automatique}
 	\begin{itemize}
 		\item \url{https://opennlp.apache.org/}
 	\end{itemize}
