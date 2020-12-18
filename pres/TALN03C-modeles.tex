@@ -19,19 +19,19 @@
 \framesubtitle{Modèles de langue : Introduction}
 
 \begin{itemize}
-	\item Probabilité d'une phrase ($ P(S) = P(w_1, w_2, ..., w_n) $)
+	\item \optword{Probabilité d'une phrase} : $\color{red} P(S) = P(w_1, w_2, ..., w_n) $
 	\begin{itemize}
 		\item Traduction automatique : \\
-		\expword{My tall brother \textrightarrow P(Mon grand frère) \textgreater P(Mon haut frère)}
+		\expword{My tall brother \textrightarrow\ P(Mon grand frère) \textgreater\ P(Mon haut frère)}
 		\item Correction des fautes grammaticales : \\
-		\expword{P(Un objet qu'on peut emporter) \textgreater P(Un objet qu'ont peut emporter)}
+		\expword{P(Un objet qu'on puisse emporter) \textgreater\ P(Un objet qu'ont puisse emporter)}
 		\item Reconnaissance de paroles : \\
-		\expword{P(Jeudi matin) \textgreater P(Je dit matin)}
+		\expword{P(Jeudi matin) \textgreater\ P(Je dis matin)}
 	\end{itemize}
-	\item Probabilité d'occurrence d'un mot ($ P(w_n | w_1, \ldots, w_{n-1}) $)
+	\item \optword{Probabilité d'occurrence d'un mot} : $\color{red} P(w_n | w_1, \ldots, w_{n-1}) $
 	\begin{itemize}
 		\item Auto-complétion : \\
-		\expword{P(traitement automatique de l'information) \textgreater P(traitement automatique de l'eau)}
+		\expword{P(traitement automatique de l'information) \textgreater\ P(traitement automatique de l'eau)}
 		\item Génération automatique de textes
 	\end{itemize}
 \end{itemize}
@@ -74,7 +74,7 @@
 
 \begin{itemize}
 	\item Plusieurs phrases possibles
-	\item Il faut faut un grand corpus pour estimer cette probabilité (infinité de phrases possibles)
+	\item Il faut un grand corpus pour estimer cette probabilité (infinité de phrases possibles)
 \end{itemize}
 
 \end{frame}
@@ -92,13 +92,13 @@
 	\]
 	Cas général avec $k$ états passés 
 	\[%
-	P(x_1 \ldots x_n) = P(x_n | x_{n-k}, \ldots, x_{n-1})
+	P(x_n | x_1,\ldots, x_{n-1}) \approx P(x_n | x_{n-k+1}, \ldots, x_{n-1})
 	\]
 \end{block}
 
 \begin{block}{Estimation de probabilité en utilisant les N-grammes (k grammes)}
 	\[
-	P(x_n | x_1,\ldots, x_{n-1}) \approx \prod_i P(x_i | x_{i-k}, \ldots, x_{i-1})
+	P(x_1,\ldots, x_{n}) \approx \prod_i P(x_i | x_{i-k+1}, \ldots, x_{i-1})
 	\]
 \end{block}
 
@@ -135,17 +135,17 @@
 \framesubtitle{Formulation : Estimation}
 
 \begin{itemize}
-	\item en utilisant un corpus d'entraînement avec suffisamment de données
-	\item on marque le début et la fin des phrases avec \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater} (une fois pour les bi-grammes, 2 fois pour les tri-grammes, etc.)
-	\item \keyword{l'estimateur du maximum de vraisemblance}
+	\item En utilisant un corpus d'entraînement avec suffisamment de données
+	\item On marque le début et la fin des phrases avec \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater} (une fois pour les bi-grammes, 2 fois pour les tri-grammes, etc.)
+	\item \keyword{Estimateur du maximum de vraisemblance}
 \end{itemize}
 
 \begin{block}{Estimation des probabilités en utilisant le maximum de vraisemblance}
-	\[%
-	P(w_n | w_{n-k},\ldots, w_{n-1}) = \frac{C(w_{n-k} \ldots w_{n-1} w_n)}{\sum_i C(w_{n-k} \ldots w_{n-1} w_i)}
-	= \frac{C(w_{n-k} \ldots w_{n-1} w_n)}{C(w_{n-k} \ldots w_{n-1})}
-	\]
-	Où $N$ est le nombre d'occurrences des N-grammes dans le corpus
+	{\small \[%
+	P(w_n | w_{n-k+1},\ldots, w_{n-1}) = \frac{C(w_{n-k+1} \ldots w_{n-1} w_n)}{\sum_i C(w_{n-k+1} \ldots w_{n-1} w_i)}
+	= \frac{C(w_{n-k} \ldots w_{n-1+1} w_n)}{C(w_{n-k+1} \ldots w_{n-1})}
+	\]}
+	Où $C$ est le nombre d'occurrences des N-grammes dans le corpus
 	\[%
 	\text{Bi-grammes : } P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n)}{C(w_{n-1})}
 	\]
@@ -169,8 +169,13 @@
 \begin{itemize}
 	\item $P(peut | il) = \frac{C(il\ peut)}{C(il)} = \frac{1}{3}$
 	\item $P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
-	P(il|\text{\textit{\textless s\textgreater}}) P(peut|il) P(vous|peut) P(aider|vous) P(\text{\textit{\textless/s\textgreater}}|aider) = 
-	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
+	\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3}{4}}
+	\underbrace{P(peut|il)}_{\frac{1}{3}} 
+	\underbrace{P(vous|peut)}_{\frac{1}{2}} 
+	\underbrace{P(aider|vous)}_{\frac{2}{2}}
+	\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2}{2}} = 
+%	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
+	\frac{1}{8}
 	$
 \end{itemize}
 
@@ -448,6 +453,8 @@
 \begin{block}{Perplexité}
 	\begin{center}
 		$PP(w) = \sqrt[N]{\frac{1}{P(w_1 w_2 \ldots w_N)}}$
+		
+		$PP(w) = \sqrt[N]{\prod\limits_{i=1}^{N}\frac{1}{P(w_i | w_1 \ldots w_{i-1})}}$
 	\end{center}
 \end{block}
 
