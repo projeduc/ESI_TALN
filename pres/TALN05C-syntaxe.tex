@@ -29,11 +29,11 @@
 
 \begin{itemize}
 	\item Qui a écrit la solution ?
-	\item Quel instrument a-t-il utilisé pour l'écriture ?
+	\item Quel instrument a-t-on utilisé pour l'écriture ?
 	\begin{itemize}
 		\item Un stylo ? Une explication ?
 	\end{itemize}
-	\item Est-ce qu'il y avait d'autre chose en plus de la solution ?
+	\item Est-ce qu'on a écrit d'autres choses en plus de la solution ?
 	\begin{itemize}
 		\item Un stylo ? Une explication ?
 	\end{itemize}
@@ -181,7 +181,7 @@
 	\begin{itemize}
 		\item Ex. \expword{Le chat mange un poisson} : ici ``chat" est \expword{le sujet} du verbe ``mange"
 	\end{itemize}
-	\item Une relation de dépendance relie entre un mot appelé \keyword{tête syntaxique} et d'autres appelés \keyword{dépendants}
+	\item Une relation de dépendance relie un mot appelé \keyword{tête syntaxique} avec un autre appelé \keyword{dépendant}
 \end{itemize}
 
 \includegraphics[width=\textwidth]{../img/intro/gram-dep_.pdf}
@@ -223,17 +223,14 @@
 \frametitle{Analyse syntaxique}
 \framesubtitle{Analyse des constituants}
 
-%\begin{itemize}
-%	\item Méthodes classiques 
-%	\begin{itemize}
-%		\item CKY
-%		\item LR 
-%	\end{itemize}
-%	\item Apprentissage automatique 
-%	\begin{itemize}
-%		\item CKY probabiliste
-%	\end{itemize}
-%\end{itemize}
+\begin{itemize}
+	\item La grammaire à contexte libre : le système formel le plus utilisé pour modéliser la structure constituante
+	\item Analyse 
+	\begin{itemize}
+		\item \optword{ascendante} : à partir des mots de la phrase, on essaye de trouver les catégories grammaticales. Ensuite, les syntagmes qui génèrent une combinaison des catégories et des syntagmes. On fait ça jusqu'à arriver à \keyword{S}
+		\item \optword{descendante} : à partir de \keyword{S}, on cherche les règles qui génèrent la phrase. Ceci en se basant sur des mots pour guider la génération.
+	\end{itemize}
+\end{itemize}
 
 \begin{center}
 	\begin{tabular}{|p{.25\textwidth}|p{.3\textwidth}|p{.3\textwidth}|}
@@ -256,7 +253,7 @@
 \framesubtitle{Algorithme CKY}
 
 \begin{itemize}
-	\item Algorithme de Cocke-Kasami-Younger
+	\item Algorithme de \keyword{Cocke-Kasami-Younger}
 	\item Analyse ascendante
 	\item Prérequis : Forme normale de Chomsky
 \end{itemize}
@@ -408,8 +405,8 @@
 	\item Les nouvelles règles créées par transformation en FNC ont une probabilité égale à $1$
 	\item $w = w_1 \ldots w_n$ est un mot à analyser 
 	\item $T$ est un arbre syntaxique 
-	\item $P(T, w) = \prod\limits_{(A_i \rightarrow \beta_i) \in T} P(A_i \rightarrow \beta_i)$ est la probabilité d'une arbre syntaxique étant donné le mot analysé
-	\item $\hat{T}(w) = \arg\max\limits_{T(w)} P(T, w) $ est l'arbre syntaxique la plus adéquate pour analyser le mot $w$
+	\item $P(T, w) = \prod\limits_{(A_i \rightarrow \beta_i) \in T} P(A_i \rightarrow \beta_i)$ est la probabilité d'un arbre syntaxique étant donné le mot analysé $w$
+	\item $\hat{T}(w) = \arg\max\limits_{T(w)} P(T, w) $ est l'arbre syntaxique le plus adéquat pour analyser le mot $w$
 \end{itemize}
 
 \end{frame}
@@ -465,9 +462,9 @@
 
 \begin{minipage}{.6\textwidth}
 \begin{itemize}
-	\item Analyse basée sur les transitions 
+	\item \optword{Analyse basée sur les transitions} 
 	\begin{itemize}
-		\item Configuration :  $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés
+		\item \textbf{Configuration} :  $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés
 		\item $C_{initiale} = ([ROOT], w, \emptyset)$
 		\item $C_{finale} = ([ROOT], \varnothing, A)$
 %		\item Un ensemble d'actions possibles
@@ -483,10 +480,10 @@
 
 \begin{minipage}{.6\textwidth}
 	\begin{itemize}
-		\item Analyse basée sur les graphes
+		\item \optword{Analyse basée sur les graphes}
 		\begin{itemize}
-			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
-			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
+			\item \textbf{Graphe} : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
+			\item \textbf{Résultat} : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
 		\end{itemize}
 	\end{itemize}
 \end{minipage}
@@ -504,7 +501,7 @@
 
 \begin{minipage}{.6\textwidth}
 	\begin{itemize}
-		\item \optword{Configuration} :  $C = (\sigma, \beta, A)$
+		\item \textbf{Configuration} :  $C = (\sigma, \beta, A)$
 		\begin{itemize}
 			\item $\sigma$ est une pile
 			\item $\beta$ est le tampon (buffer) d'entrée
@@ -519,13 +516,13 @@
 \end{minipage}
 
 \begin{itemize}
-	\item \optword{Transition} : passer d'un état vers un autre en utilisant des actions sur
+	\item \textbf{Transition} : passer d'un état vers un autre en utilisant des actions sur
 	\begin{itemize}
 		\item $\sigma$ : empiler ou dépiler un mot
 		\item $\beta$ : retirer un mot ou ajouter un au début
 		\item $A$ : ajouter une dépendance entre 2 mots
 	\end{itemize}
-	\item \optword{Oracle} : un système qui décide la transition suivante
+	\item \textbf{Oracle} : un système qui décide la transition suivante
 \end{itemize}
 
 \end{frame}
@@ -584,24 +581,24 @@
 \framesubtitle{Par transition : Système Oracle (caractéristiques)}
 
 \begin{itemize}
-	\item La pile $\sigma$
+	\item \textbf{La pile $\sigma$}
 	\begin{itemize}
 		\item Le mot dans le sommet de la pile
 		\item La catégorie grammaticale de ce mot
 	\end{itemize}
 
-	\item Le tampon d'entrée $\beta$
+	\item \textbf{Le tampon d'entrée $\beta$}
 	\begin{itemize}
 		\item Les trois premiers mots
 		\item Leurs catégories grammaticales
 	\end{itemize}
 
-	\item La liste des dépendances $A$
+	\item \textbf{La liste des dépendances $A$}
 	\begin{itemize}
 		\item Les dépendances qui ont été estimées
 	\end{itemize}
 
-	\item La phrase analysée $w$
+	\item \textbf{La phrase analysée $w$}
 	\begin{itemize}
 		\item La distance entre le mot du sommet de la pile et le premier mot dans le tampon (nombre des mots entre eux dans la phrase $w$)
 	\end{itemize}
@@ -707,8 +704,8 @@
 	\begin{itemize}
 		\item Analyse basée sur les graphes
 		\begin{itemize}
-			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
-			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
+			\item \textbf{Graphe} : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
+			\item \textbf{Résultat} : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
 		\end{itemize}
 	\end{itemize}
 \end{minipage}
