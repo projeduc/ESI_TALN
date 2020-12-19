@@ -68,8 +68,8 @@
 
 
 \begin{itemize}
-	\item \optword{But :} affecter des étiquettes à des éléments d'une séquence. 
-	\item \optword{Exemple : } \expword{affecter des catégories grammaticales à des mots dans une phrase}.
+	\item \textbf{But} : affecter des étiquettes à des éléments d'une séquence. 
+	\item \textbf{Exemple} : \expword{affecter des catégories grammaticales à des mots dans une phrase}.
 \end{itemize}
 
 \begin{block}{Formulation du problème}
@@ -152,9 +152,8 @@
 \frametitle{Étiquetage morpho-syntaxique}
 \framesubtitle{Description de la tâche}
 
-
 \begin{itemize}
-	\item \optword{Objectif} : trouver les catégories grammaticales de chaque mot dans une phrase
+	\item \textbf{Objectif} : trouver les catégories grammaticales de chaque mot dans une phrase
 	\item Définir les catégories grammaticales
 	\begin{itemize}
 		\item Nature, catégorie grammatical, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours
@@ -368,14 +367,18 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 \begin{itemize}
 	\item Les états sont les tags (catégories) $t_i$
+	\item Prenons \keyword{DEBUT} comme tag du début de la phrase
 	\item Les observation $o_i$ sont les mots $w_i$
+	\item \keyword{C} : la fonction de compte (nombre des occurrences dans le corpus d'entraînement)
 \end{itemize}
 
 \begin{block}{Entraînement du HMM pour étiquetage morpho-syntaxique}
 	\[
-	P(t_i | t_{i-1}) = \frac{C(t_{i-1}, t_i)}{t_{i-1}} 
-	\hskip2cm
-	P(w_i | t_i) = \frac{C(t_i, w_i)}{t_i}
+	\text{Probabilité de transition : } P(t_i | t_{i-1}) = \frac{C(t_{i-1}, t_i)}{C(t_{i-1})} 
+	\]\[
+	\text{Probabilité d'émission : } P(w_i | t_i) = \frac{C(t_i, w_i)}{C(t_i)}
+	\]\[
+	\text{Distribution initiale : } \pi_i = P(t_i | DEBUT) = \frac{C(DEBUT, t_i)}{C(DEBUT)}
 	\]
 	
 \end{block}
@@ -398,6 +401,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \begin{itemize}
 	\item $P(VERB | NOUN) = \frac{C(NOUN,\ VERB)}{C(NOUN)} = \frac{1}{2}$
 	\item $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$
+	\item $\pi_{PRON} = \frac{C(PRON,\ <s>)}{C(<s>)} = \frac{3}{4} $
 \end{itemize}
 
 \end{frame}
