@@ -276,7 +276,7 @@
 \framesubtitle{TF-IDF}
 
 \begin{itemize}
-	\item Le sens d'un document/phrase peut être représenté par ces mots 
+	\item Le sens d'un document/phrase peut être représenté par ses mots 
 	\item La fréquence d'un mot dans un document/phrase s'appelle \keywords{term frequency (TF)}
 	\item Il y a des mots qui se répètent beaucoup, mais qui n'ont pas de sens ajouté (Ex. \expword{
 	Prépositions})
@@ -354,7 +354,7 @@
 \framesubtitle{Mot-Mot}
 
 \begin{itemize}
-	\item On peut représenter un mot par rapport aux autres mot du vocabulaire en utilisant la co-occurrence
+	\item On peut représenter un mot par rapport aux autres mots du vocabulaire en utilisant la co-occurrence
 	\item Pour représenter les mots d'un vocabulaire $ V $, on doit utiliser une matrice $|V| \times |V|$
 	\item Chaque mot est représenté par $|V|$ mots appelés \keyword{le contexte}
 	\item La co-occurrence peut être calculée par rapport aux documents, aux phrases ou des fenêtres auteur du mot
@@ -522,7 +522,7 @@
 \framesubtitle{Word embedding}
 
 \begin{itemize}
-	\item Les représentations document-mot ou mot-mot basées sur la co-occurrence occupent un grand espace mémoire 
+	\item Les représentations document-mot et mot-mot basées sur la co-occurrence occupent un grand espace mémoire 
 	\item Elles sont difficiles à gérer 
 	\item Dans \keyword{LSA}, nous avons vu que la représentation d'un mot est compactée vers un petit vecteur de nombres réels
 	\item Ceci est appelé : \keyword{Word embedding} ou, en français, \keyword{Plongement lexical}
@@ -618,7 +618,7 @@
 
 \begin{itemize}
 	\item \keyword{GloVe} : Global Vectors
-	\item une méthode développée par Standford \cite{2014-pennington-al}
+	\item une méthode développée par Stanford \cite{2014-pennington-al}
 	\item essaye d'exploiter les deux approches : matrice mot-mot (comme LSA) et apprentissage par contexte (comme CBOW)
 	\item $X[V, V]$ est la matrice Mot-Mot où $X_{ij}$ est le nombre des occurrence du mot $w_j$ dans le contexte de $w_i$, et $X_i$ est le nombre d'occurrences de $w_i$ dans le corpus
 	\item $P_ij= \frac{X_{ij}}{X_i}$ est la probabilité d'occurrence de $w_j$ dans le contexte de $w_i$
@@ -635,7 +635,7 @@
 \begin{minipage}{.5\textwidth}
 	\begin{itemize}
 		\item On veut trouver la relation entre $w_i = ice$ et $w_j = steam$
-		\item Ceci peut être représentée par un vecteur des mots $w_j$ 
+		\item Ceci peut être représenté par un vecteur des mots $w_j$ 
 		\item On calcule le ratio $\frac{P_ik}{Pjk}$
 	\end{itemize}
 \end{minipage}
@@ -668,10 +668,10 @@
 	\item On peut restreindre la fonction par utilisation d'une soustraction
 	\vspace{-6pt}\[F(w_i - w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
 	
-	\item On peut transformer l'argument à un scalaire comme le résultat
+	\item On peut transformer l'argument à un scalaire par multiplication matricielle
 	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{P_ik}{P_jk}\]
 	
-	\item On veut que $w \leftrightarrow \tilde{w}$ et $X \leftrightarrow X^\top$. Donc, $F$ doit être un homomorphisme entre $(\mathbb{R}, +)$ et $(\mathbb{R}_{>0}, \times)$
+	\item On veut : $w \leftrightarrow \tilde{w}$ et $X \leftrightarrow X^\top$. Donc, $F$ doit être un homomorphisme entre $(\mathbb{R}, +)$ et $(\mathbb{R}_{>0}, \times)$
 	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{F(w_i^\top \tilde{w_k})}{F(w_j^\top \tilde{w_k})}\]
 	
 	\item Donc, $F(w_i^\top \tilde{w_k}) = P_ik = \frac{X_{ik}}{X_i}$
@@ -780,9 +780,9 @@
 	\item Pour chaque  phrase de $N$ mot, on essaye de maximiser\\ 
 	\begin{center}
 		$\sum_{k=1}^{N} 
-	log P(w_k | w_1,\ldots,w_{k-1}; \Theta_x, \overrightarrow{\Theta}_{LSTM}, \Theta_s)
+	\log P(w_k | w_1,\ldots,w_{k-1}; \Theta_x, \overrightarrow{\Theta}_{LSTM}, \Theta_s)
 	+
-	log P(w_k | w_{k+1},\ldots,w_{N}; \Theta_x, \overleftarrow{\Theta}_{LSTM}, \Theta_s)
+	\log P(w_k | w_{k+1},\ldots,w_{N}; \Theta_x, \overleftarrow{\Theta}_{LSTM}, \Theta_s)
 	$
 	\end{center}
 	
@@ -932,13 +932,13 @@
 \begin{itemize}
 	\item  WordSimilarity-353 Test Collection \cite{2002-finkelstein-al}
 	\begin{itemize}
-		\item Des similarités entre mots annotées manuellement (0 et 10)
-		\item On calcule la corrélation de Spearman entre les similarités entre les représentations (similarité cosinus) et les similarités manuelles
+		\item Des similarités entre mots annotés manuellement (0 et 10)
+		\item On calcule la corrélation de Spearman entre les similarités basées sur les représentations (similarité cosinus) et les similarités manuelles
 	\end{itemize}
 	
 	\item SimLex-999 \cite{2015-hill-al}
 	\begin{itemize}
-		\item Teste la similarité (\expword{coast, shore}) et pas l'association (\expword{clothes, closet})
+		\item Tester la similarité (\expword{coast, shore}) et pas l'association (\expword{clothes, closet})
 	\end{itemize}
 
 	\item Analogies de mots \cite{2013-mikolov-al2}
