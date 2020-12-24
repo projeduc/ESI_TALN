@@ -72,6 +72,7 @@
 		\begin{itemize}
 			\item Personnels : \expword{\underline{Karim} est entré. \underline{Il} a commencé le cours.}
 			\item Possessifs : \expword{\underline{Karim} a commencé \underline{son} cours.}
+			\item ...
 		\end{itemize}
 	
 		\item \optword{Syntagmes nominaux}
@@ -93,23 +94,92 @@
 	
 \end{frame}
 
-\subsection{Relations entre références}
+\subsection{Manière de référencement}
 
 \begin{frame}
 	\frametitle{Détection de la coréférence : Références}
-	\framesubtitle{Relations entre références}
+	\framesubtitle{Manière de référencement}
 	
 	\begin{itemize}
 		\item \optword{Anaphore}
 		\begin{itemize}
-			\item  un mot ou un syntagme qui, dans un énoncé, assure une reprise sémantique d'un précédent segment appelé antécédent.
-			\item 
+			\item une référence vers un mot ou un syntagme précédent appelé \keyword{antécédent}.
+			\item Ex. \expword{\underline{Le cours} est très long. \underline{Il} prendra plus de temps.}
 		\end{itemize}
 	
 		\item \optword{Cataphore}
 		\begin{itemize}
-			\item Personnels : \expword{\underline{Jean} est entré. \underline{Il} s'est assis tout de suite.}
-			\item 
+			\item une référence vers un mot ou un syntagme suivant appelé \keyword{postcédent}.
+			\item Ex. \expword{\underline{Il} est très long, \underline{ce cours}!}
+		\end{itemize}
+	
+		\item \optword{Antécédents partagés}
+		\begin{itemize}
+			\item une référence vers plusieurs mots rt/ou syntagmes
+			\item Ex. \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
+		\end{itemize}
+	
+		\item \optword{Syntagmes nominaux en coréférence}
+		\begin{itemize}
+			\item deux syntagmes nominaux où chacun est une référence vers l'autre
+			\item Ex. \expword{\underline{Certains de nos collègues} nous ont vraiment soutenu. \underline{Ce genre de personnes} gagne notre gratitude.}
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Propriétés des relations de coréférence}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Références}
+	\framesubtitle{Propriétés des relations de coréférence (1)}
+	
+	\begin{itemize}
+		\item \optword{Nombre} : Singulier, Duel, Pluriel 
+		\begin{itemize}
+			\item \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
+		\end{itemize}
+	
+		\item \optword{Personne} : Première, Deuxième, Troisième
+		\begin{itemize}
+			\item \expword{\underline{Mon frère}\textsubscript{1} et \underline{moi}\textsubscript{2} avons réparé \underline{son vélo}\textsubscript{1} après \underline{le mien}\textsubscript{2}.}
+		\end{itemize}
+		
+		\item \optword{Genre} : Masculin, Féminin, Neutre
+		\begin{itemize}
+			\item \expword{Lorsque la fille a rencontré son \underline{père}, \underline{il} a été content.}
+		\end{itemize}
+		
+		\item \optword{Contraintes de théorie contraignante} : contraintes syntaxiques sur la relation mention-antécédent.
+		\begin{itemize}
+			\item \expword{Janet bought herself a bottle of fish sauce.} [herself = Janet]
+			\item \expword{Janet bought het a bottle of fish sauce.} [her $\ne$ Janet]
+		\end{itemize}
+	
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Références}
+	\framesubtitle{Propriétés des relations de coréférence (2)}
+	
+	\begin{itemize}
+		
+		\item \optword{Récence} : les entités mentionnées plus récemment sont plus probables à être un antécédent
+		\begin{itemize}
+			\item \expword{Le médecin a trouvé une vieille carte. Jim a trouvé \underline{une carte} encore plus ancienne. \underline{Elle} décrivait une île.}
+		\end{itemize}
+		
+		\item \optword{Rôle grammatical} : les sujets sont plus probables que les objets
+		\begin{itemize}
+			\item \expword{\underline{Karim} est allé au restaurant avec son ami. \underline{Il} a demandé un plat de couscous.}
+		\end{itemize}
+		
+		\item \optword{Sémantique du verbe} : la mention suit l'emphase du verbe (celui qui a causé l'évènement)
+		\begin{itemize}
+			\item \expword{\underline{John} telephoned Bill. \underline{He} lost the laptop.}
+			\item \expword{John criticized \underline{Bill}. \underline{He} lost the laptop.}
 		\end{itemize}
 	\end{itemize}
 	
@@ -167,12 +237,36 @@
 \end{frame}
 
 %===================================================================================
-\section{Annotation sémantique (Entity linking)}
+\section{Tâches connexes}
 %===================================================================================
 
 \begin{frame}
 	\frametitle{Détection de la coréférence}
+	\framesubtitle{Tâches connexes}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Annotation sémantique (Entity linking)}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Tâches connexes}
 	\framesubtitle{Annotation sémantique (Entity linking)}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Reconnaissance des entités nommées}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Tâches connexes}
+	\framesubtitle{Reconnaissance des entités nommées}
 	
 	\begin{itemize}
 		\item 
