@@ -105,14 +105,21 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Représentation sémantique des phrases
         - Logique du premier ordre
         - Graphes (AMR)
-
+1. **Détection de la coréférence**
+    - Références
+        - Formes des références
+        - Manière de référencement
+        - Propriétés des relations de coréférence
+    - Résolution des coréférences
+        - Détection de mention
+        - Liaison
+        - Évaluation
+    - Tâches connexes
+        - Annotation sémantique (Entity linking)
+        - Reconnaissance des entités nommées
 
 **PAS ENCORE**
 
-1. **Détection de la coréférence**
-    - Les formes des références : Pronoms, Syntagmes nominaux, Zero anaphora, Noms propres
-    - Algorithmes pour la résolution des coréférences : Modèles Mention-Pair, Modèles Mention-Rank, Modèles Entity-based
-    - Annotation sémantique (Entity linking)
 1. **La cohérence du discours**
     - Les modèles de discours : Rhetorical Structure Theory (RST), Penn Discourse TreeBank (PDTB)
     - Analyse de discours : Segmentation des unités élémentaires de discours, Analyse RST
