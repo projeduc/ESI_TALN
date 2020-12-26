@@ -394,7 +394,17 @@
 	\framesubtitle{Tâches connexes}
 	
 	\begin{itemize}
-		\item 
+		\item Tâches utilisées dans la détection de la coréférence
+		\begin{itemize}
+			\item Tâches de prétraitement (chapitre 2)
+			\item Étiquetage morpho-syntaxique (chapitre 4)
+			\item Reconnaissance des entités nommées
+		\end{itemize}
+		\item Tâches similaires à la détection de la coréférence
+		\begin{itemize}
+			\item Annotation sémantique (Entity linking)
+			\item Attribution de la citation : trouver qui a dit/écrit un discours
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -406,7 +416,14 @@
 	\framesubtitle{Annotation sémantique (Entity linking)}
 	
 	\begin{itemize}
-		\item 
+		\item Associer une mention dans un texte à une représentation d'une entité dans une base de connaissances structurée
+		\item utile pour avoir une connaissance approfondie sur les entités du texte dans le monde réel
+		\item \keyword{Wikification} : relier une mention à une page de Wikipédia
+		\item Les étapes de l'annotation sémantique : 
+		\begin{itemize}
+			\item \optword{Détection de la mention} : détecter l'ensemble des entités d'un base de connaissance liées à une mention en utilisant des requêtes.
+			\item \optword{Désambigüisation de la mention} : trouver l'entité la plus probable en utilisant l'apprentissage automatique
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -418,7 +435,33 @@
 	\framesubtitle{Reconnaissance des entités nommées}
 	
 	\begin{itemize}
-		\item 
+		\item localiser et classer les entités nommées dans un texte
+		\item \keyword{entité nommée} : personnes, places, organisations, quantités, etc.
+		\item une sous tâche de l'extraction des données
+		\item \textbf{En anglais} : Named-entity recognition (NER)
+		\item Techniques de reconnaissance 
+		\begin{itemize}
+			\item \optword{Règles} : utiliser des règles et des listes de noms pour chercher les entités et détecter leurs types
+			\item \optword{Apprentissage avec caractéristiques} : embeddins du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
+			\item \optword{Étiquetage de séquences} : classer les mots en entités en les traitant comme une séquence. Une entité peut avoir plusieurs mots qui commence par \keyword{B} (Begin) suivi par \keyword{I} (Inside). Les mots sans classe ont le tag \keyword{O} (Outside). 
+			
+			\expword{\scriptsize
+			$ \underbrace{Google}_{B-ORG} $ 
+			$ \underbrace{LLC}_{I-ORG} $ 
+			$ \underbrace{est}_{O} $ 
+			$ \underbrace{fond\text{\textit{é}}e}_{O} $ 
+			$ \underbrace{dans}_{O} $ 
+			$ \underbrace{la}_{O} $ 
+			$ \underbrace{Silicon}_{B-LOC} $ 
+			$ \underbrace{Valley}_{B-LOC} $ 
+			$ \underbrace{par}_{O} $ 
+			$ \underbrace{Larry}_{B-PER} $ 
+			$ \underbrace{Page}_{I-PER} $ 
+			$ \underbrace{et}_{O} $ 
+			$ \underbrace{Sergey}_{B-PER} $ 
+			$ \underbrace{Brin}_{I-PER} $
+			}
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
