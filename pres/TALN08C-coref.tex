@@ -88,7 +88,7 @@
 		\item \optword{Anaphore zéro}
 		\begin{itemize}
 			\item \expword{\underline{Karim} a présenté et \underline{$ \phi $} expliqué le cours.}
-			\item \expword{}
+			\item \expword{\begin{CJK}{UTF8}{min}\underline{カリムさん}はESIに生きます。\underline{$ \phi $} あそこに教えます。\end{CJK}}
 		\end{itemize}
 	\end{itemize}
 	
@@ -185,6 +185,16 @@
 	
 \end{frame}
 
+\begin{frame}
+	\frametitle{Détection de la coréférence : Références}
+	\framesubtitle{Un peu d'humour}
+	
+	\begin{center}
+		\vgraphpage{humour-ref.jpg}
+	\end{center}
+	
+\end{frame}
+
 %===================================================================================
 \section{Résolution des coréférences}
 %===================================================================================
@@ -193,46 +203,185 @@
 	\frametitle{Détection de la coréférence}
 	\framesubtitle{Résolution des coréférences}
 	
+	\hgraphpage{coref-arch.pdf}
+	
 	\begin{itemize}
-		\item 
+		\item \optword{Modèles de liaison}
+		\begin{itemize}
+			\item Mention-Pair : deux à deux
+			\item Mention-Rank : un antécédent parmi plusieurs
+			\item Entity-based : détecter des clusters de coréférences
+		\end{itemize}
+		
+		\item \optword{Architecture de coréférences}
+		\begin{itemize}
+			\item Règles
+			\item Caractéristiques définies manuellement
+			\item Réseaux de neurones : embeddings
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
 
 
-\subsection{Modèles Mention-Pair}
+\subsection{Détection de mention}
 
 \begin{frame}
-	\frametitle{Détection de la coréférence : Résolution des coréférences}
-	\framesubtitle{Modèles Mention-Pair}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Détection de mention}
 	
 	\begin{itemize}
-		\item 
+		\item \optword{Extraction des entités}
+		\begin{itemize}
+			\item Syntagmes nominaux, pronoms, entités nommées
+		\end{itemize}
+	
+		\item \optword{Filtrage des entités}
+		\begin{itemize}
+			\item Par règles linguistiques. Ex. Dans ``\expword{It is thought that ...}" le pronom ``\expword{It}" n'est pas une référence. Ici, on peut utiliser une liste des verbes cognitifs \expword{believe, think, etc.}
+			\item Par apprentissage automatique : un détecteur des anaphores et un autre pour les antécédents
+		\end{itemize}
+	
+		\item \optword{Formation des mentions}
+		\begin{itemize}
+			\item Regrouper les entités probables ensembles
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
 
-\subsection{Modèles Mention-Rank}
+
+\subsection{Liaison}
 
 \begin{frame}
-	\frametitle{Détection de la coréférence : Résolution des coréférences}
-	\framesubtitle{Modèles Mention-Rank}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Liaison : Modèles Mention-Pair}
 	
 	\begin{itemize}
-		\item 
+		\item Détecter s'il y a une coréférence entre deux pairs d'entités
+		\item Classifieur binaire (coréférence, non coréférence)
+		\item \textbf{Problème} : contradictions. Ex. \expword{Ms Kennedy $ \leftarrow $ Kennedy, Kennedy $ \leftarrow $ He}
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\hgraphpage[.8\textwidth]{mention-pair-exp_.pdf}
+		\caption{Exemple d'un modèle Mention-Pair \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Liaison : Modèles Mention-Rank}
+	
+	\begin{itemize}
+		\item Parmi les mentions précédentes d'une entité, décider quel est l'antécédent
+		\item $ \hat{a} = \arg\max\limits_{a_i \in \{\epsilon, a_1, \ldots, a_{n-1}\}} P(a_i|a_n) $
+		\item $ \epsilon $ : veut dire, il n'y a pas d'antécédent
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\hgraphpage{mention-rank-exp_.pdf}
+		\caption{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Liaison : Modèles Entity-based}
+	
+	\begin{itemize}
+		\item Appelés aussi : modèles cluster-ranking
+		\item \textbf{Entrée} : deux clusters des mentions
+		\item Vérification si les mentions sont compatibles
+		\item Estimation si un cluster est un antécédent de l'autre comme dans Mention-Rank
+		\item Si les cluster représentent les mêmes mentions, on les fusionne
+		\item \textbf{Sortie} : Un ensemble des clusters
 	\end{itemize}
 	
 \end{frame}
 
-\subsection{Modèles Entity-based}
+\subsection{Évaluation}
 
 \begin{frame}
-	\frametitle{Détection de la coréférence : Résolution des coréférences}
-	\framesubtitle{Modèles Entity-based}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Évaluation}
 	
 	\begin{itemize}
-		\item 
+		\item \keyword{MUC} : \optword{Message Understanding Conference}
+		\begin{itemize}
+			\item Métrique basée sur les liens (link-based metric)
+			\item Nombre des liens binaires communs entre la référence et le système
+		\end{itemize}
+		\item \keyword{B\textsuperscript{3}}
+		\begin{itemize}
+			\item Métrique basée sur les mentions (mention-based metric)
+			\item R/P globale est calculé en fonction de R/P des mentions individuelles
+		\end{itemize}
+		\item \keyword{CEAF} : \optword{Constrained entity-alignment F-Measure}
+		\begin{itemize}
+			\item mention-based OU entity-based (2 versions selon la similarité utilisée)
+			\item Une mention du système est alignée avec une seule de référence
+		\end{itemize}
+		\item \keyword{BLANC} 
+		\begin{itemize}
+			\item Métrique basée sur les liens (link-based metric)
+			\item R/P globale est la moyenne de R/P des liens de coréférences et ceux des non coréférences
+		\end{itemize}
+		\item \keyword{LEA} : \optword{Link based entity aware}
+		\begin{itemize}
+			\item La taille de l'entité comme mesure d'importance
+			\item Les liaison de coréférence résolues sont évaluées
+		\end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Détection de la coréférence : Résolution}
+%	\framesubtitle{Évaluation : MUC}
+%	
+%	\begin{itemize}
+%		\item \optword{MUC} : Message Understanding Conference
+%		\[R = \frac{\sum_{k_i \in K} (|k_i| - p(k_i))}{\sum_{k_i \in K} (|k_i| - 1)},\;
+%		P = \frac{\sum_{r_i \in R} (|r_i| - p(k_i))}{\sum_{r_i \in R} (|r_i| - 1)}
+%		\]
+%		\begin{itemize}
+%			\item $K$ : clés (la solution de référence : ensemble de mentions)
+%			\item $R$ : réponses (la solution du système : ensemble de mentions)
+%			\item $p(k_i)$ est l'intersection entre $k_i$ et la réponse correspondante
+%			\item Métrique basée sur les liens (link-based metric)
+%		\end{itemize}
+%	\end{itemize}
+%	
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Détection de la coréférence : Résolution}
+%	\framesubtitle{Évaluation : B\textsuperscript{3}}
+%	
+%	\begin{itemize}
+%		\item \optword{B\textsuperscript{3}}
+%		\[R = \frac{\sum_{k_i \in K} \sum_{r_j \in R} \frac{|k_i \cap r_j|^2}{|k_i|}}{\sum_{k_i \in K} |k_i|},\;
+%		P = \frac{\sum_{r_i \in R} \sum_{k_j \in K} \frac{|r_i \cap k_j|^2}{|r_i|}}{\sum_{r_i \in R} |r_i|}
+%		\]
+%		\begin{itemize}
+%			\item $K$ : clés (la solution de référence : ensemble de mentions)
+%			\item $R$ : réponses (la solution du système : ensemble de mentions)
+%			\item Métrique basée sur les mentions (mention-based metric)
+%		\end{itemize}
+%	\end{itemize}
+%	
+%\end{frame}
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Un peu d'humour}
+	
+	\begin{center}
+		\vgraphpage{humour-res.jpg}
+	\end{center}
 	
 \end{frame}
 
