@@ -1,0 +1,223 @@
+%=========================================================================
+% Language definition:
+% ---------------------
+% The default ones sometimes misses some keywords, so define my own
+%=========================================================================
+
+\ProvidesFile{lstlangKB.sty}
+[2018/08/19 1.0 KodeBook listings language file]
+
+\RequirePackage{listings}
+
+
+\lstdefinelanguage[KB]{C++}
+{
+	keywords={
+		class, private, public, protected, friend, new, struct, static,
+		\#include, namespace, using, delete, for, 
+		if, else, try, catch, const, return, throw, dynamic_cast, 
+		\#ifndef,\#define, \#endif, operator, static_cast, 
+		template, typename, final, virtual, typedef, 
+	},
+	morekeywords=[2]{
+		string, int, void, char, bool, ostream,  
+		this, super, std, exception, double, endl, 
+	},
+	morekeywords=[3]{
+		atoi, cout, typeof, sizeof, 
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+	alsoletter={\#},
+} 
+
+\lstdefinelanguage[KB]{Java}
+{
+	keywords={
+		class, private, public, protected, new, static, extends, implements,
+		import, @Override, package, abstract, default, interface,
+		if, else, try, catch, final, return, throw, throws, for, 
+		instanceof, 
+	},
+	morekeywords=[2]{
+		String,int, void, boolean, Object, false, true, Integer, 
+		this, super, null, System, 
+		Cloneable, Comparable, Method, Field, Throwable,
+		CloneNotSupportedException, Exception, out, 
+		IndexOutOfBoundsException, NumberFormatException, 
+	},
+	morekeywords=[3]{
+		equals, getClass, compareTo, clone, hashCode, toString,
+		getMessage, print, println, exit, parseInt, 
+		finalize, getName, getMethod, getField, get, invoke, 
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+} 
+
+\lstdefinelanguage[KB]{Javascript}
+{
+	keywords={
+		break, case, catch, continue, debugger, default, delete, do, 
+		else, finally, for, function, if, in, instanceof, new,  
+		return, switch, throw, try, typeof, var, while, with,
+		class, throw, implements, require, static, let, extends, 
+	},
+	morekeywords=[2]{
+		null, this, false, true, boolean, Object,
+		prototype, super, argv, length, stdout, 
+		console, process, module, Error, arguments,
+	},
+	morekeywords=[3]{
+		constructor, toString, log, call, create,
+		defineProperties, get, set, assign, 
+		exit, write, hasOwnProperty, 
+	},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+
+\lstdefinelanguage[KB]{Lua}
+{
+	keywords={
+		function, return, end, or, and, local, 
+		require, for, do, in, not, true, false,
+		if, then, else, elseif,
+	},
+	morekeywords=[2]{
+		nil, os, arg, io,
+	},
+	morekeywords=[3]{
+		__eq,__lt, __le, tostring,
+		error, pcall, exit, write, type,
+		setmetatable, __index, __newindex, 
+		print, tonumber, __tostring, rawset,
+		getmetatable, pairs,
+	},
+	sensitive=false,
+	morecomment=[l]{--},
+%	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+} 
+
+\lstdefinelanguage[KB]{Perl}
+{
+	keywords={
+		package, sub, my, use, our,
+		if, else, unless, foreach, 
+		die, return, eval, and, or, not,
+		bless, overload, scalar, 
+	},
+	morekeywords=[2]{
+		shift, @_, @ISA,
+		__PACKAGE__, \$@,
+		caller,
+		Scalar, Util,
+		\$ARGV, SUPER,
+	},
+	morekeywords=[3]{
+		eq, exists, print, isa, can, blessed, 
+		refaddr, defined, undef, DESTROY, qw,
+	},
+	sensitive=true,
+	morecomment=[l]{\#},
+	%	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{PHP}
+{
+	keywords={
+		class, private, public, protected, new, extends, implements,
+		var, function, require_once, return, if, else, throw,  
+		try, catch, switch, case, abstract, final, break, default, 
+		interface, trait, use, as, foreach, array, instanceof, 
+	},
+	morekeywords=[2]{
+		\$this, parent, \$argv,
+		Exception, self, Error, 
+	},
+	morekeywords=[3]{
+		__construct, __toString, __clone, print, echo,
+		__get, __set, sizeof, exit, __destruct, unset, 
+		clone, get_parent_class, method_exists,
+		get_class, gettype, is_a, property_exists, is_object, 
+		func_get_arg, func_num_args, count, 
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{Python}
+{
+	keywords={
+		class, def, return, try, except, as, for, in, 
+		@staticmethod, @property, from, import, and, elif, 
+		if, else, raise, setter, pass, @abstractmethod, is, 
+	},
+	morekeywords=[2]{
+		object, TypeError, 
+		sys, argv, stdout,
+		__name__, __class__, 
+		Exception,
+		__metaclass__,
+		abc, ABCMeta, str,
+		abstractmethod, None,
+	},
+	morekeywords=[3]{
+		__init__, __str__, __copy__, __eq__, __lt__, __hash__, __del__,
+		print, copy, hash, del, len, int, exit, super, enumerate, 
+		isinstance, format, __new__, callable, getattr, write, type, 
+		hasattr,
+	},
+	sensitive=true,
+	morecomment=[l]{\#},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{Ruby}
+{
+	keywords={
+		class, def, end, if, else, then,
+		include, case, when, raise, rescue, begin, ensure, module,
+		END, BEGIN,
+		attr_accessor, attr_reader, attr_writer, 
+		alias_method, do, 
+	},
+	morekeywords=[2]{
+		super, Comparable, ObjectSpace, 
+		StandardError, nil, 
+		__FILE__, \$0, ARGV, 
+		self, Exception, String, 
+	},
+	morekeywords=[3]{
+		puts, initialize, finalize, 
+		to_s, initialize_clone, new, clone, 
+		protected, private, public, 
+		print, exit, to_i, length, 
+		define_finalizer, proc, hash, 
+		instance_method, bind, call,
+		method, super_method, eql?,
+		each_with_index, method_defined?,
+		is_a?, kind_of?, instance_of?,
+	},
+	sensitive=true,
+	morecomment=[l]{\#},	
+	morestring=[b]",
+	morestring=[b]',
+	alsoletter={?},
+} 

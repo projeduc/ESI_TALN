@@ -1,0 +1,441 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+\changegraphpath{../img/pos/}
+\chapter{Étiquetage morpho-syntaxique}
+
+\begin{introduction}
+	\lettrine{L}{e} 
+\end{introduction} 
+
+\begin{exampleblock}{Exemple d'une phrase en anglais}
+	\begin{center}
+		\Huge\bfseries
+		We can can the can
+		
+		Will Will will the will to Will?
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Avez vous pu comprendre  les deux phrases ?
+	\item Essayez de trouver les noms, les verbes, les pronoms, etc.
+	\item \optword{can} : (1) pouvoir (2) mettre en boîte (3) boîte
+	\item \optword{will} : (1) exprime le futur (2) un nom propre masculin (3) vouloir (4) testament
+\end{itemize}
+
+
+%===================================================================================
+\section{Étiquetage de séquences}
+%===================================================================================
+
+\subsection{Description}
+
+\begin{itemize}
+	\item \textbf{But} : affecter des étiquettes à des éléments d'une séquence. 
+	\item \textbf{Exemple} : \expword{affecter des catégories grammaticales à des mots dans une phrase}.
+\end{itemize}
+
+\begin{block}{Formulation du problème}
+	\begin{itemize}
+		\item $w = w_1, \ldots, w_n$ : une séquence d'entrée
+		\item $t = t_1, \ldots, t_n$ : une séquence des étiquettes
+	\end{itemize}
+	\begin{center}
+		$ \arg\max\limits_t P(t | w)$
+	\end{center}
+	
+	\begin{itemize}
+		\item \optword{Modèle génératif} $ \arg\max\limits_t P(t | w) = \arg\max\limits_t P(t) P(w | t) $
+		\item \optword{Modèle discriminatif} calculer $\arg\max\limits_t P(t | w)$ directement
+	\end{itemize}
+\end{block}
+
+\subsection{Applications}
+
+\begin{itemize}
+	\item Reconnaissance d'entités nommées
+	\begin{itemize}
+		\item Trouver les personnes, les organisations, les places, les nombres, etc. dans une phrase
+	\end{itemize}
+	\item Étiquetage morpho-syntaxique
+	\begin{itemize}
+		\item Trouver les catégories des mots (nom, verbe, etc.) d'une phrase
+	\end{itemize}
+	\item Analyse syntaxique de surface (Chunking)
+	\begin{itemize}
+		\item Trouver les syntagmes d'une phrase sans structure d'arbre
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage{exp-ner_.pdf}
+	\caption{Un exemple de la reconnaissance d'entités nommées [\url{https://corenlp.run/}]}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\hgraphpage{exp-pos_.pdf}
+	\caption{Un exemple d'étiquetage morpho-syntaxique [\url{https://corenlp.run/}]}
+\end{figure}
+
+%===================================================================================
+\section{Description de la tâche}
+%===================================================================================
+
+\begin{itemize}
+	\item \textbf{Objectif} : trouver les catégories grammaticales de chaque mot dans une phrase
+	\item Définir les catégories grammaticales
+	\begin{itemize}
+		\item Nature, catégorie grammatical, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours
+		\item Anglais : Part of speech 
+	\end{itemize}
+	\item Annoter un corpus
+	\begin{itemize}
+		\item Annoter un texte manuellement pour le test
+		\item Un autre pour l'entraînement si on utilise l'apprentissage automatique ou on veut fixer des hyper-paramètres
+	\end{itemize}
+\end{itemize}
+
+\subsection{Classes universelles}
+
+\url{https://universaldependencies.org/u/pos/}
+
+\rowcolors{2}{lightblue}{lightyellow}
+\begin{tabular}{p{.3\textwidth}p{.3\textwidth}p{.3\textwidth}}
+	\rowcolor{darkblue}
+	\textcolor{white}{Classe ouverte} & \textcolor{white}{Classe fermée} & \textcolor{white}{Autres} \\
+	
+	\keyword{ADJ} :  adjectif & \keyword{ADP} : adposition & \keyword{PUNCT} : ponctuation \\
+	\keyword{ADV} :  adverbe & \keyword{AUX} : auxiliaire & \keyword{SYM} : symbole \\
+	\keyword{INTJ} : interjection & \keyword{CCONJ} : conjonction de coordination & \keyword{X} : Autres \\
+	\keyword{NOUN} : nom & \keyword{DET} : déterminant &  \\
+	\keyword{PROPN} : nom propre & \keyword{NUM} : numérique &  \\
+	\keyword{VERB} : verbe & \keyword{PART} : particule &  \\
+	& \keyword{PRON} : pronom &  \\
+	& \keyword{SCONJ} : conjonction de subordination &  \\
+	
+\end{tabular}
+
+\subsection{Treebanks}
+
+\begin{figure}
+	\begin{tcolorbox}
+		\small
+		\begin{alltt}
+			Battle-tested\keyword{/JJ} Japanese\keyword{/JJ} industrial\keyword{/JJ} managers\keyword{/NNS}
+			here\keyword{/RB} always\keyword{/RB} buck\keyword{/VBP} up\keyword{/RP} nervous\keyword{/JJ} newcomers\keyword{/NNS}
+			with\keyword{/IN} the\keyword{/DT} tale\keyword{/NN} of\keyword{/IN} the\keyword{/DT} first\keyword{/JJ} of\keyword{/IN}
+			their\keyword{/PP\$} countrymen\keyword{/NNS} to\keyword{/TO} visit\keyword{/VB} Mexico\keyword{/NNP} ,\keyword{/,}
+			a\keyword{/DT} boatload\keyword{/NN} of\keyword{/IN} samurai\keyword{/FW} warriors\keyword{/NNS} blown\keyword{/VBN}
+			ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyword{/.}
+		\end{alltt}
+	\end{tcolorbox}
+	\caption{Exemple d'un texte annoté de Penn TreeBank \cite{2003-taylor}}
+\end{figure}
+
+\begin{itemize}
+	\item Universal TreeBank (\url{https://universaldependencies.org/}) \cite{2012-petrov-al}
+	\begin{itemize}
+		\item Projet à communauté ouverte
+		\item Il vise à fournir des corpus annotés pour plusieurs langues
+		\item Il utilise les mêmes classes grammaticales
+	\end{itemize}
+\end{itemize}
+
+\subsection{Difficulté et outils}
+
+\begin{itemize}
+	\item \optword{Ambigüité}
+	\begin{itemize}
+		\item Il existe des mots avec plusieurs catégories grammaticales
+		\item Ex. \expword{We can can the can}
+	\end{itemize}
+	\item \optword{Mots inconnus}
+	\begin{itemize}
+		\item On peut trouver des mots hors vocabulaire (du corpus d'entraînement)
+		%		\item Ex. \expword{We can can the can}
+	\end{itemize}
+	\item \optword{Inconsistance des tags} 
+	\begin{itemize}
+		\item Lorsqu'il y a plusieurs tags, on peut trouver des inconsistances dans l'annotation
+		\item Ex. \expword{Dans les corpus ``Brown" et ``WSJ", le mot ``to" a le tag ``TO". Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, sinon ``IN" lorsque c'est une préposition.}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item \url{https://nlp.stanford.edu/software/tagger.shtml}
+	\item \url{https://github.com/sloria/textblob}
+	\item \url{https://www.nltk.org/api/nltk.tag.html}
+	\item \url{https://spacy.io/}
+	\item \url{https://github.com/clips/pattern}
+\end{itemize}
+
+%===================================================================================
+\section{Approches}
+%===================================================================================
+
+\begin{itemize}
+	\item Règles manuelles 
+	\item Apprentissage automatique 
+	\begin{itemize}
+		\item Apprendre les règles : \expword{Transformation-Based Learning (TBL)}
+		\item Modèles statistiques : \expword{Modèle de Markov caché, Modèle de Markov basé sur l'entropie maximale, champs aléatoires conditionnels (CRF)}
+		\item Réseaux de neurones
+	\end{itemize}
+\end{itemize}
+
+\subsection{Modèle de Markov}
+
+\begin{minipage}{.64\textwidth}
+	\begin{itemize}
+		\item Hypothèse de Markov
+		\item $ P(q_i = a | q_1, \ldots, q_{i-1}) \approx P(q_i = a | q_{i-1}) $
+		\item $Q = \{q_1, q_2, \ldots, q_n\}$ : états
+		\item $A = \begin{bmatrix}%
+		a_{11} & a_{12} & \ldots & a_{1n} \\
+		a_{21} & a_{22} & \ldots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \ldots & a_{nn} \\
+		\end{bmatrix}$ : matrice des probabilités de transition
+		\item $\sum_j a_{ij} = 1,\, \forall i$
+	\end{itemize}
+\end{minipage}
+\begin{figure}
+	\hgraphpage{exp-markov_.pdf}
+	\caption{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{itemize}
+	\item $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ : la distribution initiale des probabilités des états
+	\item $\sum_i \pi_i = 1$
+	\item Ex. \expword{Calculer la probabilité $P(HOT\, WARM\, COLD\, COLD)$ lorsque $\pi = [0.1, 0.7, 0.2]$}
+\end{itemize}
+
+Modèle de Markov caché (HMM)
+
+\begin{minipage}{.54\textwidth}
+	\begin{itemize}
+		%		\item Hypothèse de Markov
+		%		\item $ P(q_i = a | q_1, \ldots, q_{i-1}) \approx P(q_i = a | q_{i-1}) $
+		\item $Q = \{q_1, q_2, \ldots, q_n\}$ : états
+		\item $A$ : matrice des probabilités de transitions où $\sum_j a_{ij} = 1,\, \forall i$
+		\item $O = o_1 o_2 \ldots o_T$ : séquence des évènements observés (mots)
+		\item $B = b_i(o_t)$ : probabilités d'observation (\keyword{probabilités d'émission}), chacune représente la probabilité de génération d'une observation $o_t$ dans un état $q_i$
+	\end{itemize}
+\end{minipage}
+\begin{figure}
+	\hgraphpage{exp-hmm_.pdf}
+	\caption{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{itemize}
+	\item $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ : la distribution initiale des probabilités des états
+	\item $\sum_i \pi_i = 1$
+\end{itemize}
+
+Entraînement
+
+\begin{itemize}
+	\item Les états sont les tags (catégories) $t_i$
+	\item Prenons \keyword{DEBUT} comme tag du début de la phrase
+	\item Les observation $o_i$ sont les mots $w_i$
+	\item \keyword{C} : la fonction de compte (nombre des occurrences dans le corpus d'entraînement)
+\end{itemize}
+
+\begin{block}{Entraînement du HMM pour étiquetage morpho-syntaxique}
+	\[
+	\text{Probabilité de transition : } P(t_i | t_{i-1}) = \frac{C(t_{i-1}, t_i)}{C(t_{i-1})} 
+	\]\[
+	\text{Probabilité d'émission : } P(w_i | t_i) = \frac{C(t_i, w_i)}{C(t_i)}
+	\]\[
+	\text{Distribution initiale : } \pi_i = P(t_i | DEBUT) = \frac{C(DEBUT, t_i)}{C(DEBUT)}
+	\]
+	
+\end{block}
+
+\begin{exampleblock}{Exemple d'un corpus d'entraînement}
+	\begin{itemize}
+		\item un/DET ordianteur/NOUN peut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB un/DET ordinateur/NOUN
+		\item il/PRON peut/VERB nager/VERB
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item $P(VERB | NOUN) = \frac{C(NOUN,\ VERB)}{C(NOUN)} = \frac{1}{2}$
+	\item $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$
+	\item $\pi_{PRON} = \frac{C(PRON,\ <s>)}{C(<s>)} = \frac{3}{4} $
+\end{itemize}
+
+Étiquetage (décodage des tags)
+
+\begin{itemize}
+	\item Étant donné 
+	\begin{itemize}
+		\item un modèle de Markov caché $\lambda = (A, B)$
+		\item une séquence des observations (mots) : $w = w_1 w_2 \ldots w_n$
+	\end{itemize}
+	\item Estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$
+\end{itemize}
+
+\begin{block}{Décodage des étiquètes en utilisant HMM}
+	\[
+	\hat{t} = \arg\max\limits_t P(t | w) = \arg\max\limits_t \frac{P(w|t) P(t)}{P(w)} = \arg\max\limits_t P(w|t) P(t)%\text{ tel que } t = t_1 t_2 \ldots t_n
+	\]
+	
+	\[ 
+	P(w | t) \approx \prod\limits_{i=1}^n P(w_i|t_i) 
+	\hskip2cm
+	P(t) \approx \prod\limits_{i=1}^n P(t_i|t_{i-1}) 
+	\]
+	
+	\[
+	\hat{t} = \arg\max\limits_t \prod\limits_{i=1}^n P(w_i|t_i) P(t_i|t_{i-1})
+	\]
+\end{block}
+
+Viterbi
+\begin{block}{Viterbi }
+	\scriptsize
+	\begin{algorithm}[H]
+		\KwData{$w = w_1 \ldots w_T$, HMM $\lambda = (A, B)$ avec $N$ états}
+		\KwResult{$meilleur\_chemin$, $prob\_chemin$}
+		
+		Créer une matrice $viterbi[N, T]$\;
+		
+		\Pour{état $ s = 1 \ldots N$}{
+			$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
+		}
+		
+		\Pour{$ t = 1 \ldots T$}{
+			\Pour{état $ s = 1 \ldots N$}{
+				$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+				$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+			}
+		}
+		
+		$prob\_chemin = \max\limits_{s=1}^N viterbi[s, T];\, pointeur\_chemin = \arg\max\limits_{s=1}^N viterbi[s, T]$\;
+		
+		$meilleur\_chemin$ est le chemin qui commence par $pointeur\_chemin$ et qui suit $backpointer$
+		
+		\Return $meilleur\_chemin$, $prob\_chemin$\;
+		
+	\end{algorithm}
+\end{block}
+
+Exercice
+
+\begin{exampleblock}{Exemple d'un corpus d'entraînement}
+	\begin{itemize}
+		\item un/DET ordianteur/NOUN peut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB vous/PRON aider/VERB
+		\item il/PRON veut/VERB un/DET ordinateur/NOUN
+		\item il/PRON peut/VERB nager/VERB
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item $G = \{DET, NOUN, VERB, PRON\}$
+	\item Trouver les tags de cette phrase : \expword{il peut aider}
+	\begin{itemize}
+		\item Entraîner le modèle (seulement sur les mots et les tags nécessaires)
+		\item Appliquer Viterbi
+	\end{itemize}
+\end{itemize}
+
+\subsection{Maximum entropy}
+
+Maximum entropy Markov model (MEMM)
+\begin{itemize}
+	\item On note $x_{n}^{m} = x_n x_{n+1} \ldots x_{m-1} x_m$
+	\item Étant donné 
+	\begin{itemize}
+		\item une séquence des observations (mots) : $w = w_1 w_2 \ldots w_n$
+		\item un ensemble des caractéristiques $f$ sur les séquences (comme : mot en majuscule)
+	\end{itemize}
+	\item Estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$
+\end{itemize}
+
+\begin{block}{Décodage des étiquètes en utilisant MEMM}
+	\[
+	\hat{t} = \arg\max\limits_t P(t | w) = \arg\max\limits_t \prod\limits_{i}  P(t_i | w_i, t_{i-1})
+	\]
+	
+	\[
+	\hat{t} = \arg\max\limits_t \prod\limits_{i}  
+	\frac{exp\left(\sum_j \theta_j f_j(t_i, w_{i-l}^{i+l}, t_{i-k}^{i-1})\right)}%
+	{\sum_{t' \in tags} exp\left(\sum_j \theta_j f_j(t'_i, w_{i-l}^{i+l}, t_{i-k}^{i-1})\right)}
+	\]
+	
+\end{block}
+
+\begin{itemize}
+	\item Le mot $w_i$ (en considérant chaque mot comme caractéristique)
+	\item Les étiquettes précédentes 
+	\item $w_i$ contient un préfixe à partir d'une liste ($len(prefixe) \le 4$) 
+	\item $w_i$ contient un suffixe à partir d'une liste ($len(suffixe) \le 4$) 
+	\item $w_i$ contient un nombre 
+	\item $w_i$ contient une lettre en majuscule
+	\item $w_i$ contient un trait d'union 
+	\item $w_i$ est complètement en majuscule
+	\item La forme du mot $w_i$ (Ex. \expword{X.X.X}) 
+	\item $w_i$ est en majuscule avec un trait et un nombre (Ex. \expword{CFC-12}) 
+	\item $w_i$ est en majuscule suivi des mots Co., Inc., etc. dans 3 mots maximum
+\end{itemize}
+
+\subsection{Modèle neuronal}
+
+\begin{figure}
+	\centering
+	\hgraphpage{rnn-simple_.pdf}
+	\caption{Un RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\hgraphpage{rnn-stack_.pdf}
+	\caption{Des RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\hgraphpage{rnn-bi_.pdf}
+	\caption{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\hgraphpage{rnn-char1_.pdf}
+	\hgraphpage{rnn-char2_.pdf}
+	\caption{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
+\end{figure}
+
+
+\begin{discussion}
+
+
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

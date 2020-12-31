@@ -1,0 +1,5 @@
+item_0 "\\item {\\color{indigo}\\bfseries "
+item_x1 " \\leavevmode\\leaders\\hrule height 6pt\\hfill } \n    \\subitem "
+ 
+delim_1 " \\dotfill " 
+delim_2 " \\dotfill " 

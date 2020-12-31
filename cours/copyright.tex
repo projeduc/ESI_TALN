@@ -1,0 +1,114 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass[12pt]{book}
+	\input{calls}
+	\begin{document}
+\fi
+%=====================================================================
+
+% ===================================================
+%                 COPYRIGHT
+% ===================================================
+
+\definecolor{my-grey}{RGB}{233, 233, 233}
+
+\chapter*{Copyright}
+\addcontentsline{toc}{section}{Copyright}
+
+\begin{center}
+	{\Huge \textbf{Traitement automatique de langages naturels}}
+\end{center}
+
+
+\begin{tcolorbox}[colback=cyan,
+	colframe=cyan,  
+	arc=0pt,outer arc=0pt,
+	valign=top, 
+	halign=center,
+	width=\textwidth]
+	
+	\includegraphics[width=.5cm]{../img/licence/cc_icon_white_x2.png}
+	\includegraphics[width=.5cm]{../img/licence/attribution_icon_white_x2.png}
+	
+	\color{white}
+	\bfseries Attribution 4.0 International (CC BY 4.0) \\
+	\tiny \url{https://creativecommons.org/licenses/by/4.0/deed.fr}
+	
+\end{tcolorbox}\vspace{-.5cm}
+\begin{tcolorbox}[colback=my-grey,
+	colframe=my-grey,  
+	center, arc=0pt,outer arc=0pt,
+	valign=top, 
+	halign=left,
+	width=\textwidth]
+	
+	
+	
+	\begin{center}
+		\bfseries\Large
+		Vous êtes autorisé à :
+	\end{center}
+	
+	\begin{minipage}{0.83\textwidth}
+		\begin{itemize}
+			\item[] \textbf{Partager} — copier, distribuer et communiquer le matériel par tous moyens et sous tous formats
+			\item[] \textbf{Adapter} — remixer, transformer et créer à partir du matériel
+			pour toute utilisation, y compris commerciale.
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.15\textwidth}
+		\includegraphics[width=\textwidth]{../img/licence/FreeCulturalWorks_seal_x2.jpg}
+	\end{minipage}
+	
+	
+	\begin{center}
+		\bfseries\Large
+		Selon les conditions suivantes :
+	\end{center}
+	
+	\begin{itemize}
+		\item[] \textbf{Attribution} — Vous devez créditer l'Œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'Oeuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'Offrant vous soutient ou soutient la façon dont vous avez utilisé son Oeuvre. 
+		\item[] \textbf{Pas de restrictions complémentaires} — Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Oeuvre dans les conditions décrites par la licence.
+	\end{itemize}
+	
+\end{tcolorbox}
+
+% ===================================================
+%                   CREDITS
+% ===================================================
+\chapter*{Crédits}
+\addcontentsline{toc}{section}{CRÉDITS}
+
+La couverture : 
+\begin{itemize}
+	\item L'image du robot : \url{https://pixabay.com/photos/futuristic-robot-cyborg-3308094/} (sous la licence Pixabay).
+	\item L'image des lives : \url{https://pixy.org/5778589/} (sous la licence CC0).
+	\item La police du titre : Euphoria Script (Google fonts)
+	\item Logiciel d'édition d'image : Gimp
+\end{itemize}
+
+
+
+% ===================================================
+%                 VERSIONS
+% ===================================================
+\newpage
+\chapter*{Versions}
+\addcontentsline{toc}{section}{Versions}
+
+
+
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

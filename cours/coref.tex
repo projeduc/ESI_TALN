@@ -1,0 +1,326 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+\changegraphpath{../img/coref/}
+\chapter{Détection de la coréférence}
+
+\begin{introduction}
+	\lettrine{L}{e} 
+\end{introduction} 
+
+\begin{exampleblock}{Exemple d'une phrase en français}
+	\begin{center}
+		\Large\bfseries
+		%		\begin{enumerate}
+		%			\item Mon chat a attrapé une souris avec ses griffes 
+		%			\item Mon chat a attrapé une souris avec sa queue
+		%			\item Mon chat a attrapé une souris avec un autre chat
+		%		\end{enumerate}
+		La fille a cueilli une fleur. Elle l'a sentie. Elle a une très bonne odeur.
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Qui a senti l'autre : la fille ou la fleur ?
+	\item Qui a une très bonne odeur : la fille ou la fleur ?
+\end{itemize}
+
+%===================================================================================
+\section{Références}
+%===================================================================================
+
+\subsection{Formes des références}
+
+\begin{itemize}
+	\item \optword{Pronoms}
+	\begin{itemize}
+		\item Personnels : \expword{\underline{Karim} est entré. \underline{Il} a commencé le cours.}
+		\item Possessifs : \expword{\underline{Karim} a commencé \underline{son} cours.}
+		\item ...
+	\end{itemize}
+	
+	\item \optword{Syntagmes nominaux}
+	\begin{itemize}
+		\item \expword{J'ai un petit \underline{chat}. \underline{Cet animal} est très méchant.}
+	\end{itemize}
+	
+	\item \optword{Noms propres} 
+	\begin{itemize}
+		\item \expword{L'\underline{école nationale supérieure d'informatique} se situe à Alger. Comme toutes les unniversités algériennes, il faut avoir le BAC pour étudier à l'\underline{ESI}.}
+	\end{itemize}
+	
+	\item \optword{Anaphore zéro}
+	\begin{itemize}
+		\item \expword{\underline{Karim} a présenté et \underline{$ \phi $} expliqué le cours.}
+		\item \expword{\underline{カリムさん}はESIに生きます。\underline{$ \phi $} あそこに教えます。}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Manière de référencement}
+
+\begin{itemize}
+	\item \optword{Anaphore}
+	\begin{itemize}
+		\item une référence vers un mot ou un syntagme précédent appelé \keyword{antécédent}.
+		\item Ex. \expword{\underline{Le cours} est très long. \underline{Il} prendra plus de temps.}
+	\end{itemize}
+	
+	\item \optword{Cataphore}
+	\begin{itemize}
+		\item une référence vers un mot ou un syntagme suivant appelé \keyword{postcédent}.
+		\item Ex. \expword{\underline{Il} est très long, \underline{ce cours}!}
+	\end{itemize}
+	
+	\item \optword{Antécédents partagés}
+	\begin{itemize}
+		\item une référence vers plusieurs mots rt/ou syntagmes
+		\item Ex. \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
+	\end{itemize}
+	
+	\item \optword{Syntagmes nominaux en coréférence}
+	\begin{itemize}
+		\item deux syntagmes nominaux où chacun est une référence vers l'autre
+		\item Ex. \expword{\underline{Certains de nos collègues} nous ont vraiment soutenu. \underline{Ce genre de personnes} gagne notre gratitude.}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Propriétés des relations de coréférence}
+
+\begin{itemize}
+	\item \optword{Nombre} : Singulier, Duel, Pluriel 
+	\begin{itemize}
+		\item \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
+	\end{itemize}
+	
+	\item \optword{Personne} : Première, Deuxième, Troisième
+	\begin{itemize}
+		\item \expword{\underline{Mon frère}\textsubscript{1} et \underline{moi}\textsubscript{2} avons réparé \underline{son vélo}\textsubscript{1} après \underline{le mien}\textsubscript{2}.}
+	\end{itemize}
+	
+	\item \optword{Genre} : Masculin, Féminin, Neutre
+	\begin{itemize}
+		\item \expword{Lorsque la fille a rencontré son \underline{père}, \underline{il} a été content.}
+	\end{itemize}
+	
+	\item \optword{Contraintes de théorie contraignante} : contraintes syntaxiques sur la relation mention-antécédent.
+	\begin{itemize}
+		\item \expword{Janet bought herself a bottle of fish sauce.} [herself = Janet]
+		\item \expword{Janet bought het a bottle of fish sauce.} [her $\ne$ Janet]
+	\end{itemize}
+
+	\item \optword{Récence} : les entités mentionnées plus récemment sont plus probables à être un antécédent
+	\begin{itemize}
+		\item \expword{Le médecin a trouvé une vieille carte. Jim a trouvé \underline{une carte} encore plus ancienne. \underline{Elle} décrivait une île.}
+	\end{itemize}
+	
+	\item \optword{Rôle grammatical} : les sujets sont plus probables que les objets
+	\begin{itemize}
+		\item \expword{\underline{Karim} est allé au restaurant avec son ami. \underline{Il} a demandé un plat de couscous.}
+	\end{itemize}
+	
+	\item \optword{Sémantique du verbe} : la mention suit l'emphase du verbe (celui qui a causé l'évènement)
+	\begin{itemize}
+		\item \expword{\underline{John} telephoned Bill. \underline{He} lost the laptop.}
+		\item \expword{John criticized \underline{Bill}. \underline{He} lost the laptop.}
+	\end{itemize}
+	
+\end{itemize}
+
+%===================================================================================
+\section{Résolution des coréférences}
+%===================================================================================
+
+\hgraphpage{coref-arch.pdf}
+
+\begin{itemize}
+	\item \optword{Modèles de liaison}
+	\begin{itemize}
+		\item Mention-Pair : deux à deux
+		\item Mention-Rank : un antécédent parmi plusieurs
+		\item Entity-based : détecter des clusters de coréférences
+	\end{itemize}
+	
+	\item \optword{Architecture de coréférences}
+	\begin{itemize}
+		\item Règles
+		\item Caractéristiques définies manuellement
+		\item Réseaux de neurones : embeddings
+	\end{itemize}
+\end{itemize}
+
+\subsection{Détection de mention}
+
+\begin{itemize}
+	\item \optword{Extraction des entités}
+	\begin{itemize}
+		\item Syntagmes nominaux, pronoms, entités nommées
+	\end{itemize}
+	
+	\item \optword{Filtrage des entités}
+	\begin{itemize}
+		\item Par règles linguistiques. Ex. Dans ``\expword{It is thought that ...}" le pronom ``\expword{It}" n'est pas une référence. Ici, on peut utiliser une liste des verbes cognitifs \expword{believe, think, etc.}
+		\item Par apprentissage automatique : un détecteur des anaphores et un autre pour les antécédents
+	\end{itemize}
+	
+	\item \optword{Formation des mentions}
+	\begin{itemize}
+		\item Regrouper les entités probables ensembles
+	\end{itemize}
+\end{itemize}
+
+\subsection{Liaison}
+
+Modèles Mention-Pair
+\begin{itemize}
+	\item Détecter s'il y a une coréférence entre deux pairs d'entités
+	\item Classifieur binaire (coréférence, non coréférence)
+	\item \textbf{Problème} : contradictions. Ex. \expword{Ms Kennedy $ \leftarrow $ Kennedy, Kennedy $ \leftarrow $ He}
+\end{itemize}
+\begin{figure}
+	\centering
+	\hgraphpage[.8\textwidth]{mention-pair-exp_.pdf}
+	\caption{Exemple d'un modèle Mention-Pair \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Modèles Mention-Rank
+\begin{itemize}
+	\item Parmi les mentions précédentes d'une entité, décider quel est l'antécédent
+	\item $ \hat{a} = \arg\max\limits_{a_i \in \{\epsilon, a_1, \ldots, a_{n-1}\}} P(a_i|a_n) $
+	\item $ \epsilon $ : veut dire, il n'y a pas d'antécédent
+\end{itemize}
+\begin{figure}
+	\centering
+	\hgraphpage{mention-rank-exp_.pdf}
+	\caption{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Modèles Entity-based
+\begin{itemize}
+	\item Appelés aussi : modèles cluster-ranking
+	\item \textbf{Entrée} : deux clusters des mentions
+	\item Vérification si les mentions sont compatibles
+	\item Estimation si un cluster est un antécédent de l'autre comme dans Mention-Rank
+	\item Si les cluster représentent les mêmes mentions, on les fusionne
+	\item \textbf{Sortie} : Un ensemble des clusters
+\end{itemize}
+
+\subsection{Évaluation}
+
+\begin{itemize}
+	\item \keyword{MUC} : \optword{Message Understanding Conference}
+	\begin{itemize}
+		\item Métrique basée sur les liens (link-based metric)
+		\item Nombre des liens binaires communs entre la référence et le système
+	\end{itemize}
+	\item \keyword{B\textsuperscript{3}}
+	\begin{itemize}
+		\item Métrique basée sur les mentions (mention-based metric)
+		\item R/P globale est calculé en fonction de R/P des mentions individuelles
+	\end{itemize}
+	\item \keyword{CEAF} : \optword{Constrained entity-alignment F-Measure}
+	\begin{itemize}
+		\item mention-based OU entity-based (2 versions selon la similarité utilisée)
+		\item Une mention du système est alignée avec une seule de référence
+	\end{itemize}
+	\item \keyword{BLANC} 
+	\begin{itemize}
+		\item Métrique basée sur les liens (link-based metric)
+		\item R/P globale est la moyenne de R/P des liens de coréférences et ceux des non coréférences
+	\end{itemize}
+	\item \keyword{LEA} : \optword{Link based entity aware}
+	\begin{itemize}
+		\item La taille de l'entité comme mesure d'importance
+		\item Les liaison de coréférence résolues sont évaluées
+	\end{itemize}
+\end{itemize}
+
+%===================================================================================
+\section{Tâches connexes}
+%===================================================================================
+
+\begin{itemize}
+	\item Tâches utilisées dans la détection de la coréférence
+	\begin{itemize}
+		\item Tâches de prétraitement (chapitre 2)
+		\item Étiquetage morpho-syntaxique (chapitre 4)
+		\item Reconnaissance des entités nommées
+	\end{itemize}
+	\item Tâches similaires à la détection de la coréférence
+	\begin{itemize}
+		\item Annotation sémantique (Entity linking)
+		\item Attribution de la citation : trouver qui a dit/écrit un discours
+	\end{itemize}
+\end{itemize}
+
+\subsection{Annotation sémantique (Entity linking)}
+
+\begin{itemize}
+	\item Associer une mention dans un texte à une représentation d'une entité dans une base de connaissances structurée
+	\item utile pour avoir une connaissance approfondie sur les entités du texte dans le monde réel
+	\item \keyword{Wikification} : relier une mention à une page de Wikipédia
+	\item Les étapes de l'annotation sémantique : 
+	\begin{itemize}
+		\item \optword{Détection de la mention} : détecter l'ensemble des entités d'un base de connaissance liées à une mention en utilisant des requêtes.
+		\item \optword{Désambigüisation de la mention} : trouver l'entité la plus probable en utilisant l'apprentissage automatique
+	\end{itemize}
+\end{itemize}
+
+\subsection{Reconnaissance des entités nommées}
+
+\begin{itemize}
+	\item localiser et classer les entités nommées dans un texte
+	\item \keyword{entité nommée} : personnes, places, organisations, quantités, etc.
+	\item une sous tâche de l'extraction des données
+	\item \textbf{En anglais} : Named-entity recognition (NER)
+	\item Techniques de reconnaissance 
+	\begin{itemize}
+		\item \optword{Règles} : utiliser des règles et des listes de noms pour chercher les entités et détecter leurs types
+		\item \optword{Apprentissage avec caractéristiques} : embeddins du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
+		\item \optword{Étiquetage de séquences} : classer les mots en entités en les traitant comme une séquence. Une entité peut avoir plusieurs mots qui commence par \keyword{B} (Begin) suivi par \keyword{I} (Inside). Les mots sans classe ont le tag \keyword{O} (Outside). 
+		
+		\expword{\scriptsize
+			$ \underbrace{Google}_{B-ORG} $ 
+			$ \underbrace{LLC}_{I-ORG} $ 
+			$ \underbrace{est}_{O} $ 
+			$ \underbrace{fond\text{\textit{é}}e}_{O} $ 
+			$ \underbrace{dans}_{O} $ 
+			$ \underbrace{la}_{O} $ 
+			$ \underbrace{Silicon}_{B-LOC} $ 
+			$ \underbrace{Valley}_{B-LOC} $ 
+			$ \underbrace{par}_{O} $ 
+			$ \underbrace{Larry}_{B-PER} $ 
+			$ \underbrace{Page}_{I-PER} $ 
+			$ \underbrace{et}_{O} $ 
+			$ \underbrace{Sergey}_{B-PER} $ 
+			$ \underbrace{Brin}_{I-PER} $
+		}
+	\end{itemize}
+\end{itemize}
+
+
+
+\begin{discussion}
+
+
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

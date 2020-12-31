@@ -1,0 +1,84 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass{KodeBook}
+
+%To prevent other chapters from creating a new document
+\let\wholebook=\relax
+
+%The calls (includes) for other packages are in a separate file
+\input{calls}
+
+
+
+%opening
+%\title{Object-Oriented Programming \\ \hspace{1cm} for \\ \hspace{2cm} Coders}
+\title{Traitement automatique de langages naturels}
+
+\author{ARIES Abdelkrime}
+\cover{../img/cover.jpg}
+\license{../img/licence/cc-by.png}
+
+%\setplainversion
+
+\begin{document}
+	
+\maketitle
+
+\frontmatter
+
+\addcontentsline{toc}{chapter}{Information générale}
+
+\input{copyright}
+
+%\input{preface}
+
+\addcontentsline{toc}{chapter}{Contenu et listes}
+
+\kodetoc
+
+%\kodelof
+
+\kodelot
+
+\kodeabbrev
+
+\mainmatter
+
+
+\input{intro}
+
+\input{basique}
+
+\input{modeles}
+
+\input{pos}
+
+\input{syntaxe}
+
+\input{sem_lex}
+
+\input{sem_phrase}
+
+\input{coref}
+
+\backmatter
+
+\bibliography{cite}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\printindex
+\addcontentsline{toc}{chapter}{Index}
+
+\cleardoublepage
+\pagestyle{empty}
+\vspace*{\fill}
+\Huge\color{indigo}
+\begin{center}
+	Il n'y a rien de plus\\ ...\\Arrêtez de lire !
+\end{center}
+\vspace*{\fill}
+
+\end{document}

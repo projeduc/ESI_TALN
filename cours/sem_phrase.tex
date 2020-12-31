@@ -1,0 +1,684 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+\changegraphpath{../img/sem-phrase/}
+\chapter{Sémantique de phrase}
+
+\begin{introduction}
+	\lettrine{L}{e} 
+\end{introduction} 
+
+\begin{exampleblock}{Exemple d'une phrase en français}
+	\begin{center}
+		\Large\bfseries
+		\begin{enumerate}
+			\item Mon chat a attrapé une souris avec ses griffes 
+			\item Mon chat a attrapé une souris avec sa queue
+			\item Mon chat a attrapé une souris avec un autre chat
+		\end{enumerate}
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item En utilisant quoi, le chat a attrapé la souris ? Par quoi, il la attrapé ? Avec qui, il la attrapé ?
+	\item La dernière phrase veut dire : 
+	\begin{itemize}
+		\item Le chat a attrapé deux autre animaux : une souris et un chat
+		\item Les deux chat ont attrapé la souris ensemble
+	\end{itemize}
+\end{itemize}
+
+
+%===================================================================================
+\section{Rôles sémantiques}
+%===================================================================================
+
+\subsection{Rôles thématiques}
+
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
+	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
+		\rowcolor{darkblue}
+		\textcolor{white}{Rôle} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
+		
+		AGENT &
+		Le causeur volontaire d'un évènement &
+		\expword{\underline{John} a cassé la fenêtre avec une pierre.}\\
+		
+		EXPERIENCER & 
+		L'expérimentateur d'un évènement & 
+		\expword{\underline{John} a mal à la tête.}\\
+		
+		FORCE &
+		Le causeur non volontaire d'un évènement &
+		\expword{\underline{Le vent} souffle les débris.}\\
+		
+		THEME &
+		The participant most directly affected by an event &
+		\expword{John a cassé \underline{la fenêtre} avec une pierre.}\\
+		
+		RESULT &
+		The end product of an event &
+		\expword{La ville a construit \underline{un terrain de baseball}.}\\
+		
+		CONTENT &
+		The proposition or content of a propositional event &
+		\expword{Mona a demandé\newline	\underline{``Vous avez rencontré Mary Ann dans un supermarché?"}}\\
+		
+		INSTRUMENT &
+		An instrument used in an event &
+		\expword{\underline{une pierre} a cassé la fenêtre.}\\
+		
+		BENEFICIARY &
+		The beneficiary of an event &
+		\expword{Ann fait des réservations d'hôtel pour \underline{son patron}.}\\
+		
+		SOURCE &
+		The origin of the object of a transfer event &
+		\expword{Je suis arrivé de \underline{Boston}.}\\
+		
+		GOAL &
+		The destination of an object of a transfer event &
+		\expword{Je suis allé à \underline{Portland}.}\\
+	\end{tabular}
+	\caption{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
+\end{table}
+
+\subsection{FrameNet}
+
+\begin{minipage}{.68\textwidth}
+	\begin{itemize}
+		\item {\scriptsize \url{https://framenet.icsi.berkeley.edu/fndrupal/}}
+		\item {\scriptsize \url{https://www.nltk.org/howto/framenet.html}}
+		\item Ressource pour représenter le sens 
+		\item basée sur la théorie ``\keyword{Frame semantics}" (Sémantique des cadres) de \keyword{Fillmore}
+		\item annotée manuellement
+		\item Plus de rôles
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\hgraphpage{frameNet-logo.jpg}
+\end{minipage}
+
+\begin{exampleblock}{Exemple des phrases qui ont le même patron (Frame)}
+	The price of petrol increased.
+	
+	The price of petrol rose.
+	
+	There has been a rise in the price of petrol.
+\end{exampleblock}
+
+Structure
+
+\begin{itemize}
+	\item \optword{Frame} (Cadre) : une représentation schématique d'une situation
+	\begin{itemize}
+		\item Contient : un nom, une définition, un type sémantique, des éléments du cadre, des unités lexicales, des exemples et des relations avec d'autres cadres
+	\end{itemize}
+	
+	\item \optword{Frame Elements} (Éléments d'un Cadre) : un rôle sémantique spécifique au cadre. 
+	\begin{itemize}
+		\item Il décrit un participant ou une situation dans le cadre
+		\item Il existe des rôles de base (\keyword{Core}) et d'autres secondaires (\keyword{Non-Core})
+	\end{itemize}
+	
+	\item \optword{Lexical Units} (Unité lexicales) : des lemmes avec leurs catégories grammaticales.
+	\begin{itemize}
+		\item Une unité lexicale déclenche le cadre lorsque rencontrée
+	\end{itemize}
+	
+	\item \optword{Relations} : des  relations inter-cadres
+	\begin{itemize}
+		\item Exemple, \expword{l'héritage}
+	\end{itemize}
+\end{itemize}
+
+Exemple des unités lexicales
+
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow} \scriptsize\bfseries
+	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
+		\rowcolor{darkblue}
+		\textcolor{white}{Lexical Unit} & \textcolor{white}{Frame} & \textcolor{white}{Exemple}\\
+		
+		break.n & Opportunity & \\	
+		break.v & Cause\_harm & \expword{Jolosa broke a rival player's jaw.}\\
+		break.v & Compliance & \expword{He broke his promess.}\\
+		break.v & Experience\_bodily\_harm & \expword{I broke my arm in the accident.}\\
+		break.v & Cause\_to\_fragment & \expword{Michael broke the bottle against his head}\\
+		break.v & Render\_nonfunctional & \expword{I guess I broke the doorknob by twisting it too hard.}\\
+		break.v & Breaking\_off & \expword{The handle broke off of the pot.}\\
+		break.v & Breaking\_apart & \expword{The handle broke off of the pot.}\\
+		
+	\end{tabular}
+	\caption{Les cadres sémantiques activées par l'unité lexicale ``break"}
+\end{table}
+
+Exemple d'un cadre sémantique
+
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
+	\begin{tabular}{p{.15\textwidth}p{.75\textwidth}}
+		\rowcolor{darkblue}
+		\multicolumn{2}{c}{\textcolor{white}{Cause\_to\_fragment}} \\
+		
+		Définition & An \textcolor{red}{Agent} suddenly and often violently separates the \textcolor{red}{Whole\_patient} into two or more smaller \textcolor{red}{Pieces}, resulting in the \textcolor{red}{Whole\_patient} no longer existing as such. Several lexical items are marked with the semantic type Negative, which indicates that the fragmentation is necessarily judged as injurious to the original \textcolor{red}{Whole\_patient}. Compare this frame with Damaging, Render\_non-functional, and Removing. \\	
+		
+		\rowcolor{darkblue}
+		\multicolumn{2}{c}{\textcolor{white}{FEs (Core)}} \\
+		
+		Agent [Agt] \newline \textcolor{blue}{Semantic Type: Sentient} & 
+		The conscious entity, generally a person, that performs the intentional action that results in the \textcolor{red}{Whole\_patient} being broken into \textcolor{red}{Pieces}. \newline \expword{\underline{I and I alone} can SHATTER the gem and break the curse.} \\
+		
+		Cause [cau] & 
+		An event which leads to the fragmentation of the \textcolor{red}{Whole\_patient}. \\
+		
+		Pieces [Pieces]	& 
+		The fragments of the \textcolor{red}{Whole\_patient} that result from the \textcolor{red}{Agent}'s action.
+		\newline
+		\expword{I SMASHED the toy boat to \underline{flinders}.} \\
+		
+		Whole\_patient [Pat] & The entity which is destroyed by the \textcolor{red}{Agent} and that ends up broken into \textcolor{red}{Pieces}.
+		\newline
+		\expword{Shattering someone's confidence is a little different than SHATTERING \underline{a dish}.} \\
+		
+		\rowcolor{darkblue}
+		\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core)}} \\
+		
+		Degree [Degr] \newline \textcolor{blue}{Semantic Type: Degree} &
+		The degree to which the fracturing is completed. 
+		\newline
+		\expword{I SHATTERED the vase \underline{completely}.} \\
+		
+		Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &
+		A state of affairs that the Agent is responding to in performing the action. \newline
+		\expword{He TORE the treaty UP out of frustration.} \\
+		
+		\rowcolor{darkblue}
+		\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core) [Suite]}} \\
+		
+		Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &	
+		A state of affairs that the \textcolor{red}{Agent} is responding to in performing the action.
+		\newline
+		\expword{He TORE the treaty UP \underline{out of frustration}.} \\
+		
+		Instrument [Ins] \newline \textcolor{blue}{Semantic Type: Physical\_entity} &
+		An entity directed by the  \textcolor{red}{Agent} that interacts with a \textcolor{red}{Whole\_patient} to accomplish its fracture. \\
+		
+		
+		\multicolumn{2}{c}{\large ...} \\
+		
+		\rowcolor{darkblue}
+		\multicolumn{2}{c}{\textcolor{white}{Frame-frame Relations}} \\
+		
+		Inherits from & Transitive\_action \\
+		Uses & Destroying \\
+		Is Causative of & Breaking\_apart \\
+		
+		\rowcolor{darkblue}
+		\multicolumn{2}{c}{\textcolor{white}{Lexical Units}} \\
+		
+		& break apart.v, break down.v, break up.v, break.v, chip.v, cleave.v, dissect.v, dissolve.v, fracture.v, fragment.v, rend.v, rip up.v, rip.v, rive.v, shatter.v, shiver.v, shred.v, sliver.v, smash.v, snap.v, splinter.v, split.v, take apart.v, tear up.v, tear.v \\
+		
+	\end{tabular}
+	\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment"
+		\newline
+		{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
+	}
+\end{table}
+
+Exemple d'une liste de patrons de valence
+\begin{table}
+	\tiny\bfseries
+	\begin{tabular}{|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|}
+		\hline
+		\rowcolor{darkblue}
+		\textcolor{white}{Number Annotated} & \multicolumn{5}{|l|}{\textcolor{white}{Patterns}}\\
+		\hline
+		\multicolumn{6}{l}{ }\\
+		
+		\hline
+		\rowcolor{lightyellow}
+		1 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Instrument} & \textcolor{red}{Pieces} & \textcolor{red}{Whole\_patient} & \\
+		\hline
+		\rowcolor{lightyellow}
+		(1) & CNI \newline - - & PP[with] \newline Dep & INI \newline - - & NP \newline Ext & \\
+		\hline
+		\multicolumn{6}{l}{ }\\
+		
+		\hline
+		\rowcolor{lightblue}
+		1 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Means} & \textcolor{red}{Pieces} & \textcolor{red}{Time} & \textcolor{red}{Whole\_patient} \\
+		\hline
+		\rowcolor{lightblue}
+		(1) & NP \newline Ext & 2nd \newline - - & INI \newline - - & Sinterrog \newline Dep & NP \newline Obj \\
+		\hline
+		\multicolumn{6}{l}{ }\\
+		
+		\hline
+		\rowcolor{lightyellow}
+		4 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Pieces} & \textcolor{red}{Whole\_patient} & & \\
+		\hline
+		\rowcolor{lightyellow}
+		(4) & NP \newline Ext & INI \newline - - & NP \newline Obj & & \\
+		\hline
+	\end{tabular}
+	\caption{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence}
+\end{table}
+
+Exemple des annotations lexicographiques
+\begin{figure}
+	\tiny\bfseries
+	
+	\begin{itemize}
+		\item 429-s20-rcoll-skull
+		\begin{enumerate}\tiny
+			\item \ [\textsubscript{\color{red}Agent} Former England Under-21 player Keith Benton] FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his son Seb 's skull] [\textsubscript{\color{red}Time} when he hit the ball into the crowd during a match in Buckingham]. [\textsubscript{\color{red}Pieces} INI] 
+			\item \ [\textsubscript{\color{red}Agent} He] hit a lamp-post and FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} Mike 's skull]. [\textsubscript{\color{red}Pieces} INI] 
+			\item When he found the man [\textsubscript{\color{red}Agent} he] threw the acid into his face and beat him with the hammer , FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his skull] and his thumb. [\textsubscript{\color{red}Pieces} INI] 
+			\item \ [\textsubscript{\color{red}Agent} A nanny] has been jailed after FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} the skulls of two new born babies in her care]. [\textsubscript{\color{red}Pieces} INI] 
+		\end{enumerate}
+		\item 520-s20-np-vping
+		\item 620-s20-np-ppother
+		\item 660-s20-trans-simple
+		\begin{enumerate}\tiny
+			\item \ [\textsubscript{\color{red}Agent} Then 17-year-old Lee Diaz, of North End Gardens, Bishop Auckland], attacked a second party-goer, Carl Gent, punching him in the face and FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his jaw]. [\textsubscript{\color{red}Pieces} INI] 
+		\end{enumerate}
+		
+		%			\item 670-s20-pass-by
+		\item 680-s20-pass
+		\begin{enumerate}\tiny
+			\item \ [\textsubscript{\color{red}Whole\_patient} It] was FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Instrument} with a solvent-cleaned chisel], and the outer orange layer discarded. [\textsubscript{\color{red}Agent} CNI][\textsubscript{\color{red}Pieces} INI] 
+		\end{enumerate}
+		
+		%			\item 690-s20-trans-other
+		%			\item 730-s20-ppwith
+		%			\item 780-s20-ppother
+		%			\item 880-s20-intrans-simple
+		%			\item 890-s20-intrans-adverb
+		%			\item 900-s20-other
+	\end{itemize}
+	
+	\caption{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
+\end{figure}
+
+\subsection{PropBank}
+
+\begin{itemize}
+	\item {\scriptsize \url{https://propbank.github.io/}}
+	\item {\scriptsize \url{https://www.nltk.org/howto/propbank.html}}
+	\item Corpus annoté en se basant sur la structure Prédicat-Arguments (verbes)
+	\item Moins de rôles 
+	\begin{itemize}
+		\item \optword{Proto-Agent}
+		\begin{itemize}
+			\item participer volontairement dans un évènement ou état
+			\item causer un évènement ou un changement d'état d'un autre participant
+		\end{itemize}
+		\item \optword{Proto-Patient}
+		\begin{itemize}
+			\item éprouver un changement d'état
+			\item être affectée par un autre participant
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+Structure
+\begin{itemize}
+	\item \optword{Roleset id} : Les verbes sont annotés par leurs sens 
+	\begin{itemize}
+		\item Ex. \expword{know.01 : be cognizant of, realize ; know.02 : be familiar with, have experienced}		
+	\end{itemize}
+	
+	\item \optword{Roles} : Chaque verbe/sens a un ensemble d'arguments possibles  
+	\begin{itemize}
+		\item \optword{Arg0} : PROTO-AGENT
+		\item \optword{Arg1} : PROTO-PATIENT
+		\item \optword{Arg2} : en général, benefactive, instrument, attribute, ou end state
+		\item \optword{Arg3} : en général, start point, benefactive, instrument, ou attribute
+		\item \optword{Arg4} : end point
+		\item Arg2 ... Arg5 ne sont pas consistants dans le corpus
+	\end{itemize}
+	
+	\item \optword{Modifiers} : Marqués par \keyword{ArgM}  
+	\begin{itemize}
+		\item \optword{ArgM-TMP} : Quand ?
+		\item \optword{ArgM-LOC} : Où ?
+		\item \optword{ArgM-MNR} : Comment ? 
+		\item ...
+	\end{itemize}
+	
+	\item \optword{Exemples annotés} 
+\end{itemize}
+
+ Exemple des prédicats
+ 
+\begin{figure}
+	%	\tiny
+	\scriptsize
+	\begin{itemize}
+		\item \textbf{Roleset id}
+		\begin{itemize}\scriptsize
+			\item \textbf{know.01} : be cognizant of, realize
+		\end{itemize}
+		\item \textbf{Roles}
+		\begin{itemize}\scriptsize
+			\item \textbf{Arg0} : knower
+			\item \textbf{Arg1} : fact that is known
+			\item \textbf{Arg2} : entity that arg1 is known ABOUT
+		\end{itemize}
+		
+		\item \textbf{Example: know-v: sentential thing known}
+		\begin{itemize}\scriptsize
+			\item \ [\textsubscript{\color{red}Arg0} The other side] knows [\textsubscript{\color{red}Arg1} that Giuliani has always been prochoice].
+		\end{itemize}
+		
+		\item \textbf{Example: know-v: attributive}
+		\begin{itemize}\scriptsize
+			\item \ [\textsubscript{\color{red}Arg0} He] did[\textsubscript{\color{red}ArgM-NEG} n't] know [\textsubscript{\color{red}Arg1} (anything)] [\textsubscript{\color{red}Arg2} about most of the cases] [\textsubscript{\color{red}ArgM-TMP} until Wednesday].
+		\end{itemize}
+	\end{itemize}
+	
+	\caption{Extrait des annotations ProBank du prédicat ``know" de \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html}}
+\end{figure}
+
+%===================================================================================
+\section{Étiquetage de rôles sémantiques}
+%===================================================================================
+
+\begin{figure}
+	\hgraphpage{exp-srl_.pdf}
+	\caption{Exemple d'étiquetage de rôles sémantiques en se basant sur ProbBank [\url{https://demo.allennlp.org/semantic-role-labeling/}]}
+\end{figure}
+
+\subsection{En utilisant des caractéristiques}
+
+\begin{itemize}
+	\item \optword{Idée} : parcourir l'arbre syntaxique et classifier les nœuds
+	\begin{itemize}
+		\item \optword{Entrée} : des caractéristiques sur le nœud (syntagme) et le prédicat 
+		\item \optword{Sorite} : les classes sont celles de FrameNet ou PropBank + \keyword{None} pour marquer un nœud sans rôle 
+	\end{itemize} 
+	\item On peut optimiser la classification
+	\begin{itemize}
+		\item \optword{Élagage} : éliminer les constituants de la classification en utilisant des heuristiques
+		\item \optword{Identification} : classer les nœuds en \keyword{Argument} ou \keyword{None}
+		\item \optword{Classification} : les classes sont celles de FrameNet ou PropBank
+	\end{itemize} 
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{srl-arbre_.pdf}
+	\caption{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Quelques caractéristiques
+\begin{itemize}
+	\item Le prédicat principal de la phrase
+	\item Le type du syntagme. Ex. \expword{NP, S, PP}
+	\item Le mot d'entête (principal) du syntagme
+	\item La catégorie grammaticale du mot principal 
+	\item Le chemin du noeud concerné vers le prédicat. Ex. \expword{NP\textuparrow S\textdownarrow VP \textdownarrow VPD}
+	\item La voie : active ou passive
+	\item La position par rapport au prédicat : avant ou après
+	\item ...
+\end{itemize}
+
+\subsection{En utilisant les réseaux de neurones}
+
+\begin{minipage}{.48\textwidth}
+	\begin{itemize}
+		\item \optword{Entrée} : Embeddings des mots + indicateur si le mot est un prédicat 
+		\item \optword{Sortie} : Probabilités des étiquettes de PropBank 
+		\item \keyword{B} pour début (Begins), \keyword{I} pour intérieur (inside)
+		\item \keyword{I} doit toujours suivre \keyword{B} ou \keyword{I} de la même étiquette
+	\end{itemize}
+\end{minipage}
+\begin{figure}
+	\hgraphpage{srl-lstm_.pdf}
+	\caption{Un système d'étiquetage de rôles sémantiques en utilisant les LSTM \cite{2017-he-al}}
+\end{figure}
+
+%===================================================================================
+\section{Représentation sémantique des phrases}
+%===================================================================================
+
+\begin{itemize}
+	\item Il y a plusieurs façons pour expliquer le même sens
+	\begin{itemize}
+		\item \expword{L'étudiant a préparé un rapport.}
+		\item \expword{Un rapport a été préparé par l'étudiant.}
+	\end{itemize}
+	
+	\item Les phrases en langages naturels peuvent être ambigües
+	\begin{itemize}
+		\item \expword{Elle a emporté les clefs de la maison au garage.}
+	\end{itemize}
+	
+	\item Plusieurs tâches peuvent bénéficier 
+	\begin{itemize}
+		\item Compréhension du langage naturel
+		\item Questions-Réponses
+		\item Recherche d'information
+		\item Traduction automatique
+		\item Résumé automatique
+	\end{itemize}
+\end{itemize}
+
+\subsection{Logique du premier ordre}
+
+\begin{itemize}
+	\item \optword{terme} : représente un objet
+	\begin{itemize}
+		\item \optword{constante} : un objet spécifique
+		
+		\expword{Karim, ESI, Algérie}
+		
+		\item \optword{fonction} : retourne un objet en fonction d'un autre
+		
+		\expword{EmplacementDe(ESI)}
+		
+		\item \optword{variable} : référence vers un objet inconnu 
+		
+		\expword{x, y, z}
+		
+	\end{itemize}
+	\item \optword{prédicat} : représente une relation 
+	
+	\expword{Ecole(ESI), EnseignantA(Karim, ESI)}
+	
+	\item \optword{connecteur} : ET ($ \wedge $) OU ($ \vee $), NON ($ \neg $ ), IMPLIQUE ($\rightarrow$) et EQUIVALENT ($ \Leftrightarrow $)
+	
+	\expword{EnseignantA(Karim, ESI) $\wedge$ Ecole(ESI)}
+	
+	\item \optword{quantificateur} : 
+	
+	\expword{Je mange à un restaurant près de l'ESI.}
+	
+	\expword{$\exists$ x Restaurant(x) $\wedge$ PrèsDe(EmplacementDe(x), EmplacementDe(ESI)) $\wedge$  MangerA(Interlocuteur, x)}
+\end{itemize}
+
+Formalisme
+\begin{figure}
+	\vgraphpage[0.6\textheight]{LPO-gram_.pdf}
+	\caption{La grammaire spécifiant le syntaxe du logique du premier ordre d'après \cite{2019-jurafsky-martin} (Adaptée de \cite{2002-russell-norvig})}
+\end{figure}
+
+Notation Lambda
+\begin{itemize}
+	\item \keyword{$ \lambda $-Expression}
+	\begin{itemize}
+		\item Description des fonctions anonymes sur des variables
+		\item \keyword{$ \lambda $x.P(x)}
+		\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)} pour représenter l'expression \expword{likes Brit}
+	\end{itemize}
+	
+	\item \keyword{$ \lambda $-Reduction}
+	\begin{itemize}
+		\item Substitution de la variable par une expression
+		\item \keyword{$ \phi@\psi $}
+		\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)@ALEX = LIKES(ALEX, BRIT)}
+	\end{itemize}
+\end{itemize}
+
+Analyse sémantique
+\begin{figure}
+	\begin{tabular}{ll}
+		\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
+		\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
+	\end{tabular}
+	\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
+\end{figure}
+
+Analyse sémantique (Les quantificateurs)
+\begin{figure}
+	\begin{tabular}{ll}
+		\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
+		\hgraphpage[0.65\textwidth]{sem-qarbre_.pdf} \\
+	\end{tabular}
+	\caption{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
+\end{figure}
+
+\vspace{-.6cm}
+{\small 
+	\begin{align*}
+	& VP.sem & = &V_t.sem@NP.sem \\
+	& & = & \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))@(\textcolor{blue}{\lambda P.P(ALEX)}) \\
+	& & = & \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX)@(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
+	& & = & \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{ALEX}) \\
+	& & = & \lambda x.LIKES(x, ALEX) \\
+	\end{align*}
+}
+
+Analyse sémantique avec NLTK
+
+\begin{exampleblock}{Exemple d'analyse sémantique en NLTK}
+	\optword{Code :}
+	{\scriptsize
+		\begin{lstlisting}[language=Python]
+		from nltk import load_parser
+		parser = load_parser('grammars/book_grammars/simple-sem.fcfg', trace=0)
+		sentence = 'Angus gives a bone to every dog'
+		tokens = sentence.split()
+		for tree in parser.parse(tokens):
+		print(tree.label()['SEM'])
+		\end{lstlisting}
+	}
+	
+	\optword{Résultat :}
+	{\scriptsize\bfseries
+		\begin{lstlisting}
+		all z2.(dog(z2) -> exists z1.(bone(z1) & give(angus,z1,z2)))
+		\end{lstlisting}
+	}
+	
+\end{exampleblock}
+
+\begin{itemize}
+	\item \url{https://www.nltk.org/book/ch10.html}
+\end{itemize}
+
+\subsection{Graphes (AMR)}
+
+\begin{itemize}
+	\item Abstract Meaning Representation \cite{2013-banarescu-al}
+	\item Un graphe raciné, étiqueté, dirigé et acyclique
+	\item Il utilise les concepts de \keyword{PropBank}
+\end{itemize}
+
+\begin{exampleblock}{Trois formats : Exemple ``The boy wants to go"}
+	\begin{minipage}{.3\textwidth}
+		\optword{Format logique}
+		
+		\footnotesize
+		$ \exists $ w, b, g : 
+		
+		instance(w, want-01) 
+		
+		$ \wedge $ instance(g, go-01) 
+		
+		$ \wedge $ instance(b, boy) 
+		
+		$ \wedge $ arg0(w, b) 
+		
+		$ \wedge $ arg1(w, g) 
+		
+		$ \wedge $ arg0(g, b)
+	\end{minipage}
+	\begin{minipage}{.35\textwidth}
+		\optword{Format AMR}
+		
+		\begin{verbatim}
+		(w / want-01
+		:arg0 (b / boy)
+		:arg1 (g / go-01
+		:arg0 b))
+		\end{verbatim}
+		
+	\end{minipage}
+	\begin{minipage}{.3\textwidth}
+		\optword{Format Graphe}
+		
+		\hgraphpage{amr-graphe-exp.pdf}
+	\end{minipage}
+\end{exampleblock}
+
+Relations
+\begin{itemize}
+	\item \optword{Arguments du cadre (frame)} : Selon PropBank
+	\begin{itemize}
+		\item :arg0, :arg1, :arg2, :arg3, :arg4, :arg5
+	\end{itemize}
+	\item \optword{Relations sémantiques générales}
+	\begin{itemize}
+		\item :accompanier, :age, :beneficiary, :cause, :compared-to, :concession, :condition, :consist-of, :degree, :destination, :direction, :domain, :duration, :employed-by, :example, :extent, :frequency, :instrument, :li, :location, :manner, :medium, :mod, :mode, :name, :part, :path, :polarity, :poss, :purpose, :source, :subevent, :subset, :time, :topic, :value
+	\end{itemize}
+	\item \optword{Relations de quantité}
+	\begin{itemize}
+		\item :quant, :unit, :scale
+	\end{itemize}
+	\item \optword{Relations de date}
+	\begin{itemize}
+		\item :day, :month,
+		:year, :weekday, :time, :timezone, :quarter,
+		:dayperiod, :season, :year2, :decade, :century,
+		:calendar, :era
+	\end{itemize}
+	\item \optword{Relations de liste}
+	\begin{itemize}
+		\item :op1, :op2, :op3, :op4, :op5,
+		:op6, :op7, :op8, :op9, :op10
+	\end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+\begin{discussion}
+
+
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

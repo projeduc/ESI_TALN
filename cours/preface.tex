@@ -1,0 +1,81 @@
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass[12pt]{book}
+	\input{calls}
+	\begin{document}
+\fi
+%=====================================================================
+
+\chapter*{Preface}
+\addcontentsline{toc}{section}{Preface}
+
+{
+\merienda
+
+\ac{oop} is one of the most popular programming paradigms. 
+It is originated from the theory of concepts, and models of human interaction with real world phenomena \citep{2013-normark}.
+The four main concepts forming OOP are: abstraction, encapsulation, inheritance and polymorphism.
+There exists a lot of references talking about \ac{oop} and explaining its concepts.
+So if you want to go deeper in this paradigm, this is not the book you are looking for. 
+But, still, you can grasp some ideas about these concepts by observing how programming languages are dealing with them.
+
+
+In this book, the focus will be \ac{oop} from programmers' point of view.
+That is, the concepts will be presented as concrete programs with different \ac{oop} languages. 
+Some programming languages are pure object-oriented such as Ruby, others allow primitive types such as Java, then there are those which skip some concepts such as Python with encapsulation, and those which have other ways to support \ac{oop} such as Javascript.
+This book serves as a comparison between different implementations of \ac{oop} concepts afforded by some programming languages.
+If a language lake support of a given concept, some solutions and hacks can be afforded. 
+The explanations will be as short and informative as possible allowing more space to show all the beauty of codes.
+
+}
+\vfill
+\begin{flushright}
+	\LARGE\bfseries\color{indigo}
+So, ``Less talking, more coding"
+\end{flushright}
+
+\newpage
+
+\section*{Why should you be interested?}
+
+Back in 2016, I presented the idea of this book on social media seeking some insights, suggestions and of course contributors.
+Well, the idea was not a success: no one cared to respond. 
+One of my friends (Adnan) has finally asked a good question: ``What will be the difference between your book and the huge number of already written books on this matter?".
+Maybe I did not present the idea well enough that time; but any book has to outline why its future readers should be interested. 
+So, here are some outlines of what this book is about, and what difference it makes from others:
+
+\begin{enumerate}
+	
+\item It is intended to be FREE (as gratis); no one will loose money for it. 
+
+\item It is open source; anyone can help enhancing this book.
+You can translate, correct, add a programming language, make your own copy from it as long as you mention the contributors and license it under CC-BY-SA 4.0.
+
+\item It is intended to be a manual or a guide through different programming languages. 
+So, no one will loose their time reading it; they will read it because they want to explore how a language handles a certain OOP concept. 
+For instance, if someone wants to know if Javascript has private members, they will go directly to encapsulation chapter, private members section. 
+
+\item To my knowledge, this is the first attempt to gather different implementations of \ac{oop} concepts by as many languages.
+The available books and sources interested in \ac{oop}, mostly, use one programming language to illustrate \ac{oop}'s four concepts.
+Others are books interested in a certain language and presenting \ac{oop} as a chapter. 
+You can find the different implementations, but I doubt you will be able to find them on the same support.
+
+\item It is helpful when someone wants to compare the differences between the object oriented languages.
+If they want to know what are the limits and workarounds of a programming language about some OOP concept, this is what this book is about.
+
+
+\end{enumerate}
+\vfill
+\begin{flushright}
+Abdelkrime Aries, March 27, 2016 \\
+Revised: September 7, 2018
+\end{flushright}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

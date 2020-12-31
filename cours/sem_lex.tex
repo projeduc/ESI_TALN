@@ -1,0 +1,810 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+\changegraphpath{../img/sem-lex/}
+\chapter{Sémantique lexicale}
+
+\begin{introduction}
+	\lettrine{L}{e} 
+\end{introduction} 
+
+\begin{exampleblock}{Exemple de la polysémie en français}
+	\begin{center}
+		\Large\bfseries
+		%		\begin{itemize}
+		Je veux boire du \expword{café}.
+		
+		Je veux aller au \expword{café}.
+		
+		J'ai récolter du \expword{café}.
+		%		\end{itemize}
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Est-ce que le mot ``\expword{café}" veut la même chose dans les trois phrases ?
+	\item Comment peut-on savoir le sens d'un mot dans ce cas ?
+	\item Les sens du mot ``\expword{café}" : \url{https://babelnet.org/search?word=caf\%C3\%A9&lang=FR}
+\end{itemize}
+
+%===================================================================================
+\section{Bases de données lexicales}
+%===================================================================================
+
+\begin{itemize}
+	\item Une base de données contenant le vocabulaire d'une langue
+	\item Informations d'un mot : catégorie grammaticale, lemme, fréquence, etc.
+\end{itemize}
+
+\begin{figure}
+	\centering 
+	\hgraphpage[.5\textwidth]{exp-bd-lex_.pdf}
+	\caption{Exemple des informations et leurs relations dans une base lexicale \cite{2019-white-al}}
+\end{figure}
+
+\subsection{Relations sémantiques}
+
+\begin{itemize}
+	\item \optword{Synonymie} : avoir des sens similaires dans un contexte donné
+	\item \optword{Antonymie} : avoir des sens opposés dans un contexte donné
+	\item Les relations taxonomiques (de classification)
+	\begin{itemize}
+		\item \optword{Hyponymie} : être plus spécifique qu'un autre sens. Il entraîne un relation \keyword{IS-A}. Ex. \expword{voiture IS-A véhicule} 
+		\item \optword{Hyperonymie} : être plus générique qu'un autre sens. 
+		\item \optword{Méronymie} : être une partie d'une chose. Ex. \expword{roue est un méronyme de voiture ; voiture est le holonyme de roue}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Wordnet}
+
+\begin{figure}
+	\hgraphpage{exp-wordnet_.pdf}
+	\caption{Un exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
+\end{figure}
+
+\begin{itemize}
+	\item Base de données lexicale pour l'anglais \cite{1995-miller}
+	\item Trois parties : (1) noms (2) verbes (3) adjectifs et adverbes
+	\item Un sens est représenté par un identifiant (\keyword{synset})
+	\begin{itemize}
+		\item \keyword{synset} (Synonyms set) : regroupe les mots du même sens 
+		\item Ex. \expword{05659525 : reason\#3, understanding\#4, intellect\#2}
+	\end{itemize}
+	\item Un sens est défini par un glossaire (\keyword{gloss})
+	\begin{itemize}
+		\item Ex. \expword{05659525 : (the capacity for rational thought or inference or discrimination) "we are told that man is endowed with reason and capable of distinguishing good from evil"}
+	\end{itemize}
+	\item Un sens est marqué par une catégorie lexicographique (\keyword{supersense})
+	\begin{itemize}
+		\item Ex. \expword{05659525 : noun.cognition}
+	\end{itemize}
+	\item WordNet représente les relations sémantiques entre les sens
+\end{itemize}
+
+Catégories lexicographiques (supersense)
+\begin{figure}
+	\hgraphpage{wordnet-supersenses_.pdf}
+	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Relations sémantiques
+\begin{figure}
+	\hgraphpage{wordnet-rel-nom_.pdf}\vspace{-9pt}
+	\caption{Quelques relations des noms \cite{2019-jurafsky-martin}}
+\end{figure}\vspace{-6pt}
+
+\begin{figure}
+	\hgraphpage{wordnet-rel-verbe_.pdf}\vspace{-9pt}
+	\caption{Quelques relations des verbes \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Quelques ressources
+\begin{itemize}
+	\item Quelques APIs
+	\begin{itemize}
+		\item NLTK (Python) : \url{https://www.nltk.org/howto/wordnet.html}
+		\item JWI (Java) : \url{http://projects.csail.mit.edu/jwi}
+		\item Wordnet (Ruby) : \url{https://github.com/wordnet/wordnet}
+		\item OpenNlp (C\#) : \url{https://github.com/AlexPoint/OpenNlp}
+	\end{itemize}
+	\item Autres langues
+	\begin{itemize}
+		\item Global WordNet Association : \url{http://globalwordnet.org/resources/wordnets-in-the-world/}
+		\item Open Multilingual Wordnet : \url{http://compling.hss.ntu.edu.sg/omw/}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Autres ressources}
+
+\begin{itemize}
+	\item \optword{FrameNet} 
+	\begin{itemize}
+		\item Basée sur la théorie ``cadre sémantique" (frame semantic)
+		\item Un cadre peut être un évènement, une relation ou un entité avec ces participants 
+		\item Ex. \expword{Le concept ``Cuisinier" implique une personne qui cuisine, la nourriture, un récipient et une source de chaleur}
+		\item Chaque cadre est activé par un ensemble des \keyword{unités lexicales}. Ex. \expword{blanchir, bouillir, griller, dorer, mijoter, cuire}
+	\end{itemize}
+	\item \optword{VerbNet} 
+	\begin{itemize}
+		\item Une base lexicale pour verbes
+		\item Elle inclue 30 rôles thématiques principaux 
+		\item Les verbes sont organisés en classes
+	\end{itemize}
+	\item \textbf{On va revoir ces deux BD dans le chapitre suivant}
+\end{itemize}
+
+\begin{itemize}
+	\item Réseaux sémantique multilingue
+	\item \url{https://babelnet.org/}
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{babelnet.png}
+	\caption{Structure de BabelNet \cite{2012-navigli-ponzetto}}
+\end{figure}
+
+%===================================================================================
+\section{Représentation vectorielle des mots}
+%===================================================================================
+
+\begin{itemize}
+	\item Un mot peut être représenté en utilisant l'encodage \keyword{One-Hot} 
+	\begin{itemize}
+		\item Ne représente pas les relations sémantiques entre les mots : similarité (Ex. \expword{chat, chien}) et proximité (Ex. \expword{café, tasse})
+		\item Comment représenter un document/phrase en utilisant cette représentation ?
+	\end{itemize}
+	
+	\item \optword{Terme-document}
+	\begin{itemize}
+		\item On représente un terme par les documents le contiennent (ou l'inverse)
+		\item Ex. \expword{Term frequency - innverse document frequency (Tf-Idf)}
+	\end{itemize}
+	
+	\item \optword{Document-terme}
+	\begin{itemize}
+		\item On représente un terme par d'autres termes
+	\end{itemize}
+	
+	\item \optword{Terme-concept-document}
+	\begin{itemize}
+		\item On représente les termes et les documents par un vecteur de concepts
+		\item Ex. \expword{Analyse sémantique latente (LSA)}
+		\item Bienvenu dans \keyword{le plongement lexical (word embedding)}
+	\end{itemize}
+	
+\end{itemize}
+
+\subsection{TF-IDF}
+
+\begin{itemize}
+	\item Le sens d'un document/phrase peut être représenté par ses mots 
+	\item La fréquence d'un mot dans un document/phrase s'appelle \keywords{term frequency (TF)}
+	\item Il y a des mots qui se répètent beaucoup, mais qui n'ont pas de sens ajouté (Ex. \expword{
+		Prépositions})
+	\item Les mots qui apparient dans plusieurs documents sont moins importants
+\end{itemize}
+
+\begin{block}{Calcul de TF-IDF}
+	\[
+	TF_d(t) =  |\{t_i \in d / t_i = t\}|
+	\hskip2cm 
+	DF_D(t) = |\{d \in D / t \in d\}|
+	\]
+	\[IDF_D(t) = \log_{10} \left( \frac{|\{d \in D\}|}{DF_D(t)} \right)\]
+	\[TF\text{-}IDF_{d, D}(t) = TF_d(t) * IDF_D(t)\]
+\end{block}
+
+ Exemple d'une représentation avec TF
+ 
+ \begin{exampleblock}{Exemple d'une collection de phrases}
+ 	\begin{itemize}
+ 		\item S1 : un ordinateur peut vous aider
+ 		\item S2 : il peut vous aider et il veut vous aider
+ 		\item S3 : il veut un ordinateur et un ordinateur pour vous
+ 	\end{itemize}
+ \end{exampleblock}
+ 
+ \begin{center}
+ 	\begin{tabular}{llllllllll}
+ 		\hline\hline
+ 		& un & ordinateur & peut & vous & aider & il & et & veut & pour \\
+ 		\hline
+ 		S1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+ 		S2 & 0 & 0 & 1 & 2 & 2 & 2 & 1 & 1 & 0\\
+ 		S3 & 2 & 2 & 0 & 1 & 0 & 1 & 1 & 1 & 1\\
+ 		\hline\hline
+ 	\end{tabular}
+ \end{center}
+
+Similarité cosinus
+\begin{minipage}{.68\textwidth}
+	\begin{itemize}
+		\item $a$ et $b$ sont deux documents représentés par deux vecteurs $\overrightarrow{a}$ et $\overrightarrow{b}$ respectivement
+		\item La représentation peut être les mots du vocabulaire (TF ou TF-IDF) ou d'autres caractéristiques du document
+		\item La longueur des vecteurs est de $n$
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\hgraphpage{exp-cos.pdf}
+\end{minipage}
+
+\begin{block}{Calcul de similarité cosinus entre deux vecteurs}
+	\[
+	Cos(\theta) = \frac{\overrightarrow{a} \overrightarrow{b}}{||\overrightarrow{a}||\, ||\overrightarrow{b}||}
+	= \frac{\sum_{i=1}^{n} a_i b_i}{\sqrt{\sum_{i=1}^{n} a_i^2} \sqrt{\sum_{i=1}^{n} b_i^2}}
+	\]
+\end{block}
+
+\subsection{Mot-Mot}
+
+\begin{itemize}
+	\item On peut représenter un mot par rapport aux autres mots du vocabulaire en utilisant la co-occurrence
+	\item Pour représenter les mots d'un vocabulaire $ V $, on doit utiliser une matrice $|V| \times |V|$
+	\item Chaque mot est représenté par $|V|$ mots appelés \keyword{le contexte}
+	\item La co-occurrence peut être calculée par rapport aux documents, aux phrases ou des fenêtres auteur du mot
+	\item La fenêtre peut être 4 mots avant et 4 mots après
+\end{itemize}
+
+Exemple avec un fenêtre de 1-1
+
+\begin{exampleblock}{Exemple d'une collection de phrases}
+	\begin{itemize}
+		\item S1 : un ordinateur peut vous aider
+		\item S2 : il peut vous aider et il veut vous aider
+		\item S3 : il veut un ordinateur et un ordinateur pour vous
+	\end{itemize}
+\end{exampleblock}
+
+\begin{center}
+	\scriptsize
+	\begin{tabular}{llllllllll}
+		\hline\hline
+		& un & ordinateur & peut & vous & aider & il & et & veut & pour \\
+		\hline
+		un & 0 & 3 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
+		ordinateur & 3 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1\\
+		peut & 0 & 1 & 0 & 2 & 0 & 1 & 0 & 0 & 0\\
+		vous & 0 & 0 & 2 & 0 & 3 & 0 & 0 & 1 & 1\\
+		aider & 0 & 0 & 0 & 3 & 0 & 0 & 1 & 0 & 0\\
+		il & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 2 & 0\\
+		et & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+		veut & 1 & 0 & 0 & 1 & 0 & 2 & 0 & 0 & 0\\
+		pour & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		\hline\hline
+	\end{tabular}
+\end{center}
+
+Similarité cosinus
+
+\begin{itemize}
+	\item On peut calculer la similarité entre deux mots
+	\item Une mesure de similarité est cosinus (vue précédemment)
+\end{itemize}
+
+\hgraphpage{exp-word-v1_.pdf}
+
+\begin{figure}
+	\caption{Un exemple des vecteurs de co-occurrence à partir de Wikipedia et une visualisation de deux mots \cite{2019-jurafsky-martin} }
+\end{figure}
+\begin{minipage}{.4\textwidth}
+	\hgraphpage{exp-word-v2_.pdf}
+\end{minipage}
+
+\subsection{Analyse sémantique latente (LSA)}
+
+\begin{itemize}
+	\item La matrice terme-document $X[N, M]$ 
+	\begin{itemize}
+		\item dimension trop grande
+		\item beaucoup de zéros (voir l'exemple de Tf-Idf)
+	\end{itemize}
+	\item On peut utiliser $L$ concepts pour représenter
+	\begin{itemize}
+		\item les termes $T[N, L]$
+		\item les documents $D[M, L]$
+	\end{itemize}
+	\item $L \le \min(N, M)$
+	\item $X$ peut être décomposée en utilisant \keyword{décomposition en valeurs singulières (SVD)}
+	\begin{itemize}
+		\item $X = T \times S \times D^\top$
+	\end{itemize}
+\end{itemize}
+
+Formulation SVD
+\begin{itemize}
+	\item $T^\top T = \mathbb{I}_{N \times N}$ 
+	\item $D^\top D = \mathbb{I}_{M \times M}$ 
+	\item SVD peut être résolue en utilisant par exemple l'\keyword{algorithme de Lanczos}, la \keyword{décomposition QR}
+\end{itemize}
+
+\begin{block}{Décomposition en valeurs singulières (SVD) de la matrice terme-document}
+	\scriptsize\bfseries
+	\[
+	\overbrace{
+		\begin{bmatrix}
+		x_{11} & \ldots & \ldots & \ldots & x_{1M} \\ 
+		\vdots & \ddots & \ddots & \ddots &\vdots \\
+		\vdots & \ddots & \ddots & \ddots &\vdots \\
+		x_{N1} & \ldots & \ldots & \ldots & x_{NM} \\ 
+		\end{bmatrix}
+	}^{X \text{ : terme-document}}
+	=
+	\overbrace{
+		\left[
+		\begin{bmatrix}
+		t_{11} \\ 
+		\vdots \\
+		\vdots \\
+		t_{N1} \\ 
+		\end{bmatrix}
+		\begin{matrix}
+		\ldots \\ 
+		\end{matrix}
+		\begin{bmatrix}
+		t_{L1} \\ 
+		\vdots \\
+		\vdots \\
+		t_{L1} \\ 
+		\end{bmatrix}
+		\right]
+	}^{T \text{ : terme-concept}}
+	\times 
+	\overbrace{
+		\begin{bmatrix}
+		s_{11} & \ldots & 0 \\
+		0 & \ddots & 0 \\
+		0 & \ldots & s_{LL} \\
+		\end{bmatrix}
+	}^{S \text{ : concept-concept}}
+	\times 
+	\overbrace{
+		\begin{bmatrix}
+		\begin{bmatrix}
+		d_{11} & \ldots & \ldots & \ldots & d_{1M} \\
+		\end{bmatrix}\\
+		\vdots \\
+		\begin{bmatrix}
+		d_{11} & \ldots & \ldots & \ldots & d_{1M} \\
+		\end{bmatrix}\\
+		\end{bmatrix}
+	}^{D^\top \text{ : concept-document}}
+	\]
+	
+\end{block}
+
+%===================================================================================
+\section{Word embedding}
+%===================================================================================
+
+\begin{itemize}
+	\item Les représentations document-mot et mot-mot basées sur la co-occurrence occupent un grand espace mémoire 
+	\item Elles sont difficiles à gérer 
+	\item Dans \keyword{LSA}, nous avons vu que la représentation d'un mot est compactée vers un petit vecteur de nombres réels
+	\item Ceci est appelé : \keyword{Word embedding} ou, en français, \keyword{Plongement lexical}
+	\item Dans ce cours, on se focalise sur le Word embedding basé sur les réseaux de neurones
+	\item Cette technique permet d'apprendre à représenter des relations entre mots
+\end{itemize}
+
+\subsection{Word2vec}
+
+\begin{itemize}
+	\item Dans le modèle Mot-Mot, nous avons vu la notion du contexte 
+	\begin{itemize}
+		\item Un mot est représenté par les mots qui les entourent
+		\item Un vecteur de fréquence de co-occurrence
+		\item La longueur du vecteur est la taille du vocabulaire (trop large)
+		\item La co-occurrence d'un mot avec un petit sous-ensemble de mots (beaucoup de zéros)
+	\end{itemize}
+	\item Word2vec est un outil fourni par Google implémentant deux méthodes de \keyword{Word embedding} \cite{2013-mikolov-al}
+	\begin{itemize}
+		\item \optword{CBOW} : Continuous Bag-of-Words
+		\item \optword{Skip-gram} : Continuous Skip-gram
+	\end{itemize}
+	\item Encoder les mots sur un petit vecteur (50-1000) en se basant sur le contexte (en utilisant un encodeur-décodeur)
+\end{itemize}
+
+Word2vec : CBOW
+\begin{minipage}{.58\textwidth}
+	\begin{itemize}
+		\item Le contexte ici est deux mots avant et deux après
+		\item Inférer le mot $w_i$ étant donné son contexte
+	\end{itemize}
+	\begin{block}{Fonction du coût à minimiser}
+		\[%
+		J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
+		\]
+	\end{block}
+\end{minipage}
+\begin{minipage}{.08\textwidth}
+\end{minipage}	
+\begin{minipage}{.4\textwidth}
+	\hgraphpage{word2vec-cbow.pdf}
+\end{minipage}
+
+Word2vec : Skip-gram
+\begin{minipage}{.58\textwidth}
+	\begin{itemize}
+		\item Le contexte ici est deux mots avant et deux après
+		\item Inférer le contexte étant donné le mot $w_i$
+	\end{itemize}
+	\begin{block}{Fonction du coût à minimiser}
+		\[%
+		J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} \sum_{j= i-2; j \ne i}^{i+2} p(w_j |w_i)
+		\]
+	\end{block}
+\end{minipage}
+\begin{minipage}{.08\textwidth}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+	\hgraphpage{word2vec-skip.pdf}
+\end{minipage}
+
+\subsection{GloVe}
+
+\begin{itemize}
+	\item \keyword{GloVe} : Global Vectors
+	\item une méthode développée par Stanford \cite{2014-pennington-al}
+	\item essaye d'exploiter les deux approches : matrice mot-mot (comme LSA) et apprentissage par contexte (comme CBOW)
+	\item $X[V, V]$ est la matrice Mot-Mot où $X_{ij}$ est le nombre des occurrence du mot $w_j$ dans le contexte de $w_i$, et $X_i$ est le nombre d'occurrences de $w_i$ dans le corpus
+	\item $P_ij= \frac{X_{ij}}{X_i}$ est la probabilité d'occurrence de $w_j$ dans le contexte de $w_i$
+\end{itemize}
+
+Motivation
+\begin{minipage}{.5\textwidth}
+	\begin{itemize}
+		\item On veut trouver la relation entre $w_i = ice$ et $w_j = steam$
+		\item Ceci peut être représenté par un vecteur des mots $w_j$ 
+		\item On calcule le ratio $\frac{P_ik}{Pjk}$
+	\end{itemize}
+\end{minipage}
+\begin{figure}
+	\hgraphpage{exp-glove_.pdf}
+	\caption{Exemple de probabilités et un ratio \cite{2014-pennington-al}}
+\end{figure}
+
+\begin{itemize}
+	\item la valeur du ratio doit suivre les relations $R(w_k, w_i)$ et $R(w_k, w_j)$
+	\begin{itemize}
+		\item Si $R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio sera grand. Ex. \expword{solid}
+		\item Si $\neg R(w_k, w_i) \wedge R(w_k, w_j)$, le ratio sera petit. Ex. \expword{gas}
+		\item Si $R(w_k, w_i) \wedge R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{water}
+		\item Si $\neg R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{fashion}
+	\end{itemize}
+	\item On veut entraîner une fonction $F$ sur les représentations de $w_i$, $w_j$ et $\tilde{w_k}$
+	\vspace{-6pt}\[F(w_i, w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+\end{itemize}
+
+Formulation (raisonnement)
+\begin{itemize}
+	\item On peut restreindre la fonction par utilisation d'une soustraction
+	\vspace{-6pt}\[F(w_i - w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	
+	\item On peut transformer l'argument à un scalaire par multiplication matricielle
+	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	
+	\item On veut : $w \leftrightarrow \tilde{w}$ et $X \leftrightarrow X^\top$. Donc, $F$ doit être un homomorphisme entre $(\mathbb{R}, +)$ et $(\mathbb{R}_{>0}, \times)$
+	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{F(w_i^\top \tilde{w_k})}{F(w_j^\top \tilde{w_k})}\]
+	
+	\item Donc, $F(w_i^\top \tilde{w_k}) = P_ik = \frac{X_{ik}}{X_i}$
+	
+	\item La solution est $F = exp$. Donc $w_i^\top \tilde{w_k} = \log X_{ik} - \log X_i$
+\end{itemize}
+
+Formulation (version finale)
+\begin{itemize}
+	\item la valeur $log X_i$ est indépendante de $k$. Donc, on peut entraîner un biais $b_i$ sur $w_i$. Pour respecter la symétrie, il faut entraîner un biais $\tilde{b_k}$ sur $\tilde{w_k}$ 
+	\item La fonction objective $J$ utilisée est \keyword{la méthode des moindres carrés}
+	\begin{itemize}
+		\item le problème est que $J$ ne doit pas pondérer les co-occurrences de la même façon : les co-occurrences rares doivent avoir moins d'impact sur $J$
+		\item un solution est de pondérer $J$ avec une fonction sur $X_{ij}$
+	\end{itemize}
+\end{itemize}
+
+\vspace{-6pt}
+\begin{block}{Formulation de la méthode GloVe}\vspace{-6pt}
+	\[w_i^\top \tilde{w_j} + b_i + \tilde{b_j} = \log X_{ij} \]
+	\[J(\theta) = \sum_{i=1}^{V} \sum_{j=1}^{V} f(X_{ij}) (w_i^\top \tilde{w_j} + b_i + \tilde{b_j} - \log X_{ij})^2\]
+	\vspace{-12pt}\[f(x) = \begin{cases}
+	\frac{x}{x_{max}} & \text{si } x < x_{max} \\
+	1 & \text{ sinon}
+	\end{cases}\]
+	\vspace{-6pt}\end{block}
+
+Architecture
+\begin{center}
+	\hgraphpage{glove.pdf}
+\end{center}
+
+\subsection{Embeddings contextuels}
+
+\begin{exampleblock}{Exemple de polysémie (mot avec plusieurs sens)}
+	\begin{itemize}
+		\item Le meilleur préservatif contre les \expword{souris} est un chat. (animal)
+		\item La \expword{souris} pour ordinateur est un système de pointage. (dispositif)
+		\item J'adore la \expword{souris}, c'est mon morceau favori. (Partie du gigot de mouton)
+	\end{itemize}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Les représentations de word embedding comme Word2vec et GloVe, peuvent-elles refléter des relations entre le mot \expword{souris} et les mots chat, ordinateur et morceau ?
+	\item Peuvent-elles différencier entre les différents sens du mot \expword{souris} ?
+\end{itemize}
+
+ELMo
+
+\begin{minipage}{.65\textwidth}
+	\begin{itemize}
+		\item \keyword{ELMo} : Embeddings from Language Models
+		\item \url{http://allennlp.org/elmo}
+		\item \cite{2018-peters-al}
+		\item Caractéristiques de la représentation
+		\begin{itemize}
+			\item Contextuelle :  prend en considération tout le contexte (phrase)
+			\item Profonde : combine tous les résultats des couches du réseau de neurones
+			\item Basée sur les caractères : prise en considération des caractéristiques morphologiques et des mots hors vocabulaire
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.33\textwidth}
+	\vspace{2cm}
+	\hgraphpage{Elmo-img.jpg}
+\end{minipage}
+
+\hgraphpage{elmo-arch.pdf}
+
+\begin{itemize}
+	\item Étant donné un mot $w_k$, on calcule sa représentation $x_k$ en se basant sur les caractères qui lui composent (voir \cite{2015-kim-al})
+	\item On utilise $L$ couches des cellules LSTM bidirectionnelles 
+	\item Pour chaque  phrase de $N$ mot, on essaye de maximiser\\ 
+	\begin{center}
+		$\sum_{k=1}^{N} 
+		\log P(w_k | w_1,\ldots,w_{k-1}; \Theta_x, \overrightarrow{\Theta}_{LSTM}, \Theta_s)
+		+
+		\log P(w_k | w_{k+1},\ldots,w_{N}; \Theta_x, \overleftarrow{\Theta}_{LSTM}, \Theta_s)
+		$
+	\end{center}
+	
+	\item $R_k = \{x_k^{LM}, \overrightarrow{h}_{LM}^{k, j}, \overleftarrow{h}_{LM}^{k, j} | j= 1 \ldots L \}
+	= \{h_{LM}^{k, j} | j= 0 \ldots L \}
+	$
+	
+	\item Pour intégrer ELMo avec une tâche  $task$, on entraîne des paramètres $\Theta^{task}$ afin d'inférer une représentation liée à la tâche \\
+	\begin{center}
+		$ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} s_j^{task} h_{LM}^{k, j}$
+	\end{center}
+\end{itemize}
+
+BERT
+\begin{minipage}{.68\textwidth}
+	\begin{itemize}
+		\item \keyword{BERT} : Bidirectional Encoder Representations from Transformers
+		\item \url{https://github.com/google-research/bert}
+		\item \cite{2019-devlin-al}
+		\item Caractéristiques de la représentation
+		\begin{itemize}
+			\item Contextuelle :  prend en considération tout le contexte (phrase)
+			\item Totalement bidirectionnelle : prend en considération les mots avant et après 
+			\item Basée sur les tokens : les mots sont séparés en radical + infixes
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\vspace{.5cm}
+	\hgraphpage{Bert-img.png}
+\end{minipage}
+
+\hgraphpage{bert-arch.pdf}
+
+\begin{itemize}
+	\item Le texte est séparé en tokens en utilisant \keyword{Wordpiece} (voir \cite{2016-wu-al})
+	\item En entrée une séquence de tokens de longueur maximale $T = 512$
+	\begin{itemize}
+		\item Le premier token est un marqueur spécial ``\keyword{[CLS]}" utilisé pour la classification
+		\item La séquence représente deux phrases séparées par un token ``\keyword{[SEP]}"
+	\end{itemize}
+	\item Chaque token est représenté par 3 embeddings de taille $N$ 
+	\begin{itemize}
+		\item \optword{Embedding de token} : transformation d'une vocabulaire de taille $V$ vers un vecteur de taille $N$
+		\item \optword{Embedding de position} : transformation de la position du token dans la phrase sur une taille max $T$ vers un vecteur de taille $N$
+		\item \optword{Embedding de segment} : transformation du segment du token (phrase1 ou phrase2) sur une taille de $2$ vers un vecteur de taille $N$
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Le modèle est basé sur \keyword{Transformer} (voir \cite{2017-vaswani-al})
+	\item Il est entraîné sur deux tâches
+	\item \optword{Modèle de langage masqué}
+	\begin{itemize}
+		\item masquer aléatoirement 15\% des tokens d'une phrase et essayer de les inférer
+		\item on utilise un token spécial \keyword{[MASK]}
+		\item puisque ce token n'apparait pas dans l'étape de réglage, on l'utilise pour 80\% des remplacements
+		\item 10\% avec un token quelconque et 10\% sans changement 
+	\end{itemize}
+	\item \optword{Prédiction de la phrase suivante}
+	\begin{itemize}
+		\item Prédire si la deuxième phrase suit la première 
+		\item Le résultat est dans la sortie du token ``\keyword{[CLS]}" ($CLS \in \{IsNext, NotNext\}$)
+	\end{itemize}
+	\item Le modèle pré-entraîné peut être entraîné sur une tâche définie
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{bert-taches1_.pdf}
+	\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
+		(a) Relation entre deux phrases comme la similarité (b) Classification d'une phrase comme analyse de sentiments
+	}
+\end{figure}
+
+\begin{figure}
+	\hgraphpage{bert-taches2_.pdf}
+	\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
+		(a) Tâches de Question-réponse (b) Les tâches de tagging comme reconnaissance des entités nommées
+	}
+\end{figure}
+
+\subsection{Évaluation des modèles}
+
+Évaluation intrinsèque
+\begin{itemize}
+	\item  WordSimilarity-353 Test Collection \cite{2002-finkelstein-al}
+	\begin{itemize}
+		\item Des similarités entre mots annotés manuellement (0 et 10)
+		\item On calcule la corrélation de Spearman entre les similarités basées sur les représentations (similarité cosinus) et les similarités manuelles
+	\end{itemize}
+	
+	\item SimLex-999 \cite{2015-hill-al}
+	\begin{itemize}
+		\item Tester la similarité (\expword{coast, shore}) et pas l'association (\expword{clothes, closet})
+	\end{itemize}
+	
+	\item Analogies de mots \cite{2013-mikolov-al2}
+	\begin{itemize}
+		\item Dataset de la forme $(w_{i1}:w_{j1} :: w_{i2}:w_{j2})$
+		\item Tester la capacité des embeddings à représenter des relations $w_{j2} = w_{i1} - w_{i2} + w_{j1}$
+		\item Ex. \expword{(King:Queen :: Man:Woman) \textrightarrow King - Man + Woman = Queen}
+	\end{itemize}
+	
+\end{itemize}
+
+Évaluation extrinsèque et biais
+
+\begin{itemize}
+	\item  \optword{Évaluation extrinsèque} : Évaluer les modèles en se basant sur une tâche 
+	\begin{itemize}
+		\item Évaluer un nouveau modèle par rapport à un autre connu en fonction d'une tâche
+		\item Ex. GloVe surpasse LSA dans la tâche de reconnaissance des entités nommées \cite{2014-pennington-al}
+	\end{itemize}
+	\item \optword{Biais} : Les modèles peuvent apprendre des analogies biaisées
+	\begin{itemize}
+		\item Apprendre des stéréotypes comme \expword{she} avec \expword{homemaker, nurse, receptionist} et \expword{he} avec \expword{maestro, skipper, protege} \cite{2017-caliskan-al}
+		\item Ceci peut affecter la performance de certaines tâches. 
+		\item Ex. \expword{La résolution des anaphores peut échouer à lier le pronoms ``she" avec ``doctor"}
+	\end{itemize}
+\end{itemize}
+
+%===================================================================================
+\section{Désambigüisation lexicale}
+%===================================================================================
+
+\begin{itemize}
+	\item Désambigüisation lexicale : Word Sense Disambiguation (WSD)
+	\item Sélectionner le sens correct d'un mot 
+	\item Utile pour plusieurs tâches 
+	\begin{itemize}
+		\item Analyse syntaxique. 
+		
+		\expword{I \underline{fish} in the river} (Verbe ou nom ?)
+		
+		\expword{The \underline{fish} was too big} (Verbe ou nom ?)
+		
+		\item Traduction automatique. 
+		
+		\expword{I withdrawed money from the \underline{bank}} (``banque" ou ``rive" ?)
+		
+		\expword{I fish on the \underline{bank}} (``banque" ou ``rive" ?)
+	\end{itemize}
+\end{itemize}
+
+\subsection{Basée sur des bases de connaissance}
+
+\begin{block}{Algorithme de Lesk}
+	\footnotesize\vspace{-3pt}
+	\begin{algorithm}[H]
+		\Donnees{un mot $w$; une phrase $s$ contenant $w$}
+		\Res{Le sens de $w$}
+		
+		meilleur\_sens \textleftarrow plus fréquent parmi les sens de $w$\;
+		superposition\_max \textleftarrow 0\;
+		contexte \textleftarrow l'ensemble des mots de $s$\; 
+		
+		\PourTous{sens $w_i$ de $w$}{ 
+			signature \textleftarrow l'ensemble des mots dans le \textbf{gloss} et exemples du sens $w_i$\;
+			superposition \textleftarrow nombre des mots en commun entre \textbf{contexte} et \textbf{signature}\;
+			\Si{superposition $>$ superposition\_max}{
+				superposition\_max \textleftarrow superposition\;
+				meilleur\_sens \textleftarrow $w_i$\;
+			}
+		}
+		
+		\Retour meilleur\_sens \;
+		\vspace{-3pt}
+	\end{algorithm}
+\end{block}
+
+ A base de graphes
+ 
+\begin{itemize}
+	\item Exemple : \url{http://babelfy.org/} \cite{2014-moro-al}
+	\item \optword{Étape 1 : Construction des signatures sémantiques}
+	\begin{itemize}
+		\item Attribuer un poids à chaque arc reliant deux concepts en se basant sur le nombre des triangles qui les relient (à partir d'un réseau sémantique)
+		\item Calculer la probabilité d'un concept sachant un autre en se basant sur ces poids
+		\item Minimiser le graphe en utilisant ``\keyword{Random walk with restart}"
+	\end{itemize}
+	\item \optword{Étape 2 : Identification des candidats}
+	\begin{itemize}
+		\item Appliquer l'étiquetage morphosyntaxique sur le texte d'entrée
+		\item Extraire tous les sens des mots ou des expressions
+	\end{itemize}
+	\item \optword{Étape 3 : Désambigüisation des candidats}
+	\begin{itemize}
+		\item Construire un graphe en se basant sur la signature sémantique et les candidats
+		\item Créer un sous-graphe en éliminant les liens faibles
+	\end{itemize}
+\end{itemize}
+
+\subsection{Basée sur l'apprentissage automatique}
+
+Apprentissage automatique supervisé
+
+\begin{itemize}
+	\item Utiliser un corpus annoté (Ex. \expword{SemCor})
+	\item Chaque mot est suivi par le numéro de son sens dans une base lexicale (WordNet)
+	\item Ex. \expword{You will find9 that avocado1 is1 unlike1 other1 fruit1 you have ever1 tasted2}
+	\item En sortie, on aura tous les sens des mots du vocabulaire encodés avec One-Hot
+	\item Les caractéristiques peuvent être les mots qui entourent le mot en question
+	\item La désambigüisation de tous les mots d'un texte est similaire à la tâche d'étiquetage morphosyntaxique
+\end{itemize}
+
+Embeddings contextuels
+
+\begin{minipage}{.68\textwidth}
+	\begin{itemize}
+		\item Algorithme du plus proche voisin (1-nearest-neighbor algorithm) 
+		\item Utiliser un embedding contextuel (ELMo, BERT, etc.)
+		\item Entraîner le modèle sur un corpus annoté pour avoir le embedding de chaque token
+		\item Pour avoir le embedding d'un sens $v_s$, on fait la moyenne des embeddings $c_i$ qui l'appartiennent
+		\[ v_s = \frac{1}{n} \sum_{i=1}^{n} c_i \] 
+	\end{itemize}
+\end{minipage}
+\begin{figure}
+	\hgraphpage{exp-wsd-nn_.pdf}
+	\caption{Exemple de désambigüisation avec le plus proche voisin \cite{2019-jurafsky-martin}}
+\end{figure}
+
+
+\begin{discussion}
+
+
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================
