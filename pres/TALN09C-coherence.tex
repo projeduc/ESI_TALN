@@ -18,22 +18,21 @@
 \frametitle{Traitement automatique du langage naturel}
 \framesubtitle{Cohérence du discours : Introduction}
 
-%\begin{exampleblock}{Exemple d'une phrase en français}
-%	\begin{center}
-%		\Large\bfseries
-%%		\begin{enumerate}
-%%			\item Mon chat a attrapé une souris avec ses griffes 
-%%			\item Mon chat a attrapé une souris avec sa queue
-%%			\item Mon chat a attrapé une souris avec un autre chat
-%%		\end{enumerate}
-%	La fille a cueilli une fleur. Elle l'a sentie. Elle a une très bonne odeur.
-%	\end{center}
-%\end{exampleblock}
-%
-%\begin{itemize}
-%	\item Qui a senti l'autre : la fille ou la fleur ?
-%	\item Qui a une très bonne odeur : la fille ou la fleur ?
-%\end{itemize}
+\begin{exampleblock}{Exemple d'un texte en français}
+	\begin{center}
+		\Large\bfseries
+		L'hiver est un des quatre saisons de l'année. 
+		Le rapport était bien exposé. 
+		La pluie est une des caractéristiques de cette saison.
+		Le sujet était la saison de l'hiver.
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Est-ce que vous pouvez comprendre de quoi s'agit-il ?
+	\item S'il y a un problème, lequel ?
+	\item Est-ce qu'on peut améliorer ce texte ?
+\end{itemize}
 
 \end{frame}
 
@@ -78,8 +77,209 @@
 \framesubtitle{Rhetorical Structure Theory (RST)}
 	
 	\begin{itemize}
-		\item 
+		\item Structure  
+		\begin{itemize}
+			\item \optword{Noyau (N)} :  unité indépendante, peut être interprétée indépendamment des autres unités du texte
+			\item \optword{Satellite (S)} :  unité dépendante, ne peut être interprétée qu'en utilisant le noyau
+		\end{itemize}
+		\item Acteurs
+		\begin{itemize}
+			\item \optword{Lecteur (L)} :  qui a lit le script
+			\item \optword{Scripteur (Sc)} :  qui a rédigé le script
+		\end{itemize}
+		\item Définition d'une relation
+		\begin{itemize}
+			\item Des restrictions sur le Noyau 
+			\item Des restrictions sur le Satellite 
+			\item Des restrictions sur la combinaison du Noyau et du Satellite 
+			\item L'effet produit.
+		\end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Rhetorical Structure Theory (RST) : Relations RST (Élaboration)}
+	
+	\begin{itemize}
+		\item \optword{Élaboration} :  S donne des informations additionnelles sur la situation présentée dans N
+		\begin{itemize}
+			\item \textbf{Contraintes sur N + S :} S présente des informations supplémentaires vis-à-vis de la situation ou de quelqu'aspect du thème présenté(e) dans N 
+			\item \textbf{Effet :}  L reconnaît la situation présentée dans S comme fournissant des informations supplémentaires au sujet de N. 
+			\item \textbf{Lieu de l'effet :} N + S
+			\item Ex. \expword{[\textsubscript{N} L'examen est facile.] [\textsubscript{S} Il ne prend qu'une heur.]}
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Rhetorical Structure Theory (RST) : Relations RST (Évidence)}
+	
+	\begin{itemize}
+		\item \optword{Évidence} :  S donne des informations additionnelles sur la situation présentée dans N dans le but de convincre L à accepter les informations de N
+		\begin{itemize}
+			\item \textbf{Contraintes sur N :} L pourra ne pas croire en N à un degré suffisant pour Sc
+			\item \textbf{Contraintes sur S :} L croit S ou le trouve crédible
+			\item \textbf{Contraintes sur N + S :} La compréhension de S par L augmente sa croyance en N
+			\item \textbf{Effet :}  La croyance de L en N est effectivement augmentée
+			\item \textbf{Lieu de l'effet :} N
+			\item Ex. \expword{[\textsubscript{N} Kevin doit être ici.] [\textsubscript{S} Sa voiture est garée à l'extérieur.]}
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Rhetorical Structure Theory (RST) : Relations RST (Contraste)}
+	
+	\begin{itemize}
+		\item \optword{Contraste} :  Une relation d'opposition entre deux noyaux
+		\begin{itemize}
+			\item \textbf{Contraintes sur N :} multi-noyaux
+			\item \textbf{Contraintes sur N + N :} pas plus de deux noyaux ; les situations présentées dans ces deux noyaux sont (a) comprises comme les mêmes à beaucoup d'égards, (b) comprises comme différant par quelques aspects et (c) comparées par rapport à l'une ou plus d'une de ces différences
+			\item \textbf{Effet :}  L reconnaît la comparabilité et les différences fournies par la comparaison effectuée
+			\item \textbf{Lieu de l'effet :} noyaux multiples
+			\item Ex. \expword{[\textsubscript{N} Il a voté "Non" à la nouvelle constitution.] [\textsubscript{N} Son frère a voté "Oui".]}
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Rhetorical Structure Theory (RST) : Relations RST (Antithèse)}
+	
+	\begin{itemize}
+		\item \optword{Antithèse} :  Une relation d'opposition entre N et S dans le but que L ait une attitude positive envers N
+		\begin{itemize}
+			\item \textbf{Contraintes sur N :} Sc a une attitude positive par rapport à la situation présentée dans N
+			\item \textbf{Contraintes sur N + N :} es situations présentées dans N et S sont en opposition (cf. CONTRASTE)
+			\item \textbf{Effet :}  L'attitude positive de L vis-à-vis de N est augmentée
+			\item \textbf{Lieu de l'effet :} N
+			\item Ex. \expword{[\textsubscript{N} J'ai défendu la République jeune;] [\textsubscript{S} Je ne l'abandonnerai pas maintenant que je suis vieux.]}
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Rhetorical Structure Theory (RST) : Relations thématiques vs. présentationnelles}
+	
+	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+	\begin{tabular}{p{.4\textwidth}lp{.4\textwidth}}
+		\rowcolor{darkblue}
+		\color{white}\bfseries thématique && \color{white}\bfseries présentationnelle\\
+		
+		Élaboration
+		
+		Circonstance
+		
+		Problème-Solution
+		
+		Cause intentionnelle
+		
+		Résultat intentionnel
+		
+		Cause non-intentionnelle
+		
+		Résultat non-intentionnel
+		
+		But
+		
+		Condition
+		
+		Interprétation
+		
+		Évaluation
+		
+		Reformulation
+		
+		Résumé
+		
+		Séquence
+		
+		Contraste
+		
+		&&
+		Motivation
+		
+		Antithèse
+		
+		Arrière-plan
+		
+		Facilitation
+		
+		Évidence (« indice »)
+		
+		Justification
+		
+		Concession\\
+	\end{tabular}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Rhetorical Structure Theory (RST) : Relations sémantiques vs. pragmatiques vs. textuelles}
+	
+	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+	\begin{tabular}{p{.3\textwidth}lp{.25\textwidth}lp{.2\textwidth}}
+		\rowcolor{darkblue}
+		\color{white}\bfseries Sémantique && \color{white}\bfseries Pragmatique && \color{white}\bfseries Textuelle \\
+		
+		Élaboration
+		
+		Circonstance
+		
+		Problème-Solution
+		
+		Cause intentionnelle
+		
+		Résultat intentionnel
+		
+		Cause non-intentionnelle
+		
+		Résultat non-intentionnel
+		
+		But
+		
+		Condition
+		
+		Interprétation
+		
+		Évaluation
+		
+		Séquence
+		
+		Contraste
+		
+		&&
+		
+		Motivation
+		
+		Antithèse
+		
+		Facilitation
+		
+		Évidence (« indice »)
+		
+		Justification
+		
+		Concession
+		
+		&&
+		
+		Arrière-plan
+		
+		Reformulation
+		
+		Résumé\\
+	\end{tabular}
 	
 \end{frame}
 
