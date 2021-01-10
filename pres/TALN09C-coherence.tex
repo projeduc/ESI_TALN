@@ -64,8 +64,21 @@
 	\frametitle{Cohérence du discours}
 	\framesubtitle{Relations de cohérence}
 	
+	Comment détecter la cohérence d'un discours ?
 	\begin{itemize}
-		\item 
+		\item \optword{Cohérence basée sur les relations} : les phrases d'un discours sont liées entre elles par des relations. 
+		\begin{itemize}
+			\item Rhetorical Structure Theory (RST) 
+			\item Penn Discourse TreeBank (PDTB)
+		\end{itemize}
+		\item \optword{Cohérence basée sur l'entité} : les phrases d'un discours forment une seule entité ; elles discutent le même sujet
+		\begin{itemize}
+			\item Centering Theory 
+		\end{itemize}
+		\item \optword{Cohésion lexicale} : les phrases proches se partagent quelques mots ou sens 
+		\begin{itemize}
+			\item Similarité
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -173,7 +186,7 @@
 	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
 	\begin{tabular}{p{.4\textwidth}lp{.4\textwidth}}
 		\rowcolor{darkblue}
-		\color{white}\bfseries thématique && \color{white}\bfseries présentationnelle\\
+		\bfseries\textcolor{white}{thématique} && \bfseries\textcolor{white}{présentationnelle}\\
 		
 		Élaboration
 		
@@ -230,7 +243,7 @@
 	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
 	\begin{tabular}{p{.3\textwidth}lp{.25\textwidth}lp{.2\textwidth}}
 		\rowcolor{darkblue}
-		\color{white}\bfseries Sémantique && \color{white}\bfseries Pragmatique && \color{white}\bfseries Textuelle \\
+		\bfseries\textcolor{white}{Sémantique} && \bfseries\textcolor{white}{Pragmatique} && \bfseries\textcolor{white}{Textuelle} \\
 		
 		Élaboration
 		
@@ -290,8 +303,74 @@
 	\framesubtitle{Penn Discourse TreeBank (PDTB)}
 	
 	\begin{itemize}
-		\item 
+		\item Annotation des connectives de discours
+		\begin{itemize}
+			\item \optword{Conjonctions de subordination} :  
+			temporelle (Ex., \expword{'when', 'as soon as'}), 
+			causale (Ex., \expword{'because'}), 
+			concessive (Ex., \expword{'although', 'even though'}), 
+			objectif (Ex.,\expword{'so that', 'in order that'}) et 
+			conditionnelle (Ex., \expword{'if', 'unless'}).
+			
+			\item \optword{Conjonctions de coordination} : \expword{'and', 'but', 'or'}
+			
+			\item \optword{Conjonctives adverbiales} : des adverbes qui expriment une relation de discours entre des évenements ou des états. Ex., \expword{'however', 'therefore', 'then', etc.}
+			Des syntagmes prépositionnels sont inclus aussi dans cette classe. Ex. \expword{'as a result',
+			'in addition', 'in fact', etc. }
+			
+			\item \optword{Connectives implicites} :  identifiées entre deux phrases adjacentes qui ne sont pas reliées par des connectives explicites.
+		\end{itemize}
+		\item Annotation des arguments 
+		\begin{itemize}
+			\item ARG2 : c'est la clause où la connective est liée (cas explicite)
+			\item ARG1 : l'autre clause
+		\end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Penn Discourse TreeBank (PDTB) : Sens des connectives}
+	
+	\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
+	\begin{tabular}{p{.1\textwidth}lp{.8\textwidth}}
+		\rowcolor{darkblue}
+		\bfseries\textcolor{white}{Connective} && \bfseries\textcolor{white}{Sens}\\
+		
+		after && succession (523), succession-reason (50), other (4) \\
+		since && reason (94), succession (78), succession-reason (10), other (2) \\
+		when && Synchrony (477), succession (157), general (100), succession-reason (65), Synchrony-general (50),
+		Synchrony-reason (39), hypothetical (11), implicit assertion (11), Synchrony-hypothetical (10), other
+		(69) \\
+		while && juxtaposition (182), Synchrony (154), Contrast (120), expectation (79), opposition (78), Conjunction
+		(39), Synchrony-juxtaposition (26), Synchrony-Conjunction (21), Synchrony-Contrast(22), COMPARISON (18), Synchrony-opposition (11), other (31) \\
+		meanwhile && Synchrony-Conjunction (92), Synchrony (26), Conjunction (25), Synchrony-juxtaposition (15),
+		other(35)\\
+		but && Contrast (1609), juxtaposition (636), contra-expectation (494), COMPARISTON (260), opposition
+		(174), Conjunction (63), Conjunction-Pragmatic contrast (14), Pragmatic-contrast (14), other (32)
+		however Contrast (254), juxtaposition (89), contra-expectation (70), COMPARISON (49), opposition (31),
+		other (12)\\
+		although && expectation (132), Contrast (114) juxtaposition (34), contra-expectation (21), COMPARISON (16),
+		opposition (9), other (2)\\
+		and && Conjunction (2543), List (210), result-Conjunction (138), result (38), precedence-Conjunction (30),
+		juxtaposition (11), other(30)\\
+		if && hypothetical (682), general (175), unreal present (122), factual present (73), unreal past (53), expectation (34), implicit assertion (29), relevance (20), other (31)\\
+	\end{tabular}
+	\caption{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
+	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Relations de cohérence}
+	\framesubtitle{Penn Discourse TreeBank (PDTB) : Sens des connectives}
+	
+	\begin{figure}
+		\vgraphpage[.7\textheight]{pdtb-sens_.pdf}
+		\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
+	\end{figure}
 	
 \end{frame}
 
