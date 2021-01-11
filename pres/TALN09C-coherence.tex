@@ -375,24 +375,12 @@
 \end{frame}
 
 %===================================================================================
-\section{Analyse de discours}
+\section{Analyse basée structure de discours}
 %===================================================================================
 
 \begin{frame}
 	\frametitle{Cohérence du discours}
-	\framesubtitle{Analyse de discours}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
-
-\subsection{Segmentation des unités pour RST}
-
-\begin{frame}
-	\frametitle{Cohérence du discours : Analyse de discours}
-	\framesubtitle{Segmentation des unités pour RST}
+	\framesubtitle{Analyse basée structure de discours}
 	
 	\begin{itemize}
 		\item 
@@ -403,24 +391,146 @@
 \subsection{Analyse RST}
 
 \begin{frame}
-	\frametitle{Cohérence du discours : Analyse de discours}
+	\frametitle{Cohérence du discours : Analyse basée structure}
 	\framesubtitle{Analyse RST}
 	
 	\begin{itemize}
-		\item 
+		\item Construire un arbre de relations de discours
+		\item Deux étapes : 
+		\begin{enumerate}
+			\item Détection des unités élémentaires de discours
+			\item Classification des relations
+		\end{enumerate}
+	\end{itemize}
+
+	\begin{center}
+		\hgraphpage[0.5\textwidth]{RST-arbre.pdf}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse basée structure}
+	\framesubtitle{Analyse RST : Détection des unités élémentaires de discours (UED)}
+	
+	\begin{itemize}
+		\item Elementary discourse units (EDUs)
+		\item Une phrase peut avoir plusieurs UEDs 
+		\item Ex. \expword{[Mr. Rambo says]\textsubscript{e1} [that a 3.2-acre property]\textsubscript{e2} [overlooking the San Fernando Valley]\textsubscript{e3} [is priced at \$4 million]\textsubscript{e4} [because the late actor Erroll Flynn once lived there.]\textsubscript{e5}}
+		\item Méthodes 
+		\begin{itemize}
+			\item \optword{Par règles}
+			\begin{itemize}
+				\item arbre syntaxique
+				\item indices de surface : ponctuation et des marqueurs lexicaux comme les connectives
+			\end{itemize}
+			\item Statistiques 
+			\begin{itemize}
+				\item \optword{Par caractéristiques} : utilisation des informations syntaxiques et des indices de surface pour apprendre les limites des UEDs
+				\item \optword{Par embeddings} : texte comme séquence. Ex., \url{https://github.com/PKU-TANGENT/NeuralEDUSeg}
+			\end{itemize}
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
 
-
-\subsection{Analyse RST}
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse basée structure}
+	\framesubtitle{Analyse RST : Détection des UEDs par embeddings}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.7\textwidth]{EDU_seg_.pdf}
+		\caption{Segmentation en UEDs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
 
 \begin{frame}
 	\frametitle{Cohérence du discours : Analyse de discours}
-	\framesubtitle{Analyse RST}
+	\framesubtitle{Analyse RST : Classification des relations}
+	
+	\begin{minipage}{.6\textwidth}
+	\begin{itemize}
+		\item Méthode plus utilisée : SHIFT-REDUCE
+		\item Configuration : $C = (\sigma, \beta, A)$
+		\begin{itemize}
+			\item $\sigma$ est une pile
+			\item $\beta$ est le tampon (buffer) d'entrée
+			\item $A$ est la liste des arcs créés (relations)
+			\item $C_{initiale} = (\varnothing, w, \emptyset)$
+			\item $C_{finale} = (\varnothing, \varnothing, A)$
+		\end{itemize}
+	\end{itemize}
+	\end{minipage}
+	\begin{minipage}{.38\textwidth}
+		\hgraphpage{RST-transitions.pdf}
+	\end{minipage}
+	\begin{itemize}
+		\item Opérations 
+		\begin{itemize}
+			\item \optword{Shift} : mettre le premier élément du buffer dans la pile
+			\item \optword{Reduce}\textbf{(l, d)} : fusionne les deux sous-arbres supérieurs de la pile, où \textbf{l} est l'étiquette de relation de cohérence, et \textbf{d} est la direction de nucléarité : \textbf{d $ \in $ \{NN, NS, SN\}}.
+			\item \optword{Pop Root} : enlever l'arbre final de la pile.
+		\end{itemize}
+		\item Apprentissage 
+		\begin{itemize}
+			\item Par caractéristiques
+			\item Par embeddings
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse de discours}
+	\framesubtitle{Analyse RST : Classification des relations (exemple)}
+	
+	\begin{figure}
+		\hgraphpage{RST_exp_.pdf}
+		
+		\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
+		\caption{Un exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse de discours}
+	\framesubtitle{Analyse RST : Classification des relations avec embeddings (1)}
 	
 	\begin{itemize}
-		\item 
+		\item Cas d'étude : \cite{2018-yu-al} (Encodeur-décodeur)
+		\item Code : \url{https://github.com/yunan4nlp/NNDisParser}
+		\item Encodeur 
+		\begin{itemize}
+			\item Encoder les mots : $ w_i $ un mot avec une catégorie grammaticale $t_i$
+			\[x_i^w = embedding(w_i) \oplus embedding(t_i)\]
+			\item Représenter les mots séquentiels
+			\[ \{h_1^w, h_2^w, \ldots, h_m^w \} = biLSTM(\{x_1^w, x_2^w, \ldots, x_m^w \})\]
+			\item Représenter un UED $\{w_s, w_{s+1}, \ldots, w_t \}$
+			\[ x^e = \frac{1}{t-s+1} \sum_{k=s}^{t} h_k^w\]
+			\item Représenter les UEDs séquentiels
+			\[ \{h_1^e, h_2^e, \ldots, h_n^e \} = biLSTM(\{x_1^e, x_2^e, \ldots, x_n^e \})\]
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse de discours}
+	\framesubtitle{Analyse RST : Classification des relations avec embeddings (2)}
+	
+	\begin{itemize}
+		\item Décodeur 
+		\begin{itemize}
+			\item Une couche neuronale feed-forward pour inférer l'action $o$
+			\[o = W(h_{s0}^{sbt} \oplus h_{s1}^{sbt} \oplus h_{s2}^{sbt} \oplus h_{q0}^{e})\]
+			\item $ h_{e}^{q0} $ : la représentation séquentielle du premier UED dans le buffer
+			\item $h_{si}^{sbt}$ : la représentation séquentielle du sous-arbre $i$ dans la pile
+			\item la représentation d'un sous arbre entre deux UEDs $ s= \{e_i, \ldots, e_j\}$ est la moyenne des représentations des UEDs couverts
+			\[ h_{s}^{sbt} = \frac{1}{j-i+1} \sum_{k=i}^{j} h_k^e\]
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
