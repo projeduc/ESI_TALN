@@ -542,7 +542,26 @@
 	\framesubtitle{Analyse PDTB}
 	
 	\begin{itemize}
-		\item 
+		\item Trouver la relation entre deux parties du texte
+		\item Quatre étapes : 
+		\begin{enumerate}
+			\item Trouvez les connecteurs du discours
+			\begin{itemize}
+				\item En utilisant la désambigüisation du sens (délimiteur ou non)
+			\end{itemize}
+			\item Trouvez les deux parties pour chaque connective
+			\begin{itemize}
+				\item Pour la partie avec le connecteur, on peut classer les parties adjacente comme ayant une relation ou non
+			\end{itemize}
+			\item Étiquetez la relation entre ces parties (connectives explicites) : 
+			\begin{itemize}
+				\item Par exemple, en utilisant BERT avec les deux parties en entrée et en ajoutant une couche neuronale à sa sortie $ <CLS> $ pour inférer la relation
+			\end{itemize}
+			\item Attribuer une relation entre chaque paire de phrases adjacentes (connectives implicites)
+			\begin{itemize}
+				\item La même chose que dans (3)
+			\end{itemize}
+		\end{enumerate}
 	\end{itemize}
 	
 \end{frame}
