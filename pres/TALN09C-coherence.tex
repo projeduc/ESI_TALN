@@ -670,7 +670,65 @@
 	\framesubtitle{Entity Grid model}
 	
 	\begin{itemize}
-		\item 
+		\item Un document est représenté par une matrice
+		\begin{itemize}
+			\item Lignes : les phrases 
+			\item Colonnes : les entités
+			\item Valeurs : fonction grammaticale de l'entité dans la phrase ; sujet (S), Objet (O), Autre (X) ou l'entité n'existe pas (\_).
+		\end{itemize}
+		\item Un document est cohérent, s'il suit un pattern
+		\begin{itemize}
+			\item Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. \expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}
+			\item On utilise l'apprentissage automatique pour juger la cohérence d'un document
+		\end{itemize}
+		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse basée entité}
+	\framesubtitle{Entity Grid model : Exemple d'une représentation de document}
+	
+	\begin{figure}
+		\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
+		
+		\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
+		\caption{Un exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse basée entité}
+	\framesubtitle{Entity Grid model : Représentation par transitions}
+	
+	\begin{itemize}
+		\item Un document est représenté par les probabilités des transitions grammaticales
+		\item Une probabilité est le ration entre le nombre d'une transition et le nombre de toutes les transitions
+		\item Ex. Dans l'exemple précédent : \expword{P(S\_) = 2/75}
+	\end{itemize}
+	\begin{figure}
+		\hgraphpage{EGM_doc_vec_exp_.pdf}
+		\caption{Un exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse basée entité}
+	\framesubtitle{Entity Grid model : Apprentissage}
+	
+	\begin{itemize}
+		\item L'algorithme apprend à noter un texte selon sa cohérence
+		\item Un texte non cohérent doit avoir un score inférieur à un autre cohérent
+		\item Utilisation des textes annotés selon leurs cohérences par des experts
+		\item Utilisation d'une méthode auto-supervisée : créer un texte non cohérent à partir d'un texte cohérent
+		\begin{itemize}
+			\item Discrimination de l'ordre des phrases : ordre aléatoire des phrases et comparaison du score de cohérence avec celui de l'ordre original
+			\item Insertion de la phrase : modifier l'ordre d'une seule phrase et comparaison du score de cohérence avec celui de l'ordre original
+			\item Reconstruction de l'ordre des phrases : apprendre à ordonner les phrases
+		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
