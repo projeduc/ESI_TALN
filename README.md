@@ -117,12 +117,19 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Tâches connexes
         - Annotation sémantique (Entity linking)
         - Reconnaissance des entités nommées
+1. **La cohérence du discours**
+    - Relations de cohérence
+        - Rhetorical Structure Theory (RST)
+        - Penn Discourse TreeBank (PDTB)
+    - Analyse basée structure de discours
+        - Analyse RST
+        - Analyse PDTB
+    - Analyse basée sur l'entité de discours
+        - Centering theory
+        - Entity Grid model
 
 **PAS ENCORE**
 
-1. **La cohérence du discours**
-    - Les modèles de discours : Rhetorical Structure Theory (RST), Penn Discourse TreeBank (PDTB)
-    - Analyse de discours : Segmentation des unités élémentaires de discours, Analyse RST
 1. **Quelques applications**
     - Traduction automatique de textes
     - Résumé automatique de textes
