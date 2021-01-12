@@ -578,6 +578,26 @@
 		\item Un discours est cohérent s'il discute une certaine entité
 		\item Quelque soit la position dans le discours, cette entité doit rester la plus importante
 	\end{itemize}
+
+	\begin{exampleblock}{Exemple de cohérence \cite{2019-jurafsky-martin}}
+		\small
+		\begin{minipage}{.48\textwidth}
+			\begin{enumerate}
+				\item John went to his favorite music store to buy a piano. [John]
+				\item He had frequented the store for many years. [John]
+				\item He was excited that he could finally buy a piano. [John]
+				\item He arrived just as the store was closing for the day. [John]
+			\end{enumerate}
+		\end{minipage}
+		\begin{minipage}{.48\textwidth}
+			\begin{enumerate}
+				\item John went to his favorite music store to buy a piano. [John]
+				\item It was a store John had frequented for many years. [The store]
+				\item He was excited that he could finally buy a piano. [John]
+				\item It was closing just as John arrived. [The store]
+			\end{enumerate}
+		\end{minipage}
+	\end{exampleblock}
 	
 \end{frame}
 
@@ -585,11 +605,61 @@
 
 \begin{frame}
 	\frametitle{Cohérence du discours : Analyse basée entité}
-	\framesubtitle{Centering theory}
+	\framesubtitle{Centering theory : Centres de discours}
 	
 	\begin{itemize}
-		\item 
+		\item $\mathbf{U_n}$ : une énonciation
+		\item $\mathbf{C_b(U_n)}$ : \optword{Backward-looking center} (centre rétrospectif)
+		\begin{itemize}
+			\item l'entité saillante actuelle
+			\item celle sur laquelle se concentre le discours dans l'énonciation $ U_{n-1} $.
+		\end{itemize}
+		\item $\mathbf{C_f(U_n)}$ : \optword{Forward-looking center} (centres prospectifs)
+		\begin{itemize}
+			\item les entités potentiellement saillantes dans le futur
+			\item celles candidates pour être $C_b(U_{n+1})$.
+		\end{itemize}
+		\item $\mathbf{C_p(U_n) \in C_f(U_n)}$ : \optword{Prefered center} (centre préféré)
+		\begin{itemize}
+			\item centre candidat pour être $C_b(U_{n+1})$
+			\item score sur le rôle grammatical (sujet plus important que l'objet qui est plus important que le reste), l'ordre (Ex. \expword{En Arabe, ce qui est en premier est plus important}), etc.
+		\end{itemize}
+		\item $C_b(U_n)$ doit être représenté par un pronom dans $U_{n+1}$
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cohérence du discours : Analyse basée entité}
+	\framesubtitle{Centering theory : Transitions}
+	
+	\begin{itemize}
+		\item Ordre des transitions selon la plus cohérente
+		\item \optword{CONTINUE} : le locuteur parle d'une entité et a l'intention d'en parler en futur
+		\item \optword{RETAIN} : le locuteur parle d'une entité et a l'intention d'en changer en futur
+		\item \optword{SHIFT} : le locuteur a changé l'entité centrale
+		\begin{itemize}
+			\item \textbf{Smooth-SHIFT} : après le changement, il a l'intention d'en parler en futur
+			\item \textbf{Rough-SHIFT} : après le changement, il a l'intention d'en changer en futur
+		\end{itemize}
+	\end{itemize}
+
+	\begin{center}
+		\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
+		\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
+			\rowcolor{darkblue}
+			& \bfseries\color{white}$\mathbf{C_b(U_n) = C_b(U_{n-1})}$
+			
+			OU $\mathbf{C_b(U_n) = NULL}$
+			& \bfseries\color{white}$\mathbf{C_b(U_n) \ne C_b(U_{n-1})}$\\
+			
+			$\mathbf{C_b(U_n) = C_p(U_n)}$ &
+			CONTINUE & Smooth-SHIFT\\
+			
+			$\mathbf{C_b(U_n) \ne C_p(U_n)}$ &
+			RETAIN & Rough-SHIFT\\
+		\end{tabular}
+	\end{center}
 	
 \end{frame}
 
