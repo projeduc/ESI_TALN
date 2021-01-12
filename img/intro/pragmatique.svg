@@ -15,7 +15,7 @@
    viewBox="0 0 110 100"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="pragmatique.svg"
    inkscape:export-filename="/home/kariminf/Github/projeduc/ESI_2CS_TALN/img/intro/niveaux.png"
    inkscape:export-xdpi="90"
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.50000001"
-     inkscape:cx="413.38886"
+     inkscape:cx="16.388868"
      inkscape:cy="390.31558"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -655,7 +655,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -665,16 +665,16 @@
      inkscape:groupmode="layer"
      inkscape:label="Calque 1">
     <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="63.367706"
+       id="text15659"
        y="183.62604"
-       id="text15659"><tspan
-         sodipodi:role="line"
-         id="tspan15657"
-         x="63.367706"
+       x="63.367706"
+       style="stroke-width:0.26458332px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:10.58333302px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332px"
          y="186.54443"
-         style="stroke-width:0.26458332px" /></text>
+         x="63.367706"
+         id="tspan15657"
+         sodipodi:role="line" /></text>
     <image
        y="201.61172"
        x="60.10527"
@@ -701,18 +701,18 @@
        height="52.640648"
        width="62.066776" />
     <flowRoot
-       xml:space="preserve"
+       transform="matrix(0.57921704,0,0,0.61003711,-175.43694,263.14449)"
+       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
        id="flowRoot13804-4-1-4"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.57921704,0,0,0.61003711,-175.43694,263.14449)"><flowRegion
-         id="flowRegion13806-0-9-6"
-         style="fill:#000000"><rect
-           id="rect13808-0-9-1"
-           width="388.90872"
-           height="66.46804"
-           x="318.19806"
+       xml:space="preserve"><flowRegion
+         style="fill:#000000"
+         id="flowRegion13806-0-9-6"><rect
+           style="fill:#000000"
            y="-85.272057"
-           style="fill:#000000" /></flowRegion><flowPara
+           x="318.19806"
+           height="66.46804"
+           width="388.90872"
+           id="rect13808-0-9-1" /></flowRegion><flowPara
          id="flowPara13810-86-6-8"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Nimbus Roman No9 L';-inkscape-font-specification:'Nimbus Roman No9 L, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">Les bougies!</flowPara></flowRoot>  </g>
+         style="font-size:16px;font-family:Crimson Text;writing-mode:lr-tb;fill:#000000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start">Les bougies!</flowPara></flowRoot>  </g>
 </svg>
