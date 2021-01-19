@@ -117,7 +117,7 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Tâches connexes
         - Annotation sémantique (Entity linking)
         - Reconnaissance des entités nommées
-1. **La cohérence du discours**
+1. **Cohérence du discours**
     - Relations de cohérence
         - Rhetorical Structure Theory (RST)
         - Penn Discourse TreeBank (PDTB)
@@ -135,10 +135,8 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Résumé automatique de textes
     - Analyse des sentiments
     - Systèmes de dialogue et chatbots
-1. **Reconnaissance et synthèse de la parole**
-    - Phonétique
-    - Reconnaissance de paroles
-    - Synthèse de paroles
+    - Reconnaissance et synthèse de la parole
+
 
 ## Licence
 
