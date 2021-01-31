@@ -86,6 +86,297 @@
 	\hgraphpage{sum-classif.pdf}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approches du résumé automatique}
+	\begin{columns}
+		\begin{column}{0.32\textwidth}
+			\begin{block}{\scriptsize\bfseries\cite{12-nenkova-mckeown}}
+				\begin{itemize}
+					\item représentation du sujet 
+					:
+					mots du sujet,
+					fréquences, 
+					analyse sémantique latente, 
+					modèles de sujets bayésiens,
+					clustering
+					%			\begin{itemize}
+					%				\item mots du sujet 
+					%				\item fréquences
+					%				\item analyse sémantique latente
+					%				\item modèles de sujets bayésiens
+					%			\end{itemize}
+					\item représentation des indicateurs : 
+					par graphes, 
+					apprentissage automatique
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{block}{\scriptsize\bfseries\cite{12-lloret-palomar}}
+				\begin{itemize}
+					\item statistique 
+					\item par graphes
+					\item basée discours
+					\item par apprentissage automatique
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.28\textwidth}
+			\begin{block}{\scriptsize\bfseries\cite{19-aries-al}}
+				\begin{itemize}
+					\item statistique 
+					\item par graphes
+					\item linguistique 
+					\item par apprentissage automatique
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche statistique}
+	
+	\begin{itemize}
+		\item \optword{Fréquence des mots} 
+		
+		\hspace{.5cm}Ex. $Score_\text{TF-IDF}(s_i) = \sqrt{\sum\limits_{w_{ik} \in s_i} (\text{TF-IDF}(w_{ik}))^2}$
+		
+		\item \optword{Position des phrases (ou des mots)}
+		
+		\hspace{.5cm}Ex. $ Score_\text{pos}(s_i) = \max (\frac{1}{i}, \frac{1}{|D| - i + 1}) $
+		
+		\item \optword{Taille (longueur) des phrases}
+		
+		\hspace{.5cm}Ex. $ Score_\text{taille}(s_i) = \left\lbrace 
+		\begin{array}{lll}
+		0 & si & (L_i \geq L_{min}) \\
+		\frac{L_i - L_{min}}{L_{min}} & sinon & \\
+		\end{array}
+		\right. $
+		
+		\item \optword{Mots du titre et des sous-titres}
+		
+		\hspace{.5cm}Ex. $ Score_{titre}(s_i) = \frac{\sum_{e \in T \bigcap s_i}{\frac{tf(e)}{tf(e)+1}}}
+		{\sum_{e \in T}{\frac{tf(e)}{tf(e)+1}}} $
+		
+		\item \optword{Centroid}, \optword{Frequent itemsets}, \optword{Analyse sémantique latente}, ...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche statistique (Exemple : \cite{13-aries-al})}
+	
+	\hgraphpage{tcc-arch.pdf}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche statistique (Exemple: \cite{13-aries-al} - suite)}
+	
+	\begin{itemize}
+		\item Un texte peut contenir plusieurs sujets, et une phrase peut discuter plusieurs sujets
+		\begin{itemize}
+			\item Regroupement de phrases avec similarité et seuil de regroupement ($Th$)
+		\end{itemize}
+		\item Une phrase est importante si elle peut représenter le maximum des sujets(cluters)
+		\[ Score(s_i , c_j , f_k ) = 1 + \sum_{\phi \in s_i} {P(f_k=\phi | s_i \in c_j)} \]
+		\[ Score(s_i , \bigcap_{j} c_j , F) =  %\propto 
+		\prod_{j} \prod_{k} Score(s_i , c_j , f_k ) \]
+		$ s $ : phrase, $ c $ : cluster, $ f $ : caractéristique, $ F $ : ensemble de caractéristiques, $ \phi $: observation de $ f $.
+		\item $f$ : TF (Uni, Bi); Pos (intervalle de 10); Len (réel, pré-traité)
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche statistique (Exemple: \cite{15-oufaida-al})}
+	
+	\begin{itemize}
+		\item Représentation des mots : embeddings pré-entrainés (Polyglot)
+		\item Clustering pour extraire les sous-sujets du texte
+		\begin{itemize}
+			\item On peut trouver le mot $w_j \in S_2$ le plus similaire à un mot $w_i$
+			
+			$Sim\_Match(w_i | S_2) = \max sim(Rep(w_i), Rep(w_j))$
+			
+			\item Lien entre deux phrases $S_2$ et $S_2$
+			
+			$Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Sim\_Match(w_i | S_2) + \sum_{w_j \in S_2} Sim\_Match(w_j | S_1)}{|S_1| + |S_2|}$
+		\end{itemize}
+	
+		\item Score des terms en utilisant mRMR
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par graphes}
+	
+	\begin{itemize}
+		\item \optword{Propriétés du graphe}
+		\begin{itemize}
+			\item Bushy paths 
+			
+			\hspace{.5cm}$Score_{\#arcs}(s_i) = |\{ s_j : a(s_i, s_j) \in A / s_j \in S, s_i \neq s_j \}|$
+			
+			\item Aggregate Similarity
+			
+			\hspace{.5cm}$Score_{aggregate}(s_i) = \sum\limits_{(s_i, s_j) \in E} sim(s_i, s_j)$
+		\end{itemize}
+		\item \optword{Méthodes itératives}
+		\begin{itemize}
+			\item Mettre à jour les scores des nœuds à base des voisins 
+			\item L'arrêt : un état d'équilibre (on peut plus mettre à jour)
+			\item Ex. TextRank \cite{04-mihalcea-tarau}
+			
+			$WS(V_i) = ( 1 - d) + d * \sum\limits_{V_j \in In(V_i)} \frac{w_{ji}}{\sum\limits_{V_k \in Out(V_j)} w_{jk}} WS(V_j)$
+			
+			$w_{ij} = \frac{|\{w_k \text{ / } w_k \in S_i \text{ and } w_k \in S_j\}|}{\log(|S_i|) + \log(|S_j|)}$
+			
+			$ d $ : damping factor (en général, environ $ 0.85 $)
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par graphes (Exemple: \cite{21-aries-al})}
+	
+	\begin{center}
+		\vgraphpage{gc-archi.pdf}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par graphes (Exemple : \cite{21-aries-al} - suite)}
+	
+	\vspace{-6pt}
+	\begin{itemize}
+		\item Simplification du graphe
+		
+		\hspace{.5cm}$noeud\_faible(v_i) = ( \sum_{(v_i, v_j) \in E} w_{ij} < \frac{1}{MImpN(v_i)} )$ 
+		
+		\hspace{.5cm}$arc\_faible(v_i, v_j) = ( w_{ij} < \frac{Threshold}{MImpN(v_i)})$
+		
+		\item Score statistique des phrases
+		
+		\hspace{.5cm}$ Score(s_i/ sim) = sim(s_i, C\backslash s_i) $
+		$Score(s_i/ tfisf) = \sqrt{\sum\limits_{w_{ik} \in s_i} (tfisf(w_{ik}))^2}$
+		
+		\hspace{.5cm}$Score(s_i/ size) = \frac{1}{|s_i|}$
+		$Score(s_i/ pos) = \max (\frac{1}{i}, \frac{1}{|D| - i + 1})$
+		
+		\hspace{.5cm}$SSF(s_i/ F) = \prod_{f_i \in F} score(s_i/f_i)$
+		
+		\item Score à base de graphe 
+		
+		\hspace{.5cm}Ex. $GC1(s_i) = SSF(s_i) + \sum\limits_{(s_i, s_j) \in E} sim(s_i, s_j) * SSF(s_j)$
+		
+		\item Extraction
+		
+		\hspace{.5cm}Ex. $ suiv_{e4}  =  \arg\min\limits_i (iord\ ssfgc(s_i) + ord\ simil(dernier{e4}, i))$ 
+		
+		\hspace{3cm}$ \text{ où } (dernier_{e4}, s_i) \in E $
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche linguistique}
+	
+	\begin{itemize}
+		\item \optword{Mots de sujet} : une liste des mots pertinents au sujet, comme ``significant", ``impossible", etc.
+		\begin{itemize}
+			\item Ex. \cite{69-edmundson} : Bonus (mots positivement pertinents), Stigma (mots négativement pertinents)
+			
+			$Score_{cue}(s_i) = \sum_{w \in s_i}{cue(w)}
+			\text{ où }
+			cue(w) = \left\lbrace 
+			\begin{array}{ll}
+			b > 0 & \text{si } (w \in Bonus) \\
+			\delta < 0 & \text{si } (w \in Stigma) \\
+			0 & sinon 
+			\end{array} 
+			\right. $
+		\end{itemize}
+		\item \optword{Indicateurs} : Des structures qui impliquent que la phrase les contenant a une chose importante à propos du sujet
+		\begin{itemize}
+			\item Ex. \expword{the principal aim of this paper is to investigate ...}
+		\end{itemize}
+		\item \optword{Co-référence} : utilisation des anaphores ou des représentations sémantiques (Ex. Wordnet)
+		\item \optword{Structure rhétorique} : utilisation de la structure rhétorique pour noter les phrases ou des syntagmes
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche linguistique (Exemple : \cite{81-paice})}
+	
+	\begin{itemize}
+		\item Utilisation des patrons (templates) préparés manuellement
+		\item\ [x] : x mots peuvent être entre ce mot et le mot précédent
+		\item +y : le score est augment par y
+		\item ? : ce mot est optionnel
+	\end{itemize}
+
+	\begin{figure}[!ht]
+		\begin{center}
+			\hgraphpage[.7\textwidth]{paice-template.pdf}
+			\caption{Un exemple d'un patron simplifié \cite{81-paice}.}
+			\label{fig:paice-template}
+		\end{center}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche linguistique (Exemple : \cite{})}
+	
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par apprentissage automatique}
+	
+	\begin{itemize}
+		\item \optword{Par caractéristiques}
+		\begin{itemize}
+			\item Réglage : régler des hyper-paramètres comme les poids des caractéristiques pour le score
+			\item Classement : décider si une unité (phrase) appartient au résumé ou non
+		\end{itemize}
+		\item \optword{Bayesian topic models}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+		\item \optword{Deep learning}
+		\begin{itemize}
+			\item Réglage ou Classement
+			\item Génération des mots (une forme du classement)
+		\end{itemize}
+		\item \optword{Reinforcement learning}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
 
 %===================================================================================
 \section{Interaction}
@@ -190,7 +481,7 @@
 \end{frame}
 
 
-\insertbibliography{TALN09}{*}
+\insertbibliography{TALN10}{*}
 
 \end{document}
 
