@@ -196,21 +196,37 @@
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Résumé automatique : Approche statistique (Exemple: \cite{15-oufaida-al})}
-	
+	\vspace{-6pt}
 	\begin{itemize}
 		\item Représentation des mots : embeddings pré-entrainés (Polyglot)
 		\item Clustering pour extraire les sous-sujets du texte
 		\begin{itemize}
 			\item On peut trouver le mot $w_j \in S_2$ le plus similaire à un mot $w_i$
 			
-			$Sim\_Match(w_i | S_2) = \max sim(Rep(w_i), Rep(w_j))$
+			$Match(w_i | S_2) = \arg\max_{w_j \in S_2} sim(Rep(w_i), Rep(w_j))$
 			
 			\item Lien entre deux phrases $S_2$ et $S_2$
 			
-			$Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Sim\_Match(w_i | S_2) + \sum_{w_j \in S_2} Sim\_Match(w_j | S_1)}{|S_1| + |S_2|}$
+			$Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Match(w_i | S_2) + \sum_{w_j \in S_2} Match(w_j | S_1)}{|S_1| + |S_2|}$
 		\end{itemize}
 	
-		\item Score des terms en utilisant mRMR
+		\item Score des termes en utilisant mRMR
+		\begin{itemize}
+			\item Information mutuelle  
+			$I(X, Y) = \sum\limits_{x \in X} \sum\limits_{y \in Y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}$
+			\item Redondance des termes 
+			$Redondance(T_i) = \frac{1}{|S|} \sum\limits_{j \in S} I(T_i, T_j)$
+			
+			\item Score final d'un terme : Mutual Information (Difference/Quotient)
+			
+			$MID \equiv \max_{t \in T} Pertinence(t) - Redondance(t)$
+
+			$MIQ \equiv \max_{t \in T} Pertinence(t) / Redondance(t)$
+		\end{itemize}
+	
+		\item Score d'un phrase à base des scores des termes mRMR (score pondéré par des poids)
+	
+		\item Lors de la sélection d'une phrase, on décrémente les poids des termes sélectionnés
 	\end{itemize}
 	
 \end{frame}
@@ -341,19 +357,19 @@
 	
 \end{frame}
 
-\begin{frame}
-	\frametitle{Quelques applications : Transformation}
-	\framesubtitle{Résumé automatique : Approche linguistique (Exemple : \cite{})}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	
-\end{frame}
+%\begin{frame}
+%	\frametitle{Quelques applications : Transformation}
+%	\framesubtitle{Résumé automatique : Approche linguistique (Exemple : \cite{})}
+%	
+%	\begin{itemize}
+%		\item 
+%	\end{itemize}
+%	
+%\end{frame}
 
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
-	\framesubtitle{Résumé automatique : Approche par apprentissage automatique}
+	\framesubtitle{Résumé automatique : Approche par apprentissage automatique (AA)}
 	
 	\begin{itemize}
 		\item \optword{Par caractéristiques}
@@ -363,7 +379,7 @@
 		\end{itemize}
 		\item \optword{Bayesian topic models}
 		\begin{itemize}
-			\item 
+			\item Identifier les concepts principaux à partir des documents et les liens entre eux pour avoir une hiérarchie
 		\end{itemize}
 		\item \optword{Deep learning}
 		\begin{itemize}
@@ -372,9 +388,63 @@
 		\end{itemize}
 		\item \optword{Reinforcement learning}
 		\begin{itemize}
-			\item 
+			\item Utilisation des actions et des récompenses pour entrainer un système à générer des résumés
 		\end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par AA (Exemple : \cite{2020-aries})}
+	
+	\begin{center}
+		\vgraphpage{ml2es-archi.pdf}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par AA (Exemple : \cite{06-daumeiii-marcu})}
+	
+	\begin{minipage}{.6\textwidth}
+		\begin{itemize}
+			\item $D$ : un ensemble de $K$ documents
+			\item $Q$ : un ensemble de $J$ requêtes
+			\item $P^G$ : un modèle de langue général de l'anglais 
+			\item $P^Q$ : un modèle de langue des requêtes
+			\item $P^D$ : un modèle de langue d'arrière-plan (des documents)
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{.38\textwidth}
+		\hgraphpage{btm-daumeiii_.pdf}
+	\end{minipage}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par AA (Exemple : \cite{15-rush-al})}
+	
+	\begin{center}
+		\hgraphpage[.35\textwidth]{2015-rush-al_.pdf}
+		\hgraphpage[.35\textwidth]{2015-rush-al-exp_.pdf}
+	\end{center}
+	
+	\begin{itemize}
+		\item[(a)] Un décodeur qui cherche le prochaine mot du résumé $y_{i+1}$ sachant la phrase en entrée $x$ et des mots déjà générés pour le résumé $y_c \equiv [y_{i-c+1},\ldots, y_i]$
+		\item[(b)] Un encodeur avec attention
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche par AA (Exemple : \cite{18-narayan-al})}
+	
+	\hgraphpage{narayan-al_.pdf}
 	
 \end{frame}
 
