@@ -72,10 +72,124 @@
 
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
-	\framesubtitle{Traduction automatique}
+	\framesubtitle{Traduction automatique : Approches}
+%	\begin{itemize}
+%		\item \optword{Approche directe}
+%		\item \optword{à base des règles} (RBMT: rule-based machine translation)
+%		\begin{itemize} 
+%			\item Approche par transfert
+%			\item Approche Interlangue
+%		\end{itemize}
+%	
+%		\item \optword{à base du corpus}
+%		\begin{itemize}
+%			\item \optword{statistique} (SMT: statistical machine translation)
+%			\item \optword{neuronale} (NMT: neural machine translation)
+%		\end{itemize}
+%	
+%	\end{itemize}
+	\hgraphpage{translation-classif.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche directe}
+	\begin{itemize}
+		\item Algorithme
+		\begin{itemize}
+			\item Le texte source $S$ est traité comme une série de mots 
+			\item Chaque mot $S_i$ est remplacé par un mot $T_i$ dans le texte destinataire $T$ en utilisant un dictionnaire bilingue
+			\item Les mots sont ordonnés. Ex. \expword{SVO \textrightarrow VSO}, \expword{adj + N \textrightarrow N + Adj}
+		\end{itemize}
+		\item Préconditions 
+		\begin{itemize}
+			\item Les langues (source et destinataire) doivent être proches (structures grammaticales proches)
+			\item Un dictionnaire bilingue bien conçu
+			\item Des outils d'analyse morphologiques 
+		\end{itemize}
+		\item Niveau morphologique 
+		\item Ex. \expword{Systèmes avant 1967 : Météo, Weidner, CULT et Systran (premières versions)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche par transfert}
 	\begin{itemize}
 		\item 
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche par transfert (Exemple : Apertium)}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche interlangue}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche statistique}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche statistique (Exemple : Moses)}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche neuronale}
+	\begin{itemize}
+		\item Structure
+		\begin{itemize}
+			\item Des réseaux de neurones de type sequence-to-sequence (seq2seq)
+			\item Modèle : encodeur-décodeur (séquentiel)
+			\item Type : Many to Many 
+			\item \optword{Encodeur} : encoder une phrase du langage source $S$. Le résultat est une représentation du contexte sous forme d'un vecteur
+			\item \optword{Décodeur} : décoder le vecteur du contexte vers une phrase du langage destinataire $T$
+		\end{itemize}
+	
+		\item Modèle formel 
+		\[ p(T|S) = p(t_1|S) p(t_2|S, t_1) p(t_3|S, t_1, t_2)\ldots p(t_m|S, t_1\ldots t_{m-1}) \]
+		\[\hat{t}_j = \arg\max_{w \in V} p(w | S, t_1\ldots t_{j-1})\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche neuronale (Exemple : Google \cite{16-wu-al} )}
+	\begin{itemize}
+		\item \url{https://translate.google.com/}
+	\end{itemize}
+	\begin{center}
+		\hgraphpage[.9\textwidth]{googlet_.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche neuronale (Exemple : OpenNMT \cite{17-klein-al})}
+	\begin{itemize}
+		\item \url{https://opennmt.net/}
+	\end{itemize}
+	\hgraphpage{opennmt_.pdf}
 \end{frame}
 
 \subsection{Résumé automatique}
