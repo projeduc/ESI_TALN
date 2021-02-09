@@ -116,41 +116,231 @@
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Traduction automatique : Approche par transfert}
 	\begin{itemize}
-		\item 
+		\item Algorithme
+		\begin{itemize}
+			\item Trouver l'arbre syntaxique de $S$
+			\item Chercher la traduction des mots de la langue source dans la langue destinataire (dictionnaire bilingue)
+			\item Appliquer des règles pour transformer l'arbre syntaxique de la langue source vers une arbre syntaxique de la langue destinataire
+			\item Générer le texte traduit $T$ à partir de cette arbre syntaxique
+		\end{itemize}
+		\item Préconditions 
+		\begin{itemize}
+			\item Grammaires des deux langues (source et destinataire)
+			\item Les règles de transfert sont fixées manuellement ou apprises à partir d'un corpus
+			\item Un dictionnaire bilingue bien conçu
+			\item Des outils d'analyse morphologiques et syntaxique pour la langue source
+			\item Un outil de génération du texte à partir de l'arbre syntaxique
+		\end{itemize}
+		\item Niveau syntaxique 
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
-	\framesubtitle{Traduction automatique : Approche par transfert (Exemple : Apertium)}
+	\framesubtitle{Traduction automatique : Approche par transfert (Exemple de règles de transfert)}
+	
+	\begin{figure}
+		\centering
+		\vgraphpage[.7\textheight]{MT-tranfert-exp_.pdf}
+		\caption{Un exemple de règles de transfert syntaxique \cite{06-quah}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche par transfert (Exemple : Apertium \cite{11-forcada-al})}
+	
 	\begin{itemize}
-		\item 
+		\item \url{https://www.apertium.org/}
 	\end{itemize}
+
+	\hgraphpage{apertium-arch_.pdf}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Traduction automatique : Approche interlangue}
+	\hgraphpage{MT-Interlingua.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche interlangue (Description)}
 	\begin{itemize}
-		\item 
+		\item Algorithme
+		\begin{itemize}
+			\item Analyser le texte source $S$ pour avoir un arbre syntaxique
+			\item Utiliser un dictionnaire entre le langage source et les concepts de l'interlangue 
+			\item Transformer l'arbre syntaxique (langue source) vers l'interlingue
+			\item Transformer l'interlingue vers une arbre syntaxique (langue destinataire)
+			\item Utiliser un dictionnaire entre le langage destinataire et les concepts de l'interlangue 
+			\item Générer le texte destinataire $T$
+		\end{itemize}
+		\item Préconditions 
+		\begin{itemize}
+			\item Outils d'analyse syntaxique et même sémantique  pour les langues
+			\item Un langage de représentation universelle
+			\item Dictionnaire sur les concepts de ce langage
+		\end{itemize}
+		\item Niveau syntaxique/sémantique
 	\end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche interlangue (Exemple KANT \cite{98-czuba-al})}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\fontsize{4}{5}\selectfont\bfseries
+\begin{verbatim}
+(*A-REMAIN  ; action rep for ’remain’
+   (FORM FINITE)
+   (TENSE PAST)
+   (MOOD DECLARATIVE)
+   (PUNCTUATION PERIOD)
+   (IMPERSONAL -) ; passive + expletive subject
+   (ARGUMENT-CLASS THEME+PREDICATE) ; predicate argument structure
+   (Q-MODIFIER ; PP semrole (generic)
+      (*K-DURING ; PP interlingua
+         (POSITION FINAL) ; clue for translation
+            (OBJECT ; PP object semrole
+               (*O-TIME ; object rep for ’time’
+                  (UNIT -)
+                  (NUMBER SINGULAR)
+                  (REFERENCE DEFINITE)
+                  (DISTANCE NEAR)
+                  (PERSON THIRD)))))
+   (THEME ; object semrole
+      (*O-DEFAULT-RATE ; object rep for ’default rate’
+         (PERSON THIRD)
+         (UNIT -)
+         (NUMBER SINGULAR)
+         (REFERENCE DEFINITE)))
+   (PREDICATE ; adjective phrase semrole
+      (*P-CLOSE ; property rep for ’closer’
+         (DEGREE POSITIVE)
+         (Q-MODIFIER
+            (*K-TO
+               (OBJECT
+                  (*O-ZERO
+                     (UNIT -)
+                     (NUMBER SINGULAR)
+                     (REFERENCE NO-REFERENCE)
+                     (PERSON THIRD))))))))
+\end{verbatim}
+\end{column}
+\begin{column}{0.5\textwidth}
+	\begin{figure}
+		\caption{Représentation de la phrase "\textit{The default rate remained close to zero during this time.}" avec KANT interlingua \cite{98-czuba-al}}
+	\end{figure}
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche interlangue (Exemple système KANTOO \cite{00-nyberg-al})}
+	
+	\hgraphpage{kantoo-arch.pdf}
+	
+\end{frame}
 
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Traduction automatique : Approche statistique}
+	\[
+	p(T|S) = \frac{p(T) p(S|T)}{p(S)} \propto \underbrace{p(T)}_\text{Cohérence} \underbrace{p(S|T)}_\text{Fidélité}
+	\]
+	\[\hat{T} = \arg\max_{T} p(T) p(S|T)\]
+	\[\]
 	\begin{itemize}
-		\item 
+		\item $p(T)$ est une modèle de langue entrainé sur la langue destinataire
+		\begin{itemize}
+			\item Il faut un corpus pour la langue destinataire
+			\item $p(T) = \prod_{j=1}^m p(t_j|t_{j-N}\ldots t_{j-1})$
+		\end{itemize}
+		
+		\item $p(S|T)$ est le modèle de traduction 
+		\begin{itemize}
+			\item Il faut un corpus pour la langue destinataire
+			\item Le problème de correspondance entre mots (alignement)
+			\item Le problème de la différence entre tailles
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
-	\framesubtitle{Traduction automatique : Approche statistique (Exemple : Moses)}
+	\framesubtitle{Traduction automatique : Approche statistique (Alignement)}
+	\[p(S|T) = \sum_{A} p(S, A | T)\]
+	\[A^* = \arg\max_A p(S, A | T)\]
+	\[p(S, A | T) = \prod_{i=1}^{n} p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m})\]
+	\[p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+	\[ \text{Nombre des alignements possibles } = (m + 1)^n\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche statistique (Alignement IBM1)}
 	\begin{itemize}
-		\item 
+		\item Modèle IBM 1 (Distribution uniforme des mots)
 	\end{itemize}
+
+	\[p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = \frac{1}{m+1}\]
+	\[p(S|T) = \frac{1}{(m+1)^n} \sum_{A} \prod_{i=1}^{n} p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche statistique (Alignement IBM2)}
+	\begin{itemize}
+		\item Modèle IBM 2
+		\item La probabilité des alignements se base seulement sur la position actuelle $i$, le mot actuel $A_i$, la taille du texte source $n$ et la taille du texte destinataire $m$
+		\item Cette probabilité est entrainée en comparant l'alignement juste avec le reste des alignements
+	\end{itemize}
+	
+	\[p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | i, n, m)\]
+	\[p(S|T) = \sum_{A} \prod_{i=1}^{n} p(A_i | i, n, m) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche statistique (Alignement HMM)}
+	\begin{itemize}
+		\item Modèle HMM
+		\item La probabilité de alignement d'un mot $A_i$ se base sur l'alignement du mot précédent $A_{i-1}$
+	\end{itemize}
+	
+	\[p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | A_{i-1}, m)\]
+	\[p(S|T) = \sum_{A} \prod_{i=1}^{n} p(A_i | A_{i-1}, m) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche par exemples}
+	\begin{itemize}
+		\item Comme l'approche statistique
+		\item A la place des mots, on peut trouver des segments
+		\item On calcule la probabilité d'un segment (ensemble de mots consécutifs) par rapport à un autre
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Traduction automatique : Approche par exemples (Exemple : Moses \cite{07-koehn-al})}
+	\begin{itemize}
+		\item \url{http://statmt.org/moses/}
+		\item Table de traduction des segments $\phi(S|T)$ : segment $S$, segment $T$ équivalent et une probabilité
+		\item Modèle de langage sur la langue destinataire $LM$
+		\item Modèle de distorsion $ D(T, S) $ : chaque réorganisation des segment d'une phrase veut un coût 
+		\item Pénalité de mots $W(T)$ : pour qu'une traduction ne soit pas longue ou courte
+		\item Pour estimer $\hat{T}$ \keyword{Beam search} est utilisé
+	\end{itemize}
+
+	\[p(T|S) = \phi(S|T)^{poids_{\phi}} \times LM^{poids_{LM}} \times D(T, S)^{poids_{D}} \times W(T)^{poids_{W}}\]
 \end{frame}
 
 \begin{frame}
