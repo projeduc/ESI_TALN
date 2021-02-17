@@ -362,3 +362,69 @@
 	year = {2021},
 	url = {http://www.statmt.org/moses/manual/manual.pdf},
 }
+
+
+@book{2019-jurafsky-martin,
+	author = {Jurafsky, Dan and Martin, James H.},
+	title = {Speech and Language Processing},
+	year = {2019},
+	note = {\url{https://web.stanford.edu/~jurafsky/slp3/}},
+}
+
+@book{2020-jurafsky-martin,
+	author = {Jurafsky, Dan and Martin, James H.},
+	title = {Speech and Language Processing},
+	year = {2020},
+	note = {\url{https://web.stanford.edu/~jurafsky/slp3/}},
+}
+
+@inproceedings{2017-chen-al,
+	title = "Reading {W}ikipedia to Answer Open-Domain Questions",
+	author = "Chen, Danqi  and
+	Fisch, Adam  and
+	Weston, Jason  and
+	Bordes, Antoine",
+	booktitle = "Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+	month = jul,
+	year = "2017",
+	address = "Vancouver, Canada",
+	publisher = "Association for Computational Linguistics",
+	url = "https://www.aclweb.org/anthology/P17-1171",
+	doi = "10.18653/v1/P17-1171",
+	pages = "1870--1879",
+	abstract = "This paper proposes to tackle open-domain question answering using Wikipedia as the unique knowledge source: the answer to any factoid question is a text span in a Wikipedia article. This task of machine reading at scale combines the challenges of document retrieval (finding the relevant articles) with that of machine comprehension of text (identifying the answer spans from those articles). Our approach combines a search component based on bigram hashing and TF-IDF matching with a multi-layer recurrent neural network model trained to detect answers in Wikipedia paragraphs. Our experiments on multiple existing QA datasets indicate that (1) both modules are highly competitive with respect to existing counterparts and (2) multitask learning using distant supervision on their combination is an effective complete system on this challenging task.",
+}
+
+@article{2018-devlin-al,
+	author    = {Jacob Devlin and
+	Ming{-}Wei Chang and
+	Kenton Lee and
+	Kristina Toutanova},
+	title     = {{BERT:} Pre-training of Deep Bidirectional Transformers for Language
+	Understanding},
+	journal   = {CoRR},
+	volume    = {abs/1810.04805},
+	year      = {2018},
+	url       = {http://arxiv.org/abs/1810.04805},
+	archivePrefix = {arXiv},
+	eprint    = {1810.04805},
+	timestamp = {Tue, 30 Oct 2018 20:39:56 +0100},
+	biburl    = {https://dblp.org/rec/journals/corr/abs-1810-04805.bib},
+	bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{2020-roberts-al,
+	title = "How Much Knowledge Can You Pack Into the Parameters of a Language Model?",
+	author = "Roberts, Adam  and
+	Raffel, Colin  and
+	Shazeer, Noam",
+	booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+	month = nov,
+	year = "2020",
+	address = "Online",
+	publisher = "Association for Computational Linguistics",
+	url = "https://www.aclweb.org/anthology/2020.emnlp-main.437",
+	doi = "10.18653/v1/2020.emnlp-main.437",
+	pages = "5418--5426",
+	abstract = "It has recently been observed that neural language models trained on unstructured text can implicitly store and retrieve knowledge using natural language queries. In this short paper, we measure the practical utility of this approach by fine-tuning pre-trained models to answer questions without access to any external context or knowledge. We show that this approach scales with model size and performs competitively with open-domain systems that explicitly retrieve answers from an external knowledge source when answering questions. To facilitate reproducibility and future work, we release our code and trained models.",
+}

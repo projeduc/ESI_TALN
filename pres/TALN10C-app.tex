@@ -18,21 +18,19 @@
 \frametitle{Traitement automatique du langage naturel}
 \framesubtitle{Quelques applications : Introduction}
 
-%\begin{exampleblock}{Exemple d'un texte en français}
-%	\begin{center}
-%		\Large\bfseries
-%		L'hiver est un des quatre saisons de l'année. 
-%		Le rapport était bien exposé. 
-%		La pluie est une des caractéristiques de cette saison.
-%		Le sujet était la saison de l'hiver.
-%	\end{center}
-%\end{exampleblock}
-%
-%\begin{itemize}
-%	\item Est-ce que vous pouvez comprendre de quoi s'agit-il ?
-%	\item S'il y a un problème, lequel ?
-%	\item Est-ce qu'on peut améliorer ce texte ?
-%\end{itemize}
+	\begin{itemize}
+		\item On veut présenter quelques applications utilisées dans notre vie
+		\item Selon l'entrée/sortie : on peut traiter des paroles ou du texte
+		\item Selon l'interactivité : le système interagit avec l'utilisateur ou non
+		\item Selon la sortie : un ensemble de classes ou un autre texte généré
+		\item Notre structure 
+		\begin{itemize}
+			\item Transformation
+			\item Interaction
+			\item Classification
+			\item Voix
+		\end{itemize}
+	\end{itemize}
 
 \end{frame}
 
@@ -64,7 +62,13 @@
 	\frametitle{Quelques applications}
 	\framesubtitle{Transformation}
 	\begin{itemize}
-		\item 
+		\item Entrée : un texte 
+		\item Sortie : un texte généré à partir de l'entrée
+		\item Applications 
+		\begin{itemize}
+			\item Traduction automatique
+			\item Résumé automatique
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -760,7 +764,13 @@
 	\frametitle{Quelques applications}
 	\framesubtitle{Interaction}
 	\begin{itemize}
-		\item 
+		\item Entrée : une question (texte)
+		\item Sortie : une réponse (texte)
+		\item Applications 
+		\begin{itemize}
+			\item Questions/Réponses
+			\item Systèmes de dialogue
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -769,9 +779,163 @@
 \begin{frame}
 	\frametitle{Quelques applications : Interaction}
 	\framesubtitle{Questions-Réponses}
+%	\begin{itemize}
+%		\item 
+%	\end{itemize}
+	\hgraphpage{qa-classif.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par RI}
+	
+	\begin{figure}
+		\hgraphpage{qa-ri_.pdf}
+		\caption{Architecture d'un système de questions/réponses \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par RI (traitement de la question)}
+	
 	\begin{itemize}
-		\item 
+		\item Formulation de la requête
+		\begin{itemize}
+			\item Séparation des mots
+			\item Suppression des mots vides
+			\item Radicalisation  
+		\end{itemize}
+	    \item Formulation de la requête
+	    \begin{itemize}
+	    	\item Détection du type de réponse
+	    	\item Personne ? Place ? Organisation ? ...
+	    	\item En utilisant des taxonomies comme celle de Wordnet  
+	    \end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par RI (recherche)}
+	
+	\begin{itemize}
+		\item Recherche des documents
+		\begin{itemize}
+			\item En utilisant les mots clés et l'index des documents
+			\item Retourner les documents avec plus de score
+			\item Diviser ces documents en passages (paragraphes ou phrases)
+		\end{itemize}
+		\item Recherche des passages
+		\begin{itemize}
+			\item Appliquer la détection des entités nommées sur les passages
+			\item Filtrer les passages qui ne contiennent pas le type de la réponse
+			\item On peut appliquer un algorithme d'apprentissage automatique
+			\item Cette algorithme peut être utilisé pour noter les passages
+			\item Caractéristiques : nombre des entités nommées du type recherché, nombre des termes de la question, la séquence la plus longue similaire à la question, le rang du document, etc.
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par RI (extraction de réponse)}
+	
+	\begin{itemize}
+		\item \optword{Apprentissage par caractéristiques}
+		\begin{itemize}
+			\item Patrons : \expword{\textless REP\textgreater comme \textless QES\textgreater; }
+			\item Type de réponse et celui du syntagme
+			\item Les mots clés de la question
+			\item Nouveauté : au moins un mot n'existe pas dans la question
+			\item Ponctuation
+			\item ...
+		\end{itemize}
+		\item \optword{Réseaux de neurones}
+		\begin{itemize}
+			\item Tâche de lecture/compréhension
+			\item Pour chaque mot, calculer la probabilité d'être le début de la réponse et la fin de la réponse en utilisant la question. 
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par RI (extraction par Bi-LSTM \cite{2017-chen-al})}
+	
+	\begin{figure}
+		\hgraphpage{qa-bilstm-exp_.pdf}
+		\caption{Extraction de réponse dans le système DrQA \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par RI (extraction par BERT \cite{2018-devlin-al})}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.5\textwidth]{qa-bert-exp_.pdf}
+		\caption{Extraction de réponse dans le système DrQA \cite{2019-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par connaissance}
+	
+	\begin{itemize}
+		\item \optword{Par graphe}
+		\begin{itemize}
+			\item Annotation sémantique (Entity linking)
+			\item Déterminer la relation recherchée ; Ex. \expword{Place\_naissance}
+			\item S'il y a plusieurs relations comme réponse : calculer la similarité entre la question et la réponse
+			\item Exemple, \expword{en utilisant les embeddings}
+		\end{itemize}
+		\item \optword{Par analyse sémantique}
+		\begin{itemize}
+			\item Analyse sémantique de la question
+			\item Génération d'une forme structurée de la question : lambda calcul, SQL, SPARQL, etc.
+			\item Cette forme est utilisée comme requête
+			\item Récupérer la réponse à partir de la base de connaissance
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par connaissance (Exemple)}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.9\textwidth]{qa-logfrm-exp_.pdf}
+		\caption{An exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Questions-Réponses : Approche par modèles de langues}
+	
+	\begin{itemize}
+		\item Utiliser un modèle de langue pré-entrainé
+		\item Régler le modèle pour répondre les questions
+	\end{itemize}
+
+	\begin{figure}
+		\centering
+		\hgraphpage[.6\textwidth]{qa-t5_.pdf}
+		\caption{T5 est pré-entraîné pour remplir le texte absent, ensuite réglé pour répondre aux questions sans saisir d'informations ou de contexte supplémentaires. \cite{2020-roberts-al}}
+	\end{figure}
+	
 \end{frame}
 
 \subsection{Systèmes de dialogue et chatbots}
