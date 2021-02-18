@@ -1077,7 +1077,7 @@
 		
 		\item Les patrons sont liés à une liste des mots. Le mot qui score le plus dans la phrase va déclencher plusieurs patrons
 		
-		\item Parmi les, le patron le plus similaire à la phrase est utilisé
+		\item Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilisé
 	\end{itemize}
 	
 \end{frame}
@@ -1086,13 +1086,36 @@
 	\frametitle{Quelques applications : Interaction}
 	\framesubtitle{Systèmes de dialogue : chatbot - à base de la RI}
 	
-	
+	\begin{itemize}
+		\item Un corpus des conversations $C$
+		\item On prend le texte de l'utilisation comme une requête (question) $q$
+		\item On cherche la réponse $r \in C$ qui est plus similaire à la requête $q$
+		\[\text{Réponse}(q, C) = \arg\max_{r \in C} \frac{q . r}{|q| |r|}\]
+		\item Pour calculer la similarité, on peut utiliser TF-IDF
+		\item On peut aussi encoder la requête $q$ et la réponse $r$ en utilisant les embeddings
+		\[h_q = BERT_Q(q)[CLS],\; h_r = BERT_R(r)[CLS]\]
+		\[\text{Réponse}(q, C) = \arg\max_{r \in C} q . r\]
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Quelques applications : Interaction}
-	\framesubtitle{Systèmes de dialogue : chatbot - à base des encodeurs/décodeurs}
+	\framesubtitle{Systèmes de dialogue : chatbot - par génération du texte}
 	
+	\begin{itemize}
+		\item Utiliser un encodeur/décodeur comme dans la traduction automatique
+		\[ \hat{r}_i = \arg\max_{w \in V} p(w| q, r_1, \ldots, r_{t-1}) \]
+		
+		\item Dans l'encodeur, introduire un contexte plus long
+		
+		\item On peut utiliser un modèle de langue, comme GPT, afin de l'entraîner sur des conversations
+	\end{itemize}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp_.pdf}
+		\caption{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
+	\end{figure}
 	
 \end{frame}
 

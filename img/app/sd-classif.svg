@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -41,9 +41,9 @@
      inkscape:window-height="708"
      id="namedview254"
      showgrid="false"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="140.94717"
-     inkscape:cy="206.92409"
+     inkscape:zoom="1"
+     inkscape:cx="306.10994"
+     inkscape:cy="116.41584"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -391,75 +391,63 @@
      id="rect78-7-9-3-8-9-0-0-3-5-8-2"
      height="8.869133"
      width="65.797829"
-     y="75.949097"
+     y="76.994202"
      x="-175.96268"
      style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
      ry="3.307703" />
   <text
      id="text82-5-7-1-4-3-2"
-     y="81.999252"
+     y="83.044357"
      x="-152.61447"
-     style="font-style:normal;font-weight:bold;font-size:6.96736115px;font-family:'Crimson Text';text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1;-inkscape-font-specification:'Crimson Text, Bold';font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
      font-size="6.77333">
     <tspan
        id="tspan80-3-8-8-8-3-7"
-       y="81.999252"
+       y="83.044357"
        x="-152.61447"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736115px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1;">à base de la RI</tspan>
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">à base de la RI</tspan>
   </text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      x="-175.70847"
-     y="90.263359"
+     y="91.308464"
      id="text1216-0-6-0"><tspan
        sodipodi:role="line"
        id="tspan1214-6-8-3"
        x="-175.70847"
-       y="90.263359"
+       y="91.308464"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Répondre à partir des documents</tspan></text>
   <rect
-     id="rect78-7-9-3-8-9-0-0-3-5-8-2-4"
-     height="12.335892"
-     width="64.852356"
-     y="96.617439"
-     x="-174.79337"
+     id="rect78-7-9-3-8-9-0-0-3-5-8-2-6"
+     height="8.869133"
+     width="65.797829"
+     y="98.404594"
+     x="-175.96268"
      style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
      ry="3.307703" />
   <text
      id="text82-5-7-1-4-3-2-6"
-     y="101.77097"
-     x="-158.29338"
-     style="font-style:normal;font-weight:bold;font-size:6.96736115px;font-family:'Crimson Text';text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1;-inkscape-font-specification:'Crimson Text, Bold';font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+     y="103.86118"
+     x="-149.40999"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
      font-size="6.77333">
     <tspan
        id="tspan80-3-8-8-8-3-7-3"
-       y="101.77097"
-       x="-158.29338"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736115px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1;">à base des</tspan>
-  </text>
-  <text
-     y="107.54346"
-     x="-142.22025"
-     style="font-style:normal;font-weight:bold;font-size:6.96736115px;font-family:'Crimson Text';text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1;-inkscape-font-specification:'Crimson Text, Bold';font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
-     font-size="6.77333"
-     id="text1045">
-    <tspan
-       y="107.54346"
-       x="-142.22025"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736115px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1;"
-       id="tspan1047">encodeurs/décodeurs</tspan>
+       y="103.86118"
+       x="-149.40999"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">par génération</tspan>
   </text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      x="-175.16946"
-     y="114.39845"
+     y="112.30824"
      id="text1216-0-6-0-6"><tspan
        sodipodi:role="line"
        id="tspan1214-6-8-3-3"
        x="-175.16946"
-       y="114.39845"
+       y="112.30824"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Apprendre la génération des réponses</tspan></text>
   <rect
      id="rect78-7-9-3-8-9-0-0-3-7-9-4"
