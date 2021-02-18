@@ -938,14 +938,162 @@
 	
 \end{frame}
 
-\subsection{Systèmes de dialogue et chatbots}
+\subsection{Systèmes de dialogue}
 
 \begin{frame}
 	\frametitle{Quelques applications : Interaction}
-	\framesubtitle{Systèmes de dialogue et chatbots}
+	\framesubtitle{Systèmes de dialogue}
+%	\begin{itemize}
+%		\item Systèmes de dialogue ou agents conversationnels
+%		\item \textbf{Moyenne} : texte ou parole
+%		\item \optword{Systèmes de dialogue orientés tâche}
+%		\begin{itemize}
+%			\item \textbf{BUT} : aider l'utilisateur à compléter une tâche
+%			\item Ex. \expword{Siri, Alexa, Google Now/Home, Cortana, etc.}
+%		\end{itemize}
+%		\item \optword{Chatbots}
+%		\begin{itemize}
+%			\item \textbf{BUT} : imiter les conversations entre humains
+%			\item \textbf{Méthodes} : à base de règles, à base de RI, à base des encodeurs-décodeurs
+%		\end{itemize}
+%	\end{itemize}
+	\hgraphpage{sd-classif.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : orienté tâche - Frame-based (Frame)}
+	
 	\begin{itemize}
-		\item 
+		\item Frame (Cadre) : une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot
+		\item On ne pose que les questions dont le slot est vide
+		\item Il y a la possibilité de remplir d'autres slots dans d'autre cadres. 
+		Ex. \expword{Le slot RESERVATION\_DATE dans le cadre HOTEL\_RESERVATION à partir du slot ARRIVAL\_DATE du cadre FLIGHT\_RESERVATION}
+		\item Appliquer \keyword{Détection d'intention} pour savoir quel cadre à utiliser
 	\end{itemize}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.6\textwidth]{sd-frame-exp_.pdf}
+		\caption{Exemple d'un cadre pour programmer un vol. \cite{2020-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : orienté tâche - Frame-based (Réponses multiples)}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.6\textwidth]{sd-frame-semgram-exp_.pdf}
+		
+		\hgraphpage[.8\textwidth]{sd-frame-parse-exp_.pdf}
+		\caption{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase. \cite{2020-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : orienté tâche - Dialogue-State}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.7\textwidth]{sd-dialog-arch_.pdf}
+		\caption{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : orienté tâche - Dialogue-State (Actes du dialogue)}
+	
+	\vspace{-6pt}
+	\begin{figure}
+		\centering
+		\hgraphpage[.5\textwidth]{sd-dialog-act-exp1_.pdf}
+		
+		\hgraphpage[.5\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
+		\caption{Des actes de dialogue ainsi qu'un exemple d'un dialogue d'un système de recommandation des restaurants appelé HIS \cite{2010-young-al}. Il est indiqué ce qui est permété d'être une entrée du système et une sortie de l'utilisateur \cite{2020-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : orienté tâche - Dialogue-State (Remplissage des slots)}
+	
+	\begin{itemize}
+		\item Classifier la phrase par intention, domaine et slot
+		\item Extraire les informations pour remplir les slots. Ex. \expword{En utilisant l'apprentissage automatique pour l'étiquetage des séquences}
+	\end{itemize}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.5\textwidth]{sd-dialog-remp-exp_.pdf}
+		\caption{Exemple d'une architecture pour le remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : orienté tâche - Dialogue-State (Autres composants)}
+	
+	\begin{itemize}
+		\item Traqueur de l'état du dialogue
+		\begin{itemize}
+			\item Sauvegarder l'état des cadres (slots) et le dernier acte du dialogue
+		\end{itemize}
+		\item Politique du dialogue
+		\begin{itemize}
+			\item Déterminer l'action $A_i$ à prendre 
+			
+			$\hat{A}_i = \arg\max_{A_i \in A} P(A_i | Frame_{i-1}, A_{i-1}, U_{i-1})$
+		\end{itemize}
+	
+		\item Générateur du texte 
+		\begin{itemize}
+			\item Générer du texte à partir d'un acte de dialogue
+			\item On peut entraîner un encodeur/décodeur pour le faire
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : chatbot - à base des règles (Exemple : ELIZA \cite{1966-Weizenbaum})}
+	
+	\begin{itemize}
+		\item Le plus célèbre chatbot est \keyword{ELIZA} : psychologue
+		\item Une liste des patrons/transformations 
+		
+		\expword{\small [(.*) YOU (.*) ME]\textsubscript{[Patron]} \textrightarrow\ [WHAT MAKES YOU THINK I \$2 YOU?]\textsubscript{[Transformation]}}
+		
+		\expword{You hate me \textrightarrow\ WHAT MAKES YOU THINK I HATE YOU?}
+		
+		\item Les patrons sont liés à une liste des mots. Le mot qui score le plus dans la phrase va déclencher plusieurs patrons
+		
+		\item Parmi les, le patron le plus similaire à la phrase est utilisé
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : chatbot - à base de la RI}
+	
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Interaction}
+	\framesubtitle{Systèmes de dialogue : chatbot - à base des encodeurs/décodeurs}
+	
+	
 \end{frame}
 
 
