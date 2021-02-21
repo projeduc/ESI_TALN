@@ -807,9 +807,8 @@
 			\item Suppression des mots vides
 			\item Radicalisation  
 		\end{itemize}
-	    \item Formulation de la requête
+	    \item Détection du type de réponse
 	    \begin{itemize}
-	    	\item Détection du type de réponse
 	    	\item Personne ? Place ? Organisation ? ...
 	    	\item En utilisant des taxonomies comme celle de Wordnet  
 	    \end{itemize}
@@ -1127,13 +1126,20 @@
 \begin{frame}
 	\frametitle{Quelques applications}
 	\framesubtitle{Classification}
+	
 	\begin{itemize}
-		\item Filtrage de spams
-		\item Identification des langues
-		\item Lisibilité 
-		\item Analyse des sentiments
-		\item Détection de l'humeur
+		\item Entrée : un texte
+		\item Sortie : une catégorie
+		\item Applications 
+		\begin{itemize}
+			\item Filtrage de spams
+			\item Identification des langues
+			\item Lisibilité 
+			\item Analyse des sentiments
+			\item Détection de l'humeur
+		\end{itemize}
 	\end{itemize}
+
 \end{frame}
 
 \subsection{Analyse des sentiments}
@@ -1141,9 +1147,116 @@
 \begin{frame}
 	\frametitle{Quelques applications : Classification}
 	\framesubtitle{Analyse des sentiments}
+	\hgraphpage{sentiment-classif.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Analyse des sentiments : à base de connaissance}
+	
 	\begin{itemize}
-		\item 
+		\item Identifier les mots indicateurs des sentiments
+		\begin{itemize}
+			\item En général, les adjectifs et les adverbes sont des bons indicateurs
+			\item \optword{à base de dictionnaire} : en utilisant un dictionnaire comme Wordnet pour enrichir la liste des indicateurs (synonymes, antonymes, etc.) 
+			\item \optword{à base d'un corpus} : en utilisant la co-occurrence avec les mots  de la liste originale pour l'enrichir 
+		\end{itemize}
+		\item Assigner des scores à ces mots (ou des étiquettes)
+		\item Calculer le score total à  base des mots
+		\begin{itemize}
+			\item \textbf{granularité} : par phrases ou par documents 
+			\item il faut faire attention à  la négation
+			\item on peut utiliser la structure; par exemple \keyword{RST}
+			\item Ex. \expword{Donner un score de -1 aux mots de polarité négative et +1 aux mots de polarité positive et faire la somme des polarités des mots d'une phrase}
+		\end{itemize}
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Analyse des sentiments : par apprentissage automatique}
+	
+	\begin{itemize}
+		\item \optword{En utilisant des caractéristiques }
+		\begin{itemize}
+			\item Présence d'un mot et sa fréquence 
+			\item Catégorie grammaticale
+			\item Les mots et les syntagmes d'opinion
+			\item Négation
+		\end{itemize}
+		\item \optword{En utilisant des embeddings}
+		\begin{itemize}
+			\item Utiliser les embeddings des mots pour apprendre la classe de sortie
+			\item En utilisant BERT (l'apprentissage par transfert)
+			\begin{itemize}
+				\item Utiliser la sortie \keyword{[CLS]} pour estimer les classes
+				\item Utiliser \keyword{[CLS]} avec un réseaux feedForward pour estimer les classes
+				\item Utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Analyse des sentiments : hybride (exemple \cite{18-bettiche-al}) }
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.7\textwidth]{sent-bettiche-al_.pdf}
+		\caption{Architecture hybride proposée par \cite{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Analyse des sentiments : hybride (exemple \cite{18-bettiche-al} - suite) }
+	
+	\begin{itemize}
+		\item Enrichissement du vocabulaire
+		\begin{itemize}
+			\item Détection des mots similaires (désignation d'un représentant)
+			
+			$Ratio = 1 - Levenstein(w_1, w_2)/(|w_1|+|w_2|)$
+			
+			Ex. \expword{Ratio(kolach, kollach) = 92\%, Ratio(kolach, khlasse) = 38\%.}
+			
+			\item Calculer l'orientation sémantique d'un mot $w$
+			
+			
+			$SO(w) = \sum_{w_p \in V_p} PMI(w, w_p) - \sum_{w_n \in V_n} PMI(w, w_n)$
+			
+			$PMI (w_1, w_2) = \log \frac{p(w_1, w_2)}{p(w_1)*p(w_2)}$
+		\end{itemize}
+		\item Représentation de la polarité
+		\begin{itemize}
+			\item $polarite(w) = +1 \text{ SI } SO(w) > 0; -1 \text{ SI } SO(w) < 0$
+			\item $polarite(w) = SO(w)$
+		\end{itemize}
+		\item Version avec règles : $polarite(msg) = Signe \sum_{w \in msg} polarite(w)$
+		\item Version avec apprentissage automatique
+		\begin{itemize}
+			\item les polarités des mots comme caractéristiques
+			\item ou la corrélation $PMI$ pour sélection des mots d'entrée
+			\item plusieurs algorithmes sont utilisés : NB, arbres de décision, SVM, etc.
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Analyse des sentiments : hybride (exemple \cite{18-guellil-al}) }
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.45\textwidth]{sent-guellil-al_.pdf}
+		\caption{Architecture hybride proposée par \cite{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
+	\end{figure}
+	
 \end{frame}
 
 \subsection{Lisibilité}

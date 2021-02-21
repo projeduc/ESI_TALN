@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="12cm"
+   height="6.4000001cm"
+   viewBox="-301 0 237 113.37143"
+   version="1.1"
+   id="svg252"
+   sodipodi:docname="sentiment-classif.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata258">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs256" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     id="namedview254"
+     showgrid="false"
+     inkscape:zoom="1"
+     inkscape:cx="118.17224"
+     inkscape:cy="12.560919"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg252" />
+  <rect
+     id="rect78-7-9-8"
+     height="91.558838"
+     width="111.86099"
+     y="27.067791"
+     x="-298.80948"
+     style="fill:#3333b2;fill-opacity:0.6513761;stroke:#000000;stroke-width:0.24650471;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="5.1682329" />
+  <text
+     font-size="12.4178"
+     style="font-style:normal;font-weight:normal;font-size:12.41779995px;font-family:'Times New Roman';text-anchor:start;fill:#000000"
+     x="121.584"
+     y="0.15550365"
+     id="text44">
+    <tspan
+       x="121.584"
+       y="0.15550365"
+       id="tspan42" />
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-283.508"
+     y="44.654804"
+     id="text222">
+    <tspan
+       x="-283.508"
+       y="44.654804"
+       id="tspan220">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-282.078"
+     y="74.320602"
+     id="text226">
+    <tspan
+       x="-282.078"
+       y="74.320602"
+       id="tspan224">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-203.908"
+     y="44.215805"
+     id="text230">
+    <tspan
+       x="-203.908"
+       y="44.215805"
+       id="tspan228">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-203.342"
+     y="73.861"
+     id="text234">
+    <tspan
+       x="-203.342"
+       y="73.861"
+       id="tspan232">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-203.66"
+     y="104.12502"
+     id="text238">
+    <tspan
+       x="-203.66"
+       y="104.12502"
+       id="tspan236">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-124.211"
+     y="43.879807"
+     id="text242">
+    <tspan
+       x="-124.211"
+       y="43.879807"
+       id="tspan240">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-123.115"
+     y="73.878601"
+     id="text246">
+    <tspan
+       x="-123.115"
+       y="73.878601"
+       id="tspan244">Vs</tspan>
+  </text>
+  <text
+     font-size="7.90222"
+     style="font-style:normal;font-weight:700;font-size:7.90221977px;font-family:'Nimbus Roman No9 L';text-anchor:start;fill:#000000"
+     x="-122.726"
+     y="103.568"
+     id="text250">
+    <tspan
+       x="-122.726"
+       y="103.568"
+       id="tspan248">Vs</tspan>
+  </text>
+  <rect
+     id="rect76-6"
+     height="11.6683"
+     width="43.429199"
+     y="-4.2323031"
+     x="-299.98373"
+     style="fill:#ffffff" />
+  <rect
+     id="rect78-7"
+     height="13.897432"
+     width="233.44846"
+     y="-4.2330165"
+     x="-298.93497"
+     style="fill:#3333b2;fill-opacity:1;stroke:#000000;stroke-width:0.52255207;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.4545522" />
+  <text
+     id="text82-5"
+     y="5.7901397"
+     x="-181.74654"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.14777756px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3"
+       y="5.7901397"
+       x="-181.74654"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.14777756px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1">Analyse des sentiments</tspan>
+  </text>
+  <rect
+     id="rect78-7-9"
+     height="10.692088"
+     width="113.00374"
+     y="12.669015"
+     x="-299.0657"
+     style="fill:#3333b2;fill-opacity:1;stroke:#000000;stroke-width:0.26113862;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="2.7361252" />
+  <text
+     id="text82-5-7"
+     y="20.966084"
+     x="-248.2402"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.36083317px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8"
+       y="20.966084"
+       x="-248.2402"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.36083317px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1">Tâche</tspan>
+  </text>
+  <rect
+     id="rect78-7-9-8-8"
+     height="91.558838"
+     width="112.8065"
+     y="27.101896"
+     x="-178.98166"
+     style="fill:#3333b2;fill-opacity:0.6513761;stroke:#000000;stroke-width:0.24650471;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="5.1682324" />
+  <rect
+     id="rect78-7-9-88"
+     height="10.692088"
+     width="113.63409"
+     y="12.703118"
+     x="-179.86821"
+     style="fill:#3333b2;fill-opacity:1;stroke:#000000;stroke-width:0.26113862;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="2.7361252" />
+  <text
+     id="text82-5-7-6"
+     y="19.955084"
+     x="-126.20627"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.36083317px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8"
+       y="19.955084"
+       x="-126.20627"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.36083317px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1">Approche</tspan>
+  </text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8"
+     height="8.8691292"
+     width="71.492012"
+     y="30.825176"
+     x="-176.19397"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3"
+     y="36.875332"
+     x="-140.3045"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3"
+       y="36.875332"
+       x="-140.3045"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">à base de connaissance</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-175.93976"
+     y="45.139435"
+     id="text1216-0-6"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8"
+       x="-175.93976"
+       y="45.139435"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">En utilisant des indicateurs </tspan></text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8-4"
+     height="8.8691292"
+     width="65.482666"
+     y="30.82518"
+     x="-296.33725"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3-3"
+     y="37.432465"
+     x="-274.47986"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3-8"
+       y="37.432465"
+       x="-274.47986"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">Subjectivité</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-296.08304"
+     y="46.18454"
+     id="text1216-0-6-6"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-0"
+       x="-296.08304"
+       y="46.18454"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Subjectif, Objectif </tspan></text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8-4-9"
+     height="8.8691292"
+     width="65.482666"
+     y="52.912132"
+     x="-296.18454"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3-3-4"
+     y="59.519417"
+     x="-280.59778"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3-8-2"
+       y="59.519417"
+       x="-280.59778"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">Polarité</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-295.93033"
+     y="68.271492"
+     id="text1216-0-6-6-2"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-0-6"
+       x="-295.93033"
+       y="68.271492"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Négatif, Neutre, Positif </tspan></text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8-4-9-2"
+     height="8.8691292"
+     width="65.482666"
+     y="76.412727"
+     x="-296.18454"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3-3-4-8"
+     y="83.020012"
+     x="-280.59778"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3-8-2-8"
+       y="83.020012"
+       x="-280.59778"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">Emotion</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-295.93033"
+     y="91.772087"
+     id="text1216-0-6-6-2-9"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-0-6-2"
+       x="-295.93033"
+       y="91.772087"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Plaisir, Colère, Tristesse, Peur, etc. </tspan></text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8-6"
+     height="8.8691292"
+     width="71.492004"
+     y="67.261124"
+     x="-176.06122"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3-8"
+     y="73.311279"
+     x="-147.48749"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3-3"
+       y="73.311279"
+       x="-147.48749"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">par apprentissage</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-175.80701"
+     y="81.575378"
+     id="text1216-0-6-8"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-3"
+       x="-175.80701"
+       y="81.575378"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">En utilisant des caractéritiques</tspan></text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8-3"
+     height="8.8691292"
+     width="71.492004"
+     y="98.091698"
+     x="-176.32253"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3-38"
+     y="104.14185"
+     x="-161.33516"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3-0"
+       y="104.14185"
+       x="-161.33516"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">hybride</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-176.06831"
+     y="112.40595"
+     id="text1216-0-6-4"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-7"
+       x="-176.06831"
+       y="112.40595"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">En utilisant les deux approches</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-158.5816"
+     y="93.397156"
+     id="text1216-0-6-8-8"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-3-9"
+       x="-158.5816"
+       y="93.397156"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">En utilisant des embeddings</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-148.78986"
+     y="87.796692"
+     id="text1216-0-6-8-0"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-3-6"
+       x="-148.78986"
+       y="87.796692"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">ET/OU</tspan></text>
+  <rect
+     id="rect78-7-9-3-8-9-0-0-3-5-8-4-9-2-0"
+     height="8.8691292"
+     width="65.482666"
+     y="100.3071"
+     x="-295.89328"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26127604;stroke-miterlimit:4;stroke-dasharray:none"
+     ry="3.307703" />
+  <text
+     id="text82-5-7-1-4-3-3-4-8-9"
+     y="106.91438"
+     x="-280.30652"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:1"
+     font-size="6.77333">
+    <tspan
+       id="tspan80-3-8-8-8-3-8-2-8-1"
+       y="106.91438"
+       x="-280.30652"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.96736097px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:1">Aspect</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-295.63907"
+     y="115.66646"
+     id="text1216-0-6-6-2-9-9"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-0-6-2-6"
+       x="-295.63907"
+       y="115.66646"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Trouver l'opnion sur plusieurs aspects. </tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-176.14815"
+     y="51.33614"
+     id="text1216-0-6-2"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-2"
+       x="-176.14815"
+       y="51.33614"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Enrichir la liste des indicateurs par : </tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-156.42181"
+     y="56.518112"
+     id="text1216-0-6-2-6"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-2-4"
+       x="-156.42181"
+       y="56.518112"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Utilisation des dictionnaires </tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;line-height:0%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52255207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-156.45987"
+     y="62.07576"
+     id="text1216-0-6-2-6-8"><tspan
+       sodipodi:role="line"
+       id="tspan1214-6-8-2-4-9"
+       x="-156.45987"
+       y="62.07576"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.57388878px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52255207px">Utilisation d'un corpus </tspan></text>
+</svg>
