@@ -1264,11 +1264,69 @@
 \begin{frame}
 	\frametitle{Quelques applications : Classification}
 	\framesubtitle{Lisibilité}
-	\begin{itemize}
-		\item 
-	\end{itemize}
+	\hgraphpage{lisibilite-classif.pdf}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Lisibilité : Formule (Flesch-Kincaid Grade Level)}
+	\[
+	206.835 - 1.015 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
+	- 84.6 (\frac{\text{\slshape syllabes totales}}{\text{\slshape mots totaux}})
+	\]
+	
+	\begin{center}
+			\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+		\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
+			\rowcolor{darkblue}
+			\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
+			90-100 && Très facile à lire (Élève de 11 ans). \\
+			80-90 && Facile à lire. \\
+			70-80 && Plutôt facile à lire.\\
+			60-70 && En clair (Élève de 13 ou 15 ans). \\
+			50-60 && Plutôt difficile à lire. \\
+			30-50 && Difficile à lire (Université). \\
+			0-30 && Très difficile à lire (Diplôme universitaire). \\
+		\end{tabular}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Lisibilité : Formule (Dale–Chall readability formula)}
+	\[
+	0.1579 (\frac{\text{\slshape mots difficiles}}{\text{\slshape mots totaux}})
+	+ 0.0496 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
+	\]
+	
+	\begin{center}
+		\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+		\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
+			\rowcolor{darkblue}
+			\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
+			\textless= 4.9 && Étudiant du 4ième. \\
+			5-5.9 && Étudiant du 5ième et 6ième. \\
+			6-6.9 && Étudiant du 7ième et 8ième.\\
+			7-7.9 && Étudiant du 9ième et 10ième. \\
+			8-8.9 && Étudiant du 11ième et 12ième. \\
+			9-9.9 && Étudiant du 13ième et 15ième (collège). \\
+		\end{tabular}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Classification}
+	\framesubtitle{Lisibilité : Apprentissage}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[0.8\textwidth]{lisibilite-ML_.pdf}
+		\caption{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
+	\end{figure}
+	
+\end{frame}
 
 %===================================================================================
 \section{Voix}
