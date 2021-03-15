@@ -28,7 +28,7 @@
 			\item Transformation
 			\item Interaction
 			\item Classification
-			\item Voix
+			\item Parole
 		\end{itemize}
 	\end{itemize}
 
@@ -1399,32 +1399,216 @@
 \end{frame}
 
 %===================================================================================
-\section{Voix}
+\section{Parole}
 %===================================================================================
 
 \begin{frame}
 	\frametitle{Quelques applications}
-	\framesubtitle{Voix}
+	\framesubtitle{Parole}
 	\begin{itemize}
 		\item 
 	\end{itemize}
 \end{frame}
 
-\subsection{Reconnaissance de la voix}
+\subsection{Reconnaissance de la parole}
 
 \begin{frame}
-	\frametitle{Quelques applications : Voix}
-	\framesubtitle{Reconnaissance de la voix}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Classification}
+	\hgraphpage{asr-classif.pdf}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Architecture}
+	\begin{figure}
+		\centering
+		\hgraphpage[.45\textwidth]{asr-arch_.pdf}
+		\caption{Architecture d'un système de reconnaissance de paroles \cite{18-haridas}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Approches}
 	\begin{itemize}
-		\item 
+		\item \optword{Acoustique-Phonétique}
+		\begin{itemize}
+			\item Détecter les phonèmes et les transcrire
+		\end{itemize}
+		\item \optword{Reconnaissance des formes}
+		\begin{itemize}
+			\item Apprendre à détecter les différentes formes
+			\item \optword{Par modèles} : 
+			\item \optword{Stochastique} : 
+		\end{itemize}
+		\item \optword{Intelligence artificielle}
+		\begin{itemize}
+			\item Fusion entre les deux approches précédentes
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\subsection{Synthèse de la voix}
 
 \begin{frame}
-	\frametitle{Quelques applications : Voix}
-	\framesubtitle{Synthèse de la voix}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (Échantillonnage)}
+	\begin{itemize}
+		\item Transformer les signaux sonores vers une séquence des vecteurs de caractéristiques acoustiques
+		\item Chaque vecteur représente l'information du signal encodée dans une petite fenêtre de temps
+		\item \optword{Échantillonnage}
+		\begin{itemize}
+			\item Il faut prendre 2 échantillons par cycle (pour capturer les parties positive et négative du signal)
+			\item La fréquence des paroles sont inférieures à 10 KHz (sampling rate = 20 KHz)
+			\item Dans la téléphonie, la fréquence est 4KHz (sampling rate = 8 KHz)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (Quantification)}
+	\begin{itemize}
+		\item \optword{Quantification}
+		\begin{itemize}
+			\item Les amplitudes des échantillons sont stockées sous forme des entiers
+			\item Soit 8 bits (-128 à 127) ou 16 bits (-32768 à 32767)
+			\item La valeur d'un échantillon dans un temps $n$ est représentée comme $x[n]$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (Fenêtrage)}
+	\begin{itemize}
+		\item \optword{Fenêtrage}
+		\begin{itemize}
+			\item Utiliser une fenêtre pour capturer un ou une partie d'un phonème 
+			\item Cette partie est appelée Cadre (frame)
+			\item L'opération a deux paramètres : taille de la fenêtre (Window size) et décalage (Frame stride, shift, offset)
+		\end{itemize}
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\hgraphpage[.5\textwidth]{ASR-windowing-exp_.pdf}
+		\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (Fenêtrage - suite)}
+	\begin{itemize}
+		\item \optword{Fenêtrage} (suite)
+		\begin{itemize}
+			\item Pour extraire un cadre $y[n]$, on utilise un signal de la fenêtre $w[n]$ sur le signal initial $s[n]$
+			\[y[n] = w[n] s[n]\]
+			\item La plus simple est la fenêtre rectangulaire 
+			
+			$w[n] = \begin{cases}
+			1 & \text{si } 0 \le n \le L-1 \\
+			0 & \text{sinon }\\
+			\end{cases}$
+			\item Ceci va créer des problèmes avec l'analyse de Fourier 
+			\item La solution est la fenêtre de Hamming
+			
+			$w[n] = \begin{cases}
+			0.54 - 0.46 \cos (\frac{2\pi n}{L}) & \text{si } 0 \le n \le L-1 \\
+			0 & \text{sinon }\\
+			\end{cases}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (Fenêtrage - exemple)}
+	
+	\begin{figure}
+		\centering
+		\hgraphpage[.7\textwidth]{ASR-windowing2-exp_.pdf}
+		\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (DFT)}
+	\begin{itemize}
+		\item \optword{Discrete Fourier Transform}
+		\begin{itemize}
+			\item Combien d'énergie un signal contient dans les différentes bandes de fréquence
+			\[X[k] = \sum\limits_{n=0}^{N-1} x[n] e^{-j\frac{2\pi}{N} k n}\]
+		\end{itemize}
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\hgraphpage[.5\textwidth]{ASR-DFT-exp_.pdf}
+		\caption{(a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Extraction des caractéristiques (Filtre de Mel)}
+	\begin{itemize}
+		\item \optword{Filtre de Mel}
+		\begin{itemize}
+			\item L'audition humaine n'est pas également sensible à toutes les bandes de fréquences
+			\item Collecter les énergies à chaque fréquence en se basant sur l'échelle de Mel
+			\[mel(f) = 1127 \ln (1 + \frac{f}{700})\]
+		\end{itemize}
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\hgraphpage[.5\textwidth]{ASR-mel-exp_.pdf}
+		\caption{Un exemple du filtre de Mel \cite{2020-jurafsky-martin}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Reconnaissance}
+	\begin{figure}
+		\centering
+		\hgraphpage[.8\textwidth]{ASR-rec-exp_.pdf}
+		\caption{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Reconnaissance - suite}
+	\begin{itemize}
+		\item $p(y_1, \ldots, y_n) = \prod\limits_{i=1}^n p(y_i| y_1, \ldots, y_{i-1}, X)$
+		
+		\item $\hat{y}_i = \arg\max_{c \in V} p(c| y_1, \ldots, y_{i-1}, X)$
+		
+		\item clairement, ceci est un modèle de langue
+		\item mais, il se peut que les données ne sont pas suffisants pour apprendre un bon modèle de langue
+		\item Solution : intégrer un modèle de langue séparé
+		
+		\item $score(Y|X) = \frac{1}{|Y|_{car}} \log p(Y|X) + \lambda \log p_{LM}(Y)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Reconnaissance vocale : Un peu d'humour}
+		\begin{center}
+			\vgraphpage{humour-ASR.jpg}
+		\end{center}
+\end{frame}
+
+\subsection{Synthèse de la parole}
+
+\begin{frame}
+	\frametitle{Quelques applications : Parole}
+	\framesubtitle{Synthèse vocale}
 	\begin{itemize}
 		\item 
 	\end{itemize}
