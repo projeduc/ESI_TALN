@@ -127,16 +127,19 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Analyse basée sur l'entité de discours
         - Centering theory
         - Entity Grid model
-
-**PAS ENCORE**
-
 1. **Quelques applications**
-    - Traduction automatique de textes
-    - Résumé automatique de textes
-    - Analyse des sentiments
-    - Systèmes de dialogue et chatbots
-    - Reconnaissance et synthèse de la parole
-
+    - Transformation
+        - Traduction automatique
+        - Résumé automatique
+    - Interaction
+        - Questions/Réponses
+        - Systèmes de dialogue
+    - Classification
+        - Analyse des sentiments
+        - Lisibilité
+    - Parole
+        - Reconnaissance de la parole
+        - Synthèse de la parole
 
 ## Licence
 
