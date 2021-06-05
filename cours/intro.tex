@@ -16,7 +16,7 @@
 \chapter{Introduction}
 
 \begin{introduction}
-	\lettrine{L}{e} traitement de langages naturels est un domaine multidisciplinaire. 
+	\lettrine{L}{e} traitement du langage naturel est un domaine multidisciplinaire. 
 	Vu son importance dans nos jours, surtout avec l'augmentation de la quantité des informations textuels, il est primordial d'avoir une idée comment traiter automatiquement ces textes. 
 	Afin de le faire, il existe plusieurs niveaux : phonétique, phonologique, orthographe, morphologie, syntaxe, sémantique, pragmatique et discours. 
 	Chaque application de ce domaine nécessite un ou plusieurs niveaux de la langue. 
@@ -26,7 +26,7 @@
 
 Le \ac{taln} est l'ensemble des méthodes permettant de rendre le langage humain accessible aux ordinateurs.
 Il est appelé, aussi, par le nom \ac{tal}. 
-C'est un domaine multidisciplinaire qui implique : la linguistique (étude du langage), l'informatique (traitement automatique de l'information) et l'intelligence artificielle (ensemble de théories et de techniques mises en œuvre en vue de réaliser des machines capables de simuler l'intelligence humaine).
+C'est un domaine multidisciplinaire qui implique : la linguistique (étude du langage), l'informatique (traitement automatique de l'information) et l'intelligence artificielle (ensemble des théories et des techniques mises en œuvre en vue de réaliser des machines capables de simuler l'intelligence humaine).
 De nos jours, ce domaine obtient plus d'intention suite à ces applications dans nos vies. 
 Parmi les applications qui motivent ce domaine (elles seront reprises après), on peut citer :
 \begin{itemize}
@@ -43,16 +43,27 @@ Parmi les applications qui motivent ce domaine (elles seront reprises après), o
 
 \section{Histoire}
 
+Le langage, d'après Larousse, est la ``\textit{capacité, observée chez tous les hommes, d'exprimer leur pensée et de communiquer au moyen d'un système de signes vocaux et éventuellement graphiques (la langue)}".
+Du même, la langue est définie par ``\textit{Système de signes vocaux, éventuellement graphiques, propre à une communauté d'individus, qui l'utilisent pour s'exprimer et communiquer entre eux : La langue française, anglaise.}". 
+Donc, le langage désigne une capacité de communiquer, tandis que la langue représente l'outil de communication. 
+Je ne veux pas présenter ici l'histoire du \ac{taln} du point de vu ``langue", mais du point de vu ``évolution de l'\ac{ia}".
+Comme toutes les histoires, notre histoire commence par : il était une fois, un mathématicien appelé \keyword{Alan Turing} qui a proposé une expérience pour tester qu'une machine soit ``\textit{consciente}". 
+Ce test est connu sous le nom de \keyword{Test de Turing}. 
+Depuis cette proposition, le domaine de l'\ac{ia} a reconnu des hauts et des bas.
+La figure~\ref{fig:histoire} illustre quelques points dans cette histoire riche des évènements.
 
 \begin{figure}
 	\centering
 	\hgraphpage[.6\textwidth]{histoire.pdf}
-	\caption{Quelques points historiques du TALN}
+	\caption{Quelques points historiques du TALN. \label{fig:histoire}}
 \end{figure}
 
 \subsection{Naissance de l'IA et âge d'or}
 
-Les années 195x 
+Les années \textbf{195x} ont vu le départ du domaine de  l'\ac{ia} ainsi que le domaine du \ac{taln}.
+Parmi les premiers acteurs dans le domaine du \ac{taln}, on peut mentionner \ac{ibm}. 
+Leurs recherches se sont portées sur la traduction et le résumé automatiques.
+Parmi les points importants de cette période, on peut citer :
 \begin{itemize}
 	\item \optword{1951} Shannon a exploité les modèles probabilistes des langages naturels \cite{1951-shannon}.
 	\item \optword{1954} Expérimentation Georgetown-IBM pour traduire automatiquement 60 phrases du russe vers l'anglais.
@@ -60,7 +71,9 @@ Les années 195x
 	\item \optword{1958} Luhn (IBM) a expérimenté sur le résumé automatiquement du texte par extraction \cite{1958-luhn}
 \end{itemize}
 
-Les années 196x
+Le domaine a fleuri durant les années \textbf{196x}.
+Parmi les caractéristiques de cette ère, l'attention donnée à la conception des chatbots. 
+Quelques points qui marquent cette décennie sont les suivants :
 \begin{itemize}
 	\item \optword{1961} Développement du premier analyseur syntaxique automatique à U. Penn. \cite{1961-joshi,1962-harris} 
 	\item \optword{1964} Weizenbaum a mis au point \keyword{ELIZA}, une simulation d'un psychothérapeute au sein du laboratoire MIT AI.
@@ -70,7 +83,11 @@ Les années 196x
 
 \subsection{Hiver de l'IA}
 
-Les années 197x
+Les années \textbf{197x} ont reconnu une croissance de développement des chatbots et les tâches connexes. 
+Parmi ces dernières, on trouver : la compréhension du langage et la reconnaissance  de la parole. 
+Il faut savoir qu'à partir de cette période, on a vu l'abondement de quelques concepts comme le connexionnisme (\textbf{1969}), le rapport \keyword{Sir James Lighthill}, les coupes budgétaires de \ac{darpa}, etc. 
+C'était une époque sombre pour l'\ac{ia}.
+Quelques points importants peuvent être résumés dans la liste suivante :
 \begin{itemize}
 	\item \optword{1971} Winograd (MIT) a développé \keyword{SHRDLU}, un programme de compréhension du langage naturel \cite{1971-winograd}.
 	\item \optword{1972} Colby (Stanford) a créé \keyword{PARRY} un chatbot qui simule une personne avec la schizophrénie paranoïde.
@@ -78,19 +95,25 @@ Les années 197x
 	\item \optword{1975} \keyword{DRAGON}, un système pour la reconnaissance automatique de la parole en utilisant les modèles de Markov cachés \cite{1975-baker}.
 \end{itemize}
 
-Les années 198x
+Les années \textbf{198x} ont reconnu l'avancement dans les tâches syntaxiques et morpho-syntaxiques. 
+Ils ont vu des recherches sur la représentation et l'extraction de la connaissance. 
+Malgré l'hiver, il y avait encore des chercheurs qui croyaient en l'\ac{ia}. 
+Voici quelques points résumant ces années :
 \begin{itemize}
-	\item \optword{1980} \keyword{KL-One}, représentation de connaissance pour le traitement de la syntaxe et la sémantique \cite{1980-bobrow}
-	\item \optword{1986} \keyword{TRUMP}, analyseur de langage en utilisant une base lexicale \cite{1986-jacobs}
-	\item \optword{1987} \keyword{HPSG} (head-driven phrase structure grammar, traduction française : grammaire syntagmatique guidée par les têtes) \cite{1987-sag-pollard}
+	\item \optword{1980} \keyword{KL-One}, représentation de connaissance pour le traitement de la syntaxe et la sémantique \cite{1980-bobrow}.
+	\item \optword{1986} \keyword{TRUMP}, analyseur de langage en utilisant une base lexicale \cite{1986-jacobs}.
+	\item \optword{1987} \keyword{HPSG} (head-driven phrase structure grammar, traduction française : grammaire syntagmatique guidée par les têtes) \cite{1987-sag-pollard}.
 	\item \optword{1987} \keyword{MUC} conférence sur l'extraction des données financée par \keyword{DARPA}
-	\item \optword{1988} Utilisation des models de markov cachés dans  l'étiquetage morpho-syntaxique \cite{1988-church}
+	\item \optword{1988} Utilisation des models de markov cachés dans  l'étiquetage morpho-syntaxique \cite{1988-church}.
 	\item Solutions symboliques sur le traitement du discours et la génération du langage naturel.
 \end{itemize}
 
 \subsection{Printemps de l'IA}
 
-Les années 199x
+Les années \textbf{199x} ont été les années de l'approche statistique. 
+Plusieurs tâches ont été proposé en se basant sur cette approche comme la traduction automatique, les analyseurs syntaxiques, etc. 
+Afin de supporter cette approches, on a vu aussi la création des corpus. 
+Parmi les points importants de cette période, on peut citer :
 \begin{itemize}
 	\item \optword{1990} Une approche statistique pour la traduction automatique \cite{1990-brown-al}
 	\item \optword{1993} \keyword[P]{Pen Treebank}, un corpus annoté de l'anglais \cite{1993-marcus-al}
@@ -99,163 +122,220 @@ Les années 199x
 	\item Popularité des méthodes statistiques et de l'évaluation empirique
 \end{itemize}
 
-Les années 200x
+Les années \textbf{200x} est marquée par l'arrivé du niveau sémantique. 
+En plus, des techniques comme les réseaux de neurones et l'apprentissage non supervisé ont commencé à prendre leurs places.
+Parmi les sujets traités durant cette période, on peut citer :
 \begin{itemize}
 	\item \optword{2003} Les modèles probabilistes de langues en utilisant les réseaux de neurones \cite{2003-bengio-al}
-	\item \optword{2006} \keyword{Watson} (IBM), un système de question/réponse
+	\item \optword{2006} \keyword{Watson} (IBM), un système de question/réponse.
 	\item Utilisation de l'apprentissage non supervisé et semi-supervisé comme alternatives à l'apprentissage purement supervisé.
 	\item Déplacer le focus sur les tâches sémantiques.
 \end{itemize}
 
-Les années 201x
+Les années \textbf{201x+} ont connu l'intégration des solutions intelligentes dans des produits commerciales.
+Ceci est marqué principalement par le développement des assistants numériques personnels ; en anglais : \ac{ipa} ou \ac{iva}.
+Aussi, l'intégration de la sémantique dans des tâches comme par exemple la rechherche d'information. 
+Parmi les points de cette ère, on peut mentionner :
 \begin{itemize}
-	\item \optword{2011} \keyword{Siri} (Apple)  un assistant numérique personnel. Il a été suivi par \keyword{Alexa} (Amazon, \optword{2014}) et \optword{Google Assistant} (\optword{2016})
+	\item \optword{2011} \keyword{Siri} (Apple)  un assistant numérique personnel. Il a été suivi par \keyword{Alexa} (Amazon, \optword{2014}) et \keyword{Google Assistant} (\optword{2016})
 	\item \optword{2014} Word embedding \cite{2014-lebret-collobert}
 	\item \optword{2018} Apparition des représentations contextuelles (des modèles de langue pré-entraînés) : \keyword{ULMfit} (fast.ai) \cite{2018-howard-ruder}, \keyword{ELMO} (AllenNLP) \cite{2018-peters-al}, \keyword{GPT} (OpenAI) \cite{2018-radford-al}, \keyword{BERT} (Google) \cite{2018-devlin-al}, \keyword{XLM} (Facebook) \cite{2019-lample-conneau}
 \end{itemize}
 
 %===================================================================================
-\section{Niveaux de traitement d'une langue}
+\section{Niveaux de traitement d'un langage}
 %===================================================================================
 
-\hgraphpage{niveaux.pdf}
+Reprenons la définition du langage par Larousse : ``\textit{capacité, observée chez tous les hommes, d'exprimer leur pensée et de communiquer au moyen d'un système de signes vocaux et éventuellement graphiques (la langue)}".
+Ce langage est doté d'une sémantique ainsi qu'une structure. 
+La capacité d'un langage naturel (humain) comprend plusieurs fonctions linguistiques (niveaux) qui sont représentées dans la figure \ref{fig:niveaux}.
+
+\begin{figure}[ht]
+	\centering 
+	\hgraphpage{niveaux.pdf}
+	\caption{Les niveaux de traitement d'un langage naturel. \label{fig:niveaux}}
+\end{figure}
 
 \subsection{Phonétique}
 
+La phonétique est l'étude des sons ou phones produits par l'appareil phonatoire humain.
+Elle n'est pas dépendante d'une langue précise. 
+Il y a plusieurs branches dans la phonétique :
 \begin{itemize}
-	\item Étude des sons ou phones produits par l'appareil phonatoire humain
-	\item Les branches
-	\begin{itemize}
-		\item \optword{Phonétique articulatoire} (la division la plus anatomique et physiologique) décrit comment les voyelles et les consonnes sont produites ou «articulées» dans diverses parties de la bouche et de la gorge.
-		\item \optword{Phonétique acoustique} (la branche qui a les affinités les plus étroites avec la physique) étudie les ondes sonores qui transmettent les voyelles et les consonnes dans l'air du locuteur à l'auditeur.
-		\item \optword{Phonétique auditive} (la branche qui intéresse le plus les psychologues) examine la manière dont le cerveau de l'auditeur décode les ondes sonores en voyelles et consonnes initialement prévues par le locuteur.
-	\end{itemize}
+	\item \optword{Phonétique articulatoire}  C'est la division la plus anatomique et physiologique. 
+	Elle décrit comment les voyelles et les consonnes sont produites ou «articulées» dans diverses parties de la bouche et de la gorge.
+	\item \optword{Phonétique acoustique} C'est la branche qui a les affinités les plus étroites avec la physique. 
+	Elle étudie les ondes sonores qui transmettent les voyelles et les consonnes dans l'air du locuteur à l'auditeur.
+	\item \optword{Phonétique auditive} C'est la branche qui intéresse le plus les psychologues. 
+	Elle examine la manière dont le cerveau de l'auditeur décode les ondes sonores en voyelles et consonnes initialement prévues par le locuteur.
 \end{itemize}
 
-Points d'articulation des consonnes
-\acolor{everything}{olivegreen}
-\begin{minipage}{0.5\textwidth}
-	\begin{itemize}
-		\item \optword{labial} à l'aide des lèvres. Exemple, \expword{\textipa{[b], [p], [m], [f], [v]}}
-		\item \optword{apicale} avec la pointe de la langue ou sa partie antérieure. 
-		Exemple, \expword{%
-			\textipa{[t], [d], [n], [r], }
-			\RL{^s} \textipa{[S],} 
-			\RL{_t} \textipa{[T],} 
-			\RL{_d} \textipa{[D]}
-		}
-		\item \optword{dorsal} avec la partie postérieure de la langue. Exemple, \expword{\textipa{[c], [k], [g], [q],} \RL{.g} \textipa{[G]}}
-		\item \optword{pharyngale} au niveau du pharynx. 
-		Exemple, \expword{\RL{.h} \textipa{[\*h],} \RL{`} \textipa{[Q]}}
-		\item \optword{glottale} au niveau de la glotte. 
-		Exemple, \expword{\textipa{[h],} \RL{'} \textipa{[P]}}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-%	\begin{figure}
-		\hgraphpage{oraltract_.pdf}
-%		\caption{Voie orale \cite{2009-ball}}
-%	\end{figure}
-\end{minipage}
+Dans la reconnaissance et la synthèse de la parole, en générale, on s'intéresse par la phonétique acoustique (comment les lettres sont représentées sous forme des ondes) et la phonétique articulaire (comment peut-on encoder les voyelles et les consonnes sur machine).
+Une façon pour encoder les voyelles et les consonnes est de les classifier selon les points d'articulation (voir la figure \ref{fig:articulation}). 
+Les consonnes sont divisées, selon la voie orale, en 5 groupes :
+\begin{itemize}
+	\item \optword{labial} à l'aide des lèvres. Exemple, \expword{\textipa{[b], [p], [m], [f], [v]}}
+	\item \optword{apicale} avec la pointe de la langue ou sa partie antérieure. 
+	Exemple, \expword{%
+		\textipa{[t], [d], [n], [r], }
+		\RL{^s} \textipa{[S],} 
+		\RL{_t} \textipa{[T],} 
+		\RL{_d} \textipa{[D]}
+	}
+	\item \optword{dorsal} avec la partie postérieure de la langue. Exemple, \expword{\textipa{[c], [k], [g], [q],} \RL{.g} \textipa{[G]}}
+	\item \optword{pharyngale} au niveau du pharynx. 
+	Exemple, \expword{\RL{.h} \textipa{[\*h],} \RL{`} \textipa{[Q]}}
+	\item \optword{glottale} au niveau de la glotte. 
+	Exemple, \expword{\textipa{[h],} \RL{'} \textipa{[P]}}
+\end{itemize}
 
-IPA
-\hgraphpage{IPA1_.pdf}
+\begin{figure}[ht]
+	\centering 
+	\hgraphpage[.5\textwidth]{oraltract_.pdf}
+	\caption{La voie orale \cite{2009-ball}. \label{fig:articulation}}
+\end{figure}
+
+\ac{ipa2} est un alphabet utilisé pour la transcription phonétique des sons du langage parlé.  
+La parole est découpée en segments sonores distincts (phones). 
+A chaque phone, il est attribué un symbole unique. 
+La figure~\ref{fig:ipa} représente une partie de l'alphabet phonétique internationale.
+
+\begin{figure}[ht]
+	\centering 
+	\hgraphpage{IPA2020_.pdf}
+	\caption{L'alphabet phonétique internationale  (\url{https://www.internationalphoneticassociation.org/IPAcharts/IPA_chart_orig/pdfs/IPA_DejaVu_2020_full.pdf}). \label{fig:ipa}}
+\end{figure}
+
 
 \subsection{Phonologie}
 
-\begin{itemize}
-	\item Étude des sons ou phonèmes d'une langue donnée
-	\item s'intéresse aux sons en tant qu'éléments d'un système
-\end{itemize}
-
-\begin{exampleblock}{Exemple : le phonème \textit{/r/}}
-	\begin{itemize}
-		\item En français, le \textit{r} peut se prononcer (en phonétique) : roulé \expword{\textipa{[r]}}, grasseyé \expword{\textipa{[\;R]}}, ou normal (parisien) \expword{\textipa{[K]}}
-		\item Il est transcrit toujours de la même façon, exemple \expword{rat /rat/}
-		\item En arabe, on trouve les consonnes \expword{\RL{r} \textipa{[r]}} et \expword{\RL{.g} \textipa{[G]}} qui ont deux phonèmes différents : \expword{\textipa{/r/}} et \expword{\textipa{/G/}} respectivement. 
-		Exemple, \expword{\RL{.gryb} \textipa{/G\ae ri:b/} (étranger)}
-	\end{itemize}
-\end{exampleblock}
+La phonologie est l'étude des sons ou phonèmes d'une langue donnée ; elle s'intéresse aux sons en tant qu'éléments d'un système. 
+Contrairement au phone, un phonème est une unité abstraite qui peut correspondre à plusieurs sons.
+Il est lié à la langue étudiée. 
+Par exemple, en français, le \textit{r} peut se prononcer (en phonétique) : roulé \expword{\textipa{[r]}}, grasseyé \expword{\textipa{[\;R]}}, ou normal (parisien) \expword{\textipa{[K]}}. 
+Il est toujours transcrit de la même façon, exemple \expword{rat /rat/}. 
+En arabe, on trouve les consonnes \expword{\RL{r} \textipa{[r]}} et \expword{\RL{.g} \textipa{[G]}} qui ont deux phonèmes différents : \expword{\textipa{/r/}} et \expword{\textipa{/G/}} respectivement. 
+Exemple, \expword{\RL{.gryb} \textipa{/G\ae ri:b/} (étranger)}. 
+Donc, la phonologie s'intéresse à la transcription des sons par rapport à une langue donnée.
 
 \subsection{Orthographe}
 
-\acolor{everything}{olivegreen}
+L'orthographe est l'ensemble des règles d'écriture d'une langue ; c'est l'étude des types et de la forme des lemmes/monèmes. 
+Un lemme est une unité lexicale ; il désigne une unité autonome constituant le lexique d'une langue.
+L'unité significative la plus petite dans une langue est appelée \keyword{graphèmes}.
+Les systèmes d'écriture sur lesquels l'orthographe est basé sont regroupés en 4 classes (selon les graphèmes) : 
 \begin{itemize}
-	\item Étude des types et de la forme des lemmes/monèmes 
-	\item Système d'écriture (selon le \keyword[G]{graphème})
-	\begin{itemize}
-		\item \optword{logographique} : logogrammes, chacun est un graphème unique notant un lemme (mot).
-		Exemple, \expword{
-			Kanji (Japonais) : 
-			日, 本, 語
-		}
-		\item \optword{syllabique} : symboles, chacun représente un syllabe (son vocalisé). 
-		Exemple, \expword{
-			Hiragana (Japonais) : 
-			る, た, め, の ; 
-			Katakana (Japonais) : 
-			セ, ク ; 
-		}
-		\item \optword{alphabétique} : lettres, chacune d'elles représente un phonème. 
-		Exemple, \expword{Le latin : A, B, C, etc. L'arabe : \RL{b}, \RL{t}, \RL{h}}
-	\end{itemize}
-	\item Ponctuation 
-	\item Règles d'écriture 
+	\item \optword{logographique} : un mot est constitué d'un à plusieurs logogrammes.
+	Ce dernier est un graphème unique notant un lemme (mot).
+	Exemple, \expword{
+		Kanji (Japonais) : 
+		日, 本, 語
+	}
+	Un logogramme peut être prononcé de différentes manières. 
+	Par exemple. Exemple, \expword{
+		\ruby{楽}{tano}\ruby{し}{shi}\ruby{い}{i} (agréable), 
+		\ruby{音}{on}\ruby{楽}{gaku} (musique)
+	}
+	
+	\item \optword{syllabique} : un mot est constitué de plusieurs symboles, chacun représente un syllabe (son vocalisé). 
+	Exemple, \expword{
+		Hiragana (Japonais) : 
+		る /ru/, た /ta/, め /me/, の /no/ ; 
+		Katakana (Japonais) : 
+		セ /se/, ク /ku/ ; 
+	}
+	\item \optword{alphabétique} : un mot est composé des lettres, chacune représente un phonème. 
+	Exemple, \expword{Le latin : A, B, C, etc. L'arabe : \RL{b} /b/, \RL{t} /t/, \RL{h} /h/}. 
+	Il est à noter que l'arabe par exemple utilise un sous-système alphabétique appelé \keyword{abjad}. 
+	Dans ce sous système, il n'y a pas de voyelles.
 \end{itemize}
 
 \subsection{Morphologie}
 
+La morphologie est concernée par l'étude de la formation des mots, y compris la façon dont les nouveaux mots sont inventés dans les langues du monde.
+Elle étudie la façon dont les formes des mots varient en fonction de leurs utilisations dans les phrases.
+La plus petite unité de la langage qui a sa propre signification est appelée \keyword[M]{Morphème} (Ex., \expword{les noms propres, les suffixes, etc.}). 
+Les mots, dans plusieurs langues, sont formés par composition des morphèmes en suivant des règles. 
+Toutes les formes grammaticales ayant le même sens forment un ensemble appelé \keyword[L]{Lexème} (Ex. \expword{[former, formation, formateur, forment, formez, ...]}). 
+Le mot choisi parmi ces formes pour représenter le lexème est appelé \keyword[L]{Lemme} (Ex. \expword{former}).
+Chaque mot possède une catégorie grammaticale (\expword{nom, verbe, etc.}) qui peut appartenir à :
 \begin{itemize}
-	\item Étude de la formation des mots, y compris la façon dont les nouveaux mots sont inventés dans les langues du monde.
-	\item Étude de la façon dont les formes des mots varient en fonction de leurs utilisations dans les phrases.
-	\item \keyword[M]{Morphème} : la plus petite unité de la langage qui a sa propre signification. Exemple, \expword{les noms propres, les suffixes, etc.}
-	\item \keyword[L]{Lexème} : un ensemble de toutes les formes grammaticales qui ont le même sens.
-	\item \keyword[L]{Lemme} : un mot choisi parmi ces formes pour représenter le lexème.
-	\item Les catégories grammaticales : classe ouverte (\optword{adjectif}, \optword{nom}, \optword{verbe}) et classe fermée (\optword{adverbe}, \optword{article}, \optword{conjonction}, \optword{interjection},  \optword{préposition}, \optword{pronom}).
+	\item \optword{la classe ouverte} contenant les catégories grammaticales qui changent leurs formes selon des traits grammaticaux (par exemple, pluriel et singulier). 
+	Dans le français, cette classe contient : les adjectifs, les noms, les verbes, les déterminants et les pronoms.
+	\item \optword{la classe fermée} où les mots d'une catégorie grammaticale n'acceptent pas de changement.
+	Dans le français, cette classe comporte : les adverbes, les articles, les conjonctions, les interjections et les prépositions.
 \end{itemize}
 
-Typologie morphologique des langues
+J'ai déjà mentionné que les mots sont formés par compositions de morphèmes dans plusieurs langues. 
+Si vous avez remarqué : dans cette phrase on peut dédier qu'il existe des langues où les mots ne sont pas formés autant. 
+Selon la façon de former les mots, on peut classifier une langue selon la typologie morphologique suivante :
 \begin{itemize}
-	\item \optword{Langues isolantes/analytiques} : chaque mot est constitué d'un et d'un seul morphème. Les modifications morphologiques sont peu nombreuses, voire absentes. Parmi ces langues : \expword{mandarin, vietnamien, thaï, khmer, etc.}. Exemple, \expword{四个男孩 /sì ge nánhái/ ``quatre garçons" (lit. ``quatre [entité de] masculin enfant")}
+	\item \optword{Langues isolantes/analytiques} : chaque mot est constitué d'un et d'un seul morphème. 
+	Les modifications morphologiques sont peu nombreuses, voire absentes. 
+	Parmi ces langues : \expword{mandarin, vietnamien, thaï, khmer, etc.}. 
+	Exemple, \expword{四个男孩 /sì ge nánhái/ ``quatre garçons" (lit. ``quatre [entité de] masculin enfant")}
+	
 	\item \optword{Les langues flexionnelles/synthétiques} : les mots sont formés d'une \keyword{racine} en plus de morphèmes supplémentaires.
 	\begin{itemize}
-		\item \optword{Langues agglutinantes} : les morphèmes sont toujours clairement différentiables phonétiquement l'un de l'autre. Parmi ces langues : \expword{finnois, turc, japonais, langues berbères, etc.}. Exemple, \expword{行く, 行きます} 
-		\item \optword{Langues fusionnelles} : il n'est pas toujours aisé de distinguer les morphèmes de la racine, ou les morphèmes les uns des autres. Parmi ces langues : \expword{arabe, anglais, français, etc.} Exemple, \expword{\RL{kitAb, kutub, 'wa'`.taynAkumuwh}, foot, feet}
+		\item \optword{Langues agglutinantes} : les morphèmes sont toujours clairement différentiables phonétiquement l'un de l'autre. 
+		Parmi ces langues : \expword{finnois, turc, japonais, langues berbères, etc.}. 
+		Exemple, \expword{行く, 行きます} 
+		
+		\item \optword{Langues fusionnelles} : il n'est pas toujours aisé de distinguer les morphèmes de la racine, ou les morphèmes les uns des autres. 
+		Parmi ces langues : \expword{arabe, anglais, français, etc.}.
+		Exemple, \expword{\RL{kitAb, kutub, 'wa'`.taynAkumuwh}, foot, feet}
 	\end{itemize}
 \end{itemize}
 
-Morphologie flexionnelle
+
+Pour former des nouveaux mots, on utilise deux méthodes : la \keyword{flexion} et la \keyword{dérivation}. 
+Dans la morphologie flexionnelle, les mots formés ne changent pas de catégories grammaticale (un verbe reste un verbe après formation) et ils ne créent pas de nouveaux lexèmes (le mot formé doit avoir le même sens). 
+Donc, les mots sont formés juste pour s'adapter à différents contextes grammaticaux (pluriel vs singulier, masculin vs féminin, etc.).
+La flexion peut être une une \optword{conjugaison} (verbes) ou une \optword{déclinaison} (le reste des catégories grammaticales ouvertes).
+Comme exemple de la déclinaison, on peut citer la transformation du singulier au pluriel pour les noms.
+Parmi les méthodes utilisées par la flexion, on peut citer :
 \begin{itemize}
-	\item Formation de mots sans changer de catégorie ou créer de nouveaux lexèmes 
-	\item Modification de la forme des lexèmes afin qu'ils s'adaptent à différents contextes grammaticaux
-	\item \optword{Flexion} : \optword{déclinaison} ou \optword{conjugaison}
-	\item \optword{Affixation}
-	\begin{itemize}
-		\item \optword{Préfixe} : \expword{\RL{_dhb}} (passé), \expword{\RL{y_dhb}} (présent)
-		\item \optword{Infixe}
-		\item \optword{Suffixe} \expword{étudiant} (masculin-singulier), \expword{étudiantes} (féminin-pluriel)
-	\end{itemize}
-	\item \optword{Redoublement} : \expword{super-duper, bye-bye, きらきら} 
+	\item \optword{Affixation} : C'est la formation d'un nouveau mot en utilisant les préfixes (avant le mot original), les infixes (au milieu) et les suffixes (après).
+	Un autre type des infixes est la transfixe trouvée chez les langues sémitiques (un infixe discontinu).
+	Un exemple d'une flexion (dans ce cas : conjugaison) par préfixes : \expword{\RL{_dhb}} (passé), \expword{\RL{y_dhb}} (présent).
+	Conjugaison par préfixe et transfixe : \expword{\RL{qAl}} (passé), \expword{\RL{yqwl}} (présent).
+	Un autre pour une flexion (déclinaison) par suffixes : \expword{étudiant} (masculin-singulier), \expword{étudiantes} (féminin-pluriel).
+	\item \optword{Redoublement} : doubler un mot pour former un autre mot ayant la même catégorie et sens. 
+	Exemple, \expword{super-duper, bye-bye, きらきら}.
 	
 \end{itemize}
-
-Morphologie flexionnelle (traits grammaticaux)
+Une flexion est décrite par les traits grammaticaux. 
+Chaque langue définit un ensemble des traits grammaticaux à utiliser avec les catégories grammaticales.
+On peut trouver un trait grammatical dans une langue et pas dans une autre.
+Vous pouvez savoir plus sur ces traits en suivant ce lien : \url{https://universaldependencies.org/u/feat/index.html}.
+Parmi les traits grammaticaux, on peut citer les suivants :
 \begin{itemize}
-	\item \optword{Nombre} : singulier, duel, triel, paucal, pluriel, etc. 
-	\item \optword{Personne} : première, deuxième, troisième, etc.
-	\item \optword{Genre} : masculin, féminin, neutre, commun 
-	\item \optword{Cas} : nominatif, absolutif, accusatif, ergatif, etc.
-	\item \optword{Temps} : passé, présent, future
-	\item \optword{Aspect} : accompli/inaccompli, progressif, perfectif/imperfectif, itératif, prospectif
-	\item \optword{Voix} : active, moyenne, passive, etc.
-	\item \optword{Polarité} : affirmative, négative
-	\item \optword{Politesse} : informelle, formelle, etc.
+	\item \optword{Nombre} : représente la quantité. 
+	singulier (\expword{il}), duel (\expword{\RL{hmA}}), triel, paucal, pluriel (\expword{ils}), etc. 
+	
+	\item \optword{Personne} : décrit le rôle qu'occupent les acteurs d'un dialogue. 
+	première (\expword{je, nous}), deuxième (\expword{tu, vous}), troisième (\expword{il, ils, elle, elles}), etc.
+	
+	\item \optword{Genre} : divise les noms en se basant sur le sexe. 
+	masculin (\expword{il, ils}), féminin (\expword{elle, elles}), neutre (\expword{it}), commun (utilisé pour indiqué que c'est masculin/féminin contre neutre).
+	
+	\item \optword{Cas} : représente le rôle sémantique pa rapport au verbe. 
+	nominatif (sujet d'un verbe), accusatif (objet direct), datif (objet indirect), etc.
+	
+	\item \optword{Temps} : représente le temps d'une action. passé, présent, future.
+	
+	\item \optword{Aspect} : accompli(une action qui a été accomplie dans le temps)/inaccompli, progressif (une action qui est continue dans le temps), imperfectif (une action qui a pris une certaine période dans le temps mais on ne sait pas si elle est complète)/perfectif, itératif (une action qui se répète), prospectif (une action qui devrait avoir lieu à un moment qui suit un point de référence), etc.
+	
+	\item \optword{Voix (diathèse)} : décrit comment s'organisent les rôles sémantiques par rapport au verbe.
+	active (le sujet est l'agent ; celui qui a fait l'action), moyenne (le sujet est l'agent et le patient au même temps ; faire une action sur lui-même), passive (le sujet est le patient ; celui qui reçut l'action), réciproque (des agents et des patients qui font des actions l'un sur l'autre), etc.
+	
+	\item \optword{Polarité} : considère un mot comme affirmative ou négative
+	\item \optword{Politesse} : représente le niveau de respect. informelle, formelle, etc.
 \end{itemize}
 
-Morphologie dérivationnelle
+Contrairement à la morphologie flexionnelle, la morphologie dérivationnelle vise à former des mots en changeant de catégorie (\expword{jouer, joueur}) ou en créant de nouveaux lexèmes (\expword{connecter, déconnecter}). 
+Parmi les méthodes utilisées par la drivation, on peut citer :
 \begin{itemize}
-	\item Formation de mots en changeant de catégorie (\expword{jouer, joueur}) ou en créant de nouveaux lexèmes (\expword{connecter, déconnecter})
-	
 	\item \optword{Affixation} : en utilisant des préfixes, infixes et/ou suffixes. 
 	Exemple, \expword{happy (ADJ), unhappy (ADJ), unhapyness (N)}; \expword{\RL{jhd} (V), \RL{ijthd} (V)}
 	
@@ -274,74 +354,41 @@ Morphologie dérivationnelle
 
 \subsection{Syntaxe}
 
-\begin{itemize}
-	\item Structure des phrases : comment les mots se combinent pour former des phrases
-	\item Catégories grammaticales ou parties du discours (verb, Nom, Adjectif, etc) des mots de la phrase (étiquetage morphosyntaxique).
-	\item Ordre des mots selon le \keyword{sujet (S)}, le \keyword{Verb (V)} et l'\keyword{Objet (O)}
-	\item Fonctions grammaticales : \expword{Sujet, COD, COI, etc.}
-\end{itemize}
+La syntaxe est l'ensemble des règles et principes qui contrôlent la structure d'une phrase. 
+Cette structure est en relation avec les catégories grammaticales (verb, Nom, Adjectif, etc) des mots composant la phrase.
+Selon la position du mot, il peut avoir une fonction grammaticales (\expword{Sujet, COD, COI, etc.}).
+Les langues peuvent être classifiées selon l'ordre des trois composants : \keyword{sujet (S)}, \keyword{Verb (V)} et \keyword{Objet (O)}.
+Exemple SOV [japonais] : \expword{カリムさん[S]は日本語[O]を勉強します[V]。}.
+Exemple SVO [français] : \expword{Karim [S] apprend [V] le français [O].}.
+Exemple VSO [arabe] : \RL{yt`llm \LR{[V]} krym \LR{[S]} al-`rbyT \LR{[O]}.}.
+Le tableau~\ref{tab:ordre} représente une étude sur 402 langues qui nous donne une idée sur les proportions de chaque catégorie des ordres.
 
-Syntaxe (Ordre des mots)
-\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow}
+\begin{table}[ht]
+	\centering
 	\begin{tabular}{p{.1\textwidth}p{.15\textwidth}p{.65\textwidth}}
-		\rowcolor{darkblue}
-		\textcolor{white}{Ordre} & \textcolor{white}{Proportion} & \textcolor{white}{Exemples} \\
+		\hline\hline 
+		\textbf{Ordre} & \textbf{Proportion} & \textbf{Exemples} \\
+		\hline
 		SOV & 44.78\% & japonais, latin, tamoul, basque, ourdou, grec ancien, bengali, hindi, sanskrit, persan, coréen \\
 		SVO & 41.79\% & français, mandarin, russe, anglais, haoussa, italien, malais (langue), espagnol, thaï \\
 		VSO & 9.20\% & irlandais, arabe, hébreu biblique, philippin, langues touarègues, gallois \\
 		VOS & 2.99\% & malgache, baure, car (langue) \\
 		OVS & 1.24 \% & apalai, hixkaryana, klingon (langue) \\
+		\hline\hline
 	\end{tabular}
-	\caption{Proportions d'après l'étude de 402 langues \cite{1988-blake}}
+	\caption{Les ordres et leurs proportions d'après l'étude de 402 langues \cite{1988-blake} \label{tab:ordre}}
 \end{table}
 
-Syntaxe (Ordre des mots, exemples)
-\begin{itemize}
-	\item \textcolor{blue}{Sujet}, \textcolor{red}{Verbe}, \textcolor{green}{Objet}
-\end{itemize}
+Il existe plusieurs approches théoriques de la syntaxe, notamment : la grammaire des constituants et la grammaire des dépendances. 
+Dans une grammaire des constituants, une  \keyword{phrase} est constituée de plusieurs \keyword[S]{syntagmes} qui sont constitués des mots et d'autres syntagmes.
+Un syntagme contient un \keyword{noyau} qui est l'élément central et des éléments satellites.
+Selon le noyau, le syntagme peut être : nominal (\keyword{NP}), adjectival (\keyword{AP}), verbal (\keyword{VP}) ou prépositionnel (\keyword{PP}).
+Le système formel le plus utilisé pour modéliser la structure des constituants d'une phrase est la \keyword{grammaire hors-contexte} (Niveau 2 dans la hiérarchie de \keyword{Chomsky}).
+Un exemple d'une grammaire ainsi que l'arbre syntaxique d'une phrase est illustré dans la figure~\ref{fig.exp-gram-const}.
 
-\begin{columns}
-	\begin{column}{0.52\textwidth}
-		\begin{exampleblock}{Exemple SOV [japonais]}
-			
-				\textcolor{blue}{カリムさん}は\textcolor{green}{日本語}を\textcolor{red}{勉強します}。
-			
-		\end{exampleblock}
-	\end{column}
-	%
-	\begin{column}{0.42\textwidth}
-		\begin{exampleblock}{Exemple SVO [français]}
-			\textcolor{blue}{Karim} \textcolor{red}{apprend} \textcolor{green}{le français}.
-		\end{exampleblock}
-	\end{column}%
-\end{columns}
-\begin{columns}
-	\begin{column}{0.49\textwidth}
-		\begin{exampleblock}{Exemple VSO [arabe]}
-			\begin{RLtext}
-				\acolor{everything}{red} \RL{yt`llm} 
-				\acolor{everything}{blue} \RL{krym} 
-				\acolor{everything}{green} \RL{al-`rbyT}%
-				\acolor{everything}{black}.
-			\end{RLtext}
-		\end{exampleblock}
-	\end{column}
-\end{columns}
-
-Syntaxe (Grammaire de constituants)
-\begin{itemize}
-	\item Une \keyword{phrase} est constituée de plusieurs \keyword[S]{syntagmes} qui sont constitués des mots et d'autres syntagmes.
-	\item Un syntagme contient un \keyword{noyau} qui est l'élément central 
-	\item Selon le noyau, le syntagme peut être : nominal (\keyword{NP}), adjectival (\keyword{AP}), verbal (\keyword{VP}) ou prépositionnel (\keyword{PP})
-	\item Le système formel le plus utilisé pour modéliser la structure des constituants d'une phrase est la \keyword{grammaire hors-contexte} (Niveau 2 dans la hiérarchie de \keyword{Chomsky})
-\end{itemize}
-
-Syntaxe (Grammaire de constituants, exemple)
-\begin{columns}
-	\begin{column}{0.52\textwidth}
-		La grammaire qui a généré cet arbre syntaxique peut être écrite : 
-		
+\begin{figure}[ht]
+	\centering
+	\begin{minipage}{0.3\textwidth}
 		\begin{enumerate}
 			\item P $ \rightarrow $ NP VP
 			\item NP $ \rightarrow $ DET NP'
@@ -349,74 +396,63 @@ Syntaxe (Grammaire de constituants, exemple)
 			\item NP' $ \rightarrow $ ADJ N
 			\item VP $ \rightarrow $ V NP
 		\end{enumerate}
-		
-		La deuxième règle n'ai pas écrite \\(NP $ \rightarrow $ DET NP)\\ sinon on peut avoir plusieurs déterminants à un nom.
-		
-	\end{column}
-	%
-	\begin{column}{0.42\textwidth}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
 		\hgraphpage{gram_const.pdf}
-	\end{column}%
-\end{columns}
+	\end{minipage}
 
-Syntaxe (Grammaire de dépendances)
-\begin{itemize}
-	\item La structure syntaxique est décrite en terme de mots et pas des syntagmes
-	\item \optword{Grammaire de dépendances} : un ensemble des relations binaires entre les mots de la phrase
-	\item Les relations peuvent être : un sujet nominal (\optword{nsubj}), un objet (\optword{obj}), un modificateur d'adjectif (\optword{amod}), déterminant (\optword{det}), etc.
-\end{itemize}
+	\caption[Un exemple d'une grammaire hors-contexte et un arbre syntaxique de la phrase ``Le petit chat mange un poisson"]{Un exemple d'une grammaire hors-contexte et un arbre syntaxique de la phrase ``Le petit chat mange un poisson". \textit{La deuxième règle n'ai pas écrite (NP $ \rightarrow $ DET NP) sinon on peut avoir plusieurs déterminants à un nom.}\label{fig.exp-gram-const}}
 
-\begin{figure}
-	\hgraphpage{gram-dep_.pdf}
-	\caption{Un exemple de dépendances généré par \url{https://corenlp.run/}}
+\end{figure}
+
+Dans une grammaire de dépendances, la structure syntaxique est décrite en terme de mots et pas des syntagmes.
+Les mots de la phrases sont liés entre eux par des relations binaires. 
+Ces relations peuvent être : un sujet nominal (\optword{nsubj}), un objet (\optword{obj}), un modificateur d'adjectif (\optword{amod}), déterminant (\optword{det}), etc.
+Pour plus de relations vous pouvez consulter : \url{https://universaldependencies.org/u/dep/index.html}.
+Un exemple d'une grammaire de dépendance est donné dans la figure~\ref{fig:exp-gram-dep}.
+
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.7\textwidth]{gram-dep_.pdf}
+	\caption{Un exemple de dépendances généré par \url{https://corenlp.run/} \label{fig:exp-gram-dep}}
 \end{figure}
 
 \subsection{Sémantique}
 
+La sémantique est l'étude du sens dans les langues. 
+Il y a deux types de sémantique : la sémantique lexicale pour étudier le sens des mots et la sémantique propositionnelle qui concerne le sens des phrases.
+Plusieurs langues introduisent la notion de \keyword{polysémie} où un mot possède plusieurs sens.
+Par exemple, le terme \expword{poulet} un sens différent selon la phrase où il est utilisé. 
+Voici quelques exemples de l'utilisation de ce mot :
 \begin{itemize}
-	\item Étude du sens dans les langages
-	\begin{itemize}
-		\item \optword{Sémantique lexicale} : sens des mots
-		\item \optword{Sémantique propositionnelle} : sens des phrases
-	\end{itemize}
+	\item J'écoute les piaulements des \expword{poulets}. ``\textit{Petit du coq et de la poule, plus âgé que le poussin, avant d'être adulte.}"
+	\item Je mange du \expword{poulet}. ``\textit{Viande de jeune poule ou jeune coq.}"
+	\item Mon petit \expword{poulet}. ``\textit{Terme d'affection, que l'on adresse généralement aux enfants.}"
 \end{itemize}
 
-\begin{exampleblock}{Un exemple de différents sens}
-	Le terme \expword{poulet} a plusieurs sens selon la phrase (\url{https://fr.wiktionary.org/wiki/poulet})
-	\begin{itemize}
-		\item J'écoute les piaulements des \expword{poulets}. ``\textit{Petit du coq et de la poule, plus âgé que le poussin, avant d'être adulte.}"
-		\item Je mange du \expword{poulet}. ``\textit{Viande de jeune poule ou jeune coq.}"
-		\item Mon petit \expword{poulet}. ``\textit{Terme d'affection, que l'on adresse généralement aux enfants.}"
-	\end{itemize}
-	
-\end{exampleblock}
-
-Le sens des mots
+Dans la sémantique lexicale le but est d'encoder le sens d'un mot. 
+Il faut mentionner que dans les systèmes logographiques, un \keyword[G]{graphème} peut être décrit par sa forme ; par exemple, \expword{川 (rivière), 山 (montagne)}.
+Donc, le sens d'un mot est dérivé des sens des graphèmes qui le composent ; par exemple, \expword{音 (son, bruit) + 楽 (musique, confort, facilité) = 音楽 (musique)}.
+D'une manière générale, le sens peut être représenté en utilisant : un ensemble de ``primitives sémantiques", à l'aide de relations entre morphèmes (un réseau de sens), comme un vecteur de nombres réels, etc.
+Une des théories pour représenter un sens en utilisant les primitives sémantiques est l'analyse sémique. 
+Dans cette dernière, un \keyword[S]{sème} une unité minimale de signification (trait sémantique minimal). 
+Les sèmes sont définis manuellement. 
+Un \keyword[S]{sémème} est un faisceau de sèmes correspondant à une unité lexicale. 
+Les mots ayant un ou plusieurs sèmes positifs en commun appartiennent au même champ sémantique.  
+La tableau~\ref{tab:semique} représente un exemple de l'analyse sémique des mots ``chat", ``chien" et ``lion" en se basant sur les sèmes : ``animé", ``domestique" et ``félin". 
+La représentation vectorielle peut être vu comme une analyse sémique, où chaque valeur représente le poids d'un sème, sauf que les sèmes ici sont anonymes. 
+On apprend cette représentation, en général, par ce qu'on appelle \keyword{word embedding}. 
+Une autre représentation est d'utiliser un réseau de sens où les morphèmes sont liés avec des relations sémantiques.
+Ces dernières peuvent être : 
 \begin{itemize}
-	\item Dans les systèmes logographiques, un \keyword[G]{graphème} représente un ou plusieurs sens (en général, avec plusieurs prononciations)
-	
-%	\begin{CJK}{UTF8}{min}
-		\expword{川} (rivière), \expword{山} (montagne), 
-		
-		\expword{音} (son, bruit) + \expword{楽} (musique, confort, facilité) = \expword{音楽} (musique)
-%	\end{CJK}
-	
-	\item Un mot peut avoir plusieurs sens (\keyword[P]{Polysémie})
-	\item Le sens d'un mot est construit
-	\begin{itemize}
-		\item d'un ensemble de ``primitives sémantiques"
-		\item à l'aide de relations entre morphèmes (un réseau de sens)
-	\end{itemize}
+	\item \optword{Synonyme} si on substitue un mot par un autre dans une phrase sans changer le sens, donc les mots sont des synonymes
+	\item \optword{Antonyme} le sens opposé. Les deux mots doivent exprimer deux valeurs d'une même propriété. Exemple, \expword{grand} et \expword{petit} expriment la propriété \expword{taille}
+	\item \optword{Hyponyme} un mot ayant un sens plus spécifique qu'un autre. Exemple, \expword{chat} est l'hyponyme de \expword{félin} hyponyme de \expword{animal}. 
+	\item \optword{Hyperonyme} un mot avec un sens plus générique. Exemple, \expword{félin} est l'hyperonyme de \expword{chat}
+	\item \optword{Méronyme} un mot qui désigne une partie d'un autre. Exemple, \expword{roue} est un méronyme de \expword{voiture}
 \end{itemize}
 
-Le sens des mots (analyse sémique)
-\begin{itemize}
-	\item \keyword[S]{Sème} une unité minimale de signification (trait sémantique minimal)
-	\item \keyword[S]{Sémème} un faisceau de sèmes correspondant à une unité lexicale
-	\item Les mots ayant un ou plusieurs sèmes positifs en commun appartiennent au même champ sémantique
-\end{itemize}
-
-\begin{exampleblock}{Un exemple de l'analyse sémique}
+\begin{table}[ht]
 	\centering
 	\begin{tabular}{|l|l|l|l|}
 		\hline
@@ -429,53 +465,27 @@ Le sens des mots (analyse sémique)
 		Chien & + & + & - \\
 		\hline
 	\end{tabular}
-\end{exampleblock}
+	\caption{Un exemple de l'analyse sémique. \label{tab:semique}}
+\end{table}
 
-Le sens des mots (relations sémantiques)
+Une proposition prend son sens des sens des mots qui la composent. 
+Il existe plusieurs façons pour représenter le sens d'une phrases, parmi ces méthodes : la logique du premier ordre, la représentation par graphes et la représentation vectorielle.
+Dans cette dernière, on peut utiliser la technique de \keyword{sentence embedding} pour générer un vecteur représentant la phrase. 
+Une représentation sémantique doit être indépendante de la structure syntaxique.
+Par exemple, les phrases ``\textit{Quelques étudiants possèdent deux ordinateurs}" et ``\textit{Deux ordinateurs sont possédés par quelques étudiants}" doivent avoir la même représentation sémantique. 
+Un exemple de quelques représentations sémantiques justes et fausses de ces deux phrases en logique du premier ordre peuvent être :
 \begin{itemize}
-	\item \optword{Synonyme} si on substitue un mot par un autre dans une phrase sans changer le sens, donc les mots sont des synonymes
-	\item \optword{Antonyme} le sens opposé. Les deux mots doivent exprimer deux valeurs d'une même propriété. Exemple, \expword{grand} et \expword{petit} expriment la propriété \expword{taille}
-	\item \optword{Hyponyme} un mot ayant un sens plus spécifique qu'un autre. Exemple, \expword{chat} est l'hyponyme de \expword{félin} hyponyme de \expword{animal}. 
-	\item \optword{Hyperonyme} un mot avec un sens plus générique. Exemple, \expword{félin} est l'hyperonyme de \expword{chat}
-	\item \optword{Méronyme} un mot qui désigne une partie d'un autre. Exemple, \expword{roue} est un méronyme de \expword{voiture}
+	\item $E = Etudiant, \; O = Ordinateur, \; P = Possede$
+	\item $\exists x (E(x) \wedge \forall y ( O(y) \Rightarrow P(x, y)) )$ \textcolor{red}{\XBox}
+	\item $\exists x (E(x) \wedge \exists y, z (( (O(y) \wedge P(x, y) ) \wedge (O(z) \wedge P(x, z) ) ))$ \textcolor{red}{\XBox}
+	\item $\exists x (E(x) \wedge \exists y, z (\neg y = z \wedge ( (O(y) \wedge P(x, y) ) \wedge (O(z) \wedge P(x, z) ) ))$ \textcolor{green}{\CheckedBox}
+	\item $\exists x (E(x) \wedge \exists y ((O(y) \wedge P(x, twoOf(y)) ))$ \textcolor{green}{\CheckedBox}
 \end{itemize}
+Parmi les applications de la représentation sémantique d'une proposition : l'inférence. 
+On peut déduire une nouvelle connaissance à partir d'autres existantes. 
+Un exemple de l'inférence dans la logique du premier ordre est donné dans la figure~\ref{fig:exp-inference}.
 
- Le sens des propositions
-\begin{minipage}{0.5\textwidth}
-	\begin{itemize}
-		\item Logique des prédicats du premier ordre
-		\item \keyword{prédicat} est une propriété des entités. Ex. \expword{Posseder, Personne}.	
-		\item \keyword{constante} une entité spécifique du monde. Ex. \expword{Karim, Algerie, ESI}.
-		\item \keyword{variable} réfère à une entité anonyme. Ex. \expword{x, y}.
-		\item \keyword{fonction} résulte à une entité spécifique sans avoir besoin de créer une nouvelle constante. Ex. \expword{locationOf: locationOf(ESI) vs. locationOfESI}.
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{0.48\textwidth}
-%	\begin{figure}
-%		\hgraphpage{sem-logique_.pdf}
-%		\caption{Une syntaxe adaptée de \cite{2002-russell-norvig} décrivant la représentation du logique du premier ordre \cite{2019-jurafsky-martin}}
-%	\end{figure}
-\end{minipage}
-
-Le sens des propositions (exemple)
-\begin{exampleblock}{Un exemple de la représentation sémantique d'une phrase}
-	\begin{itemize}
-		%	\item I have a car \cite{2019-jurafsky-martin}
-		%	\[%
-		%	\exists\, e, y\, Having(e) \wedge Haver(e, Speaker) \wedge HadThing(e, y) \wedge Car(y)
-		%	\]
-		\item Quelques étudiants possèdent deux ordinateurs 
-		\item Deux ordinateurs sont possédés par quelques étudiants
-		\item $E = Etudiant, \; O = Ordinateur, \; P = Possede$
-		\item $\exists x (E(x) \wedge \forall y ( O(y) \Rightarrow P(x, y)) )$ \textcolor{red}{\XBox}
-		\item $\exists x (E(x) \wedge \exists y, z (( (O(y) \wedge P(x, y) ) \wedge (O(z) \wedge P(x, z) ) ))$ \textcolor{red}{\XBox}
-		\item $\exists x (E(x) \wedge \exists y, z (\neg y = z \wedge ( (O(y) \wedge P(x, y) ) \wedge (O(z) \wedge P(x, z) ) ))$ \textcolor{green}{\CheckedBox}
-		\item $\exists x (E(x) \wedge \exists y ((O(y) \wedge P(x, twoOf(y)) ))$ \textcolor{green}{\CheckedBox}
-	\end{itemize}
-\end{exampleblock}
-
-Le sens des propositions (inférence)
-\begin{exampleblock}{Un exemple d'inférence}
+\begin{figure}[ht]
 	\centering
 	\begin{tabular}{lll}
 		Chaque homme est mortel.  & & Socrate est un homme. \\
@@ -483,60 +493,37 @@ Le sens des propositions (inférence)
 		\hline
 		\multicolumn{3}{c}{$Motel(Socrate)$}\\
 	\end{tabular}
-	
-\end{exampleblock}
+	\caption{Un exemple d'inférence dans la logique du premier ordre. \label{fig:exp-inference}}
+\end{figure}
 
 \subsection{Pragmatique et discours}
 
-Pragmatique (motivation)
-\begin{minipage}{0.7\textwidth}
-	\begin{itemize}
-		\item Imaginer qu'on est dans un anniversaire 
-		\item Une personne a créé : "Les bougie!"
-		\item On peut directement comprendre qu'il n'y a pas des bougies sur la tarte
-		\item \optword{Question} : comment peut-on déduire ça ? 
-		\item \optword{Réponse} : du \keyword{contexte}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{0.28\textwidth}
-	\hgraphpage{pragmatique.pdf}
-\end{minipage}
-
-\vfill
-\begin{tabular}{|p{.4\textwidth}|p{.5\textwidth}|}
-	\hline
-	\bfseries Sémantique & \bfseries Pragmatique \\
-	\hline 
-	\multicolumn{2}{|l|}{une personne \textbf{A} est arrivée tard à un rendez-vous.} \\
-	\multicolumn{2}{|l|}{\textbf{B} : ``A votre avis, quelle heure est-il ?"} \\
-	\hline 
-	\textbf{A} annonce l'heure &  \textbf{A} explique les raisons du retard \\
-	\hline
-\end{tabular}
-
-Pragmatique (raisonnement)
+Le niveau pragmatique est responsable de l'étude du sens lié au contexte ; celui difficile à comprendre seulement avec le niveau sémantique. 
+Prenons un exemple : imaginons qu'on est dans un anniversaire et une personne a créé "\textit{Les bougie!}". 
+On peut directement comprendre qu'il n'y a pas des bougies sur la tarte.
+Un exemple : supposons que vous avez fixé un rendez-vous avec une autre personne qui n'a pas arrivée à temps. 
+Une des réactions que vous pouvez faire est de demander la raison pour laquelle elle a fait de retard. 
+Une façon de le faire est de demander : ``\textit{A votre avis, quelle heure est-il ?}".
+Si cette personne comprend seulement le niveau sémantique, elle va annoncer l'heure. 
+Sinon, elle va expliquer la raison du retard.
+Parmi les champs d'intérêt de cette branche, on peut citer :
 \begin{itemize}
 	\item \optword{Implicature conversationnelle} : réfère à ce que le locuteur veut dire d'une façon implicite.
 	D'après \cite{1979-Grice}, les interlocuteurs doivent respecter certaines normes (maximes) conversationnelles  : quantité, qualité, pertinence et manière. 
-	%	Karim, qui est paresseux, a arrêté de rédiger. 
-	%	Karim rédigeait.
-	%	Karim est paresseux.
-	%	Karim ne rédige plus.
-	%	Il existe un homme qui s'appelle Karim.
+	Par exemple, à partir de la phrase \expword{"Karim, qui est paresseux, a arrêté de rédiger.``}, on peut extraire les informations suivantes : \expword{``Karim rédigeait."}, \expword{``Karim est paresseux."}, \expword{``Karim ne rédige plus."} et \expword{``Il existe un homme qui s'appelle Karim."}.
 	
 	\item \optword{Présupposition} : réfère aux suppositions faites par les interlocuteurs lors de la communication.
 	
 	\item \optword{Acte de langage} : réfère à l'interaction linguistique du locuteur afin d'agir sur son environnement. Une liste des actes de langage est fournie par \cite{1962-austin} : déclaration, ordre, question, interdiction, salutation, invitation, félicitation, excuses.
 \end{itemize}
 
-Discours (Coréférence)
-\begin{exampleblock}{Un exemple de coréférence}
-	\begin{itemize}
-		\item \keyword{The cat} doesn't fit in the box because \keyword{it} is too big.
-		\item The cat doesn't fit in \keyword{the box} because \keyword{it} is too small.
-	\end{itemize}
-\end{exampleblock}
-
+Le niveau discours s'intéresse aux aspects d'un texte entier comme : la coréférence et la cohérence.
+Le but de la coréférence est de détecter les références et les lier avec leurs entités. 
+Cette tâche est vraiment difficile vu qu'elle nécessite une connaissance de l'environnement. 
+Par exemple, dans la phrase ``\expword{The cat doesn't fit in the box because it is too big.}", on sait que \expword{it} référence \expword{The cat}. 
+Ceci est dû à la connaissance préalable qu'une chose rentre dans une autre si cette dernière est plus large.
+En utilisant cette connaissance, on sait que \expword{it} référence \expword{the box} dans la phrase ``\expword{The cat doesn't fit in the box because it is too small.}"
+Une référence peut se manifester en plusieurs formes :
 \begin{itemize}
 	\item \optword{Pronoms} : \expword{le chat} a chassé une souris et \expword{il} joue avec elle.
 	\item \optword{Syntagmes nominaux} : \expword{Apple} est un fabricant d'ordinateur. \expword{La firme} est mondialement connue.
@@ -544,141 +531,162 @@ Discours (Coréférence)
 	\item \optword{Noms} : \expword{International Business Machine }est une société américaine. Comme Apple, \expword{IBM} fabrique des ordinateurs.
 \end{itemize}
 
-Discours (Cohérence)
+Un autre sujet traité au niveau de discours est la cohérence des phrases ; est-ce que l'ordre des phrases est logique ?
+Afin d'analyser le discours, on peut soit se baser sur sa structure ou sur les entités qui lui composent. 
+Parmi les modèles de discours les plus utilisés, on peut mentionner \keyword{Rhetorical Structure Theory (RST)}.
+C'est un modèle basé sur la structure où on veut trouver les relations entre deux phrases. 
+Parmi les relations de cohérence, on peut citer : raison, élaboration, évidence, attribution, narration, etc.
+ce sont des relations binaires entre \optword{noyau} et \optword{satellite}.
+Prenons la phrase ``\expword{L'étudiant s'est absenté hier. Il a été malade.}".
+Première phrase est un noyau puisqu'elle décrit l'évènement principal.
+Deuxième phrase est un satellite puisqu'elle dépend de la première.
+Voici quelques exemples des relations de cohérence : 
 \begin{itemize}
-	\item Relation entre les énoncés d'un discours
-	\item \keyword{Rhetorical Structure Theory (RST)} : le modèle du discours le plus utilisé
-	\item Deux types d'énoncé : \optword{noyau} et \optword{satellite}
-	\begin{itemize}
-		\item \expword{L'étudiant s'est absenté hier. Il a été malade.}
-		\item Première phrase est un noyau puisqu'elle décrit l'évènement principal
-		\item Deuxième phrase est un satellite puisqu'elle dépend de la première
-	\end{itemize}
-	\item il y a plusieurs relations de cohérence : raison, élaboration, évidence, attribution, narration, etc.
+	\item \optword{la raison} : \expword{[\textsubscript{NOY} L'étudiant s'est absenté hier.] [\textsubscript{SAT} Il a été malade.]}
+	\item \optword{l'élaboration} : \expword{[\textsubscript{NOY} L'examen est facile.] [\textsubscript{SAT} Il ne prend qu'une heur.]}
+	\item \optword{l'évidence} : \expword{[\textsubscript{NOY} Kevin doit être ici.] [\textsubscript{SAT} Sa voiture est garée à l'extérieur.]}
 \end{itemize}
-
-\begin{exampleblock}{Un exemple de la raison}
-	[\textsubscript{NOY} L'étudiant s'est absenté hier.] [\textsubscript{SAT} Il a été malade.]
-\end{exampleblock}
-
-\begin{exampleblock}{Un exemple de l'élaboration}
-	[\textsubscript{NOY} L'examen est facile.] [\textsubscript{SAT} Il ne prend qu'une heur.]
-\end{exampleblock}
-
-\begin{exampleblock}{Un exemple de l'évidence}
-	[\textsubscript{NOY} Kevin doit être ici.] [\textsubscript{SAT} Sa voiture est garée à l'extérieur.]
-\end{exampleblock}
-
 
 %===================================================================================
 \section{Applications du TALN}
 %===================================================================================
 
+Les applications du \ac{taln} peuvent être vu selon trois volets : tâches, systèmes complets ou affaires. 
+Comme tâches, on s'intéresse aux applications élémentaires qui peuvent aider d'autres applications. 
+Comme systèmes, on s'intéresse aux différentes applications destinées au utilisateurs. 
+Comme affaires, on s'intéresse comment appliquer le \ac{taln} pour résoudre des problèmes de la santé, éducation, etc.
+
 \subsection{Tâches}
 
-Morphosyntaxe
+On commence par énumérer quelques tâches de la morphosyntaxe. 
+Ces tâches sont utiles pour les applications de recherche d'information et d'extraction d'information. 
+En général, elles n'ont pas besoin d'une grande quantité de ressources : puissance de calcul et données.
 \begin{itemize}
-	\item \optword{Délimitation de la phrase et séparation des mots} : diviser le texte en unités plus petites pour faciliter le traitement
-	\item \optword{Lemmatisation et racinisation} : rendre les mot à une forme standard
-	\item \optword{Étiquetage morpho-syntaxique} : trouver les catégories grammaticales des mots d'une phrase
-	\item \optword{Analyse syntaxique} : trouver la structure syntaxique d'une phrase (comment elle a été formée)
-	\item \optword{Extraction terminologique} : chercher les terminologies existantes dans un texte
+	\item \optword{Délimitation de la phrase et séparation des mots} : diviser le texte en unités plus petites pour faciliter le traitement. 
+	La plupart des applications du \ac{taln} essayent de traiter un texte sous forme des unités plus petites : paragraphes, phrases, mots, caractères.
+	D'où la nécessité de cette tâche.
+	\item \optword{Lemmatisation et racinisation} : rendre les mot à une forme standard. 
+	Dans la recherche d'information, si on cherche le terme ``formation" il se peut qu'il existe des pages contenant des résultats intéressants mais avec le mot "former". 
+	Donc, l'intérêt de cette tâche est de diminuer les variations d'un même concept qui résultent de la formation des mots dans les langues synthétiques.
+	\item \optword{Étiquetage morpho-syntaxique} : trouver les catégories grammaticales des mots d'une phrase. 
+	Plusieurs applications peuvent s'améliorer en introduisant les catégories grammaticales des mots. 
+	Par exemple, pour comprendre une phrase contenant le mot ``fish", il faut savoir si ce mot est un verbe ou un nom.
+	\item \optword{Analyse syntaxique} : trouver la structure syntaxique d'une phrase (comment elle a été formée).
+	Afin de comprendre les relations entre les parties d'une phrase, il faut savoir comment elle sont structurées.
+	\item \optword{Extraction terminologique} : chercher les terminologies existantes dans un texte. 
+	Ceci est une application directe de l'extraction de données. 
+	Parmi ses applications : la création automatique des bases de données.
 \end{itemize}
 
-Sémantique
+Les tâches sémantiques sont plus difficiles et elle ont besoin de plus de ressources. 
+Elles ont comme but la compréhension et la génération du texte. 
 \begin{itemize}
-	\item \optword{Désambiguïsation lexicale} : trouver le sens d'un mot et sa fonction grammaticale
-	\item \optword{Étiquetage des rôles sémantiques} : chercher le rôle sémantique (agent, thème, etc.) des mots et syntagmes
-	\item \optword{Reconnaissance d'entités nommées} : extraire les noms de personnes, noms d'organisations ou d'entreprises, noms de lieux, quantités, distances, valeurs, dates, etc.
-	\item \optword{Analyse sémantique} : trouver la représentation sémantique du texte
-	\item \optword{Paraphrase} : formuler un texte différemment 
+	\item \optword{Désambiguïsation lexicale} : trouver le sens d'un mot et sa fonction grammaticale. 
+	A cause de la polysémie, on peut trouver un mot avec plusieurs sens et même avec plusieurs fonctions grammaticales. 
+	Afin de comprendre une phrase, il faut trouver le sens de ses mots.
+	\item \optword{Étiquetage des rôles sémantiques} : chercher le rôle sémantique (agent, thème, etc.) des mots et syntagmes.
+	Afin de comprendre une phrase, il faut savoir qui a fait l'action, qui a subit l'action, etc. 
+	Ceci est utile, aussi, pour l'application de question/réponse où la machine cherche et répondre aux questions des utilisateurs.
+	\item \optword{Reconnaissance d'entités nommées} : extraire les noms de personnes, noms d'organisations ou d'entreprises, noms de lieux, quantités, distances, valeurs, dates, etc. 
+	Cette tâche est utile pour la compréhension d'une phrase en essayant d'ajouter plus de contexte. 
+	Aussi, elle est utile pour l'extraction de données et la création des bases de données.
+	\item \optword{Analyse sémantique} : trouver la représentation sémantique du texte. 
+	Elle est utilisée pour comprendre le sens d'une phrase.
+	\item \optword{Paraphrase} : formuler un texte différemment. 
+	Ceci est utile lors de la génération du texte ; générer un texte de plusieurs façons.
 	\item \optword{Implication textuelle} : vérifier si un segment du texte est vrai implique qu'un autre est vrai aussi.
-	\item \optword{Génération automatique de textes}
+	Ceci est utile pour comprendre l'intention du locuteur.
+	\item \optword{Génération automatique de textes} : générer du texte automatiquement. 
+	Elle est utile dans plusieurs applications comme les chatbots, la traduction automatique, etc.
 \end{itemize}
 
-Discours
+Le discours est un niveau plus avancé que celui de sémantique ; il a besoin de plus de données. 
+Il est utile pour la compréhension du texte entier et pas seulement phrase par phrase.
 \begin{itemize}
 	\item \optword{Résolution de coréférence} : trouver les différentes références dans le texte. 
-	\item \optword{Analyse du discours} : chercher les relations entre les phrases
-	\item \optword{Résolution d'ellipse} : trouver les éléments omis du texte. Exemple d'ellipse : \expword{``Pierre mange des cerises, Paul des fraises"}
+	Elle est utile dans plusieurs applications ; par exemple lorsqu'on extrait une partie du texte, on veut savoir quelle est la référence d'un pronom personnel.
+	\item \optword{Analyse du discours} : chercher les relations entre les phrases. 
+	On peut utiliser cette tâche pour tester si un texte est cohérent, et aussi pour générer un texte cohérent.
+	\item \optword{Résolution d'ellipse} : trouver les éléments omis du texte. 
+	Exemple d'ellipse : \expword{``Pierre mange des cerises, Paul des fraises"}.
+	Dans cet exemple, la phrase complète est \expword{``Pierre mange des cerises, Paul mange des fraises"}.
+	Ici, on a omet le verbe puisqu'il est compréhensible d'après le contexte.
 \end{itemize}
 
 \subsection{Systèmes}
 
-Traduction automatique
+Ici, on va présenter quelques applications du \ac{taln} comme un système de bout en bout. 
+Ces systèmes utilisent un ensemble des tâches précédemment présentées afin de satisfaire un besoin. 
+Ils essayent d'automatiser des tâches complexes qui nécessitent un être humain pour être complétées.
 \begin{itemize}
-	\item Traduction d'une langue vers une autre
+	\item \optword{Traduction automatique} : Traduction d'une langue vers une autre.
+	La langue est un outil pour transmettre de la connaissance entre les être humains. 
+	Il existe une richesse de langues dans le monde qui nous permet de ressentir la grandeur des êtres humains.
+	Malheureusement, cela conduit aussi à séparer les nations.
+	La traduction automatique peut aider les peoples à communiquer leurs idées et à combler le vide créé par la langue. 
+	\item \optword{Résumé automatique} : Produire une version compacte du texte.
+	Beaucoup de données sont générées chaque minute sur le web. 
+	Prendre compte des informations et des nouvelles est vraiment difficile voir impossible.
+	La quantité d'information n'est pas seulement le seul obstacle, mais aussi sa qualité. 
+	Il existe beaucoup de redondance sur le web ; un exemple peut être ressentit dans les réseaux sociaux et la mentalité de copier-coller. 
+	Maintenant, imaginons un système qui scanne le web (en ciblant quelque sites) et qui récupère un résumé de tous ce qui est publié. 
+	Imaginons qu'il peut trouver les nouvelles et filtrer ce qui est redondant.
+	
+	\item \optword{Questions-réponses} : Chercher des réponses aux questions formulées en langage naturel.
+	Souvenons-nous du temps perdu pour trouver une petite information : chercher dans les sites web et les livres, lire des milliers de lignes, comparer les informations trouvées entre deux sites, etc.
+	Dans notre vie, une forte probabilité qu'on a rencontré quelqu'un qui nous a donné une réponse à une question et nous a épargné la peine de chercher.
+	Si on se dispose d'un système qui peut répondre à des questions génériques ou spécifique à un domaine (médecine par exemple), ça va sauver beaucoup de temps perdu.
+	
+	\item \optword{Agents conversationnels (chatbots)} : Dialoguer avec un utilisateur. 
+	Les chatbots sont utiles pour aider l'utilisateur en répondant à ces questions afin d'accomplir une tâche.
+	Par exemple, la réservation des vols en fournissant des informations sur les aéroports, le temps, les pays, etc. 
+	
+	\item \optword{Extraction d'informations} : extraire des informations ciblées sur le web fin de faire des analyses ou de peupler une base de donnés.
+	\begin{itemize}
+		\item \optword{Fouille des textes} : extraction de connaissances à partir d'un texte.
+		\item \optword{Analyse des sentiments} : trouver les sentiments existants dans un texte. Par exemple, \expword{vérification si des utilisateurs sont satisfaits par un produit ou non}.
+		\item \optword{Recommandation automatique des documents} : présenter des éléments qui sont susceptibles d'intéresser un utilisateur. Ex., \expword{recommander des livres}.
+	\end{itemize}
 \end{itemize}
 
-\begin{figure}
-	\hgraphpage{traduction_exp.png}
-	\caption{Exemple du système Google translate}
-\end{figure}
-
-Résumé automatique
-\begin{itemize}
-	\item Produire une version compacte du texte
-\end{itemize}
-
-\begin{figure}
-	\hgraphpage{resume.png}
-	\caption{Exemple du système esummarizer}
-\end{figure}
-
-Questions-réponses
-\begin{itemize}
-	\item Chercher des réponses aux questions formulées en langage naturel
-\end{itemize}
-
-\begin{figure}
-	\hgraphpage{QR.png}
-	\caption{Exemple du système START}
-\end{figure}
-
-Agents conversationnels (chatbots)
-\begin{itemize}
-	\item Dialoguer avec un utilisateur
-\end{itemize}
-
-\begin{figure}
-	\centering
-	\hgraphpage[.5\textwidth]{chatbot.png}
-	\caption{Exemple du système Cleverbot}
-\end{figure}
-
-Extraction d'informations
-\begin{itemize}
-	\item \optword{Fouille de textes} : extraction de connaissances à partir d'un texte
-	\item \optword{Analyse de sentiments} : trouver les sentiments existants dans un texte. Par exemple, \expword{vérification si des utilisateurs sont satisfaits par un produit ou non}
-	\item \optword{Recommandation automatique de documents} : présenter des éléments qui sont susceptibles d'intéresser un utilisateur. Ex., \expword{recommander des livres}
-\end{itemize}
 
 \subsection{Affaires (business)}
 
-Commerce
+Cette siècle est connue par l'énorme quantité des données accessibles sur le web. 
+Une grande proportion de ces données est sous format textuelle non structurée.
+Elle contient des informations et des opinions de tout genre. 
+Beaucoup d'entreprises ont ressenti la nécessité d'exploiter ces ressources afin d'améliorer leurs commerce. 
+Parmi les applications du \ac{taln} dans le monde de la commerce, on peut citer :
 \begin{itemize}
 	\item \optword{Publicité} : identifier de nouveaux publics potentiellement intéressés par certains produits.
 	\item \optword{Service clientèle} : utiliser des chatbots pour répondre aux questions potentielles des clients. Aussi, utiliser l'analyse de sentiments pour avoir une idée sur l'opinion des clients sur les produits de l'entreprise.
-	\item \optword{Intelligence de marché} : surveiller des blogs, des sites web et des réseaux sociaux pour analyser les tendances du marché et pour avoir une idée sur la compétition.
-	\item \optword{Recrutement} : filtrer des CVs pour trouver des candidats plus rapidement et sans biais
+	\item \optword{Intelligence de marché} : surveiller les blogs, les sites web et les réseaux sociaux pour analyser les tendances du marché et pour avoir une idée sur la compétition.
+	\item \optword{Recrutement} : filtrer les CVs pour trouver des candidats plus rapidement et sans biais.
 \end{itemize}
 
-E-Governance
+Afin d'améliorer la communication entre citoyens et gouvernement, le \ac{taln} peut être utilisé dans le domaine de \keyword{E-Governance}.
+Des cas d'utilisation du \ac{taln} dans ce domaine peuvent être résumés dans ces points :
 \begin{itemize}
 	\item \optword{Communication gouvernement/citoyens} : les citoyens analphabètes peuvent partager leurs opinions en utilisant des audio/vidéo, qui peuvent être traduites en texte. De même, un message aux citoyens peut être transformé à un message vocal.
 	\item \optword{Fouille d'opinions} : extraction des commentaires, des plaintes et des critiques sur une politique particulière, déterminant ainsi le consensus général à ce sujet.
 \end{itemize}
 
-Santé
+Un des domaines qui s'intéressent de plus en plus aux applications du \ac{taln} est le domaine de la santé.
+En effet, le \ac{taln} peut vraiment améliorer plusieurs tâches dans ce domaine puisque ce dernier génère et nécessite beaucoup de documents y compris ceux textuels.
+Améliorer l'accès à l'information peut sauver pas seulement le temps, mais aussi beaucoup de vies.
+Parmi les tâches où le \ac{taln} peut jouer un grand rôle, on peut citer :
 \begin{itemize}
-	\item Structurer les documents médicaux afin de faciliter leur exploitation
-	\item Rechercher, analyser et interpréter des quantités gigantesques d'ensembles de données de patients
-	\item Prédire les maladies en se basant sur les symptômes et les documents médicaux
-	\item Générer des rapports 
-	\item Utiliser des assistants virtuels pour monitorer et aider les patients
+	\item Structurer les documents médicaux afin de faciliter leur exploitation.
+	\item Rechercher, analyser et interpréter des quantités gigantesques d'ensembles de données de patients.
+	\item Prédire les maladies en se basant sur les symptômes et les documents médicaux.
+	\item Générer des rapports.
+	\item Utiliser des assistants virtuels pour monitorer et aider les patients.
 \end{itemize}
 
-Éducation
+La langue est un outil pour communication, d'où l'intérêt d'apprendre au moins une. 
+Les élèves apprennent a langue en interagissant avec un éducateur et en passant des évaluation afin de juger les lacunes et de les améliorer. 
+Le \ac{taln}, vu qu'il fourni des tâches liées aux langue, peut aider dans le domaine de l'éducation.
+Parmi les tâches d'un éducateur qu'on peut automatiser, on peut énumérer :
 \begin{itemize}
 	\item Évaluation de la langue : lire, écrire et parler.
 	\item Correction des erreurs d'orthographe 
@@ -690,17 +698,27 @@ Santé
 \section{Défis du TALN}
 %===================================================================================
 
+Chaque domaine a ces propres défis ; le \ac{taln} n'est pas une exception. 
+Les variétés des langues, la non standardisation, l'évolution des langues et tous les aspects npn prédictible des être humains rendent ce domaine vraiment difficile.
+Ici, on va discuter quelques défis qui ne prouvent pas seulement que ce domaine est difficile, mais aussi qui motivent son importance.
+
 \subsection{Ressources}
 
-\begin{itemize}
-	\item Manque des outils et des datasets pour les langues moins parlées
-	\item Annotation manuelle des corpus d'entraînement et de test
-	\item Traitement des documents larges : l'apprentissage automatique est limité lorsqu'il s'agit de représenter des contextes longs
-\end{itemize}
+Les ressources que se soit en terme de la puissance de calcul ou en terme de données est un problème surtout avec les tâches qui ne peuvent être résolues qu'avec l'apprentissage automatique.
+La plupart de ces tâches ont besoin d'un apprentissage supervisé, d'où la nécessité d'annotation manuelle des corpus d'entraînement et de test. 
+Plusieurs chercheurs et développeurs évitent l'annotation en cherchant des datasets déjà annotées et en modifiant le problème initial (résoudre un problème en résolvant un autre). 
+Cela peut affecter la qualité de l'outil final. 
+Si on parle de la taille des documents, lorsqu'on doit traiter des documents plus larges ça va complexer la tâche. 
+En optant d'une solution par apprentissage, des fois un modèle va avoir du mal à représenter des contextes longs. 
+Jusqu'à maintenant, j'ai discuté les défis en terme de ressources dans le cas d'une langue bien visible. 
+Lorsqu'on veut traiter une langue moins parlée, on ne va pas tomber seulement dans le problème des données absents, mais aussi le manque des outils. 
+Supposant qu'on veuille concevoir un système de traduction vers une langue rare or nous ne disposons même pas d'un outil pour la segmentation des mots.
 
 \subsection{Compréhension de la langue}
 
-Ambigüité et Coréférence
+L'ambigüité est le plus grand défis du traitement d'une langue. 
+Même les être humains ont du mal à comprendre certains passages dû à l'ambigüité.
+Ce problème est originaire des propriétés du langages naturels, parmi lesquelles on peut citer :
 \begin{itemize}
 	\item \keyword[P]{polysémie} : un mot ayant plusieurs sens. Ex. \expword{Indien : de l'Inde, indigène des Amériques}
 	\item \keyword[E]{énantiosémie} : un terme polysémique ayant deux sens antonymes. Ex. \expword{Regret, désigne la plainte ou la nostalgie : ``Je regrette mon enfance".}
@@ -710,7 +728,9 @@ Ambigüité et Coréférence
 		loaded into the destination database. }
 \end{itemize}
 
-Aspect humain
+Le défis précédent suppose que le locuteur utilise un langage standard, simple , directe et objectif.
+Si une de ces propriétés sera absentes dans le langage, ce dernier sera plus difficile à comprendre même par des être humains.
+Parmi les aspects humains qui peuvent aggraver la difficulté du traitement d'un discours, on peut énumérer :
 \begin{itemize}
 	\item \optword{Personnalité} : comment modéliser une personnalité ? comment la personnalité affect le discours ?
 	\item \optword{Variations et communication non standard} : les utilisateurs ne respectent pas les standards d'écriture d'une langue. Ex., \expword{langue de chat, arabizi, franglais, etc.}
@@ -720,32 +740,66 @@ Aspect humain
 
 \subsection{Évaluation}
 
-\begin{itemize}
-	\item \optword{Évaluation manuelle}
-	\begin{itemize}
-		\item prend du temps (coût élevé en terme de temps)
-		\item parfois nécessite des experts (coût élevé en terme de dépenses)
-		\item problème de subjectivité de l'évaluateur et de l'agrément inter-évaluateurs
-	\end{itemize}
-	\item \optword{Évaluation automatique}
-	\begin{itemize}
-		\item plusieurs aspects sont difficiles à évaluer automatiquement
-	\end{itemize}
-\end{itemize}
+L'évaluation automatique est vraiment difficile surtout pour certains aspects de la langue, comme par exemple la cohérence. 
+Si on arrive à évaluer un aspect automatiquement, on peut utiliser le même algorithme d'évaluation pour l'améliorer. 
+La solution la plus idéale pour tester qu'un système est conforme à une tâche humaine est de le faire passer par un humain.
+Ceci prend du temps (coût élevé en terme de temps). 
+En plus, l'évaluation nécessite des experts (coût élevé en terme de dépenses).
+Une évaluation manuelle peut causer le problème de subjectivité de l'évaluateur et de l'agrément inter-évaluateurs.
 
 \subsection{Éthique}
 
+Comme tout outil, le \ac{taln} peut être utilisé d'une mauvaise façon. 
+C'est un outil très puissant si on arrive à le maitriser ; ça sera d'une grande utilité à l'humanité. 
+Dans l'autre coté, il peut être utilisé contre un groupe d'humains que se soit avec intention ou non. 
+Même si on ne veut pas l'utiliser pour nuire à un groupe, cela peut être fait indirectement. 
+Donc, avant de concevoir un système il faut vérifier quelques points comme :
 \begin{itemize}
 	\item \optword{Vie privée} : les données collectées peuvent contenir des informations privées des individus. Des entreprises peuvent stocker des informations sur leurs utilisateurs. 
 	\item \optword{Biais et discrimination} : les corpus utilisés pour entraîner un système peuvent causer du biais.
+	Par exemple, on a remarqué que les embeddings (représentation des mots) attribuent des jobs comme ``docteur" aux hommes et ``infirmière" aux femmes. 
+	Le système ne peut pas comprendre qu'il existe des docteures (femelles) ou des infirmiers (mâles).
 	\item \optword{Utilisation} : espionnage et ingénierie sociale, perte d'emplois à cause de l'automatisation, etc.
 \end{itemize}
 
-
-
+\newpage 
 \begin{discussion}
 
+Pouvez-vous comprendre cette phrase ? 
+Quelque soit votre réponse (oui ou non), vous avez certainement compris la question ; sinon, vous n'aurez pas à répondre en premier lieu. 
+Imaginez une machine qui peut raisonner comme ça. 
+Imaginez qu'elle peut comprendre votre langue et qu'elle peut répondre d'une façon similaire à la vôtre. 
+Cela était considéré de la science fiction dans les années 50.
+Il l'est toujours, mais de nos jours on est plus proche de ce rêve qu'avant. 
+Le domaine du \ac{taln}, et de l'\ac{ia} en général, a passé par des belles périodes et d'autres difficiles. 
+Au long de son évolution, même au milieu de l'hiver, il y avait toujours des savants qui ont combattus afin d'avancer ce domaine et afin d'atteindre ce rêve. 
+Le combat continue ...
 
+Cette machine doit absolument percevoir la parole.
+Si elle peut entendre sans parler, ça sera drôle !
+Pour lui accorder cette capacité, on doit utiliser la phonétique. 
+Puis, on doit lier les sons à une langue donnée ; d'où la nécessité de la phonologie.
+Afin qu'elle puisse écrire, elle doit maitriser l'orthographe.
+Pour former les mots et les utiliser d'une façon plus naturelle, elle a besoin de la morphologie.
+Elle doit comprendre la structure d'une phrase en se basant sur la syntaxe. 
+Elle doit comprendre le sens en utilisant la sémantique.
+Dans des cas, elle doit utiliser le contexte pour comprendre en impliquant la pragmatique. 
+Enfin, elle doit pouvoir comprendre un texte entier ; d'où la nécessité du discours.
+
+Une fois complète, cette machine peut vous aider afin d'accomplir plusieurs tâches. 
+Elle aura la capacité de traduire tous ce que vous voulez dans une instance.
+Elle peut vous sauver le temps en résumant les documents et en répondant aux différentes questions.
+Elle peut mener des conversations avec les gens pour les guider ou pour passer du temps.
+Si vous avez une entreprise, vous pouvez compter sur elle pour gérer la publicité, le service clientèle, le recruteement et l'étude du marché. 
+Elle peut même diminuer le vide entre les gouvernements et leurs citoyens en améliorant la communication. 
+Surtout, elle peut améliorer les systèmes de santé et de l'éducation.
+
+Une telle machine vient avec un coût, et son coût est de perdre votre temps afin qu'elle apprend. 
+Il faut que vous choisissiez les meilleures données et de les annoter avec grande quantité. 
+Il faut lui apprendre à faire face à l'ambigüité, jusqu'à ce que l'élève dépassera son maitre.
+Il faut évaluer ses tâches et l'améliorer jusqu'à ce qu'elle devient comme un expert. 
+Enfin, il faut l'utiliser seulement pour faire du bien. 
+Sinon, une fois était un rêve, cette machine pourrait devenir un cauchemar.
 
 \end{discussion}
 

@@ -24,6 +24,7 @@
 \RequirePackage{txfonts}
 \RequirePackage{tipa}
 \RequirePackage{xeCJK}
+%\RequirePackage{parskip}
 
 \setCJKmainfont{IPAMincho}
 \setCJKsansfont{IPAGothic}
@@ -36,7 +37,7 @@
 \RequirePackage{tikz}
 \RequirePackage{environ}
 %\RequirePackage{cmap}
-%\RequirePackage{ruby}
+\RequirePackage{ruby}
 \RequirePackage{xstring}
 
 \definecolor{indigo}{RGB}{75,0,130}%indigo
@@ -185,10 +186,16 @@ title={#1}
 }
 
 
+\RequirePackage{enumitem, calc}
+
 \renewcommand{\baselinestretch}{1}
 
 \setlength\parindent{0pt}
-\setlength{\parskip}{\baselineskip}%
+%paragraph spacing
+\setlength{\parskip}{12pt}%\baselineskip
+\newlength{\mylength}
+\setlength{\mylength}{12pt}
+\setlist{after*=\vspace{\mylength}}
 
 
 \RequirePackage{listings}
@@ -260,10 +267,7 @@ title={#1}
 	\@keyword{#2}%
 	\ifthenelse { \equal{#1}{} }%
 	{}%
-%	{\expandafter\index\expandafter{#1!\@escapeall@idx#2\relax}}%
-%	{\@@keyword[#1]#2}
-	{\lowercase{\def\temp{#2}}%
-		\@keyword#2\expandafter\index\expandafter{#1!\temp}}
+	{\lowercase{\def\temp{#2}}\expandafter\index\expandafter{#1!\temp}}
 }
 
 \def\nameword#1{{\itshape\bfseries\color{red} #1}}
