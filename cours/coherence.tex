@@ -1,0 +1,577 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+\changegraphpath{../img/coherence/}
+\chapter{Cohérence du discours}
+
+\begin{introduction}[LES LANGU\textcolor{white}{E}S]
+	\lettrine{E}{n} lisant un texte, nous ne devons pas sentir une interruption dans les idées ; comme par exemple, sauter d'une idée à une autre dans le même paragraphe.
+	On appelle ça : la cohérence ; Un texte cohérent doit garder la même idée ou passer à une autre idée en gardant une sorte de continuité.
+\end{introduction} 
+
+\begin{exampleblock}{Exemple d'un texte en français}
+	\begin{center}
+		\Large\bfseries
+		L'hiver est un des quatre saisons de l'année. 
+		Le rapport était bien exposé. 
+		La pluie est une des caractéristiques de cette saison.
+		Le sujet était la saison de l'hiver.
+	\end{center}
+\end{exampleblock}
+
+\begin{itemize}
+	\item Est-ce que vous pouvez comprendre de quoi s'agit-il ?
+	\item S'il y a un problème, lequel ?
+	\item Est-ce qu'on peut améliorer ce texte ?
+\end{itemize}
+
+%===================================================================================
+\section{Relations de cohérence}
+%===================================================================================
+
+Comment détecter la cohérence d'un discours ?
+\begin{itemize}
+	\item \optword{Cohérence basée sur les relations} : les phrases d'un discours sont liées entre elles par des relations. 
+	\begin{itemize}
+		\item Rhetorical Structure Theory (RST) 
+		\item Penn Discourse TreeBank (PDTB)
+	\end{itemize}
+	\item \optword{Cohérence basée sur l'entité} : les phrases d'un discours forment une seule entité ; elles discutent le même sujet
+	\begin{itemize}
+		\item Centering Theory 
+	\end{itemize}
+	\item \optword{Cohésion lexicale} : les phrases proches se partagent quelques mots ou sens 
+	\begin{itemize}
+		\item Similarité
+	\end{itemize}
+\end{itemize}
+
+\subsection{Rhetorical Structure Theory (RST)}
+
+\begin{itemize}
+	\item Structure  
+	\begin{itemize}
+		\item \optword{Noyau (N)} :  unité indépendante, peut être interprétée indépendamment des autres unités du texte
+		\item \optword{Satellite (S)} :  unité dépendante, ne peut être interprétée qu'en utilisant le noyau
+	\end{itemize}
+	\item Acteurs
+	\begin{itemize}
+		\item \optword{Lecteur (L)} :  qui a lit le script
+		\item \optword{Scripteur (Sc)} :  qui a rédigé le script
+	\end{itemize}
+	\item Définition d'une relation
+	\begin{itemize}
+		\item Des restrictions sur le Noyau 
+		\item Des restrictions sur le Satellite 
+		\item Des restrictions sur la combinaison du Noyau et du Satellite 
+		\item L'effet produit.
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item \optword{Élaboration} :  S donne des informations additionnelles sur la situation présentée dans N
+	\begin{itemize}
+		\item \textbf{Contraintes sur N + S :} S présente des informations supplémentaires vis-à-vis de la situation ou de quelqu'aspect du thème présenté(e) dans N 
+		\item \textbf{Effet :}  L reconnaît la situation présentée dans S comme fournissant des informations supplémentaires au sujet de N. 
+		\item \textbf{Lieu de l'effet :} N + S
+		\item Ex. \expword{[\textsubscript{N} L'examen est facile.] [\textsubscript{S} Il ne prend qu'une heur.]}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item \optword{Évidence} :  S donne des informations additionnelles sur la situation présentée dans N dans le but de convincre L à accepter les informations de N
+	\begin{itemize}
+		\item \textbf{Contraintes sur N :} L pourra ne pas croire en N à un degré suffisant pour Sc
+		\item \textbf{Contraintes sur S :} L croit S ou le trouve crédible
+		\item \textbf{Contraintes sur N + S :} La compréhension de S par L augmente sa croyance en N
+		\item \textbf{Effet :}  La croyance de L en N est effectivement augmentée
+		\item \textbf{Lieu de l'effet :} N
+		\item Ex. \expword{[\textsubscript{N} Kevin doit être ici.] [\textsubscript{S} Sa voiture est garée à l'extérieur.]}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item \optword{Contraste} :  Une relation d'opposition entre deux noyaux
+	\begin{itemize}
+		\item \textbf{Contraintes sur N :} multi-noyaux
+		\item \textbf{Contraintes sur N + N :} pas plus de deux noyaux ; les situations présentées dans ces deux noyaux sont (a) comprises comme les mêmes à beaucoup d'égards, (b) comprises comme différant par quelques aspects et (c) comparées par rapport à l'une ou plus d'une de ces différences
+		\item \textbf{Effet :}  L reconnaît la comparabilité et les différences fournies par la comparaison effectuée
+		\item \textbf{Lieu de l'effet :} noyaux multiples
+		\item Ex. \expword{[\textsubscript{N} Il a voté "Non" à la nouvelle constitution.] [\textsubscript{N} Son frère a voté "Oui".]}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item \optword{Antithèse} :  Une relation d'opposition entre N et S dans le but que L ait une attitude positive envers N
+	\begin{itemize}
+		\item \textbf{Contraintes sur N :} Sc a une attitude positive par rapport à la situation présentée dans N
+		\item \textbf{Contraintes sur N + N :} es situations présentées dans N et S sont en opposition (cf. CONTRASTE)
+		\item \textbf{Effet :}  L'attitude positive de L vis-à-vis de N est augmentée
+		\item \textbf{Lieu de l'effet :} N
+		\item Ex. \expword{[\textsubscript{N} J'ai défendu la République jeune;] [\textsubscript{S} Je ne l'abandonnerai pas maintenant que je suis vieux.]}
+	\end{itemize}
+\end{itemize}
+
+
+%\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+\begin{tabular}{p{.4\textwidth}lp{.4\textwidth}}
+	\rowcolor{darkblue}
+	\bfseries\textcolor{white}{thématique} && \bfseries\textcolor{white}{présentationnelle}\\
+	
+	Élaboration
+	
+	Circonstance
+	
+	Problème-Solution
+	
+	Cause intentionnelle
+	
+	Résultat intentionnel
+	
+	Cause non-intentionnelle
+	
+	Résultat non-intentionnel
+	
+	But
+	
+	Condition
+	
+	Interprétation
+	
+	Évaluation
+	
+	Reformulation
+	
+	Résumé
+	
+	Séquence
+	
+	Contraste
+	
+	&&
+	Motivation
+	
+	Antithèse
+	
+	Arrière-plan
+	
+	Facilitation
+	
+	Évidence (« indice »)
+	
+	Justification
+	
+	Concession\\
+\end{tabular}
+
+%\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+\begin{tabular}{p{.3\textwidth}lp{.25\textwidth}lp{.2\textwidth}}
+	\rowcolor{darkblue}
+	\bfseries\textcolor{white}{Sémantique} && \bfseries\textcolor{white}{Pragmatique} && \bfseries\textcolor{white}{Textuelle} \\
+	
+	Élaboration
+	
+	Circonstance
+	
+	Problème-Solution
+	
+	Cause intentionnelle
+	
+	Résultat intentionnel
+	
+	Cause non-intentionnelle
+	
+	Résultat non-intentionnel
+	
+	But
+	
+	Condition
+	
+	Interprétation
+	
+	Évaluation
+	
+	Séquence
+	
+	Contraste
+	
+	&&
+	
+	Motivation
+	
+	Antithèse
+	
+	Facilitation
+	
+	Évidence (« indice »)
+	
+	Justification
+	
+	Concession
+	
+	&&
+	
+	Arrière-plan
+	
+	Reformulation
+	
+	Résumé\\
+\end{tabular}
+
+\subsection{Penn Discourse TreeBank (PDTB)}
+
+\begin{itemize}
+	\item Annotation des connectives de discours
+	\begin{itemize}
+		\item \optword{Conjonctions de subordination} :  
+		temporelle (Ex., \expword{'when', 'as soon as'}), 
+		causale (Ex., \expword{'because'}), 
+		concessive (Ex., \expword{'although', 'even though'}), 
+		objectif (Ex.,\expword{'so that', 'in order that'}) et 
+		conditionnelle (Ex., \expword{'if', 'unless'}).
+		
+		\item \optword{Conjonctions de coordination} : \expword{'and', 'but', 'or'}
+		
+		\item \optword{Conjonctives adverbiales} : des adverbes qui expriment une relation de discours entre des évenements ou des états. Ex., \expword{'however', 'therefore', 'then', etc.}
+		Des syntagmes prépositionnels sont inclus aussi dans cette classe. Ex. \expword{'as a result',
+			'in addition', 'in fact', etc. }
+		
+		\item \optword{Connectives implicites} :  identifiées entre deux phrases adjacentes qui ne sont pas reliées par des connectives explicites.
+	\end{itemize}
+	\item Annotation des arguments 
+	\begin{itemize}
+		\item ARG2 : c'est la clause où la connective est liée (cas explicite)
+		\item ARG1 : l'autre clause
+	\end{itemize}
+\end{itemize}
+
+\begin{table}
+	\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
+	\begin{tabular}{p{.1\textwidth}lp{.8\textwidth}}
+		\rowcolor{darkblue}
+		\bfseries\textcolor{white}{Connective} && \bfseries\textcolor{white}{Sens}\\
+		
+		after && succession (523), succession-reason (50), other (4) \\
+		since && reason (94), succession (78), succession-reason (10), other (2) \\
+		when && Synchrony (477), succession (157), general (100), succession-reason (65), Synchrony-general (50),
+		Synchrony-reason (39), hypothetical (11), implicit assertion (11), Synchrony-hypothetical (10), other
+		(69) \\
+		while && juxtaposition (182), Synchrony (154), Contrast (120), expectation (79), opposition (78), Conjunction
+		(39), Synchrony-juxtaposition (26), Synchrony-Conjunction (21), Synchrony-Contrast(22), COMPARISON (18), Synchrony-opposition (11), other (31) \\
+		meanwhile && Synchrony-Conjunction (92), Synchrony (26), Conjunction (25), Synchrony-juxtaposition (15),
+		other(35)\\
+		but && Contrast (1609), juxtaposition (636), contra-expectation (494), COMPARISTON (260), opposition
+		(174), Conjunction (63), Conjunction-Pragmatic contrast (14), Pragmatic-contrast (14), other (32)
+		however Contrast (254), juxtaposition (89), contra-expectation (70), COMPARISON (49), opposition (31),
+		other (12)\\
+		although && expectation (132), Contrast (114) juxtaposition (34), contra-expectation (21), COMPARISON (16),
+		opposition (9), other (2)\\
+		and && Conjunction (2543), List (210), result-Conjunction (138), result (38), precedence-Conjunction (30),
+		juxtaposition (11), other(30)\\
+		if && hypothetical (682), general (175), unreal present (122), factual present (73), unreal past (53), expectation (34), implicit assertion (29), relevance (20), other (31)\\
+	\end{tabular}
+	\caption{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
+\end{table}
+
+\begin{figure}
+	\vgraphpage[.7\textheight]{pdtb-sens_.pdf}
+	\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
+\end{figure}
+
+
+%===================================================================================
+\section{Analyse basée structure de discours}
+%===================================================================================
+
+\begin{itemize}
+	\item Un discours est cohérent s'il existe des relations entre ses parties
+	\item La structure
+	\begin{itemize}
+		\item Un arbre de relations : RST
+		\item Une relation binaire entre chaque deux parties : PDTB
+	\end{itemize}
+\end{itemize}
+
+\subsection{Analyse RST}
+
+\begin{itemize}
+	\item Construire un arbre de relations de discours
+	\item Deux étapes : 
+	\begin{enumerate}
+		\item Détection des unités élémentaires de discours
+		\item Classification des relations
+	\end{enumerate}
+\end{itemize}
+
+\begin{center}
+	\hgraphpage[0.5\textwidth]{RST-arbre.pdf}
+\end{center}
+
+\begin{itemize}
+	\item Elementary discourse units (EDUs)
+	\item Une phrase peut avoir plusieurs UEDs 
+	\item Ex. \expword{[Mr. Rambo says]\textsubscript{e1} [that a 3.2-acre property]\textsubscript{e2} [overlooking the San Fernando Valley]\textsubscript{e3} [is priced at \$4 million]\textsubscript{e4} [because the late actor Erroll Flynn once lived there.]\textsubscript{e5}}
+	\item Méthodes 
+	\begin{itemize}
+		\item \optword{Par règles}
+		\begin{itemize}
+			\item arbre syntaxique
+			\item indices de surface : ponctuation et des marqueurs lexicaux comme les connectives
+		\end{itemize}
+		\item Statistiques 
+		\begin{itemize}
+			\item \optword{Par caractéristiques} : utilisation des informations syntaxiques et des indices de surface pour apprendre les limites des UEDs
+			\item \optword{Par embeddings} : texte comme séquence. Ex., \url{https://github.com/PKU-TANGENT/NeuralEDUSeg}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.7\textwidth]{EDU_seg_.pdf}
+	\caption{Segmentation en UEDs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{minipage}{.6\textwidth}
+	\begin{itemize}
+		\item Méthode plus utilisée : SHIFT-REDUCE
+		\item Configuration : $C = (\sigma, \beta, A)$
+		\begin{itemize}
+			\item $\sigma$ est une pile
+			\item $\beta$ est le tampon (buffer) d'entrée
+			\item $A$ est la liste des arcs créés (relations)
+			\item $C_{initiale} = (\varnothing, w, \emptyset)$
+			\item $C_{finale} = (\varnothing, \varnothing, A)$
+		\end{itemize}
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+	\hgraphpage{RST-transitions.pdf}
+\end{minipage}
+\begin{itemize}
+	\item Opérations 
+	\begin{itemize}
+		\item \optword{Shift} : mettre le premier élément du buffer dans la pile
+		\item \optword{Reduce}\textbf{(l, d)} : fusionne les deux sous-arbres supérieurs de la pile, où \textbf{l} est l'étiquette de relation de cohérence, et \textbf{d} est la direction de nucléarité : \textbf{d $ \in $ \{NN, NS, SN\}}.
+		\item \optword{Pop Root} : enlever l'arbre final de la pile.
+	\end{itemize}
+	\item Apprentissage 
+	\begin{itemize}
+		\item Par caractéristiques
+		\item Par embeddings
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage{RST_exp_.pdf}
+	
+	\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
+	\caption{Un exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+\end{figure}
+
+\begin{itemize}
+	\item Cas d'étude : \cite{2018-yu-al} (Encodeur-décodeur)
+	\item Code : \url{https://github.com/yunan4nlp/NNDisParser}
+	\item Encodeur 
+	\begin{itemize}
+		\item Encoder les mots : $ w_i $ un mot avec une catégorie grammaticale $t_i$
+		\[x_i^w = embedding(w_i) \oplus embedding(t_i)\]
+		\item Représenter les mots séquentiels
+		\[ \{h_1^w, h_2^w, \ldots, h_m^w \} = biLSTM(\{x_1^w, x_2^w, \ldots, x_m^w \})\]
+		\item Représenter un UED $\{w_s, w_{s+1}, \ldots, w_t \}$
+		\[ x^e = \frac{1}{t-s+1} \sum_{k=s}^{t} h_k^w\]
+		\item Représenter les UEDs séquentiels
+		\[ \{h_1^e, h_2^e, \ldots, h_n^e \} = biLSTM(\{x_1^e, x_2^e, \ldots, x_n^e \})\]
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Décodeur 
+	\begin{itemize}
+		\item Une couche neuronale feed-forward pour inférer l'action $o$
+		\[o = W(h_{s0}^{sbt} \oplus h_{s1}^{sbt} \oplus h_{s2}^{sbt} \oplus h_{q0}^{e})\]
+		\item $ h_{e}^{q0} $ : la représentation séquentielle du premier UED dans le buffer
+		\item $h_{si}^{sbt}$ : la représentation séquentielle du sous-arbre $i$ dans la pile
+		\item la représentation d'un sous arbre entre deux UEDs $ s= \{e_i, \ldots, e_j\}$ est la moyenne des représentations des UEDs couverts
+		\[ h_{s}^{sbt} = \frac{1}{j-i+1} \sum_{k=i}^{j} h_k^e\]
+	\end{itemize}
+\end{itemize}
+
+\subsection{Analyse PDTB}
+
+\begin{itemize}
+	\item Trouver la relation entre deux parties du texte
+	\item Quatre étapes : 
+	\begin{enumerate}
+		\item Trouvez les connecteurs du discours
+		\begin{itemize}
+			\item En utilisant la désambigüisation du sens (délimiteur ou non)
+		\end{itemize}
+		\item Trouvez les deux parties pour chaque connective
+		\begin{itemize}
+			\item Pour la partie avec le connecteur, on peut classer les parties adjacente comme ayant une relation ou non
+		\end{itemize}
+		\item Étiquetez la relation entre ces parties (connectives explicites) : 
+		\begin{itemize}
+			\item Par exemple, en utilisant BERT avec les deux parties en entrée et en ajoutant une couche neuronale à sa sortie $ <CLS> $ pour inférer la relation
+		\end{itemize}
+		\item Attribuer une relation entre chaque paire de phrases adjacentes (connectives implicites)
+		\begin{itemize}
+			\item La même chose que dans (3)
+		\end{itemize}
+	\end{enumerate}
+\end{itemize}
+
+
+%===================================================================================
+\section{Analyse basée sur l'entité de discours}
+%===================================================================================
+
+\begin{itemize}
+	\item Un discours est cohérent s'il discute une certaine entité
+	\item Quelque soit la position dans le discours, cette entité doit rester la plus importante
+\end{itemize}
+
+\begin{exampleblock}{Exemple de cohérence \cite{2019-jurafsky-martin}}
+	\small
+	\begin{minipage}{.48\textwidth}
+		\begin{enumerate}
+			\item John went to his favorite music store to buy a piano. [John]
+			\item He had frequented the store for many years. [John]
+			\item He was excited that he could finally buy a piano. [John]
+			\item He arrived just as the store was closing for the day. [John]
+		\end{enumerate}
+	\end{minipage}
+	\begin{minipage}{.48\textwidth}
+		\begin{enumerate}
+			\item John went to his favorite music store to buy a piano. [John]
+			\item It was a store John had frequented for many years. [The store]
+			\item He was excited that he could finally buy a piano. [John]
+			\item It was closing just as John arrived. [The store]
+		\end{enumerate}
+	\end{minipage}
+\end{exampleblock}
+
+\subsection{Centering theory}
+
+\begin{itemize}
+	\item $\mathbf{U_n}$ : une énonciation
+	\item $\mathbf{C_b(U_n)}$ : \optword{Backward-looking center} (centre rétrospectif)
+	\begin{itemize}
+		\item l'entité saillante actuelle
+		\item celle sur laquelle se concentre le discours dans l'énonciation $ U_{n-1} $.
+	\end{itemize}
+	\item $\mathbf{C_f(U_n)}$ : \optword{Forward-looking center} (centres prospectifs)
+	\begin{itemize}
+		\item les entités potentiellement saillantes dans le futur
+		\item celles candidates pour être $C_b(U_{n+1})$.
+	\end{itemize}
+	\item $\mathbf{C_p(U_n) \in C_f(U_n)}$ : \optword{Prefered center} (centre préféré)
+	\begin{itemize}
+		\item centre candidat pour être $C_b(U_{n+1})$
+		\item score sur le rôle grammatical (sujet plus important que l'objet qui est plus important que le reste), l'ordre (Ex. \expword{En Arabe, ce qui est en premier est plus important}), etc.
+	\end{itemize}
+	\item $C_b(U_n)$ doit être représenté par un pronom dans $U_{n+1}$
+\end{itemize}
+
+\begin{itemize}
+	\item Ordre des transitions selon la plus cohérente
+	\item \optword{CONTINUE} : le locuteur parle d'une entité et a l'intention d'en parler en futur
+	\item \optword{RETAIN} : le locuteur parle d'une entité et a l'intention d'en changer en futur
+	\item \optword{SHIFT} : le locuteur a changé l'entité centrale
+	\begin{itemize}
+		\item \textbf{Smooth-SHIFT} : après le changement, il a l'intention d'en parler en futur
+		\item \textbf{Rough-SHIFT} : après le changement, il a l'intention d'en changer en futur
+	\end{itemize}
+\end{itemize}
+
+\begin{center}
+	\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
+	\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
+		\rowcolor{darkblue}
+		& \bfseries\color{white}$\mathbf{C_b(U_n) = C_b(U_{n-1})}$
+		
+		OU $\mathbf{C_b(U_n) = NULL}$
+		& \bfseries\color{white}$\mathbf{C_b(U_n) \ne C_b(U_{n-1})}$\\
+		
+		$\mathbf{C_b(U_n) = C_p(U_n)}$ &
+		CONTINUE & Smooth-SHIFT\\
+		
+		$\mathbf{C_b(U_n) \ne C_p(U_n)}$ &
+		RETAIN & Rough-SHIFT\\
+	\end{tabular}
+\end{center}
+
+\subsection{Entity Grid model}
+
+\begin{itemize}
+	\item Un document est représenté par une matrice
+	\begin{itemize}
+		\item Lignes : les phrases 
+		\item Colonnes : les entités
+		\item Valeurs : fonction grammaticale de l'entité dans la phrase ; sujet (S), Objet (O), Autre (X) ou l'entité n'existe pas (\_).
+	\end{itemize}
+	\item Un document est cohérent, s'il suit un pattern
+	\begin{itemize}
+		\item Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. \expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}
+		\item On utilise l'apprentissage automatique pour juger la cohérence d'un document
+	\end{itemize}
+	
+\end{itemize}
+
+\begin{figure}
+	\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
+	
+	\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
+	\caption{Un exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+\end{figure}
+
+\begin{itemize}
+	\item Un document est représenté par les probabilités des transitions grammaticales
+	\item Une probabilité est le ration entre le nombre d'une transition et le nombre de toutes les transitions
+	\item Ex. Dans l'exemple précédent : \expword{P(S\_) = 2/75}
+\end{itemize}
+\begin{figure}
+	\hgraphpage{EGM_doc_vec_exp_.pdf}
+	\caption{Un exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
+\end{figure}
+
+\begin{itemize}
+	\item L'algorithme apprend à noter un texte selon sa cohérence
+	\item Un texte non cohérent doit avoir un score inférieur à un autre cohérent
+	\item Utilisation des textes annotés selon leurs cohérences par des experts
+	\item Utilisation d'une méthode auto-supervisée : créer un texte non cohérent à partir d'un texte cohérent
+	\begin{itemize}
+		\item Discrimination de l'ordre des phrases : ordre aléatoire des phrases et comparaison du score de cohérence avec celui de l'ordre original
+		\item Insertion de la phrase : modifier l'ordre d'une seule phrase et comparaison du score de cohérence avec celui de l'ordre original
+		\item Reconstruction de l'ordre des phrases : apprendre à ordonner les phrases
+	\end{itemize}
+\end{itemize}
+
+
+
+\begin{discussion}
+
+
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

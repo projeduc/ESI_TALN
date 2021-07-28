@@ -1,0 +1,1174 @@
+% !TEX TS-program = xelatex
+% !TeX program = xelatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+\changegraphpath{../img/app/}
+\chapter{Quelques applications}
+
+\begin{introduction}[LES LANGUE\textcolor{white}{S}]
+	\lettrine{S}{ans} applications réelles, un domaine peut s'éteindre. 
+	Mais pas le domaine du traitement du langage naturel.
+\end{introduction} 
+
+\begin{itemize}
+	\item On veut présenter quelques applications utilisées dans notre vie
+	\item Selon l'entrée/sortie : on peut traiter des paroles ou du texte
+	\item Selon l'interactivité : le système interagit avec l'utilisateur ou non
+	\item Selon la sortie : un ensemble de classes ou un autre texte généré
+	\item Notre structure 
+	\begin{itemize}
+		\item Transformation
+		\item Interaction
+		\item Classification
+		\item Parole
+	\end{itemize}
+\end{itemize}
+
+%===================================================================================
+\section{Transformation}
+%===================================================================================
+
+\begin{itemize}
+	\item \textbf{Entrée} : un texte 
+	\item \textbf{Sortie} : un texte généré à partir de l'entrée
+	\item \textbf{Applications} 
+	\begin{itemize}
+		\item Traduction automatique
+		\item Résumé automatique
+	\end{itemize}
+\end{itemize}
+
+\subsection{Traduction automatique}
+
+\hgraphpage{translation-classif.pdf}
+
+\begin{itemize}
+	\item Algorithme
+	\begin{itemize}
+		\item Le texte source $S$ est traité comme une série de mots 
+		\item Chaque mot $S_i$ est remplacé par un mot $T_i$ dans le texte destinataire $T$ en utilisant un dictionnaire bilingue
+		\item Les mots sont ordonnés. Ex. \expword{SVO \textrightarrow VSO}, \expword{adj + N \textrightarrow N + Adj}
+	\end{itemize}
+	\item Préconditions 
+	\begin{itemize}
+		\item Les langues (source et destinataire) doivent être proches (structures grammaticales proches)
+		\item Un dictionnaire bilingue bien conçu
+		\item Des outils d'analyse morphologiques 
+	\end{itemize}
+	\item Niveau morphologique 
+	\item Ex. \expword{Systèmes avant 1967 : Météo, Weidner, CULT et Systran (premières versions)}
+\end{itemize}
+
+\begin{itemize}
+	\item Algorithme
+	\begin{itemize}
+		\item Trouver l'arbre syntaxique de $S$
+		\item Chercher la traduction des mots de la langue source dans la langue destinataire (dictionnaire bilingue)
+		\item Appliquer des règles pour transformer l'arbre syntaxique de la langue source vers une arbre syntaxique de la langue destinataire
+		\item Générer le texte traduit $T$ à partir de cette arbre syntaxique
+	\end{itemize}
+	\item Préconditions 
+	\begin{itemize}
+		\item Grammaires des deux langues (source et destinataire)
+		\item Les règles de transfert sont fixées manuellement ou apprises à partir d'un corpus
+		\item Un dictionnaire bilingue bien conçu
+		\item Des outils d'analyse morphologiques et syntaxique pour la langue source
+		\item Un outil de génération du texte à partir de l'arbre syntaxique
+	\end{itemize}
+	\item Niveau syntaxique 
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\vgraphpage[.7\textheight]{MT-tranfert-exp_.pdf}
+	\caption{Un exemple de règles de transfert syntaxique \cite{06-quah}}
+\end{figure}
+
+\begin{itemize}
+	\item \url{https://www.apertium.org/}
+\end{itemize}
+
+\hgraphpage{apertium-arch_.pdf}
+
+Approche interlangue
+
+\hgraphpage{MT-Interlingua.pdf}
+
+Approche interlangue (Description)
+
+\begin{itemize}
+	\item Algorithme
+	\begin{itemize}
+		\item Analyser le texte source $S$ pour avoir un arbre syntaxique
+		\item Utiliser un dictionnaire entre le langage source et les concepts de l'interlangue 
+		\item Transformer l'arbre syntaxique (langue source) vers l'interlingue
+		\item Transformer l'interlingue vers une arbre syntaxique (langue destinataire)
+		\item Utiliser un dictionnaire entre le langage destinataire et les concepts de l'interlangue 
+		\item Générer le texte destinataire $T$
+	\end{itemize}
+	\item Préconditions 
+	\begin{itemize}
+		\item Outils d'analyse syntaxique et même sémantique  pour les langues
+		\item Un langage de représentation universelle
+		\item Dictionnaire sur les concepts de ce langage
+	\end{itemize}
+	\item Niveau syntaxique/sémantique
+\end{itemize}
+
+ Approche interlangue (Exemple KANT \cite{98-czuba-al})
+ 
+ \begin{columns}
+ 	\begin{column}{0.5\textwidth}
+ 		\fontsize{4}{5}\selectfont\bfseries
+ 		\begin{verbatim}
+ 		(*A-REMAIN  ; action rep for 'remain'
+ 		(FORM FINITE)
+ 		(TENSE PAST)
+ 		(MOOD DECLARATIVE)
+ 		(PUNCTUATION PERIOD)
+ 		(IMPERSONAL -) ; passive + expletive subject
+ 		(ARGUMENT-CLASS THEME+PREDICATE) ; predicate argument structure
+ 		(Q-MODIFIER ; PP semrole (generic)
+ 		(*K-DURING ; PP interlingua
+ 		(POSITION FINAL) ; clue for translation
+ 		(OBJECT ; PP object semrole
+ 		(*O-TIME ; object rep for 'time'
+ 		(UNIT -)
+ 		(NUMBER SINGULAR)
+ 		(REFERENCE DEFINITE)
+ 		(DISTANCE NEAR)
+ 		(PERSON THIRD)))))
+ 		(THEME ; object semrole
+ 		(*O-DEFAULT-RATE ; object rep for ’default rate’
+ 		(PERSON THIRD)
+ 		(UNIT -)
+ 		(NUMBER SINGULAR)
+ 		(REFERENCE DEFINITE)))
+ 		(PREDICATE ; adjective phrase semrole
+ 		(*P-CLOSE ; property rep for ’closer’
+ 		(DEGREE POSITIVE)
+ 		(Q-MODIFIER
+ 		(*K-TO
+ 		(OBJECT
+ 		(*O-ZERO
+ 		(UNIT -)
+ 		(NUMBER SINGULAR)
+ 		(REFERENCE NO-REFERENCE)
+ 		(PERSON THIRD))))))))
+ 		\end{verbatim}
+ 	\end{column}
+ 	\begin{column}{0.5\textwidth}
+ 		\begin{figure}
+ 			\caption{Représentation de la phrase "\textit{The default rate remained close to zero during this time.}" avec KANT interlingua \cite{98-czuba-al}}
+ 		\end{figure}
+ 	\end{column}
+ \end{columns}
+
+Approche interlangue (Exemple système KANTOO \cite{00-nyberg-al})
+
+\hgraphpage{kantoo-arch.pdf}
+
+Approche statistique
+
+\[
+p(T|S) = \frac{p(T) p(S|T)}{p(S)} \propto \underbrace{p(T)}_\text{Cohérence} \underbrace{p(S|T)}_\text{Fidélité}
+\]
+\[\hat{T} = \arg\max_{T} p(T) p(S|T)\]
+\[\]
+\begin{itemize}
+	\item $p(T)$ est une modèle de langue entrainé sur la langue destinataire
+	\begin{itemize}
+		\item Il faut un corpus pour la langue destinataire
+		\item $p(T) = \prod_{j=1}^m p(t_j|t_{j-N}\ldots t_{j-1})$
+	\end{itemize}
+	
+	\item $p(S|T)$ est le modèle de traduction 
+	\begin{itemize}
+		\item Il faut un corpus pour la langue destinataire
+		\item Le problème de correspondance entre mots (alignement)
+		\item Le problème de la différence entre tailles
+	\end{itemize}
+\end{itemize}
+
+Alignement 
+
+\[p(S|T) = \sum_{A} p(S, A | T)\]
+\[A^* = \arg\max_A p(S, A | T)\]
+\[p(S, A | T) = \prod_{i=1}^{n} p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m})\]
+\[p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+\[ \text{Nombre des alignements possibles } = (m + 1)^n\]
+
+\begin{itemize}
+	\item Modèle IBM 1 (Distribution uniforme des mots)
+\end{itemize}
+
+\[p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = \frac{1}{m+1}\]
+\[p(S|T) = \frac{1}{(m+1)^n} \sum_{A} \prod_{i=1}^{n} p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+
+\begin{itemize}
+	\item Modèle IBM 2
+	\item La probabilité des alignements se base seulement sur la position actuelle $i$, le mot actuel $A_i$, la taille du texte source $n$ et la taille du texte destinataire $m$
+	\item Cette probabilité est entrainée en comparant l'alignement juste avec le reste des alignements
+\end{itemize}
+
+\[p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | i, n, m)\]
+\[p(S|T) = \sum_{A} \prod_{i=1}^{n} p(A_i | i, n, m) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+
+\begin{itemize}
+	\item Modèle HMM
+	\item La probabilité de alignement d'un mot $A_i$ se base sur l'alignement du mot précédent $A_{i-1}$
+\end{itemize}
+
+\[p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | A_{i-1}, m)\]
+\[p(S|T) = \sum_{A} \prod_{i=1}^{n} p(A_i | A_{i-1}, m) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
+
+Approche par exemples
+
+\begin{itemize}
+	\item Comme l'approche statistique
+	\item A la place des mots, on peut trouver des segments
+	\item On calcule la probabilité d'un segment (ensemble de mots consécutifs) par rapport à un autre
+\end{itemize}
+
+Approche par exemples (Exemple : Moses \cite{07-koehn-al})
+
+\begin{itemize}
+	\item \url{http://statmt.org/moses/}
+	\item Table de traduction des segments $\phi(S|T)$ : segment $S$, segment $T$ équivalent et une probabilité
+	\item Modèle de langage sur la langue destinataire $LM$
+	\item Modèle de distorsion $ D(T, S) $ : chaque réorganisation des segment d'une phrase veut un coût 
+	\item Pénalité de mots $W(T)$ : pour qu'une traduction ne soit pas longue ou courte
+	\item Pour estimer $\hat{T}$ \keyword{Beam search} est utilisé
+\end{itemize}
+
+\[p(T|S) = \phi(S|T)^{poids_{\phi}} \times LM^{poids_{LM}} \times D(T, S)^{poids_{D}} \times W(T)^{poids_{W}}\]
+
+Approche neuronale
+
+\begin{itemize}
+	\item Structure
+	\begin{itemize}
+		\item Des réseaux de neurones de type sequence-to-sequence (seq2seq)
+		\item Modèle : encodeur-décodeur (séquentiel)
+		\item Type : Many to Many 
+		\item \optword{Encodeur} : encoder une phrase du langage source $S$. Le résultat est une représentation du contexte sous forme d'un vecteur
+		\item \optword{Décodeur} : décoder le vecteur du contexte vers une phrase du langage destinataire $T$
+	\end{itemize}
+	
+	\item Modèle formel 
+	\[ p(T|S) = p(t_1|S) p(t_2|S, t_1) p(t_3|S, t_1, t_2)\ldots p(t_m|S, t_1\ldots t_{m-1}) \]
+	\[\hat{t}_j = \arg\max_{w \in V} p(w | S, t_1\ldots t_{j-1})\]
+\end{itemize}
+
+Approche neuronale (Exemple : Google \cite{16-wu-al} )
+
+\begin{itemize}
+	\item \url{https://translate.google.com/}
+\end{itemize}
+\begin{center}
+	\hgraphpage[.9\textwidth]{googlet_.pdf}
+\end{center}
+
+Approche neuronale (Exemple : OpenNMT \cite{17-klein-al})
+
+\begin{itemize}
+	\item \url{https://opennmt.net/}
+\end{itemize}
+\hgraphpage{opennmt_.pdf}
+
+\subsection{Résumé automatique}
+
+\hgraphpage{sum-classif.pdf}
+
+Approches du résumé automatique
+
+\begin{columns}
+	\begin{column}{0.32\textwidth}
+		\begin{block}{\scriptsize\bfseries\cite{12-nenkova-mckeown}}
+			\begin{itemize}
+				\item représentation du sujet 
+				:
+				mots du sujet,
+				fréquences, 
+				analyse sémantique latente, 
+				modèles de sujets bayésiens,
+				clustering
+				%			\begin{itemize}
+				%				\item mots du sujet 
+				%				\item fréquences
+				%				\item analyse sémantique latente
+				%				\item modèles de sujets bayésiens
+				%			\end{itemize}
+				\item représentation des indicateurs : 
+				par graphes, 
+				apprentissage automatique
+			\end{itemize}
+		\end{block}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+		\begin{block}{\scriptsize\bfseries\cite{12-lloret-palomar}}
+			\begin{itemize}
+				\item statistique 
+				\item par graphes
+				\item basée discours
+				\item par apprentissage automatique
+			\end{itemize}
+		\end{block}
+	\end{column}
+	\begin{column}{0.28\textwidth}
+		\begin{block}{\scriptsize\bfseries\cite{19-aries-al}}
+			\begin{itemize}
+				\item statistique 
+				\item par graphes
+				\item linguistique 
+				\item par apprentissage automatique
+			\end{itemize}
+		\end{block}
+	\end{column}
+\end{columns}
+
+Approche statistique
+
+\begin{itemize}
+	\item \optword{Fréquence des mots} 
+	
+	\hspace{.5cm}Ex. $Score_\text{TF-IDF}(s_i) = \sqrt{\sum\limits_{w_{ik} \in s_i} (\text{TF-IDF}(w_{ik}))^2}$
+	
+	\item \optword{Position des phrases (ou des mots)}
+	
+	\hspace{.5cm}Ex. $ Score_\text{pos}(s_i) = \max (\frac{1}{i}, \frac{1}{|D| - i + 1}) $
+	
+	\item \optword{Taille (longueur) des phrases}
+	
+	\hspace{.5cm}Ex. $ Score_\text{taille}(s_i) = \left\lbrace 
+	\begin{array}{lll}
+	0 & si & (L_i \geq L_{min}) \\
+	\frac{L_i - L_{min}}{L_{min}} & sinon & \\
+	\end{array}
+	\right. $
+	
+	\item \optword{Mots du titre et des sous-titres}
+	
+	\hspace{.5cm}Ex. $ Score_{titre}(s_i) = \frac{\sum_{e \in T \bigcap s_i}{\frac{tf(e)}{tf(e)+1}}}
+	{\sum_{e \in T}{\frac{tf(e)}{tf(e)+1}}} $
+	
+	\item \optword{Centroid}, \optword{Frequent itemsets}, \optword{Analyse sémantique latente}, ...
+\end{itemize}
+
+Approche statistique (Exemple : \cite{13-aries-al})
+
+\hgraphpage{tcc-arch.pdf}
+
+\begin{itemize}
+	\item Un texte peut contenir plusieurs sujets, et une phrase peut discuter plusieurs sujets
+	\begin{itemize}
+		\item Regroupement de phrases avec similarité et seuil de regroupement ($Th$)
+	\end{itemize}
+	\item Une phrase est importante si elle peut représenter le maximum des sujets(cluters)
+	\[ Score(s_i , c_j , f_k ) = 1 + \sum_{\phi \in s_i} {P(f_k=\phi | s_i \in c_j)} \]
+	\[ Score(s_i , \bigcap_{j} c_j , F) =  %\propto 
+	\prod_{j} \prod_{k} Score(s_i , c_j , f_k ) \]
+	$ s $ : phrase, $ c $ : cluster, $ f $ : caractéristique, $ F $ : ensemble de caractéristiques, $ \phi $: observation de $ f $.
+	\item $f$ : TF (Uni, Bi); Pos (intervalle de 10); Len (réel, pré-traité)
+\end{itemize}
+
+Approche statistique (Exemple: \cite{15-oufaida-al})
+
+\begin{itemize}
+	\item Représentation des mots : embeddings pré-entrainés (Polyglot)
+	\item Clustering pour extraire les sous-sujets du texte
+	\begin{itemize}
+		\item On peut trouver le mot $w_j \in S_2$ le plus similaire à un mot $w_i$
+		
+		$Match(w_i | S_2) = \arg\max_{w_j \in S_2} sim(Rep(w_i), Rep(w_j))$
+		
+		\item Lien entre deux phrases $S_2$ et $S_2$
+		
+		$Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Match(w_i | S_2) + \sum_{w_j \in S_2} Match(w_j | S_1)}{|S_1| + |S_2|}$
+	\end{itemize}
+	
+	\item Score des termes en utilisant mRMR
+	\begin{itemize}
+		\item Information mutuelle  
+		$I(X, Y) = \sum\limits_{x \in X} \sum\limits_{y \in Y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}$
+		\item Redondance des termes 
+		$Redondance(T_i) = \frac{1}{|S|} \sum\limits_{j \in S} I(T_i, T_j)$
+		
+		\item Score final d'un terme : Mutual Information (Difference/Quotient)
+		
+		$MID \equiv \max_{t \in T} Pertinence(t) - Redondance(t)$
+		
+		$MIQ \equiv \max_{t \in T} Pertinence(t) / Redondance(t)$
+	\end{itemize}
+	
+	\item Score d'un phrase à base des scores des termes mRMR (score pondéré par des poids)
+	
+	\item Lors de la sélection d'une phrase, on décrémente les poids des termes sélectionnés
+\end{itemize}
+
+Approche par graphes
+
+\begin{itemize}
+	\item \optword{Propriétés du graphe}
+	\begin{itemize}
+		\item Bushy paths 
+		
+		\hspace{.5cm}$Score_{\#arcs}(s_i) = |\{ s_j : a(s_i, s_j) \in A / s_j \in S, s_i \neq s_j \}|$
+		
+		\item Aggregate Similarity
+		
+		\hspace{.5cm}$Score_{aggregate}(s_i) = \sum\limits_{(s_i, s_j) \in E} sim(s_i, s_j)$
+	\end{itemize}
+	\item \optword{Méthodes itératives}
+	\begin{itemize}
+		\item Mettre à jour les scores des nœuds à base des voisins 
+		\item L'arrêt : un état d'équilibre (on peut plus mettre à jour)
+		\item Ex. TextRank \cite{04-mihalcea-tarau}
+		
+		$WS(V_i) = ( 1 - d) + d * \sum\limits_{V_j \in In(V_i)} \frac{w_{ji}}{\sum\limits_{V_k \in Out(V_j)} w_{jk}} WS(V_j)$
+		
+		$w_{ij} = \frac{|\{w_k \text{ / } w_k \in S_i \text{ and } w_k \in S_j\}|}{\log(|S_i|) + \log(|S_j|)}$
+		
+		$ d $ : damping factor (en général, environ $ 0.85 $)
+	\end{itemize}
+\end{itemize}
+
+Approche par graphes (Exemple: \cite{21-aries-al})
+
+\begin{center}
+	\vgraphpage{gc-archi.pdf}
+\end{center}
+
+\begin{itemize}
+	\item Simplification du graphe
+	
+	\hspace{.5cm}$noeud\_faible(v_i) = ( \sum_{(v_i, v_j) \in E} w_{ij} < \frac{1}{MImpN(v_i)} )$ 
+	
+	\hspace{.5cm}$arc\_faible(v_i, v_j) = ( w_{ij} < \frac{Threshold}{MImpN(v_i)})$
+	
+	\item Score statistique des phrases
+	
+	\hspace{.5cm}$ Score(s_i/ sim) = sim(s_i, C\backslash s_i) $
+	$Score(s_i/ tfisf) = \sqrt{\sum\limits_{w_{ik} \in s_i} (tfisf(w_{ik}))^2}$
+	
+	\hspace{.5cm}$Score(s_i/ size) = \frac{1}{|s_i|}$
+	$Score(s_i/ pos) = \max (\frac{1}{i}, \frac{1}{|D| - i + 1})$
+	
+	\hspace{.5cm}$SSF(s_i/ F) = \prod_{f_i \in F} score(s_i/f_i)$
+	
+	\item Score à base de graphe 
+	
+	\hspace{.5cm}Ex. $GC1(s_i) = SSF(s_i) + \sum\limits_{(s_i, s_j) \in E} sim(s_i, s_j) * SSF(s_j)$
+	
+	\item Extraction
+	
+	\hspace{.5cm}Ex. $ suiv_{e4}  =  \arg\min\limits_i (iord\ ssfgc(s_i) + ord\ simil(dernier{e4}, i))$ 
+	
+	\hspace{3cm}$ \text{ où } (dernier_{e4}, s_i) \in E $
+\end{itemize}
+
+Approche linguistique
+
+\begin{itemize}
+	\item \optword{Mots de sujet} : une liste des mots pertinents au sujet, comme ``significant", ``impossible", etc.
+	\begin{itemize}
+		\item Ex. \cite{69-edmundson} : Bonus (mots positivement pertinents), Stigma (mots négativement pertinents)
+		
+		$Score_{cue}(s_i) = \sum_{w \in s_i}{cue(w)}
+		\text{ où }
+		cue(w) = \left\lbrace 
+		\begin{array}{ll}
+		b > 0 & \text{si } (w \in Bonus) \\
+		\delta < 0 & \text{si } (w \in Stigma) \\
+		0 & sinon 
+		\end{array} 
+		\right. $
+	\end{itemize}
+	\item \optword{Indicateurs} : Des structures qui impliquent que la phrase les contenant a une chose importante à propos du sujet
+	\begin{itemize}
+		\item Ex. \expword{the principal aim of this paper is to investigate ...}
+	\end{itemize}
+	\item \optword{Co-référence} : utilisation des anaphores ou des représentations sémantiques (Ex. Wordnet)
+	\item \optword{Structure rhétorique} : utilisation de la structure rhétorique pour noter les phrases ou des syntagmes
+\end{itemize}
+
+Approche linguistique (Exemple : \cite{81-paice})
+
+\begin{itemize}
+	\item Utilisation des patrons (templates) préparés manuellement
+	\item\ [x] : x mots peuvent être entre ce mot et le mot précédent
+	\item +y : le score est augment par y
+	\item ? : ce mot est optionnel
+\end{itemize}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\hgraphpage[.7\textwidth]{paice-template.pdf}
+		\caption{Un exemple d'un patron simplifié \cite{81-paice}.}
+		\label{fig:paice-template}
+	\end{center}
+\end{figure}
+
+Approche par apprentissage automatique (AA)
+
+\begin{itemize}
+	\item \optword{Par caractéristiques}
+	\begin{itemize}
+		\item Réglage : régler des hyper-paramètres comme les poids des caractéristiques pour le score
+		\item Classement : décider si une unité (phrase) appartient au résumé ou non
+	\end{itemize}
+	\item \optword{Bayesian topic models}
+	\begin{itemize}
+		\item Identifier les concepts principaux à partir des documents et les liens entre eux pour avoir une hiérarchie
+	\end{itemize}
+	\item \optword{Deep learning}
+	\begin{itemize}
+		\item Réglage ou Classement
+		\item Génération des mots (une forme du classement)
+	\end{itemize}
+	\item \optword{Reinforcement learning}
+	\begin{itemize}
+		\item Utilisation des actions et des récompenses pour entrainer un système à générer des résumés
+	\end{itemize}
+\end{itemize}
+
+Approche par AA (Exemple : \cite{2020-aries})
+
+\begin{center}
+	\vgraphpage{ml2es-archi.pdf}
+\end{center}
+
+Approche par AA (Exemple : \cite{06-daumeiii-marcu})
+
+\begin{minipage}{.6\textwidth}
+	\begin{itemize}
+		\item $D$ : un ensemble de $K$ documents
+		\item $Q$ : un ensemble de $J$ requêtes
+		\item $P^G$ : un modèle de langue général de l'anglais 
+		\item $P^Q$ : un modèle de langue des requêtes
+		\item $P^D$ : un modèle de langue d'arrière-plan (des documents)
+	\end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+	\hgraphpage{btm-daumeiii_.pdf}
+\end{minipage}
+
+Approche par AA (Exemple : \cite{15-rush-al})
+
+\begin{center}
+	\hgraphpage[.35\textwidth]{2015-rush-al_.pdf}
+	\hgraphpage[.35\textwidth]{2015-rush-al-exp_.pdf}
+\end{center}
+
+\begin{itemize}
+	\item[(a)] Un décodeur qui cherche le prochaine mot du résumé $y_{i+1}$ sachant la phrase en entrée $x$ et des mots déjà générés pour le résumé $y_c \equiv [y_{i-c+1},\ldots, y_i]$
+	\item[(b)] Un encodeur avec attention
+\end{itemize}
+
+Approche par AA (Exemple : \cite{18-narayan-al})
+
+\hgraphpage{narayan-al_.pdf}
+
+%===================================================================================
+\section{Interaction}
+%===================================================================================
+
+\begin{itemize}
+	\item \textbf{Entrée} : une question (texte)
+	\item \textbf{Sortie} : une réponse (texte)
+	\item \textbf{Applications} 
+	\begin{itemize}
+		\item Questions/Réponses
+		\item Systèmes de dialogue
+	\end{itemize}
+\end{itemize}
+
+\subsection{Questions-Réponses}
+
+\hgraphpage{qa-classif.pdf}
+
+Approche par RI
+
+\begin{figure}
+	\hgraphpage{qa-ri_.pdf}
+	\caption{Architecture d'un système de questions/réponses \cite{2019-jurafsky-martin}}
+\end{figure}
+
+\begin{itemize}
+	\item Formulation de la requête
+	\begin{itemize}
+		\item Séparation des mots
+		\item Suppression des mots vides
+		\item Radicalisation  
+	\end{itemize}
+	\item Détection du type de réponse
+	\begin{itemize}
+		\item Personne ? Place ? Organisation ? ...
+		\item En utilisant des taxonomies comme celle de Wordnet  
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Recherche des documents
+	\begin{itemize}
+		\item En utilisant les mots clés et l'index des documents
+		\item Retourner les documents avec plus de score
+		\item Diviser ces documents en passages (paragraphes ou phrases)
+	\end{itemize}
+	\item Recherche des passages
+	\begin{itemize}
+		\item Appliquer la détection des entités nommées sur les passages
+		\item Filtrer les passages qui ne contiennent pas le type de la réponse
+		\item On peut appliquer un algorithme d'apprentissage automatique
+		\item Cette algorithme peut être utilisé pour noter les passages
+		\item Caractéristiques : nombre des entités nommées du type recherché, nombre des termes de la question, la séquence la plus longue similaire à la question, le rang du document, etc.
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item \optword{Apprentissage par caractéristiques}
+	\begin{itemize}
+		\item Patrons : \expword{\textless REP\textgreater comme \textless QES\textgreater; }
+		\item Type de réponse et celui du syntagme
+		\item Les mots clés de la question
+		\item Nouveauté : au moins un mot n'existe pas dans la question
+		\item Ponctuation
+		\item ...
+	\end{itemize}
+	\item \optword{Réseaux de neurones}
+	\begin{itemize}
+		\item Tâche de lecture/compréhension
+		\item Pour chaque mot, calculer la probabilité d'être le début de la réponse et la fin de la réponse en utilisant la question. 
+	\end{itemize}
+\end{itemize}
+
+Approche par RI (extraction par Bi-LSTM \cite{2017-chen-al})
+
+\begin{figure}
+	\hgraphpage{qa-bilstm-exp_.pdf}
+	\caption{Extraction de réponse dans le système DrQA \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Approche par RI (extraction par BERT \cite{2018-devlin-al})
+
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{qa-bert-exp_.pdf}
+	\caption{Extraction de réponse dans le système DrQA \cite{2019-jurafsky-martin}}
+\end{figure}
+
+Approche par connaissance
+\begin{itemize}
+	\item \optword{Par graphe}
+	\begin{itemize}
+		\item Annotation sémantique (Entity linking)
+		\item Déterminer la relation recherchée ; Ex. \expword{Place\_naissance}
+		\item S'il y a plusieurs relations comme réponse : calculer la similarité entre la question et la réponse
+		\item Exemple, \expword{en utilisant les embeddings}
+	\end{itemize}
+	\item \optword{Par analyse sémantique}
+	\begin{itemize}
+		\item Analyse sémantique de la question
+		\item Génération d'une forme structurée de la question : lambda calcul, SQL, SPARQL, etc.
+		\item Cette forme est utilisée comme requête
+		\item Récupérer la réponse à partir de la base de connaissance
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.9\textwidth]{qa-logfrm-exp_.pdf}
+	\caption{An exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
+\end{figure}
+
+Approche par modèles de langues
+
+\begin{itemize}
+	\item Utiliser un modèle de langue pré-entrainé
+	\item Régler le modèle pour répondre les questions
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.6\textwidth]{qa-t5_.pdf}
+	\caption{T5 est pré-entraîné pour remplir le texte absent, ensuite réglé pour répondre aux questions sans saisir d'informations ou de contexte supplémentaires. \cite{2020-roberts-al}}
+\end{figure}
+
+\subsection{Systèmes de dialogue}
+
+\hgraphpage{sd-classif.pdf}
+
+orienté tâche - Frame-based (Frame)
+	\begin{itemize}
+	\item Frame (Cadre) : une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot
+	\item On ne pose que les questions dont le slot est vide
+	\item Il y a la possibilité de remplir d'autres slots dans d'autre cadres. 
+	Ex. \expword{Le slot RESERVATION\_DATE dans le cadre HOTEL\_RESERVATION à partir du slot ARRIVAL\_DATE du cadre FLIGHT\_RESERVATION}
+	\item Appliquer \keyword{Détection d'intention} pour savoir quel cadre à utiliser
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.6\textwidth]{sd-frame-exp_.pdf}
+	\caption{Exemple d'un cadre pour programmer un vol. \cite{2020-jurafsky-martin}}
+\end{figure}
+
+orienté tâche - Frame-based (Réponses multiples)
+\begin{figure}
+	\centering
+	\hgraphpage[.6\textwidth]{sd-frame-semgram-exp_.pdf}
+	
+	\hgraphpage[.8\textwidth]{sd-frame-parse-exp_.pdf}
+	\caption{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase. \cite{2020-jurafsky-martin}}
+\end{figure}
+
+orienté tâche - Dialogue-State
+\begin{figure}
+	\centering
+	\hgraphpage[.7\textwidth]{sd-dialog-arch_.pdf}
+	\caption{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
+\end{figure}
+
+orienté tâche - Dialogue-State (Actes du dialogue)
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{sd-dialog-act-exp1_.pdf}
+	
+	\hgraphpage[.5\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
+	\caption{Des actes de dialogue ainsi qu'un exemple d'un dialogue d'un système de recommandation des restaurants appelé HIS \cite{2010-young-al}. Il est indiqué ce qui est permété d'être une entrée du système et une sortie de l'utilisateur \cite{2020-jurafsky-martin}}
+\end{figure}
+
+orienté tâche - Dialogue-State (Remplissage des slots)
+\begin{itemize}
+	\item Classifier la phrase par intention, domaine et slot
+	\item Extraire les informations pour remplir les slots. Ex. \expword{En utilisant l'apprentissage automatique pour l'étiquetage des séquences}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{sd-dialog-remp-exp_.pdf}
+	\caption{Exemple d'une architecture pour le remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
+\end{figure}
+
+orienté tâche - Dialogue-State (Autres composants)
+\begin{itemize}
+	\item Traqueur de l'état du dialogue
+	\begin{itemize}
+		\item Sauvegarder l'état des cadres (slots) et le dernier acte du dialogue
+	\end{itemize}
+	\item Politique du dialogue
+	\begin{itemize}
+		\item Déterminer l'action $A_i$ à prendre 
+		
+		$\hat{A}_i = \arg\max_{A_i \in A} P(A_i | Frame_{i-1}, A_{i-1}, U_{i-1})$
+	\end{itemize}
+	
+	\item Générateur du texte 
+	\begin{itemize}
+		\item Générer du texte à partir d'un acte de dialogue
+		\item On peut entraîner un encodeur/décodeur pour le faire
+	\end{itemize}
+\end{itemize}
+
+chatbot - à base des règles (Exemple : ELIZA \cite{1966-Weizenbaum})
+\begin{itemize}
+	\item Le plus célèbre chatbot est \keyword{ELIZA} : psychologue
+	\item Une liste des patrons/transformations 
+	
+	\expword{\small [(.*) YOU (.*) ME]\textsubscript{[Patron]} \textrightarrow\ [WHAT MAKES YOU THINK I \$2 YOU?]\textsubscript{[Transformation]}}
+	
+	\expword{You hate me \textrightarrow\ WHAT MAKES YOU THINK I HATE YOU?}
+	
+	\item Les patrons sont liés à une liste des mots. Le mot qui score le plus dans la phrase va déclencher plusieurs patrons
+	
+	\item Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilisé
+\end{itemize}
+
+chatbot - à base de la RI
+
+\begin{itemize}
+	\item Un corpus des conversations $C$
+	\item On prend le texte de l'utilisation comme une requête (question) $q$
+	\item On cherche la réponse $r \in C$ qui est plus similaire à la requête $q$
+	\[\text{Réponse}(q, C) = \arg\max_{r \in C} \frac{q . r}{|q| |r|}\]
+	\item Pour calculer la similarité, on peut utiliser TF-IDF
+	\item On peut aussi encoder la requête $q$ et la réponse $r$ en utilisant les embeddings
+	\[h_q = BERT_Q(q)[CLS],\; h_r = BERT_R(r)[CLS]\]
+	\[\text{Réponse}(q, C) = \arg\max_{r \in C} q . r\]
+\end{itemize}
+
+chatbot - par génération du texte
+
+\begin{itemize}
+	\item Utiliser un encodeur/décodeur comme dans la traduction automatique
+	\[ \hat{r}_i = \arg\max_{w \in V} p(w| q, r_1, \ldots, r_{t-1}) \]
+	
+	\item Dans l'encodeur, introduire un contexte plus long
+	
+	\item On peut utiliser un modèle de langue, comme GPT, afin de l'entraîner sur des conversations
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp_.pdf}
+	\caption{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
+\end{figure}
+
+
+%===================================================================================
+\section{Classification}
+%===================================================================================
+
+
+\begin{itemize}
+	\item \textbf{Entrée} : un texte
+	\item \textbf{Sortie} : une catégorie
+	\item \textbf{Applications} 
+	\begin{itemize}
+		\item Filtrage de spams
+		\item Identification des langues
+		\item Lisibilité 
+		\item Analyse des sentiments
+		\item Détection de l'humeur
+	\end{itemize}
+\end{itemize}
+
+\subsection{Analyse des sentiments}
+
+\hgraphpage{sentiment-classif.pdf}
+
+Analyse des sentiments : à base de connaissance
+\begin{itemize}
+	\item Identifier les mots indicateurs des sentiments
+	\begin{itemize}
+		\item En général, les adjectifs et les adverbes sont des bons indicateurs
+		\item \optword{à base de dictionnaire} : en utilisant un dictionnaire comme Wordnet pour enrichir la liste des indicateurs (synonymes, antonymes, etc.) 
+		\item \optword{à base d'un corpus} : en utilisant la co-occurrence avec les mots  de la liste originale pour l'enrichir 
+	\end{itemize}
+	\item Assigner des scores à ces mots (ou des étiquettes)
+	\item Calculer le score total à  base des mots
+	\begin{itemize}
+		\item \textbf{granularité} : par phrases ou par documents 
+		\item il faut faire attention à  la négation
+		\item on peut utiliser la structure; par exemple \keyword{RST}
+		\item Ex. \expword{Donner un score de -1 aux mots de polarité négative et +1 aux mots de polarité positive et faire la somme des polarités des mots d'une phrase}
+	\end{itemize}
+\end{itemize}
+
+Analyse des sentiments : par apprentissage automatique
+\begin{itemize}
+	\item \optword{En utilisant des caractéristiques }
+	\begin{itemize}
+		\item Présence d'un mot et sa fréquence 
+		\item Catégorie grammaticale
+		\item Les mots et les syntagmes d'opinion
+		\item Négation
+	\end{itemize}
+	\item \optword{En utilisant des embeddings}
+	\begin{itemize}
+		\item Utiliser les embeddings des mots pour apprendre la classe de sortie
+		\item En utilisant BERT (l'apprentissage par transfert)
+		\begin{itemize}
+			\item Utiliser la sortie \keyword{[CLS]} pour estimer les classes
+			\item Utiliser \keyword{[CLS]} avec un réseaux feedForward pour estimer les classes
+			\item Utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+Analyse des sentiments : hybride (exemple \cite{18-bettiche-al}) 
+\begin{figure}
+	\centering
+	\hgraphpage[.7\textwidth]{sent-bettiche-al_.pdf}
+	\caption{Architecture hybride proposée par \cite{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
+\end{figure}
+
+	\begin{itemize}
+	\item Enrichissement du vocabulaire
+	\begin{itemize}
+		\item Détection des mots similaires (désignation d'un représentant)
+		
+		$Ratio = 1 - Levenstein(w_1, w_2)/(|w_1|+|w_2|)$
+		
+		Ex. \expword{Ratio(kolach, kollach) = 92\%, Ratio(kolach, khlasse) = 38\%.}
+		
+		\item Calculer l'orientation sémantique d'un mot $w$
+		
+		
+		$SO(w) = \sum_{w_p \in V_p} PMI(w, w_p) - \sum_{w_n \in V_n} PMI(w, w_n)$
+		
+		$PMI (w_1, w_2) = \log \frac{p(w_1, w_2)}{p(w_1)*p(w_2)}$
+	\end{itemize}
+	\item Représentation de la polarité
+	\begin{itemize}
+		\item $polarite(w) = +1 \text{ SI } SO(w) > 0; -1 \text{ SI } SO(w) < 0$
+		\item $polarite(w) = SO(w)$
+	\end{itemize}
+	\item Version avec règles : $polarite(msg) = Signe \sum_{w \in msg} polarite(w)$
+	\item Version avec apprentissage automatique
+	\begin{itemize}
+		\item les polarités des mots comme caractéristiques
+		\item ou la corrélation $PMI$ pour sélection des mots d'entrée
+		\item plusieurs algorithmes sont utilisés : NB, arbres de décision, SVM, etc.
+	\end{itemize}
+\end{itemize}
+
+Analyse des sentiments : hybride (exemple \cite{18-guellil-al}) 
+\begin{figure}
+	\centering
+	\hgraphpage[.45\textwidth]{sent-guellil-al_.pdf}
+	\caption{Architecture hybride proposée par \cite{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
+\end{figure}
+
+\subsection{Lisibilité}
+\hgraphpage{lisibilite-classif.pdf}
+
+Lisibilité : Formule (Flesch-Kincaid Grade Level)
+\[
+206.835 - 1.015 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
+- 84.6 (\frac{\text{\slshape syllabes totales}}{\text{\slshape mots totaux}})
+\]
+
+\begin{center}
+	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+	\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
+		\rowcolor{darkblue}
+		\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
+		90-100 && Très facile à lire (Élève de 11 ans). \\
+		80-90 && Facile à lire. \\
+		70-80 && Plutôt facile à lire.\\
+		60-70 && En clair (Élève de 13 ou 15 ans). \\
+		50-60 && Plutôt difficile à lire. \\
+		30-50 && Difficile à lire (Université). \\
+		0-30 && Très difficile à lire (Diplôme universitaire). \\
+	\end{tabular}
+\end{center}
+
+Lisibilité : Formule (Dale–Chall readability formula)
+\[
+0.1579 (\frac{\text{\slshape mots difficiles}}{\text{\slshape mots totaux}})
++ 0.0496 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
+\]
+
+\begin{center}
+	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+	\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
+		\rowcolor{darkblue}
+		\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
+		\textless= 4.9 && Étudiant du 4ième. \\
+		5-5.9 && Étudiant du 5ième et 6ième. \\
+		6-6.9 && Étudiant du 7ième et 8ième.\\
+		7-7.9 && Étudiant du 9ième et 10ième. \\
+		8-8.9 && Étudiant du 11ième et 12ième. \\
+		9-9.9 && Étudiant du 13ième et 15ième (collège). \\
+	\end{tabular}
+\end{center}
+
+Lisibilité : Apprentissage
+\begin{figure}
+	\centering
+	\hgraphpage[0.8\textwidth]{lisibilite-ML_.pdf}
+	\caption{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
+\end{figure}
+
+
+%===================================================================================
+\section{Parole}
+%===================================================================================
+
+\begin{itemize}
+	\item Reconnaissance de la parole
+	\begin{itemize}
+		\item \textbf{Entrée} : parole
+		\item \textbf{Sortie} : texte
+		\item \textbf{Anglais} : speech recognition
+		\item \textbf{Anglais} : speech to text
+	\end{itemize}
+	\item Synthèse de la parole
+	\begin{itemize}
+		\item \textbf{Entrée} : texte
+		\item \textbf{Sortie} : parole
+		\item \textbf{Anglais} : speech synthesis
+		\item \textbf{Anglais} : text to speech (TTS)
+	\end{itemize}
+\end{itemize}
+
+\subsection{Reconnaissance de la parole}
+
+\hgraphpage{asr-classif.pdf}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.45\textwidth]{asr-arch_.pdf}
+	\caption{Architecture d'un système de reconnaissance de paroles \cite{18-haridas}}
+\end{figure}
+
+\begin{itemize}
+	\item \optword{Acoustique-Phonétique}
+	\begin{itemize}
+		\item Détecter les phonèmes et les transcrire
+	\end{itemize}
+	\item \optword{Reconnaissance des formes}
+	\begin{itemize}
+		\item Apprendre à détecter les différentes formes
+		\item \optword{Par modèles} 
+		\item \optword{Stochastique}
+	\end{itemize}
+	\item \optword{Intelligence artificielle}
+	\begin{itemize}
+		\item Fusion entre les deux approches précédentes
+	\end{itemize}
+\end{itemize}
+
+Reconnaissance vocale : Extraction des caractéristiques (Échantillonnage)
+\begin{itemize}
+	\item Transformer les signaux sonores vers une séquence des vecteurs de caractéristiques acoustiques
+	\item Chaque vecteur représente l'information du signal encodée dans une petite fenêtre de temps
+	\item \optword{Échantillonnage}
+	\begin{itemize}
+		\item Il faut prendre 2 échantillons par cycle (pour capturer les parties positive et négative du signal)
+		\item La fréquence des paroles sont inférieures à 10 KHz (sampling rate = 20 KHz)
+		\item Dans la téléphonie, la fréquence est 4KHz (sampling rate = 8 KHz)
+	\end{itemize}
+\end{itemize}
+
+Reconnaissance vocale : Extraction des caractéristiques (Quantification)
+\begin{itemize}
+	\item \optword{Quantification}
+	\begin{itemize}
+		\item Les amplitudes des échantillons sont stockées sous forme des entiers
+		\item Soit 8 bits (-128 à 127) ou 16 bits (-32768 à 32767)
+		\item La valeur d'un échantillon dans un temps $n$ est représentée comme $x[n]$
+	\end{itemize}
+\end{itemize}
+
+Reconnaissance vocale : Extraction des caractéristiques (Fenêtrage)
+	\begin{itemize}
+	\item \optword{Fenêtrage}
+	\begin{itemize}
+		\item Utiliser une fenêtre pour capturer un ou une partie d'un phonème 
+		\item Cette partie est appelée Cadre (frame)
+		\item L'opération a deux paramètres : taille de la fenêtre (Window size) et décalage (Frame stride, shift, offset)
+	\end{itemize}
+\end{itemize}
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{ASR-windowing-exp_.pdf}
+	\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
+\end{figure}
+
+\begin{itemize}
+	\item \optword{Fenêtrage} (suite)
+	\begin{itemize}
+		\item Pour extraire un cadre $y[n]$, on utilise un signal de la fenêtre $w[n]$ sur le signal initial $s[n]$
+		\[y[n] = w[n] s[n]\]
+		\item La plus simple est la fenêtre rectangulaire 
+		
+		$w[n] = \begin{cases}
+		1 & \text{si } 0 \le n \le L-1 \\
+		0 & \text{sinon }\\
+		\end{cases}$
+		\item Ceci va créer des problèmes avec l'analyse de Fourier 
+		\item La solution est la fenêtre de Hamming
+		
+		$w[n] = \begin{cases}
+		0.54 - 0.46 \cos (\frac{2\pi n}{L}) & \text{si } 0 \le n \le L-1 \\
+		0 & \text{sinon }\\
+		\end{cases}$
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.7\textwidth]{ASR-windowing2-exp_.pdf}
+	\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
+\end{figure}
+
+Reconnaissance vocale : Extraction des caractéristiques (DFT)
+
+\begin{itemize}
+	\item \optword{Discrete Fourier Transform}
+	\begin{itemize}
+		\item Combien d'énergie un signal contient dans les différentes bandes de fréquence
+		\[X[k] = \sum\limits_{n=0}^{N-1} x[n] e^{-j\frac{2\pi}{N} k n}\]
+	\end{itemize}
+\end{itemize}
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{ASR-DFT-exp_.pdf}
+	\caption{(a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
+\end{figure}
+
+Reconnaissance vocale : Extraction des caractéristiques (Filtre de Mel)
+
+\begin{itemize}
+	\item \optword{Filtre de Mel}
+	\begin{itemize}
+		\item L'audition humaine n'est pas également sensible à toutes les bandes de fréquences
+		\item Collecter les énergies à chaque fréquence en se basant sur l'échelle de Mel
+		\[mel(f) = 1127 \ln (1 + \frac{f}{700})\]
+	\end{itemize}
+\end{itemize}
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{ASR-mel-exp_.pdf}
+	\caption{Un exemple du filtre de Mel \cite{2020-jurafsky-martin}}
+\end{figure}
+
+Reconnaissance vocale : Reconnaissance
+\begin{figure}
+	\centering
+	\hgraphpage[.8\textwidth]{ASR-rec-exp_.pdf}
+	\caption{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
+\end{figure}
+
+\begin{itemize}
+	\item $p(y_1, \ldots, y_n) = \prod\limits_{i=1}^n p(y_i| y_1, \ldots, y_{i-1}, X)$
+	
+	\item $\hat{y}_i = \arg\max_{c \in V} p(c| y_1, \ldots, y_{i-1}, X)$
+	
+	\item clairement, ceci est un modèle de langue
+	\item mais, il se peut que les données ne sont pas suffisants pour apprendre un bon modèle de langue
+	\item Solution : intégrer un modèle de langue séparé
+	
+	\item $score(Y|X) = \frac{1}{|Y|_{car}} \log p(Y|X) + \lambda \log p_{LM}(Y)$
+\end{itemize}
+
+
+\subsection{Synthèse de la parole}
+
+\hgraphpage{tts-classif.pdf}
+
+\begin{figure}
+	\centering
+	\hgraphpage[.5\textwidth]{tts-arch_.pdf}
+	\caption{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
+\end{figure}
+
+
+
+
+\begin{discussion}
+
+
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

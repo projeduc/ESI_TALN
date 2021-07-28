@@ -154,20 +154,20 @@ fontupper=\quotefont,
 title={#1}
 }
 
-\newtcolorbox{introduction}{
+\newtcolorbox{introduction}[1][]{
 	enhanced jigsaw,
 	oversize,
-	rightrule=0pt,
-	toprule=0pt,
-	bottomrule=0pt,
-	leftrule=8pt,
+	rightrule=1pt,
+	toprule=1pt,
+	bottomrule=1pt,
+	leftrule=1pt,
 	colback=white,
 	colframe=indigo,
 	arc=0pt,
 	outer arc=0pt,
-%	title={Remarque :},
-%	title style={white},
-%	fonttitle=\color{black}\bfseries,
+	title={#1},
+	title style={indigo!70!white},
+	fonttitle=\color{black}\bfseries,
 	titlerule=0pt,
 	bottomtitle=0pt,
 	top=0pt,
@@ -177,6 +177,7 @@ title={#1}
 	width=0.75\textwidth,
 	fontupper=\itshape
 }
+
 
 \newenvironment{discussion}{%
 	\section*{Discussion}
