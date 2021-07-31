@@ -28,7 +28,7 @@
 		\item Reconnaissance de paroles : \\
 		\expword{P(Jeudi matin) \textgreater\ P(Je dis matin)}
 	\end{itemize}
-	\item \optword{Probabilité d'occurrence d'un mot} : $\color{red} P(w_n | w_1, \ldots, w_{n-1}) $
+	\item \optword{Probabilité d'occurrence d'un mot} : $\color{red} P(w_i | w_1, \ldots, w_{i-1}) $
 	\begin{itemize}
 		\item Auto-complétion : \\
 		\expword{P(traitement automatique de l'information) \textgreater\ P(traitement automatique de l'eau)}
@@ -58,7 +58,7 @@
 \framesubtitle{Modèle N-gramme}
 
 \begin{block}{Formule des probabilités composées}
-	$ P(x_1 \ldots x_n) =  P(x_1) P(x_2 | x_1) P(x_3 | x_1, x_2) \ldots P(x_n | x_1, \ldots, x_{n-1})$
+	$ P(w_1 \ldots w_m) =  P(w_1) P(w_2 | w_1) P(w_3 | w_1, w_2) \ldots P(w_n | w_1, \ldots, w_{m-1})$
 \end{block}
 
 
@@ -88,17 +88,17 @@
 \begin{block}{Propriété de Markov}
 	Un état futur ne dépend que de l'état présent. 
 	\[%
-	P(x_n | x_1,\ldots, x_{n-1}) \approx P(x_n | x_{n-1})
+	P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i | w_{i-1})
 	\]
-	Cas général avec $k$ états passés 
+	Cas général avec $n-1$ états passés 
 	\[%
-	P(x_n | x_1,\ldots, x_{n-1}) \approx P(x_n | x_{n-k+1}, \ldots, x_{n-1})
+	P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i | w_{i-n+1}, \ldots, w_{i-1})
 	\]
 \end{block}
 
-\begin{block}{Estimation de probabilité en utilisant les N-grammes (k grammes)}
+\begin{block}{Estimation de probabilité en utilisant les N-grammes (n grammes)}
 	\[
-	P(x_1,\ldots, x_{n}) \approx \prod_i P(x_i | x_{i-k+1}, \ldots, x_{i-1})
+	P(w_1,\ldots, w_{m}) \approx \prod_{i=1}^m P(w_i | w_{i-k+1}, \ldots, w_{i-1})
 	\]
 \end{block}
 
@@ -109,9 +109,9 @@
 \framesubtitle{Formulation : Quelques modèles}
 
 \begin{itemize}
-	\item \optword{Modèle uni-gramme} : $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n)$
-	\item \optword{Modèle bi-gramme} : $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n | w_{n-1})$
-	\item \optword{Modèle tri-gramme} :  $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n | w_{n-2}, w_{n-1})$
+	\item \optword{Modèle uni-gramme} : $P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i)$
+	\item \optword{Modèle bi-gramme} : $P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i | w_{i-1})$
+	\item \optword{Modèle tri-gramme} :  $P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i | w_{i-2}, w_{i-1})$
 	\item Google Books Ngram Viewer
 	\begin{itemize}
 		\item \url{https://books.google.com/ngrams}
@@ -142,12 +142,12 @@
 
 \begin{block}{Estimation des probabilités en utilisant le maximum de vraisemblance}
 	{\small \[%
-	P(w_n | w_{n-k+1},\ldots, w_{n-1}) = \frac{C(w_{n-k+1} \ldots w_{n-1} w_n)}{\sum_i C(w_{n-k+1} \ldots w_{n-1} w_i)}
-	= \frac{C(w_{n-k} \ldots w_{n-1+1} w_n)}{C(w_{n-k+1} \ldots w_{n-1})}
+	P(w_i | w_{i-n+1},\ldots, w_{i-1}) = \frac{C(w_{i-n+1} \ldots w_{i-1} w_i)}{\sum_i C(w_{i-n+1} \ldots w_{i-1} w_i)}
+	= \frac{C(w_{i-n+1} \ldots w_{i-1} w_i)}{C(w_{i-n+1} \ldots w_{i-1})}
 	\]}
 	Où $C$ est le nombre d'occurrences des N-grammes dans le corpus
 	\[%
-	\text{Bi-grammes : } P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n)}{C(w_{n-1})}
+	\text{Bi-grammes : } P(w_i | w_{i-1}) = \frac{C(w_{i-1} w_i)}{C(w_{i-1})}
 	\]
 \end{block}
 
@@ -220,7 +220,7 @@
 
 \begin{block}{Lissage de Lidstone (Bi-grammes comme exemple)}
 	\[%
-	P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n) + \alpha}{C(w_{n-1}) + \alpha V}
+	P(w_i | w_{i-1}) = \frac{C(w_{i-1} w_i) + \alpha}{C(w_{i-1}) + \alpha V}
 	\]
 	Où $V$ est la taille du vocabulaire du modèle
 	
@@ -247,13 +247,13 @@
 
 \begin{block}{Interpolation (Tri-grammes comme exemple)}
 	\[%
-	P_{I}(w_n | w_{n-2} w_{n-1}) = 
-	\lambda_3 P(w_n | w_{n-2} w_{n-1}) 
-	+ \lambda_2 P(w_n | w_{n-1}) 
-	+ \lambda_1 P(w_n) 
+	P_{I}(w_i | w_{i-2} w_{i-1}) = 
+	\lambda_3 P(w_i | w_{i-2} w_{i-1}) 
+	+ \lambda_2 P(w_i | w_{i-1}) 
+	+ \lambda_1 P(w_i) 
 	\]
 	
-	Où $\sum_i \lambda_i = 1$
+	Où $\sum_j \lambda_j = 1$
 	
 	$\lambda_3$, $\lambda_2$ et $\lambda_1$ sont estimés en utilisant un autre corpus de réglage
 \end{block}
@@ -276,10 +276,10 @@
 
 \begin{block}{Back-off de Katz (Tri-grammes comme exemple)}
 	\[%
-	P_{BO}(w_n | w_{n-2} w_{n-1}) = 
+	P_{BO}(w_i | w_{i-2} w_{i-1}) = 
 	\begin{cases}
-	P^*(w_n | w_{n-2} w_{n-1}) & \text{si } C(w_{n-2} w_{n-1} w_n) > 0 \\
-	\alpha(w_{n-2} w_{n-1}) P_{BO}(w_n | w_{n-1}) & \text{sinon}
+	P^*(w_i | w_{i-2} w_{i-1}) & \text{si } C(w_{i-2} w_{i-1} w_i) > 0 \\
+	\alpha(w_{i-2} w_{i-1}) P_{BO}(w_i | w_{i-1}) & \text{sinon}
 	\end{cases}
 	\]
 	
@@ -326,18 +326,18 @@
 \begin{itemize}
 	\item On va suivre le modèle de \cite{2003-bengio-al}
 	\item On choisit le nombre des n-grammes $n$ ; donc, le nombre des mots en entrée c'est $n-1$
-	\item Le vecteur $m_j$ est le embedding de position $j$
+	\item Le vecteur $m$ est la concaténation des embeddings des mots précédents
 	\item On choisit la taille de vecteur de représentation (embedding) $d$
 	\item Les mots sont encodés sous forme One-Hot (un vecteur avec une taille $V$ du vocabulaire)
 \end{itemize}
 
 \begin{block}{Modèle neuronal à propagation avant}
 	$
-	P(.|h_1,\ldots, h_{n-1}) = 
+	P(h_i|h_{i-n+1},\ldots, h_{i-1}) = 
 	Softmax \left(
-	(b + \sum\limits_{j=1}^{n-1} m_j A_j) 
+	(b + m A) 
 	+ 
-	W\ Tanh(u + \sum\limits_{j=1}^{n-1} m_j T_j)
+	W\ Tanh(u + m T)
 	\right)
 	$
 	

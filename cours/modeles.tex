@@ -13,7 +13,7 @@
 \fi
 %=====================================================================
 \changegraphpath{../img/modeles/}
-\chapter{Modèles de langue}
+\chapter{Modèles de langage}
 
 \begin{introduction}[LE\textcolor{white}{S} LANGUES]
 	\lettrine{S}{i} on veut tester qu'un langage est bien écrit, on doit revenir aux règles de composition de ces phrases.
@@ -69,274 +69,356 @@ Dans un langage naturel, on peut trouver plusieurs phrases possibles ; On peut m
 Pour estimer une probabilité conditionnelle avec un grand historique (mots précédents), on doit utiliser un corpus (dataset textuel) très grand. 
 Vu que les phrases sont infinies, on ne peut pas représenter toutes les combinaisons possibles. 
 Dans ce cas, une solution est de limiter la taille de l'historique. 
-Donc, on essaye d'estimer $P(w_k|w_{k-n+1},\ldots,w_{k-1})$ avec un historique de $n-1$ mots ; 
+Donc, on essaye d'estimer $P(w_i|w_{i-n+1},\ldots,w_{i-1})$ avec un historique de $n-1$ mots ; 
 Ce modèle est appelé NGram.
 
 \subsection{Formulation}
 
-\begin{block}{Propriété de Markov}
-	Un état futur ne dépend que de l'état présent. 
-	\[%
-	P(x_n | x_1,\ldots, x_{n-1}) \approx P(x_n | x_{n-1})
-	\]
-	Cas général avec $k$ états passés 
-	\[%
-	P(x_n | x_1,\ldots, x_{n-1}) \approx P(x_n | x_{n-k+1}, \ldots, x_{n-1})
-	\]
-\end{block}
+Étant donné un processus stochastique, ceci vérifie la propriété de Markov si l'état futur ne dépend que sur l'état présent. 
+Donc, la probabilité d'occurrence d'un mot $w_i$ sachant l'occurrence de plusieurs mots $w_1, \ldots, w_{i-1}$ ne dépend que sur le mot précédent $w_{i-1}$ suivant la propriété de Markov (voir l'équation \ref{eq:markov}). 
+Ce modèle est appelé un modèle \keyword{Bi-gramme}.
+Ce modèle peut être représenté graphiquement comme un automate à état fini où les mots sont les états et les transitions sont les probabilités.
+\begin{equation}
+	P(w_i | w_1,\ldots, w_{i-1}) = P(w_i | w_{i-1})
+	\label{eq:markov}
+\end{equation}
 
-\begin{block}{Estimation de probabilité en utilisant les N-grammes (k grammes)}
-	\[
-	P(x_1,\ldots, x_{n}) \approx \prod_i P(x_i | x_{i-k+1}, \ldots, x_{i-1})
-	\]
-\end{block}
+Ce modèle peut être généralisé en considérant $n-1$ mots précédents. 
+Dans ce cas, l'équation \ref{eq:markov} sera formulée comme l'équation \ref{eq:markov-ngram}.
+Le modèle généralisé est appelé \keyword{N-gramme}.
+Les modèles les plus utilisés sont : Uni-gramme ($n=1$), Bi-gramme ($n=2$) et Tri-gramme ($n=3$).
+Une compilation des différents N-grammes préparée par Google et distribuée sous une licence open source sous le nom : Google Books Ngram\footnote{Google Books Ngram : \url{https://storage.googleapis.com/books/ngrams/books/datasetsv3.html}}
+\begin{equation}
+	P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i | w_{i-n+1}, \ldots, x_{i-1})
+	\label{eq:markov-ngram}
+\end{equation}
 
+Donc, l'équation \ref{eq:ph-prob} qui calcule la probabilité d'une phrase sera reformulée comme indiqué dans l'équation \ref{eq:ph-prob-ngram} en utilisant un modèle N-gramme.
+\begin{equation}\label{eq:ph-prob-ngram}
+	P(w_1 \ldots w_m) \approx \prod_{i=1}^{m} P(w_i | w_{i-n+1}, \ldots, x_{i-1})
+\end{equation}
+
+Étant donné une fonction $C(S)$ qui compte le nombre d'occurrences d'une séquence $S$ dans un corpus, la probabilité conditionnelle est calculée selon le maximum de vraisemblance (voir l'équation \ref{eq:max-vrai}).
+Le corpus d'entraînement doit être suffisant afin de capturer les combinaisons possibles. 
+En fait, plus $i$ est grand, plus on aura besoin de données.
+En observant la formule, on se demande : comment peut-on calculé la probabilité conditionnelle des mots du début et de fin ?
+On marque le début et la fin des phrases avec \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater} (une fois pour les bi-grammes, 2 fois pour les tri-grammes, etc.). 
+Comme ça, on peut exprimer la probabilité qu'un mot soit au début de la phrase.
+\begin{equation}
+	P(w_i | w_{i-n+1},\ldots, w_{i-1}) 
+	= \frac{C(w_{i-n+1} \ldots w_{i-1} w_i)}{\sum_j C(w_{j-n+1} \ldots w_{j-1} w_j)}
+	= \frac{C(w_{i-n+1} \ldots w_{i-1} w_i)}{C(w_{i-n+1} \ldots w_{i-1})}
+	\label{eq:max-vrai}
+\end{equation}
+
+Supposons, nous avons un corpus d'entraînement avec 4 phrases. 
+Si on veut utiliser un modèle Bi-gramme, on doit encercler chaque phrase par \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater}.
+Voici l'ensemble des phrases :
 \begin{itemize}
-	\item \optword{Modèle uni-gramme} : $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n)$
-	\item \optword{Modèle bi-gramme} : $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n | w_{n-1})$
-	\item \optword{Modèle tri-gramme} :  $P(w_n | w_1,\ldots, w_{n-1}) \approx P(w_n | w_{n-2}, w_{n-1})$
-	\item Google Books Ngram Viewer
-	\begin{itemize}
-		\item \url{https://books.google.com/ngrams}
-		\item Modèles pré-traités à partir des livres 
-		\item Téléchargement gratuit : \url{https://storage.googleapis.com/books/ngrams/books/datasetsv3.html}
-	\end{itemize}
+	\item \textless s\textgreater un ordianteur peut vous aider \textless/s\textgreater
+	\item \textless s\textgreater il veut vous aider \textless/s\textgreater
+	\item \textless s\textgreater il veut un ordinateur \textless/s\textgreater
+	\item \textless s\textgreater il peut nager \textless/s\textgreater
 \end{itemize}
-
-Estimation
-\begin{itemize}
-	\item En utilisant un corpus d'entraînement avec suffisamment de données
-	\item On marque le début et la fin des phrases avec \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater} (une fois pour les bi-grammes, 2 fois pour les tri-grammes, etc.)
-	\item \keyword{Estimateur du maximum de vraisemblance}
-\end{itemize}
-
-\begin{block}{Estimation des probabilités en utilisant le maximum de vraisemblance}
-	{\small \[%
-		P(w_n | w_{n-k+1},\ldots, w_{n-1}) = \frac{C(w_{n-k+1} \ldots w_{n-1} w_n)}{\sum_i C(w_{n-k+1} \ldots w_{n-1} w_i)}
-		= \frac{C(w_{n-k} \ldots w_{n-1+1} w_n)}{C(w_{n-k+1} \ldots w_{n-1})}
-		\]}
-	Où $C$ est le nombre d'occurrences des N-grammes dans le corpus
-	\[%
-	\text{Bi-grammes : } P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n)}{C(w_{n-1})}
-	\]
-\end{block}
-
-\begin{exampleblock}{Exemple d'un corpus d'entraînement}
-	\begin{itemize}
-		\item \textless s\textgreater un ordianteur peut vous aider \textless/s\textgreater
-		\item \textless s\textgreater il veut vous aider \textless/s\textgreater
-		\item \textless s\textgreater il veut un ordinateur \textless/s\textgreater
-		\item \textless s\textgreater il peut nager \textless/s\textgreater
-	\end{itemize}
-\end{exampleblock}
-
-\begin{itemize}
-	\item $P(peut | il) = \frac{C(il\ peut)}{C(il)} = \frac{1}{3}$
-	\item $P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
-	\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3}{4}}
-	\underbrace{P(peut|il)}_{\frac{1}{3}} 
-	\underbrace{P(vous|peut)}_{\frac{1}{2}} 
-	\underbrace{P(aider|vous)}_{\frac{2}{2}}
-	\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2}{2}} = 
-	%	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
-	\frac{1}{8}
-	$
-\end{itemize}
+%
+Dans ce modèle, on calcule la probabilité d'occurrence de chaque mot sachant le mot qui le précède. 
+Par exemple, $P(peut | il) = \frac{C(il\ peut)}{C(il)} = \frac{1}{3}$.
+Dans ce cas, la probabilité d'occurrence de la phrase ``\expword{il peut vous aider}" peut être estimée comme suit :
+\[
+P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
+\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3}{4}}
+\underbrace{P(peut|il)}_{\frac{1}{3}} 
+\underbrace{P(vous|peut)}_{\frac{1}{2}} 
+\underbrace{P(aider|vous)}_{\frac{2}{2}}
+\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2}{2}} = 
+%	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
+\frac{1}{8}
+\]
+%
+Si, on essaye d'estimer la probabilité d'occurrence de la phrase ``\expword{il peut aider}", on aura $0$. 
+Même si la phrase est juste, nous n'avons pas suffisamment de données pour entraîner notre modèle à capturer cette forme. 
+La probabilité sera calculée comme suit : 
+\[
+P(\text{\textit{\textless s\textgreater il peut aider \textless/s\textgreater}}) = 
+\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3}{4}}
+\underbrace{P(peut|il)}_{\frac{1}{3}} 
+\underbrace{P(aider|peut)}_{\frac{0}{2}}
+\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2}{2}} = 
+%	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
+0
+\]
+%
+Maintenant, on essaye d'estimer la probabilité d'occurrence de la phrase : 
+``\expword{il peut nous aider}" sachant que le mot ``nous" n'existe pas dans le vocabulaire. 
+La probabilité peut être estimée comme suit : 
+\[
+P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
+\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3}{4}}
+\underbrace{P(peut|il)}_{\frac{1}{3}} 
+\underbrace{P(nous|peut)}_{\frac{0}{0}} 
+\underbrace{P(aider|nous)}_{\frac{0}{2}}
+\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2}{2}} = 
+%	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
+\text{\textit{NaN}}
+\]
+Les mots qui ne figurent pas dans le vocabulaire sont appelés \keyword{Out-of-vocabulary words}. 
+Afin de régler ce problème, on peut ajouter un autre mot \keyword{\textless UNK\textgreater} au vocabulaire. 
+Pour incorporer ce mot dans le corpus d'entraînement, on peut choisir un vocabulaire et remplacer le reste des mots par lui, ou en peut remplacer les mots non fréquents. 
 
 \subsection{Lissage (Smoothing)}
 
+Dans l'exemple précédent, nous avons vu le problème des mots qui n'appartiennent pas au vocabulaire (\expword{nous}) qui résultent à une division sur $0$. 
+Ce dernier problème peut être résolu en réservant un mots clé pour les mots absents (comme présent précédemment).
+Le problème des N-grammes absents (\expword{peut aider}), qui résultent à une probabilité de $0$, ne peut pas être résolu par cette technique. 
+Une solution de ce problème est d'ajouter plus de données.
+Même sans ce problème, si on utilise des petits N-grammes, on peut ne pas capturer les dépendances à long terme. 
+Exemple, \expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI pendant la  séance du cours \underline{a planté}}. 
+Donc, nous somme obligés à utiliser des N-grammes plus grands. 
+Pour entraîner un tel modèle, il nous faut une grande quantité de données. 
+Pour une vocabulaire de taille $V$ et N-gramme de taille $N$, on aura $V^N$ N-grammes possibles.
+Une solution de tous ça est le \keyword{lissage}.
+L'intuition est d'emprunter une petite portion des probabilités des N-grammes existants pour former une probabilité aux N-grammes absents.
+
+\subsubsection{Lissage de Lidstone/Laplace}
+
+Supposons que notre modèle de langage supporte un vocabulaire de taille $V$ et $n$ grammes.
+Afin de soustraire une petite probabilité de chaque N-gramme existant et créer une probabilité pour les N-grammes non existants, on peut modifier la formule du maximum de vraisemblance.
+On utilise un paramètre de lissage $\alpha$ comme indiquer dans l'équation \ref{eq:lidstone}.
+Dans le cas général, ceci est appelé \keyword{lissage de Lidstone}. 
+Lorsque $\alpha = 1$, il est appelé \keyword{lissage de Laplace}. 
+Si $\alpha = 0.5$, il est appelé \keyword{loi de Jeffreys-Perks}.
+\begin{equation}
+	P(w_i | w_{i-n+1}, \ldots, w_{i-1}) = \frac{C(w_{i-n+1} \ldots w_{i-1} w_i) + \alpha}{C(w_{i-n+1} \ldots w_{i-1}) + \alpha V}
+	\label{eq:lidstone}
+\end{equation}
+
+Prenons l'exemple précédent, le vocabulaire est de taille $8$ ($8^2 = 64$ bi-grammes possibles).
+Si, on essaye d'estimer la probabilité d'occurrence de la phrase ``\expword{il peut aider}", on n'aura pas $0$ même si la séquence ``\expword{peut aider}" ne figure pas dans le corpus.
+La probabilité de cette phrase en utilisant un modèle Bi-gramme et un lissage de Laplace sera calculée comme suit : 
+\[
+P(\text{\textit{\textless s\textgreater il peut aider \textless/s\textgreater}}) = 
+\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3+1}{4+8}}
+\underbrace{P(peut|il)}_{\frac{1+1}{3+8}} 
+\underbrace{P(aider|peut)}_{\frac{0+1}{2+8}}
+\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2+1}{2+8}}
+\]
+%
+On revient à la phrase : 
+``\expword{il peut nous aider}" où le mot ``nous" n'existe pas dans le vocabulaire. 
+On teste si on peut résoudre le problème avec le lissage de Laplace ; sans utiliser la solution du mot clé réservé pour les mots inconnus.
+La probabilité en utilisant un modèle Bi-gramme peut être estimée comme suit : 
+\[
+P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreater}}) = 
+\underbrace{P(il|\text{\textit{\textless s\textgreater}})}_{\frac{3+1}{4+8}}
+\underbrace{P(peut|il)}_{\frac{1+1}{3+8}} 
+\underbrace{P(nous|peut)}_{\frac{0+1}{0+8}} 
+\underbrace{P(aider|nous)}_{\frac{0+1}{2+8}}
+\underbrace{P(\text{\textit{\textless/s\textgreater}}|aider)}_{\frac{2+1}{2+8}}
+\]
+
+\subsubsection{Interpolation}
+
+L'idée de l'interpolation est d'entraîner $n$ modèles de langage : de n-grammes jusqu'à uni-grammes. 
+La probabilité de l'interpolation $P_I$ sera calculée en utilisant une composition linéaire entre les probabilités des différents modèles. 
+Les paramètres de composition $\lambda_j$ seront estimés en utilisant un corpus de réglage avec la condition $\sum_j \lambda_j = 1$.
+Dans l'entraînement, on essaye de maximiser la probabilité d'interpolation sur ce corpus.
+La probabilité d'interpolation pour un modèle Tri-gramme peut être calculée en utilisant l'équation \ref{eq:interpolation}. 
+\begin{equation}
+	P_{I}(w_i | w_{i-2} w_{i-1}) = 
+	\lambda_3 P(w_i | w_{i-2} w_{i-1}) 
+	+ \lambda_2 P(w_i | w_{i-1}) 
+	+ \lambda_1 P(w_i) 
+	\label{eq:interpolation}
+\end{equation}
+
+Toujours avec l'exemple précédent, on essaye d'estimer la probabilité d'occurrence de la phrase ``\expword{il peut aider}"
+en utilisant l'interpolation Tri-grammes.
+Tout d'abord, on calcul la probabilité en utilisant chaque modèle n-gramme.
 \begin{itemize}
+	\item Uni-gramme : 
+	$P_1(\text{\textit{\textless s\textgreater il peut aider \textless/s\textgreater}}) = 
+	\underbrace{P(il)}_{\frac{3}{16}}
+	\underbrace{P(peut)}_{\frac{2}{16}} 
+	\underbrace{P(aider)}_{\frac{2}{16}} \approx 0.003$
 	
-	\item Si on utilise des petits N-grammes $ \Longrightarrow $ Perte de l'information
-	\begin{itemize}
-		\item Les langues permettent des dépendances à long terme
-		\item \expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI pendant la  séance du cours \underline{a planté}}
-	\end{itemize}
+	\item Bi-gramme : déjà calculé ; $P_2(\text{\textit{\textless s\textgreater il peut aider \textless/s\textgreater}})=0$.
 	
-	\item Si on utilise des grands N-grammes $ \Longrightarrow $ Complexité élevée du modèle
-	\begin{itemize}
-		\item Il faut un corpus plus grand
-		\item Représentation des N-grammes : $V^N$ où $V$ est la taille du vocabulaire et $N$ est le nombre de grammes
-	\end{itemize}
-	
-	\item Problème des N-grammes absents dans le corpus d'entraînement
-	\begin{itemize}
-		\item $P(\text{\textit{\textless s\textgreater il veut nager \textless/s\textgreater}}) = 
-		P(il|\text{\textit{\textless s\textgreater}}) P(veut|il) P(nager|veut)  P(\text{\textit{\textless/s\textgreater}}|nager) = 
-		\frac{3}{4} \frac{2}{3} \frac{0}{1} \frac{1}{1} = 0
-		$
-	\end{itemize}
-	\item L'intuition est d'emprunter une petite portion des probabilités des N-grammes existants pour former une probabilité aux N-grammes absents 
+	\item Tri-gramme : Si la probabilité de cette phrase en utilisant le Bi-gramme est nulle, donc elle l'est aussi avec des modèles de l'ordre supérieure. 
+	$P_3(\text{\textit{\textless s\textgreater \textless s\textgreater il peut aider \textless/s\textgreater \textless/s\textgreater}})=0$.
+	Ici, on peut tomber sur la division par zéro, mais on va considérer la probabilité comme nulle.
 \end{itemize}
+%
+Si on utilise les paramètres $\lambda_3=0.7,\, \lambda_2=0.2,\, \lambda_1 = 0.1$, la probabilité de l'interpolation sera $P_I = 0.7 P_3 + 0.2 P_2 + 0.1 P_1 = 0.1 P_1 \approx 0.0003$. 
+Bien sûr, cette solution ne résout pas le problème des mots absents.
 
-\begin{block}{Lissage de Lidstone (Bi-grammes comme exemple)}
-	\[%
-	P(w_n | w_{n-1}) = \frac{C(w_{n-1} w_n) + \alpha}{C(w_{n-1}) + \alpha V}
-	\]
-	Où $V$ est la taille du vocabulaire du modèle
-	
-	$\alpha = 1$ : \keyword{Lissage de Laplace} 
-	
-	$\alpha = 0.5$ : \keyword{Loi de Jeffreys-Perks}
-\end{block}
+\subsubsection{Back-off de Katz}
 
-\begin{exampleblock}{Exemple : lissage de Laplace}
-	\begin{itemize}
-		\item Le corpus contient 8 mots différents
-		\item Il y a  $8^2 = 64$ bi-grammes possibles
-		\item $P(\text{\textit{\textless s\textgreater il veut nager \textless/s\textgreater}}) = 
-		P(il|\text{\textit{\textless s\textgreater}}) P(veut|il) P(nager|veut)  P(\text{\textit{\textless/s\textgreater}}|nager) = 
-		\frac{3 + 1}{4 + 64} \frac{2 + 1}{3 + 64} \frac{0 + 1}{1 + 64} \frac{1 + 1}{1 + 64} $
-	\end{itemize}
-\end{exampleblock}
-
-\begin{block}{Interpolation (Tri-grammes comme exemple)}
-	\[%
-	P_{I}(w_n | w_{n-2} w_{n-1}) = 
-	\lambda_3 P(w_n | w_{n-2} w_{n-1}) 
-	+ \lambda_2 P(w_n | w_{n-1}) 
-	+ \lambda_1 P(w_n) 
-	\]
-	
-	Où $\sum_i \lambda_i = 1$
-	
-	$\lambda_3$, $\lambda_2$ et $\lambda_1$ sont estimés en utilisant un autre corpus de réglage
-\end{block}
-
-\begin{block}{Back-off de Katz (Tri-grammes comme exemple)}
-	\[%
-	P_{BO}(w_n | w_{n-2} w_{n-1}) = 
+L'idée est d'utiliser la probabilité de l'ordre supérieure $n$ si le n-gramme existe dans le corpus d'entraînement. 
+Sinon, on passe vers l'ordre suivant $n-1$.
+Pour maintenir une distribution correcte des probabilités, on doit réduire la probabilité de l'ordre supérieure pour avoir une probabilité réduite $P^*$. 
+La réduction sera distribuée sur les probabilités des N-grammes de l'ordre inférieur en utilisant une fonction $\alpha$ à base du contexte.
+La formule pour 
+\begin{equation}
+	P_{BO}(w_i | w_{i-n+1}, \ldots, w_{i-1}) = 
 	\begin{cases}
-	P^*(w_n | w_{n-2} w_{n-1}) & \text{si } C(w_{n-2} w_{n-1} w_n) > 0 \\
-	\alpha(w_{n-2} w_{n-1}) P_{BO}(w_n | w_{n-1}) & \text{sinon}
+	P^*(w_i | w_{i-n+1}, \ldots, w_{i-1}) & \text{si } C(w_{i-n+1}, \ldots, w_{i-1} w_i) > 0 \\
+	\alpha(w_{i-n+1}, \ldots, w_{i-1}) P_{BO}(w_{i-n+2}, \ldots, w_{i-1}) & \text{sinon}
 	\end{cases}
-	\]
-	
-	Où : 
-	
-	$P^*$ est la probabilité réduite (la réduction sera distribuée sur les probabilités des N-grammes de l'ordre inférieur)
-	
-	$\alpha$ est une fonction qui distribue la réduction selon le contexte
-\end{block}
+\end{equation}
+
 
 %===================================================================================
 \section{Modèles neuronaux}
 %===================================================================================
 
+Comme nous avons vu, les n-grammes ont besoin d'utiliser le lissage afin de prendre en considération des n-grammes absents dans le corpus d'entrainement. 
+Ce modèle ne peut pas capturer les mots similaires (utilisés dans le même contexte ; Ex. synonymes). 
+En plus, ces modèles ne supportent pas le contexte à une longue histoire. 
+Les réseaux de neurones semblent avantageux considérant ces problèmes. 
+Ils n'ont pas besoin de lissage puisqu'ils généralisent mieux ; ils peuvent donner une petite probabilité aux n-grammes absents. 
+Aussi, ils peuvent apprendre des représentations proches pour les mots similaires (qui sont dans le  même contexte). 
+A cause de leur capacité à généraliser, ils peuvent supporter un contexte plus grand. 
+Cependant, ces modèles sont plus lents à entraîner.
+
 \subsection{Réseau de neurones à propagation avant}
 
-\begin{itemize}
-	\item On va suivre le modèle de \cite{2003-bengio-al}
-	\item On choisit le nombre des n-grammes $n$ ; donc, le nombre des mots en entrée c'est $n-1$
-	\item Le vecteur $m_j$ est le embedding de position $j$
-	\item On choisit la taille de vecteur de représentation (embedding) $d$
-	\item Les mots sont encodés sous forme One-Hot (un vecteur avec une taille $V$ du vocabulaire)
-\end{itemize}
+Un réseau de neurones à propagation avant est la forme traditionnelle : une couche d'entrée, des couches cachées et une couche de sortie. 
+L'idée est de choisir le nombre des n-grammes $n$. 
+La couche d'entrée est alimentée par les $n-1$ mots précédents afin d'estimer le mot $n$ dans la couche de sortie. 
+Chaque mot est représenté sous forme d'un vecteur de taille $V$ (taille de vocabulaire) où toutes les positions ont un zéro sauf la position réservé pour ce mot. 
+Cette représentation est appelé \keyword{One-Hot} représentation. 
+En sortie, on aura un vecteur avec des probabilités ; le mot dont la position ait la plus grande probabilité. 
 
-\begin{block}{Modèle neuronal à propagation avant}
-	$
+Ici, on va présenter le  modèle de \cite{2003-bengio-al} illustré dans la figure \ref{fig:bengio-l}.
+Après choisir la taille $n$ du modèle, les mots $w_{i-n+1}, \ldots, w_{i-1}$ sont représenté sous des vecteurs One-hot $h_{i-n+1}, \ldots, h_{i-1}$. 
+Chacun de ces vecteur est passé par une couche cachée de taille $d$ ; donc on aura un vecteur de taille $d$ pour chaque mots de ces $n-1$.
+Ce vecteur est appelé \keyword{embedding} (sera discuté en détail dans le chapitre de sémantique lexicale). 
+En fusionnant les vecteurs, on aura un seul vecteur de contexte $m \in \mathbb{R}^{(n-1) d}$.
+Ce vecteur va être passé par deux blocs en parallèle :
+\begin{itemize}
+	\item Une couche cachée avec les paramètres $A \in \mathbb{R}^{(n-1) \times d \times V}$ (poids) et $b \in \mathbb{R}^{V}$. 
+	La somme pondérée résulte à un vecteur de taille $V$. 
+	\item Une couche cachée avec les paramètres $T \in \mathbb{R}^{(n-1) \times d \times H}$ suivie par une fonction ``Tanh", se qui va générer un vecteur de taille $H$. 
+	Ce dernier passe par une autre couche avec les paramètres $W \in \mathbb{R}^{V \times H}$, ce qui génère un vecteur de taille $V$. 
+\end{itemize}
+Les deux vecteurs sont additionnés élément par élément pour avoir un seule vecteur de taille $V$. 
+Pour avoir des probabilités avec une somme égale à $1$, on passe ce vecteur sur une fonction ``softmax". 
+L'architecture de ce modèle peut être exprimé par l'équation \ref{eq:bengio}.
+\begin{equation}
 	P(.|h_1,\ldots, h_{n-1}) = 
 	Softmax \left(
-	(b + \sum\limits_{j=1}^{n-1} m_j A_j) 
+	(b + m A) 
 	+ 
-	W\ Tanh(u + \sum\limits_{j=1}^{n-1} m_j T_j)
+	W\ \tanh(u + m T)
 	\right)
-	$
-	
-	Où $b \in \mathbb{R}^{V},\, A \in \mathbb{R}^{(n-1) \times d \times V},\, u \in \mathbb{R}^{H},\, T \in \mathbb{R}^{(n-1) \times d \times H},\, W \in \mathbb{R}^{V \times H}$
-\end{block}
+	\label{eq:bengio}
+\end{equation}
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[0.75\textwidth]{fw-model.pdf}
+	\hgraphpage[0.6\textwidth]{fw-model.pdf}
+	\caption{Une représentation du modèle proposé par \cite{2003-bengio-al}\label{fig:bengio-l}}
 \end{figure}
 
 \subsection{Réseau de neurones récurrents}
 
-\begin{itemize}
-	\item On va suivre le modèle de \cite{2010-mokolov-al}
-	\item Dans un instant $t$, on calcule l'état $s_t$ en se basant sur l'état précédent $s_{t-1}$ et le mot actuel $m_t$
-	\item L'état $s_t$ est utilisé pour estimer les probabilités $y_t$ de chaque mot du vocabulaire
-\end{itemize}
+Certes, les modèles basés sur les réseaux de neurones à propagation avant sont avantageux par rapport aux N-grammes.
+Mais, ils ne supportent des longueurs variables des contextes.
+Par contre, les réseaux de neurones récurrents ont la capacité d'estimer un mot dans la position $i$ sachant tous les mots passés.
+Ici, on va présenter le modèle de \cite{2010-mokolov-al} qui se base sur le réseau de Elman.
 
-\begin{block}{Modèle neuronal récurrent}
-	$x_t = s_{t-1} \bullet m_t$
-	
-	$s_t = \sigma(x_t W)$
-	
-	$y_t = softmax(s_t U)$
-	
-	Où $m_t \in \mathbb{R}^{V},\, s_t \in \mathbb{R}^{H},\, W \in \mathbb{R}^{(H+V)\times H},\, U \in \mathbb{R}^{H\times V}$
-\end{block}
+La figure \ref{fig:mokolov} représente un exemple d'exécution du modèle proposé par \cite{2010-mokolov-al}.
+Le réseau récurrent a une couche d'entrée $x$, une couche cachée $s$ (l'état) avec la fonction ``sigmoid" et une couche de sortie $y$ avec une fonction ``softmax".
+Dans un instant $t$, l'entrée $x$ est composée du mot $w_t \in \mathbb{N}^{V}$ encodé en utilisant One-Hot et le contexte précédent $s_{t-1} \in \mathbb{R}^{H}$ (équation \ref{eq:mokolov1}). 
+L'entrée $x_t$ est passée par la couche cachée ayant des paramètres $W \in \mathbb{R}^{(H+V)\times H}$ pour avoir un nouveau contexte $s_t$ (équation \ref{eq:mokolov2}). 
+Le contexte $s_t$ est passé vers l'état suivant $t+1$ et il est utilisé pour estimer le mot suivant dans l'état actuel.
+Pour ce faire, il passe par une couche de sortie ayant des paramètres $U \in \mathbb{R}^{H\times V}$ pour générer un vecteur de taille $V$ qui est passé par une fonction ``softmax" (équation \ref{eq:mokolov3}).
+%
+\begin{align}
+	x_t = s_{t-1} \bullet m_t \label{eq:mokolov1}\\
+	s_t = \sigma(x_t W) \label{eq:mokolov2}\\
+	y_t = softmax(s_t U) \label{eq:mokolov3}
+\end{align}
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[0.75\textwidth]{rnn-model.pdf}
+	\hgraphpage[0.6\textwidth]{rnn-model.pdf}
+	\caption{Modèle de langage à base des réseaux de neurones récurrents, proposé par \cite{2010-mokolov-al}\label{fig:mokolov}}
 \end{figure}
 
-
-\subsection{Quelques améliorations}
-
-\begin{itemize}
-	\item Taille limitée du contexte dans les réseaux à propagation avant
-	\begin{itemize}
-		\item Utiliser les réseaux récurrents
-	\end{itemize}
-	\item Problème de disparition du gradient dans les réseaux récurrents
-	\begin{itemize}
-		\item Utiliser des réseaux plus avancés : \keyword{LSTM} et \keyword{GRU}
-		\item Limiter la taille du contexte 
-	\end{itemize}
-	\item Mots hors vocabulaire
-	\begin{itemize}
-		\item Limiter le vocabulaire  et marquer le reste des mots par \optword{\textlangle UNK\textrangle}
-	\end{itemize}
-\end{itemize}
+Il ne faut pas oublier d'utiliser le mot clé \keyword{\textless UNK\textgreater} afin d'entraîner le modèle à prendre en considération les mots inconnus. 
+Le problème avec cette architecture est que le modèle puisse arrêter à apprendre avec un contexte à long terme (problème de disparition des gradients).
+Une solution est d'utiliser des architectures plus avancées comme \keyword{LSTM} et \keyword{GRU}. 
+Ceci est dit, le problème de disparition des gradients existe toujours. 
+Une solution technique est de délimiter le nombre maximum des états.
 
 %===================================================================================
 \section{Évaluation}
 %===================================================================================
 
-	
+Qu'est ce que rend un modèle de langage plus bon qu'un autre ? 
+Il faut avoir une méthode pour comparer les deux. 
+Pour ce faire, il y a deux approches : 
 	\begin{itemize}
-		\item \optword{Évaluation extrinsèque}
-		\begin{itemize}
-			\item Évaluer le modèle par rapport à une autre tâche : son effet
-			\item Exemple, \expword{La qualité de traduction automatique en utilisant ce modèle} 
-			\item Évaluation très couteuse
-		\end{itemize}
-		\item \optword{Évaluation intrinsèque}
-		\begin{itemize}
-			\item Évaluer le modèle par rapport à sa représentation du langage
-			\item Exemple, \expword{Comparer deux modèles en se basant sur leurs capacités de représenter un dataset de test} 
-			\item Ne garantit pas une bonne performance du modèle pour une tâche donnée
-		\end{itemize}
+		\item \optword{Évaluation extrinsèque} : Ici, on veut tester l'effet d'un modèle de langage sur une autre tâche. 
+		On évalue la tâche en utilisant plusieurs modèles de langue pour choisir celui qui donne des meilleurs résultats.
+		Exemple, \expword{La qualité de traduction automatique en utilisant ce modèle}. 
+		Dans cet exemple, on essaye de choisir le modèle de langue le plus adéquat pour la tâche de traduction automatique.
+		Bien sûr, l'évaluation dans ce cas est vraiment couteuse vu qu'on va peut être entraîner le système de traduction à chaque fois qu'on modifie le modèle de langage.
+		
+		\item \optword{Évaluation intrinsèque} : Ici, on veut tester la capacité du modèle à représenter le langage. 
+		Etant donné deux modèles de langage entraînés sur le même corpus d'entraînement, on utilise un autre de test pour tester la capacité de représentation.
+		La méthode la plus utilisée dans ce cas est \keyword{la perplexité}.
+		Il faut savoir que le fait d'être un modèle représentatif ne garantit pas d'avoir une bonne performance dans une tâche donnée.
 	\end{itemize}
 
-\begin{itemize}
-	\item Mesurer la qualité de prédiction d'un modèle sur un corpus de test
-	\item Utiliser la probabilité estimée sur un corpus de test de taille $N$
-	\item Le modèle avec une perplexité minimale est le meilleur
-	\item Il faut inclure la fin d'une phrase et le début de la suivante dans l'entraînement du modèle (puisque la perplexité traite tout le corpus comme une seule chaîne)
-\end{itemize}
 
-\begin{block}{Perplexité}
-	\begin{center}
-		$PP(w) = \sqrt[N]{\frac{1}{P(w_1 w_2 \ldots w_N)}}$
-		
-		$PP(w) = \sqrt[N]{\prod\limits_{i=1}^{N}\frac{1}{P(w_i | w_1 \ldots w_{i-1})}}$
-	\end{center}
-\end{block}
-
-
-
+La perplexité est une mesure intrinsèque qui vise à tester la qualité de prédiction d'un modèle à représenter un corpus de test (non vu par ce modèle). 
+Étant donné un corpus de test avec la taille $N$, on ajoute les marqueurs de début et de fin pour toutes les phrases ; La perplexité traite le corpus comme étant une seule chaîne. 
+Le but est de calculer la probabilité d'occurrence du texte (la totalité) en utilisant le modèle de langage. 
+Cette probabilité est inversée puis passée par une racine d'ordre $N$ comme indiqué dans l'équation \ref{eq:perplexite}.
+Dans ce cas, un modèle ayant une perplexité minimale est le meilleur.
+%
+\begin{align}
+	PP(w) & = \sqrt[N]{\frac{1}{P(w_1 w_2 \ldots w_N)}} \nonumber\\
+	 & = \sqrt[N]{\prod\limits_{i=1}^{N}\frac{1}{P(w_i | w_1 \ldots w_{i-1})}} \label{eq:perplexite}
+\end{align}
 
 
 
 \begin{discussion}
 
+Un langage se compose d'un vocabulaire et d'une grammaire pour composer les mots de ce vocabulaire selon des règles. 
+Ces dernières sont définies par des linguistes. 
+Des fois, il est vraiment difficile de définir ces règles, surtout si elles se basent sur des exceptions des mots. 
+Par exemple, un verbe transitif qui n'accepte pas des mots comme complément d'objet directe puisque la phrase n'aura aucun sens (\expword{J'ai mangé le ciel}). 
+Ce dernier exemple peut être réglé si nous avons des statistiques sur le contexte des mots dans un langage : quel mot se produit en voisinage d'un autre ? et à quel fréquence ?
+Cette représentation est appelée : un modèle de langage ; déjà présenté dans ce chapitre. 
 
+Nous avons vu que le modèle de langage se base sur le vocabulaire appris à partir du corpus d'entraînement. 
+Ce que nous n'avons pas discuté est le sens du vocabulaire : que veut-on dire par vocabulaire ?
+Nous avons vu dans le chapitre précédent qu'on puisse générer des mots à partir d'autres (par exemple, la conjugaison).
+En réalité, on peut entraîner le modèle avec toutes les formes possibles. 
+Comme ça, on peut représenter le fait que le mot ``étudiez" ne peut pas venir après le mot ``je".
+En quelque sorte, on essaye d'apprendre la syntaxe et la lexique en parallèle. 
+Mais, ceci pose un problème dans les langue fortement flexionnelles ; on aura un vocabulaire gigantesque.
+Théoriquement, ceci ne pose pas de problème puisque le vocabulaire reste toujours un ensemble fini (mise à part l'évolution de la langue : ajout de mots à la lexique). 
+Mais pratiquement, plus le vocabulaire est grand, plus la tâche est couteuse. 
+Dans ce cas, le traitement prend plus de temps supposant qu'on a suffisamment de mémoire pour représenter tous les mots. 
+Aussi, on doit avoir un grand corpus afin de capturer toutes les variations morphologiques de tous les mots. 
+Une des solutions est d'appliquer une sorte de radicalisation, en séparant la racine et le suffixe. 
+Tous les deux seront considérés comme des mots à part. 
+Comme ça, on réduit la taille  du vocabulaire et on apprend la formation des mots au même temps. 
 
+Dans ce chapitre, nous avons présenter les modèles des langages en prenant les mots comme unité. 
+En réalité, les modèles de langages peuvent être entraînés sur des caractères. 
+Parmi les applications de ce type de modèles est la détection des langues, surtout pour les langues qui utilisent le même système d'écriture. 
+Supposant on veut détecter les langues : français, anglais et espagnol. 
+Dans ce cas, on entraîne trois modèles de langages pour chacune de ces langues. 
+Étant donné une phrase, on essaye d'estimer les trois probabilités (niveau caractère) et considérer le modèle qui maximise la probabilité. 
+Un modèle de langage peut être entrainé sur des séquences d'ADN. 
+Dans ce cas, le vocabulaire sera : ``A", ``T", ``C", ``G" et ``U". 
+Parmi ces applications : la détection de l'espèce. 
 \end{discussion}
 
 %=====================================================================
