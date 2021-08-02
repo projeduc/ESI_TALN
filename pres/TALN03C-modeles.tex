@@ -7,8 +7,8 @@
 
 \input{options}
 
-\title[TALN : 03- Modèles de langue]%
-{Traitement automatique du langage naturel\\Chapitre 03 : Modèles de langue} 
+\title[TALN : 03- Modèles de langage]%
+{Traitement automatique du langage naturel\\Chapitre 03 : Modèles de langage} 
 
 \changegraphpath{../img/modeles/}
 
@@ -16,7 +16,7 @@
 	
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Modèles de langue : Introduction}
+\framesubtitle{Modèles de langage : Introduction}
 
 \begin{itemize}
 	\item \optword{Probabilité d'une phrase} : $\color{red} P(S) = P(w_1, w_2, ..., w_n) $
@@ -41,7 +41,7 @@
 
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Modèles de langue : Plan}
+\framesubtitle{Modèles de langage : Plan}
 
 \begin{multicols}{2}
 %	\small
@@ -54,7 +54,7 @@
 %===================================================================================
 
 \begin{frame}
-\frametitle{Modèles de langue}
+\frametitle{Modèles de langage}
 \framesubtitle{Modèle N-gramme}
 
 \begin{block}{Formule des probabilités composées}
@@ -82,7 +82,7 @@
 \subsection{Formulation}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Formulation : Propriété de Markov}
 
 \begin{block}{Propriété de Markov}
@@ -105,7 +105,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Formulation : Quelques modèles}
 
 \begin{itemize}
@@ -123,7 +123,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Formulation : Google Books Ngram Viewer (Humour)}
 
 \hgraphpage{humour-ngram.png}
@@ -131,7 +131,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Formulation : Estimation}
 
 \begin{itemize}
@@ -154,7 +154,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Formulation : Exemple}
 
 \begin{exampleblock}{Exemple d'un corpus d'entraînement}
@@ -185,7 +185,7 @@
 \subsection{Lissage (Smoothing)}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Lissage (Smoothing)}
 
 \begin{itemize}
@@ -215,7 +215,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Lissage (Smoothing) : Lidstone}
 
 \begin{block}{Lissage de Lidstone (Bi-grammes comme exemple)}
@@ -242,7 +242,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Lissage (Smoothing) : Interpolation}
 
 \begin{block}{Interpolation (Tri-grammes comme exemple)}
@@ -271,7 +271,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : N-gramme}
+\frametitle{Modèles de langage : N-gramme}
 \framesubtitle{Lissage (Smoothing) : Back-off de Katz}
 
 \begin{block}{Back-off de Katz (Tri-grammes comme exemple)}
@@ -308,7 +308,7 @@
 %===================================================================================
 
 %\begin{frame}
-%\frametitle{Modèles de langue}
+%\frametitle{Modèles de langage}
 %\framesubtitle{Modèles neuronaux}
 %
 %\begin{itemize}
@@ -320,7 +320,7 @@
 \subsection{Réseau de neurones à propagation avant}
 
 \begin{frame}
-\frametitle{Modèles de langue : Modèles neuronaux}
+\frametitle{Modèles de langage : Modèles neuronaux}
 \framesubtitle{Réseau de neurones à propagation avant : Cas d'étude}
 
 \begin{itemize}
@@ -347,7 +347,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : Modèles neuronaux}
+\frametitle{Modèles de langage : Modèles neuronaux}
 \framesubtitle{Réseau de neurones à propagation avant : Modèle}
 
 \hgraphpage{fw-model.pdf}
@@ -357,7 +357,7 @@
 \subsection{Réseau de neurones récurrents}
 
 \begin{frame}
-\frametitle{Modèles de langue : Modèles neuronaux}
+\frametitle{Modèles de langage : Modèles neuronaux}
 \framesubtitle{Réseau de neurones récurrents : Cas d'étude}
 
 \begin{itemize}
@@ -379,7 +379,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Modèles de langue : Modèles neuronaux}
+\frametitle{Modèles de langage : Modèles neuronaux}
 \framesubtitle{Réseau de neurones récurrents : Modèle}
 
 \hgraphpage{rnn-model.pdf}
@@ -389,7 +389,7 @@
 \subsection{Quelques améliorations}
 
 \begin{frame}
-\frametitle{Modèles de langue : Modèles neuronaux}
+\frametitle{Modèles de langage : Modèles neuronaux}
 \framesubtitle{Quelques améliorations}
 
 \begin{itemize}
@@ -417,7 +417,7 @@
 \subsection{Approches}
 
 \begin{frame}
-\frametitle{Modèles de langue : Évaluation}
+\frametitle{Modèles de langage : Évaluation}
 \framesubtitle{Approches}
 
 \begin{itemize}
@@ -440,7 +440,7 @@
 \subsection{Perplexité}
 
 \begin{frame}
-\frametitle{Modèles de langue : Évaluation}
+\frametitle{Modèles de langage : Évaluation}
 \framesubtitle{Perplexité}
 
 \begin{itemize}
@@ -462,7 +462,7 @@
 
 
 \begin{frame}
-\frametitle{Modèles de langue}
+\frametitle{Modèles de langage}
 \framesubtitle{Un peu d'humour}
 
 \begin{center}
