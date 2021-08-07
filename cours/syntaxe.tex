@@ -17,459 +17,531 @@
 
 \begin{introduction}[LES L\textcolor{white}{A}NGUES]
 	\lettrine{A}{nalyser} un texte syntaxiquement veut dire mettre en évidence sa structure.
+	Prenons la phase ``Much to learn, you still have." comme exemple d'analyse.
+	Il est clair que le vocabulaire est d'origine anglaise, mais la phrase semble un peu étrange. 
+	En anglais, les phrases sont souvent structurées comme sujet-verbe-objet. 
+	Mais dans cette phrase, l'ordre est différent : objet-sujet-verbe ; une structure similaire aux langues amérindiennes d'Amazonie. 
+	Bien sûr, dans ce cas c'est la syntaxe utilisée par Yoda (Star Wars).
+	Il y a plusieurs façons de voir la structure syntaxique : une composition des structures jusqu'à arriver à une structure élémentaire, un ensemble de relations entre les mots, etc. 
+	Dans ce chapitre, nous allons présenter deux structures syntaxiques ainsi que quelques méthodes d'analyse syntaxique pour les deux.
 \end{introduction} 
 
-\begin{exampleblock}{Exemple d'une phrase en français}
-	\begin{center}
-		\Large\bfseries
-		L'élève a écrit une solution avec un stylo. 
-		
-		L'élève a écrit une solution avec une explication.
-	\end{center}
-\end{exampleblock}
 
+La syntaxe étudie la manière dont les mots sont combinés afin de former une phrase.
+Elle cherche à définir une structure standard des phrases d'un langage (naturel ou artificiel).
+L'analyse syntaxique aide à détecter si une phrase est grammaticalement correcte ou non. 
+Si oui, on essaye de trouver sa structure afin d'aider d'autres tâches comme :
 \begin{itemize}
-	\item Qui a écrit la solution ?
-	\item Quel instrument a-t-on utilisé pour l'écriture ?
-	\begin{itemize}
-		\item Un stylo ? Une explication ?
-	\end{itemize}
-	\item Est-ce qu'on a écrit d'autres choses en plus de la solution ?
-	\begin{itemize}
-		\item Un stylo ? Une explication ?
-	\end{itemize}
-	\item Comment avez-vous déduit ça ?
+	\item Détection des erreurs grammaticales 
+	\item Compréhension de la langue
+	\item Extraction d'information 
 \end{itemize}
 
 %===================================================================================
 \section{Structures syntaxiques}
 %===================================================================================
 
+Une langue doit avoir une structure syntaxique ; des règles qui aident la formation des phrases. 
+On parle ici d'une phrase grammaticalement correcte ; ça ne veut pas dire que la phrase doit avoir un sens. 
+Donc, le fait qu'une phrase est bien formée syntaxiquement n'est pas une garantie qu'elle est sémantiquement correcte. 
+Par exemple, la phrase ``\expword{Les idées vertes et non colorées dorment furieusement.}" est bien formée syntaxiquement, mais n'a aucun sens.
+Il existe plusieurs théories pour représenter la structure syntaxique :
 \begin{itemize}
-	\item Une phrase peut être bien formée syntaxiquement mais pas sémantiquement 
-	\begin{itemize}
-		\item Ex. \expword{Les idées vertes et non colorées dorment furieusement.}
-	\end{itemize}
-	\item Plusieurs théories 
-	\begin{itemize}
-		\item La grammaire générative et transformationnelle : Ex. \expword{Grammaire générative et transformationnelle (TTG)}
-		\item La grammaire de dépendance 
-		\item La grammaire catégorique
-		\item Les grammaires stochastiques
-		\item Les approches fonctionnelles de la grammaire
-	\end{itemize}
-	
+	\item Grammaire générative et transformationnelle 
+	\item Grammaire de dépendance 
+	\item Grammaire catégorique
+	\item Grammaires stochastiques
+	\item Les approches fonctionnelles de la grammaire
 \end{itemize}
 
 \subsection{Annotation constituante}
 
+Nous avons vu dans le chapitre précédent que chaque mot d'une langue a une catégorie grammaticale (Ex. \expword{Le/DET cours/NOM est/VP intéressant/ADJ}). 
+Si on revient au chapitre des modèles de langage, on peut déduire que le déterminant possède une grande probabilité d'être suivi par un nom ou un adjectif suivi par un nom. 
+On appelle cette structure (En RegEx. \expword{DET ADJ* NOM}) un syntagme nominal. 
+Il est appelé ``nominal" et pas ``adjectival" ou ``déterminant" puisque le nom ici c'est le centre le la structure. 
+L'adjectif modifie souvent un nom et un déterminant est toujours dépendant d'un nom. 
+Il existe plusieurs syntagmes selon la catégorie noyau : nominal, verbal, adjectival, prépositionnel, etc.
+Par exemple, \expword{[Le/DET cours/NOM ]\textsubscript{NP} [est/V intéressant/ADJ VP]\textsubscript{VP}}.
+la composition de plusieurs syntagmes forment un autre syntagme jusqu'à arriver à la phrase. 
+Techniquement, une phrase peut être structurée comme un arbre où la racine est la phrase, les nœuds internes sont les syntagmes et les feuilles sont les mots avec leurs catégories grammaticales.
+
+Rappelons la classification de Chomsky ; un langage peut être : régulier, hors-contexte, contextuel ou récursivement énumérable. 
+Plusieurs langues peuvent être formalisées en utilisant une grammaires à contexte libre ; en anglais \acl{cfg}.
+La grammaire $G <\Sigma, N, P, S>$ d'un langage est composée de :
 \begin{itemize}
-	\item Les mots d'une phrase ont chacun \keyword{une catégorie grammaticale}
-	\begin{itemize}
-		\item Ex. \expword{Le/DET cours/NOM est/VP intéressant/ADJ}
-	\end{itemize}
-	\item Un ou plusieurs mots de certaines catégories forment \keyword{un syntagme}
-	\begin{itemize}
-		\item Ex. \expword{[Le/DET cours/NOM ]\textsubscript{NP} [est/VP intéressant/ADJ VP]\textsubscript{VP}}
-	\end{itemize}
+	\item $\Sigma$ : ensemble des symboles terminaux ; dans ce cas, le vocabulaire. 
+	Exemple, \expword{$\Sigma$ = \{le, petit, chat, mange, un, poisson, ...\}}. 
+	
+	\item $N$ : ensemble des symboles non terminaux ; les variables (syntagmes et catégories grammaticales plus d'autres variables supplémentaires). 
+	Par exemple, \expword{$N$ = \{S, NP, VP, DET, N, ADJ, ...\}}.
+	
+	\item $S \in N$ : axiome ; c'est le point de départ pour former la phrase. 
+	
+	\item $P$ : ensemble des règles de production.
+	Les règles sont de la forme $A \rightarrow \beta \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$.
+	Par exemple, \expword{P=\{S \textrightarrow NP VP, NP \textrightarrow DET ADJ N \textbar\ DET N, VP \textrightarrow V NP\}}
 \end{itemize}
 
-\begin{center}
-	\includegraphics[width=0.4\textwidth]{../img/intro/gram_const.pdf}
-\end{center}
-
-Grammaires à contexte libre (CFG)
-\begin{minipage}{.68\textwidth}
-	\begin{itemize}
-		\item $G <\Sigma, N, P, S>$ est une grammaire.
-		\item $\Sigma$ est le vocabulaire : ensemble des symboles terminaux
-		\begin{itemize}
-			\item \expword{$\Sigma$ = \{le, petit, chat, mange, un, poisson, ...\}}
-		\end{itemize}
-		\item $V$ est l'ensemble des  variables : symboles non terminaux 
-		\begin{itemize}
-			\item \expword{$N$ = \{S, NP, VP, DET, N, ADJ, ...\}}
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.3\textwidth}
-	\hgraphpage{humour-chomsky.jpg}
-\end{minipage}
-
+Parmi les problèmes trouvés lors de l'analyse syntaxique, l'ambigüité syntaxique.
+Prenons, à titre d'exemple, la grammaire suivante (une grammaire pas bien définie) : 
 \begin{itemize}
-	\item $S \in N$ est l'axiome.
-	\item $P$ est l'ensemble des règles de production.
-	\item Les règles sont de la forme $A \rightarrow \beta \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$
-	\begin{itemize}
-		\item \expword{S \textrightarrow NP VP}
-		\item \expword{NP \textrightarrow DET ADJ N \textbar\ DET N}
-		\item \expword{VP \textrightarrow V NP}
-	\end{itemize}
+	\item S \textrightarrow\ NP VP (1)
+	\item NP \textrightarrow\ DT NN (2) | DT NN PP (3)
+	\item VP \textrightarrow\ VB NP (4) | VB NP PP (5)| VB PP (6) | AU VP (7)
+	\item PP \textrightarrow\ PR NP (8)
+	\item DT \textrightarrow\ l' | une | son 
+	\item NN \textrightarrow\ élève | solution | stylo | explication 
+	\item VB \textrightarrow\ écrit 
+	\item AU \textrightarrow\ a
+	\item PR \textrightarrow\ avec
 \end{itemize}
+Selon cette grammaire, la phrase ``\expword{L'élève a écrit une solution avec son explication}" aura deux interprétations. 
+Les deux arbres syntaxiques sont illustrées dans la figure \ref{fig:cfg-ambigue}.
+La première considère la préposition ``avec" dépendante du nom ``solution", et donc on aura la dérivation suivante (Figure \ref{fig:cfg-ambigue}(1)) : 
+\begin{align*}
+S & \sststile{}{(1)} NP\ VP \sststile{}{(2)} DT\ NN\ VP \sststile{}{(7)} DT\ NN\ AU\ VP \\
+  & \sststile{}{(4)} DT\ NN\ AU\ VB\ NP \sststile{}{(3)} DT\ NN\ AU\ VB\ DT\ NN\ PP \\
+  & \sststile{}{(8)} DT\ NN\ AU\ VB\ DT\ NN\ PR\ NP 
+   \sststile{}{(2)} DT\ NN\ AU\ VB\ DT\ NN\ PR\ DT\ NN 
+\end{align*}
+La deuxième considère la préposition ``avec" dépendante du verbe ``écrit", et donc on aura la dérivation suivante (Figure \ref{fig:cfg-ambigue}(2)) :
+\begin{align*}
+S & \sststile{}{(1)} NP\ VP \sststile{}{(2)} DT\ NN\ VP \sststile{}{(7)} DT\ NN\ AU\ VP \\
+& \sststile{}{(5)} DT\ NN\ AU\ VB\ NP\ PP \sststile{}{(2)} DT\ NN\ AU\ VB\ DT\ NN\ PP \\
+& \sststile{}{(8)} DT\ NN\ AU\ VB\ DT\ NN\ PR\ NP 
+ \sststile{}{(2)} DT\ NN\ AU\ VB\ DT\ NN\ PR\ DT\ NN 
+\end{align*}
+Clairement il y a une ambigüité ici ; donc, essayons de reformuler les deux dérivations.
+La première veut dire : la solution et sa solution ont été écrites par l'élève. 
+La deuxième veut dire : la solution a été écrite par l'élève en utilisant l'explication de ce même élève.
+Clairement, l'explication n'est pas un outil d'écriture ; donc la première est la plus juste. 
+Afin de régler l'ambigüité, on a besoin du niveau sémantique pour guider l'analyse. 
+Dans notre exemple, on peut ajouter l'information que les outils d'écriture doivent être un objet concret et l'objet de l'écriture est un objet abstrait. 
+\begin{figure}[ht]
+	\begin{tabular}{cc}
+		\hgraphpage[0.45\textwidth]{cfg-ambigue1.pdf} &
+		\hgraphpage[0.45\textwidth]{cfg-ambigue2.pdf} \\
+		(1) & (2) \\
+	\end{tabular}
+	\caption{Exemple de deux arbres syntaxique se la phrase ``L'élève a écrit une solution avec son explication" \label{fig:cfg-ambigue}}
+\end{figure}
 
-CFG probabiliste (PCFG)
-
-\begin{itemize}
-	\item $G <\Sigma, N, P, S>$ est une grammaire.
-	\item Les règles sont de la forme $A \rightarrow \beta\, [p] \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$
-	\item $p$ est la probabilité d'occurrence de la règle
-	\item Cette probabilité est estimée à partir d'un corpus annoté (\keyword{TreeBank})
-\end{itemize}
-
-\begin{block}{Estimation des probabilité des règles}
-	\[
+Une autre méthode pour faire face à ce problème est d'utiliser les \ac{cfg} probabilistes : \ac{pcfg}.
+La grammaire est similaire de celle d'un \ac{cfg} : $G <\Sigma, N, P, S>$. 
+La seule différence est que les règles sont de la forme : $A \rightarrow \beta\, [p] \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$.
+Seulement, nous avons ajouté la probabilité $p$ d'occurrence de la règle. 
+Afin d'estimer cette probabilité, on utilise un corpus annoté (\keyword{TreeBank}). 
+Étant donné la fonction $C$ qui calcule le nombre d'occurrence, la probabilité d'une règle $A \rightarrow \beta$ est estimée en utilisant l'équation \ref{eq:pcfg-est}.
+Dans le cas d'ambigüité entre plusieurs règles, on choisit celle avec le maximum de probabilité.
+\begin{equation}\label{eq:pcfg-est}
 	P(A \rightarrow \beta | A) = \frac{C(A \rightarrow \beta)}{C(A)}
-	\]
-\end{block}
+\end{equation}
+
 
 \subsection{Annotation fonctionnelle}
 
+Un mot ou plus remplissent \keyword{une fonction syntaxique} (Ex. \expword{sujet, objet, etc.}).
+Ex. \expword{Le chat mange un poisson} : ici ``chat" est \expword{le sujet} du verbe ``mange". 
+Dans l'annotation fonctionnelle, la fonction syntaxique est une relation binaire appelée \keyword{dépendance}.
+Une relation de dépendance relie un mot appelé \keyword{tête syntaxique} avec un autre appelé \keyword{dépendant}. 
+Un mot ne peut être un dépendant qu'une seule fois, mais il peut être une tête syntaxique plusieurs fois. 
+Un exemple de l'annotation fonctionnelle des deux phrases ``\expword{L'élève a écrit une solution et son explication}" et ``\expword{L'élève a écrit une solution avec son stylo}" est illustré dans la figure \ref{fig:parse-fct-exp}.
+%
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[0.65\textwidth]{exp-parse-fonct_.pdf}
+	\caption{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/}\label{fig:parse-fct-exp}}
+\end{figure}
+
+La structure de dépendance est formalisée comme un graphe orienté $G=(V, A)$ où les mots représentent les sommets $V$ et les relations représentent les arcs $A$. 
+L'arbre de dépendances d'une phrase satisfait les conditions suivantes : 
 \begin{itemize}
-	\item Un mot ou plus remplissent \keyword{une fonction syntaxique}
-	\begin{itemize}
-		\item Ex. \expword{sujet, objet, etc.}
-	\end{itemize}
-	\item Les liens syntaxiques entre les mots d'une phrase sont appelés : \keyword{dépendances}
-	\begin{itemize}
-		\item Ex. \expword{Le chat mange un poisson} : ici ``chat" est \expword{le sujet} du verbe ``mange"
-	\end{itemize}
-	\item Une relation de dépendance relie un mot appelé \keyword{tête syntaxique} avec un autre appelé \keyword{dépendant}
+	\item Il existe un seul nœud racine désigné qui n'a pas d'arcs entrants. En général c'est un verbe.
+	\item À l'exception du nœud racine, chaque sommet a exactement un arc entrant.
+	\item Il existe un chemin unique du nœud racine à chaque sommet de $V$.
 \end{itemize}
 
-\includegraphics[width=\textwidth]{../img/intro/gram-dep_.pdf}
-
-Relations de dépendance
-\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow}
+Les relations de dépendance sont des relations entre deux entités. 
+Un exemple des relations de dépendance est donnée dans le tableau \ref{tab:rel-dep-exp}.
+\begin{table}[ht]
 	\begin{tabular}{p{.2\textwidth}p{.35\textwidth}p{.35\textwidth}}
-		\rowcolor{darkblue}
-		\textcolor{white}{Dép. de base} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
+		\hline\hline
+		\textbf{Dép. de base} & \textbf{Description} & \textbf{Exemple}\\
+		\hline
 		nsubj & sujet nominal & Le \underline{people} \textbf{gagne}\\
 		obj & objet direct & On \textbf{présente} le \underline{cours}\\
 		iobj & objet indirect & Il \underline{m'}\textbf{envoie}\\
 		csubj & sujet propositionnel & \underline{Suivre} le cours \textbf{permet} ...\\
-		
-		\rowcolor{darkblue}
-		\textcolor{white}{Dép. des noms} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
+		&&\\
+		\hline\hline
+		\textbf{Dép. des noms} & \textbf{Description} & \textbf{Exemple}\\
+		\hline
 		amod & modificateur adjectival & La \textbf{fille} \underline{modeste}\\
 		det & déterminant & \underline{La} \textbf{fille}\\
 		nmod & modificateur nominal & Le \underline{résultat} de la \textbf{course}\\
 		nummod & modificateur numérique & J'ai mangé \underline{3} \textbf{bonbons}\\
-		
+		\hline\hline
 	\end{tabular}
-	\caption{Quelques relations de dépendances universelles de Stanford \cite{2014-de-marneffe-al} (\url{https://universaldependencies.org/u/dep/index.html})}
+	\caption{Quelques relations de dépendances universelles de Stanford \cite{2014-de-marneffe-al} (\url{https://universaldependencies.org/u/dep/index.html})\label{tab:rel-dep-exp}}
 \end{table}
 
 %===================================================================================
 \section{Analyse des constituants}
 %===================================================================================
 
+La grammaire à contexte libre est le système formel le plus utilisé pour modéliser la structure constituante.
+Il existe deux types de méthodes pour analyser un texte :
 \begin{itemize}
-	\item La grammaire à contexte libre : le système formel le plus utilisé pour modéliser la structure constituante
-	\item Analyse 
-	\begin{itemize}
-		\item \optword{ascendante} : à partir des mots de la phrase, on essaye de trouver les catégories grammaticales. Ensuite, les syntagmes qui génèrent une combinaison des catégories et des syntagmes. On fait ça jusqu'à arriver à \keyword{S}
-		\item \optword{descendante} : à partir de \keyword{S}, on cherche les règles qui génèrent la phrase. Ceci en se basant sur des mots pour guider la génération.
-	\end{itemize}
+	\item \optword{ascendante} : à partir des mots de la phrase, on essaye de trouver les catégories grammaticales. Ensuite, les syntagmes qui génèrent une combinaison des catégories et des syntagmes. On fait ça jusqu'à arriver à \keyword{S}.
+	Exemple, \expword{LR}.
+	\item \optword{descendante} : à partir de \keyword{S}, on cherche les règles qui génèrent la phrase. Ceci en se basant sur des mots pour guider la génération.
+	Exemple, \expword{Descente récursive, LL, Early}.
 \end{itemize}
-
-\begin{center}
-	\begin{tabular}{|p{.25\textwidth}|p{.3\textwidth}|p{.3\textwidth}|}
-		\hline
-		& Classique & Statistique \\
-		\hline
-		Ascendante & \optword{CKY}, LR & \optword{CKY probabiliste}\\
-		\hline
-		Descendante & Early, LL, Descente récursive  & \\
-		\hline
-	\end{tabular}
-\end{center}
+Les algorithmes mentionnées dans les exemples sont conçus pour traiter les langages de programmation. 
+Ces derniers ont des syntaxes bien définies qui peuvent être traités d'une manière déterministe. 
+Les langages naturels contiennent beaucoup d'ambigüité et les règles sont plus complexes. 
+Un algorithme conçu pour l'analyse syntaxique des langages naturels est \keyword{CKY}.
 
 \subsection{Algorithme CKY}
 
-\begin{itemize}
-	\item Algorithme de \keyword{Cocke-Kasami-Younger}
-	\item Analyse ascendante
-	\item Prérequis : Forme normale de Chomsky
-\end{itemize}
+L'algorithme de \keyword{Cocke-Kasami-Younger} (CKY) utilise la programmation dynamique afin d'appliquer une analyse syntaxique ascendante. 
+La seule condition pour appliquer cet algorithme est de transformer la grammaire sous la forme normale de Chomsky. 
+Un petit rappel de cette forme : 
+\begin{align*}
+	A & \rightarrow  B C \text{ où } A, B, C \in N\\
+	A & \rightarrow w \text{ où } w \in \Sigma
+\end{align*}
 
-\begin{definition}[FNC : Forme normale de Chomsky]
-	\[
-	A \rightarrow  B C \text{ où } A, B, C \in N
-	\]
+
+Après transformation de la grammaire sous FNC, on peut l'utiliser pour la reconnaissance des phrases. 
+Étant donné une phrase $w = w_1 \ldots w_n$, on crée un tableau triangulaire $T$ de taille $n*n/2$. 
+L'algorithme \ref{algo:cky-recon} décrit comment remplir ces deux tableaux afin d'analyser le mot $w$ suivant la grammaire $G$ en FNC. 
+Je l'ai modifié un peu pour pouvoir revenir en arrière et créer l'arbre syntaxique : chaque cellule contient un ensemble des quadruplets (variable, index des fils, position du 1ier fils, position du deuxième fils).
+L'algorithme prend un temps $O(n^3 * |P|)$ où $P$ est l'ensemble des productions.
+On commence par remplir le diagonal du tableau $T$ par les variables qui génèrent les mots $i$ de la phrase. 
+On commence le remplissage de bas vers le haut et de gauche vers droit. 
+Chaque cellule est remplie par une variable qui génère une des variables à gauche (colonne $k$) suivie par une des variables en bas (ligne $k$) où $i \le k \le j$.
+Lorsqu'on arrive à la dernière cellule de la première ligne, on doit trouver l'axiome $S$ ; sinon, la phrase n'appartient pas au langage.
+%\begin{algorithm}[ht]
+%	\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+%	\Res{$T[n, n], B[n, n, |N|]$}
+%	
+%	\Pour{$ i = 1 \ldots n$}{ %\tcc*{Iitialiser le diagonal}
+%		$T[i, i] \leftarrow \{  A / (A \rightarrow w_i) \in P \} $\;
+%	}
+%	
+%	\Pour{$ j = 2 \ldots n$ }{
+%		\Pour{$ i = 0 \ldots (n - j) $}{
+%			\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
+%				\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
+%					$T[i, i+j] \leftarrow T[i, i+j] \cup \{A\}$ \;
+%					$B[i, i+j, A] \leftarrow B[i, i+j, A] \cup \{(B, C, k)\}$ \;
+%				}
+%			}
+%		}
+%	}
+%	
+%	\Si{$``S" \notin T[0, n] $} {
+%		Erreur ``La phrase n'a pas été reconnue"\;
+%	}
+%	
+%	\Retour $T, B$ \;
+%	\caption{Reconnaissance d'une phrase en utilisant la méthode CKY}
+%	\label{algo:cky-recon}
+%\end{algorithm}
+\begin{algorithm}[ht]
+	\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+	\Res{$T[n, n]$}
 	
-	\[
-	A \rightarrow w \text{ où } w \in \Sigma
-	\]
-\end{definition}
-
-Reconnaissance d'une phrase
-\begin{block}{CKY : Reconnaissance d'une phrase}
-	\scriptsize\vspace{-3pt}
-	\begin{algorithm}[H]
-		\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
-		\Res{$T[n, n], B[n, n, |N|]$}
-		
-		\Pour{$ i = 1 \ldots n$}{ 
-			$T[i-1, j] \leftarrow \{  A / (A \rightarrow w_j) \in P \} $\;
+	\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
+		$T[i, i] \leftarrow \{ (A, 0, 0, 0) / (A \rightarrow w_i) \in P \} $\;
+	}
+	
+	\Pour{$ i = (n-1) \ldots 1$ }{
+		\Pour{$ j = (i+1) \ldots n $}{
+			\Pour{$ k = i \ldots (j-1) $}{
+				\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k+1, j]$}{
+					$iB \leftarrow index(B, T[i, k])$ \;
+					$iC \leftarrow index(C, T[k+1, j])$ \;
+					$T[i, j] \leftarrow T[i, j] \cup \{(A, k, iB, iC)\}$ \;
+				}
+			}
 		}
-		
-		\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
-			\Pour{$ i = 0 \ldots (n - j) $}{
-				\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
-					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
-						$T[i, i+j] \leftarrow T[i, i+j] \cup \{A\}$ ;
-						$B[i, i+j, A] \leftarrow B[i, i+j, A] \cup \{(B, C, k)\}$ \;
+	}
+	
+	\Si{$``S" \notin T[1, n] $} {
+		Erreur ``La phrase n'a pas été reconnue"\;
+	}
+	
+	\caption{Reconnaissance d'une phrase en utilisant la méthode CKY}
+	\label{algo:cky-recon}
+\end{algorithm}
+
+Une fois la phrase acceptée et les deux tableaux créés, on utilise le tableau $B$ pour créer l'arbre syntaxique. 
+On commence par choisir les deux fils de l'axiome $S$ en se basant sur $T$.
+On cherche les fils de chaque nœud récursivement jusqu'à arriver à un nœud sans fils.
+L'algorithme \ref{algo:cky-constr} décrit l'opération de construction d'un arbre syntaxique en détail.
+\begin{algorithm}[ht]
+	\SetKwFunction{FConst}{Construire}
+	\SetKwProg{Fn}{Fonction}{\\Début}{Fin}
+	
+	\Donnees{$T[n, n]$}
+	\Res{Racine de l'arbre syntaxique : $r \leftarrow \varnothing$}
+	
+	\Si{$``S" \in T[1, n] $} {
+		$r \leftarrow $ \FConst{$1, n, index(``S", T[1, n])$}\;
+	}
+	
+	\Fn{\FConst{$i, j, pos$}}{
+		$ (A, k, iB, iC) \leftarrow T[i, j][pos] $\;
+		Créer un nouveau nœud : nœud\;
+		nœud.valeur $\leftarrow  A$ \;
+		\Si{$k>0$}{
+			nœud.gauche $\leftarrow$ \FConst{$i, k, iB$}\;
+			nœud.droit $\leftarrow$ \FConst{$k+1, j, iC$}\;
+		}
+		\Retour nœud\;
+	}
+	
+	\caption{Construction de l'arbre syntaxique en utilisant CKY}
+	\label{algo:cky-constr}
+\end{algorithm}
+%
+%\begin{algorithm}[ht]
+%	\SetKwFunction{FConst}{Construire}
+%	\SetKwProg{Fn}{Fonction}{\\Début}{Fin}
+%	
+%	\Donnees{$T[n, n], B[n, n, |N|]$}
+%	\Res{Arbre syntaxique}
+%	
+%	\eSi{$``S" \notin T[0, n] $} {
+%		\Retour $\varnothing$ \;
+%	}{
+%		\Retour \FConst{$S, 0, n$}\;
+%	}
+%	
+%	\Fn{\FConst{$A, i, j$}}{
+%		
+%		\eSi{j = i + 1}{
+%			\Retour $A$\;
+%		}{
+%			$ (B, C, k) \leftarrow Choisir(B[i, j, A]) $\;
+%			\Retour (\FConst{$B, i, k$}, \FConst{$C, k, j$})\;
+%		}
+%	}
+%	
+%	
+%	\caption{Construction de l'arbre syntaxique en utilisant CKY}
+%	\label{algo:cky-constr}
+%\end{algorithm}
+
+L'arbre syntaxique résultante est binaire (à cause de la forme normale de Chomsky).
+Mais, dans la réalité elle doit suivre la grammaire conçue par les syntacticiens. 
+Une solution est d'ajouter une étape de post-traitement pour récupérer l'arbre originale.
+Concernant les productions unitaires, on peut les laisser telles qu'elles sont et modifier l'algorithme CKY afin de les accepter.
+Bien sûr l'algorithme souffre toujours du problème d'ambigüité syntaxique.
+Exemple, \expword{Je mange du riz avec une fourchette.} et \expword{Je mange du riz avec de la viande.}
+
+On va analyser la phrase ``\expword{la petite forme une petite phrase}" en utilisant CKY selon la grammaire suivante :
+\begin{itemize}
+	\item S \textrightarrow\ NP VP | VP
+	\item VP \textrightarrow V NP
+	\item NP \textrightarrow\ \textbf{DET ADJ N} \textbar\ DET N \textbar\ PRON 
+	\item PRON \textrightarrow\ je \textbar\ tu \textbar\ il \textbar\ elle
+	\item V \textrightarrow\ forme \textbar\ veut \textbar\ mange 
+	\item DET \textrightarrow\ un \textbar\ une \textbar\ la \textbar\ le
+	\item ADJ \textrightarrow\ petite \textbar\ grand \textbar\ bleu 
+	\item N \textrightarrow\ petite \textbar\ forme \textbar\ phrase \textbar\ chat \textbar\ poisson
+\end{itemize}
+On transforme cette grammaire en FNC en remplaçant la règle en gras par : 
+\begin{itemize}
+	\item NP \textrightarrow\ DET AP
+	\item AP \textrightarrow\ ADJ N
+\end{itemize}
+Le tableau d'analyse est illustré dans la figure \ref{fig:exp-cky-trait}.
+
+\begin{figure}[ht]
+\begin{tabular}{|p{2.3cm}|p{2.5cm}|p{2.3cm}|p{2.3cm}|p{2.5cm}|p{2.2cm}|}
+	\hline
+	la & petite & forme & une & petite & phrase \\
+	\hline
+	\textbf{(DET, 0, 0, 0)} & \textbf{(NP, 1, 1, 1)} & - & - & - & \textbf{(S, 2, 1, 1)} \\
+	\hline
+	\multicolumn{1}{l|}{}& \textbf{(ADJ, 0, 0, 0)}; (N, 0, 0, 0) & (AP, 2, 1, 2) & - & - & - \\
+	\cline{2-6}
+	\multicolumn{2}{l|}{}& \textbf{(V, 0, 0, 0)}; (N, 0, 0, 0) & - & (VP, 3, 1, 1) & \textbf{(VP, 3, 1, 1)} \\
+	\cline{3-6}
+	\multicolumn{3}{l|}{}& \textbf{(DET, 0, 0, 0)} & (NP, 4, 1, 2) & \textbf{(NP, 4, 1, 1)} \\
+	\cline{4-6}
+	\multicolumn{4}{l|}{}& \textbf{(ADJ, 0, 0, 0)}; (N, 0, 0, 0) & \textbf{(AP, 5, 1, 1)} \\
+	\cline{5-6}
+	\multicolumn{5}{l|}{}& \textbf{(N, 0, 0, 0)} \\
+	\cline{6-6}
+\end{tabular}
+\caption{Exemple de l'anaylse CKY de la phrase ``la petite forme une petite phrase" \label{fig:exp-cky-trait}}
+\end{figure}
+
+
+\subsection{Algorithme CKY probabiliste}
+
+Dans l'algorithme CKY, on peut tomber sur un cas où on a plus d'un arbre syntaxique. 
+Pour guider le choix des règles, on ajoute la probabilité de chaque production ; utilise une \ac{pcfg}.
+Lors de la transformation d'une grammaire probabiliste $G<\Sigma, N, P, S>$ en FNC, les nouvelles règles créées par transformation en FNC ont une probabilité égale à $1$.
+Étant donné un arbre syntaxique $T$ du mot $w$, sa probabilité est estimée selon l'équation \ref{eq:pcfg-arbre-prop}.
+\begin{equation}
+P(T, w) = \prod\limits_{(A_i \rightarrow \beta_i) \in T} P(A_i \rightarrow \beta_i)
+\label{eq:pcfg-arbre-prop}
+\end{equation}
+L'arbre syntaxique le plus adéquat pour analyser le mot $w$ est celui avec le maximum de probabilité (voir \ref{eq:pcfg-arbre-max}).
+\begin{equation}
+\hat{T}(w) = \arg\max\limits_{T(w)} P(T, w)
+\label{eq:pcfg-arbre-max}
+\end{equation}
+
+Concernant l'algorithme CKY, on ajoute la probabilité d'occurrence d'une règle dans chaque cellule. 
+Chaque variable $A$ aura au maximum une chance pour produire deux variables.
+Dans ce cas, on va créer un tableau triangulaire de trois dimensions $T[n, n, |N|]$ où on stocke la probabilité de chaque variable dans cette cellule en plus de la position $k$ utilisée pour chercher les fils et les deux variables des fils gauche et droit.
+On suppose que toutes les probabilités des cellules sont initialisées par $0$.
+L'algorithme \ref{algo:cky-prob-recon} représente la version probabiliste de l'algorithme CKY.
+\begin{algorithm}[ht]
+	\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+	\Res{$T[n, n, |N|]$}
+	
+	\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
+		$T[i, i, A] \leftarrow \{ (P(A \rightarrow w_i), 0, A, A) / (A \rightarrow w_i) \in P \} $\;
+	}
+	
+	\Pour{$ i = (n-1) \ldots 1$ }{
+		\Pour{$ j = (i+1) \ldots n $}{
+			\Pour{$ k = i \ldots (j-1) $}{
+				\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $T[i, k, B] > 0$ et $T[k+1, j, C] > 0$}{
+					$p \rightarrow P(A \rightarrow B C) * T[i, k, B][1] * T[k+1, j, C][1]$\;
+					\Si{$p > T[i, j, A][1]$}{
+						$T[i, j, A] \leftarrow (p, k, B, C)$ \;
 					}
 				}
 			}
 		}
-		
-		\Si{$``S" \notin T[0, n] $} {
-			Erreur ``La phrase n'a pas été reconnue"\;
-		}
-		
-		\Retour $T, B$ \;
-		\vspace{-3pt}
-	\end{algorithm}
-\end{block}
-
-Construction de l'arbre
-\begin{block}{CKY : Construction de l'arbre}
-	\scriptsize\vspace{-3pt}
-	\begin{algorithm}[H]
-		\SetKwFunction{FConst}{Construire}
-		\SetKwProg{Fn}{Fonction}{\\Début}{Fin}
-		
-		\Donnees{$T[n, n], B[n, n, |N|]$}
-		\Res{Arbre syntaxique}
-		
-		\eSi{$``S" \notin T[0, n] $} {
-			\Retour $\varnothing$ \;
-		}{
-			\Retour \FConst{$S, 0, n$}\;
-		}
-		
-		\Fn{\FConst{$A, i, j$}}{
-			
-			\eSi{j = i + 1}{
-				\Retour $A$\;
-			}{
-				$ (B, C, k) \leftarrow Choisir(B[i, j, A]) $\;
-				\Retour (\FConst{$B, i, k$}, \FConst{$C, k, j$})\;
-			}
-		}
-		
-		
-		%		\vspace{-3pt}
-	\end{algorithm}
-\end{block}
-
-Exercice
-\begin{exampleblock}{Exemple d'une grammaire}
-	\begin{itemize}
-		\item S \textrightarrow\ NP VP 
-		\item S \textrightarrow\ VP 
-		\item VP \textrightarrow V NP
-		\item NP \textrightarrow\ DET ADJ N \textbar\ DET N \textbar\ PRON 
-		\item PRON \textrightarrow\ je \textbar\ tu \textbar\ il \textbar\ elle
-		\item V \textrightarrow\ forme \textbar\ veut \textbar\ mange 
-		\item DET \textrightarrow\ un \textbar\ une \textbar\ la \textbar\ le
-		\item ADJ \textrightarrow\ petite \textbar\ grand \textbar\ bleu 
-		\item N \textrightarrow\ petite \textbar\ forme \textbar\ phrase \textbar\ chat \textbar\ poisson
-	\end{itemize}
-\end{exampleblock}\vspace{-6pt}
-
-\begin{itemize}
-	\item Analyser la phrase suivante en utilisant CKY 
-	\item \expword{la petite forme une petite phrase}
-\end{itemize}
-
-Remarques
-\begin{minipage}{.53\textwidth}
-	\begin{itemize}
-		\item L'arbre syntaxique résultante est binaire. Mais, dans la réalité elle doit suivre la grammaire conçue par les syntacticiens
-		\begin{itemize}
-			\item Ajouter une étape de post-traitement pour récupérer l'arbre originale
-			\item Laisser les productions unitaires et modifier l'algorithme CKY afin de les accepter
-		\end{itemize}
-		\item Problème d'ambigüité syntaxique 
-		\begin{itemize}
-			\item Ex. \expword{Je mange du riz avec une fourchette.} et \expword{Je mange du riz avec de la viande.}
-			%		\item 
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-
-\subsection{Algorithme CKY probabiliste}
-\begin{itemize}
-	\item $G<\Sigma, N, P, S>$ est une grammaire probabiliste
-	\item Les nouvelles règles créées par transformation en FNC ont une probabilité égale à $1$
-	\item $w = w_1 \ldots w_n$ est un mot à analyser 
-	\item $T$ est un arbre syntaxique 
-	\item $P(T, w) = \prod\limits_{(A_i \rightarrow \beta_i) \in T} P(A_i \rightarrow \beta_i)$ est la probabilité d'un arbre syntaxique étant donné le mot analysé $w$
-	\item $\hat{T}(w) = \arg\max\limits_{T(w)} P(T, w) $ est l'arbre syntaxique le plus adéquat pour analyser le mot $w$
-\end{itemize}
-
-Reconnaissance d'une phrase
-\begin{block}{CKY probabiliste : Reconnaissance d'une phrase}
-	\scriptsize\vspace{-3pt}
-	\begin{algorithm}[H]
-		\Donnees{une grammaire probabiliste $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
-		\Res{$T[n, n, |N|], B[n, n, |N|]$}
-		
-		\Pour{$ i = 1 \ldots n$}{ 
-			\PourTous{$A / (A \rightarrow w_j) \in P$}{
-				$T[i-1, j, A] \leftarrow P(A \rightarrow w_j)$\;
-			}
-		}
-		
-		\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
-			\Pour{$ i = 0 \ldots (n - j) $}{
-				\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
-					%					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
-					$T[i, i+j, A] \leftarrow \max\limits_{A \rightarrow B C \in P} P(A \rightarrow B C) * T[i, k, B] * T[k, i+j, C]$ \;
-					$B[i, i+j, A] \leftarrow (B, C, k)$\;
-					%					}
-				}
-			}
-		}
-		
-		\texttt{// Si $``S" \notin T[0, n] $ : Erreur}
-		%		\Si{} {
-		%			Erreur ``La phrase n'a pas été reconnue"\;
-		%		}
-		
-		\Retour $T, B$ \;
-		\vspace{-3pt}
-	\end{algorithm}
-\end{block}
+	}
+	
+	\Si{$T[1, n, S] = 0 $} {
+		Erreur ``La phrase n'a pas été reconnue"\;
+	}
+	
+	\caption{Reconnaissance d'une phrase en utilisant la méthode CKY probabiliste}
+	\label{algo:cky-prob-recon}
+\end{algorithm}
+%\begin{algorithm}[ht]
+%	\Donnees{une grammaire probabiliste $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+%	\Res{$T[n, n, |N|], B[n, n, |N|]$}
+%	
+%	\Pour{$ i = 1 \ldots n$}{ 
+%		\PourTous{$A / (A \rightarrow w_j) \in P$}{
+%			$T[i-1, j, A] \leftarrow P(A \rightarrow w_j)$\;
+%		}
+%	}
+%	
+%	\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
+%		\Pour{$ i = 0 \ldots (n - j) $}{
+%			\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
+%				%					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
+%				$T[i, i+j, A] \leftarrow \max\limits_{A \rightarrow B C \in P} P(A \rightarrow B C) * T[i, k, B] * T[k, i+j, C]$ \;
+%				$B[i, i+j, A] \leftarrow (B, C, k)$\;
+%				%					}
+%			}
+%		}
+%	}
+%	
+%	\texttt{// Si $``S" \notin T[0, n] $ : Erreur}
+%	%		\Si{} {
+%	%			Erreur ``La phrase n'a pas été reconnue"\;
+%	%		}
+%	
+%	\Retour $T, B$ \;
+%	\caption{CKY probabiliste : Reconnaissance d'une phrase}
+%\end{algorithm}
 
 %===================================================================================
 \section{Analyse des dépendances}
 %===================================================================================
 
-\begin{minipage}{.6\textwidth}
-	\begin{itemize}
-		\item \optword{Analyse basée sur les transitions} 
-		\begin{itemize}
-			\item \textbf{Configuration} :  $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés
-			\item $C_{initiale} = ([ROOT], w, \emptyset)$
-			\item $C_{finale} = ([ROOT], \varnothing, A)$
-			%		\item Un ensemble d'actions possibles
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.38\textwidth}
-	\hgraphpage{transitions.pdf}
-\end{minipage}
-
-\begin{minipage}{.6\textwidth}
-	\begin{itemize}
-		\item \optword{Analyse basée sur les graphes}
-		\begin{itemize}
-			\item \textbf{Graphe} : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
-			\item \textbf{Résultat} : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.38\textwidth}
-	\hgraphpage{graphe.pdf}
-\end{minipage}
+Les dépendances syntaxiques sont des relations binaires entre deux mots. 
+L'analyse des dépendances sert à trouver ces relations et créer un arbre syntaxique. 
+Dans cette arbre, tous les nœuds sont des mots et chaque arc est une relation.
+On va présenter deux approches pour analyser les dépendances : par transitions et par graphes.
 
 \subsection{Par transition}
 
-\begin{minipage}{.6\textwidth}
-	\begin{itemize}
-		\item \textbf{Configuration} :  $C = (\sigma, \beta, A)$
-		\begin{itemize}
-			\item $\sigma$ est une pile
-			\item $\beta$ est le tampon (buffer) d'entrée
-			\item $A$ est la liste des arcs créés (dépendances)
-			\item $C_{initiale} = ([ROOT], w, \emptyset)$
-			\item $C_{finale} = ([ROOT], \varnothing, A)$
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.38\textwidth}
-	\hgraphpage{transitions.pdf}
-\end{minipage}
-
+Un analyseur des dépendances par transition peut être implémenté en utilisant la méthode SHIFT-REDUCE. 
+C'est une machine abstraite ayant la configuration $C = (\sigma, \beta, A)$ (voir la figure \ref{fig:dep-trans-arch}) où :
 \begin{itemize}
-	\item \textbf{Transition} : passer d'un état vers un autre en utilisant des actions sur
-	\begin{itemize}
-		\item $\sigma$ : empiler ou dépiler un mot
-		\item $\beta$ : retirer un mot ou ajouter un au début
-		\item $A$ : ajouter une dépendance entre 2 mots
-	\end{itemize}
-	\item \textbf{Oracle} : un système qui décide la transition suivante
+	\item $\sigma$ est une pile
+	\item $\beta$ est le tampon (buffer) d'entrée. 
+	Il contient le mot en entrée avec une tête qui pointe sur le mot courant.
+	\item $A$ est la liste des arcs créés (dépendances)
+	\item 
+	\item  $C_{initiale} = ([ROOT], w, \emptyset)$ 
+\end{itemize}
+L'analyse commence avec la configuration $C_{initiale} = ([ROOT], w, \emptyset)$ et termine avec la configuration $C_{finale} = ([ROOT], \varnothing, A)$.
+Si on arrive à la fin du mot avec une pile non vide (on considère le sommet $ROOT$ comme vide), on peut conclure que ce mot n'appartient pas au langage. 
+Une transition d'un état vers un autre peut être une actions sur :
+\begin{itemize}
+	\item $\sigma$ : empiler ou dépiler un mot
+	\item $\beta$ : retirer un mot ou ajouter un au début
+	\item $A$ : ajouter une dépendance entre 2 mots
+\end{itemize}
+\textbf{Oracle} est un système qui décide la transition suivante.
+
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.38\textwidth]{transitions.pdf}
+	\caption{Architecture d'un analyseur des dépendances par transition \label{fig:dep-trans-arch}}
+\end{figure}
+
+
+Afin de décrire l'algorithme d'analyse, on va utiliser deux fonctions : ``$Oracle$" qui choisit une transition ``$t$", et ``$Appliquer$" qui exécute ``$t$" sur la configuration. 
+L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par transitions.
+
+\begin{algorithm}[ht]
+	\Donnees{Le mot à analyser $w= w_1 w_2 \ldots w_n$}
+	\Res{Liste des dépendances $A$}
+	
+	$C \leftarrow (\sigma=[ROOT], \beta = w, A = \emptyset)$\;
+	
+	
+	\Tq{$\sigma \ne [ROOT]$ OU $\beta \ne \varnothing$}{
+		$t \leftarrow Oracle(C)$\;
+		$C \leftarrow Appliquer(C, t)$\;
+	}
+	
+	\caption{Analyse des dépendances par transitions \label{algo:anal-dep-trans}}
+\end{algorithm}
+
+Le système Oracle choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
+Lorsqu'on est dans la configuration actuelle $ C = (\sigma, \beta, A) $, on utilise une fonction $\Psi$ qui calcule un score en utilisant sur des caractéristiques basées sur cette configuration.
+La transition $\hat{t}$ choisie est celle qui maximise la fonction $\Psi$ ayant des paramètres $\theta$ selon l'équation \ref{eq:orancle-psi}.
+\begin{equation}\label{eq:orancle-psi}
+\hat{t} = \arg\max\limits_{t \in T} \Psi (t, C, w; \theta)
+\end{equation}
+Pour entraîner le système oracle, on doit annoter le texte en le transformant vers une séquence de transitions. 
+Le texte original est annoté avec les relations de dépendance. 
+Pour transformer la sortie à une séquence de transitions, on utilise le système d'analyse en tel sorte à générer toutes les dépendances possibles. 
+En utilisant des caractéristiques sur la configuration courante, on essaye d'estimer la transition suivante par la fonction $\Psi$.  
+Cette fonction peut être MaxEnt (le plus utilisé), SVM ou les réseaux de neurones. 
+Les caractéristiques utilisées par la fonction $\Psi$ peuvent être des caractéristiques sur :  
+\begin{itemize}
+	\item la pile $\sigma$ : le mot dans le sommet de la pile et sa catégorie grammaticale. 
+	\item le tampon d'entrée $\beta$ : les trois premiers mots et leurs catégories grammaticales.
+	\item la liste des dépendances $A$ : les dépendances qui ont été estimées.
+	\item la phrase analysée $w$ : la distance entre le mot du sommet de la pile et le premier mot dans le tampon (nombre des mots entre eux dans la phrase $w$)
 \end{itemize}
 
-Algorithme d'analyse
-\begin{itemize}
-	\item Le système ``$Oracle$" choisit une transition ``$t$"
-	\item La fonction ``$Appliquer$" exécute ``$t$" sur la configuration
-\end{itemize}
-
-\begin{block}{Analyse des dépendances par transitions}
-	\begin{algorithm}[H]
-		\Donnees{Le mot à analyser $w= w_1 w_2 \ldots w_n$}
-		\Res{Liste des dépendances $A$}
-		
-		$C \leftarrow (\sigma=[ROOT], \beta = w, A = \emptyset)$\;
-		
-		
-		\Tq{$\sigma \ne [ROOT]$ OU $\beta \ne \varnothing$}{
-			$t \leftarrow Oracle(C)$\;
-			$C \leftarrow Appliquer(C, t)$\;
-		}
-		
-		\Retour $A$ \;
-	\end{algorithm}
-\end{block}
-
-Système Oracle (entraînement)
-\begin{itemize}
-	\item Le système Oracle apprend à inférer la transition $\hat{t}$ étant donné
-	\begin{itemize}
-		\item la configuration actuelle $ C = (\sigma, \beta, A) $
-		\item l'ensemble $T$ des transactions possibles
-		\item une fonction $\Psi$ qui calcule un score en utilisant sur des caractéristiques basées sur la configuration 
-		\item un texte annoté (TreeBank)
-	\end{itemize}
-	\[ \hat{t} = \arg\max\limits_{t \in T} \Psi (t, C, w; \theta) \]
-	
-	\item Le texte annoté doit être transformé à une séquence de transactions
-	\item Pour entraîner l'Oracle, on utilise l'algorithme d'analyse 
-	\item La fonction $\Psi$ peut être MaxEnt (le plus utilisé), SVM ou les réseaux de neurones
-\end{itemize}
-
-\begin{itemize}
-	\item \textbf{La pile $\sigma$}
-	\begin{itemize}
-		\item Le mot dans le sommet de la pile
-		\item La catégorie grammaticale de ce mot
-	\end{itemize}
-	
-	\item \textbf{Le tampon d'entrée $\beta$}
-	\begin{itemize}
-		\item Les trois premiers mots
-		\item Leurs catégories grammaticales
-	\end{itemize}
-	
-	\item \textbf{La liste des dépendances $A$}
-	\begin{itemize}
-		\item Les dépendances qui ont été estimées
-	\end{itemize}
-	
-	\item \textbf{La phrase analysée $w$}
-	\begin{itemize}
-		\item La distance entre le mot du sommet de la pile et le premier mot dans le tampon (nombre des mots entre eux dans la phrase $w$)
-	\end{itemize}
-	
-\end{itemize}
-
-Arc-standard (transitions possibles)
+Il y a deux approches pour l'analyse de dépendances par transitions : Arc-standard et Arc-eager. 
+Dans Arc-standard, les relations de dépendances sont détectées seulement entre les mots dans la pile. 
+Lorsqu'un mot est considéré comme une tête d'une relation, il sera éliminé de la pile. 
+La figure \ref{fig:arc-standard-exp} représente un exemple d'analyse de la phrase ``\expword{}" en utilisant Arc-standard.
+Les transitions possibles dans cette approche sont :
 \begin{itemize}
 	\item \optword{SHIFT} : Déplacer le premier élément dans le tampon vers la pile 
 	\[ (\sigma, w_i|\beta, A) \Rightarrow  (\sigma|w_i, \beta, A) \]
@@ -481,13 +553,18 @@ Arc-standard (transitions possibles)
 	\[ (\sigma|w_i, w_j|\beta, A) \Rightarrow  (\sigma, w_i|\beta, A \cup \{w_i \rightarrow w_j \}) \] 
 \end{itemize}
 
-\begin{figure}
-	\hgraphpage{exp-arc-std_.pdf}
-	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}}
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.8\textwidth]{exp-arc-std_.pdf}
+	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}\label{fig:arc-standard-exp}}
 \end{figure}
 
-Arc-Eager (transitions possibles)
-
+Dans Arc-Eager, on essaye de détecter les relations de dépendance le plus tôt possible. 
+Pour ce faire, les relations détectées doivent être entre le sommet de la pile et le mot courant. 
+Dans ce cas, on n'avance pas la tête de lecture automatiquement lorsqu'on ajoute une nouvelle relation. 
+Dans ce cas, la seule méthode pour le faire est d'empiler le mot danns la pile en utilisant la transition ``SHIFT". 
+Un exemple de l'analyse de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager est illustré dans la figure \ref{fig:arc-eager-exp}.
+Les transitions possibles dans cette approches sont :
 \begin{itemize}
 	\item \optword{SHIFT} est le même que ``Arc-standard"
 	
@@ -502,107 +579,121 @@ Arc-Eager (transitions possibles)
 	%	\[ (\sigma|w_i, \beta, \mathcal{A}) \overset{\exists w_k (w_k \rightarrow w_i) \in \mathcal{A}}{\Longrightarrow} (\sigma, \beta, \mathcal{A}) \] 
 \end{itemize}
 
-\begin{figure}
-	\hgraphpage{exp-arc-eager_.pdf}
-	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}}
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.8\textwidth]{exp-arc-eager_.pdf}
+	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}\label{fig:arc-eager-exp}}
 \end{figure}
+
+Les relations présentées ici sont des relations non étiquetées ; juste la relation tête-dépendant sans type.
+Afin d'ajouter le type de relation, on doit enrichir les transitions ARC-LEFT et ARC-RIGHT avec les types possibles. 
+Dans Arc-standard, à la place de 3 transitions, on aura $1+2R$ transitions où $R$ est le nombre des types de dépendances.
 
 \subsection{Par graphe}
 
-\begin{minipage}{.6\textwidth}
-	\begin{itemize}
-		\item Analyse basée sur les graphes
-		\begin{itemize}
-			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
-			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.38\textwidth}
-	\hgraphpage{graphe.pdf}
-\end{minipage}
+L'élimination des relations est une autre approche pour trouver l'arbre de dépendance d'un mot donné $w$. 
+Dans un premier temps, on considère toutes les dépendances possibles entre les mots. 
+Ensuite, on commence à éliminer les relations non probables jusqu'à arriver au résultat final. 
+D'une façon plus formelle, on commence l'analyse par un graphe complet $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance). 
+Ensuite, on cherche l'arbre $T = (V, F)$ parmi les arbres possibles $\mathcal{T}(G)$ qui est un sous-graphe de $G$ maximisant un certain score comme indiqué dans l'équation \ref{eq:arbre-rela-max}.
+\begin{equation}
+\hat{T} = \arg\max\limits_{T \in \mathcal{T}(G)} \Psi(T, w; \theta)
+\label{eq:arbre-rela-max}
+\end{equation}
+Le score $\Psi$ d'un arbre $T$ est la somme des scores $\psi$ de ces arcs (voir l'équation \ref{eq:arbre-rela-score}). 
+$\theta$ est l'ensemble des paramètres utilisés dans la fonction du score.
+\begin{equation}
+\Psi(T, w; \theta) = \sum_{e \in F / T = (V, F)} \psi(e, w; \theta)
+\label{eq:arbre-rela-score}
+\end{equation}
 
-\begin{itemize}
-	\item $\Psi$ est une fonction de score, $ \mathcal{T}(G) $ est l'espace des arbres de dépendance possibles sur $G$
-	\[ \hat{T} = \arg\max\limits_{T \in \mathcal{T}(G)} \Psi(T, w; \theta) \]
-	\item Ce score est calculé en se basant sur le score de chaque arc $\psi$
-	\[ \Psi(T, w; \theta) = \sum_{e \in F / T = (V, F)} \psi(e, w; \theta) \]
-\end{itemize}
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.38\textwidth]{graphe.pdf}
+	\caption{Architecture d'un analyseur des dépendances par graphe \label{fig:dep-graph-arch}}
+\end{figure}
 
-Score et entraînement
-\begin{itemize}
-	\item Le score d'un arc dépend de certaines caractéristiques (d'ordre $K$)
-	\[ \psi(e, w; \theta) = \sum_{k = 1}^{K} \theta_k f_k(e, w)  \]
-	
-	\item Quelques caractéristiques 
-	\begin{itemize}
-		\item Le mot de l'entête, sa catégorie grammaticale, son lemme, ses préfixes et suffixes
-		\item La direction de l'arc
-		\item La distance entre l'entête et le dépendant
-		\item \ldots
-	\end{itemize}
-	
-\end{itemize}
+Afin de estimer le score d'un arc $e$, on peut utiliser un certain nombre de caractéristiques $f$ comme : le mot de l'entête, sa catégorie grammaticale, son lemme, ses préfixes et suffixes, la direction de l'arc, la distance entre l'entête et le dépendant, etc.
+Un algorithme d'apprentissage ayant les paramètres $\theta$ est utilisé pour apprendre à estimer le score d'un arc $e$ selon ces caractéristiques. 
+En utilisant des scores initiaux, on génère un arbre et en le compare avec l'arbre destinataire. 
+Si les arbres ne sont pas identique, on calcule l'erreur et on mis à jours les paramètres.
+Le score d'un arc $e$ est représenté par l'équation \ref{eq:arbre-rela-score2}.
+\begin{equation}
+\psi(e, w; \theta) = \sum_{k = 1}^{K} \theta_k f_k(e, w)
+\label{eq:arbre-rela-score2}
+\end{equation}
 
-Analyse de Chu-Liu/Edmonds
+
+Afin de créer un arbre à partir d'un graphe, on peut utiliser l'algorithme de Chu-Liu/Edmonds (voir l'algorithme \ref{algo:chu-liu-edmonds}).
+Pour analyser un mot $w=w_1 \ldots w_n$, on commence par construire un graphe complet $G = (V, E)$ où chaque nœud $v_i$ représente un mot $w_i$ et chaque arc $e$ représente une relation possible entre deux nœuds. 
+Afin de représenter l'information du mot racine, on ajoute un nœud (ROOT) avec des arcs vers tous le reste des nœuds.
+Pour chaque arc $e$ du graphe $G$, on affecte un poids $G.p(e)$ qui est estimé en utilisant l'apprentissage automatique.
+En prenant le nœud ``ROOT" comme racine et le graphe $G$, on essaye de trouver un arbre couvrant de poids maximal $T = (V, F)$. 
+Un arbre couvrant est un sous-graphe acyclique maximal où tous les nœuds sont connectés et il n'y a pas plus qu'un arc entrant vers un nœud.
+Deux fonctions sont utilisées dans cette algorithme :
 \begin{itemize}
-	\item On ajoute un nœud (ROOT) avec des arcs vers tous le reste des nœuds 
-	\item Les arcs sont pondérés où le poids d'un arc $e$ est $G.p(e)$
-	\item On construit un \keyword{Arbre couvrant} de poids maximal
-	\item \keyword{Arbre couvrant} : Un sous-graphe acyclique maximal où tous les nœuds sont connectés et il n'y a pas plus qu'un arc entrant vers un nœud
 	\item \optword{Contracter} : une fonction qui fusionne deux nœuds $u$ et $v$ composant un cycle $C$
 	\begin{itemize}
 		\item $\forall e = (u', v) \in E : G.p(e) \leftarrow G.p(e) - G.p((u, v)) $
 		\item $\forall e = (v', u) \in E : G.p(e) \leftarrow G.p(e) - G.p((v, u)) $
 	\end{itemize}
-	\item \optword{Etendre} : une fonction qui désassemble les deux nœuds $u$ et $v$ d'un cycle $C$. L'arc qui enfreint la condition ``\textit{pas de deux arcs entrants}" est supprimé
+	\item \optword{Etendre} : une fonction qui désassemble les deux nœuds $u$ et $v$ d'un cycle $C$. L'arc qui enfreint la condition ``\textit{pas de deux arcs entrants}" est supprimé.
 \end{itemize}
 
-\begin{block}{Analyse de Chu-Liu-Edmonds : Arbre couvrant de poids maximal}
-	\scriptsize\vspace{-6pt}
-	\begin{algorithm}[H]
-		\Donnees{un graphe pondéré $G = (V, E)$, $ ROOT $}
-		\Res{un arbre couvrant $T = (V, F)$}
+\begin{algorithm}[ht]
+	\Donnees{un graphe pondéré $G = (V, E)$, $ ROOT $}
+	\Res{un arbre couvrant $T = (V, F)$}
+	
+	\SetKwFunction{ACM}{ArbreCouvrantMax}
+	\SetKwProg{Fn}{Fonction}{}{Fin Fonction} 
+	
+	\Fn{\ACM{$G, ROOT$}}{
 		
-		\SetKwFunction{ACM}{ArbreCouvrantMax}
-		\SetKwProg{Fn}{Fonction}{}{Fin Fonction} 
+		$F \leftarrow \emptyset$\;
 		
-		\Fn{\ACM{$G, ROOT$}}{
-			
-			$F \leftarrow \emptyset$\;
-			
-			\PourTous{$ v \in V$}{ 
-				$meilleurInArc \leftarrow \arg\max_{e = (u, v) \in E} G.p(e) $;
-				$F \leftarrow F \cup meilleurInArc$\;
-				\PourTous{$e = (u, v) \in E$}{ 
-					$ G.p(e) \leftarrow G.p(e) - G.p(meilleurInArc) $\;
-				}
-				\eSi{$T = (V, F)$ est un arbre couvrant}{
-					\Retour $T$ \;
-				}{
-					$C \leftarrow$ un cycle de $F$;
-					$G' \leftarrow Contracter(G, C)$\;
-					$T' \leftarrow ArbreCouvrantMax(G', ROOT)$;
-					$T \leftarrow Etendre(T', C)$\;
-					\Retour $T$ \;
-				}
+		\PourTous{$ v \in V$}{ 
+			$meilleurInArc \leftarrow \arg\max_{e = (u, v) \in E} G.p(e) $;
+			$F \leftarrow F \cup meilleurInArc$\;
+			\PourTous{$e = (u, v) \in E$}{ 
+				$ G.p(e) \leftarrow G.p(e) - G.p(meilleurInArc) $\;
 			}
-			
+			\eSi{$T = (V, F)$ est un arbre couvrant}{
+				\Retour $T$ \;
+			}{
+				$C \leftarrow$ un cycle de $F$;
+				$G' \leftarrow Contracter(G, C)$\;
+				$T' \leftarrow ArbreCouvrantMax(G', ROOT)$;
+				$T \leftarrow Etendre(T', C)$\;
+				\Retour $T$ \;
+			}
 		}
-		\vspace{-3pt}
-	\end{algorithm}\vspace{-3pt}
-\end{block}
+		
+	}
+	\caption{Analyse de Chu-Liu-Edmonds : Arbre couvrant de poids maximal\label{algo:chu-liu-edmonds}}
+\end{algorithm}
 
-\begin{figure}
+Prenons l'exemple de la phrase ``Book a flight".
+La figure \ref{fig:cke-exp} représente son analyse en utilisant l'algorithme de Chu-Liu-Edmonds. 
+
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{exp-graphe_.pdf}
-	\caption{Exemple d'un graphe de la phrase ``Book a flight" \cite{2019-jurafsky-martin}}
+	\hgraphpage[.8\textwidth]{exp-graphe-analyse_.pdf}
+	\caption{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}\label{fig:cke-exp}}
 \end{figure}
 
 
 \begin{discussion}
+Qu'est ce qu'un langage sans syntaxe ?
+Essayer d'imaginer un peuple qui parle une langue (exemple, le français) sans utiliser des règles grammaticales et en utilisant seulement le vocabulaire. 
+Aucune personne ne sera capable de comprendre l'autre. 
+Certes, on peut avoir les éléments de la phrase ; mais sans structure, on ne peut pas savoir leurs rôles et leurs relations. 
+L'analyse syntaxique 
 
-
+Il existe plusieurs théories sur la structure syntaxique. 
+Décrire toutes ces théories veut dire rédiger tout un livre juste pour la syntaxe. 
+On s'intéresse à deux structures principales : constituante et fonctionnelle.
+La première commence à décomposer la phrase en syntagmes jusqu'à arriver à un seul mot (méthode utilisée pour enseigner la langue aux élèves du primaire). 
+La deuxième essaye de trouver des relations syntaxiques binaires entre les mots.
 
 \end{discussion}
 

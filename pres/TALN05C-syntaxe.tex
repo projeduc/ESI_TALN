@@ -21,9 +21,9 @@
 \begin{exampleblock}{Exemple d'une phrase en français}
 	\begin{center}
 		\Large\bfseries
-		L'élève a écrit une solution avec un stylo. 
+		L'élève a écrit une solution avec son stylo. 
 		
-		L'élève a écrit une solution avec une explication.
+		L'élève a écrit une solution avec son explication.
 	\end{center}
 \end{exampleblock}
 
@@ -77,7 +77,7 @@
 	\end{itemize}
 	\item Plusieurs théories 
 	\begin{itemize}
-		\item La grammaire générative et transformationnelle : Ex. \expword{Grammaire générative et transformationnelle (TTG)}
+		\item La grammaire générative et transformationnelle 
 		\item La grammaire de dépendance 
 		\item La grammaire catégorique
 		\item Les grammaires stochastiques
@@ -124,7 +124,7 @@
 	\begin{itemize}
 		\item \expword{$\Sigma$ = \{le, petit, chat, mange, un, poisson, ...\}}
 	\end{itemize}
-	\item $V$ est l'ensemble des  variables : symboles non terminaux 
+	\item $N$ est l'ensemble des  variables : symboles non terminaux 
 	\begin{itemize}
 		\item \expword{$N$ = \{S, NP, VP, DET, N, ADJ, ...\}}
 	\end{itemize}
@@ -279,28 +279,27 @@
 	\scriptsize\vspace{-3pt}
 	\begin{algorithm}[H]
 		\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
-		\Res{$T[n, n], B[n, n, |N|]$}
+		\Res{$T[n, n]$}
 		
-		\Pour{$ i = 1 \ldots n$}{ 
-			$T[i-1, j] \leftarrow \{  A / (A \rightarrow w_j) \in P \} $\;
+		\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
+			$T[i, i] \leftarrow \{ (A, 0, 0, 0) / (A \rightarrow w_i) \in P \} $\;
 		}
 		
-		\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
-			\Pour{$ i = 0 \ldots (n - j) $}{
-				\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
-					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
-						$T[i, i+j] \leftarrow T[i, i+j] \cup \{A\}$ ;
-						$B[i, i+j, A] \leftarrow B[i, i+j, A] \cup \{(B, C, k)\}$ \;
+		\Pour{$ i = (n-1) \ldots 1$ }{
+			\Pour{$ j = (i+1) \ldots n $}{
+				\Pour{$ k = i \ldots (j-1) $}{
+					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k+1, j]$}{
+						$iB \leftarrow index(B, T[i, k])$ ;
+						$iC \leftarrow index(C, T[k+1, j])$ \;
+						$T[i, j] \leftarrow T[i, j] \cup \{(A, k, iB, iC)\}$ \;
 					}
 				}
 			}
 		}
-	
-		\Si{$``S" \notin T[0, n] $} {
+		
+		\Si{$``S" \notin T[1, n] $} {
 			Erreur ``La phrase n'a pas été reconnue"\;
 		}
-	
-		\Retour $T, B$ \;
 		\vspace{-3pt}
 	\end{algorithm}
 \end{block}
@@ -318,23 +317,22 @@
 		\SetKwFunction{FConst}{Construire}
 		\SetKwProg{Fn}{Fonction}{\\Début}{Fin}
 		
-		\Donnees{$T[n, n], B[n, n, |N|]$}
-		\Res{Arbre syntaxique}
+		\Donnees{$T[n, n]$}
+		\Res{Racine de l'arbre syntaxique : $r \leftarrow \varnothing$}
 		
-		\eSi{$``S" \notin T[0, n] $} {
-			\Retour $\varnothing$ \;
-		}{
-			\Retour \FConst{$S, 0, n$}\;
+		\Si{$``S" \in T[1, n] $} {
+			$r \leftarrow $ \FConst{$1, n, index(``S", T[1, n])$}\;
 		}
 		
-		\Fn{\FConst{$A, i, j$}}{
-		
-			\eSi{j = i + 1}{
-				\Retour $A$\;
-			}{
-				$ (B, C, k) \leftarrow Choisir(B[i, j, A]) $\;
-				\Retour (\FConst{$B, i, k$}, \FConst{$C, k, j$})\;
+		\Fn{\FConst{$i, j, pos$}}{
+			$ (A, k, iB, iC) \leftarrow T[i, j][pos] $\;
+			Créer un nouveau nœud : nœud\;
+			nœud.valeur $\leftarrow  A$ \;
+			\Si{$k>0$}{
+				nœud.gauche $\leftarrow$ \FConst{$i, k, iB$}\;
+				nœud.droit $\leftarrow$ \FConst{$k+1, j, iC$}\;
 			}
+			\Retour nœud\;
 		}
 		
 		
@@ -419,32 +417,29 @@
 \begin{block}{CKY probabiliste : Reconnaissance d'une phrase}
 	\scriptsize\vspace{-3pt}
 	\begin{algorithm}[H]
-		\Donnees{une grammaire probabiliste $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
-		\Res{$T[n, n, |N|], B[n, n, |N|]$}
+		\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
+		\Res{$T[n, n, |N|]$}
 		
-		\Pour{$ i = 1 \ldots n$}{ 
-			\PourTous{$A / (A \rightarrow w_j) \in P$}{
-				$T[i-1, j, A] \leftarrow P(A \rightarrow w_j)$\;
-			}
+		\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
+			$T[i, i, A] \leftarrow \{ (P(A \rightarrow w_i), 0, A, A) / (A \rightarrow w_i) \in P \} $\;
 		}
 		
-		\Pour{$ j = 2 \ldots n$ }{%\tcc*{Iitialiser le diagonal}
-			\Pour{$ i = 0 \ldots (n - j) $}{
-				\Pour{$ k = (i+1) \ldots (i + j -1 ) $}{
-%					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $B \in T[i, k]$ et $C \in T[k, i+j]$}{ 
-						$T[i, i+j, A] \leftarrow \max\limits_{A \rightarrow B C \in P} P(A \rightarrow B C) * T[i, k, B] * T[k, i+j, C]$ \;
-						$B[i, i+j, A] \leftarrow (B, C, k)$\;
-%					}
+		\Pour{$ i = (n-1) \ldots 1$ }{
+			\Pour{$ j = (i+1) \ldots n $}{
+				\Pour{$ k = i \ldots (j-1) $}{
+					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $T[i, k, B] > 0$ et $T[k+1, j, C] > 0$}{
+						$p \rightarrow P(A \rightarrow B C) * T[i, k, B][1] * T[k+1, j, C][1]$\;
+						\Si{$p > T[i, j, A][1]$}{
+							$T[i, j, A] \leftarrow (p, k, B, C)$ \;
+						}
+					}
 				}
 			}
 		}
 		
-		\texttt{// Si $``S" \notin T[0, n] $ : Erreur}
-%		\Si{} {
-%			Erreur ``La phrase n'a pas été reconnue"\;
-%		}
-		
-		\Retour $T, B$ \;
+		\Si{$T[1, n, S] = 0 $} {
+			Erreur ``La phrase n'a pas été reconnue"\;
+		}
 		\vspace{-3pt}
 	\end{algorithm}
 \end{block}
@@ -670,31 +665,31 @@
 
 \subsection{Par graphe}
 
-\begin{frame}
-\frametitle{Analyse syntaxique : Analyse des dépendances}
-\framesubtitle{Par graphe}
-
-\begin{minipage}{.6\textwidth}
-	\begin{itemize}
-		\item Analyse basée sur les graphes
-		\begin{itemize}
-			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
-			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.38\textwidth}
-	\hgraphpage{graphe.pdf}
-\end{minipage}
-
-\begin{itemize}
-	\item $\Psi$ est une fonction de score, $ \mathcal{T}(G) $ est l'espace des arbres de dépendance possibles sur $G$
-	\[ \hat{T} = \arg\max\limits_{T \in \mathcal{T}(G)} \Psi(T, w; \theta) \]
-	\item Ce score est calculé en se basant sur le score de chaque arc $\psi$
-	\[ \Psi(T, w; \theta) = \sum_{e \in F / T = (V, F)} \psi(e, w; \theta) \]
-\end{itemize}
-
-\end{frame}
+%\begin{frame}
+%\frametitle{Analyse syntaxique : Analyse des dépendances}
+%\framesubtitle{Par graphe}
+%
+%\begin{minipage}{.6\textwidth}
+%	\begin{itemize}
+%		\item Analyse basée sur les graphes
+%		\begin{itemize}
+%			\item Graphe : $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance)
+%			\item Résultat : $T = (V, F)$ un sous-graphe de $G$ représentant les relations de dépendance
+%		\end{itemize}
+%	\end{itemize}
+%\end{minipage}
+%\begin{minipage}{.38\textwidth}
+%	\hgraphpage{graphe.pdf}
+%\end{minipage}
+%
+%\begin{itemize}
+%	\item $\Psi$ est une fonction de score, $ \mathcal{T}(G) $ est l'espace des arbres de dépendance possibles sur $G$
+%	\[ \hat{T} = \arg\max\limits_{T \in \mathcal{T}(G)} \Psi(T, w; \theta) \]
+%	\item Ce score est calculé en se basant sur le score de chaque arc $\psi$
+%	\[ \Psi(T, w; \theta) = \sum_{e \in F / T = (V, F)} \psi(e, w; \theta) \]
+%\end{itemize}
+%
+%\end{frame}
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des dépendances}

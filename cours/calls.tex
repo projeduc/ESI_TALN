@@ -20,6 +20,7 @@
 \usepackage{colortbl}
 \usepackage{alltt}
 \usepackage[french,lined,ruled]{algorithm2e}
+\usepackage{turnstile}%Induction symbole
 
 \renewcommand{\cite}[1]{\citep{#1}}
 
@@ -103,6 +104,18 @@
 \DeclareAcronym{rnn}{
 	short = RNN ,
 	long  =  Recurrent Neural Network,
+	class = abbrev
+}
+
+\DeclareAcronym{cfg}{
+	short = CFG ,
+	long  =  Context Free Grammar,
+	class = abbrev
+}
+
+\DeclareAcronym{pcfg}{
+	short = PCFG ,
+	long  =  Probabilistic Context Free Grammar,
 	class = abbrev
 }
 
