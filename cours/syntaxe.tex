@@ -131,7 +131,7 @@ Une autre méthode pour faire face à ce problème est d'utiliser les \ac{cfg} p
 La grammaire est similaire de celle d'un \ac{cfg} : $G <\Sigma, N, P, S>$. 
 La seule différence est que les règles sont de la forme : $A \rightarrow \beta\, [p] \text{ avec } A \in N,\, \beta \in (\Sigma \cup N)^*$.
 Seulement, nous avons ajouté la probabilité $p$ d'occurrence de la règle. 
-Afin d'estimer cette probabilité, on utilise un corpus annoté (\keyword{TreeBank}). 
+Afin d'estimer cette probabilité, on utilise un corpus annoté (\keyword[T]{TreeBank}). 
 Étant donné la fonction $C$ qui calcule le nombre d'occurrence, la probabilité d'une règle $A \rightarrow \beta$ est estimée en utilisant l'équation \ref{eq:pcfg-est}.
 Dans le cas d'ambigüité entre plusieurs règles, on choisit celle avec le maximum de probabilité.
 \begin{equation}\label{eq:pcfg-est}
@@ -141,8 +141,8 @@ Dans le cas d'ambigüité entre plusieurs règles, on choisit celle avec le maxi
 
 \subsection{Annotation fonctionnelle}
 
-Un mot ou plus remplissent \keyword{une fonction syntaxique} (Ex. \expword{sujet, objet, etc.}).
-Ex. \expword{Le chat mange un poisson} : ici ``chat" est \expword{le sujet} du verbe ``mange". 
+Un mot ou plus remplissent une fonction syntaxique (Ex. \expword{sujet, objet, etc.}).
+Par exemple, dans la phrase ``\expword{Le chat mange un poisson}", le mot ``chat" est \expword{le sujet} du verbe ``mange". 
 Dans l'annotation fonctionnelle, la fonction syntaxique est une relation binaire appelée \keyword{dépendance}.
 Une relation de dépendance relie un mot appelé \keyword{tête syntaxique} avec un autre appelé \keyword{dépendant}. 
 Un mot ne peut être un dépendant qu'une seule fois, mais il peut être une tête syntaxique plusieurs fois. 
@@ -201,7 +201,7 @@ Il existe deux types de méthodes pour analyser un texte :
 Les algorithmes mentionnées dans les exemples sont conçus pour traiter les langages de programmation. 
 Ces derniers ont des syntaxes bien définies qui peuvent être traités d'une manière déterministe. 
 Les langages naturels contiennent beaucoup d'ambigüité et les règles sont plus complexes. 
-Un algorithme conçu pour l'analyse syntaxique des langages naturels est \keyword{CKY}.
+Un algorithme conçu pour l'analyse syntaxique des langages naturels est \keyword[C]{CKY}.
 
 \subsection{Algorithme CKY}
 
@@ -385,7 +385,7 @@ Le tableau d'analyse est illustré dans la figure \ref{fig:exp-cky-trait}.
 
 \subsection{Algorithme CKY probabiliste}
 
-Dans l'algorithme CKY, on peut tomber sur un cas où on a plus d'un arbre syntaxique. 
+Dans l'algorithme \keyword[C]{CKY}, on peut tomber sur un cas où on a plus d'un arbre syntaxique. 
 Pour guider le choix des règles, on ajoute la probabilité de chaque production ; utilise une \ac{pcfg}.
 Lors de la transformation d'une grammaire probabiliste $G<\Sigma, N, P, S>$ en FNC, les nouvelles règles créées par transformation en FNC ont une probabilité égale à $1$.
 Étant donné un arbre syntaxique $T$ du mot $w$, sa probabilité est estimée selon l'équation \ref{eq:pcfg-arbre-prop}.
@@ -399,7 +399,7 @@ L'arbre syntaxique le plus adéquat pour analyser le mot $w$ est celui avec le m
 \label{eq:pcfg-arbre-max}
 \end{equation}
 
-Concernant l'algorithme CKY, on ajoute la probabilité d'occurrence d'une règle dans chaque cellule. 
+Concernant l'algorithme \keyword[C]{CKY}, on ajoute la probabilité d'occurrence d'une règle dans chaque cellule. 
 Chaque variable $A$ aura au maximum une chance pour produire deux variables.
 Dans ce cas, on va créer un tableau triangulaire de trois dimensions $T[n, n, |N|]$ où on stocke la probabilité de chaque variable dans cette cellule en plus de la position $k$ utilisée pour chercher les fils et les deux variables des fils gauche et droit.
 On suppose que toutes les probabilités des cellules sont initialisées par $0$.
@@ -480,8 +480,6 @@ C'est une machine abstraite ayant la configuration $C = (\sigma, \beta, A)$ (voi
 	\item $\beta$ est le tampon (buffer) d'entrée. 
 	Il contient le mot en entrée avec une tête qui pointe sur le mot courant.
 	\item $A$ est la liste des arcs créés (dépendances)
-	\item 
-	\item  $C_{initiale} = ([ROOT], w, \emptyset)$ 
 \end{itemize}
 L'analyse commence avec la configuration $C_{initiale} = ([ROOT], w, \emptyset)$ et termine avec la configuration $C_{finale} = ([ROOT], \varnothing, A)$.
 Si on arrive à la fin du mot avec une pile non vide (on considère le sommet $ROOT$ comme vide), on peut conclure que ce mot n'appartient pas au langage. 
@@ -672,7 +670,7 @@ Deux fonctions sont utilisées dans cette algorithme :
 	\caption{Analyse de Chu-Liu-Edmonds : Arbre couvrant de poids maximal\label{algo:chu-liu-edmonds}}
 \end{algorithm}
 
-Prenons l'exemple de la phrase ``Book a flight".
+Prenons l'exemple de la phrase ``\expword{Book a flight}".
 La figure \ref{fig:cke-exp} représente son analyse en utilisant l'algorithme de Chu-Liu-Edmonds. 
 
 \begin{figure}[ht]
@@ -687,14 +685,24 @@ Qu'est ce qu'un langage sans syntaxe ?
 Essayer d'imaginer un peuple qui parle une langue (exemple, le français) sans utiliser des règles grammaticales et en utilisant seulement le vocabulaire. 
 Aucune personne ne sera capable de comprendre l'autre. 
 Certes, on peut avoir les éléments de la phrase ; mais sans structure, on ne peut pas savoir leurs rôles et leurs relations. 
-L'analyse syntaxique 
 
-Il existe plusieurs théories sur la structure syntaxique. 
+Il existe plusieurs théories de la structure syntaxique. 
 Décrire toutes ces théories veut dire rédiger tout un livre juste pour la syntaxe. 
 On s'intéresse à deux structures principales : constituante et fonctionnelle.
 La première commence à décomposer la phrase en syntagmes jusqu'à arriver à un seul mot (méthode utilisée pour enseigner la langue aux élèves du primaire). 
 La deuxième essaye de trouver des relations syntaxiques binaires entre les mots.
 
+L'approche la plus célèbre pour représenter les constituants est la grammaire à contexte libre. 
+Afin d'analyser une telle structure, on peut utiliser l'algorithme CKY. 
+Cet algorithme est amélioré en ajoutant des probabilités aux règles afin d'avoir une analyse déterministe. 
+Il existe des méthodes qui utilisent des techniques plus récentes comme BERT (voir le chapitre suivant). 
+Pour évaluer une analyse automatique, on peut utiliser le nombre des phrases avec une analyse juste. 
+Cette mesure ne peut pas différencier entre deux arbres syntaxiques erronées ; il se peut qu'une des deux est plus juste qu'une autre. 
+
+L'analyse de dépendances peut être accomplie en considérant les relations comme des transitions et donc utiliser une automate à pile pour les détecter.
+Une autre approche est de considérer toutes les relations possible et d'utiliser les propriétés des graphes afin de trouver un arbre syntaxique. 
+Cette dernière est plus adéquate pour les relations à long terme ; lorsque la phrase est trop longue.
+Dans le cas des dépendances, on peut évaluer un arbre en utilisant le nombre des relations correctes.
 \end{discussion}
 
 %=====================================================================

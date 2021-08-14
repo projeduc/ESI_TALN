@@ -76,7 +76,7 @@ Ce modèle est appelé NGram.
 
 Étant donné un processus stochastique, ceci vérifie la propriété de Markov si l'état futur ne dépend que sur l'état présent. 
 Donc, la probabilité d'occurrence d'un mot $w_i$ sachant l'occurrence de plusieurs mots $w_1, \ldots, w_{i-1}$ ne dépend que sur le mot précédent $w_{i-1}$ suivant la propriété de Markov (voir l'équation \ref{eq:markov}). 
-Ce modèle est appelé un modèle \keyword{Bi-gramme}.
+Ce modèle est appelé un modèle \keyword[B]{Bi-gramme}.
 Ce modèle peut être représenté graphiquement comme un automate à état fini où les mots sont les états et les transitions sont les probabilités.
 \begin{equation}
 	P(w_i | w_1,\ldots, w_{i-1}) = P(w_i | w_{i-1})
@@ -85,7 +85,7 @@ Ce modèle peut être représenté graphiquement comme un automate à état fini
 
 Ce modèle peut être généralisé en considérant $n-1$ mots précédents. 
 Dans ce cas, l'équation \ref{eq:markov} sera formulée comme l'équation \ref{eq:markov-ngram}.
-Le modèle généralisé est appelé \keyword{N-gramme}.
+Le modèle généralisé est appelé \keyword[N]{N-gramme}.
 Les modèles les plus utilisés sont : Uni-gramme ($n=1$), Bi-gramme ($n=2$) et Tri-gramme ($n=3$).
 Une compilation des différents N-grammes préparée par Google et distribuée sous une licence open source sous le nom : Google Books Ngram\footnote{Google Books Ngram : \url{https://storage.googleapis.com/books/ngrams/books/datasetsv3.html}}
 \begin{equation}
@@ -161,7 +161,7 @@ P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreat
 %	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
 \text{\textit{NaN}}
 \]
-Les mots qui ne figurent pas dans le vocabulaire sont appelés \keyword{Out-of-vocabulary words}. 
+Les mots qui ne figurent pas dans le vocabulaire sont appelés \keyword[O]{Out-of-vocabulary words}. 
 Afin de régler ce problème, on peut ajouter un autre mot \keyword{\textless UNK\textgreater} au vocabulaire. 
 Pour incorporer ce mot dans le corpus d'entraînement, on peut choisir un vocabulaire et remplacer le reste des mots par lui, ou en peut remplacer les mots non fréquents. 
 
@@ -176,7 +176,7 @@ Exemple, \expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI penda
 Donc, nous somme obligés à utiliser des N-grammes plus grands. 
 Pour entraîner un tel modèle, il nous faut une grande quantité de données. 
 Pour une vocabulaire de taille $V$ et N-gramme de taille $N$, on aura $V^N$ N-grammes possibles.
-Une solution de tous ça est le \keyword{lissage}.
+Une solution de tous ça est le \keyword[L]{lissage}.
 L'intuition est d'emprunter une petite portion des probabilités des N-grammes existants pour former une probabilité aux N-grammes absents.
 
 \subsubsection{Lissage de Lidstone/Laplace}
@@ -286,13 +286,13 @@ Un réseau de neurones à propagation avant est la forme traditionnelle : une co
 L'idée est de choisir le nombre des n-grammes $n$. 
 La couche d'entrée est alimentée par les $n-1$ mots précédents afin d'estimer le mot $n$ dans la couche de sortie. 
 Chaque mot est représenté sous forme d'un vecteur de taille $V$ (taille de vocabulaire) où toutes les positions ont un zéro sauf la position réservé pour ce mot. 
-Cette représentation est appelé \keyword{One-Hot} représentation. 
+Cette représentation est appelé \keyword[O]{One-Hot} représentation. 
 En sortie, on aura un vecteur avec des probabilités ; le mot dont la position ait la plus grande probabilité. 
 
 Ici, on va présenter le  modèle de \cite{2003-bengio-al} illustré dans la figure \ref{fig:bengio-l}.
 Après choisir la taille $n$ du modèle, les mots $w_{i-n+1}, \ldots, w_{i-1}$ sont représenté sous des vecteurs One-hot $h_{i-n+1}, \ldots, h_{i-1}$. 
 Chacun de ces vecteur est passé par une couche cachée de taille $d$ ; donc on aura un vecteur de taille $d$ pour chaque mots de ces $n-1$.
-Ce vecteur est appelé \keyword{embedding} (sera discuté en détail dans le chapitre de sémantique lexicale). 
+Ce vecteur est appelé \keyword[E]{embedding} (sera discuté en détail dans le chapitre de sémantique lexicale). 
 En fusionnant les vecteurs, on aura un seul vecteur de contexte $m \in \mathbb{R}^{(n-1) d}$.
 Ce vecteur va être passé par deux blocs en parallèle :
 \begin{itemize}
@@ -348,7 +348,7 @@ Pour ce faire, il passe par une couche de sortie ayant des paramètres $U \in \m
 
 Il ne faut pas oublier d'utiliser le mot clé \keyword{\textless UNK\textgreater} afin d'entraîner le modèle à prendre en considération les mots inconnus. 
 Le problème avec cette architecture est que le modèle puisse arrêter à apprendre avec un contexte à long terme (problème de disparition des gradients).
-Une solution est d'utiliser des architectures plus avancées comme \keyword{LSTM} et \keyword{GRU}. 
+Une solution est d'utiliser des architectures plus avancées comme \keyword[L]{LSTM} et \keyword[G]{GRU}. 
 Ceci est dit, le problème de disparition des gradients existe toujours. 
 Une solution technique est de délimiter le nombre maximum des états.
 

@@ -66,7 +66,7 @@ Le modèle de Markov caché, en anglais \ac{hmm}, est un exemple d'un modèle g�
 \end{equation}
 Contrairement aux modèles génératifs, un modèle discriminatif estime la probabilité $P(t | w)$ directement. 
 Ceci revient à apprendre l'étiquette d'un mot en se basant sur ces caractéristique en plus des caractéristiques d'un nombre limité des mots avant.
-Un modèle qui suit cette méthode est \keyword{Maximum-entropy Markov model}, en anglais \ac{memm}.
+Un modèle qui suit cette méthode est \ac{memm}.
 Une autre méthode est d'utiliser les réseaux de neurones récurrents qui supportent l'aspect temporel. 
 
 
@@ -86,7 +86,7 @@ Elle vise à trouver les personnes, les organisations, les places, les nombres, 
 Contrairement à l'étiquetage morpho-syntaxique, une catégorie peut être affectée à une séquence de mots et pas un seul. 
 Par exemple, l'expression ``\expword{école nationale supérieure d'informatique}" a la catégorie ``organisation".
 Mais, comment exprimer que tous ces mots forment une seule catégorie et pas chaque mot à part ?
-La méthode utilisée pour ça est le format \keyword{IOB} (Inside, Outside, Beginning). 
+La méthode utilisée pour ça est le format \keyword[I]{IOB} (Inside, Outside, Beginning). 
 Les mots qui n'appartiennent à aucune catégorie sont annotés par ``B". 
 Les mots qui marquent le commencement d'une catégorie sont annotés par ``B-" suivi par le nom de catégorie. 
 Les mots du milieu sont annotés par ``I-" suivi par le nom de catégorie. 
@@ -144,7 +144,7 @@ Le projet ``Universal dependencies" cherche à normaliser ces catégories comme 
 \end{table}
 
 L'étape suivante est d'annoter un corpus manuellement. 
-Ce type de corpus est appelé \keyword{treebank}.
+Ce type de corpus est appelé \keyword[T]{treebank}.
 Parmi les corpus annoté, on peut citer Penn Treebank pour l'anglais (Exemple dans la figure \ref{fig:penn-exp}).
 Un autre projet riche en terme de langues traitées est Universal TreeBank (\url{https://universaldependencies.org/}) \cite{2012-petrov-al}. 
 C'est un projet à communauté ouverte qui vise à utiliser les mêmes classes grammaticales afin d'annoter plusieurs langues. 
@@ -304,7 +304,7 @@ Revenons maintenant au décodage des tags (étiquetage).
 Après l'entraînement d'un modèle de Markov caché $\lambda = (A, B)$, on veut l'utiliser pour estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$ à partir d'une séquence des observations (mots) $w = w_1 w_2 \ldots w_n$. 
 Dans chaque état $s$ de la séquence, on se base sur l'estimation précédente pour calculer les probabilité de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
 Il faut toujours sauvegarder l'état précédent pour revenir en fin d'algorithme. 
-Ceci est appelé la recherche \keyword{Viterbi} (voir l'algorithme \ref{algo:viterbi}).
+Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:viterbi}).
 
 En utilisant le modèle entraîné dans l'exemple précédent, on veut trouver les tags de cette phrase : \expword{il peut aider}. 
 Suivant l'algorithme de Viterbi, on aura le tableau \ref{tab:hmm-viterbi-exp} où dans chaque cellule on précise les calculs séparés par des points virgules (les états précédent) et le pointeur de retour entre deux crochets. 

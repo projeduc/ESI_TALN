@@ -419,7 +419,7 @@ title={#1}
 	\fancyhead[E]{
 		\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
-		at ([shift={(0cm,-1cm)}] current page.north west){};
+		at ([shift={(0.1cm,-1cm)}] current page.north west){};
 %
 		\node[anchor=west, fill=white,minimum width=1cm]
 		at ([shift={(\pright,0cm)}] bx1.north west)
@@ -434,7 +434,7 @@ title={#1}
 	\fancyhead[O]{
 		\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
-		at ([shift={(\pleft,-1cm)}] current page.north west){};
+		at ([shift={(\pleft-0.1cm,-1cm)}] current page.north west){};
 		%
 		\node[anchor=east, fill=white,minimum width=1cm,align=left]
 		at ([shift={(-\pright,0cm)}] bx1.north east)

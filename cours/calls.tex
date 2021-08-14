@@ -21,6 +21,7 @@
 \usepackage{alltt}
 \usepackage[french,lined,ruled]{algorithm2e}
 \usepackage{turnstile}%Induction symbole
+\usepackage{soul} % underline \ul with breakline
 
 \renewcommand{\cite}[1]{\citep{#1}}
 
@@ -30,26 +31,41 @@
 
 %\usepackage{pgf-umlcd}
 
-
-
-
-
+\renewcommand{\UrlFont}{\ttfamily\footnotesize}
 \hypersetup{
 	pdfkeywords={TALN; TAL; langue},
 	pdfsubject={intelligence artificielle; traitement automatique de langages naturels}
 }
 
-\renewcommand{\UrlFont}{\ttfamily\footnotesize}
 
-\DeclareAcronym{taln}{
-	short = TALN ,
-	long  = traitement automatique de langages naturels,
+
+\DeclareAcronym{amr}{
+	short = AMR,
+	long  =  Abstract Meaning Representation,
 	class = abbrev
 }
 
-\DeclareAcronym{tal}{
-	short = TAL ,
-	long  = traitement automatique des langues,
+\DeclareAcronym{cfg}{
+	short = CFG ,
+	long  =  Context Free Grammar,
+	class = abbrev
+}
+
+\DeclareAcronym{darpa}{
+	short = DARPA ,
+	long  = Defense Advanced Research Projects Agency,
+	class = abbrev
+}
+
+\DeclareAcronym{fol}{
+	short = FOL,
+	long  = First Order Logic,
+	class = abbrev
+}
+
+\DeclareAcronym{hmm}{
+	short = HMM ,
+	long  =  Hidden Markov Model,
 	class = abbrev
 }
 
@@ -65,9 +81,9 @@
 	class = abbrev
 }
 
-\DeclareAcronym{darpa}{
-	short = DARPA ,
-	long  = Defense Advanced Research Projects Agency,
+\DeclareAcronym{idf}{
+	short = IDF ,
+	long  = Inverse Document Frequency,
 	class = abbrev
 }
 
@@ -89,9 +105,9 @@
 	class = abbrev
 }
 
-\DeclareAcronym{hmm}{
-	short = HMM ,
-	long  =  Hidden Markov Model,
+\DeclareAcronym{lsa}{
+	short = LSA,
+	long  = Latent Semantic Analysis,
 	class = abbrev
 }
 
@@ -101,23 +117,61 @@
 	class = abbrev
 }
 
+\DeclareAcronym{pcfg}{
+	short = PCFG ,
+	long  =  Probabilistic Context Free Grammar,
+	class = abbrev
+}
+
 \DeclareAcronym{rnn}{
 	short = RNN ,
 	long  =  Recurrent Neural Network,
 	class = abbrev
 }
 
-\DeclareAcronym{cfg}{
-	short = CFG ,
-	long  =  Context Free Grammar,
+\DeclareAcronym{srl}{
+	short = SRL,
+	long  =  Semantic Role Labeling,
 	class = abbrev
 }
 
-\DeclareAcronym{pcfg}{
-	short = PCFG ,
-	long  =  Probabilistic Context Free Grammar,
+\DeclareAcronym{svd}{
+	short = SVD ,
+	long  =  Singular Value Decomposition,
 	class = abbrev
 }
+
+
+\DeclareAcronym{taln}{
+	short = TALN ,
+	long  = traitement automatique de langages naturels,
+	class = abbrev
+}
+
+\DeclareAcronym{tal}{
+	short = TAL ,
+	long  = traitement automatique des langues,
+	class = abbrev
+}
+
+\DeclareAcronym{tf}{
+	short = TF ,
+	long  = Term Frequency,
+	class = abbrev
+}
+
+\DeclareAcronym{tfidf}{
+	short = TF-IDF ,
+	long  = Term Frequency - Inverse Document Frequency,
+	class = abbrev
+}
+
+\DeclareAcronym{wsd}{
+	short = WSD ,
+	long  = Word Sense Disambiguation,
+	class = abbrev
+}
+
 
 %\makeglossaries
 

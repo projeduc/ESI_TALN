@@ -54,15 +54,15 @@ Les points traités dans ce chapitres sont les suivants :
 
 Ici, on va considérer un texte comme une séquence de caractères. 
 D'une manière plus formelle, un texte peut être composé en utilisant une automate à états finis où le vocabulaire est l'ensemble des caractères. 
-Pour chercher des sous-chaines de caractères dans un texte, on peut utiliser les \keyword{expressions régulières} reconnaissant des langages de types 3 (langages réguliers) dans la hiérarchie de Chomsky. 
+Pour chercher des sous-chaines de caractères dans un texte, on peut utiliser les expressions régulières reconnaissant des langages de types 3 (langages réguliers) dans la hiérarchie de Chomsky. 
 La recherche des séquences dans un texte nous permet de les remplacer où de les séparer (ex. \expword{séparation des mots}).
 Une autre type de recherche est la recherche approximative : chercher des parties presque similaires à une donnée. 
 Pour ce faire, on doit pouvoir comparer deux chaînes de caractères en mesurant la différence entre les deux. 
-Une des techniques utilisées est \keyword{distance d'édition}.
+Une des techniques utilisées est \keyword[D]{distance d'édition}.
 
 \subsection{Expressions régulières}
 
-Une expression régulière, appelée \keyword[R]{regex}, une une séquences de caractères spécifiant un motif (pattern) de recherche.
+Une expression régulière, appelée \keyword[R]{RegEx}, une une séquences de caractères spécifiant un motif (pattern) de recherche.
 Plusieurs langages de programmation fournissent la capacité de recherche et de remplacement en utilisant les expressions régulières. 
 Afin de l'utiliser pour la recherche, une expression régulière est transformée à un automate à états finis (AEF) qui est transformé à son tour à un AEF déterministe.
 Un point dans une expression régulière représente n'importe quel caractère.
@@ -569,7 +569,7 @@ Parmi les variations qui ont besoin d'être normalisées, on peut citer :
 	Dans le cas du dernier exemple, ça va aider dans la tâche de séparation des mots (tokenization). 
 	
 	\item Encodage : Il faut utiliser le même encodage supporté dans le traitement. 
-	L'encodage le plus célèbre est \keyword{UTF-8}.
+	L'encodage le plus célèbre est \keyword[U]{UTF-8}.
 
 \end{itemize}
 

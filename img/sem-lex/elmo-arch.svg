@@ -29,9 +29,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="366.8821"
-     inkscape:cy="264.28217"
+     inkscape:zoom="1"
+     inkscape:cx="555.79023"
+     inkscape:cy="217.1133"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3858,8 +3858,8 @@
            id="rect365-85-7-4-6-1" /></flowRegion><flowPara
          style="font-size:40px;font-family:Crimson Text;writing-mode:lr-tb;fill:#000000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start"
          id="flowPara5582-22-4-6-8-6">ELMo</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.70584283,0,0,1.9038081,-276.61454,-178.83738)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       transform="matrix(0.70584283,0,0,1.9038081,-273.70412,-169.84155)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot43448"
        xml:space="preserve"><flowRegion
          id="flowRegion43450"><rect
@@ -3869,7 +3869,7 @@
            width="49"
            id="rect43452" /></flowRegion><flowPara
          id="flowPara43454"
-         style="font-size:40.00029459px;-inkscape-font-specification:Crimson Text;writing-mode:lr;font-family:Crimson Text;font-variant-numeric:normal;text-anchor:start;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;font-variant-caps:normal;font-variant:normal;font-weight:normal;font-style:normal;text-align:start">{</flowPara></flowRoot>    <g
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.00029373px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">{</flowPara></flowRoot>    <g
        id="g44200"
        transform="translate(-422.18908,150.52993)"
        ns1:text="$$h^{LM}_{k,j}$$">

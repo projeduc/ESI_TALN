@@ -574,7 +574,7 @@
 		\item Le contexte ici est deux mots avant et deux après
 		\item Inférer le mot $w_i$ étant donné son contexte
 	\end{itemize}
-	\begin{block}{Fonction du coût à minimiser}
+	\begin{block}{Fonction à maximiser}
 		\[%
 		J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
 		\]
@@ -596,7 +596,7 @@
 			\item Le contexte ici est deux mots avant et deux après
 			\item Inférer le contexte étant donné le mot $w_i$
 		\end{itemize}
-		\begin{block}{Fonction du coût à minimiser}
+		\begin{block}{Fonction à maximiser}
 			\[%
 			J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} \sum_{j= i-2; j \ne i}^{i+2} p(w_j |w_i)
 			\]
@@ -636,7 +636,7 @@
 	\begin{itemize}
 		\item On veut trouver la relation entre $w_i = ice$ et $w_j = steam$
 		\item Ceci peut être représenté par un vecteur des mots $w_j$ 
-		\item On calcule le ratio $\frac{P_ik}{Pjk}$
+		\item On calcule le ratio $\frac{P_{ik}}{P_{jk}}$
 	\end{itemize}
 \end{minipage}
 \begin{minipage}{.48\textwidth}
@@ -655,7 +655,7 @@
 		\item Si $\neg R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{fashion}
 	\end{itemize}
 	\item On veut entraîner une fonction $F$ sur les représentations de $w_i$, $w_j$ et $\tilde{w_k}$
-	\vspace{-6pt}\[F(w_i, w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	\vspace{-6pt}\[F(w_i, w_j, \tilde{w_k}) = \frac{P_{ik}}{P_{jk}}\]
 \end{itemize}
 	
 \end{frame}
@@ -666,15 +666,15 @@
 	
 \begin{itemize}
 	\item On peut restreindre la fonction par utilisation d'une soustraction
-	\vspace{-6pt}\[F(w_i - w_j, \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	\vspace{-6pt}\[F(w_i - w_j, \tilde{w_k}) = \frac{P_{ik}}{P_{jk}}\]
 	
 	\item On peut transformer l'argument à un scalaire par multiplication matricielle
-	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{P_ik}{P_jk}\]
+	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{P_{ik}}{P_{jk}}\]
 	
 	\item On veut : $w \leftrightarrow \tilde{w}$ et $X \leftrightarrow X^\top$. Donc, $F$ doit être un homomorphisme entre $(\mathbb{R}, +)$ et $(\mathbb{R}_{>0}, \times)$
 	\vspace{-6pt}\[F((w_i - w_j)^\top \tilde{w_k}) = \frac{F(w_i^\top \tilde{w_k})}{F(w_j^\top \tilde{w_k})}\]
 	
-	\item Donc, $F(w_i^\top \tilde{w_k}) = P_ik = \frac{X_{ik}}{X_i}$
+	\item Donc, $F(w_i^\top \tilde{w_k}) = P_{ik} = \frac{X_{ik}}{X_i}$
 	
 	\item La solution est $F = exp$. Donc $w_i^\top \tilde{w_k} = \log X_{ik} - \log X_i$
 \end{itemize}
@@ -792,7 +792,7 @@
 	
 	\item Pour intégrer ELMo avec une tâche  $task$, on entraîne des paramètres $\Theta^{task}$ afin d'inférer une représentation liée à la tâche \\
 	\begin{center}
-		$ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} s_j^{task} h_{LM}^{k, j}$
+		$ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} \theta_j^{task} h_{LM}^{k, j}$
 	\end{center}
 \end{itemize}
 

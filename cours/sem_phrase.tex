@@ -13,171 +13,146 @@
 \fi
 %=====================================================================
 \changegraphpath{../img/sem-phrase/}
-\chapter{Sémantique de phrase}
+\chapter{Sémantique de la phrase}
 
 \begin{introduction}[LES LAN\textcolor{white}{G}UES]
-	\lettrine{G}{énéralement}, une phrase se compose d'une action et des composants auteur cette action qui jouent des rôles thématiques.
+	\lettrine{G}{énéralement}, une phrase se compose d'une action et des composants auteur d'elle qui jouent des rôles thématiques.
+	Dans l'analyse syntaxique, nous avons vu que la phrase peut être décomposée en : sujet, verbe et objet.
+	En français, la plupart du temps, le sujet est celui qui a fait l'action ; mais pas toujours. 
+	Afin de représenter une phrase sémantiquement, on doit trouver les rôles de chaque composant. 
+	La représentation peut être logique, graphique, vectorielle, etc. 
+	On peut avoir la représentation vectorielle d'une phrase en calculant le centre des embeddings des mots qui lui composent. 
+	Les deux autres approches vont être présentées en détail dans ce chapitre.  
 \end{introduction} 
 
-\begin{exampleblock}{Exemple d'une phrase en français}
-	\begin{center}
-		\Large\bfseries
-		\begin{enumerate}
-			\item Mon chat a attrapé une souris avec ses griffes 
-			\item Mon chat a attrapé une souris avec sa queue
-			\item Mon chat a attrapé une souris avec un autre chat
-		\end{enumerate}
-	\end{center}
-\end{exampleblock}
 
+Trouver les rôles sémantiques des composants d'une phrase est une étape vers sa représentation sémantique. 
+Une bonne représentation est celle qui n'a aucune relation avec une langue précise. 
+Une représentation sémantique d'une phrase a plusieurs applications : 
 \begin{itemize}
-	\item En utilisant quoi, le chat a attrapé la souris ? Par quoi, il la attrapé ? Avec qui, il la attrapé ?
-	\item La dernière phrase veut dire : 
-	\begin{itemize}
-		\item Le chat a attrapé deux autre animaux : une souris et un chat
-		\item Les deux chat ont attrapé la souris ensemble
-	\end{itemize}
+	\item Compréhension du langage naturel
+	\item Questions-Réponses
+	\item Recherche d'information
+	\item Traduction automatique
+	\item Résumé automatique
 \end{itemize}
-
 
 %===================================================================================
 \section{Rôles sémantiques}
 %===================================================================================
 
+Chaque groupe nominal joue un rôle sémantique dans un évènement de la phrase. 
+Afin de comprendre une phrase ou représenter son sens, on doit détecter ces rôles.
+Prenons les phrases suivantes :
+\begin{enumerate}
+	\item Mon chat a attrapé une souris avec ses griffes 
+	\item Mon chat a attrapé une souris avec sa queue
+	\item Mon chat a attrapé une souris avec un autre chat
+\end{enumerate}
+Dans les trois phrases, ``Mon chat" est celui qui a fait l'évènement (agent) et ``une souris" c'est celui qui l'a subi (thème).
+Portant le complément d'objet indirect des trois phrases se commencent par la préposition ``avec", les trois syntagmes nominaux qui le suivent ont des rôles sémantiques différents. 
+Le syntagme ``ses griffes" représente l'instrument, ``sa queue" représente la moyenne et ``un autre chat" représente un autre agent.
+Ici, on va présenter quelques rôles sémantiques et deux ressources pour représenter les rôles sémantiques.
+
 \subsection{Rôles thématiques}
 
-\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
+Le rôle thématique (sémantique) décrit le  sens d'un groupe nominal par rapport un évènement exprimé par un verbe de la phrase. 
+Le tableau \ref{tab:roles-them} représente quelques rôles thématiques avec leurs descriptions et exemples.
+\begin{table}[ht]
+	\centering\small
 	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
-		\rowcolor{darkblue}
-		\textcolor{white}{Rôle} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
-		
+		\hline\hline
+		\textbf{Rôle} & \textbf{Description} & \textbf{Exemple}\\
+		\hline
 		AGENT &
 		Le causeur volontaire d'un évènement &
-		\expword{\underline{John} a cassé la fenêtre avec une pierre.}\\
+		\expword{\ul{John} a cassé la fenêtre avec une pierre.}\\
 		
 		EXPERIENCER & 
 		L'expérimentateur d'un évènement & 
-		\expword{\underline{John} a mal à la tête.}\\
+		\expword{\ul{John} a mal à la tête.}\\
 		
 		FORCE &
 		Le causeur non volontaire d'un évènement &
-		\expword{\underline{Le vent} souffle les débris.}\\
+		\expword{\ul{Le vent} souffle les débris.}\\
 		
 		THEME &
-		The participant most directly affected by an event &
-		\expword{John a cassé \underline{la fenêtre} avec une pierre.}\\
+		Le participent affecté directement par l'évènement &
+		\expword{John a cassé \ul{la fenêtre} avec une pierre.}\\
 		
 		RESULT &
-		The end product of an event &
-		\expword{La ville a construit \underline{un terrain de baseball}.}\\
+		Le produit final d'un évènement &
+		\expword{La ville a construit \ul{un terrain de baseball}.}\\
 		
 		CONTENT &
-		The proposition or content of a propositional event &
-		\expword{Mona a demandé\newline	\underline{``Vous avez rencontré Mary Ann dans un supermarché?"}}\\
+		Une proposition ou e contenu d'un évènement propositionnel &
+		\expword{Mona a demandé	\ul{``Vous avez rencontré Mary Ann dans un supermarché?"}}\\
 		
 		INSTRUMENT &
-		An instrument used in an event &
-		\expword{\underline{une pierre} a cassé la fenêtre.}\\
+		Un instrument utilisé dans l'évènement &
+		\expword{\ul{une pierre} a cassé la fenêtre.}\\
 		
 		BENEFICIARY &
-		The beneficiary of an event &
-		\expword{Ann fait des réservations d'hôtel pour \underline{son patron}.}\\
+		Le bénéficiaire d'un évènement &
+		\expword{Ann fait des réservations d'hôtel pour \ul{son patron}.}\\
 		
 		SOURCE &
-		The origin of the object of a transfer event &
-		\expword{Je suis arrivé de \underline{Boston}.}\\
+		L'origine de l'objet d'un évènement de transfert &
+		\expword{Je suis arrivé de \ul{Boston}.}\\
 		
 		GOAL &
-		The destination of an object of a transfer event &
-		\expword{Je suis allé à \underline{Portland}.}\\
+		La destination de l'objet d'un évènement de transfert &
+		\expword{Je suis allé à \ul{Portland}.}\\
+		\hline\hline
 	\end{tabular}
 	\caption{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
+	\label{tab:roles-them}
 \end{table}
 
 \subsection{FrameNet}
 
-\begin{minipage}{.68\textwidth}
-	\begin{itemize}
-		\item {\scriptsize \url{https://framenet.icsi.berkeley.edu/fndrupal/}}
-		\item {\scriptsize \url{https://www.nltk.org/howto/framenet.html}}
-		\item Ressource pour représenter le sens 
-		\item basée sur la théorie ``\keyword{Frame semantics}" (Sémantique des cadres) de \keyword{Fillmore}
-		\item annotée manuellement
-		\item Plus de rôles
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.3\textwidth}
-	\hgraphpage{frameNet-logo.jpg}
-\end{minipage}
-
-\begin{exampleblock}{Exemple des phrases qui ont le même patron (Frame)}
-	The price of petrol increased.
-	
-	The price of petrol rose.
-	
-	There has been a rise in the price of petrol.
-\end{exampleblock}
-
-Structure
-
+\keyword[F]{FrameNet}\footnote{FrameNet : \url{https://framenet.icsi.berkeley.edu/fndrupal/}} est un projet qui vise à annoter les rôles sémantiques en se basant sur la théorie ``\keyword{Frame semantics}" (Sémantique des cadres) de \keyword{Fillmore}. 
+\keyword[N]{NLTK}\footnote{NLTK Framework : \url{https://www.nltk.org/howto/framenet.html}} fournit un API pour utiliser \keyword[F]{FrameNet}. 
+Un cadre est une représentation schématique d'une situation avec des participants ayants des rôles sémantiques.
+Il doit pouvoir détecter la reformulation d'une phrase avec le même sens. 
+Par exemple, les phrases suivantes ont le même cadre :
 \begin{itemize}
-	\item \optword{Frame} (Cadre) : une représentation schématique d'une situation
-	\begin{itemize}
-		\item Contient : un nom, une définition, un type sémantique, des éléments du cadre, des unités lexicales, des exemples et des relations avec d'autres cadres
-	\end{itemize}
-	
-	\item \optword{Frame Elements} (Éléments d'un Cadre) : un rôle sémantique spécifique au cadre. 
-	\begin{itemize}
-		\item Il décrit un participant ou une situation dans le cadre
-		\item Il existe des rôles de base (\keyword{Core}) et d'autres secondaires (\keyword{Non-Core})
-	\end{itemize}
-	
-	\item \optword{Lexical Units} (Unité lexicales) : des lemmes avec leurs catégories grammaticales.
-	\begin{itemize}
-		\item Une unité lexicale déclenche le cadre lorsque rencontrée
-	\end{itemize}
-	
-	\item \optword{Relations} : des  relations inter-cadres
-	\begin{itemize}
-		\item Exemple, \expword{l'héritage}
-	\end{itemize}
+	\item The price of petrol increased.
+	\item The price of petrol rose.
+	\item There has been a rise in the price of petrol.
 \end{itemize}
 
-Exemple des unités lexicales
 
-\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow} \scriptsize\bfseries
-	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
-		\rowcolor{darkblue}
-		\textcolor{white}{Lexical Unit} & \textcolor{white}{Frame} & \textcolor{white}{Exemple}\\
-		
-		break.n & Opportunity & \\	
-		break.v & Cause\_harm & \expword{Jolosa broke a rival player's jaw.}\\
-		break.v & Compliance & \expword{He broke his promess.}\\
-		break.v & Experience\_bodily\_harm & \expword{I broke my arm in the accident.}\\
-		break.v & Cause\_to\_fragment & \expword{Michael broke the bottle against his head}\\
-		break.v & Render\_nonfunctional & \expword{I guess I broke the doorknob by twisting it too hard.}\\
-		break.v & Breaking\_off & \expword{The handle broke off of the pot.}\\
-		break.v & Breaking\_apart & \expword{The handle broke off of the pot.}\\
-		
-	\end{tabular}
-	\caption{Les cadres sémantiques activées par l'unité lexicale ``break"}
-\end{table}
+\keyword[F]{FrameNet} se compose d'un ensemble des cadres sémantiques préparés manuellement. 
+Un cadre (Frame) est Une représentation schématique d'une situation.
+Chaque cadre se compose d'un nom, une définition, des éléments de cadre, des  relations avec d'autres cadres et des unités lexicales. 
+Un élément d'un cadre (Frame Element : FE) est un rôle sémantique spécifique au cadre qui décrit un participant ou une situation dans le cadre. 
+Il est composé d'un rôle sémantique, un type sémantique, une définition et un exemple. 
+Il existe deux types de rôles : de base (Core) qui sont essentiels, et d'autres secondaires (Non-Core).
+Les relations avec les autres cadres sont représentés comme un tuple (type-relation, cadre). 
+Un exemple des relations : l'héritage, l'utilisation, la causalité, etc. 
+Les unité lexicales (Lexical Units) est un ensemble des lemmes avec leurs catégories grammaticales.
+Une unité lexicale déclenche le cadre lorsque rencontrée.
 
-Exemple d'un cadre sémantique
+Le tableau \ref{tab:framenet-cadre-partie-exp} représente le cadre sémantique appelé ``Cause\_to\_fragment" (faire fragmenter). 
+Le éléments essentiels du cadres sont : l'agent qui est un être sensible, une cause, un patient complet et des pièces. 
+La définition décrit comment ces éléments interagissent.
+Il existe des éléments secondaires comme l'instrument utilisé dans la fragmentation. 
+Concernant les relations avec les autres cadres, on peut citer ``Is Causative of : Breaking\_apart". 
+Donc, le fait de fragmenter une chose la cause à se briser. 
+Ce cadre peut être activer par plusieurs mots comme les verbes : break apart, dissect, smash, etc.
 
-\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
-	\begin{tabular}{p{.15\textwidth}p{.75\textwidth}}
-		\rowcolor{darkblue}
-		\multicolumn{2}{c}{\textcolor{white}{Cause\_to\_fragment}} \\
-		
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{p{.3\textwidth}p{.58\textwidth}}
+		\hline\hline
+		\multicolumn{2}{c}{\textbf{Cause\_to\_fragment}} \\
+		\hline
 		Définition & An \textcolor{red}{Agent} suddenly and often violently separates the \textcolor{red}{Whole\_patient} into two or more smaller \textcolor{red}{Pieces}, resulting in the \textcolor{red}{Whole\_patient} no longer existing as such. Several lexical items are marked with the semantic type Negative, which indicates that the fragmentation is necessarily judged as injurious to the original \textcolor{red}{Whole\_patient}. Compare this frame with Damaging, Render\_non-functional, and Removing. \\	
 		
-		\rowcolor{darkblue}
-		\multicolumn{2}{c}{\textcolor{white}{FEs (Core)}} \\
-		
+		\hline\hline
+		\multicolumn{2}{c}{\textbf{FEs (Core)}} \\
+		\hline
 		Agent [Agt] \newline \textcolor{blue}{Semantic Type: Sentient} & 
 		The conscious entity, generally a person, that performs the intentional action that results in the \textcolor{red}{Whole\_patient} being broken into \textcolor{red}{Pieces}. \newline \expword{\underline{I and I alone} can SHATTER the gem and break the curse.} \\
 		
@@ -193,9 +168,9 @@ Exemple d'un cadre sémantique
 		\newline
 		\expword{Shattering someone's confidence is a little different than SHATTERING \underline{a dish}.} \\
 		
-		\rowcolor{darkblue}
-		\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core)}} \\
-		
+		\hline\hline
+		\multicolumn{2}{c}{\textbf{FEs (None-Core)}} \\
+		\hline
 		Degree [Degr] \newline \textcolor{blue}{Semantic Type: Degree} &
 		The degree to which the fracturing is completed. 
 		\newline
@@ -205,8 +180,6 @@ Exemple d'un cadre sémantique
 		A state of affairs that the Agent is responding to in performing the action. \newline
 		\expword{He TORE the treaty UP out of frustration.} \\
 		
-		\rowcolor{darkblue}
-		\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core) [Suite]}} \\
 		
 		Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &	
 		A state of affairs that the \textcolor{red}{Agent} is responding to in performing the action.
@@ -219,71 +192,107 @@ Exemple d'un cadre sémantique
 		
 		\multicolumn{2}{c}{\large ...} \\
 		
-		\rowcolor{darkblue}
-		\multicolumn{2}{c}{\textcolor{white}{Frame-frame Relations}} \\
-		
+		\hline\hline
+		\multicolumn{2}{c}{\textbf{Frame-frame Relations}} \\
+		\hline
 		Inherits from & Transitive\_action \\
 		Uses & Destroying \\
 		Is Causative of & Breaking\_apart \\
 		
-		\rowcolor{darkblue}
-		\multicolumn{2}{c}{\textcolor{white}{Lexical Units}} \\
-		
+		\hline\hline
+		\multicolumn{2}{c}{\textbf{Lexical Units}} \\
+		\hline
 		& break apart.v, break down.v, break up.v, break.v, chip.v, cleave.v, dissect.v, dissolve.v, fracture.v, fragment.v, rend.v, rip up.v, rip.v, rive.v, shatter.v, shiver.v, shred.v, sliver.v, smash.v, snap.v, splinter.v, split.v, take apart.v, tear up.v, tear.v \\
-		
+		\hline\hline
 	\end{tabular}
 	\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment"
 		\newline
 		{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
 	}
+	\label{tab:framenet-cadre-partie-exp}
 \end{table}
 
-Exemple d'une liste de patrons de valence
-\begin{table}
-	\tiny\bfseries
+
+Les unités lexicales sont utilisées pour déclencher des cadres. 
+Une unité lexicale est un tuple (lemme, catégorie lexicale) qui représente un sens d'un mot donné.
+Le sens est lié à un cadre sémantique.
+Le tableau \ref{tab:framenet-cadres-exp} représente quelques unités lexicales du mot ``break".
+Parmi les cadres activés par ce mot, on trouve le cadre ``Cause\_to\_fragment" présenté dans le tableau \ref{tab:framenet-cadre-partie-exp}. 
+En général, les verbes sont les déclencheurs les plus utilisés dans \keyword[F]{FrameNet}.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
+		\hline\hline
+		\textbf{Lexical Unit} & \textbf{Frame} & \textbf{Exemple}\\
+		\hline
+		break.n & Opportunity & \\	
+		break.v & Cause\_harm & \expword{Jolosa broke a rival player's jaw.}\\
+		break.v & Compliance & \expword{He broke his promess.}\\
+		break.v & Experience\_bodily\_harm & \expword{I broke my arm in the accident.}\\
+		break.v & Cause\_to\_fragment & \expword{Michael broke the bottle against his head}\\
+		break.v & Render\_nonfunctional & \expword{I guess I broke the doorknob by twisting it too hard.}\\
+		break.v & Breaking\_off & \expword{The handle broke off of the pot.}\\
+		break.v & Breaking\_apart & \expword{The handle broke off of the pot.}\\
+		\hline\hline
+	\end{tabular}
+	\caption{Quelques unités lexicales du mot ``break"}
+	\label{tab:framenet-cadres-exp}
+\end{table}
+
+\keyword[F]{FrameNet} fournit un ensemble des entrées lexicales (Lexical Entry).
+Une entrée lexicale représente la structure syntaxique d'un cadre par rapport une unité lexicale. 
+Elle contient un tableau qui lie chaque élément de cadre avec l'ensemble de ces réalisations syntaxiques. 
+Par exemple, l'élément ``Whole\_patient" est lié avec ``NP.Obj" (un syntagme nominal qui est un objet) dans 29 exemples.
+Un autre tableau représente la liste de patrons de valence. 
+Chaque ligne représente l'ordre des éléments de cadre par rapport à la structure syntaxique.
+Un exemple de la liste de patrons de valence du verbe ``fracture" du cadre ``Cause\_to\_fragment" est donné dans le tableau \ref{tab:framenet-entree-exp}. 
+Chaque patron est accompagné par le nombre des exemples annotés.
+ 
+\begin{table}[!htpb]
+	\centering\small
 	\begin{tabular}{|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|}
 		\hline
-		\rowcolor{darkblue}
-		\textcolor{white}{Number Annotated} & \multicolumn{5}{|l|}{\textcolor{white}{Patterns}}\\
+		\textbf{Number Annotated} & \multicolumn{5}{|l|}{\textbf{Patterns}}\\
 		\hline
 		\multicolumn{6}{l}{ }\\
 		
 		\hline
-		\rowcolor{lightyellow}
 		1 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Instrument} & \textcolor{red}{Pieces} & \textcolor{red}{Whole\_patient} & \\
 		\hline
-		\rowcolor{lightyellow}
 		(1) & CNI \newline - - & PP[with] \newline Dep & INI \newline - - & NP \newline Ext & \\
 		\hline
 		\multicolumn{6}{l}{ }\\
 		
 		\hline
-		\rowcolor{lightblue}
 		1 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Means} & \textcolor{red}{Pieces} & \textcolor{red}{Time} & \textcolor{red}{Whole\_patient} \\
 		\hline
-		\rowcolor{lightblue}
 		(1) & NP \newline Ext & 2nd \newline - - & INI \newline - - & Sinterrog \newline Dep & NP \newline Obj \\
 		\hline
 		\multicolumn{6}{l}{ }\\
 		
 		\hline
-		\rowcolor{lightyellow}
 		4 TOTAL & \textcolor{red}{Agent} & \textcolor{red}{Pieces} & \textcolor{red}{Whole\_patient} & & \\
 		\hline
-		\rowcolor{lightyellow}
 		(4) & NP \newline Ext & INI \newline - - & NP \newline Obj & & \\
 		\hline
 	\end{tabular}
 	\caption{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence}
+	\label{tab:framenet-entree-exp}
 \end{table}
 
-Exemple des annotations lexicographiques
-\begin{figure}
-	\tiny\bfseries
-	
+\keyword[F]{FrameNet} fournit un ensemble de phrases annotées pour chaque entrée lexicale. 
+La figure \ref{fig:framenet-lex} représente un extrait des annotations lexicographiques du verbe ``fracture" et le cadre ``Cause\_to\_fragment". 
+Ici, les éléments de cadres absents dans l'annotation sont marqués par ``\keyword{[INI]}" (indefinite null instantiation).
+Le corpus annoté est généralement utilisé pour entraîné ou tester un système d'étiquetage des rôles sémantiques.
+
+\begin{figure}[ht]
+	\centering
+\begin{tcolorbox}[boxrule=0.4pt,text width=.8\textwidth, standard jigsaw, opacityback=0,]
+	\footnotesize
 	\begin{itemize}
 		\item 429-s20-rcoll-skull
-		\begin{enumerate}\tiny
+		\begin{enumerate}\footnotesize
 			\item \ [\textsubscript{\color{red}Agent} Former England Under-21 player Keith Benton] FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his son Seb 's skull] [\textsubscript{\color{red}Time} when he hit the ball into the crowd during a match in Buckingham]. [\textsubscript{\color{red}Pieces} INI] 
 			\item \ [\textsubscript{\color{red}Agent} He] hit a lamp-post and FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} Mike 's skull]. [\textsubscript{\color{red}Pieces} INI] 
 			\item When he found the man [\textsubscript{\color{red}Agent} he] threw the acid into his face and beat him with the hammer , FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his skull] and his thumb. [\textsubscript{\color{red}Pieces} INI] 
@@ -292,81 +301,54 @@ Exemple des annotations lexicographiques
 		\item 520-s20-np-vping
 		\item 620-s20-np-ppother
 		\item 660-s20-trans-simple
-		\begin{enumerate}\tiny
+		\begin{enumerate}\footnotesize
 			\item \ [\textsubscript{\color{red}Agent} Then 17-year-old Lee Diaz, of North End Gardens, Bishop Auckland], attacked a second party-goer, Carl Gent, punching him in the face and FRACTURING\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Whole\_patient} his jaw]. [\textsubscript{\color{red}Pieces} INI] 
 		\end{enumerate}
 		
-		%			\item 670-s20-pass-by
 		\item 680-s20-pass
-		\begin{enumerate}\tiny
+		\begin{enumerate}\footnotesize
 			\item \ [\textsubscript{\color{red}Whole\_patient} It] was FRACTURED\textsuperscript{\color{red}Target} [\textsubscript{\color{red}Instrument} with a solvent-cleaned chisel], and the outer orange layer discarded. [\textsubscript{\color{red}Agent} CNI][\textsubscript{\color{red}Pieces} INI] 
 		\end{enumerate}
-		
-		%			\item 690-s20-trans-other
-		%			\item 730-s20-ppwith
-		%			\item 780-s20-ppother
-		%			\item 880-s20-intrans-simple
-		%			\item 890-s20-intrans-adverb
-		%			\item 900-s20-other
-	\end{itemize}
+	\end{itemize}\vspace*{-1cm}
+\end{tcolorbox}
 	
 	\caption{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
+	\label{fig:framenet-lex}
 \end{figure}
 
 \subsection{PropBank}
 
-\begin{itemize}
-	\item {\scriptsize \url{https://propbank.github.io/}}
-	\item {\scriptsize \url{https://www.nltk.org/howto/propbank.html}}
-	\item Corpus annoté en se basant sur la structure Prédicat-Arguments (verbes)
-	\item Moins de rôles 
-	\begin{itemize}
-		\item \optword{Proto-Agent}
-		\begin{itemize}
-			\item participer volontairement dans un évènement ou état
-			\item causer un évènement ou un changement d'état d'un autre participant
-		\end{itemize}
-		\item \optword{Proto-Patient}
-		\begin{itemize}
-			\item éprouver un changement d'état
-			\item être affectée par un autre participant
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
+\keyword[P]{PropBank}\footnote{PropBank : \url{https://propbank.github.io/}} (Propositional Bank) est un corpus des phrases annotées en se basant sur la structure Prédicat-Arguments. 
+\keyword[N]{NLTK}\footnote{NLTK PropBank : \url{https://www.nltk.org/howto/propbank.html}} fournit un API pour accéder à \keyword[P]{PropBank}. 
+L'annotation se base sur moins de rôles sémantiques : agent et patient. 
+L'agent participe volontairement dans un évènement ou un état.
+Il peut aussi causer un évènement ou un changement d'état d'un autre participant. 
+Le patient est le participant qui éprouve un changement d'état.
+Il peut aussi être affectée par un autre participant.
 
-Structure
-\begin{itemize}
-	\item \optword{Roleset id} : Les verbes sont annotés par leurs sens 
-	\begin{itemize}
-		\item Ex. \expword{know.01 : be cognizant of, realize ; know.02 : be familiar with, have experienced}		
-	\end{itemize}
-	
-	\item \optword{Roles} : Chaque verbe/sens a un ensemble d'arguments possibles  
-	\begin{itemize}
-		\item \optword{Arg0} : PROTO-AGENT
-		\item \optword{Arg1} : PROTO-PATIENT
-		\item \optword{Arg2} : en général, benefactive, instrument, attribute, ou end state
-		\item \optword{Arg3} : en général, start point, benefactive, instrument, ou attribute
-		\item \optword{Arg4} : end point
-		\item Arg2 ... Arg5 ne sont pas consistants dans le corpus
-	\end{itemize}
-	
-	\item \optword{Modifiers} : Marqués par \keyword{ArgM}  
-	\begin{itemize}
-		\item \optword{ArgM-TMP} : Quand ?
-		\item \optword{ArgM-LOC} : Où ?
-		\item \optword{ArgM-MNR} : Comment ? 
-		\item ...
-	\end{itemize}
-	
-	\item \optword{Exemples annotés} 
-\end{itemize}
 
- Exemple des prédicats
- 
-\begin{figure}
-	%	\tiny
-	\scriptsize
+\keyword[P]{PropBank} est structuré comme un ensemble des fichiers de prédicats (verbes) ; en général sous formes de fichiers en XML. 
+Chaque prédicat définit plusieurs ensembles de rôles (rolesets) qui représentent les différents sens.
+Chaque roleset est structuré comme suit : 
+\begin{itemize}
+	\item Un identifiant numérique et un ensemble des verbes ayant le même sens.
+	Par exemple, \expword{know.01 : be cognizant of, realize ; know.02 : be familiar with, have experienced}.
+	
+	\item Des rôles : Un verbe dans un roleset a plusieurs arguments annotés par le mot clé \keyword{Arg} suivi par un numéro entre $0$ et $5$. 
+	Arg0 et Arg1 sont toujours réservés pour le PROTO-AGENT et le PROTO-PATIENT respectivement. 
+	Le reste des arguments ne sont pas consistants dans le corpus. 
+	En général, Arg2 veut dire : benefactive, instrument, attribute, ou end state ; Arg3 veut dire : start point, benefactive, instrument, ou attribute ; et Arg4 veut dire : end point.
+	Des modificateurs (Modifiers) peuvent être fournis par un roleset ; ils sont marqués par le mot clé \keyword{ArgM}. 
+	Par exemple, ArgM-TMP : Quand ? ArgM-LOC : Où ? ArgM-MNR : Comment ?
+	\item Des exemples
+\end{itemize} 
+La figure \ref{fig:propbank-predicat} représente un extrait du premier sens du prédicat ``know" dans \keyword[P]{PropBank}.
+
+
+\begin{figure}[ht]
+	\centering
+\begin{tcolorbox}[boxrule=0.4pt,text width=.85\textwidth, standard jigsaw, opacityback=0,]
+	\footnotesize
 	\begin{itemize}
 		\item \textbf{Roleset id}
 		\begin{itemize}\scriptsize
@@ -388,216 +370,177 @@ Structure
 		\begin{itemize}\scriptsize
 			\item \ [\textsubscript{\color{red}Arg0} He] did[\textsubscript{\color{red}ArgM-NEG} n't] know [\textsubscript{\color{red}Arg1} (anything)] [\textsubscript{\color{red}Arg2} about most of the cases] [\textsubscript{\color{red}ArgM-TMP} until Wednesday].
 		\end{itemize}
-	\end{itemize}
-	
+	\end{itemize}\vspace*{-1cm}
+\end{tcolorbox}
 	\caption{Extrait des annotations ProBank du prédicat ``know" de \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html}}
+	\label{fig:propbank-predicat}
 \end{figure}
 
 %===================================================================================
 \section{Étiquetage de rôles sémantiques}
 %===================================================================================
 
-\begin{figure}
-	\hgraphpage{exp-srl_.pdf}
+L'étiquetage des rôles sémantiques, en anglais \ac{srl}, est la tâche d'attribution des rôles sémantiques aux mots ou aux expressions dans une phrase.
+La figure \ref{fig:srl-exp} représente une phrase avec l'étiquetage des rôles sémantiques basé sur \keyword[P]{ProbBank}.
+C'est une tâche d'étiquetage des séquences. 
+Elle peut être implémentée soit en utilisant des caractéristiques ou en utilisant les réseaux de neurones.
+
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.6\textwidth]{exp-srl_.pdf}
 	\caption{Exemple d'étiquetage de rôles sémantiques en se basant sur ProbBank [\url{https://demo.allennlp.org/semantic-role-labeling/}]}
+	\label{fig:srl-exp}
 \end{figure}
 
 \subsection{En utilisant des caractéristiques}
 
+On commence par analyser la phrase syntaxiquement pour avoir son arbre syntaxique. 
+Ensuite, on parcourt chaque nœud de ce dernier pour décider la classe en se basant sur certaines caractéristiques. 
+Les classes peuvent être celles de FrameNet ou PropBank en plus de ``\keyword{None}" pour marquer un nœud sans rôle.
+Un classificateur est entraîné afin de classer un nœud en utilisant des caractéristiques comme :
 \begin{itemize}
-	\item \optword{Idée} : parcourir l'arbre syntaxique et classifier les nœuds
-	\begin{itemize}
-		\item \optword{Entrée} : des caractéristiques sur le nœud (syntagme) et le prédicat 
-		\item \optword{Sorite} : les classes sont celles de FrameNet ou PropBank + \keyword{None} pour marquer un nœud sans rôle 
-	\end{itemize} 
-	\item On peut optimiser la classification
-	\begin{itemize}
-		\item \optword{Élagage} : éliminer les constituants de la classification en utilisant des heuristiques
-		\item \optword{Identification} : classer les nœuds en \keyword{Argument} ou \keyword{None}
-		\item \optword{Classification} : les classes sont celles de FrameNet ou PropBank
-	\end{itemize} 
-\end{itemize}
-
-\begin{figure}
-	\hgraphpage{srl-arbre_.pdf}
-	\caption{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
-\end{figure}
-
-Quelques caractéristiques
-\begin{itemize}
-	\item Le prédicat principal de la phrase
-	\item Le type du syntagme. Ex. \expword{NP, S, PP}
-	\item Le mot d'entête (principal) du syntagme
-	\item La catégorie grammaticale du mot principal 
-	\item Le chemin du noeud concerné vers le prédicat. Ex. \expword{NP\textuparrow S\textdownarrow VP \textdownarrow VPD}
-	\item La voie : active ou passive
-	\item La position par rapport au prédicat : avant ou après
+	\item Le prédicat principal de la phrase. En général, c'est le verbe du syntagme verbal (VP : verbal phrase) descendant directe de la racine.
+	\item Le type du syntagme (Ex. \expword{NP, S, PP}).
+	\item Le mot d'entête (principal) du syntagme. 
+	Le mot principal d'un syntagme nominal est un nom, celui d'un syntagme prépositionnel est une préposition, etc. 
+	Celui-ci peut être détecté en se basant sur la grammaire du langage.
+	\item La catégorie grammaticale du mot principal.
+	\item Le chemin du nœud concerné vers le prédicat. 
+	Exemple, \expword{NP\textuparrow S\textdownarrow VP \textdownarrow VPD}.
+	La figure \ref{fig:srl-arbre-chemin} représente un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal.
+	\item La voie : active ou passive.
+	\item La position par rapport au prédicat : avant ou après.
 	\item ...
 \end{itemize}
 
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.7\textwidth]{srl-arbre_.pdf}
+	\caption{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
+	\label{fig:srl-arbre-chemin}
+\end{figure}
+
+Quelques optimisations peuvent être appliquer afin d'améliorer la tâche d'annotation.
+Les feuilles de l'arbre représentent les catégories grammaticales, donc on ne les classer pas puisque seuls les syntagmes peuvent être des arguments. 
+On peut, aussi, entraîner un classificateur pour classer le nœud comme ``\keyword{Argument}" ou ``\keyword{None}".
+Ensuite, entraîner un autre classificateur seulement avec les nœuds avec ``\keyword{Argument}".
+
+
 \subsection{En utilisant les réseaux de neurones}
 
-\begin{minipage}{.48\textwidth}
-	\begin{itemize}
-		\item \optword{Entrée} : Embeddings des mots + indicateur si le mot est un prédicat 
-		\item \optword{Sortie} : Probabilités des étiquettes de PropBank 
-		\item \keyword{B} pour début (Begins), \keyword{I} pour intérieur (inside)
-		\item \keyword{I} doit toujours suivre \keyword{B} ou \keyword{I} de la même étiquette
-	\end{itemize}
-\end{minipage}
-\begin{figure}
-	\hgraphpage{srl-lstm_.pdf}
+Nous avons vu que l'étiquetage des séquences peuvent être implémenté en utilisant la méthode \keyword[I]{IOB}  (inside, outside, begins). 
+La figure \ref{fig:srl-embedding} représente un système d'étiquetage de rôles sémantiques en utilisant les LSTM prposé par \cite{2017-he-al}. 
+Dans un moment donné, l'entrée est l'embedding du mot courant fusionné avec un indicateur de prédicat (prédicat ou non). 
+La sortie est un vecteur des probabilités des classes \keyword[P]{PropBank}.
+
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.5\textwidth]{srl-lstm_.pdf}
 	\caption{Un système d'étiquetage de rôles sémantiques en utilisant les LSTM \cite{2017-he-al}}
+	\label{fig:srl-embedding}
 \end{figure}
 
 %===================================================================================
 \section{Représentation sémantique des phrases}
 %===================================================================================
 
+Une représentation sémantique d'une phrase ne doit pas être dépendante à la structure syntaxique. 
+Elle doit pouvoir exprimer les phrases ayant le même sens de la même manière. 
+Par exemple, les deux phrases suivantes doivent avoir la même représentation :
 \begin{itemize}
-	\item Il y a plusieurs façons pour expliquer le même sens
-	\begin{itemize}
-		\item \expword{L'étudiant a préparé un rapport.}
-		\item \expword{Un rapport a été préparé par l'étudiant.}
-	\end{itemize}
-	
-	\item Les phrases en langages naturels peuvent être ambigües
-	\begin{itemize}
-		\item \expword{Elle a emporté les clefs de la maison au garage.}
-	\end{itemize}
-	
-	\item Plusieurs tâches peuvent bénéficier 
-	\begin{itemize}
-		\item Compréhension du langage naturel
-		\item Questions-Réponses
-		\item Recherche d'information
-		\item Traduction automatique
-		\item Résumé automatique
-	\end{itemize}
+	\item \expword{L'étudiant a préparé un rapport.}
+	\item \expword{Un rapport a été préparé par l'étudiant.}
 \end{itemize}
+
+Nous avons vu qu'une phrase peut être représentée par un ensemble de cadres en utilisant \keyword[F]{FrameNet}. 
+En plus de cette représentation, on peut représenter le sens en utilisant la logique du premier ordre ou en utilisant les graphes. 
+Parmi les difficultés rencontrées dans la tâche d'analyse sémantique, on peut citer l'ambigüité.
+Par exemple, la phrase \expword{Elle a emporté les clefs de la maison au garage.} veut dire que la maison est une source de l'action ``emporter" ou un dépendant des clefs. 
 
 \subsection{Logique du premier ordre}
 
-\begin{itemize}
-	\item \optword{terme} : représente un objet
-	\begin{itemize}
-		\item \optword{constante} : un objet spécifique
-		
-		\expword{Karim, ESI, Algérie}
-		
-		\item \optword{fonction} : retourne un objet en fonction d'un autre
-		
-		\expword{EmplacementDe(ESI)}
-		
-		\item \optword{variable} : référence vers un objet inconnu 
-		
-		\expword{x, y, z}
-		
-	\end{itemize}
-	\item \optword{prédicat} : représente une relation 
-	
-	\expword{Ecole(ESI), EnseignantA(Karim, ESI)}
-	
-	\item \optword{connecteur} : ET ($ \wedge $) OU ($ \vee $), NON ($ \neg $ ), IMPLIQUE ($\rightarrow$) et EQUIVALENT ($ \Leftrightarrow $)
-	
-	\expword{EnseignantA(Karim, ESI) $\wedge$ Ecole(ESI)}
-	
-	\item \optword{quantificateur} : 
-	
-	\expword{Je mange à un restaurant près de l'ESI.}
-	
-	\expword{$\exists$ x Restaurant(x) $\wedge$ PrèsDe(EmplacementDe(x), EmplacementDe(ESI)) $\wedge$  MangerA(Interlocuteur, x)}
-\end{itemize}
+La logique du premier ordre, \ac{fol}, peut être utilisée pour représenter le sens des phrases.
+C'est une représentation indépendante de la structure syntaxique du langage.
+Une expression en \ac{fol} peut être vérifiée et inférée facilement.
+Elle se composent des termes, des prédicats, des connecteurs et des qualificateurs. 
 
-Formalisme
-\begin{figure}
-	\vgraphpage[0.6\textheight]{LPO-gram_.pdf}
-	\caption{La grammaire spécifiant le syntaxe du logique du premier ordre d'après \cite{2019-jurafsky-martin} (Adaptée de \cite{2002-russell-norvig})}
-\end{figure}
+Un terme représente un objet qui peut être une constante, une fonction ou une variable. 
+Une \optword{constante} représente un objet spécifique dans le modèle.
+Par exemple, les mots \expword{Karim, ESI, Algérie} qui sont des entités nommées  : nom propre, organisation et pays respectivement.
+Bien sûr, une constante peut référer un nom abstrait comme par exemple ``\expword{Informatique}".
+Des fois, on réfère à un objet, pas par son nom mais, par sa relation avec une constante. 
+Par exemple, l'expression ``\expword{emplacement de l'ESI}" réfère à une place. 
+Mais en utilisant seulement les constantes, on ne peut pas la décrire en utilisant \ac{fol}. 
+Une \optword{fonction} peut être utilisée afin de retourner un objet en fonction d'un autre. 
+Dans ce cas, l'expression précédente peut être représenter comme \expword{EmplacementDe(ESI)}. 
+Prenons maintenant l'expression : ``\expword{un étudiant}" qui réfère un objet non spécifique ; on ne sait pas qui est cet étudiant. 
+Les deux types de termes (constante et fonction) ne peuvent pas représenter cette information. 
+Une \optword{variable} peut être utilisée comme référence vers un objet inconnu (anonyme). 
+Chaque variable est représentée comme une lettre en minuscule (Ex. \expword{x, y, z}).
 
-Notation Lambda
-\begin{itemize}
-	\item \keyword{$ \lambda $-Expression}
-	\begin{itemize}
-		\item Description des fonctions anonymes sur des variables
-		\item \keyword{$ \lambda $x.P(x)}
-		\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)} pour représenter l'expression \expword{likes Brit}
-	\end{itemize}
-	
-	\item \keyword{$ \lambda $-Reduction}
-	\begin{itemize}
-		\item Substitution de la variable par une expression
-		\item \keyword{$ \phi@\psi $}
-		\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)@ALEX = LIKES(ALEX, BRIT)}
-	\end{itemize}
-\end{itemize}
+Un prédicat représente une relation logique entre plusieurs termes qui retourne soit vrai ou faux.
+Prenons l'exemple ``\expword{ESI enseigne l'informatique}".
+Cette phrase peut être représentée comme : 
+\[enseigner(ESI, INFORMATIQUE)\]
+Dans cet exemple, le prédicat est un verbe transitif. 
+Maintenant, prenons l'exemple ``\expword{ESI est une école}".
+Cette phrase peut être représentée en utilisant un prédicat unitaire :
+\[ecole(ESI)\]
+Ici, le prédicat n'est pas utilisé pour décrire une relation entre plusieurs termes. 
+Il est utilisé pour représenter une propriété de la constante ``\expword{ESI}". 
+On doit être capable de différencier entre un prédicat unitaire et une fonction. 
+Un prédicat retourne une valeur logique, or une fonction retourne un nouveau objet.
+Prenons un exemple avec les deux : ``Karim connait l'adresse de l'ESI". 
+Cette phrase peut être représentée comme : 
+\[connaitre(KARIM, AdresseDe(ESI))\]
 
-Analyse sémantique
-\begin{figure}
-	\begin{tabular}{ll}
-		\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
-		\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
-	\end{tabular}
-	\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
-\end{figure}
+Les prédicats, étant des relations logiques, doivent être liés pour avoir une expression plus complexe. 
+Par exemple, la phrase ``\expword{Karim est un enseignant à l'ESI qui est une école.}
+\[enseignantt(KARIM) \wedge location(ESI) \wedge ecole(ESI)\]
+Ici, on a utilisé un prédicat $location$ pour représenter l'emplacement. 
+Aussi, on a employé le connecteur $\wedge$ afin de lier les prédicats. 
+La liste des connecteurs possibles est la suivante : ET ($ \wedge $) OU ($ \vee $), NON ($ \neg $ ), IMPLIQUE ($\rightarrow$) et EQUIVALENT ($ \Leftrightarrow $).
 
-Analyse sémantique (Les quantificateurs)
-\begin{figure}
-	\begin{tabular}{ll}
-		\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
-		\hgraphpage[0.65\textwidth]{sem-qarbre_.pdf} \\
-	\end{tabular}
-	\caption{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
-\end{figure}
+Les variables sont utilisées afin de référer des objets anonymes.  
+Mais, il n'ont pas la capacité pour décrire qu'il s'agit d'un objet ou tous les objets d'une collection. 
+Cela est possible en utilisant les quantificateurs : IL-EXISTE ($\exists$) et POUR-TOUS ($\forall$).
+Prenons l'exemple ``\expword{Je mange à un restaurant près de l'ESI.}".
+Ceci peut être représenté comme suit : 
+\[\exists x\ Restaurant(x) \wedge PresDe(EmplacementDe(x), EmplacementDe(ESI)) \wedge  MangerA(Interlocuteur, x)\]
 
-\vspace{-.6cm}
-{\small 
-	\begin{align*}
-	& VP.sem & = &V_t.sem@NP.sem \\
-	& & = & \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))@(\textcolor{blue}{\lambda P.P(ALEX)}) \\
-	& & = & \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX)@(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
-	& & = & \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{ALEX}) \\
-	& & = & \lambda x.LIKES(x, ALEX) \\
-	\end{align*}
-}
+Dans ce dernier exemple, nous avons utilisé le prédicat $MangerA$ pour indiquer la location où on a mangé. 
+Si on veut décrire la location, le temps, etc. pour chaque évènement, on doit enrichir notre domaine avec des prédicats verbe-location, verbe-temps, etc. 
+Cela va causer le domaine à exploser ; un nombre énorme des prédicats. 
+Aussi, on ne peut pas utiliser un nombre variable des arguments pour chaque prédicat puisque dans \ac{fol} chaque prédicat a un nombre précis des arguments. 
+Une solution est d'introduire une variable d'évènement et on utilise des prédicats pour indiquer la location de l'évènement ($Location$), temps de l'évènement ($Temps$), etc.
+Le prédicat de l'évènement sera utilisé avec un prédicat pour l'agent et un autre pour le patient.
+L'exemple précédent sera représenté comme suit : 
+\[\exists x\ \exists e\ Restaurant(x) \wedge PresDe(EmplacementDe(x), EmplacementDe(ESI))\]
+\[\wedge Manger(e) \wedge  Mangeur(e, Interlocuteur) \wedge Location(e, x)\]
+Ici, l'évènement $e$ a été représenter comme une variable. 
+Afin de définir le type de l'évènement, on utilisé un prédicat unitaire $Manger(e)$. 
+Afin de représenter les arguments de cette évènement, on a utilisé des prédicats binaires qui sont des rôles.
+Le premier argument est la variable d'évènement et le deuxième est le participant ayant ce rôle.
+Cette représentation est appelée une représentation des évènements néo-Davidsonienne d'après le philosophe Donald Davidson \cite{1967-davidson}.
 
-Analyse sémantique avec NLTK
+%Formalisme
+%\begin{figure}
+%	\hgraphpage[0.6\textwidth]{LPO-gram_.pdf}
+%	\caption{La grammaire spécifiant le syntaxe du logique du premier ordre d'après \cite{2019-jurafsky-martin} (Adaptée de \cite{2002-russell-norvig})}
+%\end{figure}
 
-\begin{exampleblock}{Exemple d'analyse sémantique en NLTK}
-	\optword{Code :}
-	{\scriptsize
-		\begin{lstlisting}[language=Python]
-		from nltk import load_parser
-		parser = load_parser('grammars/book_grammars/simple-sem.fcfg', trace=0)
-		sentence = 'Angus gives a bone to every dog'
-		tokens = sentence.split()
-		for tree in parser.parse(tokens):
-		print(tree.label()['SEM'])
-		\end{lstlisting}
-	}
-	
-	\optword{Résultat :}
-	{\scriptsize\bfseries
-		\begin{lstlisting}
-		all z2.(dog(z2) -> exists z1.(bone(z1) & give(angus,z1,z2)))
-		\end{lstlisting}
-	}
-	
-\end{exampleblock}
-
-\begin{itemize}
-	\item \url{https://www.nltk.org/book/ch10.html}
-\end{itemize}
 
 \subsection{Graphes (AMR)}
 
-\begin{itemize}
-	\item Abstract Meaning Representation \cite{2013-banarescu-al}
-	\item Un graphe raciné, étiqueté, dirigé et acyclique
-	\item Il utilise les concepts de \keyword{PropBank}
-\end{itemize}
+\ac{amr} est un langage de représentation sémantique \cite{2013-banarescu-al} qui peut être représenté sous forme d'un graphe. 
+Le graphe doit être graphe raciné, étiqueté, dirigé et acyclique. 
+Il sert à représenter une phrase indépendamment de la syntaxe.
+Toutefois, il reste dépendant de l'anglais et ne peut pas être considéré comme un langage multilingue.
+Un exemple de la représentation de la phrase ``The boy wants to go" est présenté dans la figure \ref{fig:amr-exp}.
+La représentation \ac{amr} est illustrée sous deux formats : textuelle et graphique , en plus de la représentation logique.
 
-\begin{exampleblock}{Trois formats : Exemple ``The boy wants to go"}
+\begin{figure}[ht]
+	\centering
 	\begin{minipage}{.3\textwidth}
 		\optword{Format logique}
 		
@@ -632,46 +575,307 @@ Analyse sémantique avec NLTK
 		
 		\hgraphpage{amr-graphe-exp.pdf}
 	\end{minipage}
-\end{exampleblock}
+	\caption{Exemple de la représentation AMR de la phrase : ``The boy wants to go"}
+	\label{fig:amr-exp}
+\end{figure}
 
-Relations
-\begin{itemize}
-	\item \optword{Arguments du cadre (frame)} : Selon PropBank
-	\begin{itemize}
-		\item :arg0, :arg1, :arg2, :arg3, :arg4, :arg5
-	\end{itemize}
-	\item \optword{Relations sémantiques générales}
-	\begin{itemize}
-		\item :accompanier, :age, :beneficiary, :cause, :compared-to, :concession, :condition, :consist-of, :degree, :destination, :direction, :domain, :duration, :employed-by, :example, :extent, :frequency, :instrument, :li, :location, :manner, :medium, :mod, :mode, :name, :part, :path, :polarity, :poss, :purpose, :source, :subevent, :subset, :time, :topic, :value
-	\end{itemize}
-	\item \optword{Relations de quantité}
-	\begin{itemize}
-		\item :quant, :unit, :scale
-	\end{itemize}
-	\item \optword{Relations de date}
-	\begin{itemize}
-		\item :day, :month,
-		:year, :weekday, :time, :timezone, :quarter,
-		:dayperiod, :season, :year2, :decade, :century,
-		:calendar, :era
-	\end{itemize}
-	\item \optword{Relations de liste}
-	\begin{itemize}
-		\item :op1, :op2, :op3, :op4, :op5,
-		:op6, :op7, :op8, :op9, :op10
-	\end{itemize}
-\end{itemize}
+Dans \ac{amr}, les concepts d'une phrase sont représentés sous forme des mots de l'anglais (Ex. \expword{boy}), des concepts de \keyword[P]{PropBank} (Ex. \expword{want-01}) ou des mots clés spéciaux. 
+Le langage suit le modèle néo-Davidsonien ; chaque entité, évènement, propriété et état sont représenté comme une variable. 
+Par exemple, la représentation ``\expword{(b / boy)}  veut dire ``b" est une instance du concept ``boy".
+Les entités sont reliées par des relations.
+Par exemple, la représentation ``\expword{(d / die-01 :location (p / park))}" veut qu'il y avait un mort ``d" dans le parc ``p".
+\ac{amr} utilise les arguments des cadres \keyword[P]{PropBank} en plus d'autres relations présentées dans le tableau \ref{tab:amr-rel}.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{>{\raggedright}p{.25\textwidth}>{\raggedright\arraybackslash}p{.7\textwidth}}
+		\hline\hline
+		Arguments du cadre  & 
+		:arg0, :arg1, :arg2, :arg3, :arg4, :arg5 \\
+		\hline
+		Relations sémantiques générales &
+		:accompanier, :age, :beneficiary, :cause, :compared-to, :concession, 
+		
+		:condition, :consist-of, :degree, :destination, :direction, :domain, 
+		
+		:duration, :employed-by, :example, :extent, :frequency, :instrument, 
+		
+		:li, :location, :manner, :medium, :mod, :mode, :name, :part, :path, 
+		
+		:polarity, :poss, :purpose, :source, :subevent, :subset, :time, :topic, :value \\
+		\hline
+		Relations de quantité &
+		:quant, :unit, :scale \\
+		\hline
+		Relations de date &
+		:day, :month,
+		:year, :weekday, :time, :timezone, :quarter, :dayperiod, 
+		
+		:season, :year2, :decade, :century, :calendar, :era \\
+		\hline
+		Relations de liste & 
+		:op1, :op2, :op3, :op4, :op5,
+		:op6, :op7, :op8, :op9, :op10\\
+		\hline\hline
+	\end{tabular}
+	\caption{Les relations AMR}
+	\label{tab:amr-rel}
+\end{table}
 
 
+%\begin{itemize}
+%	\item \optword{Arguments du cadre (frame)} : Selon PropBank
+%	\begin{itemize}
+%		\item :arg0, :arg1, :arg2, :arg3, :arg4, :arg5
+%	\end{itemize}
+%	\item \optword{Relations sémantiques générales}
+%	\begin{itemize}
+%		\item :accompanier, :age, :beneficiary, :cause, :compared-to, :concession, :condition, :consist-of, :degree, :destination, :direction, :domain, :duration, :employed-by, :example, :extent, :frequency, :instrument, :li, :location, :manner, :medium, :mod, :mode, :name, :part, :path, :polarity, :poss, :purpose, :source, :subevent, :subset, :time, :topic, :value
+%	\end{itemize}
+%	\item \optword{Relations de quantité}
+%	\begin{itemize}
+%		\item :quant, :unit, :scale
+%	\end{itemize}
+%	\item \optword{Relations de date}
+%	\begin{itemize}
+%		\item :day, :month,
+%		:year, :weekday, :time, :timezone, :quarter,
+%		:dayperiod, :season, :year2, :decade, :century,
+%		:calendar, :era
+%	\end{itemize}
+%	\item \optword{Relations de liste}
+%	\begin{itemize}
+%		\item :op1, :op2, :op3, :op4, :op5,
+%		:op6, :op7, :op8, :op9, :op10
+%	\end{itemize}
+%\end{itemize}
 
 
+\section{Analyse sémantique}
 
+Dans l'analyse sémantique, on va présenter comment passer d'une phrase en langage naturel vers une représentation de la logique du premier ordre. 
+Cette analyse est appliquée au fur et à mesure avec l'analyse syntaxique en utilisant des règles sémantiques. 
+Ces dernières peuvent être des $\lambda $-expressions qui décrivent des fonctions anonymes sur des variables. 
+Une expression est écrite sous la forme ``$ \lambda x.P(x)$" ; elle représente un fonction. 
+Ces fonctions peuvent être appliquées par une opération appelée $\lambda $-Reduction qui sert à substituer une variable par une expression. 
+Il y a deux annotations $ \lambda x.P(x)(A)$ ou $ \lambda x.P(x)@A$ pour dire substituer la première variable par ``A" (dans ce qui suit, on va utiliser la deuxième)). 
+Prenons une fonction avec deux variables qui représente que la première variable aime la deuxième : 
+\[\lambda y.\lambda x.LIKES(x, y)\]
+Le remplacement commence toujours par le premier $\lambda$ :
+\[\lambda y.\lambda x.LIKES(x, y)@BRIT = \lambda x.LIKES(x, BRIT)\] 
+Après la réduction, le résultat reste toujours une $\lambda $-expression. 
+Donc, on peut appliquer une deuxième $\lambda $-Reduction :
+\[\lambda x.LIKES(x, BRIT)@ALEX = LIKES(ALEX, BRIT)\]
+
+Maintenant, on revient à l'analyse sémantique. 
+Étant donné la grammaire $G <\Sigma, N, P, S>$, on affecte pour chaque variable de $N$ une réalisation sémantique (Ex. \expword{NP.sem}). 
+Pour chaque production de $P$, on affecte une opération sémantique : une expression en \ac{fol}, une $\lambda $-expression ou une $\lambda $-Reduction.
+La réalisation sémantique  de la variable à gauche de la production sera l'exécution de l'opération sémantique.
+Prenons l'exemple des règles syntaxiques annotées sémantiquement présentées dans le tableau \ref{tab:regles-sem1}.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{llll}
+		\hline\hline
+		S  & \textrightarrow\ NP VP && VP.sem@NP.sem \\
+		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem@NP.sem\\
+		VP & \textrightarrow\ V\textsubscript{i} && V\textsubscript{i}.sem \\
+		V\textsubscript{t}  & \textrightarrow\ likes && $ \lambda $y.$ \lambda $x.LIKES(x, y) \\
+		V\textsubscript{i}  & \textrightarrow\ sleeps && $ \lambda $x.SLEEPS(x) \\
+		NP  & \textrightarrow\  Alex && ALEX \\
+		NP  & \textrightarrow\  Brit && BRIT \\
+		\hline\hline
+	\end{tabular}
+	\caption{Une grammaire à contexte libre minimale avec les annotations sémantiques}
+	\label{tab:regles-sem1}
+\end{table}
+
+Lors de l'analyse syntaxique, on calcule la valeur sémantique de chaque variable visitée dans l'arbre syntaxique.
+Dans notre cas, on va utiliser une analyse ascendante ; donc, parcours postfixe de l'arbre syntaxique.
+La figure \ref{fig:arbre-sem1} est un exemple d'une arbre syntaxique/sémantique de la phrase ``\expword{A dog likes Alex}".
+On commence par appliquer la règle ``NP \textrightarrow\ Alex" pour avoir la réalisation sémantique : 
+\[NP.sem = ALEX\]
+Ensuite, on applique la règle ``V\textsubscript{t} \textrightarrow\ likes" pour avoir :
+\[V_t.sem = \lambda y.\lambda x.LIKES(x, y)\]
+Après, on applique la règle ``NP \textrightarrow\ Brit" pour avoir la réalisation sémantique : 
+\[NP.sem = BRIT\]
+Ces deux dernière variables nous permet d'appliquer la règle ``VP \textrightarrow\ V\textsubscript{t} NP" pour avoir la réalisation sémantique :
+\begin{align*}
+ VP.sem & = V_t.sem@NP.sem \\
+        & = \textcolor{red}{\lambda y}.\lambda x.LIKES(x, \textcolor{red}{y})@\textcolor{blue}{BRIT}\\
+        & = \lambda x.LIKES(x, BRIT)
+\end{align*}
+Finalement, on peut appliquer la règle ``S \textrightarrow\ NP VP" pour avoir :
+\begin{align*}
+S.sem & = VP.sem@NP.sem \\
+       & = \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, BRIT)@\textcolor{blue}{ALEX}\\
+       & = LIKES(ALEX, BRIT)
+\end{align*}
+
+\begin{figure}[ht]
+	\centering
+%	\begin{tabular}{ll}
+%		\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
+		\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
+%	\end{tabular}
+	\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
+	\label{fig:arbre-sem1}
+\end{figure}
+
+Maintenant, essayons d'analyser la phrase ``\expword{A dog likes Alex}" (certain chien aime Alex).
+On peut la représenter en \ac{fol} comme ``\expword{$\exists x\ DOG(x) \wedge LIKES(x, ALEX)$}".
+Les règles sémantiques pour prendre les quantificateurs en considération sont indiquées dans le tableau \ref{tab:regles-sem2}. 
+Le quantificateur doit être ajouté lorsqu'on rencontre un déterminant (a, an) et donc on aura $\exists x$. 
+Aussi, on sait qu'avec un quantificateur, on doit avoir un prédicat qui décrit le type de $x$, donc $\exists x P(x)$.
+Ce prédicat est le nom qui suit le quantificateur ; donc, on peut définir une $\lambda $-expression qui remplace $P$ avec la réalisation sémantique du nom suivant, d'où $\lambda P.\exists x P(x)$.
+Il faut aussi ajouter un ou plusieurs prédicats qui définissent la relation de $x$ avec les autres termes. 
+Vu qu'on peut générer plusieurs prédicats avec une seule $\lambda $-expression, on peut définir une seule $\lambda P.P(x)$.
+$\lambda P$ doit être réduite avant $\lambda Q$ (le nom est plus proche au déterminant), donc $\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)$. 
+Dans ce cas : 
+\[\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x) @DOG = \lambda Q.\exists x\ DOG(x) \wedge Q(x)\]
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lllllllll}
+		\cline{1-4}\cline{6-9}\noalign{\vskip\doublerulesep
+			\vskip-\arrayrulewidth}\cline{1-4}\cline{6-9}
+		S  & \textrightarrow\ NP VP && NP.sem@VP.sem &&
+		DET & \textrightarrow\ every && $\lambda P.\lambda Q.\forall x (P(x) \Rightarrow Q(x))$ \\
+		
+		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem@NP.sem &&
+		V\textsubscript{t}  & \textrightarrow\ likes && $\lambda P.\lambda x.P(\lambda y.LIKES(x, y))$ \\
+		
+		VP & \textrightarrow\ V\textsubscript{i} && V\textsubscript{i}.sem &&
+		V\textsubscript{i}  & \textrightarrow\ sleeps && $ \lambda $x.SLEEPS(x) \\
+		
+		NP & \textrightarrow\ DET NN && DET.sem@NN.sem  &&
+		NN  & \textrightarrow\  Dog && DOG \\
+		
+		NP & \textrightarrow\ NNP && $\lambda P.P(NNP.sem)$  &&
+		NNP  & \textrightarrow\  Alex && ALEX \\
+		
+		DET & \textrightarrow\ a && $\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)$  &&
+		NNP  & \textrightarrow\  Brit && BRIT \\
+		\cline{1-4}\cline{6-9}\noalign{\vskip\doublerulesep
+			\vskip-\arrayrulewidth}\cline{1-4}\cline{6-9}
+	\end{tabular}
+	\caption{Une grammaire à contexte libre minimale avec les annotations sémantiques}
+	\label{tab:regles-sem2}
+\end{table}
+
+Supposant que le $NP$ précédent est celui généré par la racine ``S \textrightarrow NP VP". 
+Si on garde la grammaire précédente (tableau \ref{tab:regles-sem1}), le contenu du syntagme verbale sera $\lambda x.LIKES(x, BRIT)$ et la sémantique de la phrase sera :
+\begin{align*}
+S.sem & = VP.sem@NP.sem \\
+& = \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, ALEX)@(\textcolor{blue}{\lambda Q.\exists x\ DOG(x) \wedge Q(x)})\\
+& = LIKES(\lambda Q.\exists x\ DOG(x) \wedge Q(x), BRIT)
+\end{align*}
+Cela n'est pas juste ; on peut voir que c'est toujours une $\lambda $-expression. 
+Ce qu'on veut faire est de réduire $\lambda Q$ avec le contenu sémantique du syntagme verbale, et donc :
+\begin{align*}
+S.sem & = NP.sem@VP.sem \\
+& = (\textcolor{red}{\lambda Q}.\exists x\ DOG(x) \wedge \textcolor{red}{Q}(x))@(\textcolor{blue}{\lambda x.LIKES(x, ALEX)})\\
+& = \exists x\ DOG(x) \wedge \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, ALEX))@x \\
+& = \exists x\ DOG(x) \wedge LIKES(x, ALEX)
+\end{align*}
+
+Lorsqu'on veut générer l'exemple du début (\expword{Alex loves Brits}), on doit appliquer ``NP.sem@VP.sem". 
+Mais, on sait clairement que $NP.sem = ALEX$ n'est pas une $\lambda $-expression ; on ne peut pas la réduire. 
+La solution est d'appliquer ``VP.sem@NP.sem" sans changer la règle sémantique ``NP.sem@VP.sem". 
+On doit, donc, ajouter une expression $\lambda P.P(NNP.sem)$ dans le syntagme nominal qui génère un nom propre. 
+Dans notre cas, $NNP.sem = ALEX$ et donc :
+\begin{align*}
+S.sem & = NP.sem@VP.sem \\
+& = (\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX))@(\textcolor{blue}{\lambda x.LIKES(x, BRITS)})\\
+& = \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, BRITS))@\textcolor{blue}{ALEX} \\
+& = LIKES(ALEX, BRITS)
+\end{align*}
+
+On a supposé que la réalisation sémantique du syntagme verbal est $\lambda x.LIKES(x, BRITS)$. 
+On va essayer de calculer la réalisation avec la règle sémantique de $VP \rightarrow\ V\textsubscript{t} NP$ avant sa modification (tableau \ref{tab:regles-sem1}).
+\begin{align*}
+VP.sem & = V_t.sem@NP.sem \\
+& = \textcolor{red}{\lambda y}.\lambda x.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{\lambda P.P(BRIT)})\\
+& = \lambda x.LIKES(x, \lambda P.P(BRIT))
+\end{align*}
+Ce n'est as le résultat voulu. 
+Dans le verbe transitif, on veut résoudre le deuxième argument $y$ en premier. 
+Donc, on doit lui passer ``BRIT" et pour le faire on doit nous débarasser de $\lambda P$. 
+Dans ce cas, on laisse $\lambda x$ à coté et on essaye d'appliquer $\lambda P$ sur le reste. 
+La règle sémantique sera $\lambda P.\lambda x.P(\lambda y.LIKES(x, y))$, et donc :
+\begin{align*}
+VP.sem & = V_t.sem@NP.sem \\
+& = \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))@(\textcolor{blue}{\lambda P.P(BRIT)}) \\
+& = \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(BRIT)@(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
+& = \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{BRIT}) \\
+& = \lambda x.LIKES(x, BRIT) \\
+\end{align*}
+
+L'analyse sémantique de la phrase ``\expword{A dog likes Alex} est illustrée sous forme d'un arbre dans la figure \ref{fig:regles-sem2}.
+Cette analyse se fait en parallèle avec l'analyse syntaxique comme l'analyse \keyword[C]{CKY}. 
+Lorsqu'une règle syntaxique est appliquée, on applique sa règle sémantique équivalente.
+Nous avons vu que les grammaires des langages naturels sont plus complexes et donc non déterministes. 
+\keyword[C]{CKY} probabiliste peut être utilisée pour résoudre le problème d'ambigüité.
+Sinon, on peut utiliser le sens généré afin de guider l'analyse. 
+Donc, étant donné une phrase $w$ et une fonction de score $\Phi$ qui possède des paramètres $\theta$, la forme sémantique finale $\hat{z}$ est celle qui maximise cette fonction de score comme indiqué dans l'équation \ref{eq:sem-anal-max}.
+\begin{equation}
+\hat{z} = \arg\max_z \Phi(z|w, \theta)
+\label{eq:sem-anal-max}
+\end{equation}
+$w$, étant une séquence, la fonction $\Phi$ peut être représentée comme une fonction qui génère la représentation suivante sachant des caractéristiques comme le mot courant, les mots passés, leurs représentations, etc. 
+Donc, afin de maximiser $\Phi$, on doit tester plusieurs chemins d'analyse. 
+Une des méthode pour optimiser ce processus est d'utiliser \keyword{Beam Search}. 
+L'annotation manuelle des représentations sémantiques est vraiment une tâche couteuse.
+Une autre méthode pour entraîner le modèle est en utilisant les dénotations. 
+Par exemple, si la tâche de l'analyse sémantique a comme but d'avoir la représentation sémantique des questions, on peut utiliser SQL comme représentation. 
+La dénotation veut dire attribuer à chaque question une liste des résultats possibles à partir d'une base de donnée précise. 
+Dans ce cas, lors de l'entraînement, on ne va pas tester si la requête SQL généré est correcte étape par étape ; mais, on va tester le résultat de son exécution. 
+
+\begin{figure}[ht]
+	\centering
+%	\begin{tabular}{ll}
+%		\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
+		\hgraphpage[0.8\textwidth]{sem-qarbre_.pdf}
+%	\end{tabular}
+	\caption{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
+	\label{fig:regles-sem2}
+\end{figure}
+
+Parmi les APIs qui nous permet d'analyser des phrases sémantiquement, on peut citer \keyword[N]{NLTK}\footnote{NLTK semantic parsing : \url{https://www.nltk.org/book/ch10.html}}. 
+Dans le code suivant, le résultat est : \\
+\begin{center}
+	all z2.(dog(z2) -> exists z1.(bone(z1) \& give(angus,z1,z2)))
+\end{center}
+
+\begin{lstlisting}[language=Python, style=codeStyle]
+from nltk import load_parser
+parser = load_parser('grammars/book_grammars/simple-sem.fcfg', trace=0)
+sentence = 'Angus gives a bone to every dog'
+tokens = sentence.split()
+for tree in parser.parse(tokens):
+    print(tree.label()['SEM'])
+\end{lstlisting}
 
 
 \begin{discussion}
+La forme syntaxique ne porte pas le sens de la phrase ; elle sert à vérifier qu'une phrase est bien écrite selon la langue en question. 
+Les rôles sémantiques des différents éléments d'ue phrase peuvent être déduits à partir des fonctions syntaxiques. 
+Par exemple, on peut appliquer une analyse syntaxique et faire une correspondance avec les rôles sémantique. 
+Un sujet du verbe peut être considéré comme un agent. 
+Mais, cela n'est pas toujours vrai ; dans la forme passive, le sujet est un patient. 
+Donc, la transition du niveau syntaxique vers le niveau sémantique n'est pas aussi simple que ça. 
+Il existe plusieurs projets qui visent à faciliter cette tâche comme FrameNet et PropBank. 
+Ils représentent les phrases sous forme des cadres où l'évènement est l'élément central. 
 
-
-
+Représenter une phrase comme cadres est utile dans des tâches de compréhension du langage. 
+Mais, des fois, cette représentation n'est pas adéquate pour certaines tâches. 
+Dans le raisonnement par machine, on veut avoir une machine qui peut faire des déductions. 
+Par exemple, on peut trouver des contradictions entre les phrases d'un article de presse. 
+Une des représentations qui peut nous permet ça est la logique propositionnelle et plus précisément la logique du premier ordre. 
+Afin de générer une telle représentation, on peut utiliser une grammaire constituante et affecter à chaque règle syntaxique un autre sémantique.
+La forme sémantique n'est pas toujours une expression de la logique du premier ordre. 
+Elle peut être une requête SQL, si on veut implémenter un système de Question/réponse. 
+Aussi, elle peut être une commande, si on veut implémenter un assistant personnel intelligent comme Alexa, Cortana ou Siri.
 \end{discussion}
 
 %=====================================================================
