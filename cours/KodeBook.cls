@@ -408,7 +408,7 @@ title={#1}
 
 	\pagenumbering{arabic}
 	\phantomsection
-	\addcontentsline{toc}{part}{Corps}
+	\addcontentsline{toc}{part}{Contenu}
 
 	\pagestyle{fancy}                       % Sets fancy header and footer
 %	\fancyfoot{}                            % Delete current footer settings

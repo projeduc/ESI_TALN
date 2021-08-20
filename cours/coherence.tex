@@ -16,46 +16,42 @@
 \chapter{Cohérence du discours}
 
 \begin{introduction}[LES LANGU\textcolor{white}{E}S]
-	\lettrine{E}{n} lisant un texte, nous ne devons pas sentir une interruption dans les idées ; comme par exemple, sauter d'une idée à une autre dans le même paragraphe.
-	On appelle ça : la cohérence ; Un texte cohérent doit garder la même idée ou passer à une autre idée en gardant une sorte de continuité.
+	\lettrine{E}{n} lisant un texte, nous ne devons pas sentir une interruption dans l'enchaînement des idées.
+	On ne doit pas sauter d'une idée à une autre dans le même paragraphe.
+	On appelle ça : la cohérence ; un texte cohérent doit garder la même idée ou passer à une autre idée en gardant une sorte de continuité.
+	L'analyse de la cohérence nous permet de vérifier qu'un texte est facile à lire et à comprendre. 
+	Plusieurs théories ont été proposées pour représenter les relations de cohérence et donc permettre son analyse.
+	Dans ce chapitre, on va présenter quelques théories de cohérence et quelques méthodes pour l'analyser.
 \end{introduction} 
 
-\begin{exampleblock}{Exemple d'un texte en français}
-	\begin{center}
-		\Large\bfseries
-		L'hiver est un des quatre saisons de l'année. 
-		Le rapport était bien exposé. 
-		La pluie est une des caractéristiques de cette saison.
-		Le sujet était la saison de l'hiver.
-	\end{center}
-\end{exampleblock}
-
+Prenons le texte ``\expword{L'hiver est un des quatre saisons de l'année. Le rapport était bien exposé. La pluie est une des caractéristiques de cette saison. J'ai lu un rapport sur cette saison.}".
+On peut comprendre chaque phrase à part ; mais, il est difficile de comprendre l'idée du texte. 
+Il est clair que les phrases sont mal-ordonnées. 
+Donc, comprendre les phrases n'est pas suffisant afin de comprendre un discours ; il faut ce dernier soit cohérent.
+L'analyse de la cohérence peut aider dans plusieurs tâches :
 \begin{itemize}
-	\item Est-ce que vous pouvez comprendre de quoi s'agit-il ?
-	\item S'il y a un problème, lequel ?
-	\item Est-ce qu'on peut améliorer ce texte ?
+	\item Génération du texte : lorsqu'on génère un texte automatiquement, il faut que les phrases soient cohérentes. 
+	Un exemple plus simple est la génération des résumés automatiques par extraction. 
+	Une fois les phrases importantes, on doit réordonner ces phrases pour avoir un résumé cohérent. 
+	Un exemple d'une méthode pour ordonner les phrases dans le contexte du résumé automatique est proposé dans \cite{2019-oufaida-al}.
+	\item Compréhension du texte : comme l'exemple précédent, on ne peut pas bien comprendre un texte que s'il est cohérent.
+	\item Évaluation du texte : on peut utiliser l'analyse de la cohérence afin d'évaluer automatiquement les expressions écrites des enfants. 
+	Aussi, on peut l'utiliser comme outil d'aide de rédaction (Personnellement, je n'ai pas vu un tel outil ; mais il va être d'une grande utilité pour les écrivains).
+	\item Détection de plagiat : lorsqu'on copie et colle des parties de plusieurs origines, on va avoir un texte incohérent. 
 \end{itemize}
 
 %===================================================================================
 \section{Relations de cohérence}
 %===================================================================================
 
-Comment détecter la cohérence d'un discours ?
-\begin{itemize}
-	\item \optword{Cohérence basée sur les relations} : les phrases d'un discours sont liées entre elles par des relations. 
-	\begin{itemize}
-		\item Rhetorical Structure Theory (RST) 
-		\item Penn Discourse TreeBank (PDTB)
-	\end{itemize}
-	\item \optword{Cohérence basée sur l'entité} : les phrases d'un discours forment une seule entité ; elles discutent le même sujet
-	\begin{itemize}
-		\item Centering Theory 
-	\end{itemize}
-	\item \optword{Cohésion lexicale} : les phrases proches se partagent quelques mots ou sens 
-	\begin{itemize}
-		\item Similarité
-	\end{itemize}
-\end{itemize}
+En général, les phrases proches se partagent quelques mots ou sens. 
+Ce phénomène est appelé \optword{Cohésion lexicale} où la relation entre deux phrases consécutives est la similarité lexicale ou sémantique.
+Une autre façon de voir la cohérence est en se basant sur le sujet du texte ; les phrases d'un discours forment une seule entité (elles discutent le même sujet). 
+On appelle ça : \optword{Cohérence basée sur l'entité} où la relation entre les phrase c'est le sujet. 
+Parmi les théories dans cette direction, on peut mentionner : Centering theory et Entity grid model. 
+Dans cette section, on va présenter  des relations plus concrètes qui relient les phrases l'une à l'autre. 
+Dans ce cas, on parle de la \optword{cohérence basée sur les relations}. 
+Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 
 \subsection{Rhetorical Structure Theory (RST)}
 
@@ -87,9 +83,7 @@ Comment détecter la cohérence d'un discours ?
 		\item \textbf{Lieu de l'effet :} N + S
 		\item Ex. \expword{[\textsubscript{N} L'examen est facile.] [\textsubscript{S} Il ne prend qu'une heur.]}
 	\end{itemize}
-\end{itemize}
 
-\begin{itemize}
 	\item \optword{Évidence} :  S donne des informations additionnelles sur la situation présentée dans N dans le but de convincre L à accepter les informations de N
 	\begin{itemize}
 		\item \textbf{Contraintes sur N :} L pourra ne pas croire en N à un degré suffisant pour Sc
@@ -99,9 +93,7 @@ Comment détecter la cohérence d'un discours ?
 		\item \textbf{Lieu de l'effet :} N
 		\item Ex. \expword{[\textsubscript{N} Kevin doit être ici.] [\textsubscript{S} Sa voiture est garée à l'extérieur.]}
 	\end{itemize}
-\end{itemize}
 
-\begin{itemize}
 	\item \optword{Contraste} :  Une relation d'opposition entre deux noyaux
 	\begin{itemize}
 		\item \textbf{Contraintes sur N :} multi-noyaux
@@ -110,9 +102,7 @@ Comment détecter la cohérence d'un discours ?
 		\item \textbf{Lieu de l'effet :} noyaux multiples
 		\item Ex. \expword{[\textsubscript{N} Il a voté "Non" à la nouvelle constitution.] [\textsubscript{N} Son frère a voté "Oui".]}
 	\end{itemize}
-\end{itemize}
 
-\begin{itemize}
 	\item \optword{Antithèse} :  Une relation d'opposition entre N et S dans le but que L ait une attitude positive envers N
 	\begin{itemize}
 		\item \textbf{Contraintes sur N :} Sc a une attitude positive par rapport à la situation présentée dans N
@@ -124,10 +114,12 @@ Comment détecter la cohérence d'un discours ?
 \end{itemize}
 
 
-%\rowcolors{2}{lightblue}{lightyellow}\footnotesize
-\begin{tabular}{p{.4\textwidth}lp{.4\textwidth}}
-	\rowcolor{darkblue}
-	\bfseries\textcolor{white}{thématique} && \bfseries\textcolor{white}{présentationnelle}\\
+\begin{table}[ht]
+	\centering\small
+\begin{tabular}{p{.3\textwidth}p{.3\textwidth}p{.3\textwidth}}
+	\hline\hline
+	\textbf{thématique} && \textbf{présentationnelle}\\
+	\hline
 	
 	Élaboration
 	
@@ -143,7 +135,7 @@ Comment détecter la cohérence d'un discours ?
 	
 	Résultat non-intentionnel
 	
-	But
+	& But
 	
 	Condition
 	
@@ -158,8 +150,7 @@ Comment détecter la cohérence d'un discours ?
 	Séquence
 	
 	Contraste
-	
-	&&
+	&
 	Motivation
 	
 	Antithèse
@@ -173,12 +164,18 @@ Comment détecter la cohérence d'un discours ?
 	Justification
 	
 	Concession\\
+	\hline\hline
 \end{tabular}
+\caption{text}
+\label{tab:rst-them}
+\end{table}
 
-%\rowcolors{2}{lightblue}{lightyellow}\footnotesize
-\begin{tabular}{p{.3\textwidth}lp{.25\textwidth}lp{.2\textwidth}}
-	\rowcolor{darkblue}
-	\bfseries\textcolor{white}{Sémantique} && \bfseries\textcolor{white}{Pragmatique} && \bfseries\textcolor{white}{Textuelle} \\
+\begin{table}[ht]
+	\centering\small
+\begin{tabular}{p{.3\textwidth}p{.2\textwidth}p{.2\textwidth}p{.15\textwidth}}
+	\hline\hline
+	\textbf{Sémantique} && \textbf{Pragmatique} & \textbf{Textuelle} \\
+	\hline
 	
 	Élaboration
 	
@@ -193,7 +190,7 @@ Comment détecter la cohérence d'un discours ?
 	Cause non-intentionnelle
 	
 	Résultat non-intentionnel
-	
+	&
 	But
 	
 	Condition
@@ -206,7 +203,7 @@ Comment détecter la cohérence d'un discours ?
 	
 	Contraste
 	
-	&&
+	&
 	
 	Motivation
 	
@@ -220,14 +217,18 @@ Comment détecter la cohérence d'un discours ?
 	
 	Concession
 	
-	&&
+	&
 	
 	Arrière-plan
 	
 	Reformulation
 	
 	Résumé\\
+	\hline\hline
 \end{tabular}
+\caption{text}
+\label{tab:rst-niveau}
+\end{table}
 
 \subsection{Penn Discourse TreeBank (PDTB)}
 
@@ -256,11 +257,12 @@ Comment détecter la cohérence d'un discours ?
 	\end{itemize}
 \end{itemize}
 
-\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
+\begin{table}[ht]
+	\centering\small
 	\begin{tabular}{p{.1\textwidth}lp{.8\textwidth}}
-		\rowcolor{darkblue}
-		\bfseries\textcolor{white}{Connective} && \bfseries\textcolor{white}{Sens}\\
+		\hline\hline
+		\textbf{Connective} && \textbf{Sens}\\
+		\hline
 		
 		after && succession (523), succession-reason (50), other (4) \\
 		since && reason (94), succession (78), succession-reason (10), other (2) \\
@@ -280,12 +282,14 @@ Comment détecter la cohérence d'un discours ?
 		and && Conjunction (2543), List (210), result-Conjunction (138), result (38), precedence-Conjunction (30),
 		juxtaposition (11), other(30)\\
 		if && hypothetical (682), general (175), unreal present (122), factual present (73), unreal past (53), expectation (34), implicit assertion (29), relevance (20), other (31)\\
+		\hline\hline
 	\end{tabular}
 	\caption{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
 \end{table}
 
 \begin{figure}
-	\vgraphpage[.7\textheight]{pdtb-sens_.pdf}
+	\centering
+	\hgraphpage[.7\textwidth]{pdtb-sens_.pdf}
 	\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
 \end{figure}
 
@@ -373,7 +377,7 @@ Comment détecter la cohérence d'un discours ?
 	\end{itemize}
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[ht]
 	\hgraphpage{RST_exp_.pdf}
 	
 	\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
@@ -496,22 +500,24 @@ Comment détecter la cohérence d'un discours ?
 	\end{itemize}
 \end{itemize}
 
-\begin{center}
-	\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
+\begin{table}
+	\centering
 	\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
-		\rowcolor{darkblue}
-		& \bfseries\color{white}$\mathbf{C_b(U_n) = C_b(U_{n-1})}$
+		\hline\hline
+		& \bfseries$\mathbf{C_b(U_n) = C_b(U_{n-1})}$
 		
 		OU $\mathbf{C_b(U_n) = NULL}$
-		& \bfseries\color{white}$\mathbf{C_b(U_n) \ne C_b(U_{n-1})}$\\
+		& \bfseries$\mathbf{C_b(U_n) \ne C_b(U_{n-1})}$\\
+		\hline
 		
 		$\mathbf{C_b(U_n) = C_p(U_n)}$ &
 		CONTINUE & Smooth-SHIFT\\
 		
 		$\mathbf{C_b(U_n) \ne C_p(U_n)}$ &
 		RETAIN & Rough-SHIFT\\
+		\hline\hline
 	\end{tabular}
-\end{center}
+\end{table}
 
 \subsection{Entity Grid model}
 
@@ -543,7 +549,8 @@ Comment détecter la cohérence d'un discours ?
 	\item Ex. Dans l'exemple précédent : \expword{P(S\_) = 2/75}
 \end{itemize}
 \begin{figure}
-	\hgraphpage{EGM_doc_vec_exp_.pdf}
+	\centering
+	\hgraphpage[.8\textwidth]{EGM_doc_vec_exp_.pdf}
 	\caption{Un exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
 \end{figure}
 

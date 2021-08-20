@@ -17,303 +17,431 @@
 
 \begin{introduction}[LES LANG\textcolor{white}{U}ES]
 	\lettrine{U}{ne} coréférence est une relation entre deux termes : un substitut et son antécédent.
+	Les prénoms personnels sont un exemple des références. 
+	Dans la plupart des fois, les phrases ne sont totalement claires que lorsqu'on connaisse le sens de leurs références. 
+	La tâche qui nous permet ça est la résolution de la coréférence. 
+	Parmi les tâches qui similaires à celle-ci, on peut citer : l'annotation sémantique et la reconnaissance des entités nommées. 
+	Dans ce chapitre, on va discuter les références dans le contexte linguistique ainsi que la résolution de la coréférence.
 \end{introduction} 
 
-\begin{exampleblock}{Exemple d'une phrase en français}
-	\begin{center}
-		\Large\bfseries
-		%		\begin{enumerate}
-		%			\item Mon chat a attrapé une souris avec ses griffes 
-		%			\item Mon chat a attrapé une souris avec sa queue
-		%			\item Mon chat a attrapé une souris avec un autre chat
-		%		\end{enumerate}
-		La fille a cueilli une fleur. Elle l'a sentie. Elle a une très bonne odeur.
-	\end{center}
-\end{exampleblock}
 
+Prenons l'exemple ``\expword{La fille a cueilli une fleur. Elle l'a sentie. Elle a une très bonne odeur.}" représentant trois phrases consécutives.
+Afin de comprendre le sens de la deuxième phrase, on doit savoir que ``elle" veut dire ``la fille" et ``l'" veut dire ``une fleur". 
+Le pronom ``elle" de la troisième phrase est plus difficile à résoudre ; il référence la fille ou la fleur ?
+En introduisant le sens de la deuxième phrase ``la fille a sentie une fleur", on peut déduire que ``elle" est une référence à ``une fleur".
+Plusieurs tâches peuvent motiver la résolution des coréférences :
 \begin{itemize}
-	\item Qui a senti l'autre : la fille ou la fleur ?
-	\item Qui a une très bonne odeur : la fille ou la fleur ?
+	\item Résumé automatique : dans le cas d'un résumé automatique extractif, on essaye d'extraire les phrases les plus pertinentes. 
+	Supposons le résumé du texte précédent est la troisième phrase.
+	Comme étape de post-traitement, on doit remplacer les références absentes afin de donner plus de sens au résumé.
+	\item Question/Réponse : Dans l'exemple précédent, la réponse de la question ``\expword{Qui a une bonne odeur ?}" n'est pas ``elle" mais plutôt ``la fleur".
+	\item Système de dialogue : Le système doit pouvoir lier les références utilisées par l'utilisateur afin de mener une conversation. 
+	\item Traduction automatique : Il existe des langues qui n'utilisent pas des références dans leurs phrases ; on doit trouver la référence en utilisant le contexte. 
+	Dans ce cas, on peut utiliser cette tâche afin de trouver l'entité référencée.
 \end{itemize}
 
 %===================================================================================
 \section{Références}
 %===================================================================================
 
+Une référence est définit linguistiquement dans Larousse comme : ``\textit{Propriété des signes linguistiques leur permettant de renvoyer à des entités extralinguistiques (objets ou individus appartenant au monde réel ou à un monde imaginaire).}". 
+Elle est connue aussi comme ``référent".
+Dans cette section, on va discuter les formes des références, les manières de référencement et leurs propriétés.
+
 \subsection{Formes des références}
 
-\begin{itemize}
-	\item \optword{Pronoms}
-	\begin{itemize}
-		\item Personnels : \expword{\underline{Karim} est entré. \underline{Il} a commencé le cours.}
-		\item Possessifs : \expword{\underline{Karim} a commencé \underline{son} cours.}
-		\item ...
-	\end{itemize}
-	
-	\item \optword{Syntagmes nominaux}
-	\begin{itemize}
-		\item \expword{J'ai un petit \underline{chat}. \underline{Cet animal} est très méchant.}
-	\end{itemize}
-	
-	\item \optword{Noms propres} 
-	\begin{itemize}
-		\item \expword{L'\underline{école nationale supérieure d'informatique} se situe à Alger. Comme toutes les unniversités algériennes, il faut avoir le BAC pour étudier à l'\underline{ESI}.}
-	\end{itemize}
-	
-	\item \optword{Anaphore zéro}
-	\begin{itemize}
-		\item \expword{\underline{Karim} a présenté et \underline{$ \phi $} expliqué le cours.}
-		\item \expword{\underline{カリムさん}はESIに生きます。\underline{$ \phi $} あそこに教えます。}
-	\end{itemize}
-\end{itemize}
+Les références peuvent être classifier selon les catégories syntaxiques, en plus d'autres critères \cite{2015-schmolz}.
+La forme la plus connue des références est en utilisant les pronoms et surtout les pronoms personnels.
+Un \optword{pronoms} est un mot-outil utilisé afin de se substituer à un nom ou un syntagme nominal. 
+La catégorie la plus connue est le pronom personnel qui serve à représenter les trois types des personne grammaticales : l'énonciateur, le destinataire et la personne absente. 
+Un exemple de ce genre de références :  \expword{\underline{Karim} est entré. \underline{Il} a commencé le cours.}.
+Un pronom possessif est un pronom qui renvoie à un objet possesseur (et des fois à un objet possédé).
+Exemple, \expword{\underline{Karim} a commencé \underline{son} cours.}.
+Résoudre la référence ``son" revient à répondre à la question ``le cours de qui ?". 
+Un pronom démonstratif le nom de ce qu'on veut montrer.
+Exemple, \expword{\underline{Ces livres} sont intéressants. Je vous conseille \underline{celui-ci}.}. 
+Ces trois sont les catégories les plus utilisées des pronoms.
+
+Une autre forme de référence peut être les \optword{syntagmes nominaux}.
+Ils peuvent être utilisés pour référencer des entités.
+Par exemple, \expword{J'ai un petit \underline{chat}. \underline{Cet animal} est très méchant.}.
+Afin de comprendre la deuxième phrase, on doit savoir de quel animal on est en train de parler. 
+On peut trouver des syntagmes nominaux avec un article défini qui sont en réalité des références. 
+Par exemple, \expword{J'ai un petit \underline{chat}. \underline{Le chat} est très méchant.}.
+Contrairement aux pronoms qui sont toujours des références, les syntagmes nominaux peuvent ne pas l'être. 
+Donc, en plus de chercher l'antécédent, on doit aussi décider si c'est une référence ou non.
+
+
+Les \optword{noms propres} ne sont pas considérés comme références, mais ils peuvent être liés avec d'autres noms propres. 
+En général, le nom propre référence un autre nom propre complet (avec plus d'information). 
+On peut citer les abréviations qui peuvent être des références vers sa version complète.
+Un exemple, \expword{L'\underline{école nationale supérieure d'informatique} se situe à Alger. Comme toutes les universités algériennes, il faut avoir le BAC pour étudier à l'\underline{ESI}.}.
+Aussi, on peut trouver ça dans les noms propres qui sont longs ; où la répétition prend plus d'espace. 
+Dans la plupart des langue, on a tendance à utiliser des formes plus contractes des noms propre. 
+Exemple, \expword{\underline{La république algérienne démocratique et populaire} est un pays d'Afrique du nord. \underline{L'Algérie} a une superficie de plus de 2 millions km\textsuperscript{2}}.
+
+Il existe des langues où on omit complètement les références ; ces dernières sont connues par le nom \optword{Anaphore zéro}. 
+Lorsqu'on ne veut pas répéter le même syntagme nominal, on peut l'omettre. 
+Par exemple, \expword{\underline{Karim} a présenté et \underline{$ \phi $} expliqué le cours.}.
+Pour trouver le sujet du verbe ``expliquer", on doit résoudre une référence qui n'existe pas ; marquée ici par ``$ \phi $".
+Dans des langues, comme le japonais, il est plus naturel d'omettre les pronoms personnels dans les phrases. 
+Par exemple, \expword{\underline{カリムさん}はESIに生きます。\underline{$ \phi $} あそこに教えます。}. 
+Ceci peut être traduit, mot par mot, comme : ``\expword{\underline{M. Karim} à l'ESI va. \underline{$ \phi $} là-bas enseigne.}".
+Le pronom ``il" a été omit et peut être détecté en utilisant le contexte.
+
+Il existe des formes plus complexes qui ne référencent pas un objet mmais plutôt une action.
+Une de ces formes est le syntagme verbal (Ex. \expword{Si Mouloud \underline{achète un nouveau vélo}, je \underline{le ferai} aussi.}).
+Dans ce cas, un syntagme verbal ne référence qu'un autre syntagme verbal. 
+On peut utiliser des adverbes comme références (Ex. \expword{Moammed \underline{was too busy}, and \underline{so} was I.}).
+
 
 \subsection{Manière de référencement}
 
+Le référencement peut être classifié selon la position de la référence par rapport le référent en anaphore et cataphore. 
+En terme de nombre des antécédents, on peut avoir un antécédent unique ou des antécédents partagés. 
+Selon la direction de référencement, on peut avoir une référence à direction unique ou deux entités en coréférence.
+
 \begin{itemize}
-	\item \optword{Anaphore}
-	\begin{itemize}
-		\item une référence vers un mot ou un syntagme précédent appelé \keyword{antécédent}.
-		\item Ex. \expword{\underline{Le cours} est très long. \underline{Il} prendra plus de temps.}
-	\end{itemize}
+	\item \optword{Anaphore} : une référence vers un mot ou un syntagme précédent appelé \keyword{antécédent}.
+	En général, ce terme est utilisé même pour les références des éléments qui viennent après. 
+	Mais ici, ce concept a un terme qui lui définit (point suivant).
+	Un anaphore peut être un pronom (Ex. \expword{\underline{Le cours} est très long. \underline{Il} prendra plus de temps.}), un syntagme nominal (Ex. \expword{J'ai rencontré \underline{Fatima}. \underline{Une personne} qui adore assister les autres.}), un zéro anaphore (Ex. \expword{\underline{Le chat} a attrapé la souris et \underline{$ \phi $} l'a mangé.}), etc.
 	
-	\item \optword{Cataphore}
-	\begin{itemize}
-		\item une référence vers un mot ou un syntagme suivant appelé \keyword{postcédent}.
-		\item Ex. \expword{\underline{Il} est très long, \underline{ce cours}!}
-	\end{itemize}
+	\item \optword{Cataphore} : une référence vers un mot ou un syntagme suivant appelé \keyword{postcédent}.
+	Elle est comme l'anaphore, mais le référent vient après la référence. 
+	Exemple d'un pronom (\expword{\underline{Il} est très long, \underline{ce cours}!}), Syntagme nominal (\expword{If you want \underline{a book}, take \underline{the one on the shelf}.}), etc. 
+	Ici, la référence de type zéro anaphore ne peut pas se manifester comme une cataphore. 
+	Puisque dans les langues qui utilisent ce phénomène, on peut comprendre la référence à partir du contexte (ce qu'on a déjà dit).
 	
-	\item \optword{Antécédents partagés}
-	\begin{itemize}
-		\item une référence vers plusieurs mots rt/ou syntagmes
-		\item Ex. \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
-	\end{itemize}
+	\item \optword{Antécédents partagés} : une référence vers plusieurs mots et/ou syntagmes.
+	Que ce soit un anaphore ou un cataphore, une référence peut avoir plusieurs référents dans une seule relation.
+	Exemple, \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
+	Ici, la relation n'est pas binaire ; le référent est une combinaison de plusieurs éléments. 
 	
-	\item \optword{Syntagmes nominaux en coréférence}
-	\begin{itemize}
-		\item deux syntagmes nominaux où chacun est une référence vers l'autre
-		\item Ex. \expword{\underline{Certains de nos collègues} nous ont vraiment soutenu. \underline{Ce genre de personnes} gagne notre gratitude.}
-	\end{itemize}
+	\item \optword{Syntagmes nominaux en coréférence} : deux syntagmes nominaux où chacun est une référence vers l'autre. 
+	Dans ce cas, le premier est un référent antécédent du deuxième et au même temps le deuxième est un référent postcédent du premier.  
+	Exemple, \expword{\underline{Certains de nos collègues} nous ont vraiment soutenu. \underline{Ce genre de personnes} gagne notre gratitude.}
+	
 \end{itemize}
+
+Dans ce qu'on a présenté, le référent existe dans le texte ; elle est textuelle. 
+On appelle ça \optword{Endophore} qui comporte les anaphores et les cataphores. 
+Lorsque la référence est contextuelle (elle n'existe pas dans le texte), on l'appelle \optword{Exophore}.
+L'exophore est un élément qui ne référence aucun objet ou situation ; il veut dire que la référence ne puisse être connue qu'à base du contexte \cite{2014-halliday-hasan}. 
+Dans l'exemple ``\expword{Je vais \underline{là-bas}}", le mot ``là-bas" ne peut être compris si on est avec l'interlocuteur. 
+Cette référence peut être un endophore si la destination a été mentionnée dans le texte. 
+Mais lorsqu'on parle avec quelqu'un, on n'utilise pas que la langue parlée ; on utilise aussi les signaux.
 
 \subsection{Propriétés des relations de coréférence}
 
-\begin{itemize}
-	\item \optword{Nombre} : Singulier, Duel, Pluriel 
-	\begin{itemize}
-		\item \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
-	\end{itemize}
-	
-	\item \optword{Personne} : Première, Deuxième, Troisième
-	\begin{itemize}
-		\item \expword{\underline{Mon frère}\textsubscript{1} et \underline{moi}\textsubscript{2} avons réparé \underline{son vélo}\textsubscript{1} après \underline{le mien}\textsubscript{2}.}
-	\end{itemize}
-	
-	\item \optword{Genre} : Masculin, Féminin, Neutre
-	\begin{itemize}
-		\item \expword{Lorsque la fille a rencontré son \underline{père}, \underline{il} a été content.}
-	\end{itemize}
-	
-	\item \optword{Contraintes de théorie contraignante} : contraintes syntaxiques sur la relation mention-antécédent.
-	\begin{itemize}
-		\item \expword{Janet bought herself a bottle of fish sauce.} [herself = Janet]
-		\item \expword{Janet bought het a bottle of fish sauce.} [her $\ne$ Janet]
-	\end{itemize}
+Afin de détecter le référent, on peut utiliser son agrément avec la référence en utilisant certaines propriétés. 
+Quelques traits grammaticaux doivent être identiques pour les deux : référence et référent. 
+Ici on va discuter les trois traits qui définissent les pronoms : le nombre, la personne et le genre.
+Bien sûr, il existe des langues qui ne supportent pas les trois traits. 
+Selon le \optword{nombre}, une entité peut être en : singulier, duel ou pluriel (il existe d'autres formes). 
+Dans l'exemple ``\expword{\underline{Les oiseaux} sont sur une arbre. \underline{Ils} chantent}", le pronom ``ils" référence ``les oiseux" puisque les deux sont en pluriel. 
+Dans le cas des antécédents partagés, cette propriété va être plus difficile à gérer.
+Par exemple, \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
+Il y a aussi le problème des entités singuliers qui sont sémantiquement en pluriel. 
+Dans leur cas, on peut utiliser le singulier ou le pluriel comme référence. 
+Par exemple, l'entreprise ``\expword{IBM}" peut être référencée par ``elle" ou "ils".
+%
+Selon la \optword{personne}, une entité peut être considérée comme : première, deuxième ou troisième personne. 
+En général, la référence et le référent doivent être en agrément en terme de personne.
+Exemple,  \expword{\underline{Mon frère}\textsubscript{1} et \underline{moi}\textsubscript{2} avons réparé \underline{son vélo}\textsubscript{1} après \underline{le mien}\textsubscript{2}.}.
+Mais, on peut trouver des textes où l'interlocuteur utilise la troisième personne à la place de la deuxième pour avoir un effet comique ou pour attirer l'attention de quelqu'un.
+%
+Selon le \optword{genre}, une entité peut être : masculin, féminin ou neutre. 
+Exemple, \expword{Lorsque la fille a rencontré son \underline{père}, \underline{il} a été content.}
 
-	\item \optword{Récence} : les entités mentionnées plus récemment sont plus probables à être un antécédent
-	\begin{itemize}
-		\item \expword{Le médecin a trouvé une vieille carte. Jim a trouvé \underline{une carte} encore plus ancienne. \underline{Elle} décrivait une île.}
-	\end{itemize}
-	
-	\item \optword{Rôle grammatical} : les sujets sont plus probables que les objets
-	\begin{itemize}
-		\item \expword{\underline{Karim} est allé au restaurant avec son ami. \underline{Il} a demandé un plat de couscous.}
-	\end{itemize}
-	
-	\item \optword{Sémantique du verbe} : la mention suit l'emphase du verbe (celui qui a causé l'évènement)
-	\begin{itemize}
-		\item \expword{\underline{John} telephoned Bill. \underline{He} lost the laptop.}
-		\item \expword{John criticized \underline{Bill}. \underline{He} lost the laptop.}
-	\end{itemize}
-	
-\end{itemize}
+En plus des traits grammaticaux, il existe certaines propriétés qui aident la détection du référent (antécédent).
+Les  \optword{contraintes de théorie contraignante} sont contraintes syntaxiques sur la relation mention-antécédent.
+Un pronom réfléchit se réfère à l'agent de l'action qui est en général un sujet. 
+En français, il peut être conjoint (\expword{me, te, se, nous, vous}) ou disjoint (\expword{moi-même, soi, nous-même, etc.}).
+Un exemple en anglais, \expword{Janet bought herself a bottle of fish sauce.}. 
+Ici, on sait que ``herself" est une référence vers ``Janet" contrairement au pronom ``her" dans l'exemple \expword{Janet bought her a bottle of fish sauce.}.
+La \optword{récence} veut dire que les entités mentionnées plus récemment sont plus probables à être un antécédent.
+Exemple, \expword{Le médecin a trouvé une vieille carte. Jim a trouvé \underline{une carte} encore plus ancienne. \underline{Elle} décrivait une île.}.
+En se basant sur le\optword{rôle grammatical}, les sujets sont plus probables d'être des référents que les objets. 
+Exemple, \expword{\underline{Karim} est allé au restaurant avec son ami. \underline{Il} a demandé un plat de couscous.}
+La \optword{sémantique du verbe} joue un rôle dans la détection du référent. 
+La mention suit l'emphase du verbe ; celui qui a causé l'évènement.
+Dans l'exemple ``\expword{\underline{John} telephoned Bill. \underline{He} lost the laptop.}", l'évènement de téléphone a été causé par le sujet ; donc le pronom ``he" revient sur le sujet. 
+Contrairement à l'exemple ``\expword{John criticized \underline{Bill}. \underline{He} lost the laptop.}" où la critique a été causée par l'objet. 
+Certes, l'agent ici c'est le sujet ; mais c'est l'objet qui a déclenché l'évènement de critique.
 
 %===================================================================================
 \section{Résolution des coréférences}
 %===================================================================================
 
-\hgraphpage{coref-arch.pdf}
+La résolution des coréférences passe par deux étapes : détection de la mention et liaison des coréférences. 
+Tout d'abord, il faut détecter les différentes références dans le texte. 
+Ensuite, il faut lier ces références avec leurs référents.
+Il existe plusieurs modèles de liaison : Mention-Pair, Mention-Rank et Entity-based.
+La résolution des coréférences peut être accomplie en suivant une des deux approches : par règles ou par apprentissage automatique. 
+Dans cette dernière, on peut se baser sur des caractéristiques définies manuellement ou sur les embeddings.
 
-\begin{itemize}
-	\item \optword{Modèles de liaison}
-	\begin{itemize}
-		\item Mention-Pair : deux à deux
-		\item Mention-Rank : un antécédent parmi plusieurs
-		\item Entity-based : détecter des clusters de coréférences
-	\end{itemize}
-	
-	\item \optword{Architecture de coréférences}
-	\begin{itemize}
-		\item Règles
-		\item Caractéristiques définies manuellement
-		\item Réseaux de neurones : embeddings
-	\end{itemize}
-\end{itemize}
 
 \subsection{Détection de mention}
 
+Les mentions sont des entités qui peuvent être des syntagmes nominaux ou des pronoms.
+L'identification des mentions en coréférence est une étape importante dans des tâches de \ac{taln} comme la résolution des coréférences et la reconnaissance des entités nommées.
+Cette étape peut être fait en utilisant un ensemble des règles ; comme dans \cite{2013-lee-al}.
+On commence par marquer les syntagmes nominaux, les pronoms et les entités nommées qui n'ont pas été marqués dans le texte comme des mentions candidates. 
+Ensuite, on sélectionne les mentions par élimination comme suit :
 \begin{itemize}
-	\item \optword{Extraction des entités}
-	\begin{itemize}
-		\item Syntagmes nominaux, pronoms, entités nommées
-	\end{itemize}
+	\item On supprime une mention s'il existe une autre mention plus grande ayant la même tête syntaxique. 
+	Par exemple, on doit supprimer ``\expword{La boite de développement}" si une autre mention plus grande existe ``\expword{La boite de développement située à Alger}". 
 	
-	\item \optword{Filtrage des entités}
-	\begin{itemize}
-		\item Par règles linguistiques. Ex. Dans ``\expword{It is thought that ...}" le pronom ``\expword{It}" n'est pas une référence. Ici, on peut utiliser une liste des verbes cognitifs \expword{believe, think, etc.}
-		\item Par apprentissage automatique : un détecteur des anaphores et un autre pour les antécédents
-	\end{itemize}
+	\item Il faut écarter les entités numériques telles que les pourcentages, l'argent, les cardinaux et les quantités. 
+	Par exemple, \expword{9\%, 100\$, cent neuf}.
 	
-	\item \optword{Formation des mentions}
-	\begin{itemize}
-		\item Regrouper les entités probables ensembles
-	\end{itemize}
+	\item On élimine les mentions qui sont une partie d'une autre (quantificateur + ``of"). 
+	Exemple, \expword{a total of 177 projects, none of them, millions of people}.
+	
+	\item On supprime les pronoms qui ne sont pas utilisés comme référence (``it" pléonastique). 
+	Dans l'exemple ``\expword{It is thought that ...}", le pronom ``it" n'est pas une référence. 
+	On peut détecter un tel pronom en utilisant une liste des verbes cognitifs (Ex. \expword{believe, think, etc.}).
+	
+	\item On élimine des formes adjectivales des nations ou des acronymes nationales (Ex.,
+	\expword{American, U.S., U.K.}).
 \end{itemize}
 
-\subsection{Liaison}
-
-Modèles Mention-Pair
-\begin{itemize}
-	\item Détecter s'il y a une coréférence entre deux pairs d'entités
-	\item Classifieur binaire (coréférence, non coréférence)
-	\item \textbf{Problème} : contradictions. Ex. \expword{Ms Kennedy $ \leftarrow $ Kennedy, Kennedy $ \leftarrow $ He}
-\end{itemize}
-\begin{figure}
+Une autre méthode pour détecter si une mention est une coréférence ou non est en utilisant l'apprentissage automatique. 
+Dans \cite{2013-uryupina-moschitti}, on commence par la génération de l'arbre syntaxique d'une phrase. 
+On parcourt les nœuds et on classe les syntagmes nominaux comme coréférence ou non en utilisant un SVM. 
+Les caractéristiques utilisées sont les propriétés présentées précédemment comme le nombre, le genre, etc.
+Autres systèmes ont été développés, mais ils sont liés à une tâche spécifique et ne peuvent pas être utilisés séparément. 
+La figure \ref{fig:det-mention-yu} représente trois architectures de détection des mentions proposées par \cite{2020-yu-al}. 
+Étant donné un document $D$, on commence par considéré toutes les mentions possibles $x^*_i$ marquées par le mot du début $s_i$ et le mot de fin $e_i$. 
+Dans le système (c), on utilise un modèle \keyword[B]{BERT} pré-entraîné pour générer les représentations des mots $x^*_t$. 
+Pour chaque mention possible de cette phrase, on prend les représentations du début $x^*_{si}$ et de fin $x^*_{ei}$ et les concaténer pour avoir la représentation du mention. 
+Cette dernière est utilisée comme entrée à un réseau de neurones à propagation avant (FFNN) afin de classer le mention comme coréférence ou non. 
+Dans le système (b), on utilise un modèle \keyword[E]{ELMo} pré-entraîné afin de générer les représentations des mots comme dans le système (c). 
+Le code de chaque mot est une concaténation des couches cachées du modèle.
+On utilise deux réseaux de neurones à propagation avant (FFNN) afin d'encoder le début et la fin sous forme de deux vecteurs. 
+Ces derniers sont utilisés comme entrée d'un troisième FFNN afin de classer le mention comme coréférence ou non. 
+Le système (a) est un peut plus complexe : pour chaque mot, il utilise une représentation en utilisant \keyword[G]{GloVe}, une autre en utilisant \keyword[E]{ELMo} et une troisième basée sur des caractères en utilisant les CNNs. 
+On applique une attention sur $\{x^*_{si}\ldots x^*_{ei}\}$ pour avoir une représentation de la mention $h^*_i$. 
+Comme les deux autres systèmes, on utilise un FFNN pour classer la mention comme coréférence ou non. 
+Comme entrée, on utilise la représentation du mot du début $x^*_{si}$, du mot de fin $x^*_{ei}$, de la mention $h^*_i$ et le embedding de la taille de la mention $\phi(i)$.
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{mention-pair-exp_.pdf}
+	\hgraphpage[.85\textwidth]{mention-detection-arch_.pdf}
+	\caption{Trois architectures pour la détection des mentions \cite{2020-yu-al}}
+	\label{fig:det-mention-yu}
+\end{figure}
+
+\subsection{Liaison des coréférences}
+
+La liaison des coréférences consiste à lier une référence à son référent. 
+En général, cette opération est appelée regroupement des mentions puisqu'on regroupe toutes les mentions qui référencent la même entité ensemble. 
+Pour ce faire, il ya deux classes des modèles : modèles basés sur les mentions et les modèles basés sur les entités. 
+Dans ce qui suit, on va considéré les coréférences comme des anaphores : mention et antécédent.
+
+\subsubsection{Modèles Mention-Pair}
+
+Dans ce modèle, on entraîne un modèle de classement binaire qui prend deux mentions $m_i$ et $m_j$ et rendre une probabilité que $m_i$ est un antécédent de $m_j$ : $P(Coref|m_i, m_j)$. 
+Les caractéristiques utilisées peuvent être les propriétés des deux mentions comme la personne, le genre, le nombre, etc.
+Afin de détecter les coréférences, le modèle est appliqué deux à deux.
+Dans la figure \ref{fig:mention-pair-exp}, le modèle doit estimer une grande probabilité P(coref| "Victoria Chen", "she") et une petite probabilité P(coref| "Megabucks Banking", "she").
+
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.75\textwidth]{mention-pair-exp_.pdf}
 	\caption{Exemple d'un modèle Mention-Pair \cite{2019-jurafsky-martin}}
+	\label{fig:mention-pair-exp}
 \end{figure}
 
-Modèles Mention-Rank
-\begin{itemize}
-	\item Parmi les mentions précédentes d'une entité, décider quel est l'antécédent
-	\item $ \hat{a} = \arg\max\limits_{a_i \in \{\epsilon, a_1, \ldots, a_{n-1}\}} P(a_i|a_n) $
-	\item $ \epsilon $ : veut dire, il n'y a pas d'antécédent
-\end{itemize}
-\begin{figure}
+Afin d'entraîner le modèle, on utilise toutes les combinaisons binaires possibles.
+Le problème est qu'on va avoir plusieurs exemples négatifs ; un dataset déséquilibré. 
+Une solution est de ne prendre en considération que les mentions négatives qui se trouvent entre deux mentions positives.
+
+\subsubsection{Modèles Mention-Rank}
+
+Ce modèle est similaire avec le modèle Mention-Pair dans le fait qu'on compare les mentions deux à deux. 
+Mais, la différence est que ce modèle apprenne à classer les antécédents ; il apprend une sorte d'ordre. 
+Dans ce cas, on utilise des différentes caractéristiques sur la référence $m_i$ et l'antécédent $m_j$ afin d'estimer une probabilité conditionnelle $P(m_j|m_i)$.
+Donc, la tâche consiste à maximiser la probabilité qu'une mention est un antécédent $\hat{a}$ comme indiqué dans l'équation \ref{eq:mention-rank}
+\begin{equation}\label{eq:mention-rank}
+\hat{a} = \arg\max_{j \in \{\epsilon, 1, \ldots, (i-1)\}} P(w_j|w_i) 
+\end{equation}
+$\epsilon$ veut dire la mention n'a pas d'antécédent. 
+La figure \ref{fig:mention-rank-exp} représente un exemple de l'annotation Mention-Rank.
+
+\begin{figure}[ht]
 	\centering
-	\hgraphpage{mention-rank-exp_.pdf}
+	\hgraphpage[.8\textwidth]{mention-rank-exp_.pdf}
 	\caption{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
+	\label{fig:mention-rank-exp}
 \end{figure}
 
-Modèles Entity-based
-\begin{itemize}
-	\item Appelés aussi : modèles cluster-ranking
-	\item \textbf{Entrée} : deux clusters des mentions
-	\item Vérification si les mentions sont compatibles
-	\item Estimation si un cluster est un antécédent de l'autre comme dans Mention-Rank
-	\item Si les cluster représentent les mêmes mentions, on les fusionne
-	\item \textbf{Sortie} : Un ensemble des clusters
-\end{itemize}
+Dans l'étape d'entraînement, on doit choisir un seul exemple positif parmi ceux possibles. 
+Une approche consiste à prendre la mention la plus proche.
+Une fois, un antécédent est détecté, le reste des antécédents est détecté en utilisant la transitivité. 
 
-\subsection{Évaluation}
+\subsubsection{Modèles Entity-based}
 
-\begin{itemize}
-	\item \keyword{MUC} : \optword{Message Understanding Conference}
-	\begin{itemize}
-		\item Métrique basée sur les liens (link-based metric)
-		\item Nombre des liens binaires communs entre la référence et le système
-	\end{itemize}
-	\item \keyword{B\textsuperscript{3}}
-	\begin{itemize}
-		\item Métrique basée sur les mentions (mention-based metric)
-		\item R/P globale est calculé en fonction de R/P des mentions individuelles
-	\end{itemize}
-	\item \keyword{CEAF} : \optword{Constrained entity-alignment F-Measure}
-	\begin{itemize}
-		\item mention-based OU entity-based (2 versions selon la similarité utilisée)
-		\item Une mention du système est alignée avec une seule de référence
-	\end{itemize}
-	\item \keyword{BLANC} 
-	\begin{itemize}
-		\item Métrique basée sur les liens (link-based metric)
-		\item R/P globale est la moyenne de R/P des liens de coréférences et ceux des non coréférences
-	\end{itemize}
-	\item \keyword{LEA} : \optword{Link based entity aware}
-	\begin{itemize}
-		\item La taille de l'entité comme mesure d'importance
-		\item Les liaison de coréférence résolues sont évaluées
-	\end{itemize}
-\end{itemize}
+Le problème des modèles basés sur la mention est qu'ils comparent les mentions deux à deux ; ils ne prennent pas la relation avec des autres coréférences en considération.
+Par exemple, \expword{Ms Kennedy $ \leftarrow $ Kennedy, Kennedy $ \leftarrow $ He}.
+Dans ces modèles, la coréférence est considéré comme un problème de classement ; or elle doit être considéré comme un problème de regroupement (clustering). 
+Une des méthodes est d'appliquer Mention-Rank sur des clusters et pas sur des entités. 
+On commence par la création des clusters d'une seule mention. 
+Étant donné deux clusters des mentions, on vérifie si les deux sont compatibles en utilisant un algorithme d'apprentissage.
+Si les clusters sont compatibles, on les fusionne et on applique ça jusqu'à ce que les clusters restants ne sont plus compatibles.
+Une autre méthode est de préparer tous les clusters possibles et extraire des caractéristiques du cluster.
+Ensuite, entrainer un modèle (en général, réseau de neurones) afin de décider si c'est un cluster valable ou non.
+
+\section{Évaluation}
+
+Il existe plusieurs métriques pour évaluer la résplution des coréférences \cite{2016-moosavi-strube}.
+Dans \optword{MUC} (Message Understanding Conference), l'évaluation est basée sur le nombre des liens binaires communs entre la référence et le système.
+Le corpus de test contient un texte et un ensemble de tous les liens binaires possibles. 
+Cette métrique favorise les systèmes avec des chaînes larges. 
+Aussi, elle ne prend pas en considération les singletons (les mentions sans antécédent).
+
+\optword{B\textsuperscript{3}} est une métrique basée sur les mentions (mention-based metric). 
+Le rappel et la précision globaux sont calculés en terme des rappels et précisions locaux par rapport à une chaîne de mentions. 
+Supposons nous avons un nombre des clusters de mentions destinataires (hypothèse), on annote $H_i$ le cluster contenant la mention $m_i$. 
+Donc, le cluster contenant la mention $m_i$ selon le système est annoté $S_i$. 
+Si nous avons $N$ mentions, le rappel peut être calculé en utilisant le nombre des mentions en commun comme indiqué dans l'équation \ref{eq:b3-r} où $w_i$ est un poids attribué à la mention $w_i$. 
+\begin{equation}\label{eq:b3-r}
+R = \sum_{i=1}^{N} w_i \frac{|H_i \bigcap S_i|}{|H_i|}
+\end{equation}
+
+\optword{CEAF} (Constrained entity-alignment F-Measure) utilise une mention une seule fois lors du calcul. 
+Pour ce faire, il aligne une entité (cluster de mentions) $S_i$ du système avec une autre entité $H_j$ d'hypothèse (annotation manuelle) en utilisant une mesure de similarité. 
+Deux mesures de similarité ont été utilisées dans les équations \ref{eq:ceaf1}.
+\begin{equation}\label{eq:ceaf1}
+\phi_1(H_i, S_j) = |H_i \cap S_i | \quad \phi_2(H_i, S_j) = \frac{2|H_i \cap S_i | }{|H_i| + |S_j|}
+\end{equation}
+Pour calculer le rappel, on cherche les clusters qui sont les plus similaires selon une fonction de similarité $\phi$ (voir l'équation \ref{eq:ceaf-r}).
+\begin{equation}\label{eq:ceaf-r}
+R = \frac{\max_{i,j} \phi(H_i, S_j)}{\sum_i \phi(H_i, H_i)}
+\end{equation}
+
+
+\optword{BLANC} (BiLateral assessment of noun-phrase coreference) est une métrique basée sur les liens (link-based metric). 
+Le rappel (précision) globale est la moyenne des rappels (précisions) des liens de coréférences et ceux des non coréférences. 
+Les liens de coréférence sont représentées comme un tuple (référence, référent).
+Donc, étant donné un nombre $N$ de mentions, on aura $N (N+1)/2$ liens de coréférences possibles. 
+Le tableau \ref{tab:blanc-confusion} représente la matrice de confusion de BLANC où ``w" veut dire ``wrong", ``r" veut dire ``right", ``c" veut dire ``coreference" et ``n" veut dire ``Non-coreference".
+Dans ce das, le rappel est calculé selon l'équation \ref{eq:blanc-r}.
+\begin{equation}\label{eq:blanc-r}
+R_c = \frac{rc}{rc+wn},\quad R_n = \frac{rn}{rn+wc},\quad R = \frac{R_c + R_n}{2}
+\end{equation}
+
+\begin{table}[ht]
+	\centering 
+	\begin{tabular}{llll}
+%		\hline\hline
+		\cline{3-4}\noalign{\vskip\doublerulesep
+			\vskip-\arrayrulewidth}\cline{3-4}
+		&& \multicolumn{2}{c}{Système} \\
+		\cline{3-4}
+	    && Coréf & Non-Coréf  \\
+	    \cline{1-2}\noalign{\vskip\doublerulesep
+	    	\vskip-\arrayrulewidth}\hline
+	    
+	\multirow{2}{*}{Hypothèse} & Coréf & rc & wn \\
+	                       & Non-Coréf & wc & rn \\
+	   \hline\hline
+	\end{tabular}
+	\caption{La matrice de confusion de BLANC \cite{2011-recasens-hovy}}
+	\label{tab:blanc-confusion}
+\end{table}
+
+\optword{LEA} (Link based entity aware) vise à représenter le rappel et la précision en terme de l'importance d'une entité et comment elle a été résolue. 
+La taille d'une entité (nombre des mentions dans le cluster) est considéré comme mesure de son importance. 
+La proportion du nombre des liens des mentions partagées entre l'hypothèse et le système par rapport le nombre des liens des mentions de l'hypothèse est considérée comme mesure de qualité de résolution. 
+Donc, le rappel sera calculé comme indiqué dans l'équation \ref{eq:lea-r} où $link$ compte le nombre des liens dans un cluster.
+\begin{equation}\label{eq:lea-r}
+R = \frac{\sum_{H_i} (|H_i| \times \sum_{S_j} \frac{link(H_i \bigcup S_j)}{H_i})}{\sum_{H_k} link(H_k)}
+\end{equation}
 
 %===================================================================================
 \section{Tâches connexes}
 %===================================================================================
 
-\begin{itemize}
-	\item Tâches utilisées dans la détection de la coréférence
-	\begin{itemize}
-		\item Tâches de prétraitement (chapitre 2)
-		\item Étiquetage morpho-syntaxique (chapitre 4)
-		\item Reconnaissance des entités nommées
-	\end{itemize}
-	\item Tâches similaires à la détection de la coréférence
-	\begin{itemize}
-		\item Annotation sémantique (Entity linking)
-		\item Attribution de la citation : trouver qui a dit/écrit un discours
-	\end{itemize}
-\end{itemize}
+Afin d'accomplir la tâche de détection de la coréférence, il existe des tâches de prétraitement. 
+La tâche la plus utilisée dans \ac{taln} est celle de segmentation du texte, filtrage, etc. vue dans le chapitre 2. 
+Une autre tâche utile pour détecter les coréférence est l'étiquetage morpho-syntaxique vue dans le chapitre 4.
+L'analyse syntaxique (chapitre 5) peut être utilisée pour détecter les syntagmes nominaux. 
+Les entités nommées sont un critère important dans la résolution des coréférences.
+La tâche de reconnaissance des entités nommées sera discutée brièvement dans cette section.
+
+Il existe des tâches similaires à celle de résolution des coréférences qui vise à chercher un référent d'une référence dans un texte donné. 
+Il existe des références qui ont besoin de plus de contexte afin de comprendre le texte (niveau pragmatique). 
+Pour ce faire, il existe une tâche appelée annotation sémantique (Entity linking) qui vise à lier des mentions avec des entités d'une base de connaissance. 
+Une autre tâche moins similaire est l'attribution de la citation qui vise à trouver qui a dit/écrit un discours. 
+c'est une sorte de classification où les classes est une liste des auteurs/personnes.
+
 
 \subsection{Annotation sémantique (Entity linking)}
 
+L'objectif de l'annotation sémantique est d'associer une mention dans un texte à une représentation d'une entité dans une base de connaissances structurée. 
+Cette tâche est motivée par le fait d'avoir une connaissance approfondie sur les entités du texte dans le monde réel (contexte, niveau pragmatique).
+Cette tâche est liée à la base de connaissance utilisée ; lorsqu'on utilise Wikipédia comme base de connaissance, on appelle cette tâche \keyword{Wikification}.
+
+Avant d'appliquer cette étape, on doit détecter les mentions dans le texte (comme dans la résolution des coréférences).
+Afin d'annoter une mention du texte, on suit deux étapes :
 \begin{itemize}
-	\item Associer une mention dans un texte à une représentation d'une entité dans une base de connaissances structurée
-	\item utile pour avoir une connaissance approfondie sur les entités du texte dans le monde réel
-	\item \keyword{Wikification} : relier une mention à une page de Wikipédia
-	\item Les étapes de l'annotation sémantique : 
-	\begin{itemize}
-		\item \optword{Détection de la mention} : détecter l'ensemble des entités d'un base de connaissance liées à une mention en utilisant des requêtes.
-		\item \optword{Désambigüisation de la mention} : trouver l'entité la plus probable en utilisant l'apprentissage automatique
-	\end{itemize}
+	\item \optword{Détection de la mention} : détecter l'ensemble des entités d'un base de connaissance liées à une mention en utilisant des requêtes.
+	Vu que la base est structurée, la recherche sera facile ; dans Wikipedia, on utilise les titres.
+	\item \optword{Désambigüisation de la mention} : trouver l'entité la plus probable en utilisant l'apprentissage automatique. 
+	Comme caractéristiques, on prend celles de la mention et celles de l'entité.
 \end{itemize}
 
 \subsection{Reconnaissance des entités nommées}
 
+Une entité nommée peut être une personne, une place, une organisation, une quantité, etc.
+La tâche de reconnaissance des entités nommées consiste à localiser et classer les entités nommées dans un texte. 
+En anglais, elle est appelée Named-entity recognition (NER). 
+La localisation se fait en utilisant la détection de mention vue précédemment dans ce chapitre.
+Afin de classer les mentions, on peut utiliser plusieurs approches :
 \begin{itemize}
-	\item localiser et classer les entités nommées dans un texte
-	\item \keyword{entité nommée} : personnes, places, organisations, quantités, etc.
-	\item une sous tâche de l'extraction des données
-	\item \textbf{En anglais} : Named-entity recognition (NER)
-	\item Techniques de reconnaissance 
-	\begin{itemize}
-		\item \optword{Règles} : utiliser des règles et des listes de noms pour chercher les entités et détecter leurs types
-		\item \optword{Apprentissage avec caractéristiques} : embeddins du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
-		\item \optword{Étiquetage de séquences} : classer les mots en entités en les traitant comme une séquence. Une entité peut avoir plusieurs mots qui commence par \keyword{B} (Begin) suivi par \keyword{I} (Inside). Les mots sans classe ont le tag \keyword{O} (Outside). 
-		
-		\expword{\scriptsize
-			$ \underbrace{Google}_{B-ORG} $ 
-			$ \underbrace{LLC}_{I-ORG} $ 
-			$ \underbrace{est}_{O} $ 
-			$ \underbrace{fond\text{\textit{é}}e}_{O} $ 
-			$ \underbrace{dans}_{O} $ 
-			$ \underbrace{la}_{O} $ 
-			$ \underbrace{Silicon}_{B-LOC} $ 
-			$ \underbrace{Valley}_{B-LOC} $ 
-			$ \underbrace{par}_{O} $ 
-			$ \underbrace{Larry}_{B-PER} $ 
-			$ \underbrace{Page}_{I-PER} $ 
-			$ \underbrace{et}_{O} $ 
-			$ \underbrace{Sergey}_{B-PER} $ 
-			$ \underbrace{Brin}_{I-PER} $
-		}
-	\end{itemize}
+	\item \optword{Règles} : utiliser des règles et des listes de noms pour chercher les entités et détecter leurs types.
+	\item \optword{Apprentissage avec caractéristiques} : embeddins du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
+	\item \optword{Étiquetage de séquences} : classer les mots en entités en les traitant comme une séquence en utilisant \keyword[I]{IOB} vue dans le chapitre 4.
+	
+	\expword{\scriptsize
+		$ \underbrace{Google}_{B-ORG} $ 
+		$ \underbrace{LLC}_{I-ORG} $ 
+		$ \underbrace{est}_{O} $ 
+		$ \underbrace{fond\text{\textit{é}}e}_{O} $ 
+		$ \underbrace{dans}_{O} $ 
+		$ \underbrace{la}_{O} $ 
+		$ \underbrace{Silicon}_{B-LOC} $ 
+		$ \underbrace{Valley}_{B-LOC} $ 
+		$ \underbrace{par}_{O} $ 
+		$ \underbrace{Larry}_{B-PER} $ 
+		$ \underbrace{Page}_{I-PER} $ 
+		$ \underbrace{et}_{O} $ 
+		$ \underbrace{Sergey}_{B-PER} $ 
+		$ \underbrace{Brin}_{I-PER} $
+	}
 \end{itemize}
 
 
 
 \begin{discussion}
+Beaucoup de langues considèrent la répétition comme une forme non naturelle de les utiliser. 
+Personnellement, je ne sait pas s'il existe des langues où on doit répéter les entités dans chaque phrase. 
+L'être humain a la capacité de détecter le référent (celui qui a été référencé) facilement. 
+Bien sûr, il existe des cas où les références sont tellement ambigües un être humain ne peut pas les résoudre. 
+Il sera vraiment bénéfique si une machine peut exécuter cette tâche. 
+Puisque les pronoms ne sont pas les seules références, cette tâche doit passer par une étape de détection des mentions. 
 
+Deux approches sont utilisées pour la liaison des coréférences : les modèles basés sur les mentions et les modèles basés sur les entités. 
+En se basant sur les mentions, on essaye de trouver les relations deux à deux.
+Cela peut causer un problème d'incompatibilité entre les mentions d'une chaîne. 
+Les modèles basés sur les entités cherchent à regrouper les mentions compatibles ensembles. 
+C'est une tâche de regroupement (clustering). 
+Malgré cette dernière peut éviter le problème d'incompatibilité, l'approche basées sur les mentions est plus utilisée vu la facilité de son implémentation. 
 
-
+Cette tâche est une sorte de classification, donc on peut utiliser le rappel, la précision et le F-score pour l'évaluer. 
+Mais, vu que le problème peut être vu comme des liens ou des entités, ces mesures peuvent être formulés de plusieurs façons. 
+Plusieurs mesures ont été présentées dans ce chapitre, ainsi que des tâches similaires à la  résolution des coréférences.
 \end{discussion}
 
 %=====================================================================
