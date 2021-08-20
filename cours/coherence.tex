@@ -55,26 +55,13 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 
 \subsection{Rhetorical Structure Theory (RST)}
 
-\begin{itemize}
-	\item Structure  
-	\begin{itemize}
-		\item \optword{Noyau (N)} :  unité indépendante, peut être interprétée indépendamment des autres unités du texte
-		\item \optword{Satellite (S)} :  unité dépendante, ne peut être interprétée qu'en utilisant le noyau
-	\end{itemize}
-	\item Acteurs
-	\begin{itemize}
-		\item \optword{Lecteur (L)} :  qui a lit le script
-		\item \optword{Scripteur (Sc)} :  qui a rédigé le script
-	\end{itemize}
-	\item Définition d'une relation
-	\begin{itemize}
-		\item Des restrictions sur le Noyau 
-		\item Des restrictions sur le Satellite 
-		\item Des restrictions sur la combinaison du Noyau et du Satellite 
-		\item L'effet produit.
-	\end{itemize}
-\end{itemize}
-
+RST modélise le discours sous formes des relations entre deux unités (des phrases ou parties des phrases) : \optword{Noyau (N)} et \optword{Satellite (S)}. 
+Le noyau est une unité indépendante, peut être interprétée indépendamment des autres unités du texte.
+Le satellite est une unité dépendante, ne peut être interprétée qu'en utilisant le noyau. 
+Chaque relation de cohérence est définie en se basant sur deux acteurs : \optword{Lecteur (L)} ; qui a lit le script et \optword{Scripteur (S)} ;  qui a rédigé le script. 
+Elle fournit des restrictions sur le noyau, sur le satellite et/ou sur les deux. 
+L'effet de la relation peut prendre lieu dans un ou les deux acteurs. 
+Voici quelques définitions des relations RST \cite{2006-Cornish} :
 \begin{itemize}
 	\item \optword{Élaboration} :  S donne des informations additionnelles sur la situation présentée dans N
 	\begin{itemize}
@@ -113,6 +100,10 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 	\end{itemize}
 \end{itemize}
 
+Les relations RST peuvent être classifiées selon la distinction thématique/présentationnelle (voir le tableau \ref{tab:rst-class-lect}). 
+Une relation thématique vise que le lecteur identifie la relation en question.
+Elle est utilisée afin d'exprimer certains aspects de la thématique. 
+Par contre, une  relation présentationnelle vise à augmenter une disposition chez le lecteur, comme le désir d'agir ou le degré de son attitude positive envers, ou croyance en, ou encore acceptation de la proposition noyau. 
 
 \begin{table}[ht]
 	\centering\small
@@ -166,9 +157,13 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 	Concession\\
 	\hline\hline
 \end{tabular}
-\caption{text}
-\label{tab:rst-them}
+\caption{Classification des relations RST selon le point de vu lecteur \cite{2006-Cornish}}
+\label{tab:rst-class-lect}
 \end{table}
+
+Les relations de cohérence peuvent être classifiées selon le niveau de traitement du langage (voir le tableau \ref{tab:rst-niveau}).
+La catégorie ``thématique" correspondait à la catégorie ``sémantique" dans cette classification. 
+La catégorie ``présentationnelle" peut être divisée sur deux catégories : ``pragmatique" et ``textuelle".  
 
 \begin{table}[ht]
 	\centering\small
@@ -226,35 +221,32 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 	Résumé\\
 	\hline\hline
 \end{tabular}
-\caption{text}
+\caption{Classification des relations RST selon les niveaux de traitement du langage \cite{2006-Cornish}}
 \label{tab:rst-niveau}
 \end{table}
 
 \subsection{Penn Discourse TreeBank (PDTB)}
 
+\ac{pdtb} est un dataset annoté avec un autre modèle de cohérence. 
+Dans ce modèle, on ne s'intéresse pas par la structure en arbre ; on s'intéresse seulement par les relations binaires. 
+Les unités en relation sont annotées comme arguments : ARG1 et ARG2. 
+L'unité marquée par ARG2 est annotée par un connective du discours (explicitement ou implicitement). 
+Les connectives du discours peuvent être (voir le tableau \ref{tab:pdtb-connect} pour des statistiques sur les connectives et leurs sens) :
 \begin{itemize}
-	\item Annotation des connectives de discours
-	\begin{itemize}
-		\item \optword{Conjonctions de subordination} :  
-		temporelle (Ex., \expword{'when', 'as soon as'}), 
-		causale (Ex., \expword{'because'}), 
-		concessive (Ex., \expword{'although', 'even though'}), 
-		objectif (Ex.,\expword{'so that', 'in order that'}) et 
-		conditionnelle (Ex., \expword{'if', 'unless'}).
-		
-		\item \optword{Conjonctions de coordination} : \expword{'and', 'but', 'or'}
-		
-		\item \optword{Conjonctives adverbiales} : des adverbes qui expriment une relation de discours entre des évenements ou des états. Ex., \expword{'however', 'therefore', 'then', etc.}
-		Des syntagmes prépositionnels sont inclus aussi dans cette classe. Ex. \expword{'as a result',
-			'in addition', 'in fact', etc. }
-		
-		\item \optword{Connectives implicites} :  identifiées entre deux phrases adjacentes qui ne sont pas reliées par des connectives explicites.
-	\end{itemize}
-	\item Annotation des arguments 
-	\begin{itemize}
-		\item ARG2 : c'est la clause où la connective est liée (cas explicite)
-		\item ARG1 : l'autre clause
-	\end{itemize}
+	\item \optword{Conjonctions de subordination} :  
+	temporelle (Ex., \expword{'when', 'as soon as'}), 
+	causale (Ex., \expword{'because'}), 
+	concessive (Ex., \expword{'although', 'even though'}), 
+	objectif (Ex.,\expword{'so that', 'in order that'}) et 
+	conditionnelle (Ex., \expword{'if', 'unless'}).
+	
+	\item \optword{Conjonctions de coordination} : \expword{'and', 'but', 'or'}
+	
+	\item \optword{Conjonctives adverbiales} : des adverbes qui expriment une relation de discours entre des évenements ou des états. Ex., \expword{'however', 'therefore', 'then', etc.}
+	Des syntagmes prépositionnels sont inclus aussi dans cette classe. Ex. \expword{'as a result',
+		'in addition', 'in fact', etc. }
+	
+	\item \optword{Connectives implicites} :  identifiées entre deux phrases adjacentes qui ne sont pas reliées par des connectives explicites.
 \end{itemize}
 
 \begin{table}[ht]
@@ -285,214 +277,294 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 		\hline\hline
 	\end{tabular}
 	\caption{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
+	\label{tab:pdtb-connect}
 \end{table}
 
-\begin{figure}
+Les relations \ac{pdtb} sont divisées en quatre familles : temporelle, comparaison, contingence et extension. 
+Chaque relation appartient à une famille d'un façon hiérarchique comme indiqué dans la figure \ref{fig:pdtb-rel}. 
+Par exemple, la relation de succession indiquée par des connectives comme ``after" est une relation synchrone qui est à son tour une relation temporelle.
+
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.7\textwidth]{pdtb-sens_.pdf}
-	\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
+\begin{minipage}{.3\textwidth}
+	\scriptsize\bfseries
+\begin{itemize}
+	\item CONTINGENCY
+	\begin{itemize}
+		\item Cause
+		\begin{itemize}
+			\item Reason
+			\item Result
+		\end{itemize}
+		\item Pragmatic Cause
+		\begin{itemize}
+			\item Justification
+		\end{itemize}
+		\item Condition
+		\begin{itemize}
+			\item Hypothetical
+			\item General
+			\item Unreal Present
+			\item Unreal Past
+			\item Factual Present
+			\item Factual Past
+		\end{itemize}
+		\item Pragmatic Condition
+		\begin{itemize}
+			\item Relevance
+			\item Implicit Assertion
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\scriptsize\bfseries
+\begin{itemize}
+	\item TEMPORAL
+	\begin{itemize}
+		\item Asynchronous
+		\item Synchronous
+		\begin{itemize}
+			\item Precedence
+			\item Succession
+		\end{itemize}
+	\end{itemize}
+	\item COMPARISON
+	\begin{itemize}
+		\item Contrast
+		\begin{itemize}
+			\item Juxtaposition 
+			\item Opposition
+		\end{itemize}
+		\item Pragmatic Contrast
+		\item Concession
+		\begin{itemize}
+			\item Expectation
+			\item Contra-expectation
+		\end{itemize}
+		\item Pragmatic Concession
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	\scriptsize\bfseries
+	\begin{itemize}
+		\item EXPANSION
+		\begin{itemize}
+			\item Conjunction
+			\item Instantiation
+			\item Restatement
+			\begin{itemize}
+				\item Specification
+				\item Equivalence
+				\item Generalization
+			\end{itemize}
+			\item Alternative
+			\begin{itemize}
+				\item Conjunction
+				\item Disjunction
+				\item Chosen Alternative
+			\end{itemize}
+			\item Exception
+			\item List
+		\end{itemize}
+	\end{itemize}
+\end{minipage}\vspace{-0.5cm}
+	\caption{Hiérarchie des sens dans PDTB \cite{2008-prasad-al}}
+	\label{fig:pdtb-rel}
 \end{figure}
+
+
+
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.6\textwidth]{pdtb-sens_.pdf}
+%	\caption{Hiérarchie des sens dans PDTB \cite{2008-prasad-al}}
+%	\label{fig:pdtb-rel}
+%\end{figure}
+
 
 
 %===================================================================================
 \section{Analyse basée structure de discours}
 %===================================================================================
 
-\begin{itemize}
-	\item Un discours est cohérent s'il existe des relations entre ses parties
-	\item La structure
-	\begin{itemize}
-		\item Un arbre de relations : RST
-		\item Une relation binaire entre chaque deux parties : PDTB
-	\end{itemize}
-\end{itemize}
+Un discours est cohérent s'il existe des relations entre ses parties. 
+Analyser un discours veut dire chercher une structure du texte.
+Dans le cas de \ac{rst}, cette structure est un arbre indiquant les relations de cohérence entre les différentes parties. 
+Contrairement à \ac{rst}, \ac{pdtb} ne génère pas un arbre.
+Plutôt, c'est un ensemble des relations binaires entre les parties du texte ; surtout les phrases consécutives. 
+
 
 \subsection{Analyse RST}
 
-\begin{itemize}
-	\item Construire un arbre de relations de discours
-	\item Deux étapes : 
-	\begin{enumerate}
-		\item Détection des unités élémentaires de discours
-		\item Classification des relations
-	\end{enumerate}
-\end{itemize}
+L'analyse \ac{rst} consiste à construire un arbre de relations de cohérence entre les parties d'un texte. 
+Cette tâche passe par deux étapes : détection des unités élémentaires de discours et classification des relations. 
+La figure \ref{fig:rst-exp} représente une analyse \ac{rst} d'un texte.
+On remarque que l'unité n'est pas toujours une phrase, mais elle peut être une partie d'une phrase (une clause).
 
-\begin{center}
-	\hgraphpage[0.5\textwidth]{RST-arbre.pdf}
-\end{center}
-
-\begin{itemize}
-	\item Elementary discourse units (EDUs)
-	\item Une phrase peut avoir plusieurs UEDs 
-	\item Ex. \expword{[Mr. Rambo says]\textsubscript{e1} [that a 3.2-acre property]\textsubscript{e2} [overlooking the San Fernando Valley]\textsubscript{e3} [is priced at \$4 million]\textsubscript{e4} [because the late actor Erroll Flynn once lived there.]\textsubscript{e5}}
-	\item Méthodes 
-	\begin{itemize}
-		\item \optword{Par règles}
-		\begin{itemize}
-			\item arbre syntaxique
-			\item indices de surface : ponctuation et des marqueurs lexicaux comme les connectives
-		\end{itemize}
-		\item Statistiques 
-		\begin{itemize}
-			\item \optword{Par caractéristiques} : utilisation des informations syntaxiques et des indices de surface pour apprendre les limites des UEDs
-			\item \optword{Par embeddings} : texte comme séquence. Ex., \url{https://github.com/PKU-TANGENT/NeuralEDUSeg}
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.7\textwidth]{EDU_seg_.pdf}
-	\caption{Segmentation en UEDs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+	\hgraphpage[0.5\textwidth]{RST-arbre.pdf}
+	\caption{Exemple d'un arbre RST}
+	\label{fig:rst-exp}
 \end{figure}
 
-\begin{minipage}{.6\textwidth}
-	\begin{itemize}
-		\item Méthode plus utilisée : SHIFT-REDUCE
-		\item Configuration : $C = (\sigma, \beta, A)$
-		\begin{itemize}
-			\item $\sigma$ est une pile
-			\item $\beta$ est le tampon (buffer) d'entrée
-			\item $A$ est la liste des arcs créés (relations)
-			\item $C_{initiale} = (\varnothing, w, \emptyset)$
-			\item $C_{finale} = (\varnothing, \varnothing, A)$
-		\end{itemize}
-	\end{itemize}
-\end{minipage}
-\begin{minipage}{.38\textwidth}
-	\hgraphpage{RST-transitions.pdf}
-\end{minipage}
-\begin{itemize}
-	\item Opérations 
-	\begin{itemize}
-		\item \optword{Shift} : mettre le premier élément du buffer dans la pile
-		\item \optword{Reduce}\textbf{(l, d)} : fusionne les deux sous-arbres supérieurs de la pile, où \textbf{l} est l'étiquette de relation de cohérence, et \textbf{d} est la direction de nucléarité : \textbf{d $ \in $ \{NN, NS, SN\}}.
-		\item \optword{Pop Root} : enlever l'arbre final de la pile.
-	\end{itemize}
-	\item Apprentissage 
-	\begin{itemize}
-		\item Par caractéristiques
-		\item Par embeddings
-	\end{itemize}
-\end{itemize}
+\subsubsection{Détection des unités élémentaires}
 
-\begin{figure}[ht]
+Une unité élémentaire de discours, en anglais \ac{edu}, est une phrase ou une clause de la phrase qui représente un sens. 
+Exemple d'un texte divisé en \ac{edu} : \expword{[Mr. Rambo says]\textsubscript{e1} [that a 3.2-acre property]\textsubscript{e2} [overlooking the San Fernando Valley]\textsubscript{e3} [is priced at \$4 million]\textsubscript{e4} [because the late actor Erroll Flynn once lived there.]\textsubscript{e5}}. 
+La détection des \ac{edu} consiste à trouver ces unités qui sont en général des clauses. 
+Une des méthodes les plus anciennes utilise l'analyse syntaxique afin de trouver ces clauses. 
+Des méthodes statistiques peuvent être utilisées afin de détecter les limites des \ac{edu}s. 
+Comme caractéristiques, on peut utiliser les informations syntaxiques et des indices de surface. 
+Ce problème peut être vu comme annotation des séquences. 
+Dans \cite{2018-wang-al}, les auteurs ont proposé un système neuronal\footnote{EDU avec réseau de neurones : \url{https://github.com/PKU-TANGENT/NeuralEDUSeg}} qui utilise le \keyword[E]{embedding} des mots. 
+La figure \ref{fig:edu-embedding} représente leur architecture où l'entrée est une concaténation entre deux embeddings : \keyword[G]{GloVe} et \keyword[B]{BERT}. 
+On utilise un réseau Bi-LSTM afin d'avoir le contexte en avant et en arrière pour chaque mot. 
+Ensuite, chaque mot est classé comme : début d'un \ac{edu} (1) ou continuation d'un \ac{edu} (0). 
+
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.6\textwidth]{EDU_seg_.pdf}
+	\caption{Segmentation en EDUs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+	\label{fig:edu-embedding}
+\end{figure}
+
+\subsubsection{Classification des relations}
+
+Un fois les \ac{edu} sont extraits, on doit les lier en utilisant les relations de cohérence. 
+La méthode la plus utilisée pour trouver la structure \ac{rst} est SHIFT-REDUCE.  
+Celle-ci se base sur une machine abstraite ayant la configuration $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés (relations). 
+La figure \ref{fig:rst-shift-reduce} représente l'architecture de cette machine qui est similaire à celle utilisée dans l'analyse syntaxique des dépendances par transition. 
+La différence est que cette machine utilise les \ac{edu}s comme éléments et pas les mots.
+Au début, la pile est vide, la liste des relations est vide et le tampon d'entrée contient tous les \ac{edu} ordonnés d'où  $C_{initiale} = (\varnothing, w, \emptyset)$. 
+A la fin, la pile et le tampon d'entrée doivent être vides d'où $C_{finale} = (\varnothing, \varnothing, A)$.
+
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.38\textwidth]{RST-transitions.pdf}
+	\caption{Architecture SHIFT-REDUCE pour la résolution de la structure RST}
+	\label{fig:rst-shift-reduce}
+\end{figure}
+
+Les opérations permises par cette machine sont :
+\begin{itemize}
+	\item \optword{Shift} : mettre le premier élément du buffer dans la pile
+	\item \optword{Reduce}\textbf{(l, d)} : fusionne les deux sous-arbres supérieurs de la pile, où \textbf{l} est l'étiquette de relation de cohérence, et \textbf{d} est la direction de nucléarité : \textbf{d $ \in $ \{NN, NS, SN\}}.
+	\item \optword{Pop Root} : enlever la racine de l'arbre final de la pile.
+\end{itemize}
+Un exemple d'une analyse \ac{rst} en utilisant la méthode SHIFT-REDUCE est illustré das la figure \ref{fig:rst-shred-yu-al}.
+
+\begin{figure}[!ht]
+	\centering
 	\hgraphpage{RST_exp_.pdf}
 	
 	\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
 	\caption{Un exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+	\label{fig:rst-shred-yu-al}
 \end{figure}
 
-\begin{itemize}
-	\item Cas d'étude : \cite{2018-yu-al} (Encodeur-décodeur)
-	\item Code : \url{https://github.com/yunan4nlp/NNDisParser}
-	\item Encodeur 
-	\begin{itemize}
-		\item Encoder les mots : $ w_i $ un mot avec une catégorie grammaticale $t_i$
-		\[x_i^w = embedding(w_i) \oplus embedding(t_i)\]
-		\item Représenter les mots séquentiels
-		\[ \{h_1^w, h_2^w, \ldots, h_m^w \} = biLSTM(\{x_1^w, x_2^w, \ldots, x_m^w \})\]
-		\item Représenter un UED $\{w_s, w_{s+1}, \ldots, w_t \}$
-		\[ x^e = \frac{1}{t-s+1} \sum_{k=s}^{t} h_k^w\]
-		\item Représenter les UEDs séquentiels
-		\[ \{h_1^e, h_2^e, \ldots, h_n^e \} = biLSTM(\{x_1^e, x_2^e, \ldots, x_n^e \})\]
-	\end{itemize}
-\end{itemize}
+Le composant ``Orancle" doit être entraîné afin de décider l'opération suivante. 
+On peut utiliser des caractéristiques afin d'entraîner un algorithme d'apprentissage comme on a vu dans l'analyse des dépendances (chapitre 5). 
+On peut aussi utiliser les \keyword[E]{embedding} avec un réseau de neurone comme la méthode proposée dans \cite{2018-yu-al}\footnote{Embedding pour RST : \url{https://github.com/yunan4nlp/NNDisParser}}. 
+Les auteurs proposent d'utiliser une architecture encodeur-décodeur afin de décider l'opération suivante. 
+L'encodeur a comme but de représenter tous les \ac{edu} comme des vecteurs.
+Le décodeur prend les représentations de quelques \ac{edu} pour décider l'opération suivante. 
 
-\begin{itemize}
-	\item Décodeur 
-	\begin{itemize}
-		\item Une couche neuronale feed-forward pour inférer l'action $o$
-		\[o = W(h_{s0}^{sbt} \oplus h_{s1}^{sbt} \oplus h_{s2}^{sbt} \oplus h_{q0}^{e})\]
-		\item $ h_{e}^{q0} $ : la représentation séquentielle du premier UED dans le buffer
-		\item $h_{si}^{sbt}$ : la représentation séquentielle du sous-arbre $i$ dans la pile
-		\item la représentation d'un sous arbre entre deux UEDs $ s= \{e_i, \ldots, e_j\}$ est la moyenne des représentations des UEDs couverts
-		\[ h_{s}^{sbt} = \frac{1}{j-i+1} \sum_{k=i}^{j} h_k^e\]
-	\end{itemize}
-\end{itemize}
+On commence par l'encodeur qui prend en entrée une représentation $x_i^w$ de chaque mot $w_i$. 
+Cette représentation et la concaténation du embedding du mot $w_i$ et de sa catégorie grammaticale $t_i$ comme indiqué dans l'équation \ref{eq:rst-embedding-entree}
+\begin{equation}\label{eq:rst-embedding-entree}
+x_i^w = embedding(w_i) \oplus embedding(t_i)
+\end{equation}
+Les mots d'une phrase $w_1 w_2 \ldots w_m$ sont passés par un réseau récurrent Bi-LSTM pour avoir une représentation séquentielle comme indiqué dans l'équation \ref{eq:rst-embedding-seqrep}.
+\begin{equation}\label{eq:rst-embedding-seqrep}
+\{h_1^w, h_2^w, \ldots, h_m^w \} = biLSTM(\{x_1^w, x_2^w, \ldots, x_m^w \})
+\end{equation}
+Nous avons déjà sélectionné les \ac{edu}s ; donc on sais chaque début et fin d'un \ac{edu}. 
+Afin de représenter un \ac{edu} $\{w_s, w_{s+1}, \ldots, w_t \}$, on cherche le vecteur central des vecteurs représentant les mots qui lui composent comme indiqué dans l'équation \ref{eq:rst-embedding-edurep}
+\begin{equation}\label{eq:rst-embedding-edurep}
+x^e = \frac{1}{t-s+1} \sum_{k=s}^{t} h_k^w
+\end{equation}
+Une fois la représentation individuelle de chaque \ac{edu} $x_i^e$ est trouvée, on cherche leurs représentations séquentielles. 
+Pour ce faire, on utilise un autre réseau récurrent Bi-LSTM comme indiqué dans l'équation \ref{eq:rst-embedding-eduseqrep}
+\begin{equation}\label{eq:rst-embedding-eduseqrep}
+\{h_1^e, h_2^e, \ldots, h_n^e \} = biLSTM(\{x_1^e, x_2^e, \ldots, x_n^e \})
+\end{equation}
+
+Le décodeur est une couche neuronale feed-forward $W$ qui vise à inférer l'action suivante $o$. 
+En entrée, il prend la représentation séquentielle du premier UED dans le buffer $ h_{e}^{q0} $ et les représentations séquentielles des trois sous-arbres $i$ au sommet de la pile $h_{si}^{sbt}$. 
+Le décodeur est représenté par l'équation \ref{eq:rst-embedding-dec}. 
+\begin{equation}\label{eq:rst-embedding-dec}
+o = W(h_{s0}^{sbt} \oplus h_{s1}^{sbt} \oplus h_{s2}^{sbt} \oplus h_{q0}^{e})
+\end{equation}
+Un sous arbre peut être représenté par plusieurs \ac{edu}s $ s= \{e_i, \ldots, e_j\}$. 
+Sa représentation peut être calculée par la moyenne des représentations des UEDs couverts, comme indiqué dans l'équation \ref{eq:rst-embedding-sousarbre}. 
+\begin{equation}\label{eq:rst-embedding-sousarbre}
+h_{s}^{sbt} = \frac{1}{j-i+1} \sum_{k=i}^{j} h_k^e
+\end{equation}
 
 \subsection{Analyse PDTB}
 
-\begin{itemize}
-	\item Trouver la relation entre deux parties du texte
-	\item Quatre étapes : 
-	\begin{enumerate}
-		\item Trouvez les connecteurs du discours
-		\begin{itemize}
-			\item En utilisant la désambigüisation du sens (délimiteur ou non)
-		\end{itemize}
-		\item Trouvez les deux parties pour chaque connective
-		\begin{itemize}
-			\item Pour la partie avec le connecteur, on peut classer les parties adjacente comme ayant une relation ou non
-		\end{itemize}
-		\item Étiquetez la relation entre ces parties (connectives explicites) : 
-		\begin{itemize}
-			\item Par exemple, en utilisant BERT avec les deux parties en entrée et en ajoutant une couche neuronale à sa sortie $ <CLS> $ pour inférer la relation
-		\end{itemize}
-		\item Attribuer une relation entre chaque paire de phrases adjacentes (connectives implicites)
-		\begin{itemize}
-			\item La même chose que dans (3)
-		\end{itemize}
-	\end{enumerate}
-\end{itemize}
+Dans l'analyse \ac{pdtb}, on essaye de séparer les parties du texte et les annoter deux à deux par : ARG1 et ARG2. 
+Dans la partie annotée par ARG2, on essaye de l'annoter par une connective. 
+Nous avons vu qu'il y a deux types de connectives : explicites (existantes dans le texte) et implicites (qu'on peut inférer). 
+Dans le cas des connectives explicites, on peut facilement les chercher et les trouver en utilisant leur liste. 
+Mais, il existe des connectives qui ne représentent pas des relations de cohérence. 
+Pour résoudre ce problème, on peut utiliser un algorithme de désambigüisation qui classe un connective donnée comme : discours ou non. 
+Une fois une connective est marquée comme discours, on marque la partie le contenant comme ARG2. 
+On cherche la partie en relation ARG1 en utilisant un algorithme d'apprentissage automatique. 
+L'algorithme prend ARG2 et une autre partie adjacente comme entrée et comme sortie il estime si elles sont en relation ou non. 
+Ensuite, on marque la relation entre les deux en utilisant la connective. 
 
+Dans le cas où le connective est implicite, on doit inférer la connective étant donnée deux parties sans connectives. 
+Une méthode est d'utiliser \keyword[B]{BERT} avec les parties séparées par \keyword{[SEP]} comme entrée. 
+Dans la sortie \keyword{[CLS]}, on attache un réseau de neurones à propagation avant afin d'inférer la connective.
+Une autre méthode similaire est l'utilisation de deux réseaux LSTM pour représenté chacune des deux parties. 
+Cette méthode a été proposé dans \cite{2020-liang-al} où l'architecture est illustrée dans la figure \ref{fig:pdtb-liang}.
+Le ``Max-Pool" est utilisé sur les représentations récurrentes des mots afin de composer le sens d'une partie et aussi pour réduire les paramètres du modèle.
+Dans chaque position dans les vecteurs des mots, il prend le nombre max pour avoir un autre vecteur de même taille.
+
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.6\textwidth]{PDTB_exp_.pdf}
+	\caption{Une architecture pour la détection de relations PDTB implicites \cite{2020-liang-al}}
+	\label{fig:pdtb-liang}
+\end{figure}
 
 %===================================================================================
 \section{Analyse basée sur l'entité de discours}
 %===================================================================================
 
-\begin{itemize}
-	\item Un discours est cohérent s'il discute une certaine entité
-	\item Quelque soit la position dans le discours, cette entité doit rester la plus importante
-\end{itemize}
-
-\begin{exampleblock}{Exemple de cohérence \cite{2019-jurafsky-martin}}
-	\small
-	\begin{minipage}{.48\textwidth}
-		\begin{enumerate}
-			\item John went to his favorite music store to buy a piano. [John]
-			\item He had frequented the store for many years. [John]
-			\item He was excited that he could finally buy a piano. [John]
-			\item He arrived just as the store was closing for the day. [John]
-		\end{enumerate}
-	\end{minipage}
-	\begin{minipage}{.48\textwidth}
-		\begin{enumerate}
-			\item John went to his favorite music store to buy a piano. [John]
-			\item It was a store John had frequented for many years. [The store]
-			\item He was excited that he could finally buy a piano. [John]
-			\item It was closing just as John arrived. [The store]
-		\end{enumerate}
-	\end{minipage}
-\end{exampleblock}
+Un discours est cohérent s'il discute le même sujet.
+Ce dernier peut être représenté par une entité. 
+Quelque soit la position dans le discours, cette entité doit rester la plus importante.
+Prenons l'exemple ``\expword{John went to his favorite music store to buy a piano [John]. He had frequented the store for many years [John]. He was excited that he could finally buy a piano [John]. He arrived just as the store was closing for the day [John].}. 
+Dans cet exemple, l'entité centrale de chaque phrase est ``John". 
+Maintenant, prenons l'exemple : ``\expword{John went to his favorite music store to buy a piano [John]. It was a store John had frequented for many years [The store]. He was excited that he could finally buy a piano [John]. It was closing just as John arrived [The store].}
+On peut sentir que le texte est non naturel ; il est un peut difficile à comprendre. 
+Cela est dû au fait que l'entité centrale se bascule entre les phrases ; des fois ``John", d'autres ``The store". 
+Dans cette section, on va discuter deux théories/méthodes pour analyser un texte en se basant sur l'entité et pas la structure.
 
 \subsection{Centering theory}
 
-\begin{itemize}
-	\item $\mathbf{U_n}$ : une énonciation
-	\item $\mathbf{C_b(U_n)}$ : \optword{Backward-looking center} (centre rétrospectif)
-	\begin{itemize}
-		\item l'entité saillante actuelle
-		\item celle sur laquelle se concentre le discours dans l'énonciation $ U_{n-1} $.
-	\end{itemize}
-	\item $\mathbf{C_f(U_n)}$ : \optword{Forward-looking center} (centres prospectifs)
-	\begin{itemize}
-		\item les entités potentiellement saillantes dans le futur
-		\item celles candidates pour être $C_b(U_{n+1})$.
-	\end{itemize}
-	\item $\mathbf{C_p(U_n) \in C_f(U_n)}$ : \optword{Prefered center} (centre préféré)
-	\begin{itemize}
-		\item centre candidat pour être $C_b(U_{n+1})$
-		\item score sur le rôle grammatical (sujet plus important que l'objet qui est plus important que le reste), l'ordre (Ex. \expword{En Arabe, ce qui est en premier est plus important}), etc.
-	\end{itemize}
-	\item $C_b(U_n)$ doit être représenté par un pronom dans $U_{n+1}$
-\end{itemize}
+Nous avons vu que les phrases (énoncé) doivent maintenir la même entité centrale. 
+Cette intuition est réalisée dans cette théorie en maintenant deux représentations pour chaque énoncé $\mathbf{U_n}$.
+La première est l'entité saillante actuelle ; celle sur laquelle se concentre le discours dans l'énoncé $ U_{n-1} $.
+Elle s'appelle \optword{Backward-looking center} (centre rétrospectif), et elle est dénotée par $\mathbf{C_b(U_n)}$. 
+La deuxième est un ensemble des entités potentiellement saillantes dans le futur ; celles candidates pour être $C_b(U_{n+1})$.
+Il s'appelle \optword{Forward-looking center} (centres prospectifs), et il est dénoté par $\mathbf{C_f(U_n)}$. 
+On score les entités de cet ensemble en se basant sur leurs rôles grammaticaux (sujet plus important que l'objet qui est plus important que le reste), l'ordre (Ex. \expword{En Arabe, ce qui est en premier est plus important}), etc.
+L'entité avec le plus grand score est choisie comme candidate pour être $C_b(U_{n+1})$.
+Elle s'appelle \optword{Prefered center} (centre préféré), et elle est dénotée par $\mathbf{C_p(U_n)}$. 
 
+Cette théorie se base sur l'hypothèse que le discours est plus facile à traiter lorsque les énoncés successifs parlent de la même entité. 
+Cette hypothèse est formalisée comme une classification des énoncés selon la transition qu'ils induisent dans le centre local.
+Il existe trois types de transitions \cite{2004-poesio-al} selon l'ordre de la plus cohérente : 
 \begin{itemize}
 	\item Ordre des transitions selon la plus cohérente
-	\item \optword{CONTINUE} : le locuteur parle d'une entité et a l'intention d'en parler en futur
-	\item \optword{RETAIN} : le locuteur parle d'une entité et a l'intention d'en changer en futur
+	\item \optword{CONTINUE} : le locuteur parle d'une entité et il a l'intention d'en parler en futur
+	\item \optword{RETAIN} : le locuteur parle d'une entité et il a l'intention d'en changer en futur
 	\item \optword{SHIFT} : le locuteur a changé l'entité centrale
 	\begin{itemize}
 		\item \textbf{Smooth-SHIFT} : après le changement, il a l'intention d'en parler en futur
@@ -500,7 +572,16 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 	\end{itemize}
 \end{itemize}
 
-\begin{table}
+La théorie de centralité (Centering theory) se base sur deux règles. 
+La première règle décrit que si un élément de $C_f(U_n)$ est réalisé par un pronom dans l'énoncé suivant ($U_{n+1}$) alors $C_b(U_{n+1})$ doit être réalisée par un pronom. 
+L'intuition, ici, est que la pronominalisation est un moyen courant de marquer la saillance du discours. 
+S'il y a plusieurs pronoms dans un énoncé réalisant des entités de l'énoncé précédent, l'un de ces pronoms doit
+réaliser le centre arrière $C_b$.
+La deuxième règle concerne les transitions mentionnées précédemment, où CONTINU est plus cohérente que RETAIN que Smooth-SHIFT que Rough-SHIFT.
+Ces transitions sont calculée selon le tableau \ref{tab:center-trans}.
+L'intuition de cette règle est que les discours qui continuent à center sur la même entité sont plus cohérents que ceux qui basculent vers d'autres centres.
+
+\begin{table}[!ht]
 	\centering
 	\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
 		\hline\hline
@@ -517,60 +598,92 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 		RETAIN & Rough-SHIFT\\
 		\hline\hline
 	\end{tabular}
+	\caption{Les transitions de la théorie de centralité }
+	\label{tab:center-trans}
 \end{table}
+
+Reprenons deux phrases de l'exemple précédent, et essayons de calculer la centralité
+\begin{itemize}
+	\item John went to his favorite music store to buy a piano. $U_1$
+	\begin{itemize}
+		\item $C_b(U_1)$ = NULL
+		\item $C_f(U_1)$ = \{John, music store, piano\}
+		\item $C_p(U_1)$ = John (le sujet)
+	\end{itemize}
+	\item It was a store John had frequented for many years. $U_2$
+	\begin{itemize}
+		\item $C_b(U_2)$ = John
+		\item $C_f(U_2)$ = \{(music) store, John, years\}
+		\item $C_p(U_2)$ =  music store (sujet)
+		\item $C_b(U_2) \ne C_p(U_2) \wedge C_b(U_2) \ne C_b(U_1) \Rightarrow$ Rough-SHIFT
+	\end{itemize}
+	\item He was excited that he could finally buy a piano. $U_3$
+	\begin{itemize}
+		\item $C_b(U_3)$ = music store
+		\item $C_f(U_3)$ = \{John, piano\}
+		\item $C_p(U_3)$ =  John (sujet)
+		\item $C_b(U_3) \ne C_p(U_3) \wedge C_b(U_3) \ne C_b(U_2) \Rightarrow$ Rough-SHIFT
+	\end{itemize}
+\end{itemize}
+
 
 \subsection{Entity Grid model}
 
-\begin{itemize}
-	\item Un document est représenté par une matrice
-	\begin{itemize}
-		\item Lignes : les phrases 
-		\item Colonnes : les entités
-		\item Valeurs : fonction grammaticale de l'entité dans la phrase ; sujet (S), Objet (O), Autre (X) ou l'entité n'existe pas (\_).
-	\end{itemize}
-	\item Un document est cohérent, s'il suit un pattern
-	\begin{itemize}
-		\item Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. \expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}
-		\item On utilise l'apprentissage automatique pour juger la cohérence d'un document
-	\end{itemize}
-	
-\end{itemize}
+Dans le modèle ``entity grid", un document est représenté par une matrice où les phrases représentent les lignes et les entités représentent les colonnes. 
+Chaque cellule de cette matrice contient la fonction grammaticale de l'entité dans la phrase : sujet (S), Objet (O), Autre (X) ou l'entité n'existe pas (\_). 
+La figure \ref{fig:entity-grid-rep} représente un texte et sa représentation phrases/entités selon le modèle ``entity grid". 
 
-\begin{figure}
+\begin{figure}[!ht]
+	\centering
 	\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
 	
 	\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
 	\caption{Un exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+	\label{fig:entity-grid-rep}
 \end{figure}
 
-\begin{itemize}
-	\item Un document est représenté par les probabilités des transitions grammaticales
-	\item Une probabilité est le ration entre le nombre d'une transition et le nombre de toutes les transitions
-	\item Ex. Dans l'exemple précédent : \expword{P(S\_) = 2/75}
-\end{itemize}
-\begin{figure}
+Un document est considéré comme cohérent s'il suit une certaine forme de pattern.
+Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. \expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}
+Dans l'exemple précédent, la transition ``S\_" a une fréquence de 6.
+Un document peut être représenté par les probabilités des transitions grammaticales.
+Une probabilité est le ration entre le nombre d'une transition et le nombre de toutes les transitions.
+Ex. Dans l'exemple précédent : \expword{P(S\_) = 6/75}.
+La figure \ref{fig:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
+
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{EGM_doc_vec_exp_.pdf}
 	\caption{Un exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
+	\label{fig:entity-grid-prob}
 \end{figure}
 
+Afin de juger qu'un texte soit cohérent, on utilise un algorithme d'apprentissage automatique où les probabilités des transitions grammaticales sont utilisées comme caractéristiques. 
+Le modèle d'apprentissage peut être entraîné à attribuer des scores selon le niveau de cohérence.
+Dans ce cas, un texte non cohérent doit avoir un score inférieur à un autre cohérent.
+Le problème qui se pose : il est difficile d'avoir beaucoup de textes annotés pour entraîner le système.
+Une solution est d'utiliser une méthode auto-supervisée ; créer un texte non cohérent à partir d'un texte cohérent. 
+Ceci peut être accompli en appliquant un ordre aléatoire des phrases d'un texte cohérent. 
+
+Cette idée peut être utilisée pour tester les systèmes d'analyse de la cohérence : un texte cohérent doit avoir un score plus qu'un autre non cohérent. 
+Donc, on peut prendre un texte cohérent (les romans, etc.) et crée un autre non cohérent selon une de ces techniques :
 \begin{itemize}
-	\item L'algorithme apprend à noter un texte selon sa cohérence
-	\item Un texte non cohérent doit avoir un score inférieur à un autre cohérent
-	\item Utilisation des textes annotés selon leurs cohérences par des experts
-	\item Utilisation d'une méthode auto-supervisée : créer un texte non cohérent à partir d'un texte cohérent
-	\begin{itemize}
-		\item Discrimination de l'ordre des phrases : ordre aléatoire des phrases et comparaison du score de cohérence avec celui de l'ordre original
-		\item Insertion de la phrase : modifier l'ordre d'une seule phrase et comparaison du score de cohérence avec celui de l'ordre original
-		\item Reconstruction de l'ordre des phrases : apprendre à ordonner les phrases
-	\end{itemize}
+	\item Discrimination de l'ordre des phrases : ordre aléatoire des phrases et comparaison du score de cohérence avec celui de l'ordre original.
+	\item Insertion de la phrase : modifier l'ordre d'une seule phrase et comparaison du score de cohérence avec celui de l'ordre original.
+	\item Reconstruction de l'ordre des phrases : apprendre à ordonner les phrases
 \end{itemize}
 
 
-
 \begin{discussion}
-
-
+Une phrase doit être bien formée ; ceci est garanti par la grammaire. 
+Elle doit, aussi, avoir un sens ; ceci est garanti par la sémantique. 
+Lorsqu'on fusionne plusieurs phrases qui ont un sens, ce n'est pas une garantie que ce texte soit compréhensible ou au moins naturel. 
+Un texte doit être cohérent. 
+Mais, c'est quoi la cohérence ? Comment elle peut être mesurée ?
+Il existe plusieurs théories pour représenter la cohérence qui peuvent être classées en deux approches : basées sur la structure ou basées sur l'entité. 
+Les phrases (ou les clauses) d'un texte forment une structure qui se base sur des relations de cohérence. 
+Aussi, elles doivent discuter la même entité.
+Les deux approches ont deux visions différentes ; qui sont complémentaires à mon avis. 
+Afin de juger la cohérence d'un texte, il faut mieux utiliser les deux afin de vérifier deux aspects différents.
 
 \end{discussion}
 
