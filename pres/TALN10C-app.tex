@@ -264,7 +264,7 @@
 		\item $p(T)$ est une modèle de langue entrainé sur la langue destinataire
 		\begin{itemize}
 			\item Il faut un corpus pour la langue destinataire
-			\item $p(T) = \prod_{j=1}^m p(t_j|t_{j-N}\ldots t_{j-1})$
+			\item $p(T) = \prod_{j=1}^m p(t_j|t_{j-N+1}\ldots t_{j-1})$
 		\end{itemize}
 		
 		\item $p(S|T)$ est le modèle de traduction 
@@ -280,7 +280,7 @@
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Traduction automatique : Approche statistique (Alignement)}
 	\[p(S|T) = \sum_{A} p(S, A | T)\]
-	\[A^* = \arg\max_A p(S, A | T)\]
+%	\[A^* = \arg\max_A p(S, A | T)\]
 	\[p(S, A | T) = \prod_{i=1}^{n} p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m})\]
 	\[p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})\]
 	\[ \text{Nombre des alignements possibles } = (m + 1)^n\]
@@ -362,7 +362,7 @@
 	
 		\item Modèle formel 
 		\[ p(T|S) = p(t_1|S) p(t_2|S, t_1) p(t_3|S, t_1, t_2)\ldots p(t_m|S, t_1\ldots t_{m-1}) \]
-		\[\hat{t}_j = \arg\max_{w \in V} p(w | S, t_1\ldots t_{j-1})\]
+		\[\hat{T} = \arg\max_{T} \prod_{i=1}^{m} p(t_i | S, t_1\ldots t_{i-1})\]
 	\end{itemize}
 \end{frame}
 
@@ -515,37 +515,61 @@
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Résumé automatique : Approche statistique (Exemple: \cite{15-oufaida-al})}
-	\vspace{-6pt}
 	\begin{itemize}
 		\item Représentation des mots : embeddings pré-entrainés (Polyglot)
 		\item Clustering pour extraire les sous-sujets du texte
 		\begin{itemize}
-			\item On peut trouver le mot $w_j \in S_2$ le plus similaire à un mot $w_i$
+			\item Chercher le mot $w_j \in S_2$ le plus similaire à un mot $w_i$
 			
-			$Match(w_i | S_2) = \arg\max_{w_j \in S_2} sim(Rep(w_i), Rep(w_j))$
+			\[Match(w_i | S_2) = \arg\max_{w_j \in S_2} sim(Rep(w_i), Rep(w_j))\]
 			
-			\item Lien entre deux phrases $S_2$ et $S_2$
+			\item Similarité entre $S_1$ et $S_2$
 			
-			$Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Match(w_i | S_2) + \sum_{w_j \in S_2} Match(w_j | S_1)}{|S_1| + |S_2|}$
+			\[Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Match(w_i | S_2) + \sum_{w_j \in S_2} Match(w_j | S_1)}{|S_1| + |S_2|}\]
+			
+			\item Utilisation d'un algorithme de clustering sur la matrice de similarités Phrases/Phrases
 		\end{itemize}
 	
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quelques applications : Transformation}
+	\framesubtitle{Résumé automatique : Approche statistique (Exemple: \cite{15-oufaida-al} - suite)}
+
+	\begin{itemize}
 		\item Score des termes en utilisant mRMR
 		\begin{itemize}
-			\item Information mutuelle  
-			$I(X, Y) = \sum\limits_{x \in X} \sum\limits_{y \in Y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}$
-			\item Redondance des termes 
-			$Redondance(T_i) = \frac{1}{|S|} \sum\limits_{j \in S} I(T_i, T_j)$
+			\item Information mutuelle (X, Y : vecteurs Terme/Phrases) 
 			
-			\item Score final d'un terme : Mutual Information (Difference/Quotient)
+			\begin{center}
+				$I(X, Y) = \sum\limits_{x \in X} \sum\limits_{y \in Y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}$
+			\end{center}
 			
-			$MID \equiv \max_{t \in T} Pertinence(t) - Redondance(t)$
-
+			\item Pertinence des termes (H : vecteur Cluster/phrases)
+			\begin{center}
+				$Pertinence(T_i) = I(T_i, H)$
+			\end{center}
+			
+			\item Redondance des termes (S : toutes les phrases)
+			
+			\begin{center}
+				$Redondance(T_i) = \frac{1}{|S|} \sum\limits_{j \in S} I(T_i, T_j)$
+			\end{center}
+			
+			\item Score final d'un terme : vecteur mRMR des termes
+			
+			\begin{center}
+				$MID \equiv \max_{t \in T} Pertinence(t) - Redondance(t)$
+			
 			$MIQ \equiv \max_{t \in T} Pertinence(t) / Redondance(t)$
+			\end{center}
 		\end{itemize}
-	
-		\item Score d'un phrase à base des scores des termes mRMR (score pondéré par des poids)
-	
-		\item Lors de la sélection d'une phrase, on décrémente les poids des termes sélectionnés
+		
+		\item Score d'une phrase est sa similarité avec le vecteur mRMR
+		
+		\item Lors de la sélection d'une phrase, on décrémente les poids des termes sélectionnés dans mRMR
 	\end{itemize}
 	
 \end{frame}
@@ -619,7 +643,7 @@
 		
 		\item Extraction
 		
-		\hspace{.5cm}Ex. $ suiv_{e4}  =  \arg\min\limits_i (iord\ ssfgc(s_i) + ord\ simil(dernier{e4}, i))$ 
+		\hspace{.5cm}Ex. $ suiv_{e4}  =  \arg\min\limits_i (iord\ gc(s_i) + ord\ sim(dernier_{e4}, i))$ 
 		
 		\hspace{3cm}$ \text{ où } (dernier_{e4}, s_i) \in E $
 	\end{itemize}
@@ -662,7 +686,7 @@
 	\begin{itemize}
 		\item Utilisation des patrons (templates) préparés manuellement
 		\item\ [x] : x mots peuvent être entre ce mot et le mot précédent
-		\item +y : le score est augment par y
+		\item +y : le score est augmenté par y
 		\item ? : ce mot est optionnel
 	\end{itemize}
 
@@ -753,7 +777,7 @@
 	\end{center}
 	
 	\begin{itemize}
-		\item[(a)] Un décodeur qui cherche le prochaine mot du résumé $y_{i+1}$ sachant la phrase en entrée $x$ et des mots déjà générés pour le résumé $y_c \equiv [y_{i-c+1},\ldots, y_i]$
+		\item[(a)] Un décodeur qui cherche le mot prochain du résumé $y_{i+1}$ sachant la phrase en entrée $x$ et des mots déjà générés pour le résumé $y_c \equiv [y_{i-c+1},\ldots, y_i]$
 		\item[(b)] Un encodeur avec attention
 	\end{itemize}
 	
@@ -948,7 +972,7 @@
 	
 	\begin{itemize}
 		\item Utiliser un modèle de langue pré-entrainé
-		\item Régler le modèle pour répondre les questions
+		\item Régler le modèle pour répondre aux questions
 	\end{itemize}
 
 	\begin{figure}

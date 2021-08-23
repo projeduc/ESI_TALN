@@ -111,7 +111,7 @@ FUNCTION {push.diplom}    { "Diplomarbeit" }
 FUNCTION {push.disser}    { "Dissertation" }
 FUNCTION {push.forschung} { "Forschungsbericht" }
 FUNCTION {push.hrsg}      { "Hrsg." }
-FUNCTION {push.in}        { "In:" }
+FUNCTION {push.in}        { "Dans :" }
 FUNCTION {push.isbn}      { "ISBN" }
 FUNCTION {push.issn}      { "ISSN" }
 FUNCTION {push.kap}       { "Kap." }
@@ -119,11 +119,11 @@ FUNCTION {push.nr}        { "Nr." }
 FUNCTION {push.sn}        { "S" }
 FUNCTION {push.s}         { "S." }
 FUNCTION {push.siehe}     { "Siehe" }
-FUNCTION {push.ua}        { "u.\,a." }
-FUNCTION {push.und}       { "and" }
+FUNCTION {push.ua}        { "et\,al." }
+FUNCTION {push.und}       { "et" }
 FUNCTION {push.url.name}  { "URL" }
 FUNCTION {push.veranst}   { "Veranst." }
-FUNCTION {push.from}       { "from" }
+FUNCTION {push.from}       { "de" }
 FUNCTION {push.access}   { "Access date" }
 
 FUNCTION {push.cite}      { "\citep" }

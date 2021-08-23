@@ -486,6 +486,17 @@ title={#1}
 
 }
 
+\def\kodeloa{%
+	
+%	\chapter*{Liste des figures}
+%	\addcontentsline{toc}{section}{Liste des figures}
+	{
+		\hypersetup{linkcolor=black}
+		\listofalgorithms
+	}
+	
+}
+
 \def\kodelot{%
 
 	\chapter*{Liste des tableaux}
