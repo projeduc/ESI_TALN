@@ -1044,15 +1044,26 @@ J'ai une autre remarque concernant ça : le modèle entraîné va apprendre exac
 \section{Lisibilité}
 %===================================================================================
 
-\hgraphpage{lisibilite-classif.pdf}
+La lisibilité d'un texte peut être classifiée selon le niveau de difficulté ou le niveau du lecteur (voir la figure \ref{fig:lisibilite-classif}). 
+Il existe deux approches : par règles ou par apprentissage automatique.
+
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.8\textwidth]{lisibilite-classif_noir.pdf}
+	\caption{Classification des tests de lisibilité}
+	\label{fig:lisibilite-classif}
+\end{figure}
 
 \subsection{Formule}
 
-Lisibilité : Formule (Flesch-Kincaid Grade Level)
-\[
-206.835 - 1.015 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
+Les formules attribuent des scores aux texte en se basant sur des caractéristiques comme le nombre des mots, le nombre des phrases, etc. 
+Un des scores utilisés pour juger la lisibilité des textes en anglais, on peut mentionner \optword{Flesch-Kincaid Grade Level}. 
+Elle se base sur le nombre des mots, le nombre des phrases et le nombre des sylabes comme indiqué dans l'équation \ref{eq:lisibilite-flesch-kincaid}.
+\begin{equation}\label{eq:lisibilite-flesch-kincaid}
+Score = 206.835 - 1.015 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
 - 84.6 (\frac{\text{\slshape syllabes totales}}{\text{\slshape mots totaux}})
-\]
+\end{equation}
+Selon ce score, on peut décider la difficulté d'un texte en se basant sur le tableau \ref{tab:lisibilite-flesch-kincaid}.
 
 \begin{table}[!ht]
 	\centering
@@ -1070,15 +1081,18 @@ Lisibilité : Formule (Flesch-Kincaid Grade Level)
 		\hline\hline
 	\end{tabular}
     \caption{Le niveau de difficulté en se basant sur le score Flesch-Kincaid}
+    \label{tab:lisibilite-flesch-kincaid}
 \end{table}
 
-Lisibilité : Formule (Dale–Chall readability formula)
-\[
-0.1579 (\frac{\text{\slshape mots difficiles}}{\text{\slshape mots totaux}})
+Un autre score pour la lisibilité de l'anglais est \optword{Dale–Chall readability formula}. 
+Ce score utilise une liste des mots difficiles, le nombre des mots et le nombre des phrases afin de calculer un score comme indiqué par l'équation \ref{eq:lisibilite-dale-chall}.
+\begin{equation}\label{eq:lisibilite-dale-chall}
+Score = 0.1579 (\frac{\text{\slshape mots difficiles}}{\text{\slshape mots totaux}})
 + 0.0496 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
-\]
+\end{equation}
+La difficulté en se basant sur ce score est représentée par le niveau des étudiants qui peuvent lire le texte comme indiqué dans le tableau \ref{tab:lisibilite-dale-chall}. 
 
-\begin{table}
+\begin{table}[!ht]
 	\centering
 	\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
 		\hline\hline
@@ -1093,15 +1107,32 @@ Lisibilité : Formule (Dale–Chall readability formula)
 		\hline\hline
 	\end{tabular}
 	\caption{Niveau de lisibilité en se basant sur le score de Dale–Chall}
+	\label{tab:lisibilite-dale-chall}
 \end{table}
+
+Il existe plusieurs formules pour calculer la lisibilité d'un texte en anglais en utilisant plusieurs caractéristiques. 
+Des formules pour tester la lisibilité des textes dans autres langues ont été proposées. 
+par exemple, la métrique \optword{OSMAN} \cite{2016-elhaj-rayson} est utilisée afin de mesurer la lisibilité d'un texte en arabe suivant l'équation \ref{eq:lisibilite-osman}.
+Cette métrique se base sur le nombre des mots, le nombre des phrases, le nombre des mots difficiles (plus de 5 caractères sans diacritiques), le nombre des syllabes, le nombre des mots complexes (plus de 4 syllabes) et les mots Faseeh (les mots complexes avec les lettres \RL{|', y', w', _d, .z} ou qui se termine avec \RL{wn, wA}).
+\begin{align}
+Osman = & 200.791 - 1.015 \times (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}}) \nonumber\\
+& \nonumber\\
+& - 24.181 \times (\frac{\text{\slshape mots difficiles + syllabes + mots complexes + mots Faseeh}}{\text{\slshape mots totaux}}) \label{eq:lisibilite-osman}
+\end{align}
+
 
 \subsection{Apprentissage automatique}
 
-Lisibilité : Apprentissage
-\begin{figure}
+Les formules utilisent des caractéristiques de surface comme le nombre des mots, le nombre des mots difficiles, etc.
+Elles n'utilisent pas des caractéristiques plus complexes des niveaux syntaxique, sémantique et pragmatique. 
+\citet{2014-collins} propose l'utilisation de plusieurs caractéristiques allants du niveau morphologique jusqu'au niveau pragmatique comme entrée d'un algorithme d'apprentissage automatique (voir la figure \ref{fig:lisibilite-collins}).
+Les classes de difficulté peuvent être définies selon le besoin : niveau de l'étudiant, difficulté sur 12 degrés, etc.
+
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[0.8\textwidth]{lisibilite-ML_.pdf}
 	\caption{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
+	\label{fig:lisibilite-collins}
 \end{figure}
 
 
@@ -1109,10 +1140,15 @@ Lisibilité : Apprentissage
 \section{Reconnaissance de la parole}
 %===================================================================================
 
+La reconnaissance de la parole consiste à transformer des paroles vers un format textuel. 
+Une telle tâche peut assister la rédaction sans utiliser les mains, communiquer avec des machines (comme le système de recommandation précédemment présenté), etc. 
+La figure \ref{fig:asr-classif} représente une classification des systèmes de reconnaissance des paroles basée sur \cite{2020-malik-al}.
+
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.8\textwidth]{asr-classif.pdf}
+	\hgraphpage[.8\textwidth]{asr-classif_noir.pdf}
 	\caption{Classification des systèmes de reconnaissance de la parole}
+	\label{fig:asr-classif}
 \end{figure}
 
 
