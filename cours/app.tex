@@ -394,7 +394,7 @@ Il existe plusieurs classifications des approches, parmi ces classifications :
 	Elles peuvent être : statistique, par graphes, linguistique ou par apprentissage automatique.
 \end{itemize}
 
-\subsubsection{Approche statistique}
+\subsection{Approche statistique}
 
 Dans cette approche, les unités du texte (généralement, des phrases) sont attribuées un score de pertinence selon des critères statistiques.
 Parmi les critères, on peut utiliser la fréquence des mots. 
@@ -489,7 +489,7 @@ Le vecteur contenant tous les scores des termes est référencé par $V_{mRMR}$.
 Le score d'une phrase est sa similarité avec ce vecteur ; la plus similaire est ajoutée au résumé. 
 Lors de l'ajout, on décrémente les scores des termes qui composent cette phrase dans le vecteur $V_{mRMR}$. 
 
-\subsubsection{Approche par graphes}
+\subsection{Approche par graphes}
 
 Dans cette approche, les phrases sont représentés comme nœuds d'un graphe $G(V, A)$ ; les arcs représentent les similarités entre ces phrases. 
 Une méthode pour sélectionner les phrases pertinentes est d'utiliser les \optword{propriétés du graphe}. 
@@ -555,7 +555,7 @@ L'équation \ref{eq:ats-gc-ext4} représente la méthode du calcul de la phrase 
 suiv_{e4}  =  \arg\min\limits_i (iord\ gc(s_i) + ord\ sim(dernier_{e4}, s_i)) \text{ où } (dernier_{e4}, s_i) \in E
 \end{equation}
 
-\subsubsection{Approche linguistique}
+\subsection{Approche linguistique}
 
 On peut utiliser une liste des mots qui sont pertinents au sujet, comme ``significant", ``impossible", etc. 
 Ces mots sont appelés \optword{Mots de sujet} et peuvent être utilisés pour noter les phrases. 
@@ -591,7 +591,7 @@ D'autres méthodes utilisent des anaphores ou des représentations sémantiques 
 La \optword{structure rhétorique} peut être utilisée pour noter les phrases ou des syntagmes.
 
 
-\subsubsection{Approche par apprentissage automatique (ML)}
+\subsection{Approche par apprentissage automatique (ML)}
 
 En utilisant des \optword{caractéristiques} sur les phrases, le document, etc., on peut apprendre à résumer un document en utilisant un algorithme de \ac{ml}.
 On peut soit régler des hyper-paramètres comme les poids des caractéristiques pour le score des phrases. 
@@ -707,7 +707,7 @@ Ces trois approches vont être présentées dans cette section avec quelques mé
 	\label{fig:qr-classif}
 \end{figure}
 
-\subsubsection{Approche par RI}
+\subsection{Approche par RI}
 
 Dans l'approche par \ac{ri}, on utilise un système de recherche d'information afin de récupérer les documents pertinents à la requête, ensuite on extrait le passage contenant la réponse.
 La figure \ref{fig:qa-ri} représente une architecture un système de questions/réponses par \ac{ri}. 
@@ -767,7 +767,7 @@ On utilise deux représentations, de début (S) et de fin (E), qui sont multipli
 	\label{fig:qr-ri-devlin}
 \end{figure}
 
-\subsubsection{Approche par connaissance}
+\subsection{Approche par connaissance}
 
 Lorsqu'on possède une base de données structurée, cette approche est la plus adéquate. 
 Dans le cas d'une base de connaissance sous forme de graphe (BabelNet), on peut utiliser l'annotation sémantique (Entity linking). 
@@ -784,7 +784,7 @@ Un exemple des requêtes et leurs formes logiques est donnée dans la figure \re
 	\label{fig:qr-conn}
 \end{figure}
 
-\subsubsection{Approche par modèles de langues}
+\subsection{Approche par modèles de langues}
 
 Dans cette approche, on utilise un modèle de langage pré-entrainé. 
 Ensuite, on le règle pour répondre les questions à partir du modèle (pas besoins de passages). 
@@ -817,7 +817,7 @@ Ils peuvent être des systèmes à base des règles, de la RI ou de la générat
 \end{figure}
 
 
-\subsubsection{Orienté tâche : Frame-based}
+\subsection{Orienté tâche : Frame-based}
 
 Un système de dialogue orienté tâche peut utiliser des cadres (frames) afin d'accomplir une tâche précise. 
 Un cadre (frame) est une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot.
@@ -849,7 +849,7 @@ En fait, on peut l'exprimer en utilisant les expressions régulières.
 	\label{fig:sd-tache-frame-parse}
 \end{figure}
 
-\subsubsection{Orienté tâche : Dialogue-State}
+\subsection{Orienté tâche : Dialogue-State}
 
 Un système de dialogue orienté tâche peut être conçu en utilisant les états de dialogue (Dialogue-state). 
 Dans la figure \ref{fig:sd-tache-dial-state}, un système orienté tâche communique en utilisant la parole afin d'accomplir une tâche. 
@@ -903,7 +903,7 @@ Un exemple d'une telle méthode qui utilise \keyword[B]{BERT} est illustré dans
 	\label{fig:sd-tache-remp-bert}
 \end{figure}
 
-\subsubsection{Chatbot à base des règles }
+\subsection{Chatbot à base des règles }
 
 Les chatbots ont comme but d'émuler une conversation humaine. 
 Les premiers chatbots étaient à base de règles, comme le système ELIZA \cite{1966-Weizenbaum} qui émule une psychologue. 
@@ -913,7 +913,7 @@ Les patrons sont liés à une liste des mots.
 Le mot qui score le plus dans la phrase va déclencher plusieurs patrons. 
 Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilisé.
 
-\subsubsection{Chatbot à base de la RI}
+\subsection{Chatbot à base de la RI}
 
 Les chatbots à base de \ac{ri} se basent sur des corpus de conversations $C$ entre humains. 
 Etant donnée une requête utilisateur $q$, on cherche la réponse $r \in C$ qui est plus similaire à la requête $q$ comme indiqué dans l'équation \ref{eq:chatbot-sim}.
@@ -930,7 +930,7 @@ La réponse est celle qui maximise la similarité entre les deux vecteurs, comme
 \text{Réponse}(q, C) = \arg\max_{r \in C} q . r
 \end{equation}
 
-\subsubsection{Chatbot par génération du texte}
+\subsection{Chatbot par génération du texte}
 
 Un chatbot peut être modéliser comme un problème de génération du  texte. 
 On peut utiliser un encodeur/décodeur comme celui présenté dans la traduction automatique (voir la figure \ref{fig:chatbot-encdec}).
@@ -952,90 +952,92 @@ On peut aussi utiliser des modèles de langue, comme \keyword[G]{GPT} entraîné
 \section{Analyse des sentiments}
 %===================================================================================
 
+L'analyse des sentiments consiste à identifier, extraire et quantifier l'état effectif et l'information subjective à partir d'un texte ou du parole.
+L'analyse des sentiments présente plusieurs tâches : la subjectivité (est ce que le texte est subjectif ou objectif), la polarité (est ce que l'avis présent dans le texte est positif, négatif ou neutre), l'émotion (détecter l'émotion du texte : plaisir, colère, etc.). 
+On peut, aussi, détecter l'opinion des utilisateurs sur plusieurs aspects. 
+Par exemple, on peut détecter si les utilisateurs sont satisfaits par des aspects d'un téléphone comme : la taille, l'affichage, la batterie, etc. 
+Il existe deux approches (qui peuvent être hybridées) pour analyser les sentiments : à base de connaissance et par apprentissage. 
+Deux classifications plus détaillées peuvent être trouvées dans \cite{19-yue-al} et \cite{14-medhat-al}.
 
-\hgraphpage{sentiment-classif.pdf}
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.8\textwidth]{sentiment-classif_noir.pdf}
+	\caption{Classification des méthodes d'analyse de sentiment}
+	\label{fig:asent}
+\end{figure}
 
-Analyse des sentiments : à base de connaissance
-\begin{itemize}
-	\item Identifier les mots indicateurs des sentiments
-	\begin{itemize}
-		\item En général, les adjectifs et les adverbes sont des bons indicateurs
-		\item \optword{à base de dictionnaire} : en utilisant un dictionnaire comme Wordnet pour enrichir la liste des indicateurs (synonymes, antonymes, etc.) 
-		\item \optword{à base d'un corpus} : en utilisant la co-occurrence avec les mots  de la liste originale pour l'enrichir 
-	\end{itemize}
-	\item Assigner des scores à ces mots (ou des étiquettes)
-	\item Calculer le score total à  base des mots
-	\begin{itemize}
-		\item \textbf{granularité} : par phrases ou par documents 
-		\item il faut faire attention à  la négation
-		\item on peut utiliser la structure; par exemple \keyword{RST}
-		\item Ex. \expword{Donner un score de -1 aux mots de polarité négative et +1 aux mots de polarité positive et faire la somme des polarités des mots d'une phrase}
-	\end{itemize}
-\end{itemize}
+\subsection{Analyse des sentiments à base de connaissance}
 
-Analyse des sentiments : par apprentissage automatique
-\begin{itemize}
-	\item \optword{En utilisant des caractéristiques }
-	\begin{itemize}
-		\item Présence d'un mot et sa fréquence 
-		\item Catégorie grammaticale
-		\item Les mots et les syntagmes d'opinion
-		\item Négation
-	\end{itemize}
-	\item \optword{En utilisant des embeddings}
-	\begin{itemize}
-		\item Utiliser les embeddings des mots pour apprendre la classe de sortie
-		\item En utilisant BERT (l'apprentissage par transfert)
-		\begin{itemize}
-			\item Utiliser la sortie \keyword{[CLS]} pour estimer les classes
-			\item Utiliser \keyword{[CLS]} avec un réseaux feedForward pour estimer les classes
-			\item Utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
+L'idée est d'attribuer un score de sentiment au texte en se basant sur des scores de ses mots. 
+Seuls les mots indicateurs des sentiments qui peuvent être attribués des scores ; les reste sont neutres.
+Les adjectifs et les adverbes sont des bons indicateurs de sentiments. 
+Par exemple, l'adjectif ``\expword{bon}" est un indicateur positif et donc l'adjectif ``\expword{mauvais}" est un indicateur négatif.
+Deux techniques sont utilises pour identifier un mot : à base de dictionnaire et à base d'un corpus. 
+En utilisant un dictionnaire comme Wordnet, on peut enrichir une liste des indicateurs manuellement définie (synonymes, antonymes, etc.).
+En se basant sur un corpus, on peut enrichir une liste manuellement définie par la co-occurrence ; les mots qui sont souvent utilisés ensemble sont plus probables d'avoir la même polarité. 
+%
+Afin de calculer le score totale (phrase ou document), on fait la somme des scores des mots. 
+Parmi les problèmes, la présence de la négation ; cela peut être réglé en utilisant la structure de la phrase comme \keyword{RST}.
 
-Analyse des sentiments : hybride (exemple \cite{18-bettiche-al}) 
+\subsection{Analyse des sentiments par apprentissage automatique}
+
+On peut utiliser un algorithme d'apprentissage automatique avec des caractéristiques comme : la présence d'un mot et sa fréquence, les catégorie grammaticales des mots, les mots et les syntagmes d'opinion, la négation, etc.
+Aussi, on peut utiliser les modèles de langage contextuelles afin d'apprendre la classe de sortie. 
+La méthode la plus simple est d'utiliser un modèle \keyword[B]{BERT} pré-entraîné.
+En entrée, on passe la texte et on attache un réseau à propagation et en sortie \keyword{[CLS]} on entraîne le modèle à estimer le sentiment. 
+On peut enrichir le modèle en attachant un réseau à propagation avant (feed-forward) avec cette sortie. 
+Aussi, on peut utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
+
+\subsection{Analyse des sentiments hybride}
+
+Dans cette approche, on essaye d'utiliser les deux approches précédentes.
+On va présenter deux méthodes proposées à l'ESI. 
+On commence par la méthode de \citet{18-bettiche-al} qui utilise la polarité des mots comme caractéristique d'un algorithme d'apprentissage.
+La figure \ref{fig:asent-bettiche} représente l'architecture de leur système qui vise à détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux.
+
 \begin{figure}
 	\centering
 	\hgraphpage[.7\textwidth]{sent-bettiche-al_.pdf}
 	\caption{Architecture hybride proposée par \cite{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
+	\label{fig:asent-bettiche}
 \end{figure}
 
-	\begin{itemize}
-	\item Enrichissement du vocabulaire
-	\begin{itemize}
-		\item Détection des mots similaires (désignation d'un représentant)
-		
-		$Ratio = 1 - Levenstein(w_1, w_2)/(|w_1|+|w_2|)$
-		
-		Ex. \expword{Ratio(kolach, kollach) = 92\%, Ratio(kolach, khlasse) = 38\%.}
-		
-		\item Calculer l'orientation sémantique d'un mot $w$
-		
-		
-		$SO(w) = \sum_{w_p \in V_p} PMI(w, w_p) - \sum_{w_n \in V_n} PMI(w, w_n)$
-		
-		$PMI (w_1, w_2) = \log \frac{p(w_1, w_2)}{p(w_1)*p(w_2)}$
-	\end{itemize}
-	\item Représentation de la polarité
-	\begin{itemize}
-		\item $polarite(w) = +1 \text{ SI } SO(w) > 0; -1 \text{ SI } SO(w) < 0$
-		\item $polarite(w) = SO(w)$
-	\end{itemize}
-	\item Version avec règles : $polarite(msg) = Signe \sum_{w \in msg} polarite(w)$
-	\item Version avec apprentissage automatique
-	\begin{itemize}
-		\item les polarités des mots comme caractéristiques
-		\item ou la corrélation $PMI$ pour sélection des mots d'entrée
-		\item plusieurs algorithmes sont utilisés : NB, arbres de décision, SVM, etc.
-	\end{itemize}
-\end{itemize}
+La méthode commence par l'enrichissement du vocabulaire vu que la dialecte écrite en lettres latins peut avoir plusieurs variations. 
+Donc, pour regrouper les mots similaires, on utilise un ratio basé sur la distance de Lavenstein. 
+Étant donné deux mots $w_1$ et $w_2$, cette ratio peut être calculé par l'équation \ref{eq:asent-bettiche-ratio}.
+\begin{equation}\label{eq:asent-bettiche-ratio}
+Ratio = 1 - Levenstein(w_1, w_2)/(|w_1|+|w_2|)
+\end{equation}
+Par exemple, \expword{Ratio(kolach, kollach) = 92\%, Ratio(kolach, khlasse) = 38\%.}.
+Supposant nous avons un vocabulaire $V_p$ positif et un autre $V_n$ négatif qui sont définis manuellement. 
+Pour chaque mot $w$ du vocabulaire qui n'appartient pas à ces deux vocabulaires, on calcule son orientation sémantique comme indiqué dans l'équation \ref{eq:asent-bettiche-orientation}
+\begin{equation}\label{eq:asent-bettiche-orientation}
+SO(w) = \sum_{w_p \in V_p} PMI(w, w_p) - \sum_{w_n \in V_n} PMI(w, w_n)
+\end{equation}
+Où
+\[PMI (w_1, w_2) = \log \frac{p(w_1, w_2)}{p(w_1)*p(w_2)}\]
+La polarité du mot peut être calculée selon son orientation sémantique en utilisant l'équation \ref{eq:asent-bettiche-polarite}
+\begin{equation}\label{eq:asent-bettiche-polarite}
+polarite(w) = \begin{cases}
+ +1 & \text{ SI } SO(w) > 0\\
+-1 & \text{ SI } SO(w) < 0 \\
+0   &\text{ SINON }
+\end{cases}
+\end{equation}
+Les polarités des mots peuvent être utilisés comme caractéristiques d'un algorithme d'apprentissage automatique.
 
-Analyse des sentiments : hybride (exemple \cite{18-guellil-al}) 
+Une autre méthode hybride est celle proposée par \citet{18-guellil-al} (voir la figure \ref{fig:asent-guellil}).
+En se basant sur un lexicon annoté en anglais (mots avec score polarité), on traduit les mots vers l'arabe. 
+Il faut prendre en considération que certains mots vont perdre leurs sens vu que l'utilisation des mots en anglais n'est pas garantie d'être équivalente au mots traduit dans les textes en arabe. 
+En utilisant des messages de facebook, on essaye de les annoter selon les scores de polarités des mots ; chaque message est affecté à la classe positive ou négative.
+Ensuite, le corpus annoté automatiquement est utilisé afin d'entraîner un modèle de classification en utilisant des critères comme les embeddings des mots. 
+J'ai une autre remarque concernant ça : le modèle entraîné va apprendre exactement la même fonction de celui par règle seulement avec des caractéristiques différentes; il faut mieux annoter les messages manuellement.
+
 \begin{figure}
 	\centering
-	\hgraphpage[.45\textwidth]{sent-guellil-al_.pdf}
+	\hgraphpage[.5\textwidth]{sent-guellil-al_.pdf}
 	\caption{Architecture hybride proposée par \cite{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
+	\label{fig:asent-guellil}
 \end{figure}
 
 %===================================================================================
@@ -1044,17 +1046,20 @@ Analyse des sentiments : hybride (exemple \cite{18-guellil-al})
 
 \hgraphpage{lisibilite-classif.pdf}
 
+\subsection{Formule}
+
 Lisibilité : Formule (Flesch-Kincaid Grade Level)
 \[
 206.835 - 1.015 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
 - 84.6 (\frac{\text{\slshape syllabes totales}}{\text{\slshape mots totaux}})
 \]
 
-\begin{center}
-	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+\begin{table}[!ht]
+	\centering
 	\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
-		\rowcolor{darkblue}
-		\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
+		\hline\hline
+		\textbf{Score} && \textbf{Difficulté}\\
+		\hline
 		90-100 && Très facile à lire (Élève de 11 ans). \\
 		80-90 && Facile à lire. \\
 		70-80 && Plutôt facile à lire.\\
@@ -1062,8 +1067,10 @@ Lisibilité : Formule (Flesch-Kincaid Grade Level)
 		50-60 && Plutôt difficile à lire. \\
 		30-50 && Difficile à lire (Université). \\
 		0-30 && Très difficile à lire (Diplôme universitaire). \\
+		\hline\hline
 	\end{tabular}
-\end{center}
+    \caption{Le niveau de difficulté en se basant sur le score Flesch-Kincaid}
+\end{table}
 
 Lisibilité : Formule (Dale–Chall readability formula)
 \[
@@ -1071,19 +1078,24 @@ Lisibilité : Formule (Dale–Chall readability formula)
 + 0.0496 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
 \]
 
-\begin{center}
-	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
+\begin{table}
+	\centering
 	\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
-		\rowcolor{darkblue}
-		\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
+		\hline\hline
+		\textbf{Score} && \textbf{Difficulté}\\
+		\hline
 		\textless= 4.9 && Étudiant du 4ième. \\
 		5-5.9 && Étudiant du 5ième et 6ième. \\
 		6-6.9 && Étudiant du 7ième et 8ième.\\
 		7-7.9 && Étudiant du 9ième et 10ième. \\
 		8-8.9 && Étudiant du 11ième et 12ième. \\
 		9-9.9 && Étudiant du 13ième et 15ième (collège). \\
+		\hline\hline
 	\end{tabular}
-\end{center}
+	\caption{Niveau de lisibilité en se basant sur le score de Dale–Chall}
+\end{table}
+
+\subsection{Apprentissage automatique}
 
 Lisibilité : Apprentissage
 \begin{figure}
