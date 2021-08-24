@@ -802,7 +802,15 @@ Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'infor
 \section{Systèmes de dialogue}
 %===================================================================================
 
+Un système de dialogue est un système interactif qui communique avec les utilisateurs. 
+Il peut être un agent orienté tâche ou un chatbot comme indiqué dans la figure \ref{fig:sd-classif}. 
+Les systèmes de dialogue orientés tâche visent à aider l'utilisateur à accomplir une tâche, comme la réservation de l'avion. 
+Il existe deux types de ce système : frame-based et dialogue-state. 
+Les chatbots ont comme but d'imiter la conversation humaine.
+Ils peuvent être des systèmes à base des règles, de la RI ou de la génération des réponses.
+
 \begin{figure}[!ht]
+	\centering
 	\hgraphpage[.8\textwidth]{sd-classif_noir.pdf}
 	\caption{Classification des systèmes de dialogue}
 	\label{fig:sd-classif}
@@ -811,122 +819,132 @@ Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'infor
 
 \subsubsection{Orienté tâche : Frame-based}
 
-	\begin{itemize}
-	\item Frame (Cadre) : une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot
-	\item On ne pose que les questions dont le slot est vide
-	\item Il y a la possibilité de remplir d'autres slots dans d'autre cadres. 
-	Ex. \expword{Le slot RESERVATION\_DATE dans le cadre HOTEL\_RESERVATION à partir du slot ARRIVAL\_DATE du cadre FLIGHT\_RESERVATION}
-	\item Appliquer \keyword{Détection d'intention} pour savoir quel cadre à utiliser
-\end{itemize}
+Un système de dialogue orienté tâche peut utiliser des cadres (frames) afin d'accomplir une tâche précise. 
+Un cadre (frame) est une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot.
+Par exemple \ref{fig:sd-tache-frame-exp} représente un exemple d'un cadre pour programmer un vol.
+Le système pose les questions correspondantes à un slot vide afin de le remplir.
+Lorsqu’on rempli un slot, on peut remplir des slots d'autres cadres en parallèle. 
+Par exemple, le slot ``\expword{RESERVATION\_DATE}" du cadre ``\expword{HOTEL\_RESERVATION}" peut être rempli à partir du slot ``\expword{ARRIVAL\_DATE}" du cadre ``\expword{FLIGHT\_RESERVATION}".
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.6\textwidth]{sd-frame-exp_.pdf}
+	\hgraphpage[.7\textwidth]{sd-frame-exp_.pdf}
 	\caption{Exemple d'un cadre pour programmer un vol. \cite{2020-jurafsky-martin}}
+	\label{fig:sd-tache-frame-exp}
 \end{figure}
 
-orienté tâche - Frame-based (Réponses multiples)
-\begin{figure}
+Lorsqu'il y a plusieurs domaines, on doit appliquer la \keyword{détection d'intention} pour savoir quel cadre à utiliser. 
+Celle-ci est une tâche de classification qui vise à sélectionner le domaine (Ex. \expword{HOTEL vs. FLIGHT}).
+Afin de remplir les slots, on peut utiliser une grammaire simplifiée. 
+La figure \ref{fig:sd-tache-frame-parse} représente une grammaire sémantique et un arbre sémantique de la phrase ``\expword{Show me flights from Boston to San Fransisco on Tuesday morning}".
+Puisque le vocabulaire est limité et les phrases sont toujours les mêmes, une telle grammaire est facile à concevoir. 
+En fait, on peut l'exprimer en utilisant les expressions régulières.
+
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.6\textwidth]{sd-frame-semgram-exp_.pdf}
 	
 	\hgraphpage[.8\textwidth]{sd-frame-parse-exp_.pdf}
 	\caption{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase. \cite{2020-jurafsky-martin}}
+	\label{fig:sd-tache-frame-parse}
 \end{figure}
 
 \subsubsection{Orienté tâche : Dialogue-State}
 
-\begin{figure}
+Un système de dialogue orienté tâche peut être conçu en utilisant les états de dialogue (Dialogue-state). 
+Dans la figure \ref{fig:sd-tache-dial-state}, un système orienté tâche communique en utilisant la parole afin d'accomplir une tâche. 
+Le système utilise des actes de dialogue afin de définir la conversation entre le système et l'utilisateur. 
+Il garde les actes passés afin de décider quel est l'acte suivant.
+Comme les systèmes à base des cadres, il utilise des cadres avec des slots à remplir. 
+En plus, il utilise une politique de dialogue pour l'aider à décider ce qu'il va faire où les questions qu'il peut poser. 
+Cette politique est entaînée en utilisant un algorithme d'apprentissage afin de détecter l'action suivante $ \hat{A}_i $ en se basant sur l'action précédente $\hat{A}_{i-1}$, le cadre précédent $Frame_{i-1}$ et le dernier tours système/utilisateur $ U_{i-1}$ (voir l'équation \ref{eq:sd-tache-politique}).
+\begin{equation}\label{eq:sd-tache-politique}
+\hat{A}_i = \arg\max_{A_i \in A} P(A_i | Frame_{i-1}, A_{i-1}, U_{i-1})
+\end{equation}
+
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-dialog-arch_.pdf}
 	\caption{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
+	\label{fig:sd-tache-dial-state}
 \end{figure}
 
-orienté tâche - Dialogue-State (Actes du dialogue)
-\begin{figure}
+Un acte de dialogue représente la fonction interactive de la phrase. 
+La figure \ref{fig:sd-tache-his-acts} représente un exemple des actes de dialogue du système de recommandation des restaurants HIS \cite{2010-young-al}. 
+Il est indiqué quels sont les actes qui sont valides comme sortie système et ceux valides comme entrée utilisateur. 
+
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.5\textwidth]{sd-dialog-act-exp1_.pdf}
-	
-	\hgraphpage[.5\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
-	\caption{Des actes de dialogue ainsi qu'un exemple d'un dialogue d'un système de recommandation des restaurants appelé HIS \cite{2010-young-al}. Il est indiqué ce qui est permété d'être une entrée du système et une sortie de l'utilisateur \cite{2020-jurafsky-martin}}
+	\hgraphpage[.7\textwidth]{sd-dialog-act-exp1_.pdf}
+	\caption{Des actes de dialogue système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
+	\label{fig:sd-tache-his-acts}
 \end{figure}
 
-orienté tâche - Dialogue-State (Remplissage des slots)
-\begin{itemize}
-	\item Classifier la phrase par intention, domaine et slot
-	\item Extraire les informations pour remplir les slots. Ex. \expword{En utilisant l'apprentissage automatique pour l'étiquetage des séquences}
-\end{itemize}
+Un exemple d'un dialogue qui utilise les actes précédemment présentés est donné dans la figure \ref{fig:sd-tache-his-exp}.
+Le système commence par recevoir un acte ``HELLO" et détecter qu'il s'agit d'une tâche de recherche et le type recherché est une restaurant. 
+Le système lance un acte de confirmation de la requête en demandant quel est le plat préféré de l'utilisateur afin de recommander une restaurant. 
 
-\begin{figure}
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.7\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
+	\caption{Exemple d'un dialogue du système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
+	\label{fig:sd-tache-his-exp}
+\end{figure}
+
+Afin de remplir les slots, on doit déterminer le domaine et le slot visés par la phrase de l'utilisateur. 
+Pour ce faire, on peut utiliser un algorithme d'apprentissage automatique afin de classer la phrase par intention, domaine et slot. 
+Afin d'extraire les informations et remplir les slots, on peut utiliser l'étiquetage des séquences avec la technique \keyword[I]{IOB}. 
+Un exemple d'une telle méthode qui utilise \keyword[B]{BERT} est illustré dans la figure \ref{fig:sd-tache-remp-bert}. 
+
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{sd-dialog-remp-exp_.pdf}
-	\caption{Exemple d'une architecture pour le remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
+	\caption{Exemple de remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
+	\label{fig:sd-tache-remp-bert}
 \end{figure}
-
-orienté tâche - Dialogue-State (Autres composants)
-\begin{itemize}
-	\item Traqueur de l'état du dialogue
-	\begin{itemize}
-		\item Sauvegarder l'état des cadres (slots) et le dernier acte du dialogue
-	\end{itemize}
-	\item Politique du dialogue
-	\begin{itemize}
-		\item Déterminer l'action $A_i$ à prendre 
-		
-		$\hat{A}_i = \arg\max_{A_i \in A} P(A_i | Frame_{i-1}, A_{i-1}, U_{i-1})$
-	\end{itemize}
-	
-	\item Générateur du texte 
-	\begin{itemize}
-		\item Générer du texte à partir d'un acte de dialogue
-		\item On peut entraîner un encodeur/décodeur pour le faire
-	\end{itemize}
-\end{itemize}
 
 \subsubsection{Chatbot à base des règles }
 
-(Exemple : ELIZA \cite{1966-Weizenbaum})
-\begin{itemize}
-	\item Le plus célèbre chatbot est \keyword{ELIZA} : psychologue
-	\item Une liste des patrons/transformations 
-	
-	\expword{\small [(.*) YOU (.*) ME]\textsubscript{[Patron]} \textrightarrow\ [WHAT MAKES YOU THINK I \$2 YOU?]\textsubscript{[Transformation]}}
-	
-	\expword{You hate me \textrightarrow\ WHAT MAKES YOU THINK I HATE YOU?}
-	
-	\item Les patrons sont liés à une liste des mots. Le mot qui score le plus dans la phrase va déclencher plusieurs patrons
-	
-	\item Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilisé
-\end{itemize}
+Les chatbots ont comme but d'émuler une conversation humaine. 
+Les premiers chatbots étaient à base de règles, comme le système ELIZA \cite{1966-Weizenbaum} qui émule une psychologue. 
+Il se base sur des règles de type patrons/transformations. 
+La règle \expword{\small [(.*) YOU (.*) ME]\textsubscript{[Patron]} \textrightarrow\ [WHAT MAKES YOU THINK I \$2 YOU?]\textsubscript{[Transformation]}} peut être utilisée pour répondre à \expword{You hate me \textrightarrow\ WHAT MAKES YOU THINK I HATE YOU?}. 
+Les patrons sont liés à une liste des mots. 
+Le mot qui score le plus dans la phrase va déclencher plusieurs patrons. 
+Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilisé.
 
 \subsubsection{Chatbot à base de la RI}
 
-\begin{itemize}
-	\item Un corpus des conversations $C$
-	\item On prend le texte de l'utilisation comme une requête (question) $q$
-	\item On cherche la réponse $r \in C$ qui est plus similaire à la requête $q$
-	\[\text{Réponse}(q, C) = \arg\max_{r \in C} \frac{q . r}{|q| |r|}\]
-	\item Pour calculer la similarité, on peut utiliser TF-IDF
-	\item On peut aussi encoder la requête $q$ et la réponse $r$ en utilisant les embeddings
-	\[h_q = BERT_Q(q)[CLS],\; h_r = BERT_R(r)[CLS]\]
-	\[\text{Réponse}(q, C) = \arg\max_{r \in C} q . r\]
-\end{itemize}
+Les chatbots à base de \ac{ri} se basent sur des corpus de conversations $C$ entre humains. 
+Etant donnée une requête utilisateur $q$, on cherche la réponse $r \in C$ qui est plus similaire à la requête $q$ comme indiqué dans l'équation \ref{eq:chatbot-sim}.
+\begin{equation}\label{eq:chatbot-sim}
+\text{Réponse}(q, C) = \arg\max_{r \in C} \frac{q . r}{|q| |r|}
+\end{equation}
+Les requêtes et les réponses peuvent être encodées en utilisant TF-IDF ou en utilisant les embeddings.
+Par exemple, en utilisant \keyword[B]{BERT}, on peut encoder la requête comme un vecteur $h_q$ et la réponse comme un vecteur $h_r$ (la sortie \keyword{[CLS]}) comme indiqué dans l'équation \ref{eq:chatbot-enc-bert}.
+\begin{equation}\label{eq:chatbot-enc-bert}
+h_q = BERT_Q(q)[CLS],\quad h_r = BERT_R(r)[CLS]
+\end{equation} 
+La réponse est celle qui maximise la similarité entre les deux vecteurs, comme indiqué dans l'équation \ref{eq:chatbot-enc-bert-max}.
+\begin{equation}\label{eq:chatbot-enc-bert-max}
+\text{Réponse}(q, C) = \arg\max_{r \in C} q . r
+\end{equation}
 
 \subsubsection{Chatbot par génération du texte}
 
-\begin{itemize}
-	\item Utiliser un encodeur/décodeur comme dans la traduction automatique
-	\[ \hat{r}_i = \arg\max_{w \in V} p(w| q, r_1, \ldots, r_{t-1}) \]
-	
-	\item Dans l'encodeur, introduire un contexte plus long
-	
-	\item On peut utiliser un modèle de langue, comme GPT, afin de l'entraîner sur des conversations
-\end{itemize}
+Un chatbot peut être modéliser comme un problème de génération du  texte. 
+On peut utiliser un encodeur/décodeur comme celui présenté dans la traduction automatique (voir la figure \ref{fig:chatbot-encdec}).
+Un mot de la réponse $\hat{r}_i$ c'est un mot du vocabulaire $V$ qui est estimé en se basant sur la requête $q$ et les mots précédemment générés comme dans l'équation \ref{eq:chatbot-decodeur}
+\begin{equation}\label{eq:chatbot-decodeur}
+\hat{r}_i = \arg\max_{w \in V} p(w| q, r_1, \ldots, r_{t-1})
+\end{equation}
+On peut aussi utiliser des modèles de langue, comme \keyword[G]{GPT} entraînés sur des conversations.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp_.pdf}
 	\caption{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
+	\label{fig:chatbot-encdec}
 \end{figure}
 
 
@@ -1079,8 +1097,12 @@ Lisibilité : Apprentissage
 \section{Reconnaissance de la parole}
 %===================================================================================
 
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.8\textwidth]{asr-classif.pdf}
+	\caption{Classification des systèmes de reconnaissance de la parole}
+\end{figure}
 
-\hgraphpage{asr-classif.pdf}
 
 \begin{figure}
 	\centering
