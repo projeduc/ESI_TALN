@@ -1143,6 +1143,14 @@ Les classes de difficulté peuvent être définies selon le besoin : niveau de l
 La reconnaissance de la parole consiste à transformer des paroles vers un format textuel. 
 Une telle tâche peut assister la rédaction sans utiliser les mains, communiquer avec des machines (comme le système de recommandation précédemment présenté), etc. 
 La figure \ref{fig:asr-classif} représente une classification des systèmes de reconnaissance des paroles basée sur \cite{2020-malik-al}.
+Dans cette section, je vais présenter les étapes de la  reconnaissance à la place des différentes approches. 
+La classification sera présentée avec plus de détaille ici.
+Un système de reconnaissance de la parole peut être conçu seulement pour détecter les paroles d'un seul locuteur, n'importe quel locuteur ou il peut s'adapter aux nouveaux locuteurs.
+Selon le canal d'entrée, le système peut permettre les sons d'arrière-plan ou il exige un son clair en entrée.  
+On peut aussi utiliser la taille du vocabulaire comme critère de classification.
+Un système avec un vocabulaire réduit comme les commandes est plus facile à implémenté qu'un système avec un grand vocabulaire comme le vocabulaire d'une langue.
+Selon l'approche de parole, le locuteur doit parler avec des pauses afin de faciliter la déétection ou il peut parler d'une façon normale.
+Le style de la parole peut, aussi, affecter un système de reconnaissance : est-ce que le langage doit être standard ou on peut parler avec des sons qui n'ont pas de sens, comme \expword{um}.
 
 \begin{figure}[!ht]
 	\centering
@@ -1151,158 +1159,163 @@ La figure \ref{fig:asr-classif} représente une classification des systèmes de 
 	\label{fig:asr-classif}
 \end{figure}
 
+%\begin{figure}
+%	\centering
+%	\hgraphpage[.45\textwidth]{asr-arch_.pdf}
+%	\caption{Architecture d'un système de reconnaissance de paroles \cite{18-haridas}}
+%\end{figure}
+%
+%\begin{itemize}
+%	\item \optword{Acoustique-Phonétique}
+%	\begin{itemize}
+%		\item Détecter les phonèmes et les transcrire
+%	\end{itemize}
+%	\item \optword{Reconnaissance des formes}
+%	\begin{itemize}
+%		\item Apprendre à détecter les différentes formes
+%		\item \optword{Par modèles} 
+%		\item \optword{Stochastique}
+%	\end{itemize}
+%	\item \optword{Intelligence artificielle}
+%	\begin{itemize}
+%		\item Fusion entre les deux approches précédentes
+%	\end{itemize}
+%\end{itemize}
 
-\begin{figure}
-	\centering
-	\hgraphpage[.45\textwidth]{asr-arch_.pdf}
-	\caption{Architecture d'un système de reconnaissance de paroles \cite{18-haridas}}
-\end{figure}
+\subsection{Extraction des caractéristiques}
 
-\begin{itemize}
-	\item \optword{Acoustique-Phonétique}
-	\begin{itemize}
-		\item Détecter les phonèmes et les transcrire
-	\end{itemize}
-	\item \optword{Reconnaissance des formes}
-	\begin{itemize}
-		\item Apprendre à détecter les différentes formes
-		\item \optword{Par modèles} 
-		\item \optword{Stochastique}
-	\end{itemize}
-	\item \optword{Intelligence artificielle}
-	\begin{itemize}
-		\item Fusion entre les deux approches précédentes
-	\end{itemize}
-\end{itemize}
+L'extraction des caractéristiques consiste à transformer le signal sonore vers des vecteurs de caractéristiques acoustiques.
+Chaque vecteur représente l'information du signal encodée dans une petite fenêtre de temps.
+Premièrement, on commence par transformer le signal analogue à une représentation numérique.
+On doit appliquer un \optword{échantillonnage} (sampling) afin d'extraire des valeurs du signal dans une durée défie. 
+Afin de capturer les parties positives et négatives du signal, il faut prendre 2 échantillons par cycle.
+Les fréquences des paroles sont inférieurs à 10 KHz, d'où l'utilisation d'un taux d'échantillonnage $ sampling rate = 20 KHz $. 
+Dans la téléphonie, la fréquence est 4KHz d'où sampling rate = 8 KHz \cite{2019-jurafsky-martin}. 
+Une fois le signal est échantillonné, on passe à la quantification : stocker les amplitudes sous formes des entiers.
+En général, les valeurs utilisées sont soit 8 bits (-128 à 127) ou 16 bits (-32768 à 32767).
+La valeur d'un échantillon dans un temps $n$ est représentée comme $x[n]$
 
-Reconnaissance vocale : Extraction des caractéristiques (Échantillonnage)
-\begin{itemize}
-	\item Transformer les signaux sonores vers une séquence des vecteurs de caractéristiques acoustiques
-	\item Chaque vecteur représente l'information du signal encodée dans une petite fenêtre de temps
-	\item \optword{Échantillonnage}
-	\begin{itemize}
-		\item Il faut prendre 2 échantillons par cycle (pour capturer les parties positive et négative du signal)
-		\item La fréquence des paroles sont inférieures à 10 KHz (sampling rate = 20 KHz)
-		\item Dans la téléphonie, la fréquence est 4KHz (sampling rate = 8 KHz)
-	\end{itemize}
-\end{itemize}
-
-Reconnaissance vocale : Extraction des caractéristiques (Quantification)
-\begin{itemize}
-	\item \optword{Quantification}
-	\begin{itemize}
-		\item Les amplitudes des échantillons sont stockées sous forme des entiers
-		\item Soit 8 bits (-128 à 127) ou 16 bits (-32768 à 32767)
-		\item La valeur d'un échantillon dans un temps $n$ est représentée comme $x[n]$
-	\end{itemize}
-\end{itemize}
-
-Reconnaissance vocale : Extraction des caractéristiques (Fenêtrage)
-	\begin{itemize}
-	\item \optword{Fenêtrage}
-	\begin{itemize}
-		\item Utiliser une fenêtre pour capturer un ou une partie d'un phonème 
-		\item Cette partie est appelée Cadre (frame)
-		\item L'opération a deux paramètres : taille de la fenêtre (Window size) et décalage (Frame stride, shift, offset)
-	\end{itemize}
-\end{itemize}
-\begin{figure}
+Maintenant, nous avons un signal numérisé qui doit être divisé sous forme des fenêtres ; cela est appelé \optword{fenêtrage}.
+Cette opération utilise une fenêtre pour capturer une partie d'un phonème appelée cadre (frame)
+Elle a deux paramètres : taille de la fenêtre (Window size) et décalage (Frame stride, shift, offset).
+Un exemple du fenêtrage est donné dans la figure \ref{asr-windowing-exp}.
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{ASR-windowing-exp_.pdf}
-	\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
+	\caption{Exemple de l'opération du fenêtrage \cite{2020-jurafsky-martin}}
+	\label{asr-windowing-exp}
 \end{figure}
 
-\begin{itemize}
-	\item \optword{Fenêtrage} (suite)
-	\begin{itemize}
-		\item Pour extraire un cadre $y[n]$, on utilise un signal de la fenêtre $w[n]$ sur le signal initial $s[n]$
-		\[y[n] = w[n] s[n]\]
-		\item La plus simple est la fenêtre rectangulaire 
-		
-		$w[n] = \begin{cases}
-		1 & \text{si } 0 \le n \le L-1 \\
-		0 & \text{sinon }\\
-		\end{cases}$
-		\item Ceci va créer des problèmes avec l'analyse de Fourier 
-		\item La solution est la fenêtre de Hamming
-		
-		$w[n] = \begin{cases}
-		0.54 - 0.46 \cos (\frac{2\pi n}{L}) & \text{si } 0 \le n \le L-1 \\
-		0 & \text{sinon }\\
-		\end{cases}$
-	\end{itemize}
-\end{itemize}
+Pour extraire un cadre $y[n]$, on multiplie un signal de la fenêtre $w[n]$ par le signal initial $s[n]$ dans un temps $n$ : $ y[n] = w[n] s[n] $. 
+La figure \ref{fig:asr-windowing-rect-hamm} représente un exemple de deux types de fenêtrage : rectangulaire et de Hamming. 
+La méthose la plus simple est la fenêtre rectangulaire ; la fenêtre est représentée par l'équation \ref{eq:asr-windowing-rect}
+\begin{equation}\label{eq:asr-windowing-rect}
+w[n] = \begin{cases}
+1 & \text{si } 0 \le n \le L-1 \\
+0 & \text{sinon }\\
+\end{cases}
+\end{equation}
+L'échantillonnage rectangulaire peut créer des problèmes avec l'analyse de Fourier. 
+La solution est l'utilisation de la fenêtre de Hamming représentée par l'équation \ref{eq:asr-windowing-hamming}
+\begin{equation}\label{eq:asr-windowing-hamming}
+w[n] = \begin{cases}
+0.54 - 0.46 \cos (\frac{2\pi n}{L}) & \text{si } 0 \le n \le L-1 \\
+0 & \text{sinon }\\
+\end{cases}
+\end{equation}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{ASR-windowing2-exp_.pdf}
-	\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
+	\caption{Fenêtrage rectangulaire vs. Hamming \cite{2020-jurafsky-martin}}
+	\label{fig:asr-windowing-rect-hamm}
 \end{figure}
 
-Reconnaissance vocale : Extraction des caractéristiques (DFT)
+Afin d'extraire les caractéristiques, il existe plusieurs méthodes : Mel Frequency Cepstral Coefficients (MFCC), Linear Prediction Coefficients (LPC), Linear Prediction Cepstral Coefficients (LPCC), Line Spectral Frequencies (LSF), Discrete Wavelet Transform (DWT) and Perceptual Linear Prediction (PLP), etc. 
+Ici, on va prendre MFCC comme exemple.
+On commence par l'extraction de la quantité d'énergie un signal contient dans les différentes bandes de fréquence. 
+Ceci peut être accompli en utilisant : Discrete Fourier Transform (DFT) (Voir un exemple dans la figure \ref{fig:asr-dft-exp}).
+En se basant sur un signal fenêtré $x[n] \ldots x[m]$, chacune des $N$ bandes discrètes des fréquence peut être représentée sous forme d'un nombre complexe en utilisant l'équation \ref{eq:asr-dft}.
+\begin{equation}\label{eq:asr-dft}
+X[k] = \sum\limits_{n=0}^{N-1} x[n] e^{-j\frac{2\pi}{N} k n}
+\end{equation}
 
-\begin{itemize}
-	\item \optword{Discrete Fourier Transform}
-	\begin{itemize}
-		\item Combien d'énergie un signal contient dans les différentes bandes de fréquence
-		\[X[k] = \sum\limits_{n=0}^{N-1} x[n] e^{-j\frac{2\pi}{N} k n}\]
-	\end{itemize}
-\end{itemize}
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{ASR-DFT-exp_.pdf}
-	\caption{(a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
+	\caption[Exemple de la transformation DFT]{Exemple de la transformation DFT (a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
+	\label{fig:asr-dft-exp}
 \end{figure}
 
-Reconnaissance vocale : Extraction des caractéristiques (Filtre de Mel)
+L'audition humaine n'est pas également sensible à toutes les bandes de fréquences ; elle est moins sensitive dans des grandes fréquences.
+Modéliser le signal en se basant sur la perspective humaine peut aider la reconnaissance de la parole. 
+Ceci peut être implémenté par la collecte des énergies d'une façon non égale à chaque bande de fréquence en se basant sur l'échelle de Mel. 
+La figure \ref{fig:asr-mel} représente un exemple du filtre de Mel qui peut être calculé selon l'équation \ref{eq:asr-mel}.
+\begin{equation}\label{eq:asr-mel}
+mel(f) = 1127 \ln (1 + \frac{f}{700})
+\end{equation}
 
-\begin{itemize}
-	\item \optword{Filtre de Mel}
-	\begin{itemize}
-		\item L'audition humaine n'est pas également sensible à toutes les bandes de fréquences
-		\item Collecter les énergies à chaque fréquence en se basant sur l'échelle de Mel
-		\[mel(f) = 1127 \ln (1 + \frac{f}{700})\]
-	\end{itemize}
-\end{itemize}
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{ASR-mel-exp_.pdf}
 	\caption{Un exemple du filtre de Mel \cite{2020-jurafsky-martin}}
+	\label{fig:asr-mel}
 \end{figure}
 
-Reconnaissance vocale : Reconnaissance
-\begin{figure}
+\subsection{Reconnaissance}
+
+La parole  est une série temporelle ; sa reconnaissance est une classification en utilisant des méthodes comme les \ac{hmm} et les réseaux de neurones encodeurs-décodeurs.
+La figure \ref{fig:asr-enc-dec} représente l'architecture d'un système de reconnaissance de la parole en utilisation un encodeur-décodeur. 
+L'encodeur commence à encoder les séquences du signal sous formes des représentations internes (contexte). 
+Ce dernier est utilisé avec le mécanisme d'attention pour générer le texte caractère par caractère.
+
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{ASR-rec-exp_.pdf}
 	\caption{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
+	\label{fig:asr-enc-dec}
 \end{figure}
 
-\begin{itemize}
-	\item $p(y_1, \ldots, y_n) = \prod\limits_{i=1}^n p(y_i| y_1, \ldots, y_{i-1}, X)$
-	
-	\item $\hat{y}_i = \arg\max_{c \in V} p(c| y_1, \ldots, y_{i-1}, X)$
-	
-	\item clairement, ceci est un modèle de langue
-	\item mais, il se peut que les données ne sont pas suffisants pour apprendre un bon modèle de langue
-	\item Solution : intégrer un modèle de langue séparé
-	
-	\item $score(Y|X) = \frac{1}{|Y|_{car}} \log p(Y|X) + \lambda \log p_{LM}(Y)$
-\end{itemize}
+Formellement, la probabilité de générer un texte $y_1 \ldots y_n$ peut être représentée en utilisant les probabilités de génération de chaque caractère $y_i$ sachant les caractères précédemment générés et la représentation du signal $X$. 
+Cela est indiqué dans l'équation \ref{eq:asr-encdec-prob}.
+\begin{equation}\label{eq:asr-encdec-prob}
+p(y_1, \ldots, y_n) = \prod\limits_{i=1}^n p(y_i| y_1, \ldots, y_{i-1}, X)
+\end{equation}
+Une méthode naïve pour maximiser cette probabilité est de maximiser la probabilité individuelle de chaque caractère lors de la génération comme indiqué dans l'équation \ref{eq:asr-encdec-probindi}
+\begin{equation}\label{eq:asr-encdec-probindi}
+\hat{y}_i = \arg\max_{c \in V} p(c| y_1, \ldots, y_{i-1}, X)
+\end{equation}
+Ceci est un modèle de langage sur les carractères avec l'information de la parole. 
+Afin d'entraîner ce modèle à bien générer un caractère sachant les caractères passés et le contexte, on doit avoir suffisamment de données. 
+Les mots générés doivent appartenir au vocabulaire de la langue.
+Une solution est d'utiliser une modèle de langage séparé $LM$ avec le modèle de reconnaissance afin d'améliorer le texte généré.
+La probabilité de générer une série de caractères $Y$ sachant l'information de la parole $X$ peut être représentée comme un score qui ajoute l'information du modèle de langage avec un taux $\lambda$, comme indiqué das l'équation \ref{eq:asr-dec-score}.
+\begin{equation}\label{eq:asr-dec-score}
+score(Y|X) = \frac{1}{|Y|_{car}} \log p(Y|X) + \lambda \log p_{LM}(Y)
+\end{equation}
+Ce score doit être maximiser ; une solution est l'utilisant des méthodes d'optimisation comme \keyword[B]{Beam search}.
+Il existe un autre problème qui est la génération du même caractère plusieurs fois consécutives. 
+Ceci est dû au fait que la lettre a été prononcée sur plusieurs échantillons. 
+Une solution est d'utiliser une technique appelée \optword{Connectionist Temporal Classification (CTC)}.
 
 
 %===================================================================================
 \section{Synthèse de la parole}
 %===================================================================================
 
-\hgraphpage{tts-classif.pdf}
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.8\textwidth]{tts-classif.pdf}
+	\caption{Classification des systèmes de synthèse vocale}
+	\label{fig:tts-classif}
+\end{figure}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{tts-arch_.pdf}
 	\caption{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
+	\label{fig:tts-arch}
 \end{figure}
-
-
 
 
 \begin{discussion}
