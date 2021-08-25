@@ -1303,16 +1303,31 @@ Une solution est d'utiliser une technique appelée \optword{Connectionist Tempor
 \section{Synthèse de la parole}
 %===================================================================================
 
+Le but de la synthèse de la parole est de générer des paroles à partir d'un texte. 
+La figure \ref{fig:tts-classif} représente la classification des différentes méthodes de synthèse. 
+On peut générer la parole d'un manière synthétique (à base de règles) ; on utilise des filtres phonétiques. 
+Le son généré n'est pas naturel. 
+Une autre approche est de sauvegarder des phrases, des mots et des phonèmes afin de les concaténer pour avoir le son final. 
+L'approche statistique est similaire à celle dans la reconnaissance de paroles, seulement on inverse les entrées et les sorties. 
+
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.8\textwidth]{tts-classif.pdf}
+	\hgraphpage[.8\textwidth]{tts-classif_noir.pdf}
 	\caption{Classification des systèmes de synthèse vocale}
 	\label{fig:tts-classif}
 \end{figure}
 
+Selon \cite{2017-Hinterleitner}, une architecture générale d'un système de synthèse vocale peut être représentée comme indiqué dans la figure \ref{fig:tts-arch}. 
+Le système peut être divisé sur quatre parties : \ac{taln}, génération de la prosodie, concaténation et génération des paramètres, et génération de la parole. 
+Dans la première partie, on doit  normaliser le texte par la conversion des abréviations, conversion des valeurs numériques, etc. 
+Aussi, on doit détecter le stresse d'un mot en utilisant les suffixes et les préfixes. 
+L'unité de génération de prosodie utilise des informations sur les accents de mots et de phrases ainsi que des informations sur des phrases pour créer la prosodie correspondante du texte orthographique, c'est-à-dire la durée, l'intensité et le ton.
+A partir de la représentation phonétique et des informations prosodiques, l'unité de concaténation crée une séquence continue de paramètres de signaux et/ou de gestes d'articulation.
+La dernière unité sert à générer la parole en utilisant ces paramètres suivant une des approches précédemment expliquées.
+
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.5\textwidth]{tts-arch_.pdf}
+	\hgraphpage[.7\textwidth]{tts-arch_.pdf}
 	\caption{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
 	\label{fig:tts-arch}
 \end{figure}
