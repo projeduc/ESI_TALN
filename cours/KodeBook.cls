@@ -63,7 +63,7 @@
 
 \RequirePackage{etoolbox}
 
-%\makeatletter
+%atletter
 \patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
 \patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
 \patchcmd{\DOTI}{\vskip 80\p@}{\vskip 20\p@}{}{}
@@ -241,7 +241,7 @@ title={#1}
 }
 
 %\DeclareRobustCommand\keyword{\@ifnextchar[{\@@keyword}{\@keyword}}
-\def\@keyword#1{{\itshape\bfseries\color{red} #1}}
+\def\@keyword#1{{\bfseries\color{red} #1}}
 
 %\def\@@keyword[#1]#2{\lowercase{\def\temp{#2}}%
 %\@keyword#2\expandafter\index\expandafter{#1!\temp}}
@@ -303,6 +303,18 @@ title={#1}
 }
 }
 
+\newtoks\@publisherimage
+\@publisherimage={}
+
+\def\publisher#1
+{
+	\IfFileExists{#1}{
+		\@publisherimage={\noindent\includegraphics[width=1.5cm]{#1} } %
+	}{
+		\@publisherimage={}
+	}
+}
+
 \newcounter{coverind}
 
 \def\replace#1{%
@@ -353,13 +365,18 @@ title={#1}
 		\replace\@title
 	};
 
-	\node[anchor=south west,minimum width=2\textwidth,minimum height=2.4cm,fill=white] (authorline)
+	\node[anchor=south west,minimum width=2\textwidth,minimum height=3.4cm,fill=white] (authorline)
 	at ([shift={(0cm,0cm)}] current page.south west)
 	{};
 
 
-	\node[text width=8cm,anchor=north west, align=left] at ([shift={(1cm, 1.7cm)}] current page.south west){
+	\node[text width=20cm,anchor=north west, align=left] at ([shift={(1cm, 3cm)}] current page.south west){
 		\bfseries
+		\begin{tabular}{ll}
+		\multirow{2}{*}{\the\@publisherimage } &
+		Support de cours \\
+		& \textit{Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger, Algérie}
+		\end{tabular}\\[.4cm]
 		\Huge
 		\ifx\isplain\relax\else \color{indigo}\fi
 		\@author
@@ -464,6 +481,7 @@ title={#1}
 \renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
 \renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
 
+
 \def\kodetoc{%
 
 	\chapter*{Table des matières}
@@ -471,6 +489,7 @@ title={#1}
 
 	{
 		\hypersetup{linkcolor=black}
+		\renewcommand\contentsname{\vspace*{-36pt}}
 		\tableofcontents
 	}
 }
@@ -481,6 +500,7 @@ title={#1}
 	\addcontentsline{toc}{section}{Liste des figures}
 	{
 		\hypersetup{linkcolor=black}
+		\renewcommand\listfigurename{\vspace*{-36pt}}
 		\listoffigures
 	}
 
@@ -503,6 +523,7 @@ title={#1}
 	\addcontentsline{toc}{section}{Liste des tableaux}
 		{
 			\hypersetup{linkcolor=black}
+			\renewcommand\listtablename{\vspace*{-36pt}}
 			\listoftables
 		}
 
@@ -597,7 +618,6 @@ title={#1}
 	\renewcommand\merienda{}
 	\renewcommand\quotefont{}
 
-	\def\@keyword##1{{\itshape\bfseries ##1}}
 
 	\def\nameword##1{``{\itshape\bfseries ##1}"}
 

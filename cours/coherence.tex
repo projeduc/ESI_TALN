@@ -55,13 +55,13 @@ Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 
 \subsection{Rhetorical Structure Theory (RST)}
 
-RST modélise le discours sous formes des relations entre deux unités (des phrases ou parties des phrases) : \optword{Noyau (N)} et \optword{Satellite (S)}. 
+\keyword[R]{\ac{rst}} modélise le discours sous formes des relations entre deux unités (des phrases ou parties des phrases) : \optword{Noyau (N)} et \optword{Satellite (S)}. 
 Le noyau est une unité indépendante, peut être interprétée indépendamment des autres unités du texte.
 Le satellite est une unité dépendante, ne peut être interprétée qu'en utilisant le noyau. 
 Chaque relation de cohérence est définie en se basant sur deux acteurs : \optword{Lecteur (L)} ; qui a lit le script et \optword{Scripteur (S)} ;  qui a rédigé le script. 
 Elle fournit des restrictions sur le noyau, sur le satellite et/ou sur les deux. 
 L'effet de la relation peut prendre lieu dans un ou les deux acteurs. 
-Voici quelques définitions des relations RST \cite{2006-Cornish} :
+Voici quelques définitions des relations \keyword[R]{\ac{rst}} \cite{2006-Cornish} :
 \begin{itemize}
 	\item \optword{Élaboration} :  S donne des informations additionnelles sur la situation présentée dans N
 	\begin{itemize}
@@ -100,7 +100,7 @@ Voici quelques définitions des relations RST \cite{2006-Cornish} :
 	\end{itemize}
 \end{itemize}
 
-Les relations RST peuvent être classifiées selon la distinction thématique/présentationnelle (voir le tableau \ref{tab:rst-class-lect}). 
+Les relations \keyword[R]{\ac{rst}} peuvent être classifiées selon la distinction thématique/présentationnelle (voir le tableau \ref{tab:rst-class-lect}). 
 Une relation thématique vise que le lecteur identifie la relation en question.
 Elle est utilisée afin d'exprimer certains aspects de la thématique. 
 Par contre, une  relation présentationnelle vise à augmenter une disposition chez le lecteur, comme le désir d'agir ou le degré de son attitude positive envers, ou croyance en, ou encore acceptation de la proposition noyau. 
@@ -157,7 +157,7 @@ Par contre, une  relation présentationnelle vise à augmenter une disposition c
 	Concession\\
 	\hline\hline
 \end{tabular}
-\caption{Classification des relations RST selon le point de vu lecteur \cite{2006-Cornish}}
+\caption[Classification des relations RST selon le point de vu lecteur]{Classification des relations RST selon le point de vu lecteur \cite{2006-Cornish}}
 \label{tab:rst-class-lect}
 \end{table}
 
@@ -221,16 +221,16 @@ La catégorie ``présentationnelle" peut être divisée sur deux catégories : `
 	Résumé\\
 	\hline\hline
 \end{tabular}
-\caption{Classification des relations RST selon les niveaux de traitement du langage \cite{2006-Cornish}}
+\caption[Classification des relations RST selon les niveaux de traitement du langage]{Classification des relations RST selon les niveaux de traitement du langage \cite{2006-Cornish}}
 \label{tab:rst-niveau}
 \end{table}
 
 \subsection{Penn Discourse TreeBank (PDTB)}
 
-\ac{pdtb} est un dataset annoté avec un autre modèle de cohérence. 
+\keyword[P]{\ac{pdtb}} est un dataset annoté avec un autre modèle de cohérence. 
 Dans ce modèle, on ne s'intéresse pas par la structure en arbre ; on s'intéresse seulement par les relations binaires. 
-Les unités en relation sont annotées comme arguments : ARG1 et ARG2. 
-L'unité marquée par ARG2 est annotée par un connective du discours (explicitement ou implicitement). 
+Les unités en relation sont annotées comme arguments : ``ARG1" et ``ARG2". 
+L'unité marquée par ``ARG2" est annotée par un connective du discours (explicitement ou implicitement). 
 Les connectives du discours peuvent être (voir le tableau \ref{tab:pdtb-connect} pour des statistiques sur les connectives et leurs sens) :
 \begin{itemize}
 	\item \optword{Conjonctions de subordination} :  
@@ -276,11 +276,11 @@ Les connectives du discours peuvent être (voir le tableau \ref{tab:pdtb-connect
 		if && hypothetical (682), general (175), unreal present (122), factual present (73), unreal past (53), expectation (34), implicit assertion (29), relevance (20), other (31)\\
 		\hline\hline
 	\end{tabular}
-	\caption{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
+	\caption[Quelques connectives et des statistiques sur leurs sens]{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
 	\label{tab:pdtb-connect}
 \end{table}
 
-Les relations \ac{pdtb} sont divisées en quatre familles : temporelle, comparaison, contingence et extension. 
+Les relations \keyword[P]{\ac{pdtb}} sont divisées en quatre familles : temporelle, comparaison, contingence et extension. 
 Chaque relation appartient à une famille d'un façon hiérarchique comme indiqué dans la figure \ref{fig:pdtb-rel}. 
 Par exemple, la relation de succession indiquée par des connectives comme ``after" est une relation synchrone qui est à son tour une relation temporelle.
 
@@ -370,7 +370,7 @@ Par exemple, la relation de succession indiquée par des connectives comme ``aft
 		\end{itemize}
 	\end{itemize}
 \end{minipage}\vspace{-0.5cm}
-	\caption{Hiérarchie des sens dans PDTB \cite{2008-prasad-al}}
+	\caption[Hiérarchie des sens dans PDTB]{Hiérarchie des sens dans PDTB \cite{2008-prasad-al}}
 	\label{fig:pdtb-rel}
 \end{figure}
 
@@ -391,16 +391,16 @@ Par exemple, la relation de succession indiquée par des connectives comme ``aft
 
 Un discours est cohérent s'il existe des relations entre ses parties. 
 Analyser un discours veut dire chercher une structure du texte.
-Dans le cas de \ac{rst}, cette structure est un arbre indiquant les relations de cohérence entre les différentes parties. 
-Contrairement à \ac{rst}, \ac{pdtb} ne génère pas un arbre.
+Dans le cas de \keyword[R]{\ac{rst}}, cette structure est un arbre indiquant les relations de cohérence entre les différentes parties. 
+Contrairement à \keyword[R]{\ac{rst}}, \keyword[P]{\ac{pdtb}} ne génère pas un arbre.
 Plutôt, c'est un ensemble des relations binaires entre les parties du texte ; surtout les phrases consécutives. 
 
 
 \subsection{Analyse RST}
 
-L'analyse \ac{rst} consiste à construire un arbre de relations de cohérence entre les parties d'un texte. 
+L'analyse \keyword[R]{\ac{rst}} consiste à construire un arbre de relations de cohérence entre les parties d'un texte. 
 Cette tâche passe par deux étapes : détection des unités élémentaires de discours et classification des relations. 
-La figure \ref{fig:rst-exp} représente une analyse \ac{rst} d'un texte.
+La figure \ref{fig:rst-exp} représente une analyse \keyword[R]{\ac{rst}} d'un texte.
 On remarque que l'unité n'est pas toujours une phrase, mais elle peut être une partie d'une phrase (une clause).
 
 \begin{figure}[!ht]
@@ -420,21 +420,21 @@ Des méthodes statistiques peuvent être utilisées afin de détecter les limite
 Comme caractéristiques, on peut utiliser les informations syntaxiques et des indices de surface. 
 Ce problème peut être vu comme annotation des séquences. 
 Dans \cite{2018-wang-al}, les auteurs ont proposé un système neuronal\footnote{EDU avec réseau de neurones : \url{https://github.com/PKU-TANGENT/NeuralEDUSeg}} qui utilise le \keyword[E]{embedding} des mots. 
-La figure \ref{fig:edu-embedding} représente leur architecture où l'entrée est une concaténation entre deux embeddings : \keyword[G]{GloVe} et \keyword[B]{BERT}. 
-On utilise un réseau Bi-LSTM afin d'avoir le contexte en avant et en arrière pour chaque mot. 
+La figure \ref{fig:edu-embedding} représente leur architecture où l'entrée est une concaténation entre deux \keyword[E]{embedding}s : \keyword[G]{GloVe} et \keyword[B]{BERT}. 
+On utilise un réseau \keyword[B]{Bi-LSTM} afin d'avoir le contexte en avant et en arrière pour chaque mot. 
 Ensuite, chaque mot est classé comme : début d'un \ac{edu} (1) ou continuation d'un \ac{edu} (0). 
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.6\textwidth]{EDU_seg_.pdf}
-	\caption{Segmentation en EDUs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+	\caption[Segmentation en EDUs par embeddings]{Segmentation en EDUs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
 	\label{fig:edu-embedding}
 \end{figure}
 
 \subsubsection{Classification des relations}
 
 Un fois les \ac{edu} sont extraits, on doit les lier en utilisant les relations de cohérence. 
-La méthode la plus utilisée pour trouver la structure \ac{rst} est SHIFT-REDUCE.  
+La méthode la plus utilisée pour trouver la structure \keyword[R]{\ac{rst}} est SHIFT-REDUCE.  
 Celle-ci se base sur une machine abstraite ayant la configuration $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés (relations). 
 La figure \ref{fig:rst-shift-reduce} représente l'architecture de cette machine qui est similaire à celle utilisée dans l'analyse syntaxique des dépendances par transition. 
 La différence est que cette machine utilise les \ac{edu}s comme éléments et pas les mots.
@@ -454,30 +454,30 @@ Les opérations permises par cette machine sont :
 	\item \optword{Reduce}\textbf{(l, d)} : fusionne les deux sous-arbres supérieurs de la pile, où \textbf{l} est l'étiquette de relation de cohérence, et \textbf{d} est la direction de nucléarité : \textbf{d $ \in $ \{NN, NS, SN\}}.
 	\item \optword{Pop Root} : enlever la racine de l'arbre final de la pile.
 \end{itemize}
-Un exemple d'une analyse \ac{rst} en utilisant la méthode SHIFT-REDUCE est illustré das la figure \ref{fig:rst-shred-yu-al}.
+Un exemple d'une analyse \keyword[R]{\ac{rst}} en utilisant la méthode SHIFT-REDUCE est illustré das la figure \ref{fig:rst-shred-yu-al}.
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage{RST_exp_.pdf}
 	
 	\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
-	\caption{Un exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+	\caption[Exemple d'analyse RST en utilisant Shif-Reduce]{Exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
 	\label{fig:rst-shred-yu-al}
 \end{figure}
 
-Le composant ``Orancle" doit être entraîné afin de décider l'opération suivante. 
+Le composant ``Oracle" doit être entraîné afin de décider l'opération suivante. 
 On peut utiliser des caractéristiques afin d'entraîner un algorithme d'apprentissage comme on a vu dans l'analyse des dépendances (chapitre 5). 
-On peut aussi utiliser les \keyword[E]{embedding} avec un réseau de neurone comme la méthode proposée dans \cite{2018-yu-al}\footnote{Embedding pour RST : \url{https://github.com/yunan4nlp/NNDisParser}}. 
+On peut aussi utiliser les \keyword[E]{embedding}s avec un réseau de neurone comme la méthode proposée dans \cite{2018-yu-al}\footnote{Embedding pour RST : \url{https://github.com/yunan4nlp/NNDisParser}}. 
 Les auteurs proposent d'utiliser une architecture encodeur-décodeur afin de décider l'opération suivante. 
 L'encodeur a comme but de représenter tous les \ac{edu} comme des vecteurs.
 Le décodeur prend les représentations de quelques \ac{edu} pour décider l'opération suivante. 
 
 On commence par l'encodeur qui prend en entrée une représentation $x_i^w$ de chaque mot $w_i$. 
-Cette représentation et la concaténation du embedding du mot $w_i$ et de sa catégorie grammaticale $t_i$ comme indiqué dans l'équation \ref{eq:rst-embedding-entree}
+Cette représentation et la concaténation du \keyword[E]{embedding} du mot $w_i$ et de sa catégorie grammaticale $t_i$ comme indiqué dans l'équation \ref{eq:rst-embedding-entree}
 \begin{equation}\label{eq:rst-embedding-entree}
 x_i^w = embedding(w_i) \oplus embedding(t_i)
 \end{equation}
-Les mots d'une phrase $w_1 w_2 \ldots w_m$ sont passés par un réseau récurrent Bi-LSTM pour avoir une représentation séquentielle comme indiqué dans l'équation \ref{eq:rst-embedding-seqrep}.
+Les mots d'une phrase $w_1 w_2 \ldots w_m$ sont passés par un réseau récurrent \keyword[B]{Bi-LSTM} pour avoir une représentation séquentielle comme indiqué dans l'équation \ref{eq:rst-embedding-seqrep}.
 \begin{equation}\label{eq:rst-embedding-seqrep}
 \{h_1^w, h_2^w, \ldots, h_m^w \} = biLSTM(\{x_1^w, x_2^w, \ldots, x_m^w \})
 \end{equation}
@@ -487,7 +487,7 @@ Afin de représenter un \ac{edu} $\{w_s, w_{s+1}, \ldots, w_t \}$, on cherche le
 x^e = \frac{1}{t-s+1} \sum_{k=s}^{t} h_k^w
 \end{equation}
 Une fois la représentation individuelle de chaque \ac{edu} $x_i^e$ est trouvée, on cherche leurs représentations séquentielles. 
-Pour ce faire, on utilise un autre réseau récurrent Bi-LSTM comme indiqué dans l'équation \ref{eq:rst-embedding-eduseqrep}
+Pour ce faire, on utilise un autre réseau récurrent \keyword[B]{Bi-LSTM} comme indiqué dans l'équation \ref{eq:rst-embedding-eduseqrep}
 \begin{equation}\label{eq:rst-embedding-eduseqrep}
 \{h_1^e, h_2^e, \ldots, h_n^e \} = biLSTM(\{x_1^e, x_2^e, \ldots, x_n^e \})
 \end{equation}
@@ -506,21 +506,21 @@ h_{s}^{sbt} = \frac{1}{j-i+1} \sum_{k=i}^{j} h_k^e
 
 \subsection{Analyse PDTB}
 
-Dans l'analyse \ac{pdtb}, on essaye de séparer les parties du texte et les annoter deux à deux par : ARG1 et ARG2. 
-Dans la partie annotée par ARG2, on essaye de l'annoter par une connective. 
+Dans l'analyse \ac{pdtb}, on essaye de séparer les parties du texte et les annoter deux à deux par : ``ARG1" et ``ARG2". 
+Dans la partie annotée par ``ARG2", on essaye de l'annoter par une connective. 
 Nous avons vu qu'il y a deux types de connectives : explicites (existantes dans le texte) et implicites (qu'on peut inférer). 
 Dans le cas des connectives explicites, on peut facilement les chercher et les trouver en utilisant leur liste. 
 Mais, il existe des connectives qui ne représentent pas des relations de cohérence. 
 Pour résoudre ce problème, on peut utiliser un algorithme de désambigüisation qui classe un connective donnée comme : discours ou non. 
-Une fois une connective est marquée comme discours, on marque la partie le contenant comme ARG2. 
-On cherche la partie en relation ARG1 en utilisant un algorithme d'apprentissage automatique. 
-L'algorithme prend ARG2 et une autre partie adjacente comme entrée et comme sortie il estime si elles sont en relation ou non. 
+Une fois une connective est marquée comme discours, on marque la partie le contenant comme ``ARG2". 
+On cherche la partie en relation ``ARG1" en utilisant un algorithme d'apprentissage automatique. 
+L'algorithme prend ``ARG2" et une autre partie adjacente comme entrée et comme sortie il estime si elles sont en relation ou non. 
 Ensuite, on marque la relation entre les deux en utilisant la connective. 
 
 Dans le cas où le connective est implicite, on doit inférer la connective étant donnée deux parties sans connectives. 
-Une méthode est d'utiliser \keyword[B]{BERT} avec les parties séparées par \keyword{[SEP]} comme entrée. 
-Dans la sortie \keyword{[CLS]}, on attache un réseau de neurones à propagation avant afin d'inférer la connective.
-Une autre méthode similaire est l'utilisation de deux réseaux LSTM pour représenté chacune des deux parties. 
+Une méthode est d'utiliser \keyword[B]{BERT} avec les parties séparées par ``[SEP]" comme entrée. 
+Dans la sortie ``[CLS]", on attache un réseau de neurones à propagation avant afin d'inférer la connective.
+Une autre méthode similaire est l'utilisation de deux réseaux \keyword[L]{LSTM} pour représenté chacune des deux parties. 
 Cette méthode a été proposé dans \cite{2020-liang-al} où l'architecture est illustrée dans la figure \ref{fig:pdtb-liang}.
 Le ``Max-Pool" est utilisé sur les représentations récurrentes des mots afin de composer le sens d'une partie et aussi pour réduire les paramètres du modèle.
 Dans chaque position dans les vecteurs des mots, il prend le nombre max pour avoir un autre vecteur de même taille.
@@ -528,7 +528,7 @@ Dans chaque position dans les vecteurs des mots, il prend le nombre max pour avo
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.6\textwidth]{PDTB_exp_.pdf}
-	\caption{Une architecture pour la détection de relations PDTB implicites \cite{2020-liang-al}}
+	\caption[Architecture pour la détection de relations PDTB implicites]{Architecture pour la détection de relations PDTB implicites \cite{2020-liang-al}}
 	\label{fig:pdtb-liang}
 \end{figure}
 
@@ -577,7 +577,7 @@ La première règle décrit que si un élément de $C_f(U_n)$ est réalisé par 
 L'intuition, ici, est que la pronominalisation est un moyen courant de marquer la saillance du discours. 
 S'il y a plusieurs pronoms dans un énoncé réalisant des entités de l'énoncé précédent, l'un de ces pronoms doit
 réaliser le centre arrière $C_b$.
-La deuxième règle concerne les transitions mentionnées précédemment, où CONTINU est plus cohérente que RETAIN que Smooth-SHIFT que Rough-SHIFT.
+La deuxième règle concerne les transitions mentionnées précédemment, où ``CONTINU" est plus cohérente que ``RETAIN" que ``Smooth-SHIFT" que ``Rough-SHIFT".
 Ces transitions sont calculée selon le tableau \ref{tab:center-trans}.
 L'intuition de cette règle est que les discours qui continuent à center sur la même entité sont plus cohérents que ceux qui basculent vers d'autres centres.
 
@@ -598,7 +598,7 @@ L'intuition de cette règle est que les discours qui continuent à center sur la
 		RETAIN & Rough-SHIFT\\
 		\hline\hline
 	\end{tabular}
-	\caption{Les transitions de la théorie de centralité }
+	\caption{Transitions de la théorie de centralité}
 	\label{tab:center-trans}
 \end{table}
 
@@ -638,7 +638,7 @@ La figure \ref{fig:entity-grid-rep} représente un texte et sa représentation p
 	\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
 	
 	\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
-	\caption{Un exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+	\caption[Exemple de la représentation d'un document par entités]{Exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
 	\label{fig:entity-grid-rep}
 \end{figure}
 
@@ -653,7 +653,7 @@ La figure \ref{fig:entity-grid-prob} représente les probabilités des transitio
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{EGM_doc_vec_exp_.pdf}
-	\caption{Un exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
+	\caption[Exemple de la représentation des documents par transitions grammaticales]{Exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
 	\label{fig:entity-grid-prob}
 \end{figure}
 

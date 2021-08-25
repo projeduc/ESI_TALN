@@ -58,12 +58,12 @@ Il existe plusieurs théories pour représenter la structure syntaxique :
 
 Nous avons vu dans le chapitre précédent que chaque mot d'une langue a une catégorie grammaticale (Ex. \expword{Le/DET cours/NOM est/VP intéressant/ADJ}). 
 Si on revient au chapitre des modèles de langage, on peut déduire que le déterminant possède une grande probabilité d'être suivi par un nom ou un adjectif suivi par un nom. 
-On appelle cette structure (En RegEx. \expword{DET ADJ* NOM}) un syntagme nominal. 
+On appelle cette structure (En RegEx. \expword{DET ADJ* NOM}) un \keyword[S]{syntagme} nominal. 
 Il est appelé ``nominal" et pas ``adjectival" ou ``déterminant" puisque le nom ici c'est le centre le la structure. 
 L'adjectif modifie souvent un nom et un déterminant est toujours dépendant d'un nom. 
-Il existe plusieurs syntagmes selon la catégorie noyau : nominal, verbal, adjectival, prépositionnel, etc.
+Il existe plusieurs \keyword[S]{syntagme}s selon la catégorie noyau : nominal, verbal, adjectival, prépositionnel, etc.
 Par exemple, \expword{[Le/DET cours/NOM ]\textsubscript{NP} [est/V intéressant/ADJ VP]\textsubscript{VP}}.
-la composition de plusieurs syntagmes forment un autre syntagme jusqu'à arriver à la phrase. 
+la composition de plusieurs \keyword[S]{syntagme}s forment un autre syntagme jusqu'à arriver à la phrase. 
 Techniquement, une phrase peut être structurée comme un arbre où la racine est la phrase, les nœuds internes sont les syntagmes et les feuilles sont les mots avec leurs catégories grammaticales.
 
 Rappelons la classification de Chomsky ; un langage peut être : régulier, hors-contexte, contextuel ou récursivement énumérable. 
@@ -124,7 +124,7 @@ Dans notre exemple, on peut ajouter l'information que les outils d'écriture doi
 		\hgraphpage[0.45\textwidth]{cfg-ambigue2.pdf} \\
 		(1) & (2) \\
 	\end{tabular}
-	\caption{Exemple de deux arbres syntaxique se la phrase ``L'élève a écrit une solution avec son explication" \label{fig:cfg-ambigue}}
+	\caption[Exemple de deux arbres syntaxiques d'une même phrase]{Exemple de deux arbres syntaxiques se la phrase ``L'élève a écrit une solution avec son explication" \label{fig:cfg-ambigue}}
 \end{figure}
 
 Une autre méthode pour faire face à ce problème est d'utiliser les \ac{cfg} probabilistes : \ac{pcfg}.
@@ -151,7 +151,7 @@ Un exemple de l'annotation fonctionnelle des deux phrases ``\expword{L'élève a
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.65\textwidth]{exp-parse-fonct_.pdf}
-	\caption{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/}\label{fig:parse-fct-exp}}
+	\caption[Exemple d'une analyse fonctionnelle de deux phrases]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/}\label{fig:parse-fct-exp}}
 \end{figure}
 
 La structure de dépendance est formalisée comme un graphe orienté $G=(V, A)$ où les mots représentent les sommets $V$ et les relations représentent les arcs $A$. 
@@ -183,7 +183,7 @@ Un exemple des relations de dépendance est donnée dans le tableau \ref{tab:rel
 		nummod & modificateur numérique & J'ai mangé \underline{3} \textbf{bonbons}\\
 		\hline\hline
 	\end{tabular}
-	\caption{Quelques relations de dépendances universelles de Stanford \cite{2014-de-marneffe-al} (\url{https://universaldependencies.org/u/dep/index.html})\label{tab:rel-dep-exp}}
+	\caption[Quelques relations de dépendances universelles de Stanford]{Quelques relations de dépendances universelles de Stanford \cite{2014-de-marneffe-al} (\url{https://universaldependencies.org/u/dep/index.html})\label{tab:rel-dep-exp}}
 \end{table}
 
 %===================================================================================
@@ -193,9 +193,9 @@ Un exemple des relations de dépendance est donnée dans le tableau \ref{tab:rel
 La grammaire à contexte libre est le système formel le plus utilisé pour modéliser la structure constituante.
 Il existe deux types de méthodes pour analyser un texte :
 \begin{itemize}
-	\item \optword{ascendante} : à partir des mots de la phrase, on essaye de trouver les catégories grammaticales. Ensuite, les syntagmes qui génèrent une combinaison des catégories et des syntagmes. On fait ça jusqu'à arriver à \keyword{S}.
+	\item \optword{ascendante} : à partir des mots de la phrase, on essaye de trouver les catégories grammaticales. Ensuite, les syntagmes qui génèrent une combinaison des catégories et des \keyword[S]{syntagme}s. On fait ça jusqu'à arriver à \keyword{S}.
 	Exemple, \expword{LR}.
-	\item \optword{descendante} : à partir de \keyword{S}, on cherche les règles qui génèrent la phrase. Ceci en se basant sur des mots pour guider la génération.
+	\item \optword{descendante} : à partir de ``S", on cherche les règles qui génèrent la phrase. Ceci en se basant sur des mots pour guider la génération.
 	Exemple, \expword{Descente récursive, LL, Early}.
 \end{itemize}
 Les algorithmes mentionnées dans les exemples sont conçus pour traiter les langages de programmation. 
@@ -205,7 +205,7 @@ Un algorithme conçu pour l'analyse syntaxique des langages naturels est \keywor
 
 \subsection{Algorithme CKY}
 
-L'algorithme de \keyword{Cocke-Kasami-Younger} (CKY) utilise la programmation dynamique afin d'appliquer une analyse syntaxique ascendante. 
+L'algorithme de \keyword{Cocke-Kasami-Younger} (\keyword[C]{CKY}) utilise la programmation dynamique afin d'appliquer une analyse syntaxique ascendante. 
 La seule condition pour appliquer cet algorithme est de transformer la grammaire sous la forme normale de Chomsky. 
 Un petit rappel de cette forme : 
 \begin{align*}
@@ -339,11 +339,11 @@ L'algorithme \ref{algo:cky-constr} décrit l'opération de construction d'un arb
 L'arbre syntaxique résultante est binaire (à cause de la forme normale de Chomsky).
 Mais, dans la réalité elle doit suivre la grammaire conçue par les syntacticiens. 
 Une solution est d'ajouter une étape de post-traitement pour récupérer l'arbre originale.
-Concernant les productions unitaires, on peut les laisser telles qu'elles sont et modifier l'algorithme CKY afin de les accepter.
+Concernant les productions unitaires, on peut les laisser telles qu'elles sont et modifier l'algorithme \keyword[C]{CKY} afin de les accepter.
 Bien sûr l'algorithme souffre toujours du problème d'ambigüité syntaxique.
 Exemple, \expword{Je mange du riz avec une fourchette.} et \expword{Je mange du riz avec de la viande.}
 
-On va analyser la phrase ``\expword{la petite forme une petite phrase}" en utilisant CKY selon la grammaire suivante :
+On va analyser la phrase ``\expword{la petite forme une petite phrase}" en utilisant \keyword[C]{CKY} selon la grammaire suivante :
 \begin{itemize}
 	\item S \textrightarrow\ NP VP | VP
 	\item VP \textrightarrow V NP
@@ -379,7 +379,7 @@ Le tableau d'analyse est illustré dans la figure \ref{fig:exp-cky-trait}.
 	\multicolumn{5}{l|}{}& \textbf{(N, 0, 0, 0)} \\
 	\cline{6-6}
 \end{tabular}
-\caption{Exemple de l'anaylse CKY de la phrase ``la petite forme une petite phrase" \label{fig:exp-cky-trait}}
+\caption[Exemple de l'analyse CKY]{Exemple de l'analyse CKY de la phrase ``la petite forme une petite phrase" \label{fig:exp-cky-trait}}
 \end{figure}
 
 
@@ -403,7 +403,7 @@ Concernant l'algorithme \keyword[C]{CKY}, on ajoute la probabilité d'occurrence
 Chaque variable $A$ aura au maximum une chance pour produire deux variables.
 Dans ce cas, on va créer un tableau triangulaire de trois dimensions $T[n, n, |N|]$ où on stocke la probabilité de chaque variable dans cette cellule en plus de la position $k$ utilisée pour chercher les fils et les deux variables des fils gauche et droit.
 On suppose que toutes les probabilités des cellules sont initialisées par $0$.
-L'algorithme \ref{algo:cky-prob-recon} représente la version probabiliste de l'algorithme CKY.
+L'algorithme \ref{algo:cky-prob-recon} représente la version probabiliste de l'algorithme \keyword[C]{CKY}.
 \begin{algorithm}[ht]
 	\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
 	\Res{$T[n, n, |N|]$}
@@ -516,13 +516,13 @@ L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par tr
 	\caption{Analyse des dépendances par transitions \label{algo:anal-dep-trans}}
 \end{algorithm}
 
-Le système Oracle choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
+Le système ``Oracle" choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
 Lorsqu'on est dans la configuration actuelle $ C = (\sigma, \beta, A) $, on utilise une fonction $\Psi$ qui calcule un score en utilisant sur des caractéristiques basées sur cette configuration.
 La transition $\hat{t}$ choisie est celle qui maximise la fonction $\Psi$ ayant des paramètres $\theta$ selon l'équation \ref{eq:orancle-psi}.
 \begin{equation}\label{eq:orancle-psi}
 \hat{t} = \arg\max\limits_{t \in T} \Psi (t, C, w; \theta)
 \end{equation}
-Pour entraîner le système oracle, on doit annoter le texte en le transformant vers une séquence de transitions. 
+Pour entraîner le système ``Oracle", on doit annoter le texte en le transformant vers une séquence de transitions. 
 Le texte original est annoté avec les relations de dépendance. 
 Pour transformer la sortie à une séquence de transitions, on utilise le système d'analyse en tel sorte à générer toutes les dépendances possibles. 
 En utilisant des caractéristiques sur la configuration courante, on essaye d'estimer la transition suivante par la fonction $\Psi$.  
@@ -554,7 +554,7 @@ Les transitions possibles dans cette approche sont :
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-arc-std_.pdf}
-	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}\label{fig:arc-standard-exp}}
+	\caption[Exemple de dérivations non étiquetées en utilisant Arc-standard]{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}\label{fig:arc-standard-exp}}
 \end{figure}
 
 Dans Arc-Eager, on essaye de détecter les relations de dépendance le plus tôt possible. 
@@ -580,11 +580,11 @@ Les transitions possibles dans cette approches sont :
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-arc-eager_.pdf}
-	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}\label{fig:arc-eager-exp}}
+	\caption[Exemple de dérivations non étiquetées en utilisant Arc-eager]{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}\label{fig:arc-eager-exp}}
 \end{figure}
 
 Les relations présentées ici sont des relations non étiquetées ; juste la relation tête-dépendant sans type.
-Afin d'ajouter le type de relation, on doit enrichir les transitions ARC-LEFT et ARC-RIGHT avec les types possibles. 
+Afin d'ajouter le type de relation, on doit enrichir les transitions ``ARC-LEFT" et ``ARC-RIGHT" avec les types possibles. 
 Dans Arc-standard, à la place de 3 transitions, on aura $1+2R$ transitions où $R$ est le nombre des types de dépendances.
 
 \subsection{Par graphe}
@@ -676,7 +676,7 @@ La figure \ref{fig:cke-exp} représente son analyse en utilisant l'algorithme de
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-graphe-analyse_.pdf}
-	\caption{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}\label{fig:cke-exp}}
+	\caption[Exemple de l'analyse Chu-Liu-Edmonds]{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}\label{fig:cke-exp}}
 \end{figure}
 
 

@@ -58,7 +58,7 @@ Pour chercher des sous-chaines de caractères dans un texte, on peut utiliser le
 La recherche des séquences dans un texte nous permet de les remplacer où de les séparer (ex. \expword{séparation des mots}).
 Une autre type de recherche est la recherche approximative : chercher des parties presque similaires à une donnée. 
 Pour ce faire, on doit pouvoir comparer deux chaînes de caractères en mesurant la différence entre les deux. 
-Une des techniques utilisées est \keyword[D]{distance d'édition}.
+Une des techniques utilisées est la distance d'édition.
 
 \subsection{Expressions régulières}
 
@@ -154,7 +154,7 @@ Dans ce cas, on capture la chaîne ``ch" pour la garder et remplacer le reste : 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.75\textwidth]{expreg_exp_kate.png}
-	\caption{Exemple de remplacement par expressions régulières dans l'éditeur de texte ``kate" \label{fig:kate_regex}}
+	\caption[Exemple de remplacement par RegEx dans l'éditeur de texte ``kate"]{Exemple de remplacement par expressions régulières dans l'éditeur de texte ``kate" \label{fig:kate_regex}}
 \end{figure}
 
 
@@ -164,7 +164,7 @@ Prenons l'exemple : ``\expword{J'aime les chats. Dans la cuisine, il y a un rat.
 Si on remplace la chaîne ``at" de ``chat" et de ``rat" par ``ien", on aura le texte suivant : 
 ``\expword{J'aime les chiens. Dans la cuisine, il y a un rien.}".
 Dans ce cas, on doit tester les mots ``chat" et ``rat" pour remplacer seulement la dernière partie et garder la première intacte.
-Plusieurs langages de programmation fournissent le remplacement des chaînes de caractères en utilisant les expressions régulières.
+Plusieurs langages de programmation fournissent le remplacement des chaînes de caractères en utilisant les \keyword[R]{RegEx}.
 Dans Javascript, les chaînes de caractères sont attribuées une méthode ``replace" pour remplacer une de leurs parties par une autre chaîne. 
 Si on veut remplacer toutes les occurrences, on doit utiliser le flag ``g" après l'expression régulière.
 Pour récupérer le groupe capturé, on utilise ``\$".
@@ -299,7 +299,7 @@ Par exemple, dans la correction d'orthographe, des lettres sont plus probables d
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.75\textwidth]{exp-levenshtein_.pdf}
-	\caption{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin} \label{fig:laven-distance}}
+	\caption[Exemple de calcul de distance de Levenshtein]{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin} \label{fig:laven-distance}}
 \end{figure}
 
 \subsubsection{Distance de Damerau–Levenshtein}
@@ -430,13 +430,13 @@ Les correspondances soulignées des vecteurs des deux mots représentent des tra
 	\cline{2-9}
 \end{tabular}
 \end{minipage}
-\caption{Exemple de calcul de la distance de Jaro des mots ``amibe"  et ``immature" \label{fig:jaro}}
+\caption[Exemple de calcul de la distance de Jaro]{Exemple de calcul de la distance de Jaro des mots ``amibe"  et ``immature" \label{fig:jaro}}
 \end{figure}
 %===================================================================================
 \section{Segmentation du texte}
 %===================================================================================
 
-Un texte peut être traité lorsqu'il est segmenté en passages de petites tailles ; elles peuvent êtres des chpitres, des paragraphes, des phrases ou des mots selon la granularité voulue.
+Un texte peut être traité lorsqu'il est segmenté en passages de petites tailles ; elles peuvent êtres des chapitres, des paragraphes, des phrases ou des mots selon la granularité voulue.
 Dans plusieurs langues, les phrases sont délimitées par un point ou une marque spécifique, et les mots sont délimités par des espaces. 
 Même dans ces langues, le délimiteur peut être utilisé pour d'autres fins. 
 Il existe des langues où il n'y a pas de délimiteur des phrases, des mots ou des deux.
@@ -587,7 +587,7 @@ Les mots clés des formats textuelles est un exemple des mots à filtrer.
 On peut trouver ça dans les balises de certaines formats semi-structurées comme HTML, XML, etc.
 
 
-Les \keyword{mots vides} représentent les mots non significatifs comme les prépositions, articles et les pronoms.
+Les \optword{mots vides} représentent les mots non significatifs comme les prépositions, articles et les pronoms.
 La suppression des mots vides peut être utilisée si plusieurs mots dans le document ne contribuent pas particulièrement dans la description de son contenu.
 Afin d'augmenter la performance du système, plusieurs tâches (comme la recherche d'information et de résumé automatique) font appel à cette technique.
 Mais, on peut avoir des cas particuliers ou ça va causer des problèmes. 

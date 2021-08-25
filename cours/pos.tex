@@ -78,7 +78,7 @@ Un exemple d'une phrase en anglais étiquetée est illustré dans la figure \ref
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-pos_.pdf}
-	\caption{Un exemple d'étiquetage morpho-syntaxique [\url{https://corenlp.run/}]\label{fig:ems-exp}}
+	\caption[Exemple d'étiquetage morpho-syntaxique]{Exemple d'étiquetage morpho-syntaxique [\url{https://corenlp.run/}]\label{fig:ems-exp}}
 \end{figure}
 
 Une autre tâche de ce type est la reconnaissance d'entités nommées.
@@ -95,7 +95,7 @@ La figure \ref{fig:ner-exp} représente un exemple d'une phrase en anglais conte
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-ner_.pdf}
-	\caption{Un exemple de la reconnaissance d'entités nommées [\url{https://corenlp.run/}]\label{fig:ner-exp}}
+	\caption[Exemple de la reconnaissance d'entités nommées]{Exemple de la reconnaissance d'entités nommées [\url{https://corenlp.run/}]\label{fig:ner-exp}}
 \end{figure}
 
 L'analyse syntaxique de surface (Chunking) est une autre exemple d'étiquetage des séquences.
@@ -111,7 +111,7 @@ Comme mentionné avant, cette tâche sert à trouver les catégories grammatical
 Une catégorie grammaticale peut avoir plusieurs noms (selon l'ouvrage) : nature, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours (en anglais, Part of speech).
 Afin de réaliser cette tâche, il faut tout d'abord définir les étiquettes (tags). 
 Est-ce qu'on détail dans les catégories ou on se contente des catégories principale ?
-Les étiquettes les plus fameuses sont celles de Penn Treebank pour l'anglais : conjonction de coordination (CC), nombre cardinal (CD), déterminant (DT), etc. 
+Les étiquettes les plus fameuses sont celles de Penn \keyword[T]{TreeBank} pour l'anglais : conjonction de coordination (CC), nombre cardinal (CD), déterminant (DT), etc. 
 Les catégories grammaticales sont différentes d'une langue à une autre. 
 Mais, on peut trouver certaines catégories qui sont partagées.
 Le projet ``Universal dependencies" cherche à normaliser ces catégories comme indiqué dans le tableau \ref{tab:pos-cat}.
@@ -140,11 +140,11 @@ Le projet ``Universal dependencies" cherche à normaliser ces catégories comme 
 	\hline\hline
 	
 \end{tabular}
-\caption{Les catégories grammaticales universelles selon \url{https://universaldependencies.org/u/pos/} \label{tab:pos-cat}}
+\caption[Catégories grammaticales universelles]{Catégories grammaticales universelles selon \url{https://universaldependencies.org/u/pos/} \label{tab:pos-cat}}
 \end{table}
 
 L'étape suivante est d'annoter un corpus manuellement. 
-Ce type de corpus est appelé \keyword[T]{treebank}.
+Ce type de corpus est appelé \keyword[T]{TreeBank}.
 Parmi les corpus annoté, on peut citer Penn Treebank pour l'anglais (Exemple dans la figure \ref{fig:penn-exp}).
 Un autre projet riche en terme de langues traitées est Universal TreeBank (\url{https://universaldependencies.org/}) \cite{2012-petrov-al}. 
 C'est un projet à communauté ouverte qui vise à utiliser les mêmes classes grammaticales afin d'annoter plusieurs langues. 
@@ -166,7 +166,7 @@ Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, 
 			ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyword{/.}
 		\end{alltt}
 	\end{tcolorbox}
-	\caption{Exemple d'un texte annoté de Penn TreeBank \cite{2003-taylor}\label{fig:penn-exp}}
+	\caption[Exemple d'un texte annoté de Penn TreeBank]{Exemple d'un texte annoté de Penn TreeBank \cite{2003-taylor}\label{fig:penn-exp}}
 \end{figure}
 
 Voici quelques applications qui fournissent la tâche d'annotation morpho-syntaxique :
@@ -212,27 +212,27 @@ P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.4\textwidth]{exp-markov_.pdf}
-	\caption{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}\label{fig:cm-exp}}
+	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps]{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}\label{fig:cm-exp}}
 \end{figure}
 
 Ce modèle est un modèle de langage qui ne représente que les probabilités de transition. 
 Dans ce cas, on peut seulement représenter la probabilité de transition d'une catégorie à ue autre. 
 Si on estime la probabilité d'émission d'un mot dans chaque état (étiquette), dans ce cas on peut estimer les étiquettes en utilisant la  théorème de Bayes. 
-Ce modèle est appelé : modèle de Markov caché (\ac{hmm}) ; les mots d'une séquence sont observés or les catégories sont cachées et doit être estimées. 
+Ce modèle est appelé : modèle de Markov caché (\keyword[H]{\ac{hmm}}) ; les mots d'une séquence sont observés or les catégories sont cachées et doit être estimées. 
 Chaque étiquette (catégorie) $t_i$ est représentée par un un état $q_i$ dans l'ensemble des états $Q = \{q_1, q_2, \ldots, q_n\}$.
 Les transitions d'un état vers un autre suivant un modèle Bi-gramme sont représentées par la matrice de transitions $A$.
 La distribution initiale des probabilités de ces états est annotée $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ où $\sum_i \pi_i = 1$.
 Un mot $w_i$ est représenté comme une observation dans la séquences des évènements observés $O = o_1 o_2 \ldots o_T$. 
-Une observation $o_t$ peut être générée dans un état $q_i$ avec une probabilités d'observation (\keyword{probabilités d'émission}) $B = b_i(o_t)$.
-Un exemple d'un \ac{hmm} est illustré dans la figure \ref{fig:hmm-exp}. 
+Une observation $o_t$ peut être générée dans un état $q_i$ avec une probabilités d'observation (probabilités d'émission) $B = b_i(o_t)$.
+Un exemple d'un \keyword[H]{\ac{hmm}} est illustré dans la figure \ref{fig:hmm-exp}. 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{exp-hmm_.pdf}
-	\caption{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}\label{fig:hmm-exp}}
+	\caption[Exemple d'une représentation HMM]{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}\label{fig:hmm-exp}}
 \end{figure}
 
 La séquence estimée $\hat{t}$ est celle qui maximise la probabilité $P(t)$ et la probabilité $P(w_i | t_i)$ selon l'équation \ref{eq:hmm-detail}.
-En utilisant un modèle Bi-gramme, la probabilité $P(t)$ est calculée en utilisant les transitions de l'état initial $t_1$ jusqu'à le dernier $t_n$. 
+En utilisant un modèle \keyword[B]{Bi-gramme}, la probabilité $P(t)$ est calculée en utilisant les transitions de l'état initial $t_1$ jusqu'à le dernier $t_n$. 
 Il faut savoir que la probabilité $P(t_1|t_0)$ est en réalité la probabilité initiale $\pi_1$ de l'état $t_1$.
 La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle de Markov caché.
 \begin{align}
@@ -241,10 +241,10 @@ La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle 
 \end{align}
 
 Avant de parler comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, on commence par l'entrainement. 
-Dans un \ac{hmm}, les états sont les tags (catégories) $t_i$ et les observations sont les mots $w_i$. 
+Dans un \keyword[H]{\ac{hmm}}, les états sont les tags (catégories) $t_i$ et les observations sont les mots $w_i$. 
 Notons la fonction qui compte le nombre des 
 La probabilité de transition $a_{i-1,i}$ de l'état $t_{i-1}$ vers $t_i$ est estimé à partir du corpus d'entraînement selon l'équation \ref{eq:pos-hmm1}.
-On note \keyword{DEBUT} comme l'étiquette qui précède la première catégorie de la phrase. 
+On note ``DEBUT" comme l'étiquette qui précède la première catégorie de la phrase. 
 Dans ce cas, la probabilité $\pi_i$ de commencer par l'état $t_i$ est estimée selon l'équation \ref{eq:pos-hmm2}.
 \begin{align}
 P(t_i | t_{i-1}) = \frac{C(t_{i-1}, t_i)}{C(t_{i-1})}  \label{eq:pos-hmm1} \\
@@ -281,7 +281,7 @@ Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emis
 	\textless s\textgreater ($\pi$) &  1/4  &  3/4   & 0  &   0  &  0 \\
 	\hline\hline
 \end{tabular}
-\caption{Un exemple des probabilités de transition et la distribution initiale \label{tab:hmm-trans-init}}
+\caption[Exemple des probabilités de transition et une distribution initiale]{Exemple des probabilités de transition et une distribution initiale \label{tab:hmm-trans-init}}
 \end{table}
 
 \begin{table}[ht]
@@ -297,7 +297,7 @@ Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emis
 	NOUN &  0 &  1         &  0   &   0  &  0    & 0  & 0    & 0 \\
 	\hline\hline
 \end{tabular}
-\caption{Un exemple des probabilités d'émission \label{tab:hmm-emission}}
+\caption[Exemple des probabilités d'émission]{Exemple des probabilités d'émission \label{tab:hmm-emission}}
 \end{table}
 
 Revenons maintenant au décodage des tags (étiquetage). 
@@ -353,7 +353,7 @@ Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}.
 		NOUN & $0 * 0$ [0]& $0 * 1 * 0$; $\frac{3}{4} * 0 * 0$; $0 * 0 * 0$; $0 * 0 * 0$ [1]& $0 * 1 * 0$; $\frac{6}{28} * 0 * 0$; $0 * 0 * 0$; $0 * 0 * 0$ [1]\\
 		\hline\hline
 	\end{tabular}
-	\caption{Un exemple d'exécution de l'algorithme de Viterbi \label{tab:hmm-viterbi-exp}}
+	\caption[Exemple d'exécution de l'algorithme de Viterbi]{Exemple d'exécution de l'algorithme de Viterbi \label{tab:hmm-viterbi-exp}}
 \end{table}
 
 \begin{algorithm}[ht]
@@ -385,11 +385,11 @@ Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}.
 
 \subsection{Maximum entropy}
 
-Les \ac{hmm} se basent dans leurs estimations seulement sur des statistiques sur les mots. 
+Les \keyword[H]{\ac{hmm}} se basent dans leurs estimations seulement sur des statistiques sur les mots. 
 Il est difficile à introduire des caractéristiques comme les suffixes, le majuscule, etc. 
 La régression logistique, qui est un modèle discriminatif, peut combiner plusieurs caractéristiques afin d'estimer une probabilité de sortie. 
 Malheureusement, cette méthode ne prend pas les séquences en considération.
-On peut utiliser des caractéristiques sur le mot actuel et les mots avant afin d'estimer l'étiquette ; comme dans les \ac{hmm}.
+On peut utiliser des caractéristiques sur le mot actuel et les mots avant afin d'estimer l'étiquette ; comme dans les \keyword[H]{\ac{hmm}}.
 Dans ce cas le modèle sera appelé \acf{memm}.
 Le problème revient à maximiser les probabilités individuelles de chaque étiquette $\hat{t}_i$ (voir l'équation \ref{eq:pos-emm-est}). 
 \begin{equation}\label{eq:pos-emm-est}
@@ -424,14 +424,14 @@ Voici une liste des caractéristiques $f$ qu'on peut utiliser dans cette méthod
 \subsection{Modèle neuronal}
 
 Les réseaux de neurones récurrents sont conçus pour traiter les séquence.
-Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en passant le mot encodé avec One-Hot en entrée et estimant le mot suivant et en prenant en considération le contexte précédent. 
+Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en passant le mot encodé avec \keyword[O]{One-Hot} en entrée et estimant le mot suivant et en prenant en considération le contexte précédent. 
 Si on modifie la  sortie : à la place des probabilités des mots du vocabulaire, on essaye d'estimer les probabilités des catégories possibles. 
-On peut, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (embedding). 
+On peut, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseaux de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{rnn-simple_.pdf}
-	\caption{Un RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
+	\caption[Un RNN simple pour l'étiquetage morpho-syntaxique]{Un RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
 \end{figure}
 
 Si on veut avoir des réseaux plus profonds et plus complexes, on peut empiler plusieurs \ac{rnn} ensembles. 
@@ -441,7 +441,7 @@ La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rn
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{rnn-stack_.pdf}
-	\caption{Des RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn2}}
+	\caption[Des RNNs empilés pour l'étiquetage morpho-syntaxique]{Des RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn2}}
 \end{figure}
 
 Dans les modèles neuronaux précédents, l'étiquette courante $t_i$ dépend sur le mot courant $w_i$ et le contexte passé. 
@@ -453,19 +453,19 @@ Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{rnn-bi_.pdf}
-	\caption{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn3}}
+	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn3}}
 \end{figure}
 
 Les langues sont toujours en amélioration : ajout des nouveaux mots, des nouvelles formes, etc. 
 En plus, on ne peut pas capturer toutes les variations de tous les mots en utilisant un corpus limité surtout dans les langues fortement flexionnelles. 
-Afin de preprésenter les variations morphologiques d'un mot, on doit descendre au niveau caractère.
-Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langue au niveau caractère afin d'encoder un mot et combiner ce code avec le code lexicale (One-Hot ou embedding) du mot. 
+Afin de représenter les variations morphologiques d'un mot, on doit descendre au niveau caractère.
+Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langue au niveau caractère afin d'encoder un mot et combiner ce code avec le code lexicale (\keyword[O]{One-Hot} ou \keyword[E]{embedding}) du mot. 
 La code résultat sera l'entrée du réseau récurrent (simple, empilé ou bidirectionnel).
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.5\textwidth]{rnn-char1_.pdf}
 	\hgraphpage[0.45\textwidth]{rnn-char2_.pdf}
-	\caption{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn4}}
+	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn4}}
 \end{figure}
 
 

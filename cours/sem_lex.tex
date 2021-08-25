@@ -63,7 +63,7 @@ Un lexème peut représenter plusieurs sens ; qui sont référencés ici par \ke
 \begin{figure}[ht]
 	\centering 
 	\hgraphpage[.5\textwidth]{exp-bd-lex_.pdf}
-	\caption{Exemple des informations et leurs relations dans une base lexicale \cite{2019-white-al}}
+	\caption[Exemple des informations et leurs relations dans une base lexicale]{Exemple des informations et leurs relations dans une base lexicale \cite{2019-white-al}}
 	\label{fig:base-lex-exp}
 \end{figure}
 
@@ -83,7 +83,7 @@ Rappelons les relations sémantiques présentées dans le premier chapitre :
 
 \subsection{Wordnet}
 
-Wordnet \cite{1995-miller} est une base de données lexicale pour l'anglais.
+\keyword[W]{WordNet} \cite{1995-miller} est une base de données lexicale pour l'anglais.
 La figure \ref{fig:wordnet-exp} représente un exemple des différents sens du mot ``reason". 
 La base de données contient trois parties : (1) noms (2) verbes (3) adjectifs et adverbes. 
 Un sens regroupe plusieurs mots de la même partie et il est représénté par un identifiant appelé \keyword[S]{Synset} (Synonyms set).
@@ -94,7 +94,7 @@ Ex. \expword{05659525 : (the capacity for rational thought or inference or discr
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{exp-wordnet_.pdf}
-	\caption{Un exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
+	\caption[Exemple de WordNet]{Exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
 	\label{fig:wordnet-exp}
 \end{figure}
 
@@ -119,7 +119,7 @@ Le tableau \ref{tab:cat-lex-wordnet} représente les catégories lexicographique
 		FOOD & food & & & TIME & day\\
 		\hline\hline
 	\end{tabular}
-	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
+	\caption[Catégories lexicographiques des noms dans WordNet]{Catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
 	\label{tab:cat-lex-wordnet}
 \end{table}
 %\begin{figure}
@@ -127,7 +127,7 @@ Le tableau \ref{tab:cat-lex-wordnet} représente les catégories lexicographique
 %	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
 %\end{figure}
 
-Worndet représente les relations sémantiques entre les sens.
+\keyword[W]{WordNet} représente les relations sémantiques entre les sens.
 Le tableau \ref{tab:rel-sem-wordnet} représente les relations sémantiques des noms et des verbes.
 \begin{table}[ht]
 	\small\centering
@@ -156,7 +156,7 @@ Le tableau \ref{tab:rel-sem-wordnet} représente les relations sémantiques des 
 		Antonym & d'un évènement vers son opposition sémantique & \expword{increase\textsuperscript{1} $ \leftrightarrow $ decrease\textsuperscript{1}} \\
 		\hline\hline
 	\end{tabular}
-	\caption{Les relations sémantiques de Wordnet \cite{2019-jurafsky-martin}}
+	\caption[Relations sémantiques de Wordnet]{Relations sémantiques de Wordnet \cite{2019-jurafsky-martin}}
 	\label{tab:rel-sem-wordnet}
 \end{table}
 
@@ -183,8 +183,8 @@ Voici une petite liste de  ces APIs :
 
 \subsection{Autres ressources}
 
-Wordnet n'est pas la seule base de donnée lexicale ; il existe d'autres. 
-\keyword[V]{VerbNet} est une autre base de donnée lexicale, mais seulement pour les verbes. 
+\keyword[W]{WordNet} n'est pas la seule base de donnée lexicale ; il existe d'autres. 
+VerbNet est une autre base de donnée lexicale, mais seulement pour les verbes. 
 Elle inclue 30 rôles thématiques principaux. 
 Les verbes sont organisés en classes. 
 \keyword[F]{FrameNet} est une autre base de donnée lexicale basée sur la théorie du sens appelée ``cadre sémantique" (frame semantic). 
@@ -196,11 +196,11 @@ Ces deux projets vont être repris dans le chapitre suivant (sens des propositio
 
 Un autre projet similaire à Wordnet est BabelNet\footnote{BabelNet : \url{https://babelnet.org/}}.
 C'est un réseau sémantique multilingue qui utilise plusieurs sources comme Wordnet, Wikipédia, VerbNet, etc. 
-Chaque concept a un synset comme dans Wordnet et qui est partagé par plusieurs langues. 
+Chaque concept a un synset comme dans \keyword[W]{WordNet} et qui est partagé par plusieurs langues. 
 La structure de BabelNet est illustrée dans la figure \ref{fig:babelnet-struc}.
 \begin{figure}[ht]
 	\hgraphpage{babelnet.png}
-	\caption{Structure de BabelNet \cite{2012-navigli-ponzetto}}
+	\caption[Structure de BabelNet]{Structure de BabelNet \cite{2012-navigli-ponzetto}}
 	\label{fig:babelnet-struc}
 \end{figure}
 
@@ -314,7 +314,7 @@ $Cos(S3, S2) = \frac{2}{\sqrt{5} \sqrt{4}} = 0.447$.
 
 Un mot peut être représenté par rapport aux autres mots du vocabulaire en utilisant la co-occurrence. 
 Afin de représenter les mots d'un vocabulaire  $ V $, on doit utiliser une matrice $|V| \times |V|$. 
-Le vecteur des  $|V|$ mots qui représentent un mot est appelé \keyword{contexte}.
+Le vecteur des  $|V|$ mots qui représentent un mot est appelé ``contexte".
 La co-occurrence peut être calculée par rapport aux documents, aux phrases ou des fenêtres auteur du mot. 
 Par rapport au document, on compte le nombre des documents où les deux mots ont apparus ensemble. 
 Cela doit utiliser beaucoup de documents et donne des vecteurs éparts (la plupart des valeurs sont des zéros).
@@ -349,7 +349,7 @@ Un document peut être encoder comme le centre des vecteurs des mots qui lui com
 	pour & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
 	\hline\hline
 \end{tabular}
-\caption{Un exemple d'encodage Mot-Mot}
+\caption{Exemple d'encodage Mot-Mot}
 \label{tab:catmot-mot}
 \end{table}
 
@@ -440,11 +440,11 @@ Dans cette composition, les deux vecteurs décomposés sont conditionnés comme 
 T^\top T = \mathbb{I}_{N \times N} \label{eq:svd-cnd1} \\
 D^\top D = \mathbb{I}_{M \times M} \label{eq:svd-cnd2}
 \end{align}
-Afin de résoudre \ac{svd}, on peut utiliser des méthode de programmation dynamique comme l'\keyword{algorithme de Lanczos}, la \keyword{décomposition QR}.
+Afin de résoudre \ac{svd}, on peut utiliser des méthode de programmation dynamique comme l'algorithme de Lanczos, la décomposition QR.
 
-La représentation d'un terme avec un vecteur des nombres réel est appelé embedding. 
-La plupart des embeddings connus actuellement utilisent les réseaux de neurones. 
-Malgré c'est une représentation vectorielle, j'ai choisi de présenter les embedding dans une section à part.
+La représentation d'un terme avec un vecteur des nombres réel est appelé ``\keyword[E]{embedding}". 
+La plupart des \keyword[E]{embedding}s connus actuellement utilisent les réseaux de neurones. 
+Malgré c'est une représentation vectorielle, j'ai choisi de présenter les \keyword[E]{embedding}s dans une section à part.
 
 %===================================================================================
 \section{Word embedding}
@@ -452,15 +452,15 @@ Malgré c'est une représentation vectorielle, j'ai choisi de présenter les emb
 
 Les représentations document-mot et mot-mot basées sur la co-occurrence occupent un grand espace mémoire ; elles sont difficiles à gérer.
 Dans \ac{lsa}, nous avons vu que la représentation d'un mot est compactée vers un petit vecteur de nombres réels.
-Ceci est appelé : \keyword[E]{Word embedding} ou, en français, \keyword{Plongement lexical}. 
+Ceci est appelé : ``Word \keyword[E]{embedding}" ou, en français, ``Plongement lexical". 
 Ici, je vais utiliser la première nomination puisqu'elle est plus cool et plus utilisée.
 
-Dans cette section, on va présenter Word embedding basé sur les réseaux de neurones. 
-On va présenter deux types des embeddings : 
+Dans cette section, on va présenter Word \keyword[E]{embedding} basé sur les réseaux de neurones. 
+On va présenter deux types des \keyword[E]{embedding}s : 
 \begin{itemize}
 	\item traditionnel : on affecte à chaque mot une seule représentation. 
 	Mais, elle ne peut pas prendre la polysémie en considération. 
-	Les algorithmes qui seront présentés sont : Word2vec et GloVe.
+	Les algorithmes qui seront présentés sont : Word2vec et \keyword[G]{GloVe}.
 	\item contextuel : on affecte à  chaque mot plusieurs représentations ; chacune selon son contexte.
 	Prenons les trois phrases : 
 	``\expword{Le meilleur préservatif contre les souris est un chat}", 
@@ -468,16 +468,16 @@ On va présenter deux types des embeddings :
 	``\expword{J'adore la souris, c'est mon morceau favori}".
 	Le mot ``souris" veut dire respectivement : ``animal", ``dispositif" et ``Partie du gigot de mouton". 
 	L'idée de cette représentation est d'avoir des différents codes selon le sens et pas seulement le mot. 
-	On va présenter les algorithmes suivants : ELMo et BERT.
+	On va présenter les algorithmes suivants : \keyword[E]{ELMo} et \keyword[B]{BERT}.
 \end{itemize} 
 
 \subsection{Word2vec}
 
 Dans le modèle Mot-Mot, nous avons vu la notion du contexte ; les mots qui entourent un autre. 
 L'idée ici est d'utiliser un modèle de langage neuronal afin d'encoder un mot en utilisant son contexte. 
-Préalablement, les mots sont encodés en utilisant One-hot.
+Préalablement, les mots sont encodés en utilisant \keyword[O]{One-Hot}.
 Une fois le modèle entraîné, les mots auront des codes plus compacts. 
-Word2vec est un outil fourni par Google implémentant deux méthodes de \keyword[E]{Word embedding} \cite{2013-mikolov-al}
+Word2vec est un outil fourni par Google implémentant deux méthodes de Word \keyword[E]{embedding} \cite{2013-mikolov-al}
 \begin{itemize}
 	\item \optword{CBOW} : Continuous Bag-of-Words
 	\item \optword{Skip-gram} : Continuous Skip-gram
@@ -539,7 +539,7 @@ Donc :
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{exp-glove_.pdf}
-	\caption{Exemple des probabilités conditionnelles et un ratio entre deux probabilités  \cite{2014-pennington-al}}
+	\caption[Exemple des probabilités conditionnelles et un ratio entre deux probabilités]{Exemple des probabilités conditionnelles et un ratio entre deux probabilités  \cite{2014-pennington-al}}
 	\label{fig:glove-prob-exp}
 \end{figure}
 
@@ -609,7 +609,7 @@ J(\theta) = \sum_{i=1}^{V} \sum_{j=1}^{V} f(X_{ij}) (w_i^\top \tilde{w_j} + b_i 
 
 \subsection{ELMo}
 
-Comme il est déjà mentionné, les représentations Word2vec et GloVe ne prennent pas la polysémie en considération ; un mot est représenté par un seul vecteur quelque soit son sens. 
+Comme il est déjà mentionné, les représentations Word2vec et \keyword[G]{GloVe} ne prennent pas la polysémie en considération ; un mot est représenté par un seul vecteur quelque soit son sens. 
 \keyword[E]{ELMo}\footnote{ELMo : \url{http://allennlp.org/elmo}} (Embeddings from Language Models) est un modèle contextuel développé par AllenNLP \cite{2018-peters-al} qui prend en considération la phrase comme contexte afin de générer la représentation d'un mot. 
 C'est un modèle bidirectionnel ; qui prend en considération tous les mots avant et après. 
 En plus, il est basé sur les caractères et pas les mots. 
@@ -617,7 +617,7 @@ Donc, il a la capacité de prendre en considération des caractéristiques morph
 
 La figure \ref{fig:elmo-arch} représente l'architecture du modèle ELMo. 
 Étant donné un mot $w_k$, on calcule sa représentation $x_k$ en se basant sur les caractères qui lui composent (voir \cite{2015-kim-al}). 
-On utilise $L$ couches des cellules LSTM bidirectionnelles. 
+On utilise $L$ couches des cellules \keyword[B]{Bi-LSTM} (LSTMs bidirectionnelles). 
 Pour chaque  phrase de $N$ mot, on essaye de maximiser la somme des logarithmes des probabilités en avant et en arrière, comme indiqué dans l'équation \ref{eq:elmo-erreur}. 
 \begin{equation}
 \sum_{k=1}^{N} 
@@ -626,7 +626,7 @@ Pour chaque  phrase de $N$ mot, on essaye de maximiser la somme des logarithmes 
 \log P(w_k | w_{k+1},\ldots,w_{N}; \Theta_x, \overleftarrow{\Theta}_{LSTM}, \Theta_s)
 \label{eq:elmo-erreur}
 \end{equation}
-A la fin d'entraînement, la représentation contextuelle d'un mot $w_k$ sera la combinaison entre sa représentation en utilisant le modèle de langage basé caractères $x_k^{LM}$ et les vecteurs des couches cachées des deux réseaux LSTM (en avant et en arrière) : 
+A la fin d'entraînement, la représentation contextuelle d'un mot $w_k$ sera la combinaison entre sa représentation en utilisant le modèle de langage basé caractères $x_k^{LM}$ et les vecteurs des couches cachées des deux réseaux \keyword[L]{LSTM} (en avant et en arrière) : 
 \[
 R_k = \{x_k^{LM}, \overrightarrow{h}_{LM}^{k, j}, \overleftarrow{h}_{LM}^{k, j} | j= 1 \ldots L \}
 = \{h_{LM}^{k, j} | j= 0 \ldots L \}
@@ -639,7 +639,7 @@ R_k = \{x_k^{LM}, \overrightarrow{h}_{LM}^{k, j}, \overleftarrow{h}_{LM}^{k, j} 
 	\label{fig:elmo-arch}
 \end{figure}
 
-Afin d'intégrer ELMo avec une tâche  $task$, on entraîne des paramètres $\Theta^{task}$ afin d'inférer une représentation unique liée à la tâche.
+Afin d'intégrer \keyword[E]{ELMo} avec une tâche  $task$, on entraîne des paramètres $\Theta^{task}$ afin d'inférer une représentation unique liée à la tâche.
 Cette représentation est estimée selon l'équation \ref{eq:elmo-estim}. 
 \begin{equation}
 ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} \theta_j^{task} h_{LM}^{k, j}
@@ -656,12 +656,12 @@ Ceci permet à un mot $w_i$ d'avoir une vision globale sur les mots de la phrase
 Cette représentation est basée sur les tokens ; les mots sont séparés en radical + infixes.  
 
 
-La figure \ref{fig:bert-arch} représente l'architecture du modèle BERT.
-Le texte est séparé en tokens en utilisant \keyword{Wordpiece} (voir \cite{2016-wu-al}).
+La figure \ref{fig:bert-arch} représente l'architecture du modèle \keyword[B]{BERT}.
+Le texte est séparé en tokens en utilisant ``Wordpiece" (voir \cite{2016-wu-al}).
 L'entrée a un maximum de $T = 512$ tokens.
-Le premier token est un marqueur spécial ``\keyword{[CLS]}" utilisé pour la classification.
-En cas de deux phrases en entrée, on utilise un token ``\keyword{[SEP]}" pour les séparer. 
-Chaque token est représenté par 3 embeddings de taille $N$ 
+Le premier token est un marqueur spécial ``[CLS]" utilisé pour la classification.
+En cas de deux phrases en entrée, on utilise un token ``[SEP]" pour les séparer. 
+Chaque token est représenté par 3 \keyword[E]{embedding}s de taille $N$ 
 \begin{itemize}
 	\item \optword{Embedding de token} : transformation d'une vocabulaire de taille $V$ vers un vecteur de taille $N$
 	\item \optword{Embedding de position} : transformation de la position du token dans la phrase sur une taille max $T$ vers un vecteur de taille $N$
@@ -675,21 +675,21 @@ Chaque token est représenté par 3 embeddings de taille $N$
 	\label{fig:bert-arch}
 \end{figure}
 
-Le modèle BERT utilise l'apprentissage par transfert ; on entraîne le modèle avec une tâche (pré-entraînement), ensuite on l'entraîne avec une tâche similaire (réglage). 
-Dans le cas de BERT, on utilise deux tâches afin d'avoir un modèle pré-entraîné : 
+Le modèle \keyword[B]{BERT} utilise l'apprentissage par transfert ; on entraîne le modèle avec une tâche (pré-entraînement), ensuite on l'entraîne avec une tâche similaire (réglage). 
+Dans le cas de \keyword[B]{BERT}, on utilise deux tâches afin d'avoir un modèle pré-entraîné : 
 \begin{itemize}
 	\item \optword{Modèle de langage masqué} : On masque aléatoirement 15\% des tokens d'une phrase et essayer de les inférer. 
-	Pour le faire, on utilise un token spécial : \keyword{[MASK]}. 
+	Pour le faire, on utilise un token spécial : ``[MASK]". 
 	Puisque ce token n'apparait pas dans l'étape de réglage, on l'utilise pour 80\% des remplacements. 
 	Parmi ces masques, on utilise 10\% avec un token quelconque et 10\% sans changement.
 	
 	\item \optword{Prédiction de la phrase suivante} : Prédire si la deuxième phrase suit la première. 
-	Le résultat est dans la sortie du token ``\keyword{[CLS]}" ($CLS \in \{IsNext, NotNext\}$) ; c'est un classement binaire.
+	Le résultat est dans la sortie du token ``[CLS]" ($CLS \in \{IsNext, NotNext\}$) ; c'est un classement binaire.
 \end{itemize}
 
-Puisque BERT se base sur le concept de l'apprentissage par transfert, on peut régler le modèle sur d'autres tâches. 
+Puisque \keyword[B]{BERT} se base sur le concept de l'apprentissage par transfert, on peut régler le modèle sur d'autres tâches. 
 Dans ce cas, la représentation vectorielle est le modèle neuronale lui-même. 
-La figure \ref{fig:bert-app} représente quelques tâches accomplies avec BERT. 
+La figure \ref{fig:bert-app} représente quelques tâches accomplies avec \keyword[B]{BERT}. 
 En haut à gauche, c'est une tâche qui classifie la relation entre deux phrases ; comme la similarité (similaire/non similaire).
 En haut à droit, c'est une tâche de classification d'une phrase ; comme l'analyse de sentiments.
 En bas à gauche, c'est la tâche de question/réponse où l'entrée est une question et un paragraphe et la sortie est une partie du paragraphe contenant la réponse. 
@@ -701,7 +701,7 @@ En bas à droit, c'est une tâche d'annotation (tagging) ; comme la reconnaissan
 	
 	\hgraphpage[.8\textwidth]{bert-taches2_.pdf}
 	
-	\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}}
+	\caption[Réglage de BERT sur des différentes tâches]{Réglage de BERT sur des différentes tâches \cite{2019-devlin-al}}
 	\label{fig:bert-app}
 \end{figure}
 
@@ -710,8 +710,8 @@ En bas à droit, c'est une tâche d'annotation (tagging) ; comme la reconnaissan
 
 Il existe deux approches pour évaluer un modèle : intrinsèque et extrinsèque. 
 Cette dernière a comme but de comparer deux modèles en terme d'une tâche donnée.
-Par exemple, GloVe surpasse LSA dans la tâche de reconnaissance des entités nommées selon \cite{2014-pennington-al}. 
-Concernant l'évaluation inrinsèque, plusieurs méthodes/corpus ont été proposés : 
+Par exemple, \keyword[G]{GloVe} surpasse LSA dans la tâche de reconnaissance des entités nommées selon \cite{2014-pennington-al}. 
+Concernant l'évaluation intrinsèque, plusieurs méthodes/corpus ont été proposés : 
 \begin{itemize}
 	\item  WordSimilarity-353 Test Collection \cite{2002-finkelstein-al} : dans cette collection, les similarités entre les mots ont été annotées manuellement (un nombre entre 0 et 10). 
 	Afin de tester un modèle, on calcule la corrélation de Spearman entre les similarités basées sur les représentations (similarité cosinus) et les similarités manuelles.
@@ -753,7 +753,7 @@ Elle est utile pour plusieurs tâches :
 
 \subsection{Basée sur des bases de connaissance}
 
-La méthode la plus basique pour appliquer \ac{wsd} est l'algorithme de Lesk fourni par Wordnet (voir l'algorithme \ref{algo:lesk}). 
+La méthode la plus basique pour appliquer \ac{wsd} est l'algorithme de Lesk fourni par \keyword[W]{WordNet} (voir l'algorithme \ref{algo:lesk}). 
 On commence par la récupération de tous les lexèmes du mot $w$ appartenant à la phrase $s$. 
 Au début, on considère que le sens du mot $w$ est celui le plus fréquent (la fréquence est calculée à partir d'un corpus). 
 Pour chaque sens du mot, on calcule le nombre des mots en commun entre son glossaire/exemples et les mots de la phrase $s$. 
@@ -788,7 +788,7 @@ Cette méthode est exécutée sur trois étapes :
 	\item \optword{Construction des signatures sémantiques} : On commence par construire un graphe en utilisant tous les concepts à partir d'un réseau sémantique.
 	Pour chaque arc reliant deux concepts, on attribut un poids en se basant sur le nombre des triangles qui les relient.
 	Ensuite, on calcule la probabilité d'un concept sachant un autre en se basant sur ces poids. 
-	Enfin, on minimise le graphe en utilisant la méthode ``\keyword{Random walk with restart}".
+	Enfin, on minimise le graphe en utilisant la méthode ``Random walk with restart".
 	
 	\item \optword{Identification des candidats} : On applique l'étiquetage morphosyntaxique sur le texte d'entrée.
 	Ensuite, on extrait tous les sens possibles des mots ou des expressions de la phrase d'entrée.
@@ -800,28 +800,28 @@ Cette méthode est exécutée sur trois étapes :
 \subsection{Basée sur l'apprentissage automatique}
 
 La désambigüisation des mots peut être vue comme une tâche d'étiquetage des séquences. 
-Donc, on peut appliquer les \ac{hmm} ou les réseaux de neurones récurrents afin de la résoudre. 
-Pour ce faire, on utilise un corpus annoté (Ex. \expword{SemCor}) où chaque mot est suivi par le numéro de son sens dans une base lexicale (WordNet).
+Donc, on peut appliquer les \keyword[H]{\ac{hmm}} ou les réseaux de neurones récurrents afin de la résoudre. 
+Pour ce faire, on utilise un corpus annoté (Ex. \expword{SemCor}) où chaque mot est suivi par le numéro de son sens dans une base lexicale (\keyword[W]{WordNet}).
 Par exemple, \expword{You will find9 that avocado1 is1 unlike1 other1 fruit1 you have ever1 tasted2}.
 En entrée, on peut utiliser les mêmes caractéristiques utilisées dans l'étiquetage des séquences comme les mots précédents, leurs classes, le mot courant, etc. 
-En sortie, on aura un vecteur One-Hot représentant la classe (le sens est un nombre). 
+En sortie, on aura un vecteur \keyword[O]{One-Hot} représentant la classe (le sens est un nombre). 
 
 
-Une autre méthode pour la \ac{wsd}  est d'utiliser les embeddings contextuels. 
-La figure \ref{fig:swd-embeddings} représente la désambigüisation des mots d'une phrase en utilisant un modèle d'embedding contextuel comme ELMo ou BERT. 
-Étant donné un modèle pré-entrainé, on le règle sur un corpus annoté afin de capturer les embeddings de chaque sens. 
-Pour avoir le embedding d'un sens $v_s$, on fait la moyenne des embeddings $c_i$ qui l'appartiennent (voir l'équation \ref{eq:wsd-embeddings-sens}).
+Une autre méthode pour la \ac{wsd}  est d'utiliser les \keyword[E]{embedding}s contextuels. 
+La figure \ref{fig:swd-embeddings} représente la désambigüisation des mots d'une phrase en utilisant un modèle d'un \keyword[E]{embedding} contextuel comme \keyword[E]{ELMo} ou \keyword[B]{BERT}. 
+Étant donné un modèle pré-entrainé, on le règle sur un corpus annoté afin de capturer les \keyword[E]{embedding}s de chaque sens. 
+Pour avoir le \keyword[E]{embedding} d'un sens $v_s$, on fait la moyenne des \keyword[E]{embedding}s $c_i$ qui l'appartiennent (voir l'équation \ref{eq:wsd-embeddings-sens}).
 \begin{equation}
 v_s = \frac{1}{n} \sum_{i=1}^{n} c_i 
 \label{eq:wsd-embeddings-sens}
 \end{equation}
 Lors du test, on passe la phrase par le modèle. 
-Pour chaque mot $w$, on cherche les embeddings de tous les sens et on prend le plus proche en utilisant la similarité cosinus.
+Pour chaque mot $w$, on cherche les \keyword[E]{embedding}s de tous les sens et on prend le plus proche en utilisant la similarité cosinus.
 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.35\textwidth]{exp-wsd-nn_.pdf}
-	\caption{Exemple de désambigüisation avec le plus proche voisin \cite{2019-jurafsky-martin}}
+	\caption[Exemple de désambigüisation avec le plus proche voisin]{Exemple de désambigüisation avec le plus proche voisin \cite{2019-jurafsky-martin}}
 	\label{fig:swd-embeddings}
 \end{figure}
 

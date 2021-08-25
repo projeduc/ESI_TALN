@@ -70,7 +70,7 @@ Pour estimer une probabilité conditionnelle avec un grand historique (mots pré
 Vu que les phrases sont infinies, on ne peut pas représenter toutes les combinaisons possibles. 
 Dans ce cas, une solution est de limiter la taille de l'historique. 
 Donc, on essaye d'estimer $P(w_i|w_{i-n+1},\ldots,w_{i-1})$ avec un historique de $n-1$ mots ; 
-Ce modèle est appelé NGram.
+Ce modèle est appelé \keyword[N]{N-gramme}.
 
 \subsection{Formulation}
 
@@ -93,7 +93,7 @@ Une compilation des différents N-grammes préparée par Google et distribuée s
 	\label{eq:markov-ngram}
 \end{equation}
 
-Donc, l'équation \ref{eq:ph-prob} qui calcule la probabilité d'une phrase sera reformulée comme indiqué dans l'équation \ref{eq:ph-prob-ngram} en utilisant un modèle N-gramme.
+Donc, l'équation \ref{eq:ph-prob} qui calcule la probabilité d'une phrase sera reformulée comme indiqué dans l'équation \ref{eq:ph-prob-ngram} en utilisant un modèle \keyword[N]{N-gramme}.
 \begin{equation}\label{eq:ph-prob-ngram}
 	P(w_1 \ldots w_m) \approx \prod_{i=1}^{m} P(w_i | w_{i-n+1}, \ldots, x_{i-1})
 \end{equation}
@@ -112,7 +112,7 @@ Comme ça, on peut exprimer la probabilité qu'un mot soit au début de la phras
 \end{equation}
 
 Supposons, nous avons un corpus d'entraînement avec 4 phrases. 
-Si on veut utiliser un modèle Bi-gramme, on doit encercler chaque phrase par \keyword{\textless s\textgreater} et \keyword{\textless/s\textgreater}.
+Si on veut utiliser un modèle \keyword[B]{Bi-gramme}, on doit encercler chaque phrase par ``\textless s\textgreater" et ``\textless/s\textgreater".
 Voici l'ensemble des phrases :
 \begin{itemize}
 	\item \textless s\textgreater un ordianteur peut vous aider \textless/s\textgreater
@@ -161,22 +161,22 @@ P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreat
 %	\frac{3}{4} \frac{1}{3} \frac{1}{2} \frac{2}{2} \frac{2}{2} = \frac{1}{8}
 \text{\textit{NaN}}
 \]
-Les mots qui ne figurent pas dans le vocabulaire sont appelés \keyword[O]{Out-of-vocabulary words}. 
-Afin de régler ce problème, on peut ajouter un autre mot \keyword{\textless UNK\textgreater} au vocabulaire. 
+Les mots qui ne figurent pas dans le vocabulaire sont appelés ``Out-of-vocabulary words". 
+Afin de régler ce problème, on peut ajouter un autre mot ``\textless UNK\textgreater" au vocabulaire. 
 Pour incorporer ce mot dans le corpus d'entraînement, on peut choisir un vocabulaire et remplacer le reste des mots par lui, ou en peut remplacer les mots non fréquents. 
 
 \subsection{Lissage (Smoothing)}
 
-Dans l'exemple précédent, nous avons vu le problème des mots qui n'appartiennent pas au vocabulaire (\expword{nous}) qui résultent à une division sur $0$. 
+Dans l'exemple précédent, nous avons vu le problème des mots qui n'appartiennent pas au vocabulaire (Ex. \expword{nous}) qui résultent à une division sur $0$. 
 Ce dernier problème peut être résolu en réservant un mots clé pour les mots absents (comme présent précédemment).
-Le problème des N-grammes absents (\expword{peut aider}), qui résultent à une probabilité de $0$, ne peut pas être résolu par cette technique. 
+Le problème des N-grammes absents (Ex. \expword{peut aider}), qui résultent à une probabilité de $0$, ne peut pas être résolu par cette technique. 
 Une solution de ce problème est d'ajouter plus de données.
 Même sans ce problème, si on utilise des petits N-grammes, on peut ne pas capturer les dépendances à long terme. 
 Exemple, \expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI pendant la  séance du cours \underline{a planté}}. 
 Donc, nous somme obligés à utiliser des N-grammes plus grands. 
 Pour entraîner un tel modèle, il nous faut une grande quantité de données. 
 Pour une vocabulaire de taille $V$ et N-gramme de taille $N$, on aura $V^N$ N-grammes possibles.
-Une solution de tous ça est le \keyword[L]{lissage}.
+Une solution de tous ça est le lissage.
 L'intuition est d'emprunter une petite portion des probabilités des N-grammes existants pour former une probabilité aux N-grammes absents.
 
 \subsubsection{Lissage de Lidstone/Laplace}
@@ -184,9 +184,9 @@ L'intuition est d'emprunter une petite portion des probabilités des N-grammes e
 Supposons que notre modèle de langage supporte un vocabulaire de taille $V$ et $n$ grammes.
 Afin de soustraire une petite probabilité de chaque N-gramme existant et créer une probabilité pour les N-grammes non existants, on peut modifier la formule du maximum de vraisemblance.
 On utilise un paramètre de lissage $\alpha$ comme indiquer dans l'équation \ref{eq:lidstone}.
-Dans le cas général, ceci est appelé \keyword{lissage de Lidstone}. 
-Lorsque $\alpha = 1$, il est appelé \keyword{lissage de Laplace}. 
-Si $\alpha = 0.5$, il est appelé \keyword{loi de Jeffreys-Perks}.
+Dans le cas général, ceci est appelé ``lissage de Lidstone". 
+Lorsque $\alpha = 1$, il est appelé ``lissage de Laplace". 
+Si $\alpha = 0.5$, il est appelé ``loi de Jeffreys-Perks".
 \begin{equation}
 	P(w_i | w_{i-n+1}, \ldots, w_{i-1}) = \frac{C(w_{i-n+1} \ldots w_{i-1} w_i) + \alpha}{C(w_{i-n+1} \ldots w_{i-1}) + \alpha V}
 	\label{eq:lidstone}
@@ -271,7 +271,7 @@ La formule pour
 \section{Modèles neuronaux}
 %===================================================================================
 
-Comme nous avons vu, les n-grammes ont besoin d'utiliser le lissage afin de prendre en considération des n-grammes absents dans le corpus d'entrainement. 
+Comme nous avons vu, les \keyword[N]{N-gramme}s ont besoin d'utiliser le lissage afin de prendre en considération des n-grammes absents dans le corpus d'entrainement. 
 Ce modèle ne peut pas capturer les mots similaires (utilisés dans le même contexte ; Ex. synonymes). 
 En plus, ces modèles ne supportent pas le contexte à une longue histoire. 
 Les réseaux de neurones semblent avantageux considérant ces problèmes. 
@@ -317,12 +317,12 @@ L'architecture de ce modèle peut être exprimé par l'équation \ref{eq:bengio}
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.6\textwidth]{fw-model.pdf}
-	\caption{Une représentation du modèle proposé par \cite{2003-bengio-al}\label{fig:bengio-l}}
+	\caption[Modèle de langage à base des réseaux de neurones à propagation avant]{Une représentation du modèle proposé par \cite{2003-bengio-al}\label{fig:bengio-l}}
 \end{figure}
 
 \subsection{Réseau de neurones récurrents}
 
-Certes, les modèles basés sur les réseaux de neurones à propagation avant sont avantageux par rapport aux N-grammes.
+Certes, les modèles basés sur les réseaux de neurones à propagation avant sont avantageux par rapport aux \keyword[N]{N-gramme}s.
 Mais, ils ne supportent des longueurs variables des contextes.
 Par contre, les réseaux de neurones récurrents ont la capacité d'estimer un mot dans la position $i$ sachant tous les mots passés.
 Ici, on va présenter le modèle de \cite{2010-mokolov-al} qui se base sur le réseau de Elman.
@@ -343,10 +343,10 @@ Pour ce faire, il passe par une couche de sortie ayant des paramètres $U \in \m
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.6\textwidth]{rnn-model.pdf}
-	\caption{Modèle de langage à base des réseaux de neurones récurrents, proposé par \cite{2010-mokolov-al}\label{fig:mokolov}}
+	\caption[Modèle de langage à base des réseaux de neurones récurrents]{Modèle de langage à base des réseaux de neurones récurrents, proposé par \cite{2010-mokolov-al}\label{fig:mokolov}}
 \end{figure}
 
-Il ne faut pas oublier d'utiliser le mot clé \keyword{\textless UNK\textgreater} afin d'entraîner le modèle à prendre en considération les mots inconnus. 
+Il ne faut pas oublier d'utiliser le mot clé ``\textless UNK\textgreater" afin d'entraîner le modèle à prendre en considération les mots inconnus. 
 Le problème avec cette architecture est que le modèle puisse arrêter à apprendre avec un contexte à long terme (problème de disparition des gradients).
 Une solution est d'utiliser des architectures plus avancées comme \keyword[L]{LSTM} et \keyword[G]{GRU}. 
 Ceci est dit, le problème de disparition des gradients existe toujours. 

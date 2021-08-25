@@ -66,9 +66,9 @@ Une autre forme de référence peut être les \optword{syntagmes nominaux}.
 Ils peuvent être utilisés pour référencer des entités.
 Par exemple, \expword{J'ai un petit \underline{chat}. \underline{Cet animal} est très méchant.}.
 Afin de comprendre la deuxième phrase, on doit savoir de quel animal on est en train de parler. 
-On peut trouver des syntagmes nominaux avec un article défini qui sont en réalité des références. 
+On peut trouver des \keyword[S]{syntagme}s nominaux avec un article défini qui sont en réalité des références. 
 Par exemple, \expword{J'ai un petit \underline{chat}. \underline{Le chat} est très méchant.}.
-Contrairement aux pronoms qui sont toujours des références, les syntagmes nominaux peuvent ne pas l'être. 
+Contrairement aux pronoms qui sont toujours des références, les \keyword[S]{syntagme}s nominaux peuvent ne pas l'être. 
 Donc, en plus de chercher l'antécédent, on doit aussi décider si c'est une référence ou non.
 
 
@@ -81,7 +81,7 @@ Dans la plupart des langue, on a tendance à utiliser des formes plus contractes
 Exemple, \expword{\underline{La république algérienne démocratique et populaire} est un pays d'Afrique du nord. \underline{L'Algérie} a une superficie de plus de 2 millions km\textsuperscript{2}}.
 
 Il existe des langues où on omit complètement les références ; ces dernières sont connues par le nom \optword{Anaphore zéro}. 
-Lorsqu'on ne veut pas répéter le même syntagme nominal, on peut l'omettre. 
+Lorsqu'on ne veut pas répéter le même \keyword[S]{syntagme} nominal, on peut l'omettre. 
 Par exemple, \expword{\underline{Karim} a présenté et \underline{$ \phi $} expliqué le cours.}.
 Pour trouver le sujet du verbe ``expliquer", on doit résoudre une référence qui n'existe pas ; marquée ici par ``$ \phi $".
 Dans des langues, comme le japonais, il est plus naturel d'omettre les pronoms personnels dans les phrases. 
@@ -90,8 +90,8 @@ Ceci peut être traduit, mot par mot, comme : ``\expword{\underline{M. Karim} à
 Le pronom ``il" a été omit et peut être détecté en utilisant le contexte.
 
 Il existe des formes plus complexes qui ne référencent pas un objet mmais plutôt une action.
-Une de ces formes est le syntagme verbal (Ex. \expword{Si Mouloud \underline{achète un nouveau vélo}, je \underline{le ferai} aussi.}).
-Dans ce cas, un syntagme verbal ne référence qu'un autre syntagme verbal. 
+Une de ces formes est le \keyword[S]{syntagme} verbal (Ex. \expword{Si Mouloud \underline{achète un nouveau vélo}, je \underline{le ferai} aussi.}).
+Dans ce cas, un \keyword[S]{syntagme} verbal ne référence qu'un autre \keyword[S]{syntagme} verbal. 
 On peut utiliser des adverbes comme références (Ex. \expword{Moammed \underline{was too busy}, and \underline{so} was I.}).
 
 
@@ -102,23 +102,23 @@ En terme de nombre des antécédents, on peut avoir un antécédent unique ou de
 Selon la direction de référencement, on peut avoir une référence à direction unique ou deux entités en coréférence.
 
 \begin{itemize}
-	\item \optword{Anaphore} : une référence vers un mot ou un syntagme précédent appelé \keyword{antécédent}.
+	\item \optword{Anaphore} : une référence vers un mot ou un \keyword[S]{syntagme} précédent appelé ``antécédent".
 	En général, ce terme est utilisé même pour les références des éléments qui viennent après. 
 	Mais ici, ce concept a un terme qui lui définit (point suivant).
 	Un anaphore peut être un pronom (Ex. \expword{\underline{Le cours} est très long. \underline{Il} prendra plus de temps.}), un syntagme nominal (Ex. \expword{J'ai rencontré \underline{Fatima}. \underline{Une personne} qui adore assister les autres.}), un zéro anaphore (Ex. \expword{\underline{Le chat} a attrapé la souris et \underline{$ \phi $} l'a mangé.}), etc.
 	
-	\item \optword{Cataphore} : une référence vers un mot ou un syntagme suivant appelé \keyword{postcédent}.
+	\item \optword{Cataphore} : une référence vers un mot ou un \keyword[S]{syntagme} suivant appelé ``postcédent".
 	Elle est comme l'anaphore, mais le référent vient après la référence. 
 	Exemple d'un pronom (\expword{\underline{Il} est très long, \underline{ce cours}!}), Syntagme nominal (\expword{If you want \underline{a book}, take \underline{the one on the shelf}.}), etc. 
 	Ici, la référence de type zéro anaphore ne peut pas se manifester comme une cataphore. 
 	Puisque dans les langues qui utilisent ce phénomène, on peut comprendre la référence à partir du contexte (ce qu'on a déjà dit).
 	
-	\item \optword{Antécédents partagés} : une référence vers plusieurs mots et/ou syntagmes.
+	\item \optword{Antécédents partagés} : une référence vers plusieurs mots et/ou \keyword[S]{syntagme}s.
 	Que ce soit un anaphore ou un cataphore, une référence peut avoir plusieurs référents dans une seule relation.
 	Exemple, \expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}
 	Ici, la relation n'est pas binaire ; le référent est une combinaison de plusieurs éléments. 
 	
-	\item \optword{Syntagmes nominaux en coréférence} : deux syntagmes nominaux où chacun est une référence vers l'autre. 
+	\item \optword{Syntagmes nominaux en coréférence} : deux \keyword[S]{syntagme}s nominaux où chacun est une référence vers l'autre. 
 	Dans ce cas, le premier est un référent antécédent du deuxième et au même temps le deuxième est un référent postcédent du premier.  
 	Exemple, \expword{\underline{Certains de nos collègues} nous ont vraiment soutenu. \underline{Ce genre de personnes} gagne notre gratitude.}
 	
@@ -179,12 +179,12 @@ Tout d'abord, il faut détecter les différentes références dans le texte.
 Ensuite, il faut lier ces références avec leurs référents.
 Il existe plusieurs modèles de liaison : Mention-Pair, Mention-Rank et Entity-based.
 La résolution des coréférences peut être accomplie en suivant une des deux approches : par règles ou par apprentissage automatique. 
-Dans cette dernière, on peut se baser sur des caractéristiques définies manuellement ou sur les embeddings.
+Dans cette dernière, on peut se baser sur des caractéristiques définies manuellement ou sur les \keyword[E]{embedding}s.
 
 
 \subsection{Détection de mention}
 
-Les mentions sont des entités qui peuvent être des syntagmes nominaux ou des pronoms.
+Les mentions sont des entités qui peuvent être des \keyword[S]{syntagme}s nominaux ou des pronoms.
 L'identification des mentions en coréférence est une étape importante dans des tâches de \ac{taln} comme la résolution des coréférences et la reconnaissance des entités nommées.
 Cette étape peut être fait en utilisant un ensemble des règles ; comme dans \cite{2013-lee-al}.
 On commence par marquer les syntagmes nominaux, les pronoms et les entités nommées qui n'ont pas été marqués dans le texte comme des mentions candidates. 
@@ -228,7 +228,7 @@ Comme entrée, on utilise la représentation du mot du début $x^*_{si}$, du mot
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.85\textwidth]{mention-detection-arch_.pdf}
-	\caption{Trois architectures pour la détection des mentions \cite{2020-yu-al}}
+	\caption[Trois architectures pour la détection des mentions]{Trois architectures pour la détection des mentions \cite{2020-yu-al}}
 	\label{fig:det-mention-yu}
 \end{figure}
 
@@ -249,7 +249,7 @@ Dans la figure \ref{fig:mention-pair-exp}, le modèle doit estimer une grande pr
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.75\textwidth]{mention-pair-exp_.pdf}
-	\caption{Exemple d'un modèle Mention-Pair \cite{2019-jurafsky-martin}}
+	\caption[Exemple d'un modèle Mention-Pair]{Exemple d'un modèle Mention-Pair \cite{2019-jurafsky-martin}}
 	\label{fig:mention-pair-exp}
 \end{figure}
 
@@ -272,7 +272,7 @@ La figure \ref{fig:mention-rank-exp} représente un exemple de l'annotation Ment
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{mention-rank-exp_.pdf}
-	\caption{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
+	\caption[Exemple d'un modèle Mention-Rank]{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
 	\label{fig:mention-rank-exp}
 \end{figure}
 
@@ -294,7 +294,7 @@ Ensuite, entrainer un modèle (en général, réseau de neurones) afin de décid
 
 \section{Évaluation}
 
-Il existe plusieurs métriques pour évaluer la résplution des coréférences \cite{2016-moosavi-strube}.
+Il existe plusieurs métriques pour évaluer la résolution des coréférences \cite{2016-moosavi-strube}.
 Dans \optword{MUC} (Message Understanding Conference), l'évaluation est basée sur le nombre des liens binaires communs entre la référence et le système.
 Le corpus de test contient un texte et un ensemble de tous les liens binaires possibles. 
 Cette métrique favorise les systèmes avec des chaînes larges. 
@@ -347,7 +347,7 @@ R_c = \frac{rc}{rc+wn},\quad R_n = \frac{rn}{rn+wc},\quad R = \frac{R_c + R_n}{2
 	                       & Non-Coréf & wc & rn \\
 	   \hline\hline
 	\end{tabular}
-	\caption{La matrice de confusion de BLANC \cite{2011-recasens-hovy}}
+	\caption[Matrice de confusion de BLANC]{Matrice de confusion de BLANC \cite{2011-recasens-hovy}}
 	\label{tab:blanc-confusion}
 \end{table}
 
@@ -381,7 +381,7 @@ c'est une sorte de classification où les classes est une liste des auteurs/pers
 
 L'objectif de l'annotation sémantique est d'associer une mention dans un texte à une représentation d'une entité dans une base de connaissances structurée. 
 Cette tâche est motivée par le fait d'avoir une connaissance approfondie sur les entités du texte dans le monde réel (contexte, niveau pragmatique).
-Cette tâche est liée à la base de connaissance utilisée ; lorsqu'on utilise Wikipédia comme base de connaissance, on appelle cette tâche \keyword{Wikification}.
+Cette tâche est liée à la base de connaissance utilisée ; lorsqu'on utilise Wikipédia comme base de connaissance, on appelle cette tâche ``Wikification".
 
 Avant d'appliquer cette étape, on doit détecter les mentions dans le texte (comme dans la résolution des coréférences).
 Afin d'annoter une mention du texte, on suit deux étapes :
@@ -396,12 +396,12 @@ Afin d'annoter une mention du texte, on suit deux étapes :
 
 Une entité nommée peut être une personne, une place, une organisation, une quantité, etc.
 La tâche de reconnaissance des entités nommées consiste à localiser et classer les entités nommées dans un texte. 
-En anglais, elle est appelée Named-entity recognition (NER). 
+En anglais, elle est appelée ``Named-entity recognition" (NER). 
 La localisation se fait en utilisant la détection de mention vue précédemment dans ce chapitre.
 Afin de classer les mentions, on peut utiliser plusieurs approches :
 \begin{itemize}
 	\item \optword{Règles} : utiliser des règles et des listes de noms pour chercher les entités et détecter leurs types.
-	\item \optword{Apprentissage avec caractéristiques} : embeddins du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
+	\item \optword{Apprentissage avec caractéristiques} : \keyword[E]{embedding}s du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
 	\item \optword{Étiquetage de séquences} : classer les mots en entités en les traitant comme une séquence en utilisant \keyword[I]{IOB} vue dans le chapitre 4.
 	
 	\expword{\scriptsize

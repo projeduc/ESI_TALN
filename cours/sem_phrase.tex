@@ -105,7 +105,7 @@ Le tableau \ref{tab:roles-them} représente quelques rôles thématiques avec le
 		\expword{Je suis allé à \ul{Portland}.}\\
 		\hline\hline
 	\end{tabular}
-	\caption{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
+	\caption[Quelques rôles thématiques]{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
 	\label{tab:roles-them}
 \end{table}
 
@@ -205,7 +205,7 @@ Ce cadre peut être activer par plusieurs mots comme les verbes : break apart, d
 		& break apart.v, break down.v, break up.v, break.v, chip.v, cleave.v, dissect.v, dissolve.v, fracture.v, fragment.v, rend.v, rip up.v, rip.v, rive.v, shatter.v, shiver.v, shred.v, sliver.v, smash.v, snap.v, splinter.v, split.v, take apart.v, tear up.v, tear.v \\
 		\hline\hline
 	\end{tabular}
-	\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment"
+	\caption[Exemple d'une partie d'un cadre sémantique de FrameNet]{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment"
 		\newline
 		{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
 	}
@@ -277,13 +277,13 @@ Chaque patron est accompagné par le nombre des exemples annotés.
 		(4) & NP \newline Ext & INI \newline - - & NP \newline Obj & & \\
 		\hline
 	\end{tabular}
-	\caption{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence}
+	\caption[Extrait de liste de patrons de valence de FrameNet]{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence}
 	\label{tab:framenet-entree-exp}
 \end{table}
 
 \keyword[F]{FrameNet} fournit un ensemble de phrases annotées pour chaque entrée lexicale. 
 La figure \ref{fig:framenet-lex} représente un extrait des annotations lexicographiques du verbe ``fracture" et le cadre ``Cause\_to\_fragment". 
-Ici, les éléments de cadres absents dans l'annotation sont marqués par ``\keyword{[INI]}" (indefinite null instantiation).
+Ici, les éléments de cadres absents dans l'annotation sont marqués par ``[INI]" (indefinite null instantiation).
 Le corpus annoté est généralement utilisé pour entraîné ou tester un système d'étiquetage des rôles sémantiques.
 
 \begin{figure}[ht]
@@ -312,7 +312,7 @@ Le corpus annoté est généralement utilisé pour entraîné ou tester un syst�
 	\end{itemize}\vspace*{-1cm}
 \end{tcolorbox}
 	
-	\caption{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
+	\caption[Extrait des annotations lexicographiques dans FrameNet]{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
 	\label{fig:framenet-lex}
 \end{figure}
 
@@ -372,7 +372,7 @@ La figure \ref{fig:propbank-predicat} représente un extrait du premier sens du 
 		\end{itemize}
 	\end{itemize}\vspace*{-1cm}
 \end{tcolorbox}
-	\caption{Extrait des annotations ProBank du prédicat ``know" de \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html}}
+	\caption[Extrait des annotations ProBank d'un prédicat]{Extrait des annotations ProBank du prédicat ``know" de \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html}}
 	\label{fig:propbank-predicat}
 \end{figure}
 
@@ -381,14 +381,14 @@ La figure \ref{fig:propbank-predicat} représente un extrait du premier sens du 
 %===================================================================================
 
 L'étiquetage des rôles sémantiques, en anglais \ac{srl}, est la tâche d'attribution des rôles sémantiques aux mots ou aux expressions dans une phrase.
-La figure \ref{fig:srl-exp} représente une phrase avec l'étiquetage des rôles sémantiques basé sur \keyword[P]{ProbBank}.
+La figure \ref{fig:srl-exp} représente une phrase avec l'étiquetage des rôles sémantiques basé sur \keyword[P]{PropBank}.
 C'est une tâche d'étiquetage des séquences. 
 Elle peut être implémentée soit en utilisant des caractéristiques ou en utilisant les réseaux de neurones.
 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{exp-srl_.pdf}
-	\caption{Exemple d'étiquetage de rôles sémantiques en se basant sur ProbBank [\url{https://demo.allennlp.org/semantic-role-labeling/}]}
+	\caption[Exemple d'étiquetage de rôles sémantiques en se basant sur PropBank]{Exemple d'étiquetage de rôles sémantiques en se basant sur PropBank [\url{https://demo.allennlp.org/semantic-role-labeling/}]}
 	\label{fig:srl-exp}
 \end{figure}
 
@@ -396,13 +396,13 @@ Elle peut être implémentée soit en utilisant des caractéristiques ou en util
 
 On commence par analyser la phrase syntaxiquement pour avoir son arbre syntaxique. 
 Ensuite, on parcourt chaque nœud de ce dernier pour décider la classe en se basant sur certaines caractéristiques. 
-Les classes peuvent être celles de FrameNet ou PropBank en plus de ``\keyword{None}" pour marquer un nœud sans rôle.
+Les classes peuvent être celles de \keyword[F]{FrameNet} ou \keyword[P]{PropBank} en plus de ``None" pour marquer un nœud sans rôle.
 Un classificateur est entraîné afin de classer un nœud en utilisant des caractéristiques comme :
 \begin{itemize}
-	\item Le prédicat principal de la phrase. En général, c'est le verbe du syntagme verbal (VP : verbal phrase) descendant directe de la racine.
-	\item Le type du syntagme (Ex. \expword{NP, S, PP}).
-	\item Le mot d'entête (principal) du syntagme. 
-	Le mot principal d'un syntagme nominal est un nom, celui d'un syntagme prépositionnel est une préposition, etc. 
+	\item Le prédicat principal de la phrase. En général, c'est le verbe du \keyword[S]{syntagme} verbal (VP : verbal phrase) descendant directe de la racine.
+	\item Le type du \keyword[S]{syntagme} (Ex. \expword{NP, S, PP}).
+	\item Le mot d'entête (principal) du \keyword[S]{syntagme}. 
+	Le mot principal d'un \keyword[S]{syntagme} nominal est un nom, celui d'un \keyword[S]{syntagme} prépositionnel est une préposition, etc. 
 	Celui-ci peut être détecté en se basant sur la grammaire du langage.
 	\item La catégorie grammaticale du mot principal.
 	\item Le chemin du nœud concerné vers le prédicat. 
@@ -416,27 +416,27 @@ Un classificateur est entraîné afin de classer un nœud en utilisant des carac
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{srl-arbre_.pdf}
-	\caption{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
+	\caption[Exemple d'un arbre syntaxique avec le chemin vers le prédicat principal]{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
 	\label{fig:srl-arbre-chemin}
 \end{figure}
 
 Quelques optimisations peuvent être appliquer afin d'améliorer la tâche d'annotation.
 Les feuilles de l'arbre représentent les catégories grammaticales, donc on ne les classer pas puisque seuls les syntagmes peuvent être des arguments. 
-On peut, aussi, entraîner un classificateur pour classer le nœud comme ``\keyword{Argument}" ou ``\keyword{None}".
-Ensuite, entraîner un autre classificateur seulement avec les nœuds avec ``\keyword{Argument}".
+On peut, aussi, entraîner un classificateur pour classer le nœud comme ``Argument" ou ``None".
+Ensuite, entraîner un autre classificateur seulement avec les nœuds avec ``Argument".
 
 
 \subsection{En utilisant les réseaux de neurones}
 
 Nous avons vu que l'étiquetage des séquences peuvent être implémenté en utilisant la méthode \keyword[I]{IOB}  (inside, outside, begins). 
-La figure \ref{fig:srl-embedding} représente un système d'étiquetage de rôles sémantiques en utilisant les LSTM prposé par \cite{2017-he-al}. 
-Dans un moment donné, l'entrée est l'embedding du mot courant fusionné avec un indicateur de prédicat (prédicat ou non). 
+La figure \ref{fig:srl-embedding} représente un système d'étiquetage de rôles sémantiques en utilisant les \keyword[L]{LSTM} proposé par \cite{2017-he-al}. 
+Dans un moment donné, l'entrée est le \keyword[E]{embedding} du mot courant fusionné avec un indicateur de prédicat (prédicat ou non). 
 La sortie est un vecteur des probabilités des classes \keyword[P]{PropBank}.
 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.5\textwidth]{srl-lstm_.pdf}
-	\caption{Un système d'étiquetage de rôles sémantiques en utilisant les LSTM \cite{2017-he-al}}
+	\caption[Système d'étiquetage de rôles sémantiques avec LSTM]{Système d'étiquetage de rôles sémantiques avec LSTM \cite{2017-he-al}}
 	\label{fig:srl-embedding}
 \end{figure}
 
@@ -575,7 +575,7 @@ La représentation \ac{amr} est illustrée sous deux formats : textuelle et grap
 		
 		\hgraphpage{amr-graphe-exp.pdf}
 	\end{minipage}
-	\caption{Exemple de la représentation AMR de la phrase : ``The boy wants to go"}
+	\caption[Exemple d'une représentation AMR]{Exemple de la représentation AMR de la phrase : ``The boy wants to go"}
 	\label{fig:amr-exp}
 \end{figure}
 
@@ -686,7 +686,7 @@ Prenons l'exemple des règles syntaxiques annotées sémantiquement présentées
 		NP  & \textrightarrow\  Brit && BRIT \\
 		\hline\hline
 	\end{tabular}
-	\caption{Une grammaire à contexte libre minimale avec les annotations sémantiques}
+	\caption{Grammaire à contexte libre minimale avec les annotations sémantiques}
 	\label{tab:regles-sem1}
 \end{table}
 
@@ -718,7 +718,7 @@ S.sem & = VP.sem@NP.sem \\
 %		\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
 		\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
 %	\end{tabular}
-	\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
+	\caption[Exemple d'une grammaire syntaxique-sémantique et une dérivation]{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
 	\label{fig:arbre-sem1}
 \end{figure}
 
@@ -759,7 +759,7 @@ Dans ce cas :
 		\cline{1-4}\cline{6-9}\noalign{\vskip\doublerulesep
 			\vskip-\arrayrulewidth}\cline{1-4}\cline{6-9}
 	\end{tabular}
-	\caption{Une grammaire à contexte libre minimale avec les annotations sémantiques}
+	\caption{Grammaire à contexte libre minimale avec les annotations sémantiques}
 	\label{tab:regles-sem2}
 \end{table}
 
@@ -791,7 +791,7 @@ S.sem & = NP.sem@VP.sem \\
 & = LIKES(ALEX, BRITS)
 \end{align*}
 
-On a supposé que la réalisation sémantique du syntagme verbal est $\lambda x.LIKES(x, BRITS)$. 
+On a supposé que la réalisation sémantique du \keyword[S]{syntagme} verbal est $\lambda x.LIKES(x, BRITS)$. 
 On va essayer de calculer la réalisation avec la règle sémantique de $VP \rightarrow\ V\textsubscript{t} NP$ avant sa modification (tableau \ref{tab:regles-sem1}).
 \begin{align*}
 VP.sem & = V_t.sem@NP.sem \\
@@ -800,7 +800,7 @@ VP.sem & = V_t.sem@NP.sem \\
 \end{align*}
 Ce n'est as le résultat voulu. 
 Dans le verbe transitif, on veut résoudre le deuxième argument $y$ en premier. 
-Donc, on doit lui passer ``BRIT" et pour le faire on doit nous débarasser de $\lambda P$. 
+Donc, on doit lui passer ``BRIT" et pour le faire on doit nous débarrasser de $\lambda P$. 
 Dans ce cas, on laisse $\lambda x$ à coté et on essaye d'appliquer $\lambda P$ sur le reste. 
 La règle sémantique sera $\lambda P.\lambda x.P(\lambda y.LIKES(x, y))$, et donc :
 \begin{align*}
@@ -837,7 +837,7 @@ Dans ce cas, lors de l'entraînement, on ne va pas tester si la requête SQL gé
 %		\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
 		\hgraphpage[0.8\textwidth]{sem-qarbre_.pdf}
 %	\end{tabular}
-	\caption{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
+	\caption[Exemple d'une grammaire syntaxique-sémantique avec quantificateurs]{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
 	\label{fig:regles-sem2}
 \end{figure}
 

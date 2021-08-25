@@ -91,7 +91,7 @@ Finalement, on génère le texte traduit $T$ à partir de l'arbre syntaxique fin
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.55\textwidth]{MT-tranfert-exp_.pdf}
-	\caption{Un exemple de règles de transfert syntaxique \cite{06-quah}}
+	\caption[Exemple de règles de transfert syntaxique]{Exemple de règles de transfert syntaxique \cite{06-quah}}
 	\label{fig:mt-transfert-exp}
 \end{figure}
 
@@ -116,7 +116,7 @@ La figure \ref{fig:apertium-arch} représente l'architecture de ce système qui 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.85\textwidth]{apertium-arch_.pdf}
-	\caption{Architecture du système Apertium \cite{11-forcada-al}}
+	\caption[Architecture du système Apertium]{Architecture du système Apertium \cite{11-forcada-al}}
 	\label{fig:apertium-arch}
 \end{figure}
 
@@ -125,7 +125,7 @@ La figure \ref{fig:apertium-arch} représente l'architecture de ce système qui 
 Dans la traduction automatique, on doit implémenter un système pour chaque pair de langues de source et de destination. 
 Par exemple, si on possède un système de traduction du français vers l'anglais et un autre de l'anglais vers l'arabe, on peut utiliser les deux systèmes afin de traduire du français vers l'arabe. 
 Dans ce cas, l'anglais a été utilisée comme langue intermédiaire. 
-L'idée de l'approche interlingua est d'utiliser un langage intermédiaire comme indiqué dans la figure \ref{fig:mt-interlangue}.
+L'idée de l'approche interlingue est d'utiliser un langage intermédiaire comme indiqué dans la figure \ref{fig:mt-interlangue}.
 Pour ajouter une langue source, on doit seulement implémenter un analyseur de cette langue vers l'interlingua. 
 Comme ça, cette langue peut être traduite vers toutes les langues disponibles comme langues destinataires du système. 
 Afin d'ajouter une nouvelle langue destinataire, il suffit d'implémenter un générateur de cette langue à partir de l'interlingua. 
@@ -190,7 +190,7 @@ KANT \cite{98-czuba-al} est un exemple d'une interlingua (voir la figure \ref{fi
                         (PERSON THIRD))))))))
 \end{verbatim}
 \end{multicols}
-	\caption{Représentation de la phrase "\textit{The default rate remained close to zero during this time.}" avec KANT interlingua \cite{98-czuba-al}}
+	\caption[Exemple de la représentation KANT]{Représentation de la phrase "\textit{The default rate remained close to zero during this time.}" avec KANT interlingua \cite{98-czuba-al}}
 	\label{fig:kant-exp}
 \end{figure}
 
@@ -203,7 +203,7 @@ Le générateur applique l'opération inverse : générer un texte à partir de 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[\textwidth]{kantoo-arch_noir.pdf}
-	\caption{Architecture du système KANTOO, traduit à partir de \cite{00-nyberg-al}}
+	\caption[Architecture du système KANTOO]{Architecture du système KANTOO, traduit à partir de \cite{00-nyberg-al}}
 	\label{fig:mt-kantoo-arch}
 \end{figure}
 
@@ -318,9 +318,9 @@ Donc, la solution du problème  revient à maximiser cette probabilité comme in
 
 Un système de traduction automatique bien connu qui utilise l'approche neuronale est Google Translate\footnote{Google Translate : \url{https://translate.google.com/}} \cite{2016-wu-al}.
 La figure \ref{fig:mt-google} représente l'architecture du système de traduction automatique neuronale de Google. 
-L'encodeur se compose de huit couches LSTM dont le premier est un Bi-LSTM afin de capturer le contexte future. 
+L'encodeur se compose de huit couches \keyword[L]{LSTM} dont le premier est un \keyword[B]{Bi-LSTM} afin de capturer le contexte future. 
 Le texte d'entrée $X = x_1 \ldots x_n$ sera encodé comme une séquence $\bar{x}_1 \ldots \bar{x}_n$. 
-Le décodeur, lui aussi, se compose de 8 LSTM.
+Le décodeur, lui aussi, se compose de 8 \keyword[L]{LSTM}s.
 Soit $y_{i-1}$ la sortie passée de l'encodeur, la prochaine entrée est calculée en utilisant un mécanisme d'attention. 
 On passe chaque vecteur $\bar{x}_t$ combiné avec $y_{i-1}$ par un réseau de neurone à propagation avant avec une seule couche cachée, appelé $AttentionFunction$ pour avoir un nouveau vecteur $s_t = AttentionFunction(y_{i-1}, \bar{x}_t)$. 
 Une fois tous les $n$ vecteurs sont encodés, on applique une fonction Softmax sur eux.
@@ -334,17 +334,17 @@ Afin de décoder la sortie, les auteurs utilisent \keyword[B]{Beam search}.
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.89\textwidth]{googlet_.pdf}
-	\caption{Architecture du système de traduction automatique neuronale de Google \cite{2016-wu-al}}
+	\caption[Architecture de Google Translate (traduction automatique)]{Architecture du système de traduction automatique neuronale de Google \cite{2016-wu-al}}
 	\label{fig:mt-google}
 \end{figure}
 
 Un autre système qui suit l'approche neuronale est OpenNMT\footnote{OpenNMT : \url{https://opennmt.net/}} \cite{17-klein-al} dont l'architecture est indiquée dans la figure \ref{fig:mt-opennmt}.
-Il utilise un modèle seq2seq avec le mécanisme d'attention.
+Il utilise un modèle \keyword[S]{seq2seq} avec le mécanisme d'attention.
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.6\textwidth]{opennmt_.pdf}
-	\caption{Architecture du système de traduction automatique neuronale OpenNMT \cite{17-klein-al}}
+	\caption[Architecture de OpenNMT (traduction automatique)]{Architecture du système de traduction automatique neuronale OpenNMT \cite{17-klein-al}}
 	\label{fig:mt-opennmt}
 \end{figure}
 
@@ -362,7 +362,7 @@ Cette classification est représentée par la figure \ref{fig:ats-class}.
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{sum-classif_noir.pdf}
-	\caption{Classification des méthodes de résumé automatique selon \cite{98-hovy-lin,99-sparckjones}}
+	\caption[Classification des méthodes de résumé automatique]{Classification des méthodes de résumé automatique selon \cite{98-hovy-lin,99-sparckjones}}
 	\label{fig:ats-class}
 \end{figure}
 
@@ -447,7 +447,7 @@ Score(s_i , \bigcap_{j} c_j , F) = \prod_{j} \prod_{k} Score(s_i , c_j , f_k )
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{tcc-arch_noir.pdf}
-	\caption{Architecture de la méthode TCC pour le résumé automatique statistique \cite{13-aries-al}}
+	\caption[Architecture de la méthode TCC (résumé automatique)]{Architecture de la méthode TCC pour le résumé automatique statistique \cite{13-aries-al}}
 	\label{fig:ats-tcc}
 \end{figure}
 
@@ -523,13 +523,13 @@ Ensuite, on améliore le score des phrases en utilisant les propriétés du grap
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{gc-archi_noir.pdf}
-	\caption{Architecture de la méthode SSF-GC pour le résumé automatique statistique \cite{21-aries-al}}
+	\caption[Architecture de la méthode SSF-GC (résumé automatique)]{Architecture de la méthode SSF-GC pour le résumé automatique statistique \cite{21-aries-al}}
 	\label{fig:ats-gc}
 \end{figure}
 
 Un graphe $G(V, E)$ est construit en utilisant les phrases et leurs similarités cosinus sur les fréquences des mots.
 Le graphe est simplifié par l'élimination des nœuds faibles. 
-Un nœuds est jugé faible s'il ... la propriété exprimée par l'équation \ref{eq:ats-gc-nfaible}.
+Un nœuds est jugé faible s'il satisfait la propriété exprimée par l'équation \ref{eq:ats-gc-nfaible}.
 $MImpN(v_i)$ est le nombre des voisins les plus importants ; ceux qui ont une similarité avec $v_i$ supérieure à un seuil donné $Threshold$.
 \begin{equation}\label{eq:ats-gc-nfaible}
 noeud\_faible(v_i) = ( \sum_{(v_i, v_j) \in E} w_{ij} < \frac{1}{MImpN(v_i)} )
@@ -583,7 +583,7 @@ Les mots optionnels sont annotés par \keyword{?}.
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{paice-template.pdf}
-	\caption{Un exemple d'un patron simplifié \cite{81-paice}.}
+	\caption[Exemple d'un patron simplifié (résumé automatique)]{Exemple d'un patron simplifié \cite{81-paice}.}
 	\label{fig:paice-template}
 \end{figure}
 
@@ -603,12 +603,12 @@ Ces caractéristiques sont transformées en utilisant un module de transformatio
 Par exemple, on peut transformer les listes en scalaires. 
 Un bloc de réseau de neurones à propagation avant est utilisé pour détecter la langue (en réalité, il va attribuer à chaque document un vecteur : une forme de clustering).
 Autres blocs sont utilisés pour calculer le score de la phrase en utilisant des critères : TF, Similarité, Taille et Position. 
-Un bloc final est utilisé inférer le score ROUGE1 en utilisant les scores intermédiaires. 
+Un bloc final est utilisé inférer le score ROUGE-1 en utilisant les scores intermédiaires. 
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{ml2es-archi_noir.pdf}
-	\caption{Architecture du système ML2ExtraSum qui utilisent des caractéristiques avec ML \cite{2020-aries}}
+	\caption[Architecture du système ML2ExtraSum (résumé automatique)]{Architecture du système ML2ExtraSum qui utilisent des caractéristiques avec ML \cite{2020-aries}}
 	\label{fig:ats-ml2es}
 \end{figure}
 
@@ -630,7 +630,7 @@ Il peut être utilisé pour décider la phrase qui est générée par $D$ et $Q$
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.4\textwidth]{btm-daumeiii_.pdf}
-	\caption{Représentation du réseau bayésien utilisé dans le résumé automatique par \citet{06-daumeiii-marcu}}
+	\caption[Représentation du réseau bayésien pour le résumé automatique]{Représentation du réseau bayésien utilisé dans le résumé automatique par \citet{06-daumeiii-marcu}}
 	\label{fig:ats-daumeii-marcu}
 \end{figure}
 
@@ -646,7 +646,7 @@ Le mécanisme est similaire à celui présenté dans la traduction automatique.
 	\centering
 	\hgraphpage[.35\textwidth]{2015-rush-al_.pdf}
 	\hgraphpage[.35\textwidth]{2015-rush-al-exp_.pdf}
-	\caption{Architecture du système NAMAS utilisant deep learning pour le résumé automatique abstractif \cite{15-rush-al}}
+	\caption[Architecture du système NAMAS (résumé automatique)]{Architecture du système NAMAS utilisant deep learning pour le résumé automatique abstractif \cite{15-rush-al}}
 	\label{fig:ats-namas} 
 \end{figure}
 
@@ -659,7 +659,7 @@ La sélection des phrases peut être formulée comme un problème de classement 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.85\textwidth]{narayan-al_.pdf}
-	\caption{Architecture du système de \citet{18-narayan-al} utilisant l'apprentissage par renforcement}
+	\caption[Architecture de résumé automatique par renforcement]{Architecture du système de \citet{18-narayan-al} utilisant l'apprentissage par renforcement}
 	\label{fig:ats-narayan}
 \end{figure}
 
@@ -669,8 +669,8 @@ On utilise des filtres de déférentes tailles $h$ (ici, $4$ en bleu et $2$ en r
 Chaque filtre crée un vecteur $f \in \mathbb{R}^{k-h+1}$ où $k$ est le nombre des mots dans la phrases (ici, le premier vecteur est de taille $7-4+1 = 4$, le deuxième $7-2+1 = 6$). 
 Le vecteurs résultats est passé par un Max-Pool pour avoir une seule valeur. 
 Dans l'exemple, on a utilisé trois filtres de taille $4$ et trois de taille $2$, donc on aura deux vecteurs de  taille $3$ qui sont concaténés à un seul vecteur représentant la phrase.
-Afin d'encoder le document, on passe les phrases par un réseaux récurrent LSTM en commençant par la représentation de la première phrase.
-L'extracteur est un LSTM qui prend une phrase $s_i$ et estime une prédiction $y_i$ en prenant en compte la représentation du document : $p(y_i|x_i, D)$.
+Afin d'encoder le document, on passe les phrases par un réseaux récurrent \keyword[L]{LSTM} en commençant par la représentation de la première phrase.
+L'extracteur est un \keyword[L]{LSTM} qui prend une phrase $s_i$ et estime une prédiction $y_i$ en prenant en compte la représentation du document : $p(y_i|x_i, D)$.
 
 Lors de l'entrainement, on peut sélectionner les $m$ phrases d'un document $D$ en utilisant la métrique ROUGE-1 avec un résumé manuelle comme phrases de références.
 On va annoter les phrases du document comme $y = y_1 \ldots y_n$ où $y_i \in \{0, 1\}$ ; les phrases de références ont un label de $1$. 
@@ -716,7 +716,7 @@ Le système contient trois modules principaux : traitement de la requête, reche
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{qa-ri_.pdf}
-	\caption{Architecture d'un système de questions/réponses par RI \cite{2019-jurafsky-martin}}
+	\caption[Architecture d'un système de questions/réponses par RI]{Architecture d'un système de questions/réponses par RI \cite{2019-jurafsky-martin}}
 	\label{fig:qa-ri}
 \end{figure}
 
@@ -746,24 +746,24 @@ C'est une tâche d'annotation des séquences qui peut être résolue en utilisan
 Une méthode est celle de \citet{2017-chen-al}, illustrée dans la figure \ref{fig:qr-ri-chen}. 
 On commence par encoder la question en passant les représentations \keyword[G]{GloVe} de ces mots par un réseaux récurrent Bi-LSTM, les vecteurs sont combinés en utilisant une somme pondérée. 
 Afin d'encoder le passage, on utilise la représentation \keyword[G]{GloVe} des mots, un mécanisme d'attention basé sur les mots de la question, un indicateur si le mot a apparu dans la question ($0$ ou $1$) et des indicateurs de catégorie grammaticale et/ou le type de l'entité nommée.
-Ces vecteurs sont passés par un réseaux Bi-LSTM afin d'extraire les embeddings des mots par rapport au passage. 
+Ces vecteurs sont passés par un réseaux \keyword[B]{Bi-LSTM} afin d'extraire les \keyword[E]{embedding}s des mots par rapport au passage. 
 Chaque vecteur d'un mot du passage est comparé avec le vecteur de la requête en utilisant une similarité afin de décider si le mot appartient à la réponse.
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage{qa-bilstm-exp_.pdf}
-	\caption{Extraction de la réponse par Bi-LSTM \cite{2019-jurafsky-martin}}
+	\caption[Extraction de la réponse par Bi-LSTM]{Extraction de la réponse par Bi-LSTM \cite{2019-jurafsky-martin}}
 	\label{fig:qr-ri-chen}
 \end{figure}
 
-Nous avons vu dans le chapitre 6 que BERT peut être utilisé dans des tâche d'annotation des séquences.
+Nous avons vu dans le chapitre 6 que \keyword[B]{BERT} peut être utilisé dans des tâche d'annotation des séquences.
 Dans \cite{2018-devlin-al}, les auteurs passent la question et le passage au modèle pré-entraîné \keyword[B]{BERT} (voir la figure \ref{fig:qr-ri-devlin}).
 On utilise deux représentations, de début (S) et de fin (E), qui sont multipliés par la représentation de chaque mot et passé par une fonction softmax sur l'ensemble de tous les mots afin d'avoir la probabilité de début et celle de fin.
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{qa-bert-exp_.pdf}
-	\caption{Extraction de la réponse par BERT \cite{2019-jurafsky-martin}}
+	\caption[Extraction de la réponse par BERT]{Extraction de la réponse par BERT \cite{2019-jurafsky-martin}}
 	\label{fig:qr-ri-devlin}
 \end{figure}
 
@@ -772,7 +772,7 @@ On utilise deux représentations, de début (S) et de fin (E), qui sont multipli
 Lorsqu'on possède une base de données structurée, cette approche est la plus adéquate. 
 Dans le cas d'une base de connaissance sous forme de graphe (BabelNet), on peut utiliser l'annotation sémantique (Entity linking). 
 Ensuite, on doit déterminer le type de la relation recherchée (Ex. \expword{Place\_naissance}) afin de filtrer les entités.
-S'il y a plusieurs relations comme réponse, on peut calculer la similarité entre la question et la réponse (par exemple, en utilisant les embeddings). 
+S'il y a plusieurs relations comme réponse, on peut calculer la similarité entre la question et la réponse (par exemple, en utilisant les \keyword[E]{embedding}s). 
 Une autre approche est en appliquant l'analyse sémantique sur la question afin de générer une forme structurée comme : lambda calcul, SQL, SPARQL, etc.
 Cette forme est utilisée afin d'interroger la base de données et récupérer la réponse.
 Un exemple des requêtes et leurs formes logiques est donnée dans la figure \ref{fig:qr-conn}.
@@ -780,7 +780,7 @@ Un exemple des requêtes et leurs formes logiques est donnée dans la figure \re
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{qa-logfrm-exp_.pdf}
-	\caption{An exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
+	\caption[Exemple des formes logiques des questions]{Exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
 	\label{fig:qr-conn}
 \end{figure}
 
@@ -794,7 +794,7 @@ Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'infor
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{qa-t5_.pdf}
-	\caption{T5 comme modèle de réponse aux questions \cite{2020-roberts-al}}
+	\caption[T5 comme modèle de réponse aux questions]{T5 comme modèle de réponse aux questions \cite{2020-roberts-al}}
 	\label{fig:qr-modele-t5}
 \end{figure}
 
@@ -803,10 +803,10 @@ Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'infor
 %===================================================================================
 
 Un système de dialogue est un système interactif qui communique avec les utilisateurs. 
-Il peut être un agent orienté tâche ou un chatbot comme indiqué dans la figure \ref{fig:sd-classif}. 
+Il peut être un agent orienté tâche ou un \keyword[C]{chatbot} comme indiqué dans la figure \ref{fig:sd-classif}. 
 Les systèmes de dialogue orientés tâche visent à aider l'utilisateur à accomplir une tâche, comme la réservation de l'avion. 
 Il existe deux types de ce système : frame-based et dialogue-state. 
-Les chatbots ont comme but d'imiter la conversation humaine.
+Les \keyword[C]{chatbot}s ont comme but d'imiter la conversation humaine.
 Ils peuvent être des systèmes à base des règles, de la RI ou de la génération des réponses.
 
 \begin{figure}[!ht]
@@ -823,13 +823,13 @@ Un système de dialogue orienté tâche peut utiliser des cadres (frames) afin d
 Un cadre (frame) est une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot.
 Par exemple \ref{fig:sd-tache-frame-exp} représente un exemple d'un cadre pour programmer un vol.
 Le système pose les questions correspondantes à un slot vide afin de le remplir.
-Lorsqu’on rempli un slot, on peut remplir des slots d'autres cadres en parallèle. 
+Lorsqu'on rempli un slot, on peut remplir des slots d'autres cadres en parallèle. 
 Par exemple, le slot ``\expword{RESERVATION\_DATE}" du cadre ``\expword{HOTEL\_RESERVATION}" peut être rempli à partir du slot ``\expword{ARRIVAL\_DATE}" du cadre ``\expword{FLIGHT\_RESERVATION}".
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-frame-exp_.pdf}
-	\caption{Exemple d'un cadre pour programmer un vol. \cite{2020-jurafsky-martin}}
+	\caption[Exemple d'un cadre pour programmer un vol]{Exemple d'un cadre pour programmer un vol \cite{2020-jurafsky-martin}}
 	\label{fig:sd-tache-frame-exp}
 \end{figure}
 
@@ -845,7 +845,7 @@ En fait, on peut l'exprimer en utilisant les expressions régulières.
 	\hgraphpage[.6\textwidth]{sd-frame-semgram-exp_.pdf}
 	
 	\hgraphpage[.8\textwidth]{sd-frame-parse-exp_.pdf}
-	\caption{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase. \cite{2020-jurafsky-martin}}
+	\caption[Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase]{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase \cite{2020-jurafsky-martin}}
 	\label{fig:sd-tache-frame-parse}
 \end{figure}
 
@@ -865,7 +865,7 @@ Cette politique est entaînée en utilisant un algorithme d'apprentissage afin d
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-dialog-arch_.pdf}
-	\caption{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
+	\caption[Architecture d'un système utilisant dialogue-state]{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
 	\label{fig:sd-tache-dial-state}
 \end{figure}
 
@@ -876,7 +876,7 @@ Il est indiqué quels sont les actes qui sont valides comme sortie système et c
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-dialog-act-exp1_.pdf}
-	\caption{Des actes de dialogue système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
+	\caption[Actes de dialogue du système HIS]{Actes de dialogue du système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
 	\label{fig:sd-tache-his-acts}
 \end{figure}
 
@@ -887,7 +887,7 @@ Le système lance un acte de confirmation de la requête en demandant quel est l
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
-	\caption{Exemple d'un dialogue du système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
+	\caption[Exemple d'un dialogue du système HIS]{Exemple d'un dialogue du système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
 	\label{fig:sd-tache-his-exp}
 \end{figure}
 
@@ -899,13 +899,13 @@ Un exemple d'une telle méthode qui utilise \keyword[B]{BERT} est illustré dans
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{sd-dialog-remp-exp_.pdf}
-	\caption{Exemple de remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
+	\caption[Exemple de remplissage des slots en utilisant BERT]{Exemple de remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
 	\label{fig:sd-tache-remp-bert}
 \end{figure}
 
 \subsection{Chatbot à base des règles }
 
-Les chatbots ont comme but d'émuler une conversation humaine. 
+Les \keyword[C]{chatbot}s ont comme but d'émuler une conversation humaine. 
 Les premiers chatbots étaient à base de règles, comme le système ELIZA \cite{1966-Weizenbaum} qui émule une psychologue. 
 Il se base sur des règles de type patrons/transformations. 
 La règle \expword{\small [(.*) YOU (.*) ME]\textsubscript{[Patron]} \textrightarrow\ [WHAT MAKES YOU THINK I \$2 YOU?]\textsubscript{[Transformation]}} peut être utilisée pour répondre à \expword{You hate me \textrightarrow\ WHAT MAKES YOU THINK I HATE YOU?}. 
@@ -915,13 +915,13 @@ Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilis�
 
 \subsection{Chatbot à base de la RI}
 
-Les chatbots à base de \ac{ri} se basent sur des corpus de conversations $C$ entre humains. 
+Les \keyword[C]{chatbot}s à base de \ac{ri} se basent sur des corpus de conversations $C$ entre humains. 
 Etant donnée une requête utilisateur $q$, on cherche la réponse $r \in C$ qui est plus similaire à la requête $q$ comme indiqué dans l'équation \ref{eq:chatbot-sim}.
 \begin{equation}\label{eq:chatbot-sim}
 \text{Réponse}(q, C) = \arg\max_{r \in C} \frac{q . r}{|q| |r|}
 \end{equation}
-Les requêtes et les réponses peuvent être encodées en utilisant TF-IDF ou en utilisant les embeddings.
-Par exemple, en utilisant \keyword[B]{BERT}, on peut encoder la requête comme un vecteur $h_q$ et la réponse comme un vecteur $h_r$ (la sortie \keyword{[CLS]}) comme indiqué dans l'équation \ref{eq:chatbot-enc-bert}.
+Les requêtes et les réponses peuvent être encodées en utilisant TF-IDF ou en utilisant les \keyword[E]{embedding}s.
+Par exemple, en utilisant \keyword[B]{BERT}, on peut encoder la requête comme un vecteur $h_q$ et la réponse comme un vecteur $h_r$ (la sortie ``[CLS]") comme indiqué dans l'équation \ref{eq:chatbot-enc-bert}.
 \begin{equation}\label{eq:chatbot-enc-bert}
 h_q = BERT_Q(q)[CLS],\quad h_r = BERT_R(r)[CLS]
 \end{equation} 
@@ -932,7 +932,7 @@ La réponse est celle qui maximise la similarité entre les deux vecteurs, comme
 
 \subsection{Chatbot par génération du texte}
 
-Un chatbot peut être modéliser comme un problème de génération du  texte. 
+Un \keyword[C]{chatbot} peut être modéliser comme un problème de génération du  texte. 
 On peut utiliser un encodeur/décodeur comme celui présenté dans la traduction automatique (voir la figure \ref{fig:chatbot-encdec}).
 Un mot de la réponse $\hat{r}_i$ c'est un mot du vocabulaire $V$ qui est estimé en se basant sur la requête $q$ et les mots précédemment générés comme dans l'équation \ref{eq:chatbot-decodeur}
 \begin{equation}\label{eq:chatbot-decodeur}
@@ -943,7 +943,7 @@ On peut aussi utiliser des modèles de langue, comme \keyword[G]{GPT} entraîné
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp_.pdf}
-	\caption{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
+	\caption[Exemple d'un chatbot à base d'un encodeur/décodeur]{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
 	\label{fig:chatbot-encdec}
 \end{figure}
 
@@ -973,18 +973,18 @@ Seuls les mots indicateurs des sentiments qui peuvent être attribués des score
 Les adjectifs et les adverbes sont des bons indicateurs de sentiments. 
 Par exemple, l'adjectif ``\expword{bon}" est un indicateur positif et donc l'adjectif ``\expword{mauvais}" est un indicateur négatif.
 Deux techniques sont utilises pour identifier un mot : à base de dictionnaire et à base d'un corpus. 
-En utilisant un dictionnaire comme Wordnet, on peut enrichir une liste des indicateurs manuellement définie (synonymes, antonymes, etc.).
+En utilisant un dictionnaire comme \keyword[W]{WordNet}, on peut enrichir une liste des indicateurs manuellement définie (synonymes, antonymes, etc.).
 En se basant sur un corpus, on peut enrichir une liste manuellement définie par la co-occurrence ; les mots qui sont souvent utilisés ensemble sont plus probables d'avoir la même polarité. 
 %
 Afin de calculer le score totale (phrase ou document), on fait la somme des scores des mots. 
-Parmi les problèmes, la présence de la négation ; cela peut être réglé en utilisant la structure de la phrase comme \keyword{RST}.
+Parmi les problèmes, la présence de la négation ; cela peut être réglé en utilisant la structure de la phrase comme \keyword[R]{\ac{rst}}.
 
 \subsection{Analyse des sentiments par apprentissage automatique}
 
 On peut utiliser un algorithme d'apprentissage automatique avec des caractéristiques comme : la présence d'un mot et sa fréquence, les catégorie grammaticales des mots, les mots et les syntagmes d'opinion, la négation, etc.
 Aussi, on peut utiliser les modèles de langage contextuelles afin d'apprendre la classe de sortie. 
 La méthode la plus simple est d'utiliser un modèle \keyword[B]{BERT} pré-entraîné.
-En entrée, on passe la texte et on attache un réseau à propagation et en sortie \keyword{[CLS]} on entraîne le modèle à estimer le sentiment. 
+En entrée, on passe la texte et on attache un réseau à propagation et en sortie ``[CLS]" on entraîne le modèle à estimer le sentiment. 
 On peut enrichir le modèle en attachant un réseau à propagation avant (feed-forward) avec cette sortie. 
 Aussi, on peut utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
 
@@ -998,7 +998,7 @@ La figure \ref{fig:asent-bettiche} représente l'architecture de leur système q
 \begin{figure}
 	\centering
 	\hgraphpage[.7\textwidth]{sent-bettiche-al_.pdf}
-	\caption{Architecture hybride proposée par \cite{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
+	\caption[Architecture hybride pour détecter la polarité en dialecte algérienne]{Architecture hybride proposée par \cite{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
 	\label{fig:asent-bettiche}
 \end{figure}
 
@@ -1030,13 +1030,13 @@ Une autre méthode hybride est celle proposée par \citet{18-guellil-al} (voir l
 En se basant sur un lexicon annoté en anglais (mots avec score polarité), on traduit les mots vers l'arabe. 
 Il faut prendre en considération que certains mots vont perdre leurs sens vu que l'utilisation des mots en anglais n'est pas garantie d'être équivalente au mots traduit dans les textes en arabe. 
 En utilisant des messages de facebook, on essaye de les annoter selon les scores de polarités des mots ; chaque message est affecté à la classe positive ou négative.
-Ensuite, le corpus annoté automatiquement est utilisé afin d'entraîner un modèle de classification en utilisant des critères comme les embeddings des mots. 
+Ensuite, le corpus annoté automatiquement est utilisé afin d'entraîner un modèle de classification en utilisant des critères comme les \keyword[E]{embedding}s des mots. 
 J'ai une autre remarque concernant ça : le modèle entraîné va apprendre exactement la même fonction de celui par règle seulement avec des caractéristiques différentes; il faut mieux annoter les messages manuellement.
 
 \begin{figure}
 	\centering
 	\hgraphpage[.5\textwidth]{sent-guellil-al_.pdf}
-	\caption{Architecture hybride proposée par \cite{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
+	\caption[Architecture hybride pour l'analyse des sentiments en arabizi]{Architecture hybride proposée par \cite{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
 	\label{fig:asent-guellil}
 \end{figure}
 
@@ -1080,7 +1080,7 @@ Selon ce score, on peut décider la difficulté d'un texte en se basant sur le t
 		0-30 && Très difficile à lire (Diplôme universitaire). \\
 		\hline\hline
 	\end{tabular}
-    \caption{Le niveau de difficulté en se basant sur le score Flesch-Kincaid}
+    \caption{Niveau de difficulté en se basant sur le score Flesch-Kincaid}
     \label{tab:lisibilite-flesch-kincaid}
 \end{table}
 
@@ -1106,7 +1106,7 @@ La difficulté en se basant sur ce score est représentée par le niveau des ét
 		9-9.9 && Étudiant du 13ième et 15ième (collège). \\
 		\hline\hline
 	\end{tabular}
-	\caption{Niveau de lisibilité en se basant sur le score de Dale–Chall}
+	\caption{Niveaux de lisibilité en se basant sur le score de Dale–Chall}
 	\label{tab:lisibilite-dale-chall}
 \end{table}
 
@@ -1131,7 +1131,7 @@ Les classes de difficulté peuvent être définies selon le besoin : niveau de l
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[0.8\textwidth]{lisibilite-ML_.pdf}
-	\caption{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
+	\caption[Pipeline d'estimation de difficulté de lecture avec apprentissage automatique]{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
 	\label{fig:lisibilite-collins}
 \end{figure}
 
@@ -1149,7 +1149,7 @@ Un système de reconnaissance de la parole peut être conçu seulement pour dét
 Selon le canal d'entrée, le système peut permettre les sons d'arrière-plan ou il exige un son clair en entrée.  
 On peut aussi utiliser la taille du vocabulaire comme critère de classification.
 Un système avec un vocabulaire réduit comme les commandes est plus facile à implémenté qu'un système avec un grand vocabulaire comme le vocabulaire d'une langue.
-Selon l'approche de parole, le locuteur doit parler avec des pauses afin de faciliter la déétection ou il peut parler d'une façon normale.
+Selon l'approche de parole, le locuteur doit parler avec des pauses afin de faciliter la détection ou il peut parler d'une façon normale.
 Le style de la parole peut, aussi, affecter un système de reconnaissance : est-ce que le langage doit être standard ou on peut parler avec des sons qui n'ont pas de sens, comme \expword{um}.
 
 \begin{figure}[!ht]
@@ -1202,13 +1202,13 @@ Un exemple du fenêtrage est donné dans la figure \ref{asr-windowing-exp}.
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{ASR-windowing-exp_.pdf}
-	\caption{Exemple de l'opération du fenêtrage \cite{2020-jurafsky-martin}}
+	\caption[Exemple de l'opération du fenêtrage]{Exemple de l'opération du fenêtrage \cite{2020-jurafsky-martin}}
 	\label{asr-windowing-exp}
 \end{figure}
 
 Pour extraire un cadre $y[n]$, on multiplie un signal de la fenêtre $w[n]$ par le signal initial $s[n]$ dans un temps $n$ : $ y[n] = w[n] s[n] $. 
 La figure \ref{fig:asr-windowing-rect-hamm} représente un exemple de deux types de fenêtrage : rectangulaire et de Hamming. 
-La méthose la plus simple est la fenêtre rectangulaire ; la fenêtre est représentée par l'équation \ref{eq:asr-windowing-rect}
+La méthode la plus simple est la fenêtre rectangulaire ; la fenêtre est représentée par l'équation \ref{eq:asr-windowing-rect}
 \begin{equation}\label{eq:asr-windowing-rect}
 w[n] = \begin{cases}
 1 & \text{si } 0 \le n \le L-1 \\
@@ -1227,7 +1227,7 @@ w[n] = \begin{cases}
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{ASR-windowing2-exp_.pdf}
-	\caption{Fenêtrage rectangulaire vs. Hamming \cite{2020-jurafsky-martin}}
+	\caption[Fenêtrage rectangulaire vs. Hamming]{Fenêtrage rectangulaire vs. Hamming \cite{2020-jurafsky-martin}}
 	\label{fig:asr-windowing-rect-hamm}
 \end{figure}
 
@@ -1258,13 +1258,13 @@ mel(f) = 1127 \ln (1 + \frac{f}{700})
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.5\textwidth]{ASR-mel-exp_.pdf}
-	\caption{Un exemple du filtre de Mel \cite{2020-jurafsky-martin}}
+	\caption[Exemple du filtre de Mel]{Exemple du filtre de Mel \cite{2020-jurafsky-martin}}
 	\label{fig:asr-mel}
 \end{figure}
 
 \subsection{Reconnaissance}
 
-La parole  est une série temporelle ; sa reconnaissance est une classification en utilisant des méthodes comme les \ac{hmm} et les réseaux de neurones encodeurs-décodeurs.
+La parole  est une série temporelle ; sa reconnaissance est une classification en utilisant des méthodes comme les \keyword[H]{\ac{hmm}} et les réseaux de neurones encodeurs-décodeurs.
 La figure \ref{fig:asr-enc-dec} représente l'architecture d'un système de reconnaissance de la parole en utilisation un encodeur-décodeur. 
 L'encodeur commence à encoder les séquences du signal sous formes des représentations internes (contexte). 
 Ce dernier est utilisé avec le mécanisme d'attention pour générer le texte caractère par caractère.
@@ -1272,7 +1272,7 @@ Ce dernier est utilisé avec le mécanisme d'attention pour générer le texte c
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{ASR-rec-exp_.pdf}
-	\caption{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
+	\caption[Exemple de reconnaissance en utilisant un encodeur-décodeur]{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
 	\label{fig:asr-enc-dec}
 \end{figure}
 
@@ -1285,7 +1285,7 @@ Une méthode naïve pour maximiser cette probabilité est de maximiser la probab
 \begin{equation}\label{eq:asr-encdec-probindi}
 \hat{y}_i = \arg\max_{c \in V} p(c| y_1, \ldots, y_{i-1}, X)
 \end{equation}
-Ceci est un modèle de langage sur les carractères avec l'information de la parole. 
+Ceci est un modèle de langage sur les caractères avec l'information de la parole. 
 Afin d'entraîner ce modèle à bien générer un caractère sachant les caractères passés et le contexte, on doit avoir suffisamment de données. 
 Les mots générés doivent appartenir au vocabulaire de la langue.
 Une solution est d'utiliser une modèle de langage séparé $LM$ avec le modèle de reconnaissance afin d'améliorer le texte généré.
@@ -1293,7 +1293,7 @@ La probabilité de générer une série de caractères $Y$ sachant l'information
 \begin{equation}\label{eq:asr-dec-score}
 score(Y|X) = \frac{1}{|Y|_{car}} \log p(Y|X) + \lambda \log p_{LM}(Y)
 \end{equation}
-Ce score doit être maximiser ; une solution est l'utilisant des méthodes d'optimisation comme \keyword[B]{Beam search}.
+Ce score doit être maximiser ; une solution est l'utilisant des méthodes d'optimisation comme \keyword[B]{Beam Search}.
 Il existe un autre problème qui est la génération du même caractère plusieurs fois consécutives. 
 Ceci est dû au fait que la lettre a été prononcée sur plusieurs échantillons. 
 Une solution est d'utiliser une technique appelée \optword{Connectionist Temporal Classification (CTC)}.
@@ -1328,7 +1328,7 @@ La dernière unité sert à générer la parole en utilisant ces paramètres sui
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.7\textwidth]{tts-arch_.pdf}
-	\caption{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
+	\caption[Architecture d'un système de synthèse vocale]{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
 	\label{fig:tts-arch}
 \end{figure}
 
