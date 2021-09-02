@@ -268,7 +268,14 @@ title={#1}
 	\@keyword{#2}%
 	\ifthenelse { \equal{#1}{} }%
 	{}%
-	{\lowercase{\def\temp{#2}}\expandafter\index\expandafter{#1!\temp}}
+	{\lowercase{\def\temp{#2}}\expandafter\index\expandafter{#1!\temp}}%
+}
+
+\newcommand{\keywordpl}[2][]{%
+	\@keyword{#2s}%
+	\ifthenelse { \equal{#1}{} }%
+	{}%
+	{\lowercase{\def\temp{#2}}\expandafter\index\expandafter{#1!\temp}}%
 }
 
 \def\nameword#1{{\itshape\bfseries\color{red} #1}}
