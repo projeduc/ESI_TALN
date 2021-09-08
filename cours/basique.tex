@@ -158,7 +158,7 @@ Dans ce cas, on capture la chaîne ``ch" pour la garder et remplacer le reste : 
 \end{figure}
 
 
-Peu-être l'utilité du regroupement n'est pas claire avec l'exemple précédent puisque nous avons une seule chaîne à capturer.
+Peut-être l'utilité du regroupement n'est pas claire avec l'exemple précédent puisque nous avons une seule chaîne à capturer.
 Si nous avons une disjonction, ça sera plus intéressant.
 Prenons l'exemple : ``\expword{J'aime les chats. Dans la cuisine, il y a un rat.}". 
 Si on remplace la chaîne ``at" de ``chat" et de ``rat" par ``ien", on aura le texte suivant : 
@@ -250,7 +250,7 @@ Pour calculer la distance, on compare les deux chaînes caractère par caractèr
 Cette distance permet l'insertion et la suppression.
 Parmi ses utilisations, la détection des modifications dans le programme ``diff" (utilisé aussi dans ``Git").
 En anglais, elle s'appelle ``Longest common subsequence" (LCS).
-Étant donné deux chaînes $Y$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on définit un tableau $C[m, n]$ à deux dimensions contenant la longueur de la LCS.
+Étant donné deux chaînes $X$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on définit un tableau $C[m, n]$ à deux dimensions contenant la longueur de la LCS.
 L'équation \ref{eq:LCS-length} peut être utilisée afin de calculer la longueur de la plus longue sous-séquence. 
 \begin{equation}
 	C[i, j] =  
@@ -273,7 +273,7 @@ La distance sera calculée en utilisant l'équation \ref{eq:LCS-distance}.
 
 Cette distance permet l'insertion, la suppression et la substitution.
 En général, elle est utilisée dans la recherche approximative et la vérification d'orthographe.
-Étant donné deux chaînes $Y$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on définit un tableau $D[m, n]$ à deux dimensions contenant la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j]. 
+Étant donné deux chaînes $X$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on définit un tableau $D[m, n]$ à deux dimensions contenant la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j]. 
 Dans ce cas $D[0, 0] = 0$ et la distance finale sera stocké dans $D[m, n]$.
 L'équation \ref{eq:lev-distance} formule comment on calcule cette distance (en utilisant la programmation dynamique).
 Il faut savoir que dans cette version, le coût de la suppression et insertion est $1$ et le coût de la substitution est $2$.
@@ -328,7 +328,7 @@ D[i, j] = \min
 Cette distance permet seulement la transposition.
 En réalité c'est une mesure de similarité qui retourne une valeur entre $0$ (pas de similarité) et $1$ (similaires). 
 Elle est utilisée pour le calcul de la similarité entre les entités nommées, etc.
-Étant donné deux chaînes $Y$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on calcule le nombre des caractères correspondants $c$ et le nombre des transpositions $t$. 
+Étant donné deux chaînes $X$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on calcule le nombre des caractères correspondants $c$ et le nombre des transpositions $t$. 
 La distance de Jaro est calculée selon l'équation 
 \begin{equation}
 	D(X, Y) = 
@@ -447,7 +447,7 @@ Afin de séparer les phrases dans un format semi-structuré, comme HTML, on peut
 Mais, lorsqu'il s'agit d'un texte non structuré, plusieurs langages utilisent des marqueurs comme le point, point d'exclamation et point d'interrogation pour marquer la fin d'une phrase. 
 Dans ce cas, on peut utiliser une expression régulière simple \expword{/[.?!]/} pour délimiter les phrases dans des langues comme français, anglais, etc.
 Des fois, on veut séparer les phrases longues avec des clauses séparées par des virgules.
-Aussi, les guillemets peuvent pauser un problème : est-ce que la phrase dedans est séparée ou elle une une continuation de la clause principale ?
+Aussi, les guillemets peuvent pauser un problème : est-ce que la phrase dedans est séparée ou elle est une continuation de la clause principale ?
 Par exemple, \expword{Il a dit : ``Je suis fatigué." en retournant à son lit.}.
 Le point dans ces langues n'est pas toujours utilisé pour séparer les phrases. 
 Il peut être utilisé dans les nombres : \expword{123,456.78 (style américain) 123.456,78 (style européen)}.
@@ -477,9 +477,9 @@ Quelques facteurs contextuelles ont été proposés et utilisés pour la segment
 	
 	\item \optword{Préfixes et suffixes} : Les mots avec des infixes sont moins probables d'être des abréviations.
 	
-	\item \optword{Classes des abréviations} : Les abréviations peuvent se figurer à la fin de la phase. 
+	\item \optword{Classes des abréviations} : Les abréviations peuvent se figurer à la fin de la phrase. 
 	Mais, il y a un ensemble d'abréviations qui sont toujours suivies par un autre mot, comme par exemple ``Mr.".
-	\cite{89-riley,97-reynar-ratnaparkhi} divisent les abréviations en deux catégories : les titres (qui ne peuvent pas être à la fin de phrase, comme \textit{Mr.}, \textit{Dr.}, etc.) et les indicatifs corporatifs (qui peuvent être à la fin de phrase, comme \textit{Corp.}, \textit{S.p.A.}, etc.).
+	\cite{89-riley,97-reynar-ratnaparkhi} divisent les abréviations en deux catégories : les titres (qui ne peuvent pas être à la fin de phrase, comme \textit{Mr.}, \textit{Dr.}, etc.) et les indicatifs corporatifs (qui peuvent être à la fin de phrase, comme \textit{Corp.}, \textit{S.P.A.}, etc.).
 \end{itemize}
 
 %Les différents algorithmes de détection de limites

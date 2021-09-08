@@ -249,7 +249,7 @@ title={#1}
 \definecolor{lightblue}{HTML}{D0D2FF}
 \definecolor{lightyellow}{HTML}{FFFFAA}
 \definecolor{darkblue}{HTML}{0000BB}
-\definecolor{olivegreen}{HTML}{006600}
+\definecolor{olivegreen}{HTML}{005000}
 \definecolor{violet}{HTML}{6600CC}
 
 %\newcommand{\keyword}[1]{\@keyword{#1}\index{#1}}
