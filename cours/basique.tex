@@ -35,13 +35,13 @@ Un mot est composé de plusieurs caractères suivant un langage régulier.
 Une phrase, à son tour, se compose de plusieurs mots suivant un langage hors contexte (dans la plupart des langues). 
 Cette dernière proposition concerne le niveau syntaxique.
 Pour l'instant, on s'intéresse au niveau morphologique ou ce qu'on appelle l'analyse lexicale.
-Les points traités dans ce chapitres sont les suivants : 
+Les points traités dans ce chapitre sont les suivants : 
 \begin{itemize}
 	\item La recherche dans le texte en utilisant les expressions régulières. 
 	Parmi les applications : l'extraction des données (dates, numéros de téléphones, adresses émail, etc.).
 	
 	\item La comparaison entre les chaines de caractères en utilisant la distance d'édition. 
-	Parmi ces applications : la correction d'orthographe et la recherche approximative.
+	Parmi ses applications : la correction d'orthographe et la recherche approximative.
 	
 	\item La segmentation du texte en phrases et les phrase en mots. 
 	
@@ -53,16 +53,16 @@ Les points traités dans ce chapitres sont les suivants :
 \section{Traitements sur les caractères}
 
 Ici, on va considérer un texte comme une séquence de caractères. 
-D'une manière plus formelle, un texte peut être composé en utilisant une automate à états finis où le vocabulaire est l'ensemble des caractères. 
+D'une manière plus formelle, un texte peut être composé en utilisant un automate à états finis où le vocabulaire est l'ensemble des caractères. 
 Pour chercher des sous-chaines de caractères dans un texte, on peut utiliser les expressions régulières reconnaissant des langages de types 3 (langages réguliers) dans la hiérarchie de Chomsky. 
-La recherche des séquences dans un texte nous permet de les remplacer où de les séparer (ex. \expword{séparation des mots}).
-Une autre type de recherche est la recherche approximative : chercher des parties presque similaires à une donnée. 
+La recherche des séquences dans un texte nous permet de les remplacer ou de les séparer (ex. \expword{séparation des mots}).
+Un autre type de recherche est la recherche approximative : chercher des parties presque similaires à une chaîne donnée. 
 Pour ce faire, on doit pouvoir comparer deux chaînes de caractères en mesurant la différence entre les deux. 
 Une des techniques utilisées est la distance d'édition.
 
 \subsection{Expressions régulières}
 
-Une expression régulière, appelée \keyword[R]{RegEx}, une une séquences de caractères spécifiant un motif (pattern) de recherche.
+Une expression régulière, appelée \keyword[R]{RegEx}, est une séquence de caractères spécifiant un motif (pattern) de recherche.
 Plusieurs langages de programmation fournissent la capacité de recherche et de remplacement en utilisant les expressions régulières. 
 Afin de l'utiliser pour la recherche, une expression régulière est transformée à un automate à états finis (AEF) qui est transformé à son tour à un AEF déterministe.
 Un point dans une expression régulière représente n'importe quel caractère.
@@ -76,51 +76,51 @@ Ces dernières sont décrites dans le tableau \ref{fig:exp-reg} avec leurs sens 
 		\textbf{ER} & \textbf{Sens} & \textbf{Exemple} \\
 		\hline
 		
-		. & n'importe quel caractère & \keyword{beg.n} : I \expword{begun} at the \expword{begin}ning. \\
+		. & n'importe quel caractère & /beg.n/ : \expword{I \underline{begun} at the \underline{begin}ning} \\
 		
-		\empty [aeuio] & caractères spécifiques & \keyword{[Ll][ae]} : \expword{Le} chat mange \expword{la} sourie. \\
+		\empty [aeuio] & caractères spécifiques & /[Ll][ae]/ : \expword{\underline{Le} chat mange \underline{la} sourie} \\
 		
-		\empty [a-e] & plage de caractères & \keyword{[A-Z]..} : \expword{J'a}i vu \expword{Kar}im. \\
+		\empty [a-e] & plage de caractères & /[A-Z]../ : \expword{\underline{J'a}i vu \underline{Kar}im} \\
 		
-		\empty [\textasciicircum aeuio] & exclure des caractères & \keyword{[\textasciicircum A-Z]a.} : J\expword{'ai} vu Karim. \\
+		\empty [\textasciicircum aeuio] & exclure des caractères & /[\textasciicircum A-Z]a./ : \expword{J\underline{'ai} vu Karim} \\
 		
-		c? & un ou zéro & \keyword{colou?r} : It is \expword{colour} or \expword{color}. \\
+		c? & un ou zéro & /colou?r/ : \expword{It is \underline{colour} or \underline{color}} \\
 		
-		c* & zéro ou plus & \keyword{No*n} : \expword{Nn}! \expword{Non}! \expword{Nooooooon}! \\
+		c* & zéro ou plus & /No*n/ : \expword{\underline{Nn}! \underline{Non}! \underline{Nooooooon}!} \\
 		
-		c+ & un ou plus & \keyword{No+n} : Nn! \expword{Non}! \expword{Nooooooon}! \\
+		c+ & un ou plus & /No+n/ : \expword{Nn! \underline{Non}! \underline{Nooooooon}!} \\
 		
-		c\{n\} & n occurrences & \keyword{No\{3\}n} : Nn! Non! Noon! \expword{Nooon}! \\
+		c\{n\} & n occurrences & /No\{3\}n/ : \expword{Nn! Non! Noon! \underline{Nooon}!} \\
 		
-		c\{n,m\} & de n à m occurrences & \keyword{No\{1,2\}n} : Nn! \expword{Non}! \expword{Noon}! Nooon! \\
+		c\{n,m\} & de n à m occurrences & /No\{1,2\}n/ : \expword{Nn! \underline{Non}! \underline{Noon}! Nooon!} \\
 		
-		c\{n,\} & au moins n occurrences & \keyword{No\{2,\}n} : Nn! Non! \expword{Noon}! \expword{Nooon}! \\
+		c\{n,\} & au moins n occurrences & /No\{2,\}n/ : \expword{Nn! Non! \underline{Noon}! \underline{Nooon}!} \\
 		
-		c\{,m\} & au plus m occurrences & \keyword{No\{,2\}n} : \expword{Nn}! \expword{Non}! \expword{Noon}! Nooon! \\
-		
-		\hline 
-		
-		\textbackslash d & [0-9] & \\
-		
-		\textbackslash D & [\textasciicircum 0-9] & \\
-		
-		\textbackslash w & [a-zA-Z0-9\_] & \\
-		
-		\textbackslash W & [\textasciicircum \textbackslash w] & \\
-		
-		\textbackslash s & [ \textbackslash r\textbackslash t\textbackslash n\textbackslash f] & \\
-		
-		\textbackslash S & [\textasciicircum \textbackslash s] & \\
+		c\{,m\} & au plus m occurrences & /No\{,2\}n/ : \expword{\underline{Nn}! \underline{Non}! \underline{Noon}! Nooon!} \\
 		
 		\hline 
 		
-		( ) & le groupement & \keyword{/(bla)+/} : Ceci est du \expword{blabla}.\\
+		\textbackslash d & [0-9] & /\textbackslash d\{2,\}/ : \expword{L'annee \underline{1962}}\\
 		
-		\textbar & la disjonction & \keyword{/continu(er\textbar ation\textbar el(le)?s?)/} \\
+		\textbackslash D & [\textasciicircum 0-9] & /\textbackslash D\{2,\}/ : \expword{\underline{L'annee }1962}\\
 		
-		\textasciicircum  & début du texte & \keyword{/\textasciicircum K/} :  \expword{K}ill Karim.\\
+		\textbackslash w & [a-zA-Z0-9\_] & /\textbackslash w\{2,\}/ : \expword{L'\underline{annee} 1962}\\
 		
-		\$ & fin du texte & \keyword{/\textbackslash .[\textasciicircum .]+\$/} :  fichier.tar\expword{.gz}\\
+		\textbackslash W & [\textasciicircum \textbackslash w] & /\textbackslash W\{2,\}/ : \expword{L'annee\underline{ 1962}}\\
+		
+		\textbackslash s & [ \textbackslash r\textbackslash t\textbackslash n\textbackslash f] & /\textbackslash s+/ : \expword{L'annee\underline{ }1962\underline{ }}\\
+		
+		\textbackslash S & [\textasciicircum \textbackslash s] & /\textbackslash S+/ : \expword{\underline{L'annee} \underline{1962}}\\
+		
+		\hline 
+		
+		( ) & le groupement & /(bla)+/ : \expword{Ceci est du \underline{blabla}}\\
+		
+		\textbar & la disjonction & /continu(er\textbar ation)/ : \expword{Je continue la \underline{continuation}} \\
+		
+		\textasciicircum  & début du texte & /\textasciicircum K/ :  \expword{\underline{K}ill Karim}\\
+		
+		\$ & fin du texte & /\textbackslash .[\textasciicircum .]+\$/ :  \expword{fichier.tar\underline{.gz}}\\
 		
 		\hline\hline
 	\end{tabular}
@@ -132,13 +132,13 @@ La plus fréquente utilisation des expressions régulières est la recherche des
 La plupart des éditeurs de textes et des langages de programmation fournissent des mécanismes pour utiliser les expressions régulières.
 Utiliser des motifs (patterns) pour chercher des chaînes de caractères rend les expressions régulières un outil très puissant pour l'extraction de données.
 Par exemple, on peut utiliser les expressions régulières pour extraire les émails à partir des blogs et des réseaux sociaux.
-Prenons un exemple d'une expression régulière : \expword{[a-zA-Z]\textbackslash w*(@| at )[a-zA-Z]\textbackslash w+\textbackslash .[a-zA-Z]\{2,3\}} pour chercher des adresses mail.
-La partie ``\expword{[a-zA-Z]}" garantie que le nom d'utilisateur et le nom du domaine commencent par une lettre.
-Le nom d'utilisateur accepte au moins un caractère puisque la première lettre est suivie par ``\expword{\textbackslash w*}" qui veut dire zéro à plusieurs caractères de type lettre, chiffre ou souligné.
-Le nom du domaine dans cette expression régulière accepte au moins deux caractères puisque la première lettre est suivie par ``\expword{\textbackslash w+}" qui veut dire un à plusieurs caractères de type lettre, chiffre ou souligné.
-Le nom d'utilisateur et le nom du domaine sont séparés soit par un ``\expword{@}" ou par ``\expword{ at }" ; ce qui est indiqué par ``\expword{(@| at )}".
-l'extension du domaine doit toujours être précédée par un point ; ici, on utilise ``\expword{\textbackslash .}" pour indiqué qu'il s'agit du caractère point.
-Sinon, si on utilise ``\expword{.}", ceci représente n'importe quel caractère.
+Prenons un exemple d'une expression régulière \expword{/[a-zA-Z]\textbackslash w*(@| at )[a-zA-Z]\textbackslash w+\textbackslash .[a-zA-Z]\{2,3\}/} pour chercher des adresses mail.
+La partie \expword{/[a-zA-Z]/} garantie que le nom d'utilisateur et le nom du domaine commencent par une lettre.
+Le nom d'utilisateur accepte au moins un caractère puisque la première lettre est suivie par \expword{/\textbackslash w*/} qui veut dire zéro à plusieurs caractères de type lettre, chiffre ou souligné.
+Le nom du domaine dans cette expression régulière accepte au moins deux caractères puisque la première lettre est suivie par \expword{/\textbackslash w+/} qui veut dire un à plusieurs caractères de type lettre, chiffre ou souligné.
+Le nom d'utilisateur et le nom du domaine sont séparés soit par un ``\expword{@}" ou par ``\expword{ at }" ; ce qui est indiqué par \expword{/(@| at )/}.
+L'extension du domaine doit toujours être précédée par un point ; ici, on utilise \expword{/\textbackslash ./} pour indiquer qu'il s'agit du caractère point.
+Sinon, si on utilise \expword{/./}, ceci représente n'importe quel caractère.
 L'extension est composée de deux à trois lettres.
 Voici quelques émails qu'on puisse extraire en utilisant cette expression régulière : 
 ``\expword{ab\_aries@esi.dz}", ``\expword{ab\_ARIES@eSi.dz}", ``\expword{ab\_aries at esi.dz}", ``\expword{a@es.edu}", ``\expword{a1@e2s.edu}".
@@ -174,7 +174,7 @@ let orig = "J'aime les chats. Dans la cuisine, il y a un rat.";
 let remp = orig.replace(/(ch|r)at/g, "$1ien");
 \end{lstlisting}
 
-Pour toute utilisation des expressions régulière en Python, on doit faire appel au module ``re".
+Pour toute utilisation des expressions régulières en Python, on doit faire appel au module ``re".
 Une expression régulière est une chaîne de caractères précédée par l'indicateur ``r".
 Pour récupérer le groupe capturé, on utilise ``\textbackslash".
 
@@ -187,11 +187,10 @@ remp = re.sub(r'(ch|r)at', r'\1ien', orig)
 
 \subsection{Distance d'édition}
 
-Des fois, lorsqu'on écrit en utilisant nos ordinateurs, on fait des erreurs de frappe ;
-On peut insérer un caractère de plus, dupliquer un caractère, etc. 
-Une telle opération est appelée : Opération d'édition. 
+Des fois, lorsqu'on écrit en utilisant nos ordinateurs, on fait des erreurs de frappe ; on peut insérer un caractère de plus, dupliquer un caractère, etc. 
+Une telle opération est appelée ``opération d'édition". 
 On peut comparer entre deux chaînes de caractères en comptant le nombre des opérations d'édition pour passer d'une chaîne originale à une autre modifiée.
-Les différentes opérations d'édition sont les suivantes :
+Les différentes opérations d'édition sont les suivantes (où $X$ est l'ensemble des caractères du langage) :
 %
 \begin{itemize}
 	\item \optword{Insertion} : insertion d'un caractère dans une chaîne 
@@ -211,11 +210,11 @@ Les différentes opérations d'édition sont les suivantes :
 	Par exemple, \expword{cueillir $ \rightarrow $ ceuillir}.
 \end{itemize}
 
-Savoir le nombre des opérations d'édition nous permet de comparer entre deux chaînes de caractères. 
+Savoir le nombre des opérations d'édition nous permet de comparer deux chaînes de caractères. 
 Il existe plusieurs exemples de l'utilisation de la distance d'édition (nombre des modifications) :
 \begin{itemize}
-	\item \optword{Révision des fichiers} : par exemple, la commande Unix \expword{diff} qui compare entre deux fichiers.
-	\item \optword{Correction d'orthographe} : suggérer des corrections possibles d'une faute (ex. \expword{Hunspell}).
+	\item \optword{Révision des fichiers} : par exemple, la commande Unix ``\expword{diff}" qui compare deux fichiers.
+	\item \optword{Correction d'orthographe} : suggérer des corrections possibles d'une faute (Ex. \expword{Hunspell}).
 	\item \optword{Détection du plagiat} : ici, on utilise des mots à la place des caractères.
 	\item \optword{Filtrage de spam} : parfois, les spammeurs commettent des fautes d'orthographe intentionnellement pour tromper l'outil de détection de spam.
 	\item \optword{Bio-informatique} : quantification de la similarité entre deux séquences d'ADN.
@@ -274,9 +273,9 @@ La distance sera calculée en utilisant l'équation \ref{eq:LCS-distance}.
 Cette distance permet l'insertion, la suppression et la substitution.
 En général, elle est utilisée dans la recherche approximative et la vérification d'orthographe.
 Étant donné deux chaînes $X$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on définit un tableau $D[m, n]$ à deux dimensions contenant la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j]. 
-Dans ce cas $D[0, 0] = 0$ et la distance finale sera stocké dans $D[m, n]$.
+Dans ce cas $D[0, 0] = 0$ et la distance finale sera stockée dans $D[m, n]$.
 L'équation \ref{eq:lev-distance} formule comment on calcule cette distance (en utilisant la programmation dynamique).
-Il faut savoir que dans cette version, le coût de la suppression et insertion est $1$ et le coût de la substitution est $2$.
+Il faut savoir que dans cette version, le coût de la suppression et l'insertion est $1$ et le coût de la substitution est $2$.
 \begin{equation}
 	D[i, j] = \min 
 	\begin{cases}
@@ -304,9 +303,9 @@ Par exemple, dans la correction d'orthographe, des lettres sont plus probables d
 
 \subsubsection{Distance de Damerau–Levenshtein}
 
-Cette distance permet permet l'insertion, la suppression, la substitution et la transposition entre deux caractères adjacents.
+Cette distance permet l'insertion, la suppression, la substitution et la transposition entre deux caractères adjacents.
 En général, elle est utilisée dans la vérification d'orthographe.
-Cette distance est calculée comme celle de Levenstein, en ajoutant la transposition entre deux carcatères adjacents.
+Cette distance est calculée comme celle de Levenstein, en ajoutant la transposition entre deux caractères adjacents.
 L'équation \ref{eq:lev-dem-distance} représente comment calculer cette distance.
 Dans cette version, on a essayé d'attribuer le poids $1$ pour toutes les opérations d'édition.
 \begin{equation}
@@ -329,7 +328,7 @@ Cette distance permet seulement la transposition.
 En réalité c'est une mesure de similarité qui retourne une valeur entre $0$ (pas de similarité) et $1$ (similaires). 
 Elle est utilisée pour le calcul de la similarité entre les entités nommées, etc.
 Étant donné deux chaînes $X$ et $Y$ avec les longueurs $n$ et $m$ respectivement, on calcule le nombre des caractères correspondants $c$ et le nombre des transpositions $t$. 
-La distance de Jaro est calculée selon l'équation 
+La distance de Jaro est calculée selon l'équation \ref{eq:jaro-distance}.
 \begin{equation}
 	D(X, Y) = 
 	\begin{cases}
@@ -432,6 +431,7 @@ Les correspondances soulignées des vecteurs des deux mots représentent des tra
 \end{minipage}
 \caption[Exemple de calcul de la distance de Jaro]{Exemple de calcul de la distance de Jaro des mots ``amibe"  et ``immature" \label{fig:jaro}}
 \end{figure}
+
 %===================================================================================
 \section{Segmentation du texte}
 %===================================================================================
@@ -444,7 +444,7 @@ Il existe des langues où il n'y a pas de délimiteur des phrases, des mots ou d
 \subsection{Délimitation de la phrase}
 
 Afin de séparer les phrases dans un format semi-structuré, comme HTML, on peut utiliser des marqueurs comme la balise \expword{\textless P\textgreater}.
-Mais, lorsqu'il s'agit d'un texte non structuré, plusieurs langages utilisent des marqueurs comme le point, point d'exclamation et point d'interrogation pour marquer la fin d'une phrase. 
+Mais, lorsqu'il s'agit d'un texte non structuré, plusieurs langues utilisent des marqueurs comme le point, point d'exclamation et point d'interrogation pour marquer la fin d'une phrase. 
 Dans ce cas, on peut utiliser une expression régulière simple \expword{/[.?!]/} pour délimiter les phrases dans des langues comme français, anglais, etc.
 Des fois, on veut séparer les phrases longues avec des clauses séparées par des virgules.
 Aussi, les guillemets peuvent pauser un problème : est-ce que la phrase dedans est séparée ou elle est une continuation de la clause principale ?
@@ -456,34 +456,34 @@ Ils peuvent, aussi, se trouver à la fin ; donc, il faut vraiment être capable 
 Si tous ça ne parait pas problématique, on peut toujours essayer de séparer les phrase du thaï. 
 Cette langue n'utilise pas des marqueurs pour séparer les phrases.
 
-Lorsque le marqueur de phrase est réservé pour d'autres utilisations, il y a toujours des facteurs qui aident le lecteur à décider si c'est un marqueur de phrase ou non.
-Ces facteurs peuvent être extraites en observant comment la langue définit la fin de la phrase. 
+Lorsque le marqueur de phrase est réservé pour d'autres utilisations, il y a toujours des facteurs qui aident le lecteur à décider si c'est un délimiteur de phrase ou non.
+Ces facteurs peuvent être extraits en observant comment la langage définit la fin de la phrase. 
 Quelques facteurs contextuelles ont été proposés et utilisés pour la segmentation des phrases \cite{10-palmer} :
 \begin{itemize}
-	\item \optword{La casse} : Les phrases commencent toujours par un majuscule. 
-	Mais, ce n'ai pas toujours le cas ; on peut trouver une abréviation suivie par un nom propre (Ex. \expword{M. Aries}). 
+	\item \optword{La casse} : les phrases commencent toujours par un majuscule. 
+	Mais, ce n'est pas toujours le cas ; on peut trouver une abréviation suivie par un nom propre (Ex. ``\expword{M. Aries}"). 
 	En plus, ce n'est pas garantie que l'écrivain respecte les règles d'écriture. 
 	On peut voir ça, par exemple, dans les réseaux sociaux où plusieurs règles sont abandonnées.
 	
-	\item \optword{Noms propres} : Les noms propres se commencent par un majuscule ; ils peuvent ne pas être le début.
-	Dans l'exemple précédent \expword{M. Aries}), on peut déduire que le point ne représente pas une séparation vu que les deux mots commencent par un majuscule et le deuxième est un nom propre. 
+	\item \optword{Noms propres} : les noms propres se commencent par un majuscule ; ils peuvent ne pas être le début.
+	Dans l'exemple précédent (``\expword{M. Aries}"), on peut déduire que le point ne représente pas une séparation vu que les deux mots commencent par un majuscule et le deuxième est un nom propre. 
 	Dans ce cas, la probabilité que le premier soit une abréviation est grande surtout si le mot est au milieu de la phrase.
 	
-	\item \optword{Catégorie grammaticale} : Les catégories des mots qui entourent le point peuvent aider la décision (limite ou non). 
-	En fait,  \cite{97-palmer-hearst} ont été capable d'améliorer la détection des limites des phrases en utilisant les catégories grammaticales des deux mots avant et après le point avec un algorithme d'apprentissage automatique. 
+	\item \optword{Catégorie grammaticale} : les catégories des mots qui entourent le point peuvent aider la décision (limite ou non). 
+	En fait,  \citet{97-palmer-hearst} ont été capables d'améliorer la détection des limites des phrases en utilisant les catégories grammaticales des deux mots avant et après le point avec un algorithme d'apprentissage automatique. 
 	
-	\item \optword{Longueur du mot} : Les abréviations sont moins longues.
+	\item \optword{Longueur du mot} : les abréviations sont moins longues.
 	Revenons toujours à l'exemple précédent, il est clair que ``M" n'est pas vraiment un mot. 
 	
-	\item \optword{Préfixes et suffixes} : Les mots avec des infixes sont moins probables d'être des abréviations.
+	\item \optword{Préfixes et suffixes} : les mots avec des affixes sont moins probables d'être des abréviations.
 	
-	\item \optword{Classes des abréviations} : Les abréviations peuvent se figurer à la fin de la phrase. 
+	\item \optword{Classes des abréviations} : les abréviations peuvent se figurer à la fin de la phrase. 
 	Mais, il y a un ensemble d'abréviations qui sont toujours suivies par un autre mot, comme par exemple ``Mr.".
-	\cite{89-riley,97-reynar-ratnaparkhi} divisent les abréviations en deux catégories : les titres (qui ne peuvent pas être à la fin de phrase, comme \textit{Mr.}, \textit{Dr.}, etc.) et les indicatifs corporatifs (qui peuvent être à la fin de phrase, comme \textit{Corp.}, \textit{S.P.A.}, etc.).
+	\citet{89-riley,97-reynar-ratnaparkhi} divisent les abréviations en deux catégories : les titres (qui ne peuvent pas être à la fin de phrase (Ex. ``\expword{Mr.}", ``\expword{Dr.}", etc.) et les indicatifs corporatifs (qui peuvent être à la fin de phrase (Ex. ``\expword{Corp.}", ``\expword{S.P.A.}", etc.).
 \end{itemize}
 
 %Les différents algorithmes de détection de limites
-La détection automatique des limites d'une phrase peut être en utilisant des règles manuelles ou en utilisant l'apprentissage automatique. 
+La détection automatique des limites d'une phrase peut être accomplie en utilisant des règles manuelles ou en utilisant l'apprentissage automatique. 
 Dans la première approche, on peut utiliser des expressions régulières pour détecter les délimiteurs. 
 Ensuite, on peut utiliser une liste des abréviations pour améliorer la décision. 
 Les règles peuvent être enrichies en introduisant les facteurs discutés précédemment. 
@@ -496,7 +496,7 @@ Plusieurs langues (arabe, français, anglais, etc.) utilisent l'espace comme dé
 Une expression régulière simple comme \expword{/[ ]+/} peut être utilisée pour séparer les mots. 
 Mais, des fois on veut récupérer une expression avec plusieurs mots ; comme le cas des dates, des nombres, etc. 
 Un exemple des nombres est ``\expword{neuf cent quarante}" ; cette expression peut être considérée comme un seul token dans certains traitements.
-Dans des langues, l'apostrophe peut être une source d'ambiguïté. 
+Dans des langues, l'apostrophe peut être une source d'ambigüité. 
 Dans l'anglais, l'apostrophe peut être utilisée avec un ``\textit{s}" dans la forme possessive (\expword{Karim's thesis}), dans les contractions (\expword{she's, it's, I'm, we've}) ou dans le pluriel de certains mots (\expword{I.D.'s, 1980's}). 
 Dans le français, il y a pas mal d'exemples de contractions : la contraction des articles (\expword{l'homme, c'était}), la contraction des pronoms (\expword{j'ai, je l'ai}), et autres formes (\expword{n'y, qu'ils, d'ailleurs}).
 Certaines langues utilisent des mots composés, soit par composition ou par trait d'union. 
@@ -506,11 +506,11 @@ Il existe des langues, comme le japonais, qui n'utilisent pas de marqueurs pour 
 
 
 Il existe deux approches pour la séparation des mots : par règles et statistique. 
-L'approche par règles utilise principalement sur les expressions régulières en se basant sur les règles morphologiques.
+L'approche par règles utilise principalement les expressions régulières en se basant sur les règles morphologiques.
 Elle peut aussi utiliser des listes des mots. 
 Par exemple, dans une langue de type \keyword{Scriptio Continua} comme le japonais et le chinois, on peut utiliser un dictionnaire et comparer les mots en commençant par la fin en prenant la séquence la plus longue.
-L'approche statistique utilise un modèle de langue pour calculer la probabilité qu'un caractère marque la fin d'un mot. 
-Les modèles de langues seront présentés dans le chapitre suivant. 
+L'approche statistique utilise un modèle de langage pour calculer la probabilité qu'un caractère marque la fin d'un mot. 
+Les modèles de langages seront présentés dans le chapitre suivant. 
 
 %Approches
 %\begin{itemize}
@@ -534,41 +534,41 @@ Les modèles de langues seront présentés dans le chapitre suivant.
 %===================================================================================
 
 Un texte peut contenir des variations du même terme. 
-Dans des tâches qui se basent sur les statistiques sur les mots (comme la recherche d'information), on doit traiter ces variations comme un seul token. 
-Même dans des tâches, comme la compréhension du langage, on a besoin de trouver des formes standards des dialectes (comme ``\expword{ain't}").
+Dans des tâches qui se basent sur les statistiques sur des mots (comme la recherche d'information), on doit traiter ces variations comme un seul token. 
+Même dans des tâches comme la compréhension de la langue, on a besoin de trouver des formes standards des dialectes (comme ``\expword{ain't}").
 La transformation du texte à une forme canonique, en général, se fait en utilisant des expressions régulières pour chercher les variations et un dictionnaire pour chercher leurs formes canoniques. 
 Parmi les variations qui ont besoin d'être normalisées, on peut citer :
 \begin{itemize}
-	\item Acronymes et les abréviations : Des fois, on trouve plusieurs variations d'une même abréviation.
+	\item \optword{Acronymes et les abréviations} : des fois, on trouve plusieurs variations d'une même abréviation.
 	Dans ce cas, il faut choisir une seule variation pour les représenter. 
-	par exemple, \expword{US \textrightarrow\ USA, U.S.A. \textrightarrow\ USA}.
-	Dans les tâches où on a besoin une compréhension plus approfondie, on doit chercher la version longue. 
+	Par exemple, \expword{US \textrightarrow\ USA, U.S.A. \textrightarrow\ USA}.
+	Dans les tâches où on a besoin d'une compréhension plus approfondie, on doit chercher la version longue. 
 	Par exemple, \expword{M. \textrightarrow\ Monsieur}.
 	
-	\item Valeurs numériques (dates et nombres) : 
-	Selon la tâche, on doit unifier le format des valeurs numériques. 
+	\item \optword{Valeurs numériques} (dates et nombres) : 
+	selon la tâche, on doit unifier le format des valeurs numériques. 
 	Des fois, on a besoin de trouver la forme textuelle (\expword{1205 DZD \textrightarrow\ Mille deux cents cinq dinars algériens}). 
 	Ceci est utile, par exemple, dans le cas de la synthèse de parole où l'appareil doit prononcer ce qui est écrit.
 	Lorsque nous avons plusieurs sources de textes, on tombe sur plusieurs variations des dates. 
 	Dans ce cas, on peut utiliser le standard \keyword{ISO 8601} (\expword{12 Janvier 1986, 12.01.86 \textrightarrow\ 1986-01-12}).
-	Dans les tâches qui s'intéressent aux statistiques (ex. nombre des dates dans un texte), on n'a ps besoin de garder les formes numériques. 
+	Dans les tâches qui s'intéressent aux statistiques (Ex. nombre des dates dans un texte), on n'a pas besoin de garder les formes numériques. 
 	Dans ce cas, on peut garder seulement le type de ces formes (\expword{12 Janvier 1986 \textrightarrow\ DATE, kariminfo0@gmail.com \textrightarrow\ EMAIL}).
 	
-	\item Majuscules et Minuscules : Dans la plupart des cas, on n'a pas besoin de garder les mots en majuscules (\expword{Texte \textrightarrow\ texte}). 
+	\item \optword{Majuscules et Minuscules} : dans la plupart des cas, on n'a pas besoin de garder les mots en majuscules (\expword{Texte \textrightarrow\ texte}). 
 	Mais, il faut faire attention lorsqu'on a besoin de garder cette information pour des tâches comme la segmentation du texte, ou pour différencier les nom propres (\expword{Will}).
 	
-	\item Diacritiques : Comme le point précédent, les diacritiques peuvent être supprimés lorsque la tâche ne dépend pas sur elles. 
-	Par exemple, dans le français, on appel ça désaccentuation (\expword{système \textrightarrow\ systeme}).
-	Dans l'arable, on l'appel dé-vocalisation (\expword{\RL{yadrusu} \textrightarrow\ \RL{ydrs}}). 
+	\item \optword{Diacritiques} : comme le point précédent, les diacritiques peuvent être supprimées lorsque la tâche ne dépend pas sur elles. 
+	Par exemple, dans le français, on appelle ça désaccentuation (\expword{système \textrightarrow\ systeme}).
+	Dans l'arable, on l'appelle dé-vocalisation (\expword{\RL{yadrusu} \textrightarrow\ \RL{ydrs}}). 
 	Dans des tâches qui ont besoin de vocalisation, comme le traitement des poèmes, on doit garder les diacritiques. 
 	En fait, on doit appliquer l'opération inverse (vocalisation du texte).
 	
-	\item Contractions : En général, on trouve ces formes beaucoup plus sur les réseaux sociaux. 
+	\item \optword{Contractions} : en général, on trouve ces formes beaucoup plus sur les réseaux sociaux. 
 	Mais, elles peuvent aussi être une règle standard de la langue. 
-	par exemple, \expword{y'll \textrightarrow\ you all, s'il \textrightarrow\ si il}. 
+	Par exemple, \expword{y'll \textrightarrow\ you all, s'il \textrightarrow\ si il}. 
 	Dans le cas du dernier exemple, ça va aider dans la tâche de séparation des mots (tokenization). 
 	
-	\item Encodage : Il faut utiliser le même encodage supporté dans le traitement. 
+	\item \optword{Encodage} : il faut utiliser le même encodage supporté dans le traitement. 
 	L'encodage le plus célèbre est \keyword[U]{UTF-8}.
 
 \end{itemize}
@@ -579,7 +579,7 @@ Parmi les variations qui ont besoin d'être normalisées, on peut citer :
 %===================================================================================
 
 Le texte peut contenir des caractères, des mots et des expressions qui peuvent entraver son traitement. 
-Pour faciliter son traitement, il faut supprimer le bruit. 
+Pour faciliter ce dernier, il faut supprimer le bruit. 
 Un exemple très commun est la présence des caractères spéciaux, comme les caractères non imprimables, dans le texte. 
 Les mots contenant ces caractères ne sont pas considéré les mêmes que les mots sans ces caractères. 
 En général, ces caractères sont d'origine des pages web ou des PDFs (extraction du texte à partir des PDFs ou autres formes d'images).
@@ -590,16 +590,16 @@ On peut trouver ça dans les balises de certaines formats semi-structurées comm
 Les \optword{mots vides} représentent les mots non significatifs comme les prépositions, articles et les pronoms.
 La suppression des mots vides peut être utilisée si plusieurs mots dans le document ne contribuent pas particulièrement dans la description de son contenu.
 Afin d'augmenter la performance du système, plusieurs tâches (comme la recherche d'information et de résumé automatique) font appel à cette technique.
-Mais, on peut avoir des cas particuliers ou ça va causer des problèmes. 
-Par exemple, la phrase \expword{To be or not to be} sera totalement ignorée vu que tous ces mots sont des mots vides.
-Le nom propre ``\expword{Will}" peut être ignoré paar confusion avec le verbe ``to be" en future.
+Mais, on peut avoir des cas particuliers où cela peut causer des problèmes. 
+Par exemple, la phrase ``\expword{To be or not to be}" sera totalement ignorée vu que tous ses mots sont des mots vides.
+Le nom propre ``\expword{Will}" peut être ignoré par confusion avec le verbe ``to be" en future.
 
 
 %===================================================================================
 \section{Morphologie}
 %===================================================================================
 
-Nous avons vu dans le chapitre précédent qu'il existe pas mal de langages qui permettent la formation des mots en utilisant la flexion (ex. \expword{conjugaison}) et la dérivation (ex. \expword{nominalisation}). 
+Nous avons vu dans le chapitre précédent qu'il existe pas mal de langues qui permettent la formation des mots en utilisant la flexion (ex. \expword{conjugaison}) et la dérivation (ex. \expword{nominalisation}). 
 La formation des mots la plus utilisée est l'affixation en suivant certains règles. 
 Par exemple, pour conjuguer le verbe ``\expword{étudier}" avec le pronom ``\expword{nous}" en présent, on supprime le suffixe ``\expword{er}" pour avoir le radical ``\expword{étudu}" et on ajoute le suffixe ``\expword{ons}". 
 L'automatisation de cette tâche peut aider plusieurs applications, comme la génération du langage naturel (anglais : NLG). 
@@ -609,7 +609,7 @@ Elle peut aider dans des tâches comme la recherche d'information et la compréh
 \subsection{Formation des mots}
 
 Dans les langues synthétiques, on peut former les mots en utilisant la flexion ou la dérivation. 
-La flexion génère des variation morphologiques d'un mot selon les traits grammaticaux (nombre, genre, etc.). 
+La flexion génère des variations morphologiques d'un mot selon les traits grammaticaux (nombre, genre, etc.). 
 Les deux types de flexion sont la conjugaison des verbes et la déclinaison des noms, pronoms, adjectifs et déterminants.
 Quant à la dérivation, les mots créés forment un nouveau lexèmes (un sens différent du mot original) ou ils appartiennent à une autre catégorie grammaticale. 
 Un exemple d'un nouveau lexème,  \expword{couper \textrightarrow\ découper, \RL{`ml} \textrightarrow\ \RL{ist`ml}}.
@@ -617,26 +617,26 @@ Le changement de catégorie peut être dû à la nominalisation (\expword{classe
 
 
 La formation des mots suit des règles bien définies, donc le problème peut être résolu en utilisant un automate à état fini. 
-Bien sûr, il existe des cas spéciaux qui peuvent simplement être stocké dans un fichier. 
-L'approche par règles est beaucoup plus utilisée dans cas, mais on peut trouver des recherches qui utilisent le niveau caractère pour appendre à générer des formes d'un mot donné (Ex. \url{https://github.com/SekouD/mlconjug}). 
-Personnellement, je voix que l'apprentissage automatique doit être utilisée pour résoudre les problèmes vraiment difficiles (en général, niveau syntaxique, sémantique, et pragmatique). 
+Bien sûr, il existe des cas spéciaux qui peuvent simplement être stockés dans un fichier. 
+L'approche par règles est beaucoup plus utilisée dans ce cas, mais on peut trouver des recherches qui utilisent le niveau caractère pour appendre à générer des formes d'un mot donné, comme le projet MLConjug\footnote{MLConjug : \url{https://github.com/SekouD/mlconjug} [visité le 2021-09-08]}. 
+Personnellement, je voix que l'apprentissage automatique doit être utilisé pour résoudre les problèmes vraiment difficiles (en général, niveau syntaxique, sémantique, et pragmatique). 
 Autre que l'approche statistique, plusieurs méthodes traditionnelles ont été utilisées pour la formation des mots. 
 Dans le contexte du conjugaison automatique des verbes, on peut citer :
 \begin{itemize}
-	\item \optword{Base de données} : Dans cette solution, on stocke tous les verbes dans une base de donnée avec les différentes variations possibles. 
-	Un exemple de cette méthode peut être trouvé dans \url{https://github.com/linuxscout/qutrub} pour la conjugaison automatique de l'arabe. 
+	\item \optword{Base de données} : dans cette solution, on stocke tous les verbes dans une base de donnée avec les différentes variations possibles. 
 	Le point fort de cette solution est qu'on peut vérifier si un verbe appartient à la langue. 
 	Aussi, en arabe, les verbes peuvent avoir les mêmes lettres ; la seule différence est en vocalisation (diacritiques).
 	Malgré ces points forts, cette solution est vraiment difficile à être implémentée ; on doit chercher tous les verbes et toutes les variations possibles. 
 	
-	\item \optword{Modèles (\textit{template})} : Dans cette solution, on stocke les conjugaisons de certains verbes comme modèles et une autre liste de tous les verbes de la langue avec leurs modèle.
+	\item \optword{Modèles (\textit{template})} : dans cette solution, on stocke les conjugaisons de certains verbes comme modèles et une autre liste de tous les verbes de la langue avec leurs modèles respectifs.
 	C'est la forme la plus utilisée en français (par exemple, le verbe ``\expword{sourire} a comme modèle le verbe ``\expword{rire}"). 
 	Elle est similaire à la solution précédente, mais avec moins d'espace de stockage.
 	
-	\item \optword{Règles} : Dans cette solution, on utilise des règles SI-SINON et des expressions régulières. 
-	Un exemple de ce type est \url{https://github.com/kariminf/jslingua} pour la conjugaison des verbes en arabe, anglais, français et japonais. 
+	\item \optword{Règles} : dans cette solution, on utilise des règles SI-SINON et des expressions régulières.
+	Un exemple de cette méthode peut être trouvé dans le projet Qutrub\footnote{Qutrub : \url{https://github.com/linuxscout/qutrub} [visité le 2021-09-08]} pour la conjugaison automatique de l'arabe.  
+	Un autre exemple de ce type est celui de JsLingua\footnote{JsLingua : \url{https://github.com/kariminf/jslingua} [visité le 2021-09-08]} pour la conjugaison des verbes en arabe, anglais, français et japonais. 
 	L'avantage est qu'on n'a pas besoin de créer une base de données ; la solution est plus rapide. 
-	Mais, on doit gérer beaucoup de règles et aussi on a besoin d'une base de données si on veut vérifier le type du verbe (il y a des verbes qui peuvent être confondus).
+	Mais, on doit gérer beaucoup de règles et aussi on a besoin d'une base de données si on veut vérifier le type du verbe (il peut y avoir des verbes confondus).
 
 \end{itemize}
 
@@ -650,26 +650,27 @@ Cette tâche est rapide et préférée dans des tâches comme la recherche d'inf
 Quelques techniques pour la radicalisation sont les suivantes :
 \begin{itemize}
 	\item \optword{Base de données} : Stocker tous les termes et leurs racines dans une table. 
-	\item \optword{Statistiques} : Utiliser un modèle de langue (N-Gram) pour estimer la position de troncation.
+	\item \optword{Statistiques} : Utiliser un modèle de langage (comme les \keywordpl[N]{N-Gramme}) pour estimer la position de troncation.
 	\item \optword{Règles} : Utiliser un ensemble de règles condition/action afin de détecter les affixes et les tronquer. 
 	L'algorithme le plus connu est celui de Porter \cite{1980-porter} pour l'anglais. 
-	Il existe un framework très connu pour réaliser des racinateurs de ce genre : \url{https://snowballstem.org/}. 
-	Plusieurs conditions sont utilisées : sur la racine, sur l'affixe ou sur la règle. 
+	Il existe un framework très connu, appelé SnowBall\footnote{SnowBall : \url{https://snowballstem.org/} [visité le 2021-09-08]}, pour réaliser des racinateurs de ce genre. 
+	Dans ce framework, plusieurs conditions sont utilisées : sur la racine, sur l'affixe ou sur la règle. 
 	Une condition sur la racine peut être la longueur, la fin, si elle contient des voyelles, etc.
 	Exemple, \expword{(*v*) Y \textrightarrow\ I : happy \textrightarrow\ happi, sky \textrightarrow\ sky}.
 	Une condition sur l'affixe peut être ``il n'y a que le suffixe".
 	Exemple, \expword{SSES \textrightarrow\ SS, ATIONAL \textrightarrow\ ATE}.
-	Une condition sur la règle peut être la désactivation de certaines règles si une a été exécutée.
+	Une condition sur la règle peut être : la désactivation de certaines règles si une a été exécutée.
 \end{itemize}
 
 La lemmatisation (en anglais : lemmatization) cherche la forme canonique d'un mot appelée ``lemme" (en anglais : lemma).
-Exemple, \expword{comprennent \textrightarrow comprendre, better \textrightarrow good}
+Exemple, \expword{comprennent \textrightarrow\ comprendre, better \textrightarrow\ good}
 Cette tâche est plus difficile que celle de radicalisation, puisqu'on a besoin du contexte du mot (Ex. \expword{saw \textrightarrow\ (V) see ou (N) saw}). 
 \begin{itemize}
 	\item \optword{Bases lexicales} : Ici, on utilise la radicalisation avec d'autres règles afin de chercher une forme dans une liste des lemmes possibles (un dictionnaire).
 	Un exemple de ce type de lemmatisation est la lemmatisation morphy de Wordnet (voir l'algorithme \ref{algo:morphy}).
 	
-	\item \optword{Apprentissage automatique} : On essaye d'apprendre le lemme des mots en se basant sur des critères comme leurs catégories grammaticales (voir \url{https://opennlp.apache.org/}).
+	\item \optword{Apprentissage automatique} : On essaye d'apprendre le lemme des mots en se basant sur des critères comme leurs catégories grammaticales.
+	L'outil OpenNLP\footnote{OpenNLP lemmatisation : \url{https://opennlp.apache.org/docs/1.8.0/manual/opennlp.html\#tools.lemmatizer} [visité le 2021-09-08]} implémente une version statistique de lemmatisation.
 
 \end{itemize}
 
@@ -704,7 +705,7 @@ Cette tâche est plus difficile que celle de radicalisation, puisqu'on a besoin 
 	La morphologie est le niveau le plus simple dans le traitement d'un langage. 
 	Les tâches dans ce niveau sont beaucoup plus basées sur le caractère (graphème) qui est l'unité la plus basique dans le système d'écriture.  
 	La plupart des problèmes peuvent être résolus avec un automate à état fini ; d'où l'utilisation des expressions régulières. 
-	Ces peuvent être utilisées pour rechercher des mots, extraire les phrases et les mots, extraire des parties du mot (racine), etc. 
+	Ces dernières peuvent être utilisées pour rechercher des mots, extraire les phrases et les mots, extraire des parties du mot (racine), etc. 
 	Toutes ces tâches reviennent à la recherche d'un segment dans le texte. 
 	Pour une recherche approximative, des méthodes de comparaison dans le niveau caractère (distance d'édition) sont utilisées. 
 	
@@ -720,9 +721,9 @@ Cette tâche est plus difficile que celle de radicalisation, puisqu'on a besoin 
 	Certes, les tâches de ce niveau sont vraiment simples. 
 	Mais, elles sont vraiment primordiales pour la réussite des tâches plus évoluées. 
 	Ces tâches sont vraiment dépendantes à la langue traitée.
-	Tellement ces tâches sont simples, on peut implémenter des outils pour n'importe quelle langue en sachant les règles morphologiques. 
+	Tellement elles sont simples, on peut implémenter des outils pour n'importe quelle langue en sachant les règles morphologiques. 
 	Malheureusement, pas toutes les langues fournissent de tels outils.  
-	C'est la responsabilité des gens qui parle ces langues à les développer dans un monde de plus en plus numérique.
+	C'est la responsabilité des gens qui parlent ces langues à les développer dans un monde de plus en plus numérique.
 	
 \end{discussion}
 
