@@ -19,8 +19,8 @@
 	\lettrine{L}{es} catégories grammaticales des mots représentent une caractéristique nécessaire pour comprendre un texte. 
 	Des fois, des mots peuvent avoir plusieurs catégories grammaticales (natures). 
 	Par exemple, le mot ``nouveau" dans la phrase ``C'est l'anniversaire de mon nouveau[NOM]" n'a pas la même nature que celui dans la phrase ``Mon nouveau[ADJ] cours est presque terminé". 
-	Cette propriété peut être aperçue beaucoup plus dans l'anglais où des noms peuvent être transformés en verbes sans changement (Ex. ``fish"). 
-	Cette tâche est utile si on veut appliquer les statistiques sur les catégories grammaticales afin d'améliorer une autre tâche comme celles de classification des textes. 
+	Cette propriété peut être aperçue beaucoup plus dans l'anglais où les noms peuvent être transformés en verbes sans changement (Ex. ``fish"). 
+	Cette tâche est utile si on veut appliquer des statistiques sur les catégories grammaticales afin d'améliorer une autre tâche comme celle de classification des textes. 
 	Dans ce chapitre, on va présenter la tâche d'étiquetage des séquences en général et l'étiquetage morpho-syntaxique en particulier.
 \end{introduction} 
 
@@ -28,12 +28,12 @@ Savoir les catégories grammaticales des mots est un pas vers la compréhension 
 Prenons un exemple d'une phrase en anglais : ``\expword{We can can the can}". 
 Le mot ``can" a plusieurs sens : (1-verbe) pouvoir (2-verbe) mettre en boîte (3-nom) boîte.
 Après étiquetage morpho-syntaxique, on aura ``\expword{We[pronom] can[verbe] can[verbe] the[déterminant] can[nom]}".
-Ceci n'est pas seulement utile pour savoir le sens du mot, mais aussi on peut voir la structure de phrase.
-Essayez d'étiqueter le phrase suivante : ``\expword{Will Will will the will to Will?}".
+Ceci n'est pas seulement utile pour savoir le sens du mot, mais aussi on peut voir la structure de la phrase.
+Essayez d'étiqueter la phrase suivante : ``\expword{Will Will will the will to Will?}".
 L'étiquetage morpho-syntaxique est bénéfique pour plusieurs tâches :
 \begin{itemize}
 	\item c'est une étape préliminaire pour l'analyse syntaxique (chapitre suivant).
-	\item les catégories grammaticales peuvent être une caractéristique importante dans des tâche de classification des textes. 
+	\item les catégories grammaticales peuvent être considérée comme une caractéristique importante dans des tâche de classification des textes. 
 	Par exemple, la tâche de détection de l'auteur peut bénéficier de cette caractéristiques ; certains auteurs utilisent plus de noms dans les phrases que d'autres.
 \end{itemize}
 
@@ -42,8 +42,8 @@ L'étiquetage morpho-syntaxique est bénéfique pour plusieurs tâches :
 \section{Étiquetage de séquences}
 %===================================================================================
 
-Un langage est une séquence continue des mots ; ce sont une phénomène temporelle.
-Chaque mot ou ensemble de mots possèdent des caractéristiques linguistiques, chacune a plusieurs catégories. 
+Un langage est une séquence continue des mots ; il est considéré comme un phénomène temporel.
+Chaque mot ou ensemble de mots possèdent des caractéristiques linguistiques, chacune définit plusieurs catégories. 
 Par exemple, les mots ont des catégories lexicales : nom, verbe, adjectif, etc.
 En général, la catégorie d'un mot est dépendante aux catégories des mots avant.
 L'étiquetage d'une séquence des mots $w = w_1, \ldots, w_n$ sert à trouver une séquence des étiquettes équivalente $t = t_1, \ldots, t_n$. 
@@ -57,7 +57,7 @@ Le problème de l'étiquetage revient à maximiser la probabilité conditionnell
 \begin{equation}\label{eq:es-stat}
 	\hat{t} = \arg\max\limits_t P(t | w)
 \end{equation}
-Dans les modèles statistiques, il existe deux types de modèles : génératif et discriminatif. 
+Dans les statistiques, il existe deux types de modèles : génératif et discriminatif. 
 Un modèle génératif essaye d'apprendre la génération de l'entrée à partir de la sortie ; étant donné une étiquette, quel est la probabilité de chaque mot du vocabulaire ?
 En utilisant la théorème de Bayes, l'équation \ref{eq:es-stat} revient à résoudre l'équation \ref{eq:es-stat-gen}.
 Le modèle de Markov caché, en anglais \ac{hmm}, est un exemple d'un modèle génératif.
@@ -65,7 +65,7 @@ Le modèle de Markov caché, en anglais \ac{hmm}, est un exemple d'un modèle g�
 	\hat{t} = \arg\max\limits_t P(t) P(w | t) 
 \end{equation}
 Contrairement aux modèles génératifs, un modèle discriminatif estime la probabilité $P(t | w)$ directement. 
-Ceci revient à apprendre l'étiquette d'un mot en se basant sur ces caractéristique en plus des caractéristiques d'un nombre limité des mots avant.
+Ceci revient à apprendre l'étiquette d'un mot en se basant sur ces caractéristiques en plus des caractéristiques d'un nombre limité des mots avant.
 Un modèle qui suit cette méthode est \ac{memm}.
 Une autre méthode est d'utiliser les réseaux de neurones récurrents qui supportent l'aspect temporel. 
 
@@ -74,7 +74,7 @@ L'étiquetage morpho-syntaxique est parmi les tâches appartenant à l'étiqueta
 Son but est de trouver les catégories grammaticales des mots (nom, verbe, etc.) d'une phrase. 
 Des fois, on veut détailler les catégories afin d'avoir plus de précision. 
 Par exemple, un nom peut être un nom propre ou un nom impropre.
-Un exemple d'une phrase en anglais étiquetée est illustré dans la figure \ref{fig:ems-exp}.
+Un exemple d'une phrase en anglais étiquetée morpho-syntaxiquement est illustré dans la figure \ref{fig:ems-exp}.
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-pos_.pdf}
@@ -87,9 +87,9 @@ Contrairement à l'étiquetage morpho-syntaxique, une catégorie peut être affe
 Par exemple, l'expression ``\expword{école nationale supérieure d'informatique}" a la catégorie ``organisation".
 Mais, comment exprimer que tous ces mots forment une seule catégorie et pas chaque mot à part ?
 La méthode utilisée pour ça est le format \keyword[I]{IOB} (Inside, Outside, Beginning). 
-Les mots qui n'appartiennent à aucune catégorie sont annotés par ``B". 
-Les mots qui marquent le commencement d'une catégorie sont annotés par ``B-" suivi par le nom de catégorie. 
-Les mots du milieu sont annotés par ``I-" suivi par le nom de catégorie. 
+Les mots qui n'appartiennent à aucune catégorie sont annotés par ``O". 
+Les mots qui marquent le commencement d'une catégorie sont annotés par ``B-" suivi par le nom de la catégorie. 
+Les mots du milieu sont annotés par ``I-" suivi par le nom de la catégorie. 
 Donc, l'expression précédente sera annotée comme ``\expword{école[B-ORG] nationale[I-ORG] supérieure[I-ORG] d'informatique[I-ORG]}".
 La figure \ref{fig:ner-exp} représente un exemple d'une phrase en anglais contenant des entités nommées.
 \begin{figure}[ht]
@@ -98,7 +98,7 @@ La figure \ref{fig:ner-exp} représente un exemple d'une phrase en anglais conte
 	\caption[Exemple de la reconnaissance d'entités nommées]{Exemple de la reconnaissance d'entités nommées [\url{https://corenlp.run/}]\label{fig:ner-exp}}
 \end{figure}
 
-L'analyse syntaxique de surface (Chunking) est une autre exemple d'étiquetage des séquences.
+L'analyse syntaxique de surface (Chunking) est un autre exemple d'étiquetage des séquences.
 Elle sert à trouver les syntagmes d'une phrase sans structure d'arbre. 
 Donc, la catégorie est affectée à une séquence et pas seulement un seule mot.
 
@@ -107,10 +107,10 @@ Donc, la catégorie est affectée à une séquence et pas seulement un seule mot
 \section{Ressources pour l'étiquetage morpho-syntaxique}
 %===================================================================================
 
-Comme mentionné avant, cette tâche sert à trouver les catégories grammaticales de chaque mot dans une phrase. 
+Comme mentionné avant, cette tâche sert à trouver la catégorie grammaticale de chaque mot dans une phrase. 
 Une catégorie grammaticale peut avoir plusieurs noms (selon l'ouvrage) : nature, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours (en anglais, Part of speech).
 Afin de réaliser cette tâche, il faut tout d'abord définir les étiquettes (tags). 
-Est-ce qu'on détail dans les catégories ou on se contente des catégories principale ?
+Est-ce qu'on détaille dans les catégories ou on se contente des catégories principales ?
 Les étiquettes les plus fameuses sont celles de Penn \keyword[T]{TreeBank} pour l'anglais : conjonction de coordination (CC), nombre cardinal (CD), déterminant (DT), etc. 
 Les catégories grammaticales sont différentes d'une langue à une autre. 
 Mais, on peut trouver certaines catégories qui sont partagées.
@@ -145,8 +145,8 @@ Le projet ``Universal dependencies" cherche à normaliser ces catégories comme 
 
 L'étape suivante est d'annoter un corpus manuellement. 
 Ce type de corpus est appelé \keyword[T]{TreeBank}.
-Parmi les corpus annoté, on peut citer Penn Treebank pour l'anglais (Exemple dans la figure \ref{fig:penn-exp}).
-Un autre projet riche en terme de langues traitées est Universal TreeBank (\url{https://universaldependencies.org/}) \cite{2012-petrov-al}. 
+Parmi les corpus annotés, on peut citer Penn Treebank pour l'anglais (Exemple dans la figure \ref{fig:penn-exp}).
+Un autre projet riche en terme de langues traitées est Universal TreeBank\footnote{Universal TreeBank : \url{https://universaldependencies.org/} [visité le 2021-09-09]} \cite{2012-petrov-al}. 
 C'est un projet à communauté ouverte qui vise à utiliser les mêmes classes grammaticales afin d'annoter plusieurs langues. 
 Mais, il faut faire attention lorsqu'on fusionne deux treebanks différents. 
 Lorsqu'il y a plusieurs tags, on peut trouver des inconsistances dans l'annotation.
@@ -190,7 +190,7 @@ Dans l'approche basée sur les réseaux de neurones, on va présenter quelques a
 
 Étant donné une séquence des variables d'état $q_1, \ldots, q_i$, l'hypothèse de Markov (comme vu dans le chapitre précédent) affirme que la probabilité d'être dans un état ne dépend que de l'état précédent.
 Donc, $ P(q_i | q_1, \ldots, q_{i-1}) \approx P(q_i | q_{i-1}) $.
-Une chaîne de Markov peut être formalisée en un ensemble d'états $Q = \{q_1, q_2, \ldots, q_n\}$, une distribution initiale des probabilités $\pi = [\pi_1, \pi_2, \ldots, \pi_n ],\, \sum_i \pi_i = 1$ et une matrice des  probabilités de transition
+Une chaîne de Markov peut être formalisée comme un ensemble d'états $Q = \{q_1, q_2, \ldots, q_n\}$, une distribution initiale des probabilités $\pi = [\pi_1, \pi_2, \ldots, \pi_n ],\, \sum_i \pi_i = 1$ et une matrice des  probabilités de transition
 $
 A = \begin{bmatrix}%
 a_{11} & a_{12} & \ldots & a_{1n} \\
@@ -215,10 +215,10 @@ P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps]{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}\label{fig:cm-exp}}
 \end{figure}
 
-Ce modèle est un modèle de langage qui ne représente que les probabilités de transition. 
-Dans ce cas, on peut seulement représenter la probabilité de transition d'une catégorie à ue autre. 
-Si on estime la probabilité d'émission d'un mot dans chaque état (étiquette), dans ce cas on peut estimer les étiquettes en utilisant la  théorème de Bayes. 
-Ce modèle est appelé : modèle de Markov caché (\keyword[H]{\ac{hmm}}) ; les mots d'une séquence sont observés or les catégories sont cachées et doit être estimées. 
+Ceci est un modèle de langage qui ne représente que les probabilités de transition. 
+Dans ce cas, on peut seulement représenter la probabilité de transition d'une catégorie à une autre. 
+Si on estime la probabilité d'émission d'un mot dans chaque état (étiquette), on peut estimer les étiquettes en utilisant la  théorème de Bayes. 
+Ce modèle est appelé : modèle de Markov caché (\keyword[H]{\ac{hmm}}) ; les mots d'une séquence sont observés contrairement aux catégories qui sont cachées et doivent être estimées. 
 Chaque étiquette (catégorie) $t_i$ est représentée par un un état $q_i$ dans l'ensemble des états $Q = \{q_1, q_2, \ldots, q_n\}$.
 Les transitions d'un état vers un autre suivant un modèle Bi-gramme sont représentées par la matrice de transitions $A$.
 La distribution initiale des probabilités de ces états est annotée $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ où $\sum_i \pi_i = 1$.
@@ -231,7 +231,7 @@ Un exemple d'un \keyword[H]{\ac{hmm}} est illustré dans la figure \ref{fig:hmm-
 	\caption[Exemple d'une représentation HMM]{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}\label{fig:hmm-exp}}
 \end{figure}
 
-La séquence estimée $\hat{t}$ est celle qui maximise la probabilité $P(t)$ et la probabilité $P(w_i | t_i)$ selon l'équation \ref{eq:hmm-detail}.
+La séquence estimée $\hat{t}$ est celle qui maximise la probabilité $P(t)$ et la probabilité $P(w | t)$ selon l'équation \ref{eq:hmm-detail}.
 En utilisant un modèle \keyword[B]{Bi-gramme}, la probabilité $P(t)$ est calculée en utilisant les transitions de l'état initial $t_1$ jusqu'à le dernier $t_n$. 
 Il faut savoir que la probabilité $P(t_1|t_0)$ est en réalité la probabilité initiale $\pi_1$ de l'état $t_1$.
 La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle de Markov caché.
@@ -240,15 +240,16 @@ La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle 
         & = \arg\max\limits_t \prod_{i=1}^{n} \underbrace{P(t_i|t_{i-1})}_{a_{i-1,i}} \underbrace{P(w_i | t_i)}_{b_i(w_i)} \label{eq:hmm-detail}
 \end{align}
 
-Avant de parler comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, on commence par l'entrainement. 
+Avant de discuter comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, on commence par décrire l'entrainement. 
 Dans un \keyword[H]{\ac{hmm}}, les états sont les tags (catégories) $t_i$ et les observations sont les mots $w_i$. 
-Notons la fonction qui compte le nombre des 
-La probabilité de transition $a_{i-1,i}$ de l'état $t_{i-1}$ vers $t_i$ est estimé à partir du corpus d'entraînement selon l'équation \ref{eq:pos-hmm1}.
-On note ``DEBUT" comme l'étiquette qui précède la première catégorie de la phrase. 
+Notons la fonction qui compte le nombre des occurrence d'une séquence comme $C$.
+La probabilité de transition $a_{i-1,i}$ de l'état $t_{i-1}$ vers $t_i$ est estimée à partir du corpus d'entraînement selon l'équation \ref{eq:pos-hmm1}.
+On note ``<s>" comme l'étiquette qui précède la première catégorie de la phrase. 
 Dans ce cas, la probabilité $\pi_i$ de commencer par l'état $t_i$ est estimée selon l'équation \ref{eq:pos-hmm2}.
+La probabilité d'émission d'un mot $w_i$ dans un état $t_i$ est estimée selon l'équation \ref{eq:pos-hmm3}.
 \begin{align}
 P(t_i | t_{i-1}) = \frac{C(t_{i-1}, t_i)}{C(t_{i-1})}  \label{eq:pos-hmm1} \\
-\pi_i = P(t_i | DEBUT) = \frac{C(DEBUT, t_i)}{C(DEBUT)} \label{eq:pos-hmm2} \\
+\pi_i = P(t_i | <s>) = \frac{C(<s>, t_i)}{C(<s>)} \label{eq:pos-hmm2} \\
 P(w_i | t_i) = \frac{C(t_i, w_i)}{C(t_i)} \label{eq:pos-hmm3}
 \end{align}
 
@@ -262,7 +263,7 @@ Nous avons 4 catégories : DET, PRON, VERB et NOUN.
 \end{itemize}
 Un exemple de calcul d'une transition est le suivant : $P(VERB | NOUN) = \frac{C(NOUN,\ VERB)}{C(NOUN)} = \frac{1}{2}$. 
 La probabilité d'émission du mot ``veut" lorsque le tag est ``VERB" est calculée comme suit : $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$. 
-La probabilité q'un pronom soit au début de la phrase est calculée comme : $\pi_{PRON} = \frac{C(PRON,\ <s>)}{C(<s>)} = \frac{3}{4} $.
+La probabilité q'un pronom soit au début de la phrase est calculée comme : $\pi_{PRON} = \frac{C(<s>,\ PRON)}{C(<s>)} = \frac{3}{4} $.
 La matrice des transitions ainsi que la distribution initiale sont illustrés dans le tableau \ref{tab:hmm-trans-init}. 
 Portant ce n'est pas utilisé dans le calcul, nous avons ajouté le passage d'un état vers la fin afin de compléter la distribution (avoir une somme de 1 sur les lignes). 
 Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emission}. 
@@ -302,7 +303,7 @@ Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emis
 
 Revenons maintenant au décodage des tags (étiquetage). 
 Après l'entraînement d'un modèle de Markov caché $\lambda = (A, B)$, on veut l'utiliser pour estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$ à partir d'une séquence des observations (mots) $w = w_1 w_2 \ldots w_n$. 
-Dans chaque état $s$ de la séquence, on se base sur l'estimation précédente pour calculer les probabilité de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
+Dans chaque état $s$ de la séquence, on se base sur l'estimation précédente pour calculer les probabilités de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
 Il faut toujours sauvegarder l'état précédent pour revenir en fin d'algorithme. 
 Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:viterbi}).
 
@@ -385,7 +386,7 @@ Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}.
 
 \subsection{Maximum entropy}
 
-Les \keyword[H]{\ac{hmm}} se basent dans leurs estimations seulement sur des statistiques sur les mots. 
+Les estimations par \keyword[H]{\ac{hmm}} se basent seulement sur des statistiques des mots. 
 Il est difficile à introduire des caractéristiques comme les suffixes, le majuscule, etc. 
 La régression logistique, qui est un modèle discriminatif, peut combiner plusieurs caractéristiques afin d'estimer une probabilité de sortie. 
 Malheureusement, cette méthode ne prend pas les séquences en considération.
@@ -423,8 +424,8 @@ Voici une liste des caractéristiques $f$ qu'on peut utiliser dans cette méthod
 
 \subsection{Modèle neuronal}
 
-Les réseaux de neurones récurrents sont conçus pour traiter les séquence.
-Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en passant le mot encodé avec \keyword[O]{One-Hot} en entrée et estimant le mot suivant et en prenant en considération le contexte précédent. 
+Les réseaux de neurones récurrents sont conçus pour traiter les séquences.
+Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en passant le mot encodé avec \keyword[O]{One-Hot} en entrée et en estimant le mot suivant sachant le contexte précédent. 
 Si on modifie la  sortie : à la place des probabilités des mots du vocabulaire, on essaye d'estimer les probabilités des catégories possibles. 
 On peut, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseaux de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
@@ -459,8 +460,8 @@ Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
 Les langues sont toujours en amélioration : ajout des nouveaux mots, des nouvelles formes, etc. 
 En plus, on ne peut pas capturer toutes les variations de tous les mots en utilisant un corpus limité surtout dans les langues fortement flexionnelles. 
 Afin de représenter les variations morphologiques d'un mot, on doit descendre au niveau caractère.
-Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langue au niveau caractère afin d'encoder un mot et combiner ce code avec le code lexicale (\keyword[O]{One-Hot} ou \keyword[E]{embedding}) du mot. 
-La code résultat sera l'entrée du réseau récurrent (simple, empilé ou bidirectionnel).
+Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langage au niveau caractère afin d'encoder un mot et combiner ce code avec le code lexicale (\keyword[O]{One-Hot} ou \keyword[E]{embedding}) du mot. 
+Le code résultat sera pris comme l'entrée du réseau récurrent (simple, empilé ou bidirectionnel).
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.5\textwidth]{rnn-char1_.pdf}
@@ -470,27 +471,27 @@ La code résultat sera l'entrée du réseau récurrent (simple, empilé ou bidir
 
 
 \begin{discussion}
-Chaque langue doit avoir une méthode pour identifier les entités ou les actions d'une entité. 
+Chaque langue doit avoir une méthode pour identifier les entités du monde et les actions d'une entité. 
 Les linguistes font la différence entre la fonction d'un mot dans la phrase en utilisant des catégories. 
-Par exemple un nom c'est la référence à un objet, or un adjectif est un mot qui représente une propriété d'un nom. 
+Par exemple un nom c'est la référence à un objet (concret ou abstrait), or un adjectif est un mot qui représente une propriété d'un nom. 
 Donc, le fait de savoir la catégorie d'un mot aide la compréhension d'une phrase. 
 Automatiser la tâche de détection des catégories d'une séquence de mots est une étape vers la compréhension de la phrase. 
 Même dans les tâches statistiques (qui ne sont pas besoin de la compréhension), les catégories des mots peuvent être un bon indicateur. 
 
 Étiqueter les mots par leurs catégories grammaticales est une tâche appartenant aux tâches de l'étiquetage des séquences. 
-Plusieurs approches ont été utilisée pour résoudre ce problème : par règles, statistique et pa réseaux de neurones. 
+Plusieurs approches ont été utilisées pour résoudre ce problème : par règles, statistique et par réseaux de neurones. 
 Les règles sont difficiles à mettre en œuvre ; il faut avoir une connaissance profonde de la langue traitée.
 Cette approche a été remplacée par l'approche statistique qui vise à estimer l'étiquette en se basant sur des statistiques sur le mot actuel ainsi que les mots précédents et leurs étiquettes.
 Avec l'arrivée des \ac{rnn}, cette tâche a devenue plus facile ; il faut juste avoir un corpus étiqueté avec une taille suffisante. 
-Dans les architectures présentées dans ce chapitre, l'entrée d'un \ac{rnn} est une représentation vectorielle du mout courant. 
+Dans les architectures présentées dans ce chapitre, l'entrée d'un \ac{rnn} est une représentation vectorielle du mot courant. 
 En réalité, on peut définir des architectures plus complexes en introduisant les caractéristiques d'un mot comme par exemple la présence des suffixes. 
 On peut même encoder tous les suffixes avec l'encodage One-Hot et fusionner ce code avec celui du mot. 
 
 Dans ce chapitre, nous avons présenté l'étiquetage des séquences et plus précisément l'étiquetage morpho-syntaxique. 
 Nous avons vu les approches et quelques méthodes utilisées pour résoudre cette tâche. 
-Mais la question qui se pose : comment peut-on évaluer un système d'étiquetage des séquence. 
+Mais la question qui se pose : comment peut-on évaluer un système d'étiquetage des séquences. 
 Tout simplement, cette tâche est un cas spécial de classification : à la place de classer une phrase, on classe chaque mot (ou partie) à part en tenant compte de leurs interactions (temporelles). 
-Donc, les métriques d'évaluation da la classification comme la justesse (accuracy), le rappel (recall), la précision (precision), etc. 
+Donc, les métriques d'évaluation de la classification comme la justesse (accuracy), le rappel (recall), la précision (precision), etc. peuvent être utilisées.
 Ceci concerne l'évaluation intrinsèque, sinon on peut évaluer l'effet de cette tâche sur une autre (évaluation extrinsèque).
 \end{discussion}
 
