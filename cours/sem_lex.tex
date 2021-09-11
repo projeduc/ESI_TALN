@@ -27,14 +27,14 @@
 \end{introduction} 
 
 
-Un mot, comme unité de traitement de texte, doit être encodé afin de faciliter les tâches qu'on peut appliquer ur un texte. 
+Un mot, comme unité de traitement du texte, doit être encodé afin de faciliter les tâches appliquées sur le texte. 
 Une information est encodée dans le cerveau humain en utilisant un phénomène appelé : potentialisation à long terme. 
 C'est le point de vue de l'approche physiologique.
-Quand à l'approche mentale, parmi les types de l'encodage, on peut citer l'encodage visuel. 
+Quand à l'approche mentale, parmi les types d'encodage, on peut citer l'encodage visuel. 
 Dans ce cas, la représentation mentale d'un mot n'a aucune relation avec la langue parlée par l'individu.
-Par exemple, les mots ``\RL{^sajaraT} \textit{/shajarah/}" en arabe, ``\textit{tree}" en anglais, ``\textit{arbre}" en français et ``木\textit{ /ki/}" en japonais font référence to au même concept : un objet avec un tronc sur lequel s'insèrent des branches ramifiées portant le feuillage.
-En informatique, représenter les concepts en utilisant des images augmente la taille de stockage et de traitement. 
-Plutôt, on utilise un encodage moins couteau comme les relations avec les autres concepts ou encore comme un vecteur de nombres.
+Par exemple, les mots ``\RL{^sajaraT} \textit{/shajarah/}" en arabe, ``\textit{tree}" en anglais, ``\textit{arbre}" en français et ``木\textit{ /ki/}" en japonais font référence au même concept : un objet avec un tronc sur lequel s'insèrent des branches ramifiées portant le feuillage.
+En informatique, représenter les concepts en utilisant des images augmente la taille du stockage et le temps du traitement. 
+Plutôt, on utilise un encodage moins couteau comme les relations avec les autres concepts ou encore un vecteur de nombres.
 Une représentation est meilleure lorsqu'elle peut faire face à l'ambigüité. 
 Prenons trois phrases, en français, qui contiennent le mot ``café" mais avec trois sens différents : 
 \begin{itemize}
@@ -43,9 +43,9 @@ Prenons trois phrases, en français, qui contiennent le mot ``café" mais avec t
 	\item Je veux récolter du café.
 \end{itemize}
 Le mot ``café" dans ce cas n'aura pas la même représentation mentale. 
-Dans la première phrase, ce mot représente un liquide ; sauf si on peut imaginer quelqu'un qui boit une matière solide ou gazeuse. 
+Dans la première phrase, ce mot représente un liquide ; sauf si on peut imaginer quelqu'un qui boit une matière solide (les grains du café). 
 Dans la deuxième phrase, le mot ``café" représente une place ; on ne peut pas aller vers un liquide sauf si on le considère comme une place. 
-Dans notre cas, il est commun de considérer le cafétéria et pas la place où se trouve un verre de café lorsqu'on parle d'une place.
+Lorsqu'on parle d'une place, il est commun de considérer le cafétéria et pas la place où se trouve un verre du café.
 La dernière phrase utilise le mot ``café" comme un produit recueilli de la terre.
 Je pense la motivation de ce chapitre est claire : encodage des mots en se focalisant sur le niveau sémantique.
 
@@ -89,7 +89,7 @@ La base de données contient trois parties : (1) noms (2) verbes (3) adjectifs e
 Un sens regroupe plusieurs mots de la même partie et il est représénté par un identifiant appelé \keyword[S]{Synset} (Synonyms set).
 Par exemple, \expword{05659525 : reason\#3, understanding\#4, intellect\#2}.
 Un sens est défini par un glossaire (\keyword{Gloss}).
-Ex. \expword{05659525 : (the capacity for rational thought or inference or discrimination) ``we are told that man is endowed with reason and capable of distinguishing good from evil"}
+Exemple, \expword{05659525 : (the capacity for rational thought or inference or discrimination) ``we are told that man is endowed with reason and capable of distinguishing good from evil"}.
 
 \begin{figure}[ht]
 	\centering
@@ -171,7 +171,7 @@ Le tableau \ref{tab:rel-sem-wordnet} représente les relations sémantiques des 
 %\end{figure}
 
 Il existe des projets pour porter Wordnet aux autres langues. 
-Parmi ces projets, on peut citer : Global WordNet Association\footnote{Global WordNet Association : \url{http://globalwordnet.org/resources/wordnets-in-the-world/}} et Open Multilingual Wordnet\footnote{Open Multilingual Wordnet : \url{http://compling.hss.ntu.edu.sg/omw/}}.
+Parmi ces projets, on peut citer : Global WordNet Association\footnote{Global WordNet Association : \url{http://globalwordnet.org/resources/wordnets-in-the-world/} [visité le 2021-09-11]} et Open Multilingual Wordnet\footnote{Open Multilingual Wordnet : \url{http://compling.hss.ntu.edu.sg/omw/} [visité le 2021-09-11]}.
 Afin de naviguer Wordnet, il existe plusieurs APIs. 
 Voici une petite liste de  ces APIs :
 \begin{itemize}
@@ -208,9 +208,9 @@ La structure de BabelNet est illustrée dans la figure \ref{fig:babelnet-struc}.
 \section{Représentation vectorielle des mots}
 %===================================================================================
 
-La représentation vectorielle la plus simple est en utilisant l'encodage \keyword[O]{One-Hot}. 
-Dans cette représentation, on prend un vecteur de taille égale à la taille du vocabulaire et on choisit une position pour représenter le mot. 
-Donc, le mot sera représenté avec un vecteur contenant des zéros sauf dans la position réservée à lui où il va avoir un $1$. 
+La représentation vectorielle la plus simple est l'utilisation de l'encodage \keyword[O]{One-Hot}. 
+Dans cette représentation, on prend un vecteur de taille égale à la taille du vocabulaire et on choisit une position pour représenter un mot donné. 
+Donc, le mot sera représenté avec un vecteur contenant des zéros sauf la position réservée à lui où il va avoir un $1$. 
 Cette représentation est vraiment couteuse en terme de taille. 
 En plus, on ne peut pas vraiment représenter un document ou une phrase en utilisant cette représentation. 
 Cela est dû au fait qu'elle ne représente pas les relations sémantiques entre les mots : similarité (Ex. \expword{chat, chien}) et proximité (Ex. \expword{café, tasse}). 
@@ -219,12 +219,12 @@ Cette représentation peut être utilisée avec les algorithmes d'apprentissage 
 Mais, il existe d'autres représentations vectorielles qui sont plus informatives. 
 Dans ce cas, un terme peut être représenté par rapport à une autre référence comme : 
 \begin{itemize}
-	\item \optword{Terme-document} : On représente un terme par les documents le contiennent (ou l'inverse).
+	\item \optword{Terme-document} : on représente un terme par les documents qui le contiennent (ou l'inverse).
 	Ex. \expword{\ac{tfidf}}.
 	
-	\item \optword{Terme-terme} : On représente un terme par d'autres termes.
+	\item \optword{Terme-terme} : on représente un terme par d'autres termes.
 	
-	\item \optword{Terme-concept-document} : On représente les termes et les documents par un vecteur de concepts.
+	\item \optword{Terme-concept-document} : on représente les termes et les documents par un vecteur de concepts.
 	Ex. \expword{Analyse sémantique latente ; \ac{lsa}}.
 	
 \end{itemize}
@@ -233,9 +233,9 @@ Dans ce cas, un terme peut être représenté par rapport à une autre référen
 
 Le sens d'un document ou d'une phrase peut être représenté par les mots qui lui composent et vice-versa.
 Donc, un document peut être représenté par les fréquences d'occurrence des mots de vocabulaire. 
-Du même, un mot peut être représenté par les fréquences de ces occurrences dans chaque documents.
+Du même, un mot peut être représenté par les fréquences de ces occurrences dans chaque document.
 La fréquence d'un mot dans un document/phrase s'appelle ``\ac{tf}".
-Elle peut être calculée en comptant le nombre d'apparition d'un terme $t$ dans un document $d$ comme indiqué dans l'équation \ref{eq:tf}.
+Elle peut être calculée en comptant le nombre d'apparition d'un terme $t$ dans un document $d$ comme indiqué par l'équation \ref{eq:tf}.
 \begin{equation}
 TF_d(t) =  |\{t_i \in d / t_i = t\}|
 \label{eq:tf}
@@ -245,8 +245,8 @@ En général, cette représentation est utilisée dans les tâches de recherche 
 Des fois, on veut attribuer plus de poids pour les nouveaux mots. 
 Cela est motivé par le fait que les mots qui se répètent trop dans un domaine précis n'ont pas un sens ajouté.
 Par exemple, le mot ``\expword{ordinateur}" ne sera pas vraiment important si le domaine traité est l'informatique. 
-Ca sera plus bénéfiques de considérer les mots plus fréquents dans le document, mais qui ne sont pas aussi fréquents dans des documents du même domaine.
-Afin de calculer la nouveauté d'un terme $t$, on utilise un ensemble des documents $D$ du même domaine. 
+Ca sera plus bénéfique de considérer les mots plus fréquents dans le document, mais qui ne sont pas aussi fréquents dans des documents du même domaine.
+Afin de calculer la nouveauté d'un terme $t$, on utilise un ensemble de documents $D$ du même domaine. 
 L'équation \ref{eq:idf} représente la méthode de calcul de \ac{idf}.
 \begin{equation}
 IDF_D(t) = \log_{10} \left( \frac{|\{d \in D\}|}{|\{d \in D / t \in d\}|} \right)
@@ -291,7 +291,7 @@ Cos(\theta) = \frac{\overrightarrow{a} \overrightarrow{b}}{||\overrightarrow{a}|
 \end{equation}
 
 
-Maintenant on va calculer les similarités cosinus entre les trois phrases précédentes. 
+Maintenant, on va calculer les similarités cosinus entre les trois phrases précédentes. 
 $Cos(S1, S2) = \frac{5}{\sqrt{5} \sqrt{15}} = \frac{1}{\sqrt{3}} = 0.577$. 
 $Cos(S1, S3) = \frac{5}{\sqrt{5} \sqrt{13}} = 0.620$.
 $Cos(S2, S3) = \frac{6}{\sqrt{15} \sqrt{13}} = 0.429$.
@@ -323,9 +323,9 @@ Une autre technique pour exprimer la co-occurrence est l'utilisation d'une fenê
 Prenons l'exemple des phrases précédente. 
 On va les rappeler ici : 
 \begin{itemize}
-	\item S1 : \textit{un ordinateur peut} vous aider
-	\item S2 : il peut vous aider et il veut vous aider
-	\item S3 : il veut \textit{un ordinateur et} \textit{un ordinateur pour} vous
+	\item S1 : \expword{\underline{un ordinateur peut} vous aider}
+	\item S2 : \expword{il peut vous aider et il veut vous aider}
+	\item S3 : \expword{il veut \underline{un ordinateur et} \underline{un ordinateur pour} vous}
 \end{itemize}
 Les parties soulignées sont un exemple d'une fenêtre 1-1 qui capture le contexte du mot ``ordinateur". 
 En utilisant la même fenêtre, le vocabulaire est encodé selon le tableau \ref{tab:catmot-mot}. 
@@ -371,7 +371,7 @@ Un document peut être encoder comme le centre des vecteurs des mots qui lui com
 \subsection{Analyse sémantique latente (LSA)}
 
 Nous avons vu que les représentations terme-document et terme-terme sont souvent des vecteurs éparts ; contenant plusieurs zéros. 
-En plus leurs dimensions sont énormes, surtout si notre langage est riche en mots. 
+En plus, leurs dimensions sont énormes surtout si notre langage est riche en mots. 
 Revenons au premier chapitre, on a présenté une représentation appelée : analyse sémique. 
 On choisit des propriétés pour représenter les mots en indiquant si la propriété existe ou non. 
 Du même, on peut définir $L$ concepts comme des propriétés abstraites (on ne sait pas c'est quoi ces propriétés). 
@@ -440,23 +440,23 @@ Dans cette composition, les deux vecteurs décomposés sont conditionnés comme 
 T^\top T = \mathbb{I}_{N \times N} \label{eq:svd-cnd1} \\
 D^\top D = \mathbb{I}_{M \times M} \label{eq:svd-cnd2}
 \end{align}
-Afin de résoudre \ac{svd}, on peut utiliser des méthode de programmation dynamique comme l'algorithme de Lanczos, la décomposition QR.
+Afin de résoudre \ac{svd}, on peut utiliser des méthodes de programmation dynamique comme l'algorithme de Lanczos et la décomposition QR.
 
-La représentation d'un terme avec un vecteur des nombres réel est appelé ``\keyword[E]{embedding}". 
-La plupart des \keyword[E]{embedding}s connus actuellement utilisent les réseaux de neurones. 
-Malgré c'est une représentation vectorielle, j'ai choisi de présenter les \keyword[E]{embedding}s dans une section à part.
+La représentation d'un terme avec un vecteur des nombres réels est appelé ``\keyword[E]{embedding}". 
+La plupart des \keywordpl[E]{embedding} connus actuellement utilisent les réseaux de neurones. 
+Malgré c'est une représentation vectorielle, j'ai choisi de présenter les \keywordpl[E]{embedding} dans une section à part.
 
 %===================================================================================
 \section{Word embedding}
 %===================================================================================
 
 Les représentations document-mot et mot-mot basées sur la co-occurrence occupent un grand espace mémoire ; elles sont difficiles à gérer.
-Dans \ac{lsa}, nous avons vu que la représentation d'un mot est compactée vers un petit vecteur de nombres réels.
+Dans \ac{lsa}, nous avons vu que la représentation d'un mot est compactée comme un petit vecteur de nombres réels.
 Ceci est appelé : ``Word \keyword[E]{embedding}" ou, en français, ``Plongement lexical". 
 Ici, je vais utiliser la première nomination puisqu'elle est plus cool et plus utilisée.
 
 Dans cette section, on va présenter Word \keyword[E]{embedding} basé sur les réseaux de neurones. 
-On va présenter deux types des \keyword[E]{embedding}s : 
+On va présenter deux types des \keywordpl[E]{embedding} : 
 \begin{itemize}
 	\item traditionnel : on affecte à chaque mot une seule représentation. 
 	Mais, elle ne peut pas prendre la polysémie en considération. 
@@ -473,7 +473,7 @@ On va présenter deux types des \keyword[E]{embedding}s :
 
 \subsection{Word2vec}
 
-Dans le modèle Mot-Mot, nous avons vu la notion du contexte ; les mots qui entourent un autre. 
+Dans le modèle Mot-Mot, nous avons vu la notion du contexte (les mots qui entourent un autre). 
 L'idée ici est d'utiliser un modèle de langage neuronal afin d'encoder un mot en utilisant son contexte. 
 Préalablement, les mots sont encodés en utilisant \keyword[O]{One-Hot}.
 Une fois le modèle entraîné, les mots auront des codes plus compacts. 
@@ -504,7 +504,7 @@ Cela revient à maximiser les probabilités du contexte comme indiqué dans l'é
 La figure \ref{fig:word2vec}(b) représente l'architecture Skip-gram avec un contexte de 2-2. 
 La première couche cachée contient $L$ neurones et $L * |V|$ paramètres où $L$ est la taille de l'embedding et $V$ est l'ensemble du vocabulaire. 
 En sortie, nous avons 4 couches en parallèle (on peut avoir plus selon la taille du contexte). 
-Chacune contient $|V|$ neurones avec avec $L * |V|$ paramètres.
+Chacune contient $|V|$ neurones avec $L * |V|$ paramètres.
 En appliquant une fonction ``Softmax" sur chaque vecteur, on aura un vecteur de probabilités où on doit maximiser la probabilité du mot destinataire (elle doit être $1$) et minimiser les probabilités des autres mots du vocabulaire (elles doivent être $0$). 
 
 \begin{figure}[ht]
@@ -524,10 +524,10 @@ En appliquant une fonction ``Softmax" sur chaque vecteur, on aura un vecteur de 
 \keyword[G]{GloVe} (Global Vectors) est une méthode développée par Stanford \cite{2014-pennington-al}. 
 Elle essaye d'exploiter les deux approches : matrice mot-mot (comme LSA) et apprentissage par contexte (comme CBOW).
 On prépare une matrice Mot-Mot $X[V, V]$ où $X_{ij}$ est le nombre des occurrence du mot $w_j$ dans le contexte de $w_i$, et $X_i$ est le nombre d'occurrences de $w_i$ dans le corpus. 
-La probabilité d'occurrence de $w_j$ dans le contexte de $w_i$ est estimée comme $P_ij= \frac{X_{ij}}{X_i}$.
+La probabilité d'occurrence de $w_j$ dans le contexte de $w_i$ est estimée comme $P_{ij}= \frac{X_{ij}}{X_i}$.
 
 La figure \ref{fig:glove-prob-exp} représente un exemple des probabilités conditionnelles. 
-Si on veut trouver la relation entre deux mots (Ex. $w_i = ice$ et $w_j = steam$) par rapport à un mot $w_k$, on peut calculer le ratio entre leurs probabilités $R(w_i, w_j) = \frac{P_ik}{Pjk}$. 
+Si on veut trouver la relation entre deux mots (Ex. $w_i = ice$ et $w_j = steam$) par rapport à un mot $w_k$, on peut calculer le ratio entre leurs probabilités $R(w_i, w_j) = \frac{P_{ik}}{P{jk}}$. 
 Donc : 
 \begin{itemize}
 	\item Si $R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio sera grand. Ex. \expword{solid}
@@ -536,7 +536,7 @@ Donc :
 	\item Si $\neg R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{fashion}
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering
 	\hgraphpage[.6\textwidth]{exp-glove_.pdf}
 	\caption[Exemple des probabilités conditionnelles et un ratio entre deux probabilités]{Exemple des probabilités conditionnelles et un ratio entre deux probabilités  \cite{2014-pennington-al}}
@@ -548,14 +548,14 @@ On veut entraîner une fonction $F$ qui estime le ratio de $w_i$, $w_j$ par rapp
 F(w_i, w_j, \tilde{w_k}) = \frac{P_{ik}}{P_{jk}}
 \label{eq:glove-f-estime}
 \end{equation}
-Il existent plusieurs fonctions $F$ qui peuvent assurer l'équation précédente. 
+Il existe plusieurs fonctions $F$ qui peuvent assurer l'équation précédente. 
 Afin de restreindre cette fonction, on utilise la soustraction entre les deux mots $w_i$ et $w_j$, comme indiqué dans l'équation \ref{eq:glove-f-estime2}.
 \begin{equation}
 F(w_i - w_j, \tilde{w_k}) = \frac{P_{ik}}{P_{jk}}
 \label{eq:glove-f-estime2}
 \end{equation}
 
-Une autre restriction peut être appliquer en transformant les arguments de cette fonction à un scalaire.
+Une autre restriction peut être appliquée en transformant les arguments de cette fonction à un scalaire.
 Ceci peut être fait en appliquant une multiplication matricielle, comme indiqué dans l'équation \ref{eq:glove-f-estime3}.
 \begin{equation}
 F((w_i - w_j)^\top \tilde{w_k}) = \frac{P_{ik}}{P_{jk}}
@@ -579,14 +579,20 @@ w_i^\top \tilde{w_k} = \log X_{ik} - \log X_i
 Afin d'encoder $\tilde{w_k}$, on va entrainer un réseau de neurone afin d'estimer $\log X_{ik} - \log X_i$ comme indiqué dans la figure \ref{fig:glove-arch}. 
 Puisque la valeur $log X_i$ est indépendante de $k$, on peut entraîner un biais $b_i$ sur $w_i$. 
 Pour respecter la symétrie, il faut entraîner un biais $\tilde{b_k}$ sur $\tilde{w_k}$. 
-Donc, la fonction d'estimation est représentée par l'équation \ref{glove-f-estime6}.
+Donc, la fonction d'estimation est représentée par l'équation \ref{eq:glove-f-estime6}.
 \begin{equation}
 w_i^\top \tilde{w_j} + b_i + \tilde{b_j} = \log X_{ij}
 \label{eq:glove-f-estime6}
 \end{equation}
+\begin{figure}[!ht]
+	\centering
+	\hgraphpage[.4\textwidth]{glove.pdf}
+	\caption{Architecture de la méthode GloVe}
+	\label{fig:glove-arch}
+\end{figure}
 Afin d'entraîner le modèle, la fonction objective $J$ utilisée est la méthode des moindres carrés.
 Le problème est que $J$ ne doit pas pondérer les co-occurrences de la même façon : les co-occurrences rares doivent avoir moins d'impact sur $J$.
-Donc, on doit définir une fonction $f$ qui normalise la valeur de son argument $x$ par rapport à une valeur maximum $x_{max}$ (voir l'équation \ref{eq:glove-f-estime7}).
+Donc, on doit définir une fonction $f$ qui normalise la valeur de son argument $x$ par rapport à une valeur maximale $x_{max}$ (voir l'équation \ref{eq:glove-f-estime7}).
 \begin{equation}
 f(x) = \begin{cases}
 \frac{x}{x_{max}} & \text{si } x < x_{max} \\
@@ -600,25 +606,20 @@ J(\theta) = \sum_{i=1}^{V} \sum_{j=1}^{V} f(X_{ij}) (w_i^\top \tilde{w_j} + b_i 
 \label{eq:glove-f-estime8}
 \end{equation}
 
-\begin{figure}
-	\centering
-	\hgraphpage[.4\textwidth]{glove.pdf}
-	\caption{Architecture de la méthode GloVe}
-	\label{fig:glove-arch}
-\end{figure}
 
 \subsection{ELMo}
 
 Comme il est déjà mentionné, les représentations Word2vec et \keyword[G]{GloVe} ne prennent pas la polysémie en considération ; un mot est représenté par un seul vecteur quelque soit son sens. 
-\keyword[E]{ELMo}\footnote{ELMo : \url{http://allennlp.org/elmo}} (Embeddings from Language Models) est un modèle contextuel développé par AllenNLP \cite{2018-peters-al} qui prend en considération la phrase comme contexte afin de générer la représentation d'un mot. 
+\keyword[E]{ELMo}\footnote{ELMo : \url{http://allennlp.org/elmo} [visité le 2021-09-11]} (Embeddings from Language Models) est un modèle contextuel développé par AllenNLP \cite{2018-peters-al} qui prend en considération la phrase comme contexte afin de générer la représentation d'un mot. 
 C'est un modèle bidirectionnel ; qui prend en considération tous les mots avant et après. 
 En plus, il est basé sur les caractères et pas les mots. 
 Donc, il a la capacité de prendre en considération des caractéristiques morphologiques et des mots hors vocabulaire.
 
 La figure \ref{fig:elmo-arch} représente l'architecture du modèle ELMo. 
-Étant donné un mot $w_k$, on calcule sa représentation $x_k$ en se basant sur les caractères qui lui composent (voir \cite{2015-kim-al}). 
+Étant donné un mot $w_k$, on calcule sa représentation $x_k$ en se basant sur les caractères qui lui composent \cite{2015-kim-al}. 
 On utilise $L$ couches des cellules \keyword[B]{Bi-LSTM} (LSTMs bidirectionnelles). 
 Pour chaque  phrase de $N$ mot, on essaye de maximiser la somme des logarithmes des probabilités en avant et en arrière, comme indiqué dans l'équation \ref{eq:elmo-erreur}. 
+Les paramètres à entraîner sont : $\Theta_x$ (embedding des caractères), $\overrightarrow{\Theta}_{LSTM}$ (les LSTMs en avant), $\overleftarrow{\Theta}_{LSTM}$ (les LSTMs en arrière) et $\Theta_s$ (combinaison entre les deux directions : en avant et en arrière).
 \begin{equation}
 \sum_{k=1}^{N} 
 \log P(w_k | w_1,\ldots,w_{k-1}; \Theta_x, \overrightarrow{\Theta}_{LSTM}, \Theta_s)
@@ -648,24 +649,24 @@ ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} \theta_j^{t
 
 \subsection{BERT}
 
-\keyword[B]{BERT}\footnote{BERT : \url{https://github.com/google-research/bert}} (Bidirectional Encoder Representations from Transformers) est un autre embedding contextuel développé par Google \cite{2019-devlin-al}.
+\keyword[B]{BERT}\footnote{BERT : \url{https://github.com/google-research/bert} [visité le 2021-09-11]} (Bidirectional Encoder Representations from Transformers) est un autre \keyword[E]{embedding} contextuel développé par Google \cite{2019-devlin-al}.
 Comme \keyword[E]{ELMo}, \keyword[B]{BERT} prend aussi la totalité de la phrase comme contexte. 
 Il est bidirectionnel ; il prend en considération les mots avant et après.
-Contrairement à \keyword[E]{ELMo} qui se base sue les LSTM bidirectionnels, \keyword[B]{BERT} se base sur un modèle \keyword{transformer} (voir \cite{2017-vaswani-al}). 
+Contrairement à \keyword[E]{ELMo} qui se base sur les \keywordpl[L]{LSTM} bidirectionnels, \keyword[B]{BERT} se base sur un modèle \keyword{transformer} \cite{2017-vaswani-al}. 
 Ceci permet à un mot $w_i$ d'avoir une vision globale sur les mots de la phrase et pas une vision temporelle (chaine de mots ordonnés). 
-Cette représentation est basée sur les tokens ; les mots sont séparés en radical + infixes.  
+Cette représentation est basée sur les tokens ; les mots sont séparés en radical + affixes.  
 
 
 La figure \ref{fig:bert-arch} représente l'architecture du modèle \keyword[B]{BERT}.
-Le texte est séparé en tokens en utilisant ``Wordpiece" (voir \cite{2016-wu-al}).
+Le texte est séparé en tokens en utilisant ``Wordpiece" \cite{2016-wu-al}.
 L'entrée a un maximum de $T = 512$ tokens.
 Le premier token est un marqueur spécial ``[CLS]" utilisé pour la classification.
 En cas de deux phrases en entrée, on utilise un token ``[SEP]" pour les séparer. 
-Chaque token est représenté par 3 \keyword[E]{embedding}s de taille $N$ 
+Chaque token est représenté par 3 \keywordpl[E]{embedding} de taille $N$ 
 \begin{itemize}
-	\item \optword{Embedding de token} : transformation d'une vocabulaire de taille $V$ vers un vecteur de taille $N$
-	\item \optword{Embedding de position} : transformation de la position du token dans la phrase sur une taille max $T$ vers un vecteur de taille $N$
-	\item \optword{Embedding de segment} : transformation du segment du token (phrase1 ou phrase2) sur une taille de $2$ vers un vecteur de taille $N$
+	\item \optword{Embedding de token} : transformation d'un vocabulaire de taille $V$ vers un vecteur de taille $N$ ;
+	\item \optword{Embedding de position} : transformation de la position du token dans la phrase sur une taille max $T$ vers un vecteur de taille $N$ ;
+	\item \optword{Embedding de segment} : transformation du segment du token (phrase1 ou phrase2) encodé avec une taille de $2$ vers un vecteur de taille $N$.
 \end{itemize}
 
 \begin{figure}[ht]
@@ -678,12 +679,12 @@ Chaque token est représenté par 3 \keyword[E]{embedding}s de taille $N$
 Le modèle \keyword[B]{BERT} utilise l'apprentissage par transfert ; on entraîne le modèle avec une tâche (pré-entraînement), ensuite on l'entraîne avec une tâche similaire (réglage). 
 Dans le cas de \keyword[B]{BERT}, on utilise deux tâches afin d'avoir un modèle pré-entraîné : 
 \begin{itemize}
-	\item \optword{Modèle de langage masqué} : On masque aléatoirement 15\% des tokens d'une phrase et essayer de les inférer. 
+	\item \optword{Modèle de langage masqué} : on masque aléatoirement 15\% des tokens d'une phrase et on essaye de les inférer. 
 	Pour le faire, on utilise un token spécial : ``[MASK]". 
 	Puisque ce token n'apparait pas dans l'étape de réglage, on l'utilise pour 80\% des remplacements. 
 	Parmi ces masques, on utilise 10\% avec un token quelconque et 10\% sans changement.
 	
-	\item \optword{Prédiction de la phrase suivante} : Prédire si la deuxième phrase suit la première. 
+	\item \optword{Prédiction de la phrase suivante} : prédire si la deuxième phrase suit la première. 
 	Le résultat est dans la sortie du token ``[CLS]" ($CLS \in \{IsNext, NotNext\}$) ; c'est un classement binaire.
 \end{itemize}
 
@@ -710,7 +711,7 @@ En bas à droit, c'est une tâche d'annotation (tagging) ; comme la reconnaissan
 
 Il existe deux approches pour évaluer un modèle : intrinsèque et extrinsèque. 
 Cette dernière a comme but de comparer deux modèles en terme d'une tâche donnée.
-Par exemple, \keyword[G]{GloVe} surpasse LSA dans la tâche de reconnaissance des entités nommées selon \cite{2014-pennington-al}. 
+Par exemple, \keyword[G]{GloVe} surpasse LSA dans la tâche de reconnaissance des entités nommées selon \citet{2014-pennington-al}. 
 Concernant l'évaluation intrinsèque, plusieurs méthodes/corpus ont été proposés : 
 \begin{itemize}
 	\item  WordSimilarity-353 Test Collection \cite{2002-finkelstein-al} : dans cette collection, les similarités entre les mots ont été annotées manuellement (un nombre entre 0 et 10). 
@@ -720,14 +721,14 @@ Concernant l'évaluation intrinsèque, plusieurs méthodes/corpus ont été prop
 	La similarité entre deux mots est un nombre annoté manuellement.
 	
 	\item Analogies de mots \cite{2013-mikolov-al2} : c'est un dataset de la forme $(w_{i1}:w_{j1} :: w_{i2}:w_{j2})$. 
-	Il a comme objectif de tester la capacité des embeddings à représenter des relations $w_{j2} = w_{i1} - w_{i2} + w_{j1}$.
+	Il a comme objectif de tester la capacité des embeddings à représenter des relations d'analogie $w_{j2} = w_{i1} - w_{i2} + w_{j1}$.
 	Par exemple, \expword{(King:Queen :: Man:Woman) \textrightarrow King - Man + Woman = Queen}.
 \end{itemize}
 
 
 En plus, il faut évaluer le biais dans le modèle. 
 En se basant sur le corpus d'entraînement, un modèle peut apprendre des analogies biaisées. 
-Par exemple, il peut apprendre des stéréotypes comme \expword{she} avec \expword{homemaker, nurse, receptionist} et \expword{he} avec \expword{maestro, skipper, protege} \cite{2017-caliskan-al}. 
+Par exemple, il peut apprendre des stéréotypes comme ``\expword{she}" avec ``\expword{homemaker}", ``\expword{nurse}", ``\expword{receptionist}" et ``\expword{he}" avec ``\expword{maestro}", ``\expword{skipper}", "\expword{protege}" \cite{2017-caliskan-al}. 
 Ceci peut affecter la performance de certaines tâches.
 Par exemple, la résolution des anaphores peut échouer à lier le pronoms ``she" avec ``doctor".
 
@@ -735,20 +736,13 @@ Par exemple, la résolution des anaphores peut échouer à lier le pronoms ``she
 \section{Désambigüisation lexicale}
 %===================================================================================
 
-La désambigüisation lexicale, en anglais \ac{wsd}, est la tâche de chercher le sens correct d'un mot dans une phrase. 
+La désambigüisation lexicale, en anglais \ac{wsd}, est la tâche concernée par la recherche du sens correct d'un mot dans une phrase. 
 Elle est utile pour plusieurs tâches :
 \begin{itemize}
-	\item Analyse syntaxique 
+	\item Analyse syntaxique : \expword{I \underline{fish} in the river} (Verbe ou nom ?). 
+	\expword{The \underline{fish} was too big} (Verbe ou nom ?).
 	
-	\expword{I \underline{fish} in the river} (Verbe ou nom ?)
-	
-	\expword{The \underline{fish} was too big} (Verbe ou nom ?)
-	
-	\item Traduction automatique. 
-	
-	\expword{I withdrawed money from the \underline{bank}} (``banque" ou ``rive" ?)
-	
-	\expword{I fish on the \underline{bank}} (``banque" ou ``rive" ?)
+	\item Traduction automatique : \expword{I withdrawed money from the \underline{bank}} (``banque" ou ``rive" ?). \expword{I fish on the \underline{bank}} (``banque" ou ``rive" ?).
 \end{itemize}
 
 \subsection{Basée sur des bases de connaissance}
@@ -782,18 +776,18 @@ Le sens avec un nombre maximum est le sens voulu.
 \end{algorithm}
 
 Les bases de données lexicales peuvent être représentées comme des graphes. 
-Un des méthodes qui utilisent la structure de graphe pour la tâche \ac{wsd} est Babelfy\footnote{Babelfy : \url{http://babelfy.org/}} \cite{2014-moro-al}. 
+Une des méthodes qui utilisent la structure de graphe pour la tâche \ac{wsd} est Babelfy\footnote{Babelfy : \url{http://babelfy.org/} [visité le 2021-09-11]} \cite{2014-moro-al}. 
 Cette méthode est exécutée sur trois étapes :
 \begin{enumerate}  
-	\item \optword{Construction des signatures sémantiques} : On commence par construire un graphe en utilisant tous les concepts à partir d'un réseau sémantique.
+	\item \optword{Construction des signatures sémantiques} : on commence par construire un graphe en utilisant tous les concepts à partir d'un réseau sémantique.
 	Pour chaque arc reliant deux concepts, on attribut un poids en se basant sur le nombre des triangles qui les relient.
 	Ensuite, on calcule la probabilité d'un concept sachant un autre en se basant sur ces poids. 
 	Enfin, on minimise le graphe en utilisant la méthode ``Random walk with restart".
 	
-	\item \optword{Identification des candidats} : On applique l'étiquetage morphosyntaxique sur le texte d'entrée.
+	\item \optword{Identification des candidats} : on applique l'étiquetage morphosyntaxique sur le texte d'entrée.
 	Ensuite, on extrait tous les sens possibles des mots ou des expressions de la phrase d'entrée.
 
-	\item \optword{Désambigüisation des candidats} : On construit un graphe en utilisant la signature sémantique et les candidats.
+	\item \optword{Désambigüisation des candidats} : on construit un graphe en utilisant la signature sémantique et les candidats.
 	On cherche un sous-graphe en éliminant les liens faibles.
 \end{enumerate}
 
@@ -802,21 +796,21 @@ Cette méthode est exécutée sur trois étapes :
 La désambigüisation des mots peut être vue comme une tâche d'étiquetage des séquences. 
 Donc, on peut appliquer les \keyword[H]{\ac{hmm}} ou les réseaux de neurones récurrents afin de la résoudre. 
 Pour ce faire, on utilise un corpus annoté (Ex. \expword{SemCor}) où chaque mot est suivi par le numéro de son sens dans une base lexicale (\keyword[W]{WordNet}).
-Par exemple, \expword{You will find9 that avocado1 is1 unlike1 other1 fruit1 you have ever1 tasted2}.
+Par exemple, ``\expword{You will find9 that avocado1 is1 unlike1 other1 fruit1 you have ever1 tasted2}".
 En entrée, on peut utiliser les mêmes caractéristiques utilisées dans l'étiquetage des séquences comme les mots précédents, leurs classes, le mot courant, etc. 
 En sortie, on aura un vecteur \keyword[O]{One-Hot} représentant la classe (le sens est un nombre). 
 
 
-Une autre méthode pour la \ac{wsd}  est d'utiliser les \keyword[E]{embedding}s contextuels. 
+Une autre méthode pour la \ac{wsd}  est d'utiliser les \keywordpl[E]{embedding} contextuels. 
 La figure \ref{fig:swd-embeddings} représente la désambigüisation des mots d'une phrase en utilisant un modèle d'un \keyword[E]{embedding} contextuel comme \keyword[E]{ELMo} ou \keyword[B]{BERT}. 
-Étant donné un modèle pré-entrainé, on le règle sur un corpus annoté afin de capturer les \keyword[E]{embedding}s de chaque sens. 
-Pour avoir le \keyword[E]{embedding} d'un sens $v_s$, on fait la moyenne des \keyword[E]{embedding}s $c_i$ qui l'appartiennent (voir l'équation \ref{eq:wsd-embeddings-sens}).
+Étant donné un modèle pré-entrainé, on le règle sur un corpus annoté afin de capturer les \keywordpl[E]{embedding} de chaque sens. 
+Pour avoir le \keyword[E]{embedding} d'un sens $v_s$, on calcule la moyenne des \keywordpl[E]{embedding} $c_i$ qui l'appartiennent (voir l'équation \ref{eq:wsd-embeddings-sens}).
 \begin{equation}
 v_s = \frac{1}{n} \sum_{i=1}^{n} c_i 
 \label{eq:wsd-embeddings-sens}
 \end{equation}
 Lors du test, on passe la phrase par le modèle. 
-Pour chaque mot $w$, on cherche les \keyword[E]{embedding}s de tous les sens et on prend le plus proche en utilisant la similarité cosinus.
+Pour chaque mot $w$, on cherche les \keywordpl[E]{embedding} de tous les sens et on prend le plus proche en utilisant la similarité cosinus.
 
 \begin{figure}[ht]
 	\centering
@@ -828,15 +822,15 @@ Pour chaque mot $w$, on cherche les \keyword[E]{embedding}s de tous les sens et 
 
 \begin{discussion}
 Imaginer le mot ``café". 
-Quelle est l'image que vous avez visualisé ?
-Peut-être, vous avez imaginer un vers plein du café chaud.
+Quelle est l'image que vous avez visualisée ?
+Peut-être, vous avez imaginé un vers plein du café chaud.
 Maintenant, imaginer le mot café en le liant avec la phrase ``je vais au café". 
-Ici, l'image va changer à un immeuble  avec des tables et des chaises où en serve du café. 
+Ici, l'image va changer à un immeuble  avec des tables et des chaises où on boit du café. 
 Dans les deux cas, votre cerveau a affecté une image au mot.
-On peut constater immédiatement que l'encodage des concepts est un étape primordial dans le traitement des idées. 
-Dans les langages, les idées sont représentées par des phrases et les concepts qui les composent sont représentés par des mots.
+On peut constater immédiatement que l'encodage des concepts est une étape primordiale dans le traitement des idées. 
+Dans chaque langue, les idées sont représentées par des phrases et les concepts qui les composent sont représentés par des mots.
 
-Un mot peut être représenter par un identifiant dans une base de donnée.
+Un mot peut être représenté par un identifiant dans une base de donnée.
 On peut représenter les relations sémantiques du mot avec les autres sous forme d'un graphe.
 Une autre représentation est sous forme d'un vecteur où la plus basique est l'encodage One-Hot. 
 Il existe plusieurs méthodes de représentation vectorielle des plus simples comme TF-IDF jusqu'aux plus avancées comme les embeddings contextuelles. 
