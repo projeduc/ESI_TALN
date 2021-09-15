@@ -21,20 +21,20 @@
 	On appelle ça : la cohérence ; un texte cohérent doit garder la même idée ou passer à une autre idée en gardant une sorte de continuité.
 	L'analyse de la cohérence nous permet de vérifier qu'un texte est facile à lire et à comprendre. 
 	Plusieurs théories ont été proposées pour représenter les relations de cohérence et donc permettre son analyse.
-	Dans ce chapitre, on va présenter quelques théories de cohérence et quelques méthodes pour l'analyser.
+	Dans ce chapitre, on va présenter quelques théories de cohérence ainsi que des méthodes pour l'analyser.
 \end{introduction} 
 
 Prenons le texte ``\expword{L'hiver est un des quatre saisons de l'année. Le rapport était bien exposé. La pluie est une des caractéristiques de cette saison. J'ai lu un rapport sur cette saison.}".
 On peut comprendre chaque phrase à part ; mais, il est difficile de comprendre l'idée du texte. 
 Il est clair que les phrases sont mal-ordonnées. 
-Donc, comprendre les phrases n'est pas suffisant afin de comprendre un discours ; il faut ce dernier soit cohérent.
+Donc, comprendre les phrases à part n'est pas une condition suffisante afin de comprendre un discours ; il faut que ce dernier soit cohérent.
 L'analyse de la cohérence peut aider dans plusieurs tâches :
 \begin{itemize}
 	\item Génération du texte : lorsqu'on génère un texte automatiquement, il faut que les phrases soient cohérentes. 
 	Un exemple plus simple est la génération des résumés automatiques par extraction. 
-	Une fois les phrases importantes, on doit réordonner ces phrases pour avoir un résumé cohérent. 
-	Un exemple d'une méthode pour ordonner les phrases dans le contexte du résumé automatique est proposé dans \cite{2019-oufaida-al}.
-	\item Compréhension du texte : comme l'exemple précédent, on ne peut pas bien comprendre un texte que s'il est cohérent.
+	Une fois les phrases importantes sont sélectionnées, on doit les réordonner pour avoir un résumé cohérent. 
+	Un exemple d'une méthode pour ordonner les phrases dans le contexte du résumé automatique est proposé par \citet{2019-oufaida-al}.
+	\item Compréhension du texte : comme illustré par l'exemple précédent, on ne peut pas bien comprendre un texte que lorsqu'il est cohérent.
 	\item Évaluation du texte : on peut utiliser l'analyse de la cohérence afin d'évaluer automatiquement les expressions écrites des enfants. 
 	Aussi, on peut l'utiliser comme outil d'aide de rédaction (Personnellement, je n'ai pas vu un tel outil ; mais il va être d'une grande utilité pour les écrivains).
 	\item Détection de plagiat : lorsqu'on copie et colle des parties de plusieurs origines, on va avoir un texte incohérent. 
@@ -45,17 +45,19 @@ L'analyse de la cohérence peut aider dans plusieurs tâches :
 %===================================================================================
 
 En général, les phrases proches se partagent quelques mots ou sens. 
-Ce phénomène est appelé \optword{Cohésion lexicale} où la relation entre deux phrases consécutives est la similarité lexicale ou sémantique.
+Ce phénomène est appelé ``\optword{Cohésion lexicale}" où la relation entre deux phrases consécutives est la similarité lexicale ou sémantique.
 Une autre façon de voir la cohérence est en se basant sur le sujet du texte ; les phrases d'un discours forment une seule entité (elles discutent le même sujet). 
-On appelle ça : \optword{Cohérence basée sur l'entité} où la relation entre les phrase c'est le sujet. 
+On appelle ça ``\optword{Cohérence basée sur l'entité}", où la relation entre les phrase est le sujet. 
 Parmi les théories dans cette direction, on peut mentionner : Centering theory et Entity grid model. 
 Dans cette section, on va présenter  des relations plus concrètes qui relient les phrases l'une à l'autre. 
 Dans ce cas, on parle de la \optword{cohérence basée sur les relations}. 
 Deux représentations du discours sont bien connues : \ac{rst} et \ac{pdtb}.
 
+\vfill
+
 \subsection{Rhetorical Structure Theory (RST)}
 
-\keyword[R]{\ac{rst}} modélise le discours sous formes des relations entre deux unités (des phrases ou parties des phrases) : \optword{Noyau (N)} et \optword{Satellite (S)}. 
+\keyword[R]{\ac{rst}} modélise le discours sous forme des relations entre deux unités (des phrases ou parties des phrases) : \optword{Noyau (N)} et \optword{Satellite (S)}. 
 Le noyau est une unité indépendante, peut être interprétée indépendamment des autres unités du texte.
 Le satellite est une unité dépendante, ne peut être interprétée qu'en utilisant le noyau. 
 Chaque relation de cohérence est définie en se basant sur deux acteurs : \optword{Lecteur (L)} ; qui a lit le script et \optword{Scripteur (S)} ;  qui a rédigé le script. 
@@ -101,7 +103,7 @@ Voici quelques définitions des relations \keyword[R]{\ac{rst}} \cite{2006-Corni
 \end{itemize}
 
 Les relations \keyword[R]{\ac{rst}} peuvent être classifiées selon la distinction thématique/présentationnelle (voir le tableau \ref{tab:rst-class-lect}). 
-Une relation thématique vise que le lecteur identifie la relation en question.
+Une relation est dite ``thématique" si le lecteur peut l'identifier.
 Elle est utilisée afin d'exprimer certains aspects de la thématique. 
 Par contre, une  relation présentationnelle vise à augmenter une disposition chez le lecteur, comme le désir d'agir ou le degré de son attitude positive envers, ou croyance en, ou encore acceptation de la proposition noyau. 
 
@@ -231,20 +233,21 @@ La catégorie ``présentationnelle" peut être divisée sur deux catégories : `
 Dans ce modèle, on ne s'intéresse pas par la structure en arbre ; on s'intéresse seulement par les relations binaires. 
 Les unités en relation sont annotées comme arguments : ``ARG1" et ``ARG2". 
 L'unité marquée par ``ARG2" est annotée par un connective du discours (explicitement ou implicitement). 
-Les connectives du discours peuvent être (voir le tableau \ref{tab:pdtb-connect} pour des statistiques sur les connectives et leurs sens) :
+Le tableau \ref{tab:pdtb-connect} représente des statistiques sur les connectives et leurs sens.
+Les connectives du discours peuvent être :
 \begin{itemize}
 	\item \optword{Conjonctions de subordination} :  
-	temporelle (Ex., \expword{'when', 'as soon as'}), 
-	causale (Ex., \expword{'because'}), 
-	concessive (Ex., \expword{'although', 'even though'}), 
-	objectif (Ex.,\expword{'so that', 'in order that'}) et 
-	conditionnelle (Ex., \expword{'if', 'unless'}).
+	temporelle (Ex., ``\expword{when}", ``\expword{as soon as}"), 
+	causale (Ex., ``\expword{because}"), 
+	concessive (Ex., ``\expword{although}", ``\expword{even though}"), 
+	objectif (Ex., ``\expword{so that}", ``\expword{in order that}") et 
+	conditionnelle (Ex., ``\expword{if}", ``\expword{unless}").
 	
-	\item \optword{Conjonctions de coordination} : \expword{'and', 'but', 'or'}
+	\item \optword{Conjonctions de coordination} : ``\expword{and}", ``\expword{but}", ``\expword{or}".
 	
-	\item \optword{Conjonctives adverbiales} : des adverbes qui expriment une relation de discours entre des évenements ou des états. Ex., \expword{'however', 'therefore', 'then', etc.}
-	Des syntagmes prépositionnels sont inclus aussi dans cette classe. Ex. \expword{'as a result',
-		'in addition', 'in fact', etc. }
+	\item \optword{Conjonctives adverbiales} : des adverbes qui expriment une relation de discours entre des évènements ou des états. Ex., ``\expword{however}", ``\expword{therefore}", ``\expword{then}", etc.
+	Des syntagmes prépositionnels sont inclus aussi dans cette classe. Ex. ``\expword{as a result}",
+		``\expword{in addition}", ``\expword{in fact}", etc.
 	
 	\item \optword{Connectives implicites} :  identifiées entre deux phrases adjacentes qui ne sont pas reliées par des connectives explicites.
 \end{itemize}
@@ -419,25 +422,25 @@ Une des méthodes les plus anciennes utilise l'analyse syntaxique afin de trouve
 Des méthodes statistiques peuvent être utilisées afin de détecter les limites des \ac{edu}s. 
 Comme caractéristiques, on peut utiliser les informations syntaxiques et des indices de surface. 
 Ce problème peut être vu comme annotation des séquences. 
-Dans \cite{2018-wang-al}, les auteurs ont proposé un système neuronal\footnote{EDU avec réseau de neurones : \url{https://github.com/PKU-TANGENT/NeuralEDUSeg}} qui utilise le \keyword[E]{embedding} des mots. 
-La figure \ref{fig:edu-embedding} représente leur architecture où l'entrée est une concaténation entre deux \keyword[E]{embedding}s : \keyword[G]{GloVe} et \keyword[B]{BERT}. 
+Dans \cite{2018-wang-al}, les auteurs ont proposé un système neuronal\footnote{EDU avec réseau de neurones : \url{https://github.com/PKU-TANGENT/NeuralEDUSeg} [visité le 2021-09-15]} qui utilise le \keyword[E]{embedding} des mots. 
+La figure \ref{fig:edu-embedding} représente leur architecture où l'entrée est une concaténation entre deux \keywordpl[E]{embedding} : \keyword[G]{GloVe} et \keyword[B]{BERT}. 
 On utilise un réseau \keyword[B]{Bi-LSTM} afin d'avoir le contexte en avant et en arrière pour chaque mot. 
 Ensuite, chaque mot est classé comme : début d'un \ac{edu} (1) ou continuation d'un \ac{edu} (0). 
 
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.6\textwidth]{EDU_seg_.pdf}
-	\caption[Segmentation en EDUs par embeddings]{Segmentation en EDUs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+	\caption[Segmentation en EDUs par embeddings]{Segmentation en EDUs proposée par \citet{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
 	\label{fig:edu-embedding}
 \end{figure}
 
 \subsubsection{Classification des relations}
 
-Un fois les \ac{edu} sont extraits, on doit les lier en utilisant les relations de cohérence. 
+Une fois les \acp{edu} sont extraits, on doit les lier en utilisant des relations de cohérence. 
 La méthode la plus utilisée pour trouver la structure \keyword[R]{\ac{rst}} est SHIFT-REDUCE.  
 Celle-ci se base sur une machine abstraite ayant la configuration $C = (\sigma, \beta, A)$ où $\sigma$ est une pile, $\beta$ est le tampon (buffer) d'entrée et $A$ est la liste des arcs créés (relations). 
 La figure \ref{fig:rst-shift-reduce} représente l'architecture de cette machine qui est similaire à celle utilisée dans l'analyse syntaxique des dépendances par transition. 
-La différence est que cette machine utilise les \ac{edu}s comme éléments et pas les mots.
+La différence est que cette machine utilise les \acp{edu} et pas les mots comme éléments d'analyse.
 Au début, la pile est vide, la liste des relations est vide et le tampon d'entrée contient tous les \ac{edu} ordonnés d'où  $C_{initiale} = (\varnothing, w, \emptyset)$. 
 A la fin, la pile et le tampon d'entrée doivent être vides d'où $C_{finale} = (\varnothing, \varnothing, A)$.
 
@@ -467,17 +470,17 @@ Un exemple d'une analyse \keyword[R]{\ac{rst}} en utilisant la méthode SHIFT-RE
 
 Le composant ``Oracle" doit être entraîné afin de décider l'opération suivante. 
 On peut utiliser des caractéristiques afin d'entraîner un algorithme d'apprentissage comme on a vu dans l'analyse des dépendances (chapitre 5). 
-On peut aussi utiliser les \keyword[E]{embedding}s avec un réseau de neurone comme la méthode proposée dans \cite{2018-yu-al}\footnote{Embedding pour RST : \url{https://github.com/yunan4nlp/NNDisParser}}. 
+On peut aussi utiliser les \keywordpl[E]{embedding} avec un réseau de neurone comme la méthode proposée dans \cite{2018-yu-al}\footnote{Embedding pour RST : \url{https://github.com/yunan4nlp/NNDisParser} [visité le 2021-09-15]}. 
 Les auteurs proposent d'utiliser une architecture encodeur-décodeur afin de décider l'opération suivante. 
-L'encodeur a comme but de représenter tous les \ac{edu} comme des vecteurs.
-Le décodeur prend les représentations de quelques \ac{edu} pour décider l'opération suivante. 
+L'encodeur a comme but de représenter tous les \acp{edu} comme des vecteurs.
+Le décodeur utilise les représentations de quelques \acp{edu} afin de décider l'opération suivante. 
 
 On commence par l'encodeur qui prend en entrée une représentation $x_i^w$ de chaque mot $w_i$. 
-Cette représentation et la concaténation du \keyword[E]{embedding} du mot $w_i$ et de sa catégorie grammaticale $t_i$ comme indiqué dans l'équation \ref{eq:rst-embedding-entree}
+Cette représentation et la concaténation du \keyword[E]{embedding} du mot $w_i$ et de sa catégorie grammaticale $t_i$ comme indiqué par l'équation \ref{eq:rst-embedding-entree}
 \begin{equation}\label{eq:rst-embedding-entree}
 x_i^w = embedding(w_i) \oplus embedding(t_i)
 \end{equation}
-Les mots d'une phrase $w_1 w_2 \ldots w_m$ sont passés par un réseau récurrent \keyword[B]{Bi-LSTM} pour avoir une représentation séquentielle comme indiqué dans l'équation \ref{eq:rst-embedding-seqrep}.
+Les mots d'une phrase $w_1 w_2 \ldots w_m$ sont passés par un réseau récurrent \keyword[B]{Bi-LSTM} pour avoir une représentation séquentielle comme indiqué par l'équation \ref{eq:rst-embedding-seqrep}.
 \begin{equation}\label{eq:rst-embedding-seqrep}
 \{h_1^w, h_2^w, \ldots, h_m^w \} = biLSTM(\{x_1^w, x_2^w, \ldots, x_m^w \})
 \end{equation}
@@ -487,7 +490,7 @@ Afin de représenter un \ac{edu} $\{w_s, w_{s+1}, \ldots, w_t \}$, on cherche le
 x^e = \frac{1}{t-s+1} \sum_{k=s}^{t} h_k^w
 \end{equation}
 Une fois la représentation individuelle de chaque \ac{edu} $x_i^e$ est trouvée, on cherche leurs représentations séquentielles. 
-Pour ce faire, on utilise un autre réseau récurrent \keyword[B]{Bi-LSTM} comme indiqué dans l'équation \ref{eq:rst-embedding-eduseqrep}
+Pour ce faire, on utilise un autre réseau récurrent \keyword[B]{Bi-LSTM} comme indiqué par l'équation \ref{eq:rst-embedding-eduseqrep}
 \begin{equation}\label{eq:rst-embedding-eduseqrep}
 \{h_1^e, h_2^e, \ldots, h_n^e \} = biLSTM(\{x_1^e, x_2^e, \ldots, x_n^e \})
 \end{equation}
@@ -520,8 +523,8 @@ Ensuite, on marque la relation entre les deux en utilisant la connective.
 Dans le cas où le connective est implicite, on doit inférer la connective étant donnée deux parties sans connectives. 
 Une méthode est d'utiliser \keyword[B]{BERT} avec les parties séparées par ``[SEP]" comme entrée. 
 Dans la sortie ``[CLS]", on attache un réseau de neurones à propagation avant afin d'inférer la connective.
-Une autre méthode similaire est l'utilisation de deux réseaux \keyword[L]{LSTM} pour représenté chacune des deux parties. 
-Cette méthode a été proposé dans \cite{2020-liang-al} où l'architecture est illustrée dans la figure \ref{fig:pdtb-liang}.
+Une autre méthode similaire est l'utilisation de deux réseaux \keyword[L]{LSTM} pour représenter chacune des deux parties. 
+Cette méthode a été proposée par \citet{2020-liang-al}, où l'architecture est illustrée dans la figure \ref{fig:pdtb-liang}.
 Le ``Max-Pool" est utilisé sur les représentations récurrentes des mots afin de composer le sens d'une partie et aussi pour réduire les paramètres du modèle.
 Dans chaque position dans les vecteurs des mots, il prend le nombre max pour avoir un autre vecteur de même taille.
 
@@ -538,31 +541,30 @@ Dans chaque position dans les vecteurs des mots, il prend le nombre max pour avo
 
 Un discours est cohérent s'il discute le même sujet.
 Ce dernier peut être représenté par une entité. 
-Quelque soit la position dans le discours, cette entité doit rester la plus importante.
-Prenons l'exemple ``\expword{John went to his favorite music store to buy a piano [John]. He had frequented the store for many years [John]. He was excited that he could finally buy a piano [John]. He arrived just as the store was closing for the day [John].}. 
+Quelque soit sa position dans le discours, cette entité doit rester la plus importante.
+Prenons l'exemple ``\expword{John went to his favorite music store to buy a piano [John]. He had frequented the store for many years [John]. He was excited that he could finally buy a piano [John]. He arrived just as the store was closing for the day [John].}". 
 Dans cet exemple, l'entité centrale de chaque phrase est ``John". 
-Maintenant, prenons l'exemple : ``\expword{John went to his favorite music store to buy a piano [John]. It was a store John had frequented for many years [The store]. He was excited that he could finally buy a piano [John]. It was closing just as John arrived [The store].}
-On peut sentir que le texte est non naturel ; il est un peut difficile à comprendre. 
+Maintenant, prenons l'exemple : ``\expword{John went to his favorite music store to buy a piano [John]. It was a store John had frequented for many years [The store]. He was excited that he could finally buy a piano [John]. It was closing just as John arrived [The store].}".
+On peut sentir que le texte est absurde ; il est un peut difficile à comprendre. 
 Cela est dû au fait que l'entité centrale se bascule entre les phrases ; des fois ``John", d'autres ``The store". 
 Dans cette section, on va discuter deux théories/méthodes pour analyser un texte en se basant sur l'entité et pas la structure.
 
 \subsection{Centering theory}
 
-Nous avons vu que les phrases (énoncé) doivent maintenir la même entité centrale. 
-Cette intuition est réalisée dans cette théorie en maintenant deux représentations pour chaque énoncé $\mathbf{U_n}$.
+Nous avons vu que les phrases (énoncés) doivent maintenir la même entité centrale. 
+Cette intuition est réalisée dans cette théorie en maintenant deux représentations pour chaque énoncé $U_n$.
 La première est l'entité saillante actuelle ; celle sur laquelle se concentre le discours dans l'énoncé $ U_{n-1} $.
-Elle s'appelle \optword{Backward-looking center} (centre rétrospectif), et elle est dénotée par $\mathbf{C_b(U_n)}$. 
+Elle s'appelle ``\optword{Backward-looking center}" (centre rétrospectif), et elle est dénotée par $C_b(U_n)$. 
 La deuxième est un ensemble des entités potentiellement saillantes dans le futur ; celles candidates pour être $C_b(U_{n+1})$.
-Il s'appelle \optword{Forward-looking center} (centres prospectifs), et il est dénoté par $\mathbf{C_f(U_n)}$. 
-On score les entités de cet ensemble en se basant sur leurs rôles grammaticaux (sujet plus important que l'objet qui est plus important que le reste), l'ordre (Ex. \expword{En Arabe, ce qui est en premier est plus important}), etc.
+Il s'appelle ``\optword{Forward-looking center}" (centres prospectifs), et il est dénoté par $C_f(U_n)$. 
+On score les entités de cet ensemble en se basant sur leurs rôles grammaticaux (sujet plus important que l'objet qui est plus important que le reste), l'ordre (En Arabe, ce qui est en premier est plus important), etc.
 L'entité avec le plus grand score est choisie comme candidate pour être $C_b(U_{n+1})$.
-Elle s'appelle \optword{Prefered center} (centre préféré), et elle est dénotée par $\mathbf{C_p(U_n)}$. 
+Elle s'appelle ``\optword{Prefered center}" (centre préféré), et elle est dénotée par $C_p(U_n)$. 
 
 Cette théorie se base sur l'hypothèse que le discours est plus facile à traiter lorsque les énoncés successifs parlent de la même entité. 
 Cette hypothèse est formalisée comme une classification des énoncés selon la transition qu'ils induisent dans le centre local.
 Il existe trois types de transitions \cite{2004-poesio-al} selon l'ordre de la plus cohérente : 
 \begin{itemize}
-	\item Ordre des transitions selon la plus cohérente
 	\item \optword{CONTINUE} : le locuteur parle d'une entité et il a l'intention d'en parler en futur
 	\item \optword{RETAIN} : le locuteur parle d'une entité et il a l'intention d'en changer en futur
 	\item \optword{SHIFT} : le locuteur a changé l'entité centrale
@@ -573,13 +575,13 @@ Il existe trois types de transitions \cite{2004-poesio-al} selon l'ordre de la p
 \end{itemize}
 
 La théorie de centralité (Centering theory) se base sur deux règles. 
-La première règle décrit que si un élément de $C_f(U_n)$ est réalisé par un pronom dans l'énoncé suivant ($U_{n+1}$) alors $C_b(U_{n+1})$ doit être réalisée par un pronom. 
-L'intuition, ici, est que la pronominalisation est un moyen courant de marquer la saillance du discours. 
+La première règle annonce que si un élément de $C_f(U_n)$ est réalisé par un pronom dans l'énoncé suivant ($U_{n+1}$) alors $C_b(U_{n+1})$ doit être réalisée par un pronom. 
+L'intuition, ici, est que la pronominalisation est un moyen courant pour marquer la saillance du discours. 
 S'il y a plusieurs pronoms dans un énoncé réalisant des entités de l'énoncé précédent, l'un de ces pronoms doit
-réaliser le centre arrière $C_b$.
+réaliser le centre en arrière $C_b$.
 La deuxième règle concerne les transitions mentionnées précédemment, où ``CONTINU" est plus cohérente que ``RETAIN" que ``Smooth-SHIFT" que ``Rough-SHIFT".
 Ces transitions sont calculée selon le tableau \ref{tab:center-trans}.
-L'intuition de cette règle est que les discours qui continuent à center sur la même entité sont plus cohérents que ceux qui basculent vers d'autres centres.
+L'intuition de cette règle est que les discours qui continuent à se center sur la même entité sont plus cohérents que ceux qui basculent vers d'autres centres.
 
 \begin{table}[!ht]
 	\centering
@@ -643,11 +645,11 @@ La figure \ref{fig:entity-grid-rep} représente un texte et sa représentation p
 \end{figure}
 
 Un document est considéré comme cohérent s'il suit une certaine forme de pattern.
-Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. \expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}
+Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. ``\expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}".
 Dans l'exemple précédent, la transition ``S\_" a une fréquence de 6.
 Un document peut être représenté par les probabilités des transitions grammaticales.
-Une probabilité est le ration entre le nombre d'une transition et le nombre de toutes les transitions.
-Ex. Dans l'exemple précédent : \expword{P(S\_) = 6/75}.
+Une probabilité est le ratio entre le nombre d'une transition et le nombre de toutes les transitions.
+Dans l'exemple précédent : \expword{P(S\_) = 6/75}.
 La figure \ref{fig:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
 
 \begin{figure}[!ht]
@@ -664,8 +666,8 @@ Le problème qui se pose : il est difficile d'avoir beaucoup de textes annotés 
 Une solution est d'utiliser une méthode auto-supervisée ; créer un texte non cohérent à partir d'un texte cohérent. 
 Ceci peut être accompli en appliquant un ordre aléatoire des phrases d'un texte cohérent. 
 
-Cette idée peut être utilisée pour tester les systèmes d'analyse de la cohérence : un texte cohérent doit avoir un score plus qu'un autre non cohérent. 
-Donc, on peut prendre un texte cohérent (les romans, etc.) et crée un autre non cohérent selon une de ces techniques :
+Cette idée peut être utilisée pour tester les systèmes d'analyse de la cohérence : un texte cohérent doit avoir un score plus grand qu'un autre non cohérent. 
+Donc, on peut prendre un texte cohérent (les romans, etc.) et créer un autre non cohérent selon une de ces techniques :
 \begin{itemize}
 	\item Discrimination de l'ordre des phrases : ordre aléatoire des phrases et comparaison du score de cohérence avec celui de l'ordre original.
 	\item Insertion de la phrase : modifier l'ordre d'une seule phrase et comparaison du score de cohérence avec celui de l'ordre original.

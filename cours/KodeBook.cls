@@ -12,6 +12,11 @@
 %\RequirePackage[arabic,french,english]{babel}
 %\RequirePackage{CJKutf8}
 
+%\RequirePackage[nobottomtitles*,compact]{titlesec}
+%
+%\renewcommand{\bottomtitlespace}{6pt}
+
+
 \RequirePackage[noxcolor]{beamerarticle}
 \RequirePackage[table]{xcolor}
 
