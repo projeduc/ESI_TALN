@@ -45,6 +45,9 @@
 \RequirePackage{ruby}
 \RequirePackage{xstring}
 
+\RequirePackage{longtable}
+\RequirePackage{tabu}
+
 \definecolor{indigo}{RGB}{75,0,130}%indigo
 %\definecolor{purpleX11}{RGB}{160,32,240}
 \definecolor{Crimson}{rgb}{0.6471, 0.1098, 0.1882}
@@ -501,7 +504,7 @@ title={#1}
 
 	{
 		\hypersetup{linkcolor=black}
-		\renewcommand\contentsname{\vspace*{-36pt}}
+		\renewcommand\contentsname{\vspace*{-3cm}}
 		\tableofcontents
 	}
 }
@@ -512,16 +515,34 @@ title={#1}
 	\addcontentsline{toc}{section}{Liste des figures}
 	{
 		\hypersetup{linkcolor=black}
-		\renewcommand\listfigurename{\vspace*{-36pt}}
+		\renewcommand\listfigurename{\vspace*{-3cm}}
 		\listoffigures
 	}
 
 }
 
+\RequirePackage[french,lined,ruled,algochapter]{algorithm2e}
+\renewcommand\AlCapFnt{\small\bfseries\color{indigo}}
+\renewcommand\AlCapNameFnt{\small\itshape}
+
+\makeatletter
+\AtBeginDocument{%
+	\let\l@algorithm\l@figure%
+	\let\listofalgorithms\listoffigures%
+	\let\@cftmakeloatitle\@cftmakeloftitle%
+	\patchcmd{\listofalgorithms}{\@cftmakeloftitle}{\@cftmakeloatitle}{}{}%
+	\patchcmd{\listofalgorithms}{\@starttoc{lof}}{\@starttoc{loa}}{}{}%
+	\patchcmd{\@cftmakeloatitle}{\listfigurename}{\vspace*{-3cm}}{}{}%
+	\patchcmd{\@chapter}{\addtocontents}{%
+		\addtocontents{loa}{\protect\addvspace{10\p@}}%
+		\addtocontents}{}{}%
+}
+\makeatother
+
 \def\kodeloa{%
 	
-%	\chapter*{Liste des figures}
-%	\addcontentsline{toc}{section}{Liste des figures}
+	\chapter*{Liste des algorithmes}
+	\addcontentsline{toc}{section}{Liste des algorithmes}
 	{
 		\hypersetup{linkcolor=black}
 		\listofalgorithms
@@ -535,46 +556,33 @@ title={#1}
 	\addcontentsline{toc}{section}{Liste des tableaux}
 		{
 			\hypersetup{linkcolor=black}
-			\renewcommand\listtablename{\vspace*{-36pt}}
+			\renewcommand\listtablename{\vspace*{-3cm}}
 			\listoftables
 		}
 
 }
 
 \RequirePackage{acro}
-%\RequirePackage[acronyms]{glossaries}
-%\glsenablehyper
-%\acsetup{tooltip=true}
-%\acsetup{
-%	page-ref    = none,% Seitennummer in Klammern
-%	extra-style = comma,% extra-Informationen mit Komma anhÃ€ngen
-%	only-used   = false,% fÃŒr das Beispiel auch die nicht verwendeten in die Liste aufnehmen
-%	sort        = true,  % Liste sortieren
-%	hyperref  = {true}
-%}
 
-%\ExplSyntaxOn
-%\cs_set_protected:Npn \acro_activate_hyperref_support:
-%{
-%	\bool_if:nT { \l__acro_hyperref_loaded_bool && \l__acro_use_hyperref_bool }
-%	{
-%		\sys_if_engine_xetex:TF
-%		{
-%			\cs_set:Npn \acro_hyper_link:nn ##1##2
-%			{ \hyperlink { \XeTeXLinkBox {##1} } {##2} }
-%		}
-%		{ \cs_set_eq:NN \acro_hyper_link:nn \hyperlink }
-%		\cs_set:Npn \acro_hyper_target:nn ##1##2
-%		{ \raisebox { 3ex } [ 0pt ] { \hypertarget {##1} { } } ##2 }
-%	}
-%}
-%\ExplSyntaxOff
+
+%\DeclareInstance{acro-page-number}{dotfill}{inline}{ 
+%	punct = true ,
+%	punct-symbol = \dotfill
+%} 
+
+\DeclareAcroListStyle{longtabu}{table}{
+	table = longtabu ,
+	table-spec = @{}>{\color{indigo}\bfseries}lX@{}
+}
+
+\acsetup{list-style=longtabu}
+
 
 \def\kodeabbrev{%
 
 	\chapter*{Liste des abréviations}
 	\addcontentsline{toc}{section}{Liste des abréviations}
-
+	\vspace*{-1cm}
 	\printacronyms[include-classes=abbrev,name=]
 %	\printglossaries
 %	\printglossary[type=\acronymtype]
@@ -671,3 +679,20 @@ title={#1}
 \makeatother 
 
 
+\usepackage[font=small, textfont=it, labelfont={bf, color=indigo}, labelsep=colon]{caption}
+\captionsetup[table]{name=Tableau}
+
+\RequirePackage{array}
+\RequirePackage{natbib}
+\RequirePackage{lscape}%to flip tables in a page
+\RequirePackage{pdflscape}
+\RequirePackage{wrapfig}
+\RequirePackage{colortbl}
+\RequirePackage{alltt}
+
+\RequirePackage{turnstile}%Induction symbole
+\RequirePackage{soul} % underline \ul with breakline
+
+
+\renewcommand{\cite}[1]{\citep{#1}}
+\renewcommand{\UrlFont}{\ttfamily\footnotesize}
