@@ -37,7 +37,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 
 ### CH2: Traitements basiques du text
 
-- [CoreNLP](CH2/preprocessing_java_CoreNLP.ipynb) : Java
+- [CoreNLP](./CH2/preprocessing_java_CoreNLP.ipynb) : Java
   -  TODO: compléter
 - [LangPi](CH2/preprocessing_java_LangPi.ipynb) : Java
   - I. Text normalization
