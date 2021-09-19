@@ -32,7 +32,7 @@ Une information est encodée dans le cerveau humain en utilisant un phénomène 
 C'est le point de vue de l'approche physiologique.
 Quand à l'approche mentale, parmi les types d'encodage, on peut citer l'encodage visuel. 
 Dans ce cas, la représentation mentale d'un mot n'a aucune relation avec la langue parlée par l'individu.
-Par exemple, les mots ``\RL{^sajaraT} \textit{/shajarah/}" en arabe, ``\textit{tree}" en anglais, ``\textit{arbre}" en français et ``木\textit{ /ki/}" en japonais font référence au même concept : un objet avec un tronc sur lequel s'insèrent des branches ramifiées portant le feuillage.
+Par exemple, les mots ``\expword{\<^sajaraT> /shajarah/}" en arabe, ``\expword{tree}" en anglais, ``\expword{arbre}" en français et ``\expword{木 /ki/}" en japonais font référence au même concept : un objet avec un tronc sur lequel s'insèrent des branches ramifiées portant le feuillage.
 En informatique, représenter les concepts en utilisant des images augmente la taille du stockage et le temps du traitement. 
 Plutôt, on utilise un encodage moins couteau comme les relations avec les autres concepts ou encore un vecteur de nombres.
 Une représentation est meilleure lorsqu'elle peut faire face à l'ambigüité. 
@@ -647,6 +647,8 @@ ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} \theta_j^{t
 \label{eq:elmo-estim}
 \end{equation}
 
+%fin de la page
+\vfill
 \subsection{BERT}
 
 \keyword[B]{BERT}\footnote{BERT : \url{https://github.com/google-research/bert} [visité le 2021-09-11]} (Bidirectional Encoder Representations from Transformers) est un autre \keyword[E]{embedding} contextuel développé par Google \cite{2019-devlin-al}.

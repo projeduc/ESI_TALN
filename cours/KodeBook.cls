@@ -198,13 +198,12 @@ title={#1}
 \RequirePackage{enumitem, calc}
 
 \renewcommand{\baselinestretch}{1}
-
 \setlength\parindent{0pt}
 %paragraph spacing
 \setlength{\parskip}{12pt}%\baselineskip
 \newlength{\mylength}
 \setlength{\mylength}{12pt}
-\setlist{after*=\vspace{\mylength}}
+\setlist{after*=\vspace*{\mylength}}
 
 
 \RequirePackage{listings}
@@ -363,14 +362,14 @@ title={#1}
 	\node[inner sep=0] at (current page.center) {\the\@coverimage};
 	\fi
 	
-	\begin{scope}[every node/.style={rotate=35}]
+	\begin{scope}[every node/.style={rotate=30}]
 	\node[anchor=north west,minimum width=\textwidth,minimum height=40cm,fill=indigo] (vline1)
 	at ([shift={(3cm,0cm)}] current page.north west)
 	{};
 	\end{scope}
 
 	\node[anchor=north west, text=white,text width =15cm,opacity=0,text opacity=1,scale=1.5] (title1)
-	at ([shift={(0.4\textwidth,-1.5cm)}] current page.north west)
+	at ([shift={(0.4\textwidth,-2cm)}] current page.north west)
 	{
 		\bfseries
 		\Huge
@@ -378,6 +377,17 @@ title={#1}
 %		\@title
 		\euphoria
 		\replace\@title
+	};
+
+	\node[anchor=north west,minimum width=2\textwidth,minimum height=2cm,fill=white] (headerline)
+	at ([shift={(0cm,0cm)}] current page.north west)
+	{};
+	
+	\node[text width=20cm,anchor=north west, align=center] at ([shift={(0cm, -0.25cm)}] headerline.north west){
+		\bfseries
+		République Algérienne démocratique et populaire\\
+		Ministère de l'enseignement supérieur et de la recherche scientifique\\
+		Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger
 	};
 
 	\node[anchor=south west,minimum width=2\textwidth,minimum height=3.4cm,fill=white] (authorline)
@@ -408,6 +418,7 @@ title={#1}
 
 \def\frontmatter{
 	\cleardoublepage
+	\renewcommand{\baselinestretch}{1}
 	\pagenumbering{roman}
 	\pagestyle{fancy}
 	\phantomsection
@@ -420,6 +431,7 @@ title={#1}
 
 \def\backmatter{
 	\cleardoublepage
+	\renewcommand{\baselinestretch}{1}
 %	\pagenumbering{roman}
 %	\pagestyle{empty}
 	\phantomsection
@@ -437,7 +449,7 @@ title={#1}
 \renewcommand{\mainmatter}{
 
 	\cleardoublepage
-
+	\renewcommand{\baselinestretch}{1.15}
 	\pagenumbering{arabic}
 	\phantomsection
 	\addcontentsline{toc}{part}{Contenu}
@@ -495,6 +507,8 @@ title={#1}
 \renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}% \part font in ToC
 \renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
 \renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
+%\renewcommand\cftchapafterpnum{\vskip6pt}
+%\renewcommand\cftsecafterpnum{\vskip0pt}
 
 
 \def\kodetoc{%

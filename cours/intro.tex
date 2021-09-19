@@ -150,9 +150,9 @@ Reprenons la définition du langage par Larousse : ``\textit{capacité, observé
 Ce langage est doté d'une sémantique ainsi qu'une structure. 
 La capacité d'un langage naturel (humain) comprend plusieurs fonctions linguistiques (niveaux) qui sont représentées dans la figure \ref{fig:niveaux}.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering 
-	\hgraphpage{niveaux2.pdf}
+	\hgraphpage[.9\textwidth]{niveaux2.pdf}
 	\caption{Les niveaux de traitement d'un langage naturel. \label{fig:niveaux}}
 \end{figure}
 
@@ -174,22 +174,22 @@ Dans la reconnaissance et la synthèse de la parole, en générale, on s'intére
 Une façon pour encoder les voyelles et les consonnes est de les classifier selon les points d'articulation (voir la figure \ref{fig:articulation}). 
 Les consonnes sont divisées, selon la voie orale, en 5 groupes :
 \begin{itemize}
-	\item \optword{labial} à l'aide des lèvres. Exemple, \expword{\textipa{[b], [p], [m], [f], [v]}}
+	\item \optword{labial} à l'aide des lèvres. Ex., \expword{\textipa{[b], [p], [m], [f], [v]}}
 	\item \optword{apicale} avec la pointe de la langue ou sa partie antérieure. 
-	Exemple, \expword{%
+	Ex., \expword{%
 		\textipa{[t], [d], [n], [r], }
-		\RL{^s} \textipa{[S],} 
-		\RL{_t} \textipa{[T],} 
-		\RL{_d} \textipa{[D]}
+		\<^s> \textipa{[S],} 
+		\<_t> \textipa{[T],} 
+		\<_d> \textipa{[D]}
 	}
-	\item \optword{dorsal} avec la partie postérieure de la langue. Exemple, \expword{\textipa{[c], [k], [g], [q],} \RL{.g} \textipa{[G]}}
+	\item \optword{dorsal} avec la partie postérieure de la langue. Ex., \expword{\textipa{[c], [k], [g], [q],} \<.g> \textipa{[G]}}
 	\item \optword{pharyngale} au niveau du pharynx. 
-	Exemple, \expword{\RL{.h} \textipa{[\*h],} \RL{`} \textipa{[Q]}}
+	Ex., \expword{\<.h> \textipa{[\*h],} \<`> \textipa{[Q]}}
 	\item \optword{glottale} au niveau de la glotte. 
-	Exemple, \expword{\textipa{[h],} \RL{'} \textipa{[P]}}
+	Ex., \expword{\textipa{[h],} \<'> \textipa{[P]}}
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering 
 	\hgraphpage[.5\textwidth]{oraltract_.pdf}
 	\caption[Voie orale]{Voie orale \cite{2009-ball}. \label{fig:articulation}}
@@ -200,10 +200,10 @@ La parole est découpée en segments sonores distincts (phones).
 A chaque phone, il est attribué un symbole unique. 
 La figure~\ref{fig:ipa} représente une partie de l'alphabet phonétique internationale.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering 
-	\hgraphpage{IPA2020_.pdf}
-	\caption[Alphabet phonétique internationale : IPA]{Alphabet phonétique internationale\footnote{Alphabet phonétique internationale : \url{https://www.internationalphoneticassociation.org/IPAcharts/IPA_chart_orig/pdfs/IPA_DejaVu_2020_full.pdf} [visité le 2021-09-08]}}
+	\hgraphpage[\textwidth]{IPA2020_.pdf}
+	\caption[Alphabet phonétique internationale : IPA]{Alphabet phonétique internationale, \url{https://www.internationalphoneticassociation.org/IPAcharts/IPA_chart_orig/pdfs/IPA_DejaVu_2020_full.pdf} [visité le 2021-09-08]}
 	\label{fig:ipa}
 \end{figure}
 
@@ -215,8 +215,8 @@ Contrairement au phone, un phonème est une unité abstraite qui peut correspond
 Il est lié à la langue étudiée. 
 Par exemple, en français, le \textit{r} peut se prononcer (en phonétique) : roulé \expword{\textipa{[r]}}, grasseyé \expword{\textipa{[\;R]}}, ou normal (parisien) \expword{\textipa{[K]}}. 
 Il est toujours transcrit de la même façon, exemple \expword{rat /rat/}. 
-En arabe, on trouve les consonnes \expword{\RL{r} \textipa{[r]}} et \expword{\RL{.g} \textipa{[G]}} qui ont deux phonèmes différents : \expword{\textipa{/r/}} et \expword{\textipa{/G/}} respectivement. 
-Exemple, \expword{\RL{.gryb} \textipa{/G\ae ri:b/} (étranger)}. 
+En arabe, on trouve les consonnes \expword{\<r> \textipa{[r]}} et \expword{\<.g> \textipa{[G]}} qui ont deux phonèmes différents : \expword{\textipa{/r/}} et \expword{\textipa{/G/}} respectivement. 
+Exemple, \expword{\<.gryb> \textipa{/G\ae ri:b/} (étranger)}. 
 Donc, la phonologie s'intéresse à la transcription des sons par rapport à une langue donnée.
 
 \subsection{Orthographe}
@@ -228,29 +228,22 @@ Les systèmes d'écriture sur lesquels l'orthographe est basé sont regroupés e
 \begin{itemize}
 	\item \optword{logographique} : un mot est constitué d'un à plusieurs logogrammes.
 	Ce dernier est un graphème unique notant un lemme (mot).
-	Exemple, \expword{
-		Kanji (Japonais) : 
-		日, 本, 語
-	}.
+	Exemple, \expword{Kanji (Japonais) : 日, 本, 語}.
 	Un logogramme peut être prononcé de différentes manières. 
-	Par exemple, \expword{
-		\ruby{楽}{tano}\ruby{し}{shi}\ruby{い}{i} (agréable), 
-		\ruby{音}{on}\ruby{楽}{gaku} (musique)
-	}
+	Par exemple, \expword{\ruby{楽}{tano}\ruby{し}{shi}\ruby{い}{i} (agréable), \ruby{音}{on}\ruby{楽}{gaku} (musique)}
 	
 	\item \optword{syllabique} : un mot est constitué de plusieurs symboles, chacun représente un syllabe (son vocalisé). 
-	Exemple, \expword{
-		Hiragana (Japonais) : 
-		る /ru/, た /ta/, め /me/, の /no/ ; 
-		Katakana (Japonais) : 
-		セ /se/, ク /ku/ ; 
-	}
+	Exemple, \expword{Hiragana (Japonais) : る /ru/, た /ta/, め /me/, の /no/ ; Katakana (Japonais) : セ /se/, ク /ku/ ;	}
+	
 	\item \optword{alphabétique} : un mot est composé des lettres, chacune représente un phonème. 
-	Exemple, \expword{Le latin : A, B, C, etc. L'arabe : \RL{b} /b/, \RL{t} /t/, \RL{h} /h/}. 
+	%Exemple, \expword{Le latin : A, B, C, etc. L'arabe : \<b> /b/, \<t> /t/, \<h> /h/}. 
+	Exemple, \expword{Le latin : A, B, C, etc. L'arabe : \<b> /b/, \<t> /t/, \<h> /h/}. 
 	Il est à noter que l'arabe utilise un sous-système alphabétique appelé \keyword{abjad}. 
 	Dans ce sous système, il n'y a pas de voyelles ; il y a que des consonnes.
 \end{itemize}
 
+% REM: forcer le titre à apparaitre dans le début de la page
+%\vspace*{-36pt}
 \subsection{Morphologie}
 
 La morphologie est concernée par l'étude de la formation des mots, y compris la façon dont les nouveaux mots sont inventés dans les langues du monde.
@@ -261,7 +254,7 @@ Toutes les formes grammaticales ayant le même sens forment un ensemble appelé 
 Le mot choisi parmi ces formes pour représenter le lexème est appelé ``lemme" (Ex. \expword{former}).
 Chaque mot possède une catégorie grammaticale (\expword{nom, verbe, etc.}) qui peut appartenir à :
 \begin{itemize}
-	\item \optword{la classe ouverte} contenant les catégories grammaticales qui changent leurs formes selon des traits grammaticaux (par exemple, pluriel et singulier). 
+	\item \optword{la classe ouverte} contenant les catégories grammaticales qui changent leurs formes selon des traits grammaticaux (par exemple, pluriel et singulier).
 	Dans le français, cette classe contient : les adjectifs, les noms, les verbes, les déterminants et les pronoms.
 	\item \optword{la classe fermée} où les mots d'une catégorie grammaticale n'acceptent pas de changement.
 	Dans le français, cette classe comporte : les adverbes, les articles, les conjonctions, les interjections et les prépositions.
@@ -284,7 +277,7 @@ Selon la façon de former les mots, on peut classifier une langue selon la typol
 		
 		\item \optword{Langues fusionnelles} : il n'est pas toujours aisé de distinguer les morphèmes de la racine, ou les morphèmes les uns des autres. 
 		Parmi ces langues : \expword{arabe, anglais, français, etc.}.
-		Exemple, \expword{\RL{kitAb, kutub, 'wa'`.taynAkumuwh}, foot, feet}
+		Exemple, \expword{\<kitAb, kutub, 'wa'`.taynAkumuwh>, foot, feet}
 	\end{itemize}
 \end{itemize}
 
@@ -298,8 +291,8 @@ Parmi les méthodes utilisées par la flexion, on peut citer :
 \begin{itemize}
 	\item \optword{Affixation} : C'est la formation d'un nouveau mot en utilisant les préfixes (avant le mot original), les infixes (au milieu) et les suffixes (après).
 	Un autre type des infixes est la transfixe trouvée chez les langues sémitiques (un infixe discontinu).
-	Un exemple d'une flexion (dans ce cas : conjugaison) par préfixes : \expword{\RL{_dhb} /dhahaba/} (il est allé, passé), \expword{\RL{y_dhb} /yadhhabu/} (il va, présent).
-	Conjugaison par préfixe et transfixe : \expword{\RL{qAl} /qāla/} (il a dit, passé), \expword{\RL{yqwl} /yaqūlu/} (il dit, présent).
+	Un exemple d'une flexion (dans ce cas : conjugaison) par préfixes : \expword{\<_dhb> /dhahaba/} (il est allé, passé), \expword{\<y_dhb> /yadhhabu/} (il va, présent).
+	Conjugaison par préfixe et transfixe : \expword{\<qAl> /qāla/} (il a dit, passé), \expword{\<yqwl> /yaqūlu/} (il dit, présent).
 	Un autre pour une flexion (déclinaison) par suffixes : \expword{étudiant} (masculin-singulier), \expword{étudiantes} (féminin-pluriel).
 	\item \optword{Redoublement} : doubler un mot pour former un autre mot ayant la même catégorie et sens. 
 	Exemple, \expword{super-duper, bye-bye, きらきら /kira-kira/ (briller)}.
@@ -311,7 +304,7 @@ On peut trouver un trait grammatical dans une langue et pas dans une autre.
 Parmi les traits grammaticaux, on peut citer les suivants :
 \begin{itemize}
 	\item \optword{Nombre} : représente la quantité. 
-	singulier (\expword{il}), duel (\expword{\RL{hmA}}), triel, paucal, pluriel (\expword{ils}), etc. 
+	singulier (\expword{il}), duel (\expword{\<hmA>}), triel, paucal, pluriel (\expword{ils}), etc. 
 	
 	\item \optword{Personne} : décrit le rôle qu'occupent les acteurs d'un dialogue. 
 	première (\expword{je, nous}), deuxième (\expword{tu, vous}), troisième (\expword{il, ils, elle, elles}), etc.
@@ -337,7 +330,7 @@ Contrairement à la morphologie flexionnelle, la morphologie dérivationnelle vi
 Parmi les méthodes utilisées par la dérivation, on peut citer :
 \begin{itemize}
 	\item \optword{Affixation} : en utilisant des préfixes, infixes et/ou suffixes. 
-	Exemple, \expword{happy (ADJ), unhappy (ADJ), unhapyness (N)}; \expword{\RL{jhd} /jahada/ (V), \RL{ijthd} /ijtahada/ (V)}
+	Exemple, \expword{happy (ADJ), unhappy (ADJ), unhapyness (N)}; \expword{\<jhd> /jahada/ (V), \<ijthd> /ijtahada/ (V)}
 	
 	\item \optword{Composition} : en fusionnant des mots dans un seul. 
 	Exemple, \expword{porter (V) + manteau (N) = portemanteau (N)}; \expword{wind (N), mill (N), windmill (N)}
@@ -348,7 +341,7 @@ Parmi les méthodes utilisées par la dérivation, on peut citer :
 	\item \optword{Troncation} : 
 	Exemple, \expword{bibliographie, biblio}, \expword{information, info}
 	
-	\item \optword{Redoublement} : Exemple, \expword{\RL{kr} (V), \RL{krkr} (V)} 
+	\item \optword{Redoublement} : Exemple, \expword{\<kr> (V), \<krkr> (V)} 
 	
 \end{itemize}
 
@@ -360,7 +353,7 @@ Selon la position du mot, il peut avoir une fonction grammaticale (\expword{Suje
 Les langues peuvent être classifiées selon l'ordre des trois composants : \keyword{Sujet (S)}, \keyword{Verb (V)} et \keyword{Objet (O)}.
 Exemple SOV [japonais] : \expword{カリムさん[S]は日本語[O]を勉強します[V]。}.
 Exemple SVO [français] : \expword{Karim [S] apprend [V] le français [O].}.
-Exemple VSO [arabe] : \RL{yt`llm \LR{[V]} krym \LR{[S]} al-`rbyT \LR{[O]}.}.
+Exemple VSO [arabe] : \<yt`llm \LR{[V]} krym \LR{[S]} al-`rbyT \LR{[O]}.>.
 Le tableau~\ref{tab:ordre} représente une étude sur 402 langues qui nous donne une idée sur les proportions de chaque catégorie des ordres.
 
 \begin{table}[ht]

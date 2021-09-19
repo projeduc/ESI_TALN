@@ -125,7 +125,7 @@ Ces dernières sont décrites dans le tableau \ref{fig:exp-reg} avec leurs sens 
 		\hline\hline
 	\end{tabular}
 
-	\caption{Les expressions régulières\label{fig:exp-reg}}
+	\caption{Expressions régulières\label{fig:exp-reg}}
 \end{table}
 
 La plus fréquente utilisation des expressions régulières est la recherche des sous-chaînes de caractères dans un grand texte.
@@ -376,7 +376,7 @@ Les cases en gras représentent la plage de recherche en utilisant l'éloignemen
 Les cases soulignées représentent l'intersection entre la ième correspondance de X et la ième correspondance de Y.
 Les correspondances soulignées des vecteurs des deux mots représentent des transpositions. 
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	
 \begin{minipage}{0.45\textwidth}
 
@@ -559,7 +559,7 @@ Parmi les variations qui ont besoin d'être normalisées, on peut citer :
 	
 	\item \optword{Diacritiques} : comme le point précédent, les diacritiques peuvent être supprimées lorsque la tâche ne dépend pas sur elles. 
 	Par exemple, dans le français, on appelle ça désaccentuation (\expword{système \textrightarrow\ systeme}).
-	Dans l'arable, on l'appelle dé-vocalisation (\expword{\RL{yadrusu} \textrightarrow\ \RL{ydrs}}). 
+	Dans l'arable, on l'appelle dé-vocalisation (\expword{\<yadrusu> \textrightarrow\ \<ydrs>}). 
 	Dans des tâches qui ont besoin de vocalisation, comme le traitement des poèmes, on doit garder les diacritiques. 
 	En fait, on doit appliquer l'opération inverse (vocalisation du texte).
 	
@@ -581,7 +581,7 @@ Parmi les variations qui ont besoin d'être normalisées, on peut citer :
 Le texte peut contenir des caractères, des mots et des expressions qui peuvent entraver son traitement. 
 Pour faciliter ce dernier, il faut supprimer le bruit. 
 Un exemple très commun est la présence des caractères spéciaux, comme les caractères non imprimables, dans le texte. 
-Les mots contenant ces caractères ne sont pas considéré les mêmes que les mots sans ces caractères. 
+Les mots contenant ces caractères ne sont pas considérés les mêmes que les mots sans ces caractères. 
 En général, ces caractères sont d'origine des pages web ou des PDFs (extraction du texte à partir des PDFs ou autres formes d'images).
 Les mots clés des formats textuelles est un exemple des mots à filtrer. 
 On peut trouver ça dans les balises de certaines formats semi-structurées comme HTML, XML, etc.
@@ -612,8 +612,8 @@ Dans les langues synthétiques, on peut former les mots en utilisant la flexion 
 La flexion génère des variations morphologiques d'un mot selon les traits grammaticaux (nombre, genre, etc.). 
 Les deux types de flexion sont la conjugaison des verbes et la déclinaison des noms, pronoms, adjectifs et déterminants.
 Quant à la dérivation, les mots créés forment un nouveau lexèmes (un sens différent du mot original) ou ils appartiennent à une autre catégorie grammaticale. 
-Un exemple d'un nouveau lexème,  \expword{couper \textrightarrow\ découper, \RL{`ml} \textrightarrow\ \RL{ist`ml}}.
-Le changement de catégorie peut être dû à la nominalisation (\expword{classer \textrightarrow\ classement, classeur ; \RL{darasa} \textrightarrow\ \RL{darsuN, madrasaTuN, mudarrisuN, dArisuN}}) ou l'adjectif (\expword{fatiguer \textrightarrow\ fatigant}), etc.
+Un exemple d'un nouveau lexème,  \expword{couper \textrightarrow\ découper, \<`ml> \textrightarrow\ \<ist`ml>}.
+Le changement de catégorie peut être dû à la nominalisation (\expword{classer \textrightarrow\ classement, classeur ; \<darasa> \textrightarrow\ \<darsuN, madrasaTuN, mudarrisuN, dArisuN>}) ou l'adjectif (\expword{fatiguer \textrightarrow\ fatigant}), etc.
 
 
 La formation des mots suit des règles bien définies, donc le problème peut être résolu en utilisant un automate à état fini. 

@@ -429,20 +429,20 @@ Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en pas
 Si on modifie la  sortie : à la place des probabilités des mots du vocabulaire, on essaye d'estimer les probabilités des catégories possibles. 
 On peut, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseaux de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.6\textwidth]{rnn-simple_.pdf}
-	\caption[Un RNN simple pour l'étiquetage morpho-syntaxique]{Un RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
+	\hgraphpage[.55\textwidth]{rnn-simple_.pdf}
+	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
 \end{figure}
 
 Si on veut avoir des réseaux plus profonds et plus complexes, on peut empiler plusieurs \ac{rnn} ensembles. 
 Cela permet au modèle d'apprendre des traitements plus complexes améliorant la prédiction.
 Pour entraîner ce modèle, on aura besoin d'un grand dataset ; la taille de ce dernier augmente avec le nombre des réseaux empilés.
 La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rnn} empilés.
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.6\textwidth]{rnn-stack_.pdf}
-	\caption[Des RNNs empilés pour l'étiquetage morpho-syntaxique]{Des RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn2}}
+	\hgraphpage[.55\textwidth]{rnn-stack_.pdf}
+	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique]{RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn2}}
 \end{figure}
 
 Dans les modèles neuronaux précédents, l'étiquette courante $t_i$ dépend sur le mot courant $w_i$ et le contexte passé. 
@@ -451,9 +451,9 @@ Afin d'estimer l'étiquette courante en se basant sur le contexte futur, on util
 Afin d'exprimer la bidirectionnalité, on utilise deux \ac{rnn} : en avant $RNN_{forward}(w_1^i)$ et en arrière $RNN_{backword}(w_i^n)$. 
 On fait la somme entre les deux états cachés $h_i^f \oplus h_i^b$ résultant à un vecteur qui doit passer par une fonction ``softmax" afin d'estimer les probabilités des tags. 
 Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering
-	\hgraphpage[.6\textwidth]{rnn-bi_.pdf}
+	\hgraphpage[.60\textwidth]{rnn-bi_.pdf}
 	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn3}}
 \end{figure}
 
