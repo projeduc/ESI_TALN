@@ -68,8 +68,11 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   
 ### CH3: Modèles de langage
 
-- [NLTK](CH03/modeles_python_NLTK.ipynb) : Python
-  - I. I. Preprocessing (padding)
+- [NLTK](CH03/models_python_NLTK.ipynb) : Python
+  - I. Preprocessing (padding)
   - II. NGrams
   - III. Vocabulary
   - IV. Language models (MLE, Smoothed models)
+- [Keras(TensorFlow)](CH03/models_python_Keras.ipynb) : Python
+  - I. Simple FeedForward 3-gram model (with, without embedding)
+  - II. LSTM model
