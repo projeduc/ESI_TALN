@@ -38,11 +38,15 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 ### CH2: Traitements basiques du text
 
 - [CoreNLP](CH02/preprocessing_java_CoreNLP.ipynb) : Java
-  -  TODO: compléter
+  - I. Preprocessing pipeline
+  - II. Get tokens
+  - III. Get sentences
+  - IV. Get lemmas
+  - V. Other languages
 - [LangPi](CH02/preprocessing_java_LangPi.ipynb) : Java
   - I. Text normalization
-  - II. Sentence segmentation
-  - III. Words tokenization
+  - II. Text segmentation
+  - III. StopWords Filtering
   - IV. Text stemming
 - [OpenNLP](CH02/preprocessing_java_OpenNLP.ipynb) : Java
   - I. Language detection (detection, training)
@@ -60,3 +64,12 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - II. Words tokenization
   - III. StopWords filtering
   - IV. Lemmatization
+
+  
+### CH3: Modèles de langage
+
+- [NLTK](CH03/modeles_python_NLTK.ipynb) : Python
+  - I. I. Preprocessing (padding)
+  - II. NGrams
+  - III. Vocabulary
+  - IV. Language models (MLE, Smoothed models)
