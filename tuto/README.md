@@ -35,7 +35,7 @@ On général, il est destiné pour la documentation en Python.
 Mais, il existe des noyaux pour documenter d'autres langages de programmation.
 Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 
-### CH2: Traitements basiques du text
+### CH02: Traitements basiques du text
 
 - [CoreNLP](CH02/preprocessing_java_CoreNLP.ipynb) : Java
   - I. Preprocessing pipeline
@@ -66,7 +66,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - IV. Lemmatization
 
   
-### CH3: Modèles de langage
+### CH03: Modèles de langage
 
 - [NLTK](CH03/models_python_NLTK.ipynb) : Python
   - I. Preprocessing (padding)
@@ -76,3 +76,10 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 - [Keras(TensorFlow)](CH03/models_python_Keras.ipynb) : Python
   - I. Simple FeedForward 3-gram model (with, without embedding)
   - II. LSTM model
+  
+### CH04: Étiquetage morpho-syntaxique (Étiquetage de séquences)
+
+- [NLTK](CH04/sequences_python_NLTK.ipynb) : Python
+  - I. Part of Speech (PoS) tagging: Default, RegEx, CRF, HMM, PerceptronTagger, Brill
+  - II. Named Entity Recognition (NER): default, training
+  - III. Chunking
