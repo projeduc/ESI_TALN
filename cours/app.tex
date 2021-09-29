@@ -1010,7 +1010,7 @@ Donc, pour regrouper les mots similaires, on utilise un ratio basé sur la dista
 Ratio = 1 - Levenstein(w_1, w_2)/(|w_1|+|w_2|)
 \end{equation}
 Par exemple, \expword{Ratio(kolach, kollach) = 92\%, Ratio(kolach, khlasse) = 38\%.}.
-Supposons que nous avons un vocabulaire $V_p$ positif et un autre $V_n$ négatif qui sont définis manuellement. 
+Supposons que nous ayons un vocabulaire $V_p$ positif et un autre $V_n$ négatif qui sont définis manuellement. 
 Pour chaque mot $w$ du vocabulaire qui n'appartient pas à ces deux vocabulaires, on calcule son orientation sémantique comme indiqué par l'équation \ref{eq:asent-bettiche-orientation}
 \begin{equation}\label{eq:asent-bettiche-orientation}
 SO(w) = \sum_{w_p \in V_p} PMI(w, w_p) - \sum_{w_n \in V_n} PMI(w, w_n)
@@ -1114,7 +1114,7 @@ La difficulté en se basant sur ce score est représentée par le niveau des ét
 Il existe plusieurs formules pour calculer la lisibilité d'un texte en anglais en utilisant plusieurs caractéristiques. 
 Des formules pour tester la lisibilité des textes dans d'autres langues ont été proposées. 
 Par exemple, la métrique \optword{OSMAN} \cite{2016-elhaj-rayson} est utilisée afin de mesurer la lisibilité d'un texte en arabe suivant l'équation \ref{eq:lisibilite-osman}.
-Cette métrique se base sur le nombre des mots, le nombre des phrases, le nombre des mots difficiles (plus de 5 caractères sans diacritiques), le nombre des syllabes, le nombre des mots complexes (plus de 4 syllabes) et les mots Faseeh (les mots complexes avec les lettres \RL{|', y', w', _d, .z} ou qui se termine avec \RL{wn, wA}).
+Cette métrique se base sur le nombre des mots, le nombre des phrases, le nombre des mots difficiles (plus de 5 caractères sans diacritiques), le nombre des syllabes, le nombre des mots complexes (plus de 4 syllabes) et les mots Faseeh (les mots complexes avec les lettres \<|', y', w', _d, .z> ou qui se termine avec \<wn, wA>).
 \begin{align}
 Osman = & 200.791 - 1.015 \times (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}}) \nonumber\\
 & \nonumber\\

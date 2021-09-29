@@ -56,12 +56,12 @@ Il existe plusieurs théories pour représenter la structure syntaxique :
 
 \subsection{Annotation constituante}
 
-Nous avons vu dans le chapitre précédent que chaque mot d'une langue a une catégorie grammaticale (Ex. \expword{Le/DET cours/NOM est/VP intéressant/ADJ}). 
-Si on revient au chapitre des modèles de langage, on peut déduire que le déterminant possède une grande probabilité d'être suivi par un nom ou un adjectif suivi par un nom (En RegEx : \expword{DET ADJ* NOM}). 
+Nous avons vu dans le chapitre précédent que chaque mot d'une langue a une catégorie grammaticale (Ex. ``\expword{Le/DET cours/NOM est/VP intéressant/ADJ}"). 
+Si on revient au chapitre des modèles de langage, on peut déduire que le déterminant possède une grande probabilité d'être suivi par un nom ou un adjectif suivi par un nom (En RegEx : /\expword{DET ADJ* NOM}/). 
 On appelle cette structure un \keyword[S]{syntagme} nominal. 
 Il est appelé ``nominal" et pas ``adjectival" ou ``déterminant" puisque le nom ici est le centre de la structure. 
 L'adjectif modifie souvent un nom et un déterminant est toujours dépendant d'un nom. 
-Il existe plusieurs \keyword[S]{syntagme}s selon la catégorie noyau : nominal, verbal, adjectival, prépositionnel, etc.
+Il existe plusieurs \keywordpl[S]{syntagme} selon la catégorie noyau : nominal, verbal, adjectival, prépositionnel, etc.
 Par exemple, \expword{[Le/DET cours/NOM ]\textsubscript{NP} [est/V intéressant/ADJ VP]\textsubscript{VP}}.
 La composition de plusieurs \keywordpl[S]{syntagme} forment un autre syntagme jusqu'à arriver à la phrase. 
 Techniquement, une phrase peut être structurée comme un arbre où la racine est la phrase, les syntagmes sont représentés par des nœuds internes et les mots avec leurs catégories grammaticales sont représentés par des feuilles.
@@ -124,7 +124,7 @@ Dans notre exemple, on peut ajouter l'information que les outils d'écriture doi
 		\hgraphpage[0.45\textwidth]{cfg-ambigue2.pdf} \\
 		(1) & (2) \\
 	\end{tabular}
-	\caption[Exemple de deux arbres syntaxiques d'une même phrase]{Exemple de deux arbres syntaxiques se la phrase ``L'élève a écrit une solution avec son explication" \label{fig:cfg-ambigue}}
+	\caption[Exemple de deux arbres syntaxiques d'une même phrase]{Exemple de deux arbres syntaxiques de la phrase ``L'élève a écrit une solution avec son explication" \label{fig:cfg-ambigue}}
 \end{figure}
 
 Une autre méthode pour faire face à ce problème est d'utiliser les \ac{cfg} probabilistes : \ac{pcfg}.
@@ -151,7 +151,7 @@ Un exemple de l'annotation fonctionnelle des deux phrases ``\expword{L'élève a
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.65\textwidth]{exp-parse-fonct_.pdf}
-	\caption[Exemple d'une analyse fonctionnelle de deux phrases]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/}\label{fig:parse-fct-exp}}
+	\caption[Exemple d'une analyse fonctionnelle de deux phrases]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/} [visité le 2021-09-25]\label{fig:parse-fct-exp}}
 \end{figure}
 
 La structure de dépendance est formalisée comme un graphe orienté $G=(V, A)$ où les mots sont représentés par des sommets $V$ et les relations sont représentées par des arcs $A$. 
@@ -342,7 +342,7 @@ Mais, dans la réalité il doit suivre la grammaire conçue par les syntacticien
 Une solution est d'ajouter une étape de post-traitement pour récupérer l'arbre original.
 Concernant les productions unitaires, on peut les laisser telles qu'elles sont et modifier l'algorithme \keyword[C]{CKY} afin de les accepter.
 Bien sûr l'algorithme souffre toujours du problème d'ambigüité syntaxique.
-Exemple, \expword{Je mange du riz avec une fourchette.} et \expword{Je mange du riz avec de la viande.}
+Exemple, ``\expword{Je mange du riz avec une fourchette}" et ``\expword{Je mange du riz avec de la viande}".
 
 On va analyser la phrase ``\expword{la petite forme une petite phrase}" en utilisant \keyword[C]{CKY} selon la grammaire suivante :
 \begin{itemize}

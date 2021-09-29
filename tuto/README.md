@@ -48,17 +48,17 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - II. Text segmentation
   - III. StopWords Filtering
   - IV. Text stemming
-- [OpenNLP](CH02/preprocessing_java_OpenNLP.ipynb) : Java
-  - I. Language detection (detection, training)
-  - II. Sentence boundary detection (detection, training)
-  - III. Word tokenization
-  - TODO: compléter
 - [NLTK](CH02/preprocessing_python_NLTK.ipynb) : Python
   - I. Text tokenization (sentences, words)
   - II. StopWords filtering
   - III. Stemming
   - IV. Lemmatization
   - V. Distance
+- [OpenNLP](CH02/preprocessing_java_OpenNLP.ipynb) : Java
+  - I. Language detection (detection, training)
+  - II. Sentence boundary detection (detection, training)
+  - III. Word tokenization
+  - TODO: compléter
 - [Spacy](CH02/preprocessing_python_Spacy.ipynb) : Python
   - I. Sentence tokenization
   - II. Words tokenization
@@ -68,14 +68,14 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   
 ### CH03: Modèles de langage
 
+- [Keras(TensorFlow)](CH03/models_python_Keras.ipynb) : Python
+  - I. Simple FeedForward 3-gram model (with, without embedding)
+  - II. LSTM model
 - [NLTK](CH03/models_python_NLTK.ipynb) : Python
   - I. Preprocessing (padding)
   - II. NGrams
   - III. Vocabulary
   - IV. Language models (MLE, Smoothed models)
-- [Keras(TensorFlow)](CH03/models_python_Keras.ipynb) : Python
-  - I. Simple FeedForward 3-gram model (with, without embedding)
-  - II. LSTM model
   
 ### CH04: Étiquetage morpho-syntaxique (Étiquetage de séquences)
 
@@ -83,3 +83,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - I. Part of Speech (PoS) tagging: Default, RegEx, CRF, HMM, PerceptronTagger, Brill
   - II. Named Entity Recognition (NER): default, training
   - III. Chunking
+- [flair](CH04/sequences_python_flair.ipynb) : Python
+  - I. Data preparation: Tokenization, Corpus preparation
+  - II. Part of Speech (PoS) tagging: Tagging, Training
+  - II. Named Entity Recognition (NER): Recognition, Training

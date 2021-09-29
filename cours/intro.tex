@@ -153,7 +153,8 @@ La capacité d'un langage naturel (humain) comprend plusieurs fonctions linguist
 \begin{figure}[!ht]
 	\centering 
 	\hgraphpage[.9\textwidth]{niveaux2.pdf}
-	\caption{Les niveaux de traitement d'un langage naturel. \label{fig:niveaux}}
+	\caption{Niveaux de traitement d'un langage naturel}
+	\label{fig:niveaux}
 \end{figure}
 
 \subsection{Phonétique}
@@ -369,7 +370,8 @@ Le tableau~\ref{tab:ordre} représente une étude sur 402 langues qui nous donne
 		OVS & 1.24 \% & apalai, hixkaryana, klingon (langue) \\
 		\hline\hline
 	\end{tabular}
-	\caption[Les ordres et leurs proportions d'après l'étude de 402 langues]{Les ordres et leurs proportions d'après l'étude de 402 langues \cite{1988-blake} \label{tab:ordre}}
+	\caption[Ordres syntaxiques et leurs proportions d'après l'étude de 402 langues]{Ordres syntaxique et leurs proportions d'après l'étude de 402 langues \cite{1988-blake}}
+	\label{tab:ordre}
 \end{table}
 
 Il existe plusieurs approches théoriques de la syntaxe, notamment : la grammaire des constituants et la grammaire des dépendances. 
@@ -378,6 +380,7 @@ Un syntagme contient un noyau qui est l'élément central et des éléments sate
 Selon le noyau, le \keyword[S]{syntagme} peut être : nominal (NP), adjectival (AP), verbal (VP) ou prépositionnel (PP).
 Le système formel le plus utilisé pour modéliser la structure des constituants d'une phrase est la grammaire hors-contexte (Niveau 2 dans la hiérarchie de Chomsky).
 Un exemple d'une grammaire ainsi que l'arbre syntaxique d'une phrase est illustré dans la figure~\ref{fig.exp-gram-const}.
+La deuxième règle n'ai pas écrite (NP $ \rightarrow $ DET NP) sinon on peut avoir plusieurs déterminants à un nom.
 
 \begin{figure}[ht]
 	\centering
@@ -394,7 +397,8 @@ Un exemple d'une grammaire ainsi que l'arbre syntaxique d'une phrase est illustr
 		\hgraphpage{gram_const.pdf}
 	\end{minipage}
 
-	\caption[Un exemple d'une grammaire hors-contexte et un arbre syntaxique]{Un exemple d'une grammaire hors-contexte et un arbre syntaxique de la phrase ``Le petit chat mange un poisson". \textit{La deuxième règle n'ai pas écrite (NP $ \rightarrow $ DET NP) sinon on peut avoir plusieurs déterminants à un nom.}\label{fig.exp-gram-const}}
+	\caption[Exemple d'une grammaire hors-contexte et un arbre syntaxique]{Exemple d'une grammaire hors-contexte et un arbre syntaxique de la phrase ``Le petit chat mange un poisson"}
+	\label{fig.exp-gram-const}
 
 \end{figure}
 
@@ -712,12 +716,11 @@ L'ambigüité est le plus grand défis du traitement d'une langue.
 Même les être humains ont du mal à comprendre certains passages dû à l'ambigüité.
 Ce problème est originaire des propriétés des langages naturels, parmi lesquelles on peut citer :
 \begin{itemize}
-	\item \optword{polysémie} : un mot ayant plusieurs sens. Ex. \expword{Indien : de l'Inde, indigène des Amériques}
+	\item \optword{polysémie} : un mot ayant plusieurs sens. Ex. ``\expword{Indien : de l'Inde, indigène des Amériques}".
 	\item \optword{énantiosémie} : un terme polysémique ayant deux sens antonymes. Par exemple, le mot ``\expword{Regret}" désigne la plainte ou la nostalgie : ``\expword{Je regrette mon enfance}".
 	\item \optword{Trope} (langage figuratif) : métaphores (Ex. ``\expword{It's raining cats and dogs}"), métonomie (Ex. ``\expword{La salle a applaudi}" [les gens dans la salle]), ironie (Ex. ``\expword{Quelle belle journée !}" [pour signifier qu'il pleut des cordes.])
 	\item Les coréférences dans les textes longs (ambigüité dans le choix de référence). 
-	Ex. \expword{\underline{Table data} is dumped into \underline{a delimited text file}, which is sent to \underline{the remote site} where \underline{it} is
-		loaded into the destination database.}
+	Ex. ``\expword{\underline{Table data} is dumped into \underline{a delimited text file}, which is sent to \underline{the remote site} where \underline{it} is loaded into the destination database.}".
 \end{itemize}
 
 Le défis précédent suppose que le locuteur utilise un langage standard, simple, directe et objectif.

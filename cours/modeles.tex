@@ -87,7 +87,7 @@ Ce modèle peut être généralisé en considérant $n-1$ mots précédents.
 Dans ce cas, l'équation \ref{eq:markov} sera formulée comme l'équation \ref{eq:markov-ngram}.
 Le modèle généralisé est appelé \keyword[N]{N-gramme}.
 Les modèles les plus utilisés sont : Uni-gramme ($n=1$), Bi-gramme ($n=2$) et Tri-gramme ($n=3$).
-Une compilation des différents N-grammes préparée par Google et distribuée sous une licence open source sous le nom : Google Books Ngram\footnote{Google Books Ngram : \url{https://storage.googleapis.com/books/ngrams/books/datasetsv3.html}}
+Une compilation des différents N-grammes préparée par Google et distribuée sous une licence open source sous le nom : Google Books Ngram\footnote{Google Books Ngram : \url{https://storage.googleapis.com/books/ngrams/books/datasetsv3.html} [visité le 2021-09-25]}
 \begin{equation}
 	P(w_i | w_1,\ldots, w_{i-1}) \approx P(w_i | w_{i-n+1}, \ldots, w_{i-1})
 	\label{eq:markov-ngram}
@@ -167,12 +167,12 @@ Pour incorporer ce mot dans le corpus d'entraînement, on peut fixer un vocabula
 
 \subsection{Lissage (Smoothing)}
 
-Dans l'exemple précédent, nous avons vu le problème des mots qui n'appartiennent pas au vocabulaire (Ex. \expword{nous}) qui résultent à une division par $0$. 
+Dans l'exemple précédent, nous avons vu le problème des mots qui n'appartiennent pas au vocabulaire (Ex. ``\expword{nous}") qui résultent à une division par $0$. 
 Ce dernier problème peut être résolu en réservant un mot clé pour les mots absents (comme présenté précédemment).
-Le problème des n-grammes absents (Ex. \expword{peut aider}), qui résultent à une probabilité de $0$, ne peut pas être résolu par cette technique. 
+Le problème des n-grammes absents (Ex. ``\expword{peut aider}"), qui résultent à une probabilité de $0$, ne peut pas être résolu par cette technique. 
 Une solution de ce problème est d'ajouter plus de données.
 Même sans ce problème, si on utilise des petits N-grammes, on peut ne pas capturer les dépendances à long terme. 
-Exemple, \expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI pendant la séance du cours \underline{a planté}}. 
+Exemple, ``\expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI pendant la séance du cours \underline{a planté}}". 
 Donc, nous sommes obligés à utiliser des N-grammes plus grands. 
 Pour entraîner un tel modèle, il nous faut une grande quantité de données. 
 Pour une vocabulaire de taille $V$ et N-gramme de taille $N$, on aura $V^N$ n-grammes possibles.
@@ -318,7 +318,7 @@ L'architecture de ce modèle peut être exprimé par l'équation \ref{eq:bengio}
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.6\textwidth]{fw-model.pdf}
-	\caption[Modèle de langage à base des réseaux de neurones à propagation avant]{Une représentation du modèle proposé par \cite{2003-bengio-al}\label{fig:bengio-l}}
+	\caption[Modèle de langage à base des réseaux de neurones à propagation avant]{Représentation du modèle proposé par \citet{2003-bengio-al}\label{fig:bengio-l}}
 \end{figure}
 
 \subsection{Réseaux de neurones récurrents}
@@ -344,7 +344,7 @@ Pour ce faire, il passe par une couche de sortie ayant des paramètres $U \in \m
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.6\textwidth]{rnn-model.pdf}
-	\caption[Modèle de langage à base des réseaux de neurones récurrents]{Modèle de langage à base des réseaux de neurones récurrents, proposé par \cite{2010-mokolov-al}\label{fig:mokolov}}
+	\caption[Modèle de langage à base des réseaux de neurones récurrents]{Modèle de langage à base des réseaux de neurones récurrents proposé par \citet{2010-mokolov-al}\label{fig:mokolov}}
 \end{figure}
 
 Il ne faut pas oublier d'utiliser le mot clé ``\textless UNK\textgreater" afin d'entraîner le modèle à prendre en considération les mots inconnus. 
@@ -363,12 +363,12 @@ Pour ce faire, il existe deux approches :
 	\begin{itemize}
 		\item \optword{Évaluation extrinsèque} : ici, on veut tester l'effet d'un modèle de langage sur une autre tâche. 
 		On évalue la tâche en utilisant plusieurs modèles de langue pour choisir celui qui donne des meilleurs résultats.
-		Exemple, \expword{La qualité de traduction automatique en utilisant ce modèle}. 
+		Exemple, ``\expword{La qualité de traduction automatique en utilisant ce modèle}". 
 		Dans cet exemple, on essaye de choisir le modèle de langue le plus adéquat pour la tâche de traduction automatique.
 		Bien sûr, l'évaluation dans ce cas est vraiment couteuse vu qu'on va entraîner le système de traduction à chaque fois qu'on modifie le modèle de langage.
 		
 		\item \optword{Évaluation intrinsèque} : ici, on veut tester la capacité du modèle à représenter le langage. 
-		Etant donné deux modèles de langage entraînés sur le même corpus d'entraînement, on utilise un autre de test pour tester la capacité de représentation.
+		Étant donné deux modèles de langage entraînés sur le même corpus d'entraînement, on utilise un autre de test pour tester la capacité de représentation.
 		La méthode la plus utilisée dans ce cas est \keyword{la perplexité}.
 		Il faut savoir que le fait d'être un modèle représentatif ne garantit pas d'avoir une bonne performance dans une tâche donnée.
 	\end{itemize}

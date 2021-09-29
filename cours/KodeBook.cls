@@ -22,7 +22,7 @@
 
 \RequirePackage{fancyhdr}
 \RequirePackage{fontenc}
-\RequirePackage[utf8]{inputenc}
+\RequirePackage[utf8x]{inputenc}
 \RequirePackage{amsmath,amssymb,wasysym} 
 \RequirePackage[japanese,french]{babel}
 \RequirePackage{arabtex,acolor}
@@ -509,6 +509,7 @@ title={#1}
 \renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
 %\renewcommand\cftchapafterpnum{\vskip6pt}
 %\renewcommand\cftsecafterpnum{\vskip0pt}
+\cftpagenumbersoff{part}
 
 
 \def\kodetoc{%
