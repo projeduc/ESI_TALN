@@ -93,9 +93,11 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 ### CH06 : Sémantique lexicale
 
 - [Gensim](CH06/encoding_python_gensim.ipynb) : Python
-  - I. Vectorization: TF, IDF, LSA
-  - II. Parameters: reading, preprocessing, 
-  - III. Similarity
+  - I. TF-IDF
+  - II. LSA
+  - III. LDA
+  - IV. Word2Vec
+  - V. Fasttext
 - [Scikit-learn](CH06/encoding_python_sklearn.ipynb) : Python
   - I. Vectorization: TF, IDF, LSA
   - II. Parameters: reading, preprocessing, 
