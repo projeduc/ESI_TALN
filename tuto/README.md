@@ -102,3 +102,8 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - I. Vectorization: TF, IDF, LSA
   - II. Parameters: reading, preprocessing, 
   - III. Similarity
+- [TensorFlow-BERT](CH06/encoding_python_TF_BERT.ipynb) : Python
+  - I. Text preprocessing
+  - II. Text encoding
+  - III. Fine-Tuning
+  
