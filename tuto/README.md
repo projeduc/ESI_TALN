@@ -103,7 +103,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - II. Parameters: reading, preprocessing, 
   - III. Similarity
 - [TensorFlow-BERT](CH06/encoding_python_TF_BERT.ipynb) : Python
-  - I. Text preprocessing
-  - II. Text encoding
+  - I. Text preprocessing: Using tf-hub model, Training a preprocessor
+  - II. Text encoding: Using tf-hub model, Train a model from scratch
   - III. Fine-Tuning
   
