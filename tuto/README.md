@@ -65,7 +65,6 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - III. StopWords filtering
   - IV. Lemmatization
 
-  
 ### CH03 : Modèles de langage
 
 - [Keras(TensorFlow)](CH03/models_python_Keras.ipynb) : Python
@@ -90,6 +89,8 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 
 ### CH05 : Analyse syntaxique
 
+
+
 ### CH06 : Sémantique lexicale
 
 - [Gensim](CH06/encoding_python_gensim.ipynb) : Python
@@ -106,4 +107,6 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - I. Text preprocessing: Using tf-hub model, Training a preprocessor
   - II. Text encoding: Using tf-hub model, Train a model from scratch
   - III. Fine-Tuning
-  
+- [TensorFlow-ELMo](CH06/encoding_python_TF_ELMo.ipynb) : Python
+  - I. Text encoding
+  - II. Using ELMo
