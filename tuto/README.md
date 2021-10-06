@@ -89,7 +89,10 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 
 ### CH05 : Analyse syntaxique
 
-
+- [NLTK](CH05/parsing_python_NLTK.ipynb) : Python
+  - I. Grammars: Context Free grammar (CFG), Loading grammars, Treebanks
+  - II. Parsing: Recursive Descent, Shift-Reduce, Chart
+  - III. Generation
 
 ### CH06 : Sémantique lexicale
 
@@ -99,6 +102,10 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - III. LDA
   - IV. Word2Vec
   - V. Fasttext
+- [NLTK](CH06/encoding_python_NLTK.ipynb) : Python
+  - I. WordNet: Synsets, SynSet properties and relations, Lemma relations
+  - II. Operations: Lowest Common Hypernyms, Similarity
+  - III. Multilingual WordNet
 - [Scikit-learn](CH06/encoding_python_sklearn.ipynb) : Python
   - I. Vectorization: TF, IDF, LSA
   - II. Parameters: reading, preprocessing, 
