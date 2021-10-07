@@ -117,3 +117,9 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 - [TensorFlow-ELMo](CH06/encoding_python_TF_ELMo.ipynb) : Python
   - I. Text encoding
   - II. Using ELMo
+
+### CH07 : Sémantique de la phrase
+
+- [NLTK](CH07/sentsem_python_NLTK.ipynb) : Python
+  - I. Thematic relations: FrameNet, PropBank, VerbNet
+  - II. Propositional Logic
