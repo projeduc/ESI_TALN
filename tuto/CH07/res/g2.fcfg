@@ -1,0 +1,32 @@
+## Author: Abdelkrime Aries <ab_aries@esi.dz> 
+
+
+% start S
+############################
+# Grammar Rules
+#############################
+
+S[SEM = <?np(?vp)>] -> NP[SEM=?np] VP[SEM=?vp]
+
+VP[SEM = <?vt(?np)>] -> Vt[SEM=?vt] NP[SEM=?np]
+VP[SEM = <?vi>] -> Vi[SEM=?vi]
+
+NP[SEM = <?det(?nn)>] -> DET[SEM=?det] NN[SEM=?nn]
+NP[SEM = <\P.P(?nnp)>] -> NNP[SEM=?nnp]
+
+
+#############################
+# Lexical Rules
+#############################
+
+DET[SEM = <\P.\Q.exists x. (P(x) & Q(x))>] -> 'a'
+DET[SEM = <\P.\Q.all x. (P(x) -> Q(x))>] -> 'every'
+
+Vt[SEM = <\P.\x.P(\y.LIKES(x, y))>] -> 'likes'
+
+Vi[SEM = <\x.SLEEPS(x)>] -> 'sleeps'
+
+NNP[SEM=<ALEX>] -> 'Alex'
+NNP[SEM=<BRIT>] -> 'Brit'
+
+NN[SEM=<DOG>] -> 'dog'

@@ -122,4 +122,5 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 
 - [NLTK](CH07/sentsem_python_NLTK.ipynb) : Python
   - I. Thematic relations: FrameNet, PropBank, VerbNet
-  - II. Propositional Logic
+  - II. Propositional Logic: Expressions and proves, First-Order Logic (FOL)
+  - III. Semantic parsing: λ-Calculus, analysis
