@@ -35,7 +35,7 @@ On général, il est destiné pour la documentation en Python.
 Mais, il existe des noyaux pour documenter d'autres langages de programmation.
 Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 
-### CH02 : Traitements basiques du text
+### CH02 : Traitements basiques du text (Texts preprocessing)
 
 - [CoreNLP](CH02/preprocessing_java_CoreNLP.ipynb) : Java
   - I. Preprocessing pipeline
@@ -65,7 +65,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - III. StopWords filtering
   - IV. Lemmatization
 
-### CH03 : Modèles de langage
+### CH03 : Modèles de langage (Language models)
 
 - [Keras(TensorFlow)](CH03/models_python_Keras.ipynb) : Python
   - I. Simple FeedForward 3-gram model (with, without embedding)
@@ -76,7 +76,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - III. Vocabulary
   - IV. Language models (MLE, Smoothed models)
   
-### CH04 : Étiquetage morpho-syntaxique (Étiquetage de séquences)
+### CH04 : Étiquetage morpho-syntaxique (Part of speech recognition)
 
 - [flair](CH04/sequences_python_flair.ipynb) : Python
   - I. Data preparation: Tokenization, Corpus preparation
@@ -87,7 +87,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - II. Named Entity Recognition (NER): default, training
   - III. Chunking
 
-### CH05 : Analyse syntaxique
+### CH05 : Analyse syntaxique (Parsing)
 
 - [CoreNLP](CH05/parsing_java_CoreNLP.ipynb) : Java
   - I. Constituancy Parsing
@@ -97,7 +97,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - II. Parsing: Recursive Descent, Shift-Reduce, Chart
   - III. Generation
 
-### CH06 : Sémantique lexicale
+### CH06 : Sémantique lexicale (Lexical semantics)
 
 - [Gensim](CH06/encoding_python_gensim.ipynb) : Python
   - I. TF-IDF
@@ -121,9 +121,14 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - I. Text encoding
   - II. Using ELMo
 
-### CH07 : Sémantique de la phrase
+### CH07 : Sémantique de la phrase (Sentence semantics)
 
 - [NLTK](CH07/sentsem_python_NLTK.ipynb) : Python
   - I. Thematic relations: FrameNet, PropBank, VerbNet
   - II. Propositional Logic: Expressions and proves, First-Order Logic (FOL)
   - III. Semantic parsing: λ-Calculus, analysis
+- [AMRLib-spacy](CH07/sentemn_python_amrlib.ipynb) : Python
+
+### CH08 : Détection de la coréférence (Corefernce detection)
+
+- [CoreNLP](CH08/coref_java_CoreNLP.ipynb) : Java
