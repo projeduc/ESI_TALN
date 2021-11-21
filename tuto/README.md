@@ -75,7 +75,7 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
   - II. NGrams
   - III. Vocabulary
   - IV. Language models (MLE, Smoothed models)
-  
+
 ### CH04 : Étiquetage morpho-syntaxique (Part of speech recognition)
 
 - [flair](CH04/sequences_python_flair.ipynb) : Python
@@ -132,3 +132,14 @@ Pour Java, on utilise [Ganymede](https://github.com/allen-ball/ganymede).
 ### CH08 : Détection de la coréférence (Corefernce detection)
 
 - [CoreNLP](CH08/coref_java_CoreNLP.ipynb) : Java
+
+
+### CH10 : Quelques applications
+
+- [Keras(TensorFlow)](CH10/MT_python_keras.ipynb) : Python
+  - Text reading and dataset creation
+  - Text preprocessing
+  - The encoder/decoder model
+  - Training
+  - Translate
+  - Evaluation (NLTK-BLEU)
