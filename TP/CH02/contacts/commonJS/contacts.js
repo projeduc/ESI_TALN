@@ -9,8 +9,8 @@ const repTab = [/\$0/, /\$1/, /\$2/, /\$3/, /\$4/, /\$5/,
 const mails_remp = [
     {reg: /(\w+)@(\w+)\.(\w+)/g, pat: '$1@$2.$3'}
 ],
-sites_remp = [
-    {reg: /(https):\/\/(\w+)\.(\w+)/g, pat: '$1://$2.$3'}
+socials_remp = [
+    {reg: /https:\/\/(\w+)\/([^/]+)/g, pat: '$1:$2'}
 ],
 tels_remp = [
     {reg: /(\d\d)-(\d\d)-(\d\d)-(\d\d)/g, pat: '(0$1) $2 $3 $4'}
@@ -20,7 +20,7 @@ tels_remp = [
 // ne modifiez pas ça
 const regs = {
     'mails' : mails_remp,
-    'sites' : sites_remp,
+    'socials' : socials_remp,
     'tels' : tels_remp
 }
 
@@ -32,7 +32,7 @@ const regs = {
 function traiter_fichier(url){
     const resultat = {
         'mails' : [],
-        'sites' : [],
+        'socials' : [],
         'tels' : []
     };
 
@@ -91,7 +91,7 @@ function traiter_dossier(url) {
             resultat = traiter_fichier(url_f);
             contact = {
                 'mails' : traiter_stats(resultat['mails']),
-                'sites' : traiter_stats(resultat['sites']),
+                'socials' : traiter_stats(resultat['socials']),
                 'tels' : traiter_stats(resultat['tels'])
             }
             contacts[titre] = contact;
@@ -109,7 +109,7 @@ function traiter_reference(url){
             if (! contacts[info[0]]){
                 contacts[info[0]] = {
                     'mails' : {},
-                    'sites' : {},
+                    'socials' : {},
                     'tels' : {}
                 };
             }
@@ -153,8 +153,8 @@ function comparer(sys_contacts, ref_contacts){
         }
     }
     R = INT / REF;
-    P = INT / SYS;
-    F1 = 2 * P * R / (P + R);
+    P = (SYS==0)? 0.0 : INT / SYS;
+    F1 = (R+P == 0)? 0.0 : 2 * P * R / (P + R);
     return [resultat, R, P, F1];
 }
 

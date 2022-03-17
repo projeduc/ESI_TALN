@@ -1,0 +1,122 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& 2\textsuperscript{ème} année cycle supérieure (2CSSID)\\
+& Traitement automatique du langage naturel (2021-2022)
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{TP01 : Fouille des contacts}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+On veut récupérer les adresses émail, les réseaux sociaux et les numéros de téléphone qui se figurent dans les pages "contactez nous" des sites web en Algérie. 
+Le problème est que ces pages représentent ces informations de plusieurs façons.
+Pour récupérer et unifier la forme de ces informations, on va utiliser les expressions régulières. 
+
+\section*{1. Informations recherchées}
+
+Ici, on va décrire quelques variations existantes des informations qui existent dans les pages.
+Ce n'est pas une liste complète ; donc, il faut ouvrir les pages où le système a échoué afin de localiser les formes non reconnues.
+
+\subsection*{1.1. Réseaux sociaux}
+
+On s'intéresse par les réseaux : facebook, twitter, youtube, linkedin et instagram. 
+Lorsqu'on trouve une adresse, on doit retourner : "\textbf{<type\_reseau>:<nom>}".
+Par exemple, "\textbf{facebook:ESI.Page}".
+On veut seulement récupérer certaines adresses :
+\begin{itemize}
+	\item Pour Linkedin, on récupère seulement les réseaux sociaux de type "company". 
+	
+	Par exemple, "https://www.linkedin.com/company/airalgerie".
+	
+	\item Pour Youtube, on récupère seulement les adresses de type "channel".
+	
+	Par exemple, "https://www.youtube.com/channel/UC4pwuVraHCCElwQ1dIl1g8Q".
+\end{itemize}
+
+\subsection*{1.2. Téléphones}
+
+Il existe plusieurs formes des numéros de téléphones. 
+Par exemple : (023) 93 91 32 ; 023 93 91 32 ; 023 93.91.32 ; 023 93.91. 32 ; 023939132 ;
++213 23 93 91 32 ; + 213 23 93 91 32 ; 00 213 23 93 91 32 ; +213 (0) 23 93 91 32 ; +213 023 93 91 32 ; 023 93-91-32 ; ...
+Cette liste n'est pas complète ; On doit examiner les fichier où le système a échoué.
+La forme voulue est : "(0XX) XX XX XX" où X est un chiffre. 
+Pour les numéros de téléphones portables, la forme sera : "(0XXX) XX XX XX".
+Il y a quelques conditions : 
+\begin{itemize}
+	\item Pour les numéros de la forme (023) 93 91 32/41, on doit récupérer les numéros : 023) 93 91 32 et 023) 93 91 41. 
+	Il peut y avoir des espaces entre les chiffres et le /.
+	\item La même chose pour les numéros de la forme : (023) 93 91 32 à 41.
+	\item Une autre forme est (023) 93 91 32 ou 41 ou 51. Dans cet exemple, on doit extraire 3 numéros où les deux derniers chiffres sont remplacés par les autres après "ou".
+\end{itemize}
+
+\subsection*{1.3. Adresses émail}
+
+Il n'y a pas de conditions sur les adresses émail.
+
+\section*{2. Spécifications techniques}
+
+\begin{itemize}
+	\item Langages de programmation : Java, Javascript (nodejs) ou Python (au choix).  
+	Le programme qui fait la lecture et l'évaluation a été totalement implémenté.
+	\item Il faut introduire les expressions régulières et la façon de remplacement.
+	On peut introduire plusieurs, mais il faut utiliser un minimum des règles (sinon, on va avoir plusieurs passes et donc plus de temps de traitement). 
+	Par exemple, 
+	\begin{itemize}
+		\item Python : (re.compile(u'(\textbackslash w+)@(\textbackslash w+)\textbackslash .(\textbackslash w+)'), '\$1@\$2.\$3')
+		\item Javascript : {reg: /(\textbackslash w+)@(\textbackslash w+)\textbackslash.(\textbackslash w+)/g, pat: '\$1@\$2.\$3'}
+		\item Java : mails\_remp.put(Pattern.compile("(\textbackslash\textbackslash w+)@(\textbackslash\textbackslash w+)\textbackslash\textbackslash.(\textbackslash\textbackslash w+)"), "\$1@\$2.\$3")
+	\end{itemize}
+	\item Fichiers : html ; Nombre : 20. Le fichier "ref.txt" contient les résultats attendus.
+\end{itemize}
+
+\section*{3. Procédure d'évaluation}
+
+\begin{itemize}
+	\item Durée : 1h (il faut rendre le TP à la fin de la séance)
+	\item Note = F1\_score * 20 - (0.25 * (nombre\_règles - 10), si ce nombre dépasse 10).
+\end{itemize}
+
+\end{document}

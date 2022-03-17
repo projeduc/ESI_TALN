@@ -232,10 +232,10 @@
 \begin{exampleblock}{Exemple : lissage de Laplace}
 	\begin{itemize}
 		\item Le corpus contient 8 mots différents
-		\item Il y a  $8^2 = 64$ bi-grammes possibles
+		\item $|V| = 8 + 10 = 10$ (on compte les marqueurs de début et de fin)
 		\item $P(\text{\textit{\textless s\textgreater il veut nager \textless/s\textgreater}}) = 
 		P(il|\text{\textit{\textless s\textgreater}}) P(veut|il) P(nager|veut)  P(\text{\textit{\textless/s\textgreater}}|nager) = 
-		\frac{3 + 1}{4 + 64} \frac{2 + 1}{3 + 64} \frac{0 + 1}{1 + 64} \frac{1 + 1}{1 + 64} $
+		\frac{3 + 1}{4 + 10} \frac{2 + 1}{3 + 10} \frac{0 + 1}{1 + 10} \frac{1 + 1}{1 + 10} $
 	\end{itemize}
 \end{exampleblock}
 

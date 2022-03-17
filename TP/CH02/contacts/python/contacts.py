@@ -4,22 +4,36 @@ import sys
 
 # TODO vous pouvez définir d'autres RegEx pour les trois types
 mails_remp = [
-    (re.compile(u'(\w+)@(\w+)\.(\w+)'), '$1@$2.$3')
+    (re.compile(u'(^|[^\w])(\w[\w.-]*)@(\w[\w.-]*)\.(\w+)'), '$2@$3.$4')
 ]
 
-sites_remp = [
-    (re.compile(u'(https)://(\w+)\.(\w+)'), '$1://$2.$3')
+socials_remp = [
+    (re.compile(u'(facebook|twitter|instagram)\.com/([\w.-]+)(/?[^\w./?-])'), '$1:$2'),
+    (re.compile(u'(youtube)\.com/channel/([\w.-]+)'), '$1:$2'),
+    (re.compile(u'(linkedin)\.com/company/([\w.-]+)'), '$1:$2')
 ]
 
 tels_remp = [
-    (re.compile(u'(\d\d)-(\d\d)-(\d\d)-(\d\d)'), '(0$1) $2 $3 $4')
+    (re.compile(u'(^|[^\d\s]\s*)\(?0\s*(\d\d)\)?\s*[- \.]?\s*(\d\d)\s*[- \.]?\s*(\d\d)\s*[- \.]?\s*(\d\d)'), '(0$2) $3 $4 $5'),
+
+    (re.compile(u'([^\d\s])\s*\(?(0\d)\)? *[- \.]? *(\d\d) *[- \.]? *(\d\d)(\d) *[- \.]? *(\d)(\d\d)'), '($2$3) $4 $5$6 $7'),
+
+    (re.compile(u'([^\d\s])\s*(\+?|00)\s*\(?213\)?\s*\(?(\d\d\d)\)?\s*[- \.]?\s*[- \.]?\s*(\d\d)(\d)\s*[- \.]?\s*(\d)(\d\d)\D'), '(0$3) $4 $5$6 $7'),
+
+    (re.compile(u'([^\d\s])\s*(\+?|00)\s*\(?213\)?\s*\(?\s*0?\s*\)?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d)\D'), '(0$3) $4 $5 $6'),
+
+    (re.compile(u'([^\d\s])\s*(\+?|00)\s*\(?\+?213\)?\s*\(?\s*0?\s*\)?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-.]?\s*(\d\d)\s*(/| ou | à )[\s ]*(\d\d)(\s*[\S\D])'), '(0$3) $4 $5 $8'),
+    (re.compile(u'([^\d\s])\s*(\+?|00)\s*\(?\+?213\)?\s*\(?\s*0?\s*\)?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d) ou (\d\d) ou (\d\d)(\s*[\S\D])'), '(0$3) $4 $5 $8'),
+    (re.compile(u'([^\d\s])\s*(\+?|00)\s*\(?\+?213\)?\s*\(?\s*0?\s*\)?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d)\s*[-\.]?\s*(\d\d) ou (\d\d) ou (\d\d) ou (\d\d)(\s*[\S\D])'), '(0$3) $4 $5 $9'),
+
+    (re.compile(u'([^\d\s])\s*(\+?|00)\s*\(?213\)?\s+(\d\d)\s*[- \.]?\s*(\d\d)(\d)\s*[- \.]?\s*(\d)(\d\d)\D'), '(0$3) $4 $5$6 $7'),
 ]
 
 # ============================================================
 # ne modifiez pas ça
 regs = {
     'mails' : mails_remp,
-    'sites' : sites_remp,
+    'socials' : socials_remp,
     'tels' : tels_remp
 }
 
@@ -30,7 +44,7 @@ regs = {
 def traiter_fichier(url):
     resultat = {
         'mails' : [],
-        'sites' : [],
+        'socials' : [],
         'tels' : []
     }
 
@@ -75,7 +89,7 @@ def traiter_dossier(url):
         resultat = traiter_fichier(url_f)
         contact = {
             'mails' : traiter_stats(resultat['mails']),
-            'sites' : traiter_stats(resultat['sites']),
+            'socials' : traiter_stats(resultat['socials']),
             'tels' : traiter_stats(resultat['tels'])
         }
         contacts[titre] = contact
@@ -91,7 +105,7 @@ def traiter_reference(url):
         if not info[0] in contacts:
             contacts[info[0]] = {
                 'mails' : {},
-                'sites' : {},
+                'socials' : {},
                 'tels' : {}
             }
         contacts[info[0]][info[1]][info[2]] = int(info[3])
@@ -112,7 +126,7 @@ def comparer(sys_contacts, ref_contacts):
         else:
             sys_types = None
 
-        for type in ['mails', 'sites', 'tels']:
+        for type in ['mails', 'socials', 'tels']:
             res_elements = resultat[fichier][type] = {}
             for element in ref_types[type]:
                 ref_nbr = ref_types[type][element]
@@ -130,8 +144,8 @@ def comparer(sys_contacts, ref_contacts):
                         res_elements[element] = 'sys(' + str(sys_nbr) + '), ref(0)'
                         SYS += sys_types[type][element]
     R = INT / REF
-    P = INT / SYS
-    F1 = 2 * P * R / (P + R)
+    P = 0.0 if SYS == 0 else INT / SYS
+    F1 = 0.0 if R + P == 0 else 2 * P * R / (P + R)
     return resultat, R, P, F1
 
 # Affichage des statistiques
