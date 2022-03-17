@@ -1,0 +1,7 @@
+Chaque phrase dans une ligne
+les mots sont séparés par un espace
+les mots avec apostophe sont sééparés à part; comme : L'Algérie --> L' Algérie
+les ponctuations sont filtrées
+tout ce qui est entre parenthèse est supprimé
+
+Dans le test, on élemine une partie sans modifier le sens de la phrase

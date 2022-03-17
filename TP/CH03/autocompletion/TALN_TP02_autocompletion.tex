@@ -1,0 +1,156 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& 2\textsuperscript{ème} année cycle supérieure (2CSSID)\\
+& Traitement automatique du langage naturel (2021-2022)
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{TP02 : Autocomplétion en utilisant les NGrammes}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+On veut concevoir un petit programme pour l'autocomplétion des phrases. 
+
+
+\section*{1. Implémentation}
+
+On veut implémenter un modèle bigrammes avec lissage de Laplace. 
+Vous devez compléter les méthodes suivantes de la classe "LaplaceBiGram" : 
+\begin{itemize}
+	\item \textbf{entrainer} : afin d'entraîner notre modèle sur des données d'entrée
+	\item \textbf{noter} : afin de calculer la probabilité d'un mot courant sachant un mot passé
+	\item \textbf{estimer} : afin d'estimer le mot suivant sachant un ensemble des mots précédents
+\end{itemize}
+
+\subsection*{1.1. Entraînement (entrainer)}
+
+La classe contient deux dictionnaires (Maps) de \textbf{\textless string --> int\textgreater} : une pour les unigrammmes et l'autre pour les bigrammes.
+\begin{itemize}
+	\item Dans cette méthode, on essaye de remplir ces deux dictionnaires par le nombre des occurrences.
+	\item Pour les bigrammes, vous pouvez utiliser un caractère spécial pour séparer les deux mots.
+	\item on ne s'intéresse pas par le marqueur de la fin de la phrase \textbf{\textless /s\textgreater}.
+\end{itemize} 
+
+L'entrée est une liste des listes : List(List(string)). 
+Chaque élément représente une phrase et chaque phrase est représentée sous forme d'une liste des mots.
+
+
+\subsection*{1.2. Notation (noter)}
+
+Ici, on veut calculer la probabilité d'occurrence du mot "courant" sachant le mot "passé".
+La méthode doit rendre la probabilité logarithmique. 
+
+
+\subsection*{1.3. Estimation (estimer)}
+
+Ici, on veut estimer les mots les plus probables à se produire sachant une liste des mots passés.
+Pour ce faire, on teste tous les mots du vocabulaire en calculant leurs probabilités d'apparence.
+La fonction doit rendre une liste ordonnée des tuples mots/scores (ordre croissant par rapport le score).
+
+
+\section*{2. Expérimentation}
+
+Ici, on va décrire comment on va évaluer un tel modèle.
+
+\subsection*{2.1. Dataset}
+
+Nous avons utilisé deux datasets : entraînement et test. 
+Le dataset d'entraînement est une page Wikipédia sur un sujet quelconque. 
+Ce dataset a été préparé comme : 
+\begin{itemize}
+	\item Chaque ligne représente une phrase
+	\item Les mots sont toujours séparés par des espaces. 
+	Par exemple, les mots avec apostrophe sont séparés à part ; comme : L'Algérie --> L' Algérie.
+	\item les ponctuations sont filtrées.
+	\item tout ce qui est entre parenthèse est supprimé.
+\end{itemize}
+Le dataset de test a été préparé comme :
+\begin{itemize}
+	\item Chaque exemplaire de test est représenté par une ligne.
+	\item Chaque ligne contient une expression non complète suivie par une tabulation suivie par le mot voulu.
+	\item Les exemplaires sont pris du dataset d'entraînement, mais en essayant d'éliminer quelques mots sans changer le sens. 
+\end{itemize}
+
+\subsection*{2.1. Évaluation du modèle}
+
+Dans ce TP, on va évaluer notre modèle en utilisant la métrique \textbf{Mean reciprocal rank}. 
+\begin{itemize}
+	\item Étant donné un dataset de test, on sélectionne N exemplaires aléatoirement.
+	\item Pour chaque exemplaire, on génère la liste des mots probables.
+	\item On sélectionne les M premiers parmi ces mots (ici, on va sélectionner 10)
+	\item Le score d'un exemplaire sachant que le mot a l'ordre $i$ est $MRR(i) = \frac{1}{i}$ ; Si le mot n'existe pas parmi les M premiers, le score est 0.
+	\item A la fin, on calcule la moyenne des scores des N exemplaires.
+\end{itemize}
+
+\section*{3. Questions}
+
+Il faut rendre des réponses de ces questions sous forme d'un fichier texte (.txt) avec le code.
+
+\begin{enumerate}
+	\item Dans le code principal, localiser la ligne \textbf{mrr = program.evaluer(80, 10)}. 
+	Changer le premier paramètre (qui est le nombre des exemplaires) à \textbf{-1} (afin de prendre tous les exemplaires).
+	Varier le deuxième paramètre (qui est le nombre des suggestions extraites) entre 10, 20 et 30. 
+	Que pouvez-vous remarquer ?
+	\item Pourquoi ?
+	\item On remarque que le score est vraiment faible, pourquoi ?
+	\item Comment peut-on améliorer ce score ?
+\end{enumerate}
+
+\section*{4. Procédure d'évaluation}
+
+Ici, on va discuter l'évaluation du TP.
+
+\begin{itemize}
+	\item Durée : 1h (il faut rendre le TP à la fin de la séance)
+	\item Note = Note\_entrainer + Note\_noter + Note\_estimer + Note\_reponses
+	\begin{itemize}
+		\item \textbf{Note\_entrainer}  (6pts) : prise en considération de toutes les données (2pts) + de tous les unigrammes (2pts) + de tous les bigrammes (2pts)
+		\item \textbf{Note\_noter} (5pts) : calcul juste et rapide des unigrammes/bigrammes (3pts) + application juste de lissage (1pt) + probabilité logarithmique (1pt)
+		\item \textbf{Note\_estimer} (5pts) : estimation de toutes les probabilités du vocabulaire (3pts) + non redondance de calcul (2pts)
+		\item \textbf{Note\_reponses} (4pts) : chaque question sur 1 point.
+	\end{itemize}
+\end{itemize}
+
+\end{document}
