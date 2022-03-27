@@ -1,0 +1,170 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& 2\textsuperscript{ème} année cycle supérieure (2CSSID)\\
+& Traitement automatique du langage naturel (2021-2022)
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{Lab : Modèles de langage (Jugements d'acceptabilité)}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+Dans la tâche du "Jugements d'acceptabilité", on essaye de deviner si une phrase est acceptable grammaticalement. 
+Par exemple, l'expression "\textbf{Le livre qu'ont puisse trouvé sur internet ...}" ne peut pas être considérée comme acceptable. 
+La raison est que le verbe "ont (avoir)" est moins probable de suivre "que" et que le verbe "puisse (pouvoir)" est conjugué en présent subjonctif, or il est plus probable d'être en infinitif s'il suit le verbe "avoir".
+Dans ce lab, on va essayé de tester des différents modèles de langages afin d'accomplir cette tâche.
+
+\section*{1. Ressources}
+
+
+\subsection*{1.1. Corpus}
+
+On va utiliser le corpus "The Corpus of Linguistic Acceptability (CoLA)".
+Il est téléchargeable à partir de ce lien : \url{https://nyu-mll.github.io/CoLA/} (télécharger la dernière version).
+
+
+
+\subsection*{1.2. Outils}
+
+Modèles de langage avec NLTK : voir le tutoriel \url{https://github.com/projeduc/ESI_2CS_TALN/blob/master/tuto/CH03/models_python_NLTK.ipynb}
+
+Modèles de langage avec Keras : voir le tutoriel 
+\url{https://github.com/projeduc/ESI_2CS_TALN/blob/master/tuto/CH03/models_python_Keras.ipynb}
+
+Quelques implémentations : \url{https://github.com/nyu-mll/CoLA-baselines}
+
+\section*{2. Modèles à implémenter}
+
+On va seulement implémenter deux modèles :
+\begin{itemize}
+	\item Un modèle Trigrammes avec l'interpolation Kneser-Ney
+	\item Un modèle LSTM
+\end{itemize}
+
+\section*{3. Conception}
+
+L'architecture qu'on veut implémenter est décrite dans le diagramme de classe suivant.
+On ne va pas implémenter les deux classes abstraites pour sauver le temps.
+
+\includegraphics{_classDiagram.pdf}
+
+\subsection*{3.1. Lecture des données}
+
+Utiliser ce code pour lire les données d'entraînement et de test.
+
+\begin{lstlisting}[language=Python]
+def traiter(url):
+    phrases = []
+    classes = []
+    with open(url, mode='r', encoding='utf-8') as f:
+        for ligne in f:
+            parties = ligne.split('\t')
+            phrases.append(parties[3])
+            classes.append(int(parties[1]))
+    return phrases, classes
+\end{lstlisting}
+
+\subsection*{3.2. NGrammes}
+
+\begin{itemize}
+	\item Définir une classe NGramme 
+	\item Le constructeur a deux arguments : nombre des grammes et le nombre du cutoff
+	\item On définit un modèle Kneser-Ney, en passant un nouveau vocabulaire vide avec le cutoff.
+	\item Définir une méthode "preprocess" avec un seul argument "X" : une liste des phrases.
+	\item Cette méthode doit retourner une liste (phrases) des listes (mots) avec des paddings de début et de fin.
+	Pour segmenter la phrase, il suffit d'utiliser "split".
+	\item Définir une méthode "entrainer" qui entraîne notre modèle Ngramme en se basant sur la liste des phrases en entrée.	
+	\item Définir une méthode "noter\_phrase" qui prend en argument une phrase sous forme d'une liste des mots avec les paddings et un argument optionnel pour sélectionner le modèle (le modèle par défaut est MLE).
+	\item Cette fonction doit retourner une liste des probabilités de chaque Ngramme.
+	\item Définir une méthode "noter" qui a un argument "X" (la liste des phrases) et un autre optionnel pour sélectionner le modèle (le modèle par défaut est MLE).
+	Cette méthode doit retourner une liste des listes (pour chaque phrase, la liste des probabilités de ces ngrammes consécutifs).
+	\item Créer un objet avec n=3 et entrainer le
+	\item Noter toutes les phrases d'enrainement et de test en les stockant dans deux variables (ça va prendre du temps, donc lancer l'opération dans une cellule et programmer le reste du TP)
+\end{itemize}
+
+\subsection*{3.3. LSTMs}
+
+\begin{itemize}
+	\item Définir une classe MLNR (Modèle de langage neuronal récurrent)
+	\item Dans le constructeur, définir un modèle séquentiel sans définir l'architecture. 
+	Aussi, définir un tokenizer sans l'entraîner.
+	\item Définir une méthode "preprocess" qui prend la liste des phrases comme argument et un autre argument booléen (par défaut = False) qui indique si on entraîne le tokenizer ou non.
+	\item Ajouter les marqueurs de début et de la fin à chaque phrase.
+	\item Entraîner notre tokenizer si l'argument booléen est True.
+	\item Générer les séquences
+	\item Si c'est un entraînement, on garde la longueur max
+	\item Retourner deux matrices : la première représente les mots précédents (avec padding) et la deuxième représente les mots suivants, chacun représenté par un encodage OneHot.
+	\item Définir une méthode "entrainer" qui prend comme arguments la liste des phrases "X" et un argument optionnel "epochs=20".
+	\item Dans cette méthode, on définit le reste de l'architecture et on entraîne notre modèle.
+	\item Définir une méthode "noter" qui prend la liste des phrases comme argument 
+	\item Cette méthode doit rendre des prédictions sur les mots passés
+	\item Créer un objet et entraîner le modèle (ça va prendre du temps, donc lancer l'opération dans une cellule et programmer le reste)
+\end{itemize}
+
+\subsection*{3.4. Modèles d'acceptabilité}
+
+\begin{itemize}
+	\item Définir une classe "AcceptSepBasique" avec le modèle de langage comme argument du constructeur
+	\item Définir une méthode "estimer\_log\_proba" qui prend comme argument une liste (M éléments) des listes (taille variable) des probabilités et qui rend un vecteur de probabilité (M éléments) de chaque phrase. 
+	Ici, on utilise la probabilité logarithmique.
+	\item Définir une méthode "entrainer" qui prend comme arguments la liste des phrases "X" et la liste des estimations "Y"
+	\item Dans cette fonction, on essaye de calculer un seuil de séparation $sep$ entre "acceptable" ou non. 
+	Pour ce faire, on utilise l'équation :
+	\[sep = \max P(S_-) + (\min P(S_+) - \max P(S_-))/2\]
+	Où $S_+$ sont les phrases acceptables et $S_-$ sont les phrases non acceptables.
+	\item Définir une méthode "\_entrainer" qui fait la même chose; mais en entrée elle a une liste des listes des probabilités et le "Y" destinataire.
+	\item Définir une méthode "estimer" qui a comme paramètre la liste des phrases
+	\item Cette méthode doit retourner 1 si la probabilité de la phrase est supérieure au seuil qu'on a estimé, 0 sinon.
+	\item Entraîner un modèle en se basant sur cette classe et le modèle NGramme précédemment entraîné
+	\item Tester le modèle sur le dataset de développement en générant le rapport de classification
+	\item Entraîner un modèle en se basant sur cette classe et le modèle neuronal précédemment entraîné
+	\item Tester le modèle sur le dataset de développement en générant le rapport de classification
+	\item Définir une classe "AcceptSepReg" similaire à "AcceptSepBasique"
+	\item Dans le constructeur, on définit un modèle de régression logistique sans régularisation
+	\item Dans l'entraînement, on essaye d'entraîner ce modèle à juger si une phrase est acceptable en se basant seulement sur sa probabilité logarithmique.
+	\item Créer deux modèles de cette classe avec les ngrammes et avec le modèle neuronale et tester les.
+\end{itemize}
+
+\end{document}
