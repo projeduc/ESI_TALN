@@ -453,7 +453,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 			$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
 		}
 		
-		\Pour{$ t = 1 \ldots T$}{
+		\Pour{$ t = 2 \ldots T$}{
 			\Pour{état $ s = 1 \ldots N$}{
 				$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
 				$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;

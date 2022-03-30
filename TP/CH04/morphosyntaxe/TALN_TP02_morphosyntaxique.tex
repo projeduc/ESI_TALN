@@ -1,0 +1,116 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& 2\textsuperscript{ème} année cycle supérieure (2CSSID)\\
+& Traitement automatique du langage naturel (2021-2022)
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{TP03 : Analyse morphosyntaxique (viterbi)}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+On veut concevoir un petit programme pour l'analyse morphosyntaxique à partir de 0. 
+
+
+\section*{1. Implémentation}
+
+L'algorithme est implémenté dans sa totalité, sauf les deux méthodes suivantes :
+\begin{itemize}
+	\item noter
+	\item estimer\_viterbi
+\end{itemize}
+Dans les deux fonctions, le tag de début est la chaîne vide. 
+
+\subsection*{1.1. noter}
+
+La méthode prend en entrée l'étiquette passée, l'étiquette courante et le mot courant.
+Il doit retourner la probabilité logarithmique.
+
+\subsection*{1.2. estimer\_viterbi}
+
+La méthode prend la liste des mots en entrée et rend la liste des étiquettes en sortie.
+
+\section*{2. Expérimentation}
+
+Ici, on va décrire comment on va évaluer un tel modèle.
+
+\subsection*{2.1. Dataset}
+
+Nous avons utilisé Penn treebank, mais les étiquettes ont été transformées vers universal dependencies. 
+
+\subsection*{2.1. Évaluation du modèle}
+
+Pour chaque phrase, on calcule l'exactitude (accuracy).
+Le résultat est la moyenne des exactitudes.
+
+\section*{3. Questions}
+
+Il faut rendre des réponses de ces questions sous forme d'un fichier texte (.txt) avec le code.
+
+\begin{enumerate}
+	\item Nous avons trois algorithme d'encodage : force-brute, viterbi et gourmand. 
+	\textbf{force-brute} : on calcule les probabilités de toutes les combinaisons possibles des tags sur les mots.
+	\textbf{viterbi} : pour chaque mot, on test tous les tags possibles courants et les tags max précédents.
+	\textbf{gourmand} : pour chaque mot, on test seulement tous les tags courants en supposant que le tag précédent a été choisi.
+	Si nous avons \textbf{N} tags et \textbf{T} mots, quelles sont les complexités de ces trois algorithmes ?
+	\item Lorsqu'on teste notre implémentation, on remarque que l'algorithme gourmand donne un score plus grand que celui du viterbi. Le score viterbi peut varier d'une implémentation à une autre, si on considère le dernier tag qui maximise la probabilité. Dans ce cas, quel est l'algorithme le plus adéquat et pourquoi ?
+	\item Pourquoi l'algorithme gourmand donne des résultats meilleures à celles de viterbi ?
+\end{enumerate}
+
+\section*{4. Procédure d'évaluation}
+
+Ici, on va discuter l'évaluation du TP.
+
+\begin{itemize}
+	\item Durée : 1h (il faut rendre le TP à la fin de la séance)
+	\item Note = Note\_noter + Note\_viterbi + Note\_reponses
+	\begin{itemize}
+		\item \textbf{Note\_noter} (4pts) : début (2pts) + reste (2pts)
+		\item \textbf{Note\_viterbi} (12.5pts) : initialisation (1.5pts) + remplissage viterbi (3pts) + remplissage backpointer (3pts) + trouver le dernier tags (2pts) + générer tous les tags (3pts)
+		\item \textbf{Note\_reponses} (3.5pts) : 1.5 + 1 + 1.
+	\end{itemize}
+\end{itemize}
+
+\end{document}
