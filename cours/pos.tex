@@ -59,7 +59,7 @@ Le problème de l'étiquetage revient à maximiser la probabilité conditionnell
 \end{equation}
 Dans les statistiques, il existe deux types de modèles : génératif et discriminatif. 
 Un modèle génératif essaye d'apprendre la génération de l'entrée à partir de la sortie ; étant donné une étiquette, quel est la probabilité de chaque mot du vocabulaire ?
-En utilisant la théorème de Bayes, l'équation \ref{eq:es-stat} revient à résoudre l'équation \ref{eq:es-stat-gen}.
+En utilisant le théorème de Bayes, l'équation \ref{eq:es-stat} revient à résoudre l'équation \ref{eq:es-stat-gen}.
 Le modèle de Markov caché, en anglais \ac{hmm}, est un exemple d'un modèle génératif.
 \begin{equation}\label{eq:es-stat-gen}
 	\hat{t} = \arg\max\limits_t P(t) P(w | t) 
@@ -240,7 +240,7 @@ La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle 
         & = \arg\max\limits_t \prod_{i=1}^{n} \underbrace{P(t_i|t_{i-1})}_{a_{i-1,i}} \underbrace{P(w_i | t_i)}_{b_i(w_i)} \label{eq:hmm-detail}
 \end{align}
 
-Avant de discuter comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, on commence par décrire l'entrainement. 
+Avant de discuter comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, on commence par décrire l'entraînement. 
 Dans un \keyword[H]{\ac{hmm}}, les états sont les tags (catégories) $t_i$ et les observations sont les mots $w_i$. 
 Notons la fonction qui compte le nombre des occurrence d'une séquence comme $C$.
 La probabilité de transition $a_{i-1,i}$ de l'état $t_{i-1}$ vers $t_i$ est estimée à partir du corpus d'entraînement selon l'équation \ref{eq:pos-hmm1}.
@@ -411,8 +411,8 @@ Voici une liste des caractéristiques $f$ qu'on peut utiliser dans cette méthod
 \begin{itemize}
 	\item Le mot $w_i$ (en considérant chaque mot comme caractéristique)
 	\item Les étiquettes précédentes 
-	\item $w_i$ contient un préfixe à partir d'une liste ($len(prefixe) \le 4$) 
-	\item $w_i$ contient un suffixe à partir d'une liste ($len(suffixe) \le 4$) 
+	\item $w_i$ contient un préfixe à partir d'une liste (\textit{len(prefixe)} $\le 4$) 
+	\item $w_i$ contient un suffixe à partir d'une liste (\textit{len(suffixe)} $\le 4$) 
 	\item $w_i$ contient un nombre 
 	\item $w_i$ contient une lettre en majuscule
 	\item $w_i$ contient un trait d'union 
