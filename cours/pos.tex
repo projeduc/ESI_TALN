@@ -20,15 +20,15 @@
 	Des fois, des mots peuvent avoir plusieurs catégories grammaticales (natures). 
 	Par exemple, le mot ``nouveau" dans la phrase ``C'est l'anniversaire de mon nouveau[NOM]" n'a pas la même nature que celui dans la phrase ``Mon nouveau[ADJ] cours est presque terminé". 
 	Cette propriété peut être aperçue beaucoup plus dans l'anglais où les noms peuvent être transformés en verbes sans changement (Ex. ``fish"). 
-	Cette tâche est utile si on veut appliquer des statistiques sur les catégories grammaticales afin d'améliorer une autre tâche comme celle de classification des textes. 
-	Dans ce chapitre, on va présenter la tâche d'étiquetage des séquences en général et l'étiquetage morpho-syntaxique en particulier.
+	Cette tâche est utile si nous voulons appliquer des statistiques sur les catégories grammaticales afin d'améliorer une autre tâche comme celle de classification des textes. 
+	Dans ce chapitre, nous allons présenter la tâche d'étiquetage des séquences en général et l'étiquetage morpho-syntaxique en particulier.
 \end{introduction} 
 
 Savoir les catégories grammaticales des mots est un pas vers la compréhension d'une phrase.
 Prenons un exemple d'une phrase en anglais : ``\expword{We can can the can}". 
 Le mot ``can" a plusieurs sens : (1-verbe) pouvoir (2-verbe) mettre en boîte (3-nom) boîte.
-Après étiquetage morpho-syntaxique, on aura ``\expword{We[pronom] can[verbe] can[verbe] the[déterminant] can[nom]}".
-Ceci n'est pas seulement utile pour savoir le sens du mot, mais aussi on peut voir la structure de la phrase.
+Après étiquetage morpho-syntaxique, nous aurons ``\expword{We[pronom] can[verbe] can[verbe] the[déterminant] can[nom]}".
+Ce n'est pas seulement utile pour savoir le sens du mot, mais aussi nous pouvons voir la structure de la phrase.
 Essayez d'étiqueter la phrase suivante : ``\expword{Will Will will the will to Will?}".
 L'étiquetage morpho-syntaxique est bénéfique pour plusieurs tâches :
 \begin{itemize}
@@ -50,8 +50,8 @@ L'étiquetage d'une séquence des mots $w = w_1, \ldots, w_n$ sert à trouver un
 
 L'étiquetage de séquences peut être réalisé en utilisant des règles définies manuellement. 
 Une des méthodes consiste à assigner à chaque mot un ensemble des étiquettes possibles. 
-Ensuite, on utilise des règles afin de réduire les étiquettes jusqu'à atteindre une étiquette par mot.
-Parmi les règles qu'on peut utiliser : \expword{Un déterminant est suivi par un nom}. 
+Ensuite, nous utilisons des règles afin de réduire les étiquettes jusqu'à atteindre une étiquette par mot.
+Parmi les règles que nous puissions utiliser : \expword{Un déterminant est suivi par un nom}. 
 L'approche statistique vise à apprendre l'annotation en se basant sur un corpus annoté manuellement. 
 Le problème de l'étiquetage revient à maximiser la probabilité conditionnelle d'une séquence des étiquettes sachant une séquence des mots (voire l'équation \ref{eq:es-stat}).
 \begin{equation}\label{eq:es-stat}
@@ -72,7 +72,7 @@ Une autre méthode est d'utiliser les réseaux de neurones récurrents qui suppo
 
 L'étiquetage morpho-syntaxique est parmi les tâches appartenant à l'étiquetage des séquences. 
 Son but est de trouver les catégories grammaticales des mots (nom, verbe, etc.) d'une phrase. 
-Des fois, on veut détailler les catégories afin d'avoir plus de précision. 
+Des fois, nous voulons détailler les catégories afin d'avoir plus de précision. 
 Par exemple, un nom peut être un nom propre ou un nom impropre.
 Un exemple d'une phrase en anglais étiquetée morpho-syntaxiquement est illustré dans la figure \ref{fig:ems-exp}.
 \begin{figure}[ht]
@@ -86,7 +86,7 @@ Elle vise à trouver les personnes, les organisations, les places, les nombres, 
 Contrairement à l'étiquetage morpho-syntaxique, une catégorie peut être affectée à une séquence de mots et pas un seul. 
 Par exemple, l'expression ``\expword{école nationale supérieure d'informatique}" a la catégorie ``organisation".
 Mais, comment exprimer que tous ces mots forment une seule catégorie et pas chaque mot à part ?
-La méthode utilisée pour ça est le format \keyword[I]{IOB} (Inside, Outside, Beginning). 
+La méthode utilisée pour cela est le format \keyword[I]{IOB} (Inside, Outside, Beginning). 
 Les mots qui n'appartiennent à aucune catégorie sont annotés par ``O". 
 Les mots qui marquent le commencement d'une catégorie sont annotés par ``B-" suivi par le nom de la catégorie. 
 Les mots du milieu sont annotés par ``I-" suivi par le nom de la catégorie. 
@@ -110,10 +110,10 @@ Donc, la catégorie est affectée à une séquence et pas seulement un seule mot
 Comme mentionné avant, cette tâche sert à trouver la catégorie grammaticale de chaque mot dans une phrase. 
 Une catégorie grammaticale peut avoir plusieurs noms (selon l'ouvrage) : nature, catégorie lexicale, classe grammaticale, espèce grammaticale, partie du discours (en anglais, Part of speech).
 Afin de réaliser cette tâche, il faut tout d'abord définir les étiquettes (tags). 
-Est-ce qu'on détaille dans les catégories ou on se contente des catégories principales ?
+Est-ce que nous détaillons les catégories ou nous nous contentons des catégories principales ?
 Les étiquettes les plus fameuses sont celles de Penn \keyword[T]{TreeBank} pour l'anglais : conjonction de coordination (CC), nombre cardinal (CD), déterminant (DT), etc. 
 Les catégories grammaticales sont différentes d'une langue à une autre. 
-Mais, on peut trouver certaines catégories qui sont partagées.
+Mais, nous pouvons trouver certaines catégories qui sont partagées.
 Le projet ``Universal dependencies" cherche à normaliser ces catégories comme indiqué dans le tableau \ref{tab:pos-cat}.
 
 \begin{table}[ht]
@@ -145,11 +145,11 @@ Le projet ``Universal dependencies" cherche à normaliser ces catégories comme 
 
 L'étape suivante est d'annoter un corpus manuellement. 
 Ce type de corpus est appelé \keyword[T]{TreeBank}.
-Parmi les corpus annotés, on peut citer Penn Treebank pour l'anglais (Exemple dans la figure \ref{fig:penn-exp}).
+Parmi les corpus annotés, nous pouvons citer Penn Treebank pour l'anglais (Exemple dans la figure \ref{fig:penn-exp}).
 Un autre projet riche en terme de langues traitées est Universal TreeBank\footnote{Universal TreeBank : \url{https://universaldependencies.org/} [visité le 2021-09-09]} \cite{2012-petrov-al}. 
 C'est un projet à communauté ouverte qui vise à utiliser les mêmes classes grammaticales afin d'annoter plusieurs langues. 
-Mais, il faut faire attention lorsqu'on fusionne deux treebanks différents. 
-Lorsqu'il y a plusieurs tags, on peut trouver des inconsistances dans l'annotation.
+Mais, il faut faire attention lorsque nous fusionnons deux treebanks différents. 
+Lorsqu'il y a plusieurs tags, nous pouvons trouver des inconsistances dans l'annotation.
 Par exemple, dans les corpus ``Brown" et ``WSJ", le mot ``to" a le tag ``TO". 
 Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, sinon ``IN" lorsque c'est une préposition.
 %
@@ -182,9 +182,9 @@ Voici quelques applications qui fournissent la tâche d'annotation morpho-syntax
 \section{Approches d'étiquetage morpho-syntaxique}
 %===================================================================================
 
-Ici, on va seulement présenter les approches : statistique et neuronale.
-Dans l'approche statistique, on va présenter le modèle de Markov caché qui  est un modèle génératif, et le modèle de Markov basé sur l'entropie maximale qui est un modèle discriminatif. 
-Dans l'approche basée sur les réseaux de neurones, on va présenter quelques architectures.
+Ici, nous allons seulement présenter les approches : statistique et neuronale.
+Dans l'approche statistique, nous allons présenter le modèle de Markov caché qui  est un modèle génératif, et le modèle de Markov basé sur l'entropie maximale qui est un modèle discriminatif. 
+Dans l'approche basée sur les réseaux de neurones, nous allons présenter quelques architectures.
 
 \subsection{Modèle de Markov caché}
 
@@ -202,7 +202,7 @@ $
 
 La figure \ref{fig:cm-exp} représente un exemple d'une chaîne de Markov pour la prédiction du temps. 
 Il est claire que les états sont $Q = [HOT, COLD, WARM]$. 
-Si on suppose que la distribution initiale est $\pi = [0.1, 0.7, 0.2]$, la probabilité de la séquence $HOT\, WARM\, COLD\, COLD$ sera calculée comme suit 
+Si nous supposions que la distribution initiale soit $\pi = [0.1, 0.7, 0.2]$, la probabilité de la séquence $HOT\, WARM\, COLD\, COLD$ serait calculée comme suit :
 \begin{align*}
 P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 & = \pi(H) P(W | H) P(C | W) P(C | C) \\
@@ -216,8 +216,8 @@ P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 \end{figure}
 
 Ceci est un modèle de langage qui ne représente que les probabilités de transition. 
-Dans ce cas, on peut seulement représenter la probabilité de transition d'une catégorie à une autre. 
-Si on estime la probabilité d'émission d'un mot dans chaque état (étiquette), on peut estimer les étiquettes en utilisant la  théorème de Bayes. 
+Dans ce cas, nous pouvons seulement représenter la probabilité de transition d'une catégorie à une autre. 
+Si nous estimions la probabilité d'émission d'un mot dans chaque état (étiquette), nous pourrions estimer les étiquettes en utilisant la  théorème de Bayes. 
 Ce modèle est appelé : modèle de Markov caché (\keyword[H]{\ac{hmm}}) ; les mots d'une séquence sont observés contrairement aux catégories qui sont cachées et doivent être estimées. 
 Chaque étiquette (catégorie) $t_i$ est représentée par un un état $q_i$ dans l'ensemble des états $Q = \{q_1, q_2, \ldots, q_n\}$.
 Les transitions d'un état vers un autre suivant un modèle Bi-gramme sont représentées par la matrice de transitions $A$.
@@ -240,11 +240,11 @@ La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle 
         & = \arg\max\limits_t \prod_{i=1}^{n} \underbrace{P(t_i|t_{i-1})}_{a_{i-1,i}} \underbrace{P(w_i | t_i)}_{b_i(w_i)} \label{eq:hmm-detail}
 \end{align}
 
-Avant de discuter comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, on commence par décrire l'entraînement. 
+Avant de discuter comment une séquence $w=w_1 \ldots w_n$ est décodée selon l'équation \ref{eq:hmm-detail}, nous commençons par décrire l'entraînement. 
 Dans un \keyword[H]{\ac{hmm}}, les états sont les tags (catégories) $t_i$ et les observations sont les mots $w_i$. 
 Notons la fonction qui compte le nombre des occurrence d'une séquence comme $C$.
 La probabilité de transition $a_{i-1,i}$ de l'état $t_{i-1}$ vers $t_i$ est estimée à partir du corpus d'entraînement selon l'équation \ref{eq:pos-hmm1}.
-On note ``<s>" comme l'étiquette qui précède la première catégorie de la phrase. 
+Notons ``<s>" ; l'étiquette qui précède la première catégorie de la phrase. 
 Dans ce cas, la probabilité $\pi_i$ de commencer par l'état $t_i$ est estimée selon l'équation \ref{eq:pos-hmm2}.
 La probabilité d'émission d'un mot $w_i$ dans un état $t_i$ est estimée selon l'équation \ref{eq:pos-hmm3}.
 \begin{align}
@@ -302,13 +302,13 @@ Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emis
 \end{table}
 
 Revenons maintenant au décodage des tags (étiquetage). 
-Après l'entraînement d'un modèle de Markov caché $\lambda = (A, B)$, on veut l'utiliser pour estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$ à partir d'une séquence des observations (mots) $w = w_1 w_2 \ldots w_n$. 
-Dans chaque état $s$ de la séquence, on se base sur l'estimation précédente pour calculer les probabilités de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
+Après l'entraînement d'un modèle de Markov caché $\lambda = (A, B)$, nous voulons l'utiliser pour estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$ à partir d'une séquence des observations (mots) $w = w_1 w_2 \ldots w_n$. 
+Dans chaque état $s$ de la séquence, nous nous basons sur l'estimation précédente pour calculer les probabilités de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
 Il faut toujours sauvegarder l'état précédent pour revenir en fin d'algorithme. 
 Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:viterbi}).
 
-En utilisant le modèle entraîné dans l'exemple précédent, on veut trouver les tags de cette phrase : \expword{il peut aider}. 
-Suivant l'algorithme de Viterbi, on aura le tableau \ref{tab:hmm-viterbi-exp} où dans chaque cellule on précise les calculs séparés par des points virgules (les états précédent) et le pointeur de retour entre deux crochets. 
+En utilisant le modèle entraîné dans l'exemple précédent, nous voulons trouver les tags de cette phrase : \expword{il peut aider}. 
+Suivant l'algorithme de Viterbi, nous aurons le tableau \ref{tab:hmm-viterbi-exp} où chaque cellule est remplie par les calculs séparés par des points virgules (les états précédent) et le pointeur de retour entre deux crochets. 
 Dans la dernière séquence (``aider"), l'état qui maximise la probabilité est ``VERB". 
 Le retour est l'état 3 (``VERB") ayant un retour vers l'état 2 (``PRON"). 
 Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}. 
@@ -390,24 +390,24 @@ Les estimations par \keyword[H]{\ac{hmm}} se basent seulement sur des statistiqu
 Il est difficile à introduire des caractéristiques comme les suffixes, le majuscule, etc. 
 La régression logistique, qui est un modèle discriminatif, peut combiner plusieurs caractéristiques afin d'estimer une probabilité de sortie. 
 Malheureusement, cette méthode ne prend pas les séquences en considération.
-On peut utiliser des caractéristiques sur le mot actuel et les mots avant afin d'estimer l'étiquette ; comme dans les \keyword[H]{\ac{hmm}}.
+Nous pouvons utiliser des caractéristiques sur le mot actuel et les mots avant afin d'estimer l'étiquette ; comme dans les \keyword[H]{\ac{hmm}}.
 Dans ce cas le modèle sera appelé \acf{memm}.
 Le problème revient à maximiser les probabilités individuelles de chaque étiquette $\hat{t}_i$ (voir l'équation \ref{eq:pos-emm-est}). 
 \begin{equation}\label{eq:pos-emm-est}
 \hat{t} = \arg\max\limits_t P(t | w) = \arg\max\limits_t \prod\limits_{i}  P(t_i | w_i, t_{i-1})
 \end{equation}
 Notons $s_i^j$ la séquence $s_i \ldots s_j$. 
-Afin d'estimer l'étiquette $t_i$ d'un mot $w_i$, on prend $l$ mots précédents et $l$ mots suivants, en plus de $k$ tags précédents.
-On utilise un ensemble des caractéristiques $f$ où $f_j$ peut être la présence du majuscule dans le mot, etc.
+Afin d'estimer l'étiquette $t_i$ d'un mot $w_i$, nous prenons $l$ mots précédents et $l$ mots suivants, en plus de $k$ tags précédents.
+Nous utilisons un ensemble des caractéristiques $f$ où $f_j$ peut être la présence du majuscule dans le mot, etc.
 En utilisant la régression logistique, le problème sera formulé comme dans l'équation \ref{eq:memm}.
-L'apprentissage vise à minimiser la somme des erreurs d'étiquetage multi-classes de chaque mot (pour chaque mot, on aura plusieurs probabilités ; une pour chaque étiquette).
+L'apprentissage vise à minimiser la somme des erreurs d'étiquetage multi-classes de chaque mot (pour chaque mot, nous aurons plusieurs probabilités ; une pour chaque étiquette).
 \begin{equation}\label{eq:memm}
 \hat{t} = \arg\max\limits_t \prod\limits_{i}  
 \frac{exp\left(\sum_j \theta_j f_j(t_i, w_{i-l}^{i+l}, t_{i-k}^{i-1})\right)}%
 {\sum_{t' \in tags} exp\left(\sum_j \theta_j f_j(t'_i, w_{i-l}^{i+l}, t_{i-k}^{i-1})\right)}
 \end{equation}
 
-Voici une liste des caractéristiques $f$ qu'on peut utiliser dans cette méthode :
+Voici une liste des caractéristiques $f$ que nous pouvons utiliser dans cette méthode :
 \begin{itemize}
 	\item Le mot $w_i$ (en considérant chaque mot comme caractéristique)
 	\item Les étiquettes précédentes 
@@ -426,8 +426,8 @@ Voici une liste des caractéristiques $f$ qu'on peut utiliser dans cette méthod
 
 Les réseaux de neurones récurrents sont conçus pour traiter les séquences.
 Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en passant le mot encodé avec \keyword[O]{One-Hot} en entrée et en estimant le mot suivant sachant le contexte précédent. 
-Si on modifie la  sortie : à la place des probabilités des mots du vocabulaire, on essaye d'estimer les probabilités des catégories possibles. 
-On peut, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
+Nous modifions la sortie : à la place des probabilités des mots du vocabulaire, nous essayons d'estimer les probabilités des catégories possibles. 
+Nous pouvons, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseaux de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
 \begin{figure}[!ht]
 	\centering
@@ -435,9 +435,9 @@ La figure \ref{fig:pos-rnn1} représente un exemple d'un réseaux de neurones r�
 	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
 \end{figure}
 
-Si on veut avoir des réseaux plus profonds et plus complexes, on peut empiler plusieurs \ac{rnn} ensembles. 
+Si nous voulions avoir des réseaux plus profonds et plus complexes, nous pourrions empiler plusieurs \ac{rnn} ensembles. 
 Cela permet au modèle d'apprendre des traitements plus complexes améliorant la prédiction.
-Pour entraîner ce modèle, on aura besoin d'un grand dataset ; la taille de ce dernier augmente avec le nombre des réseaux empilés.
+Pour entraîner ce modèle, nous aurons besoin d'un grand dataset ; la taille de ce dernier augmente avec le nombre des réseaux empilés.
 La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rnn} empilés.
 \begin{figure}[!ht]
 	\centering
@@ -446,10 +446,10 @@ La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rn
 \end{figure}
 
 Dans les modèles neuronaux précédents, l'étiquette courante $t_i$ dépend sur le mot courant $w_i$ et le contexte passé. 
-Des fois, savoir le contexte futur peut améliorer la décision courante ; on peut trouver une dépendance entre le mot courant et les mots après. 
-Afin d'estimer l'étiquette courante en se basant sur le contexte futur, on utilise un \ac{rnn} avec une séquence inversée ; c-à-d. l'étiquette $t_i$ sera dépendante à la séquence $w_n, w_{n-1}, \ldots, w_{i+1}, w_{i}$. 
-Afin d'exprimer la bidirectionnalité, on utilise deux \ac{rnn} : en avant $RNN_{forward}(w_1^i)$ et en arrière $RNN_{backword}(w_i^n)$. 
-On fait la somme entre les deux états cachés $h_i^f \oplus h_i^b$ résultant à un vecteur qui doit passer par une fonction ``softmax" afin d'estimer les probabilités des tags. 
+Des fois, savoir le contexte futur peut améliorer la décision courante ; nous pouvons trouver une dépendance entre le mot courant et les mots après. 
+Afin d'estimer l'étiquette courante en se basant sur le contexte futur, nous utilisons un \ac{rnn} avec une séquence inversée ; c-à-d. l'étiquette $t_i$ sera dépendante à la séquence $w_n, w_{n-1}, \ldots, w_{i+1}, w_{i}$. 
+Afin d'exprimer la bidirectionnalité, nous utilisons deux \ac{rnn} : en avant $RNN_{forward}(w_1^i)$ et en arrière $RNN_{backword}(w_i^n)$. 
+Nous calculons la somme entre les deux états cachés $h_i^f \oplus h_i^b$ résultant à un vecteur qui doit passer par une fonction ``softmax" afin d'estimer les probabilités des tags. 
 Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
 \begin{figure}[!ht]
 	\centering
@@ -458,8 +458,8 @@ Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
 \end{figure}
 
 Les langues sont toujours en amélioration : ajout des nouveaux mots, des nouvelles formes, etc. 
-En plus, on ne peut pas capturer toutes les variations de tous les mots en utilisant un corpus limité surtout dans les langues fortement flexionnelles. 
-Afin de représenter les variations morphologiques d'un mot, on doit descendre au niveau caractère.
+En plus, nous ne pouvons pas capturer toutes les variations de tous les mots en utilisant un corpus limité surtout dans les langues fortement flexionnelles. 
+Afin de représenter les variations morphologiques d'un mot, nous devons descendre au niveau caractère.
 Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langage au niveau caractère afin d'encoder un mot et combiner ce code avec le code lexicale (\keyword[O]{One-Hot} ou \keyword[E]{embedding}) du mot. 
 Le code résultat sera pris comme l'entrée du réseau récurrent (simple, empilé ou bidirectionnel).
 \begin{figure}[ht]
@@ -484,15 +484,15 @@ Les règles sont difficiles à mettre en œuvre ; il faut avoir une connaissance
 Cette approche a été remplacée par l'approche statistique qui vise à estimer l'étiquette en se basant sur des statistiques sur le mot actuel ainsi que les mots précédents et leurs étiquettes.
 Avec l'arrivée des \ac{rnn}, cette tâche a devenue plus facile ; il faut juste avoir un corpus étiqueté avec une taille suffisante. 
 Dans les architectures présentées dans ce chapitre, l'entrée d'un \ac{rnn} est une représentation vectorielle du mot courant. 
-En réalité, on peut définir des architectures plus complexes en introduisant les caractéristiques d'un mot comme par exemple la présence des suffixes. 
-On peut même encoder tous les suffixes avec l'encodage One-Hot et fusionner ce code avec celui du mot. 
+En réalité, nous pouvons définir des architectures plus complexes en introduisant les caractéristiques d'un mot comme par exemple la présence des suffixes. 
+Nous pouvons même encoder tous les suffixes avec l'encodage One-Hot et fusionner ce code avec celui du mot. 
 
 Dans ce chapitre, nous avons présenté l'étiquetage des séquences et plus précisément l'étiquetage morpho-syntaxique. 
 Nous avons vu les approches et quelques méthodes utilisées pour résoudre cette tâche. 
-Mais la question qui se pose : comment peut-on évaluer un système d'étiquetage des séquences. 
-Tout simplement, cette tâche est un cas spécial de classification : à la place de classer une phrase, on classe chaque mot (ou partie) à part en tenant compte de leurs interactions (temporelles). 
+Mais la question qui se pose : comment pouvons-nous évaluer un système d'étiquetage des séquences ? 
+Tout simplement, cette tâche est un cas spécial de classification : à la place de classer une phrase, nous classons chaque mot (ou partie) à part en tenant compte de leurs interactions (temporelles). 
 Donc, les métriques d'évaluation de la classification comme la justesse (accuracy), le rappel (recall), la précision (precision), etc. peuvent être utilisées.
-Ceci concerne l'évaluation intrinsèque, sinon on peut évaluer l'effet de cette tâche sur une autre (évaluation extrinsèque).
+Cela concerne l'évaluation intrinsèque, sinon nous pouvons évaluer l'effet de cette tâche sur une autre (évaluation extrinsèque).
 \end{discussion}
 
 %=====================================================================
