@@ -323,7 +323,7 @@ title={#1}
 \def\publisher#1
 {
 	\IfFileExists{#1}{
-		\@publisherimage={\noindent\includegraphics[width=1.5cm]{#1} } %
+		\@publisherimage={\noindent\includegraphics[width=1.7cm]{#1} } %
 	}{
 		\@publisherimage={}
 	}
@@ -395,11 +395,12 @@ title={#1}
 	{};
 
 
-	\node[text width=20cm,anchor=north west, align=left] at ([shift={(1cm, 3cm)}] current page.south west){
+	\node[text width=20cm,anchor=north west, align=left] at ([shift={(1cm, 3.2cm)}] current page.south west){
 		\bfseries
 		\begin{tabular}{ll}
-		\multirow{2}{*}{\the\@publisherimage } &
+		\multirow{3}{*}{\the\@publisherimage} &
 		Support de cours \\
+		& 2ième année cycle supérieur (2CS) \& Master\\
 		& \textit{Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger, Algérie}
 		\end{tabular}\\[.4cm]
 		\Huge
