@@ -41,8 +41,9 @@ Si oui, nous essayons de trouver sa structure afin d'aider d'autres tâches comm
 \section{Structures syntaxiques}
 %===================================================================================
 
-Une langue doit avoir une structure syntaxique ; des règles qui aident la formation des phrases. 
-Nous parlons ici d'une phrase grammaticalement correcte ; cela ne veut pas dire que la phrase doit avoir un sens. 
+Les phrases d'une langue doivent suivre une structure syntaxique en se basant sur des règles de construction.
+Dans cette section, nous nous intéressons à la formation d'une phrase grammaticalement correcte même si le sens est erroné.
+%Nous parlons ici d'une phrase grammaticalement correcte ; cela ne veut pas dire que la phrase doit avoir un sens. 
 Donc, le fait qu'une phrase est bien formée syntaxiquement n'est pas une garantie qu'elle est sémantiquement correcte. 
 Par exemple, la phrase ``\expword{Les idées vertes et non colorées dorment furieusement.}" est bien formée syntaxiquement, mais n'a aucun sens.
 Il existe plusieurs théories pour représenter la structure syntaxique :
@@ -220,7 +221,7 @@ Un petit rappel de cette forme ($N$ est l'ensemble des variables et $\Sigma$ est
 Après transformation de la grammaire $G <\Sigma, N, P, S>$ sous FNC, nous pouvons l'utiliser pour la reconnaissance des phrases. 
 Étant donné une phrase $w = w_1 \ldots w_n$, nous créons un tableau triangulaire $T$ de taille $n*n/2$. 
 L'algorithme \ref{algo:cky-recon} décrit comment remplir ce tableau afin d'analyser le mot $w$ suivant la grammaire $G$ en FNC. 
-Je l'ai modifié un peu pour pouvoir revenir en arrière et créer l'arbre syntaxique : chaque cellule contient un ensemble des quadruplets (variable, index des fils, position du 1ier fils, position du deuxième fils).
+L'algorithme a été modifié un peu pour pouvoir revenir en arrière et créer l'arbre syntaxique : chaque cellule contient un ensemble des quadruplets (variable, index des fils, position du 1ier fils, position du deuxième fils).
 L'algorithme prend un temps $O(n^3 * |P|)$ où $P$ est l'ensemble des productions.
 Nous commençons par remplir le diagonal du tableau $T$ par les variables $A$ qui génèrent les mots $w_i$ de la phrase $w$ ($A \rightarrow\ w_i$). 
 Nous continuons le remplissage du bas vers le haut et du gauche vers le droit. 

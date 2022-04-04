@@ -27,7 +27,8 @@
 
 
 Une phrase est bien définie si sa probabilité $P(S) = P(w_1, w_2, ..., w_n) $ est égale à $1$. 
-Une phrase avec une probabilité plus grande qu'une autre a plus de chance de se produire étant donné le contexte appris. 
+%Une phrase avec une probabilité plus grande qu'une autre a plus de chance de se produire étant donné le contexte appris. 
+Une phrase avec une probabilité plus grande qu'une autre a plus de chance d'appartenir au langage utilisé pour entraîner le modèle.
 Cette hypothèse a plusieurs applications : 
 \begin{itemize}
 	\item Traduction automatique : en traduisant un texte d'une langue vers une autre, nous pouvons trouver des mots avec plusieurs traductions/sens. 
@@ -296,7 +297,8 @@ Lorsque la taille $n$ du modèle est choisie, les mots $w_{i-n+1}, \ldots, w_{i-
 Chacun de ces vecteur est passé par une couche cachée de taille $d$ ; donc nous aurons un vecteur de taille $d$ pour chaque mots de ces $n-1$.
 Ce vecteur est appelé \keyword[E]{embedding} (sera discuté en détail dans le chapitre de sémantique lexicale). 
 En fusionnant les vecteurs, nous aurons un seul vecteur de contexte $m \in \mathbb{R}^{(n-1) d}$.
-Ce vecteur va être passé par deux blocs en parallèle :
+%Ce vecteur va être passé par deux blocs en parallèle :
+Ce vecteur est utilisé comme entrée de deux blocs des réseaux de neurones :
 \begin{itemize}
 	\item Une couche cachée avec les paramètres $A \in \mathbb{R}^{(n-1) \times d \times V}$ (poids) et $b \in \mathbb{R}^{V}$. 
 	La somme pondérée résulte à un vecteur de taille $V$. 
@@ -349,10 +351,11 @@ Pour ce faire, il passe par une couche de sortie ayant des paramètres $U \in \m
 \end{figure}
 
 Il ne faut pas oublier d'utiliser le mot clé ``\textless UNK\textgreater" afin d'entraîner le modèle à prendre en considération les mots inconnus. 
-Le problème avec cette architecture est que le modèle puisse arrêter à apprendre avec un contexte à long terme (problème de disparition des gradients).
+%Le problème avec cette architecture est que le modèle puisse arrêter à apprendre avec un contexte à long terme (problème de disparition des gradients).
+Cette architecture pose un problème : avec un contexte à long terme (plusieurs mots passés), le modèle peut arrêter à apprendre (problème de disparition des gradients).
 Une solution est d'utiliser des architectures plus avancées comme \keyword[L]{LSTM} et \keyword[G]{GRU}. 
-Ceci est dit, le problème de disparition des gradients existe toujours. 
-Une solution technique est de fixer un nombre maximum des états.
+Ceci est dit, le problème de disparition des gradients ne sera pas totalement réglé.
+Une solution technique est de fixer un nombre maximum des états (mots passés à considérer).
 
 %===================================================================================
 \section{Évaluation}
@@ -418,9 +421,9 @@ Parmi les applications de ce genre de modèles est la détection des langues, su
 Supposons que nous voulons détecter les langues : français, anglais et espagnol. 
 Dans ce cas, nous entraînons trois modèles de langage pour chacune de ces langues. 
 Étant donné une phrase, nous essayons d'estimer les trois probabilités (niveau caractère) et considérer le modèle qui maximise la probabilité. 
-Un modèle de langage peut être entraîné sur des séquences d'ADN. 
-Dans ce cas, le vocabulaire sera : ``A", ``T", ``C", ``G" et ``U". 
-Parmi ses applications : la détection de l'espèce. 
+Les modèles de langages ne sont pas seulement utilisés dans le traitement de texte.
+Un modèle de langage peut être entraîné sur des séquences d'ADN où le vocabulaire est : ``A", ``T", ``C", ``G" et ``U". 
+Dans ce cas, ce modèle peut être utilisé pour la détection de l'espèce (animaux, plantes, etc.). 
 \end{discussion}
 
 %=====================================================================

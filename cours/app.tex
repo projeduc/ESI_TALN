@@ -1032,7 +1032,9 @@ En se basant sur un lexicon annoté en anglais (mots avec des scores de polarit�
 Il faut prendre en considération que certains mots vont perdre leurs sens vu que l'utilisation des mots en anglais n'est pas garantie d'être équivalente au mots traduit dans les textes en arabe. 
 Les messages de facebook sont annotés selon les scores de polarités des mots ; chaque message est affecté à la classe positive ou négative.
 Ensuite, le corpus annoté automatiquement est utilisé afin d'entraîner un modèle de classification en utilisant des critères comme les \keywordpl[E]{embedding} des mots. 
-Une autre remarque concernant cela : le modèle entraîné va apprendre exactement la même fonction de celui par règle seulement avec des caractéristiques différentes; il faut mieux annoter les messages manuellement.
+Une autre remarque concernant cela : le modèle entraîné va apprendre exactement la même tâche de celui par règle.
+La différence, dans ce cas, est que les caractéristiques utilisées dans la tâche sont différentes.
+En conclusion, il faut mieux annoter les messages manuellement que d'utiliser une annotation automatique.
 
 \begin{figure}
 	\centering
@@ -1144,7 +1146,7 @@ Les classes de difficulté peuvent être définies selon le besoin : niveau de l
 La reconnaissance de la parole consiste à transformer des paroles vers un format textuel. 
 Une telle tâche peut assister la rédaction sans utiliser les mains, communiquer avec des machines (comme le système de recommandation précédemment présenté), etc. 
 La figure \ref{fig:asr-classif} représente une classification des systèmes de reconnaissance des paroles basée sur \cite{2020-malik-al}.
-Dans cette section, je vais présenter les étapes de la  reconnaissance à la place des différentes approches. 
+Dans cette section, nous n'allons pas présenter les différentes approches; nous allons focaliser sur l'étape de pré-traitement.
 La classification sera présentée avec plus de détail ici.
 Un système de reconnaissance de la parole peut être conçu seulement pour détecter les paroles d'un seul locuteur, n'importe quel locuteur ou il peut s'adapter aux nouveaux locuteurs.
 Selon le canal d'entrée, le système peut permettre les sons d'arrière-plan ou il exige un son clair en entrée.  
@@ -1342,7 +1344,7 @@ Avec l'arrivé de l'internet et puis les réseaux sociaux, ce domaine serait d'u
 Comme chaque domaine, \ac{taln} est un arme à double tranchant : il peut aider les peuples à communiquer, il peut automatiser des tâches sur les textes, etc.; mais aussi, il peut être utilisé dans l'espionnage, la manipulation de l'opinion public, etc. 
 Comme le proverbe de Spider-man le dit : ``With great power comes great responsibility" (Avec un grand pouvoir vient une grande responsabilité). 
 
-Dans ce chapitre, nous avons présenté huit applications dont chaque deux représentent un type de tâches. 
+Dans ce chapitre, nous avons présenté huit applications appartenant à quatre types de tâches. 
 Le premier type est la transformation du texte ; un texte en entrée doit être transformé à un autre différent en sortie. 
 Les deux applications qui ont été présentées sont : la traduction automatique (un texte d'une langue vers une autre) et le résumé automatique (un texte long vers un autre plus petit). 
 Le deuxième type est l'interaction avec l'utilisateur ; en utilisant des requêtes de l'utilisateur, nous générons des réponses. 

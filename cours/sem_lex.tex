@@ -47,7 +47,7 @@ Dans la première phrase, ce mot représente un liquide ; sauf si nous pouvons i
 Dans la deuxième phrase, le mot ``café" représente une place ; nous ne pouvons pas aller vers un liquide sauf si nous le considérons comme une place. 
 Lorsque nous parlons d'une place, il est commun de considérer le cafétéria et pas la place où se trouve un verre du café.
 La dernière phrase utilise le mot ``café" comme un produit recueilli de la terre.
-Je pense la motivation de ce chapitre est claire : encodage des mots en se focalisant sur le niveau sémantique.
+En résumé, la motivation de ce chapitre est de présenter les différentes méthodes d'encodage des mots en se focalisant sur le niveau sémantique.
 
 %===================================================================================
 \section{Bases de données lexicales}
@@ -374,9 +374,7 @@ Nous avons vu que les représentations terme-document et terme-terme sont souven
 En plus, leurs dimensions sont énormes surtout si notre langage est riche en mots. 
 Revenons au premier chapitre, nous avons présenté une représentation appelée : analyse sémique. 
 Nous choisissons des propriétés pour représenter les mots en indiquant si la propriété existe ou non. 
-Du même, nous pouvons définir $L$ concepts comme des propriétés abstraites (nous ne savons pas c'est quoi ces propriétés). 
-
-
+Du même, nous pouvons définir $L$ concepts comme propriétés anonymes afin d'encoder les termes et les documents. 
 Dans \ac{lsa}, nous voulons représenter les $N$ termes et les $M$ documents en utilisant un vecteur de taille $L$ comme deux matrices : $T[N, L]$ et $D[M, L]$ respectivement.
 Pour ce faire, nous devons choisir le nombre des concepts (taille du vecteur) $L \le \min(N, M)$. 
 Nous commençons par une matrice terme-document $X[N, M]$. 
@@ -453,7 +451,7 @@ Malgré c'est une représentation vectorielle, j'ai choisi de présenter les \ke
 Les représentations document-mot et mot-mot basées sur la co-occurrence occupent un grand espace mémoire ; elles sont difficiles à gérer.
 Dans \ac{lsa}, nous avons vu que la représentation d'un mot est compactée comme un petit vecteur de nombres réels.
 Ceci est appelé : ``Word \keyword[E]{embedding}" ou, en français, ``Plongement lexical". 
-Ici, je vais utiliser la première nomination puisqu'elle est plus cool et plus utilisée.
+Ici, nous allons utiliser la première nomination vu qu'elle est plus connue.
 
 Dans cette section, nous allons présenter Word \keyword[E]{embedding} basé sur les réseaux de neurones. 
 Nous allons présenter deux types des \keywordpl[E]{embedding} : 
