@@ -45,7 +45,7 @@ Les points traités dans ce chapitre sont les suivants :
 	
 	\item La segmentation du texte en phrases et les phrase en mots. 
 	
-	\item La normalisation du texte afin de diminuer les variations d'un mots.
+	\item La normalisation du texte afin de diminuer les variations d'un mot.
 	
 	\item La formation des mots dans les langues synthétiques et l'opération inverse.
 \end{itemize}
@@ -437,7 +437,7 @@ Les correspondances soulignées des vecteurs des deux mots représentent des tra
 \section{Segmentation du texte}
 %===================================================================================
 
-Un texte peut être traité lorsqu'il est segmenté en passages de petites tailles ; elles peuvent êtres des chapitres, des paragraphes, des phrases ou des mots selon la granularité voulue.
+Un texte peut être traité lorsqu'il est segmenté en passages de petites tailles ; ils peuvent être des chapitres, des paragraphes, des phrases ou des mots selon la granularité voulue.
 Dans plusieurs langues, les phrases sont délimitées par un point ou une marque spécifique, et les mots sont délimités par des espaces. 
 Même dans ces langues, le délimiteur peut être utilisé pour d'autres fins. 
 Il existe des langues où il n'y a pas de délimiteur des phrases, des mots ou des deux.
@@ -448,7 +448,7 @@ Afin de séparer les phrases dans un format semi-structuré, comme HTML, nous po
 Mais, lorsqu'il s'agit d'un texte non structuré, plusieurs langues utilisent des marqueurs comme le point, point d'exclamation et point d'interrogation pour marquer la fin d'une phrase. 
 Dans ce cas, nous pouvons utiliser une expression régulière simple \expword{/[.?!]/} pour délimiter les phrases dans des langues comme français, anglais, etc.
 Des fois, nous voulons séparer les phrases longues avec des clauses séparées par des virgules.
-Aussi, les guillemets peuvent pauser un problème : est-ce que la phrase dedans est séparée ou elle est une continuation de la clause principale ?
+Aussi, les guillemets peuvent causer un problème : est-ce que la phrase dedans est séparée ou elle est une continuation de la clause principale ?
 Par exemple, \expword{Il a dit : ``Je suis fatigué." en retournant à son lit.}.
 Le point dans ces langues n'est pas toujours utilisé pour séparer les phrases. 
 Il peut être utilisé dans les nombres : \expword{123,456.78 (style américain) 123.456,78 (style européen)}.
@@ -459,14 +459,14 @@ Cette langue n'utilise pas des marqueurs pour séparer les phrases.
 
 Lorsque le marqueur de phrase est réservé pour d'autres utilisations, il y a toujours des facteurs qui aident le lecteur à décider si c'est un délimiteur de phrase ou non.
 Ces facteurs peuvent être extraits en observant comment la langage définit la fin de la phrase. 
-Quelques facteurs contextuelles ont été proposés et utilisés pour la segmentation des phrases \cite{10-palmer} :
+Quelques facteurs contextuels ont été proposés et utilisés pour la segmentation des phrases \cite{10-palmer} :
 \begin{itemize}
 	\item \optword{La casse} : les phrases commencent toujours par un majuscule. 
 	Mais, ce n'est pas toujours le cas ; nous pouvons trouver une abréviation suivie par un nom propre (Ex. ``\expword{M. Aries}"). 
-	En plus, ce n'est pas garantie que l'écrivain respecte les règles d'écriture. 
+	En plus, ce n'est pas garanti que l'écrivain respecte les règles d'écriture. 
 	Nous pouvons voir cela, par exemple, dans les réseaux sociaux où plusieurs règles sont abandonnées.
 	
-	\item \optword{Noms propres} : les noms propres se commencent par un majuscule ; ils peuvent ne pas être le début.
+	\item \optword{Noms propres} : les noms propres commencent par un majuscule ; ils peuvent ne pas être le début.
 	Dans l'exemple précédent (``\expword{M. Aries}"), nous pouvons déduire que le point ne représente pas une séparation vu que les deux mots commencent par un majuscule et le deuxième est un nom propre. 
 	Dans ce cas, la probabilité que le premier soit une abréviation est grande surtout si le mot est au milieu de la phrase.
 	
@@ -478,7 +478,7 @@ Quelques facteurs contextuelles ont été proposés et utilisés pour la segment
 	
 	\item \optword{Préfixes et suffixes} : les mots avec des affixes sont moins probables d'être des abréviations.
 	
-	\item \optword{Classes des abréviations} : les abréviations peuvent se figurer à la fin de la phrase. 
+	\item \optword{Classes des abréviations} : les abréviations peuvent figurer à la fin de la phrase. 
 	Mais, il y a un ensemble d'abréviations qui sont toujours suivies par un autre mot, comme par exemple ``Mr.".
 	\citet{89-riley,97-reynar-ratnaparkhi} divisent les abréviations en deux catégories : les titres (qui ne peuvent pas être à la fin de phrase (Ex. ``\expword{Mr.}", ``\expword{Dr.}", etc.) et les indicatifs corporatifs (qui peuvent être à la fin de phrase (Ex. ``\expword{Corp.}", ``\expword{S.P.A.}", etc.).
 \end{itemize}
@@ -502,7 +502,7 @@ Dans l'anglais, l'apostrophe peut être utilisée avec un ``\textit{s}" dans la 
 Dans le français, il y a pas mal d'exemples de contractions : la contraction des articles (\expword{l'homme, c'était}), la contraction des pronoms (\expword{j'ai, je l'ai}), et autres formes (\expword{n'y, qu'ils, d'ailleurs}).
 Certaines langues utilisent des mots composés, soit par composition ou par trait d'union. 
 Dans l'allemand, il est commun d'utiliser la composition des mots: nom-nom (\expword{Lebensversicherung: assurance vie}), adverbe-nom (\expword{Nichtraucher: non-fumeur}), et préposition-nom (\expword{Nachkriegszeit: période d'après-guerre}). 
-Autres langues utilisent le trait d'union, comme l'anglais (\expword{end-of-file, classification-based}) et le français (\expword{va-t-il, c'est-à-dire, celui-ci}). 
+D'autres langues utilisent le trait d'union, comme l'anglais (\expword{end-of-file, classification-based}) et le français (\expword{va-t-il, c'est-à-dire, celui-ci}). 
 Il existe des langues, comme le japonais, qui n'utilisent pas de marqueurs pour séparer les mots (\expword{今年は本当に忙しかったです。}).
 
 
@@ -711,7 +711,7 @@ Cette tâche est plus difficile que celle de radicalisation, puisque nous avons 
 	Pour une recherche approximative, des méthodes de comparaison dans le niveau caractère (distance d'édition) sont utilisées. 
 	
 	Le texte se compose des unités qui peuvent être des chapitres, des phrases, des mots ou des caractères.
-	Un mot c'est l'unité la plus petite ayant un sens. 
+	Le mot est l'unité la plus petite ayant un sens. 
 	Donc, afin de traiter un texte, il faut le décomposer en petites unités  afin de traiter les unités plus grandes, etc. 
 	D'où l'importance de la segmentation du texte. 
 	Ces unités peuvent avoir le même sens, mais plusieurs variations. 

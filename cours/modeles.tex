@@ -26,7 +26,7 @@
 \end{introduction} 
 
 
-Une phrase est bien définie si sa probabilité $P(S) = P(w_1, w_2, ..., w_n) $ égale à $1$. 
+Une phrase est bien définie si sa probabilité $P(S) = P(w_1, w_2, ..., w_n) $ est égale à $1$. 
 Une phrase avec une probabilité plus grande qu'une autre a plus de chance de se produire étant donné le contexte appris. 
 Cette hypothèse a plusieurs applications : 
 \begin{itemize}
@@ -163,7 +163,8 @@ P(\text{\textit{\textless s\textgreater il peut vous aider \textless/s\textgreat
 \]
 Les mots qui ne figurent pas dans le vocabulaire sont appelés ``Out-of-vocabulary words". 
 Afin de régler ce problème, nous pouvons ajouter un autre mot ``\textless UNK\textgreater" au vocabulaire. 
-Pour incorporer ce mot dans le corpus d'entraînement, nous pouvons fixer un vocabulaire et remplacer le reste des mots par ce mot clé, ou en peut remplacer les mots les moins fréquents par ``\textless UNK\textgreater". 
+Pour incorporer ce mot dans le corpus d'entraînement, nous pouvons fixer un vocabulaire et remplacer le reste des mots par ce mot clé.
+Aussi, nous pouvons remplacer les mots les moins fréquents par ``\textless UNK\textgreater". 
 
 \subsection{Lissage (Smoothing)}
 
@@ -175,7 +176,7 @@ Même sans ce problème, si nous utilisions des petits N-grammes, nous pourrions
 Exemple, ``\expword{\underline{L'ordinateur} que j'ai utilisé hier à l'ESI pendant la séance du cours \underline{a planté}}". 
 Donc, nous sommes obligés à utiliser des N-grammes plus grands. 
 Pour entraîner un tel modèle, il nous faut une grande quantité de données. 
-Pour une vocabulaire de taille $V$ et N-gramme de taille $N$, nous avons $V^N$ n-grammes possibles.
+Pour un vocabulaire de taille $V$ et N-gramme de taille $N$, nous avons $V^N$ n-grammes possibles.
 Une solution à tous cela est d'utiliser la technique de lissage.
 L'intuition est d'emprunter une petite portion des probabilités des N-grammes existants pour former une probabilité aux N-grammes absents.
 
@@ -291,7 +292,7 @@ Cette représentation est appelée ``\keyword[O]{One-Hot} représentation".
 En sortie, nous aurons un vecteur avec des probabilités ; le mot dont la position ait la plus grande probabilité est celui choisi. 
 
 Ici, nous allons présenter le modèle de \citet{2003-bengio-al} illustré par la figure \ref{fig:bengio-l}.
-Après choisir la taille $n$ du modèle, les mots $w_{i-n+1}, \ldots, w_{i-1}$ sont représentés sous forme des vecteurs \keyword[O]{One-Hot} $h_{i-n+1}, \ldots, h_{i-1}$. 
+Lorsque la taille $n$ du modèle est choisie, les mots $w_{i-n+1}, \ldots, w_{i-1}$ sont représentés sous forme des vecteurs \keyword[O]{One-Hot} $h_{i-n+1}, \ldots, h_{i-1}$. 
 Chacun de ces vecteur est passé par une couche cachée de taille $d$ ; donc nous aurons un vecteur de taille $d$ pour chaque mots de ces $n-1$.
 Ce vecteur est appelé \keyword[E]{embedding} (sera discuté en détail dans le chapitre de sémantique lexicale). 
 En fusionnant les vecteurs, nous aurons un seul vecteur de contexte $m \in \mathbb{R}^{(n-1) d}$.
@@ -302,9 +303,9 @@ Ce vecteur va être passé par deux blocs en parallèle :
 	\item Une couche cachée avec les paramètres $T \in \mathbb{R}^{(n-1) \times d \times H}$ suivie par une fonction ``Tanh", ce qui va générer un vecteur de taille $H$. 
 	Ce dernier passe par une autre couche avec les paramètres $W \in \mathbb{R}^{V \times H}$, ce qui génère un vecteur de taille $V$. 
 \end{itemize}
-Les deux vecteurs sont additionnés élément par élément pour avoir un seule vecteur de taille $V$. 
+Les deux vecteurs sont additionnés élément par élément pour avoir un seul vecteur de taille $V$. 
 Pour avoir des probabilités avec une somme égale à $1$, nous passons ce vecteur par une fonction ``softmax". 
-L'architecture de ce modèle peut être exprimé par l'équation \ref{eq:bengio}.
+L'architecture de ce modèle peut être exprimée par l'équation \ref{eq:bengio}.
 \begin{equation}
 	P(.|h_1,\ldots, h_{n-1}) = 
 	Softmax \left(
@@ -362,7 +363,7 @@ Il faut avoir une méthode pour comparer les deux.
 Pour ce faire, il existe deux approches : 
 	\begin{itemize}
 		\item \optword{Évaluation extrinsèque} : ici, nous voulons tester l'effet d'un modèle de langage sur une autre tâche. 
-		Nous évaluons la tâche en utilisant plusieurs modèles de langage pour choisir celui qui donne des meilleurs résultats.
+		Nous évaluons la tâche en utilisant plusieurs modèles de langage pour choisir celui qui donne de meilleurs résultats.
 		Exemple, ``\expword{La qualité de traduction automatique en utilisant ce modèle}". 
 		Dans cet exemple, nous essayons de choisir le modèle de langue le plus adéquat pour la tâche de traduction automatique.
 		Bien sûr, l'évaluation dans ce cas est vraiment coûteuse vu que nous voulions entraîner le système de traduction à chaque fois que nous modifiions le modèle de langage.
@@ -389,11 +390,11 @@ Dans ce cas, un modèle ayant une perplexité minimale est le meilleur.
 
 \begin{discussion}
 
-Un langage se définit un vocabulaire et une grammaire afin de composer des phrases. 
+Un langage est défini par un vocabulaire et une grammaire afin de composer des phrases. 
 Les règles de la grammaire sont définies par des linguistes. 
 Des fois, il est vraiment difficile de définir ces règles, surtout si elles se basent sur des exceptions des mots. 
-Par exemple, un verbe transitif qui n'accepte pas des mots comme complément d'objet directe puisque la phrase n'aura aucun sens (\expword{J'ai mangé le ciel}). 
-Ce dernier exemple peut être réglé si nous avons des statistiques sur le contexte des mots dans un langage : quel mot peut se produire en voisinage d'un autre ? et à quel fréquence ?
+Par exemple, un verbe transitif qui n'accepte pas des mots comme complément d'objet direct puisque la phrase n'aura aucun sens (\expword{J'ai mangé le ciel}). 
+Ce dernier exemple peut être réglé si nous avons des statistiques sur le contexte des mots dans un langage : quel mot peut se produire en voisinage d'un autre ? et à quelle fréquence ?
 Cette représentation est appelée : un modèle de langage ; déjà présenté dans ce chapitre. 
 
 Nous avons vu que le modèle de langage se base sur le vocabulaire appris à partir du corpus d'entraînement. 

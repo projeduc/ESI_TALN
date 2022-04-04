@@ -45,11 +45,11 @@ L'étiquetage morpho-syntaxique est bénéfique pour plusieurs tâches :
 Un langage est une séquence continue des mots ; il est considéré comme un phénomène temporel.
 Chaque mot ou ensemble de mots possèdent des caractéristiques linguistiques, chacune définit plusieurs catégories. 
 Par exemple, les mots ont des catégories lexicales : nom, verbe, adjectif, etc.
-En général, la catégorie d'un mot est dépendante aux catégories des mots avant.
+En général, la catégorie d'un mot est dépendante des catégories des mots précédents.
 L'étiquetage d'une séquence des mots $w = w_1, \ldots, w_n$ sert à trouver une séquence des étiquettes équivalente $t = t_1, \ldots, t_n$. 
 
 L'étiquetage de séquences peut être réalisé en utilisant des règles définies manuellement. 
-Une des méthodes consiste à assigner à chaque mot un ensemble des étiquettes possibles. 
+Une des méthodes consiste à assigner à chaque mot un ensemble d'étiquettes possibles. 
 Ensuite, nous utilisons des règles afin de réduire les étiquettes jusqu'à atteindre une étiquette par mot.
 Parmi les règles que nous puissions utiliser : \expword{Un déterminant est suivi par un nom}. 
 L'approche statistique vise à apprendre l'annotation en se basant sur un corpus annoté manuellement. 
@@ -201,7 +201,7 @@ a_{n1} & a_{n2} & \ldots & a_{nn} \\
 $
 
 La figure \ref{fig:cm-exp} représente un exemple d'une chaîne de Markov pour la prédiction du temps. 
-Il est claire que les états sont $Q = [HOT, COLD, WARM]$. 
+Il est clair que les états sont $Q = [HOT, COLD, WARM]$. 
 Si nous supposions que la distribution initiale soit $\pi = [0.1, 0.7, 0.2]$, la probabilité de la séquence $HOT\, WARM\, COLD\, COLD$ serait calculée comme suit :
 \begin{align*}
 P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
@@ -265,7 +265,7 @@ Un exemple de calcul d'une transition est le suivant : $P(VERB | NOUN) = \frac{C
 La probabilité d'émission du mot ``veut" lorsque le tag est ``VERB" est calculée comme suit : $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$. 
 La probabilité q'un pronom soit au début de la phrase est calculée comme : $\pi_{PRON} = \frac{C(<s>,\ PRON)}{C(<s>)} = \frac{3}{4} $.
 La matrice des transitions ainsi que la distribution initiale sont illustrés dans le tableau \ref{tab:hmm-trans-init}. 
-Portant ce n'est pas utilisé dans le calcul, nous avons ajouté le passage d'un état vers la fin afin de compléter la distribution (avoir une somme de 1 sur les lignes). 
+Pourtant ce n'est pas utilisé dans le calcul, nous avons ajouté le passage d'un état vers la fin afin de compléter la distribution (avoir une somme de 1 sur les lignes). 
 Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emission}. 
 \begin{table}[ht]
 	\centering
@@ -387,7 +387,7 @@ Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}.
 \subsection{Maximum entropy}
 
 Les estimations par \keyword[H]{\ac{hmm}} se basent seulement sur des statistiques des mots. 
-Il est difficile à introduire des caractéristiques comme les suffixes, le majuscule, etc. 
+Il est difficile d'introduire des caractéristiques comme les suffixes, le majuscule, etc. 
 La régression logistique, qui est un modèle discriminatif, peut combiner plusieurs caractéristiques afin d'estimer une probabilité de sortie. 
 Malheureusement, cette méthode ne prend pas les séquences en considération.
 Nous pouvons utiliser des caractéristiques sur le mot actuel et les mots avant afin d'estimer l'étiquette ; comme dans les \keyword[H]{\ac{hmm}}.
@@ -428,7 +428,7 @@ Les réseaux de neurones récurrents sont conçus pour traiter les séquences.
 Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en passant le mot encodé avec \keyword[O]{One-Hot} en entrée et en estimant le mot suivant sachant le contexte précédent. 
 Nous modifions la sortie : à la place des probabilités des mots du vocabulaire, nous essayons d'estimer les probabilités des catégories possibles. 
 Nous pouvons, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
-La figure \ref{fig:pos-rnn1} représente un exemple d'un réseaux de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
+La figure \ref{fig:pos-rnn1} représente un exemple d'un réseau de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.55\textwidth]{rnn-simple_.pdf}
@@ -476,7 +476,7 @@ Les linguistes font la différence entre la fonction d'un mot dans la phrase en 
 Par exemple un nom c'est la référence à un objet (concret ou abstrait), or un adjectif est un mot qui représente une propriété d'un nom. 
 Donc, le fait de savoir la catégorie d'un mot aide la compréhension d'une phrase. 
 Automatiser la tâche de détection des catégories d'une séquence de mots est une étape vers la compréhension de la phrase. 
-Même dans les tâches statistiques (qui ne sont pas besoin de la compréhension), les catégories des mots peuvent être un bon indicateur. 
+Même dans les tâches statistiques (qui n'ont pas besoin de la compréhension), les catégories des mots peuvent être un bon indicateur. 
 
 Étiqueter les mots par leurs catégories grammaticales est une tâche appartenant aux tâches de l'étiquetage des séquences. 
 Plusieurs approches ont été utilisées pour résoudre ce problème : par règles, statistique et par réseaux de neurones. 

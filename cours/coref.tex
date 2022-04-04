@@ -28,7 +28,7 @@
 Prenons l'exemple ``\expword{La fille a cueilli une fleur. Elle l'a sentie. Elle a une très bonne odeur.}" représentant trois phrases consécutives.
 Afin de comprendre le sens de la deuxième phrase, nous devons savoir que ``elle" veut dire ``la fille" et ``l'" veut dire ``une fleur". 
 Le pronom ``elle" de la troisième phrase est plus difficile à résoudre ; il référence la fille ou la fleur ?
-En introduisant le sens de la deuxième phrase ``la fille a sentie une fleur", nous pouvons déduire que ``elle" est une référence à ``une fleur".
+En introduisant le sens de la deuxième phrase ``la fille a senti une fleur", nous pouvons déduire que ``elle" est une référence à ``une fleur".
 Plusieurs tâches peuvent motiver la résolution des coréférences :
 \begin{itemize}
 	\item Résumé automatique : dans le cas d'un résumé automatique extractif, nous essayons d'extraire les phrases les plus pertinentes. 
@@ -53,7 +53,7 @@ Dans cette section, nous allons discuter les formes des références, les maniè
 Les références peuvent être classifiées selon les catégories syntaxiques, en plus d'autres critères \cite{2015-schmolz}.
 La forme la plus connue des références est l'utilisation des pronoms et surtout les pronoms personnels.
 Un \optword{pronom} est un mot-outil utilisé afin de se substituer à un nom ou un syntagme nominal. 
-La catégorie la plus connue est le pronom personnel qui serve à représenter les trois types des personnes grammaticales : l'énonciateur, le destinataire et la personne absente. 
+La catégorie la plus connue est le pronom personnel qui sert à représenter les trois types des personnes grammaticales : l'énonciateur, le destinataire et la personne absente. 
 Un exemple de ce genre de références est :  ``\expword{\underline{Karim} est entré. \underline{Il} a commencé le cours.}".
 Un pronom possessif est un pronom qui renvoie à un objet possesseur (et des fois à un objet possédé).
 Exemple, ``\expword{\underline{Karim} a commencé \underline{son} cours.}".
@@ -97,14 +97,14 @@ Nous pouvons utiliser des adverbes comme références (Ex. ``\expword{Moammed \u
 
 \subsection{Manière de référencement}
 
-Le référencement peut être classifié selon la position de la référence par rapport le référent en anaphore et cataphore. 
+Le référencement peut être classifié selon la position de la référence par rapport celle du référent en anaphore et cataphore. 
 En terme de nombre des antécédents, nous pouvons avoir un antécédent unique ou des antécédents partagés. 
 Selon la direction de référencement, nous pouvons avoir une référence à direction unique ou deux entités en coréférence.
 
 \begin{itemize}
 	\item \optword{Anaphore} : une référence vers un mot ou un \keyword[S]{syntagme} précédent appelé ``antécédent".
 	En général, ce terme est utilisé même pour les références des éléments qui viennent après. 
-	Mais ici, ce concept a un terme qui lui définit (point suivant).
+	Mais ici, ce concept a un terme qui le définit (point suivant).
 	Une anaphore peut être un pronom (Ex. ``\expword{\underline{Le cours} est très long. \underline{Il} prendra plus de temps.}"), un syntagme nominal (Ex. ``\expword{J'ai rencontré \underline{Fatima}. \underline{Une personne} qui adore assister les autres.}"), un zéro anaphore (Ex. ``\expword{\underline{Le chat} a attrapé la souris et \underline{$ \phi $} l'a mangé.}"), etc.
 	
 	\item \optword{Cataphore} : une référence vers un mot ou un \keyword[S]{syntagme} suivant appelé ``postcédent".
@@ -139,7 +139,7 @@ Quelques traits grammaticaux doivent être identiques pour les deux : référenc
 Ici, nous allons discuter les trois traits qui définissent les pronoms : le nombre, la personne et le genre.
 Bien sûr, il existe des langues qui ne supportent pas les trois traits. 
 Selon le \optword{nombre}, une entité peut être en : singulier, duel ou pluriel (il existe d'autres formes). 
-Dans l'exemple ``\expword{\underline{Les oiseaux} sont sur une arbre. \underline{Ils} chantent}", le pronom ``ils" référence ``les oiseux" puisque les deux sont en pluriel. 
+Dans l'exemple ``\expword{\underline{Les oiseaux} sont sur un arbre. \underline{Ils} chantent}", le pronom ``ils" référence ``les oiseux" puisque les deux sont en pluriel. 
 Dans le cas des antécédents partagés, cette propriété va être plus difficile à gérer.
 Par exemple, ``\expword{\underline{Le cours} sera suivi par \underline{un exercice}. \underline{Ils} sont importants pour la compréhension.}".
 Il y a aussi le problème des entités singuliers qui sont sémantiquement en pluriel. 
@@ -211,7 +211,7 @@ Une autre méthode pour détecter si une mention est une coréférence ou non es
 Dans \cite{2013-uryupina-moschitti}, nous commençons par la génération de l'arbre syntaxique d'une phrase. 
 Nous parcourons les nœuds et nous classons les syntagmes nominaux comme coréférence ou non en utilisant un SVM. 
 Les caractéristiques utilisées sont les propriétés présentées précédemment comme le nombre, le genre, etc.
-Autres systèmes ont été développés, mais ils sont liés à une tâche spécifique et ne peuvent pas être utilisés séparément. 
+D'autres systèmes ont été développés, mais ils sont liés à une tâche spécifique et ne peuvent pas être utilisés séparément. 
 La figure \ref{fig:det-mention-yu} représente trois architectures de détection des mentions proposées par \citet{2020-yu-al}. 
 Étant donné un document $D$, nous commençons par considérer toutes les mentions possibles $x^*_i$ marquées par le mot du début $s_i$ et le mot de fin $e_i$. 
 Dans le système (c), nous utilisons un modèle \keyword[B]{BERT} pré-entraîné pour générer les représentations des mots $x^*_t$. 
@@ -282,7 +282,7 @@ Une fois un antécédent est détecté, le reste des antécédents sont détect�
 
 \subsubsection{Modèles Entity-based}
 
-Le problème des modèles basés sur la mention est qu'ils comparent les mentions deux à deux ; ils ne prennent pas la relation avec des autres coréférences en considération.
+Le problème des modèles basés sur la mention est qu'ils comparent les mentions deux à deux ; ils ne prennent pas la relation avec les autres coréférences en considération.
 Par exemple, \expword{Ms Kennedy $ \leftarrow $ Kennedy, Kennedy $ \leftarrow $ He}.
 Dans ces modèles, la coréférence est considérée comme un problème de classement ; or elle doit être considérée comme un problème de regroupement (clustering). 
 Une des méthodes est d'appliquer Mention-Rank sur des clusters et pas sur des entités. 
@@ -425,9 +425,9 @@ Afin de classer les mentions, nous pouvons utiliser plusieurs approches :
 
 \begin{discussion}
 Beaucoup de langues considèrent la répétition comme une forme non naturelle. 
-Personnellement, je ne sait pas s'il existe des langues où nous devons répéter les entités dans chaque phrase. 
+A notre connaissance, nous ne savons pas s'il existe des langues où nous devons répéter les entités dans chaque phrase. 
 L'être humain a la capacité de détecter le référent (celui qui a été référencé) facilement. 
-Bien sûr, il existe des cas où les références sont tellement ambigües un être humain ne peut pas les résoudre. 
+Bien sûr, il existe des cas où les références sont tellement ambigües, nous ne pouvons pas les résoudre naturellement. 
 Il sera vraiment bénéfique si une machine peut exécuter cette tâche. 
 Puisque les pronoms ne sont pas les seules références, cette tâche doit passer par une étape de détection des mentions. 
 

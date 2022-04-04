@@ -24,7 +24,7 @@
 	Dans ce chapitre, nous allons présenter quelques théories de cohérence ainsi que des méthodes pour l'analyser.
 \end{introduction} 
 
-Prenons le texte ``\expword{L'hiver est un des quatre saisons de l'année. Le rapport était bien exposé. La pluie est une des caractéristiques de cette saison. J'ai lu un rapport sur cette saison.}".
+Prenons le texte ``\expword{L'hiver est une des quatre saisons de l'année. Le rapport était bien exposé. La pluie est une des caractéristiques de cette saison. J'ai lu un rapport sur cette saison.}".
 Nous pouvons comprendre chaque phrase à part ; mais, il est difficile de comprendre l'idée du texte. 
 Il est clair que les phrases sont mal-ordonnées. 
 Donc, comprendre les phrases à part n'est pas une condition suffisante afin de comprendre un discours ; il faut que ce dernier soit cohérent.
@@ -230,7 +230,7 @@ La catégorie ``présentationnelle" peut être divisée sur deux catégories : `
 \subsection{Penn Discourse TreeBank (PDTB)}
 
 \keyword[P]{\ac{pdtb}} est un dataset annoté avec un autre modèle de cohérence. 
-Dans ce modèle, nous ne nous intéressons pas par la structure en arbre ; nous nous intéressons seulement par les relations binaires. 
+Dans ce modèle, nous ne nous intéressons pas à la structure en arbre ; nous nous intéressons seulement aux relations binaires. 
 Les unités en relation sont annotées comme arguments : ``ARG1" et ``ARG2". 
 L'unité marquée par ``ARG2" est annotée par un connective du discours (explicitement ou implicitement). 
 Le tableau \ref{tab:pdtb-connect} représente des statistiques sur les connectives et leurs sens.
@@ -284,7 +284,7 @@ Les connectives du discours peuvent être :
 \end{table}
 
 Les relations \keyword[P]{\ac{pdtb}} sont divisées en quatre familles : temporelle, comparaison, contingence et extension. 
-Chaque relation appartient à une famille d'un façon hiérarchique comme indiqué dans la figure \ref{fig:pdtb-rel}. 
+Chaque relation appartient à une famille d'une façon hiérarchique comme indiqué dans la figure \ref{fig:pdtb-rel}. 
 Par exemple, la relation de succession indiquée par des connectives comme ``after" est une relation synchrone qui est à son tour une relation temporelle.
 
 \begin{figure}[!ht]
@@ -514,13 +514,13 @@ Dans la partie annotée par ``ARG2", nous essayons de l'annoter par une connecti
 Nous avons vu qu'il y a deux types de connectives : explicites (existantes dans le texte) et implicites (que nous puissions inférer). 
 Dans le cas des connectives explicites, nous pouvons facilement les chercher et les trouver en utilisant leur liste. 
 Mais, il existe des connectives qui ne représentent pas des relations de cohérence. 
-Pour résoudre ce problème, nous pouvons utiliser un algorithme de désambigüisation qui classe un connective donnée comme : discours ou non. 
+Pour résoudre ce problème, nous pouvons utiliser un algorithme de désambigüisation qui classe une connective donnée comme : discours ou non. 
 Une fois une connective est marquée comme discours, nous marquons la partie le contenant comme ``ARG2". 
 Nous cherchons la partie en relation ``ARG1" en utilisant un algorithme d'apprentissage automatique. 
 L'algorithme prend ``ARG2" et une autre partie adjacente comme entrée et comme sortie il estime si elles sont en relation ou non. 
 Ensuite, nous marquons la relation entre les deux en utilisant la connective. 
 
-Dans le cas où le connective est implicite, nous devons inférer la connective étant donnée deux parties sans connectives. 
+Dans le cas où la connective est implicite, nous devons l'inférer étant donnée deux parties sans connectives. 
 Une méthode est d'utiliser \keyword[B]{BERT} avec les parties séparées par ``[SEP]" comme entrée. 
 Dans la sortie ``[CLS]", nous attachons un réseau de neurones à propagation avant afin d'inférer la connective.
 Une autre méthode similaire est l'utilisation de deux réseaux \keyword[L]{LSTM} pour représenter chacune des deux parties. 
@@ -685,7 +685,7 @@ Il existe plusieurs théories pour représenter la cohérence qui peuvent être 
 Les phrases (ou les clauses) d'un texte forment une structure qui se base sur des relations de cohérence. 
 Aussi, elles doivent discuter la même entité.
 Les deux approches ont deux visions différentes ; qui sont complémentaires à mon avis. 
-Afin de juger la cohérence d'un texte, il faut mieux utiliser les deux afin de vérifier deux aspects différents.
+Afin de juger la cohérence d'un texte, il vaut mieux utiliser les deux afin de vérifier deux aspects différents.
 
 \end{discussion}
 

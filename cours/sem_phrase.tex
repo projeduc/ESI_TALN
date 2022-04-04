@@ -443,7 +443,7 @@ La sortie est un vecteur des probabilités des classes \keyword[P]{PropBank}.
 \section{Représentation sémantique des phrases}
 %===================================================================================
 
-Une représentation sémantique d'une phrase ne doit pas être dépendante à la structure syntaxique. 
+Une représentation sémantique d'une phrase ne doit pas être dépendante de la structure syntaxique. 
 Elle doit pouvoir exprimer les phrases ayant le même sens de la même manière. 
 Par exemple, les deux phrases suivantes doivent avoir la même représentation :
 \begin{itemize}
@@ -488,7 +488,7 @@ Cette phrase peut être représentée en utilisant un prédicat unitaire :
 Ici, le prédicat n'est pas utilisé pour décrire une relation entre plusieurs termes. 
 Il est utilisé pour représenter une propriété de la constante ``\expword{ESI}". 
 Nous devons être capable de différencier entre un prédicat unitaire et une fonction. 
-Un prédicat retourne une valeur logique, or une fonction retourne un nouveau objet.
+Un prédicat retourne une valeur logique, or une fonction retourne un nouvel objet.
 Prenons un exemple avec les deux : ``Karim connaît l'adresse de l'ESI". 
 Cette phrase peut être représentée comme : 
 \[connaitre(KARIM, AdresseDe(ESI))\]
@@ -578,7 +578,7 @@ La représentation \ac{amr} est illustrée sous deux formats : textuelle et grap
 	\label{fig:amr-exp}
 \end{figure}
 
-Dans \ac{amr}, les concepts d'une phrase sont représentés sous forme des mots de l'anglais (Ex. \expword{boy}), des concepts de \keyword[P]{PropBank} (Ex. \expword{want-01}) ou des mots clés spéciaux. 
+Dans \ac{amr}, les concepts d'une phrase sont représentés sous forme de mots de l'anglais (Ex. \expword{boy}), des concepts de \keyword[P]{PropBank} (Ex. \expword{want-01}) ou des mots clés spéciaux. 
 Le langage suit le modèle néo-Davidsonien ; chaque entité, évènement, propriété et état sont représenté comme une variable. 
 Par exemple, la représentation ``\expword{(b / boy)}  veut dire ``b" est une instance du concept ``boy".
 Les entités sont reliées par des relations.
@@ -870,7 +870,7 @@ Représenter une phrase comme cadres est utile dans des tâches de compréhensio
 Mais, des fois, cette représentation n'est pas adéquate pour certaines tâches. 
 Dans le raisonnement par machine, nous voulons avoir une machine qui peut appliquer des déductions. 
 Par exemple, nous pouvons trouver des contradictions entre les phrases d'un article de presse. 
-Une des représentations qui peut nous permet cela est la logique propositionnelle et plus précisément la logique du premier ordre. 
+Une des représentations qui peuvent nous permettre cela est la logique propositionnelle et plus précisément la logique du premier ordre. 
 Afin de générer une telle représentation, nous pouvons utiliser une grammaire constituante et affecter à chaque règle syntaxique une règle sémantique.
 La forme sémantique n'est pas toujours une expression de la logique du premier ordre. 
 Elle pourrait être une requête SQL, si nous voulions implémenter un système de Question/réponse. 

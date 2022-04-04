@@ -34,7 +34,7 @@ Quand à l'approche mentale, parmi les types d'encodage, nous pouvons citer l'en
 Dans ce cas, la représentation mentale d'un mot n'a aucune relation avec la langue parlée par l'individu.
 Par exemple, les mots ``\expword{\<^sajaraT> /shajarah/}" en arabe, ``\expword{tree}" en anglais, ``\expword{arbre}" en français et ``\expword{木 /ki/}" en japonais font référence au même concept : un objet avec un tronc sur lequel s'insèrent des branches ramifiées portant le feuillage.
 En informatique, représenter les concepts en utilisant des images augmente la taille du stockage et le temps du traitement. 
-Plutôt, nous utilisons un encodage moins couteau comme les relations avec les autres concepts ou encore un vecteur de nombres.
+Plutôt, nous utilisons un encodage moins coûteux comme les relations avec les autres concepts ou encore un vecteur de nombres.
 Une représentation est meilleure lorsqu'elle peut faire face à l'ambigüité. 
 Prenons trois phrases, en français, qui contiennent le mot ``café" mais avec trois sens différents : 
 \begin{itemize}
@@ -53,8 +53,8 @@ Je pense la motivation de ce chapitre est claire : encodage des mots en se focal
 \section{Bases de données lexicales}
 %===================================================================================
 
-Une base lexicale est une de données contenant le vocabulaire d'une langue. 
-En plus du vocabulaire, elle fourni des informations concernant chaque mot : catégorie grammaticale, lemme, fréquence, etc.
+Une base lexicale est une base de données contenant le vocabulaire d'une langue. 
+En plus du vocabulaire, elle fournit des informations concernant chaque mot : catégorie grammaticale, lemme, fréquence, etc.
 Ces informations sont liées entre elles par des relations. 
 La figure \ref{fig:base-lex-exp} représente une base lexicale.
 Un mot fait parti d'un lexème qui est représenté par un et un seul lemme. 
@@ -86,7 +86,7 @@ Rappelons les relations sémantiques présentées dans le premier chapitre :
 \keyword[W]{WordNet} \cite{1995-miller} est une base de données lexicale pour l'anglais.
 La figure \ref{fig:wordnet-exp} représente un exemple des différents sens du mot ``reason". 
 La base de données contient trois parties : (1) noms (2) verbes (3) adjectifs et adverbes. 
-Un sens regroupe plusieurs mots de la même partie et il est représénté par un identifiant appelé \keyword[S]{Synset} (Synonyms set).
+Un sens regroupe plusieurs mots de la même partie et il est représenté par un identifiant appelé \keyword[S]{Synset} (Synonyms set).
 Par exemple, \expword{05659525 : reason\#3, understanding\#4, intellect\#2}.
 Un sens est défini par un glossaire (\keyword{Gloss}).
 Exemple, \expword{05659525 : (the capacity for rational thought or inference or discrimination) ``we are told that man is endowed with reason and capable of distinguishing good from evil"}.
@@ -317,7 +317,7 @@ Afin de représenter les mots d'un vocabulaire  $ V $, nous devons utiliser une 
 Le vecteur des  $|V|$ mots qui représentent un mot est appelé ``contexte".
 La co-occurrence peut être calculée par rapport aux documents, aux phrases ou des fenêtres auteur du mot. 
 Par rapport au document, nous comptons le nombre des documents où les deux mots ont apparus ensemble. 
-Cela doit utiliser beaucoup de documents et donne des vecteurs éparts (la plupart des valeurs sont des zéros).
+Cela doit utiliser beaucoup de documents et donne des vecteurs épars (la plupart des valeurs sont des zéros).
 Une autre technique pour exprimer la co-occurrence est l'utilisation d'une fenêtre avec des mots avant et des mots après.
 
 Prenons l'exemple des phrases précédente. 
@@ -836,7 +836,7 @@ Un mot peut être représenté par un identifiant dans une base de donnée.
 Nous pouvons représenter les relations sémantiques du mot avec les autres sous forme d'un graphe.
 Une autre représentation est sous forme d'un vecteur où la plus basique est l'encodage One-Hot. 
 Il existe plusieurs méthodes de représentation vectorielle des plus simples comme TF-IDF jusqu'aux plus avancées comme les embeddings contextuelles. 
-L'utilisation d'un modèle contextuelle ne veut pas dire que la tâche va s'améliorer. 
+L'utilisation d'un modèle contextuel ne veut pas dire que la tâche va s'améliorer. 
 Des fois, nous pouvons trouver des tâches qui sont plus performantes avec des modèles plus simples.
 D'où la nécessité d'appliquer une évaluation extrinsèque afin de choisir le modèle le plus adéquat.
 

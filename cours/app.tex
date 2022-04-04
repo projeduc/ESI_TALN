@@ -28,8 +28,8 @@
 \end{introduction} 
 
 Chaque jour beaucoup d'informations sont générées ; en général, sous forme de textes non structurées. 
-L'anglais est la langue la plus répondue ; mais, nous pouvons remarquer une augmentation du contenu des autres langues.
-Traiter ces textes sera bénéfique dans la résolution de nous besoins.
+L'anglais est la langue la plus répandue ; mais, nous pouvons remarquer une augmentation du contenu des autres langues.
+Traiter ces textes sera bénéfique dans la résolution de nos besoins.
 Reprenons quelques motivations mentionnées dans le premier chapitre :
 \begin{itemize}
 	\item Commerce : publicité, service clientèle, intelligence de marché, recrutement, etc.
@@ -58,7 +58,7 @@ La terminologie ``statistique" est souvent utilisée pour indiquer qu'il s'agit 
 Ces méthodes ont besoins de beaucoup de données pour entraîner les probabilités de chaque mot. 
 En plus, des parties de textes sont toujours utilisées telles qu'elles sont. 
 Pour améliorer la classification, nous pouvons utiliser ces parties comme unités ; d'où les méthodes à base d'exemples.
-Finalement, les méthodes les plus répondues ces jours-là sont à base des réseaux de neurones. 
+Finalement, les méthodes les plus répandues actuellement sont à base des réseaux de neurones. 
 Le problème de traduction automatique peut être représenté comme un encodeur/décodeur.
 
 \begin{figure}[!ht]
@@ -99,8 +99,8 @@ Un des systèmes qui se basent sur cette approche est Apertium\footnote{Apertium
 La figure \ref{fig:apertium-arch} représente l'architecture de ce système qui ce compose des modules suivants :
 \begin{itemize}
 	\item \textit{deformatter} : éliminer les informations de format et garder seulement le texte. 
-	Il est utiliser pour lire le texte en utilisant plusieurs formats comme XML.
-	\item \textit{morphological analyser} : segmentation du texte et attribution à chaque mot une liste des lemmes avec leurs catégories grammaticales possibles.
+	Il est utilisé pour lire le texte en utilisant plusieurs formats comme XML.
+	\item \textit{morphological analyser} : segmentation du texte et attribution à chaque mot une liste de lemmes avec leurs catégories grammaticales possibles.
 	\item \textit{PoS tagger} : un outil d'étiquetage morpho-syntaxique pour avoir les catégories grammaticales des mots.
 	\item \textit{lexical transfer} : traduire les mots (ou multi-mots) de la langue source vers la langue destinataire en utilisant un dictionnaire bilingue.
 	\item \textit{structural transfer} : c'est un module qui fournit le transfert syntaxique. 
@@ -134,7 +134,7 @@ Donc, la traduction passe par les étapes suivantes :
 	\item Analyser le texte source $S$ pour avoir un arbre syntaxique
 	\item Utiliser un dictionnaire entre la langue source et les concepts de l'interlingua 
 	\item Transformer l'arbre syntaxique (langue source) vers l'interlingue
-	\item Transformer l'interlingue vers une arbre syntaxique (langue destinataire)
+	\item Transformer l'interlingue vers un arbre syntaxique (langue destinataire)
 	\item Utiliser un dictionnaire entre la langue destinataire et les concepts de l'interlingua 
 	\item Générer le texte destinataire $T$
 \end{itemize}
@@ -280,7 +280,7 @@ p(S|T) = \sum_{A} \prod_{i=1}^{n} p(A_i | A_{i-1}, m) p(S_i | S_1^{i-1}, A_1^{i}
 \subsection{Approche par exemples}
 
 Des fois, nous trouvons des segments de la langue source qui sont toujours alignés avec d'autres en langue destinataire.
-Donc, nous pouvons calculer la probabilité d'un segment (ensemble de mots consécutifs) par rapport un autre. 
+Donc, nous pouvons calculer la probabilité d'un segment (ensemble de mots consécutifs) par rapport à un autre. 
 Moses\footnote{Moses : \url{http://statmt.org/moses/} [visité le 2021-09-16]} \cite{07-koehn-al} est un système de traduction par exemples.
 Il entraîne quatre modèles statistiques :
 \begin{itemize}
@@ -367,17 +367,17 @@ Cette classification est représentée par la figure \ref{fig:ats-class}.
 	\label{fig:ats-class}
 \end{figure}
 
-Selon de document d'entrée, une méthode peut être classifiés en utilisant trois critères : l'unité, la spécialité et la forme. 
+Selon de document d'entrée, une méthode peut être classifiée en utilisant trois critères : l'unité, la spécialité et la forme. 
 Un système de résumé automatique peut être mono-document (un document en entrée) ou multi-documents (plusieurs documents en entrée). 
 Il peut être spécialisé à un domaine (Ex. \expword{médecine}) ou général (n'importe quel domaine).
 La forme d'un document d'entrée comporte plusieurs critères : la structure (document structuré ou non), l'échelle (taille du document : un tweet, un livre, etc.), le médium (texte, audio, vidéo, image) ou le genre (nouvelles, interviews, romans, etc.).
 
-Selon le but, une méthode peut être classifiés en utilisant trois critères : le public, la fonction et la situation. 
+Selon le but, une méthode peut être classifiée en utilisant trois critères : le public, la fonction et la situation. 
 Un système de résumé automatique peut être par requête (utiliser une requête utilisateur afin de générer le résumé) ou générique (utiliser le sujet du document afin de générer le résumé).
 Il peut être indicatif (une description globale du document) ou informatif (l'information essentielle du document). 
 Il peut générer le fond (tout ce qu'est important dans le document) ou juste les nouvelles (tout ce qui est nouveau).
 
-Selon le document de sortie, une méthode peut être classifiées en utilisant trois critères : la dérivation, la partialité et le format.
+Selon le document de sortie, une méthode peut être classifiée en utilisant trois critères : la dérivation, la partialité et le format.
 Un système de résumé automatique peut être extractif (extraire des unités comme les phrases pour avoir un résumé) ou abstractif (générer un nouveau texte avec des nouveaux mots).
 Il peut être partiel (il n'ajoute aucune opinion au résumé) ou évaluatif (il ajoute des opinions au résumé).
 Le format du résumé peut être fixe (la même structure des résumés) ou flottant (des structures différentes selon des paramètres utilisateur).
@@ -403,7 +403,7 @@ L'équation \ref{eq:ats-tfidf} représente un exemple d'un score d'une phrase $s
 \begin{equation}\label{eq:ats-tfidf}
 Score_\text{TF-IDF}(s_i) = \sqrt{\sum\limits_{w_{ik} \in s_i} (\text{TF-IDF}(w_{ik}))^2}
 \end{equation}
-La position de la phrase est un bon critère de sa pertinence ; les phrases au début et à la fin parient plus importantes.
+La position de la phrase est un bon critère de sa pertinence ; les phrases au début et à la fin paraissent plus importantes.
 L'équation \ref{eq:ats-pos} représente un score attribué à la phrase $s_i$ d'un document $D$ en utilisant sa position.
 \begin{equation}\label{eq:ats-pos}
 Score_\text{pos}(s_i) = \max (\frac{1}{i}, \frac{1}{|D| - i + 1})
@@ -454,7 +454,7 @@ Score(s_i , \bigcap_{j} c_j , F) = \prod_{j} \prod_{k} Score(s_i , c_j , f_k )
 
 Une autre méthode statistique est celle proposée par \citet{15-oufaida-al}.
 Les mots sont représentés en vecteurs en utilisant un \keyword[E]{embedding} pré-entraîné (Polyglot).
-Premièrement, une étape de clustering des phrases est exécutée afin extraire les sous-sujets du texte. 
+Premièrement, une étape de clustering des phrases est exécutée afin d'extraire les sous-sujets du texte. 
 Pour chercher le mot le plus similaire à un mot $w_i$ dans une phrase $S_2$, une similarité entre les vecteurs (cosinus par exemple) est utilisée, comme indiqué par l'équation \ref{eq:ats-oufaida-match}.
 \begin{equation}\label{eq:ats-oufaida-match}
 Match(w_i | S_2) = \arg\max_{w_j \in S_2} sim(Rep(w_i), Rep(w_j))
@@ -530,7 +530,7 @@ Ensuite, nous améliorons le score des phrases en utilisant les propriétés du 
 
 Un graphe $G(V, E)$ est construit en utilisant les phrases et leurs similarités cosinus sur les fréquences des mots.
 Le graphe est simplifié par l'élimination des nœuds faibles. 
-Un nœuds est jugé faible s'il satisfait la propriété exprimée par l'équation \ref{eq:ats-gc-nfaible}.
+Un nœud serait jugé faible s'il satisfasse la propriété exprimée par l'équation \ref{eq:ats-gc-nfaible}.
 $MImpN(v_i)$ est le nombre des voisins les plus importants ; ceux qui ont une similarité avec $v_i$ supérieure à un seuil donné $Threshold$.
 \begin{equation}\label{eq:ats-gc-nfaible}
 noeud\_faible(v_i) = ( \sum_{(v_i, v_j) \in E} w_{ij} < \frac{1}{MImpN(v_i)} )
@@ -731,9 +731,9 @@ Cela peut être accompli en utilisant une taxonomie comme Wordnet.
 La recherche des documents se fait en utilisant les mots clés et l'index inversé des documents. 
 Une fois les documents les plus pertinents (en se basant sur un score) sont retournés, nous les divisons en passages (paragraphes ou phrases). 
 Afin de rechercher les passages, nous pouvons appliquer la détection des entités nommées et filtrer ceux qui ne contiennent pas le type de la réponse.
-Dans ce cas, la recherche d'une cause plutôt d'une entité nommées sera plus difficile. 
+Dans ce cas, la recherche d'une cause plutôt d'une entité nommée sera plus difficile. 
 Une autre solution est d'utiliser un algorithme d'apprentissage automatique afin de noter les passages. 
-Parmi les caractéristiques que nous puissions utiliser : nombre des entités nommées du type recherché, nombre des termes de la question, la séquence la plus longue similaire à la question, le rang du document, etc.
+Parmi les caractéristiques que nous pouvons utiliser : nombre des entités nommées du type recherché, nombre des termes de la question, la séquence la plus longue similaire à la question, le rang du document, etc.
 
 Une fois les passages pertinents sont identifiés, nous passons à l'extraction de la réponse qui est une partie de ces passages. 
 Une approche est d'utiliser un algorithme d'apprentissage automatique afin de détecter la réponse. 
@@ -805,7 +805,7 @@ Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'infor
 
 Un système de dialogue est un système interactif qui communique avec les utilisateurs. 
 Il peut être un agent orienté tâche ou un \keyword[C]{chatbot} comme indiqué dans la figure \ref{fig:sd-classif}. 
-Les systèmes de dialogue orientés tâche visent à aider l'utilisateur à accomplir une tâche, comme la réservation de l'avion. 
+Les systèmes de dialogue orientés tâche visent à aider l'utilisateur à accomplir une tâche, comme la réservation des vols. 
 Il existe deux types de ce système : frame-based et dialogue-state. 
 Les \keywordpl[C]{chatbot} ont comme but d'imiter la conversation humaine.
 Ils peuvent être des systèmes à base des règles, de la RI ou de la génération des réponses.
@@ -834,7 +834,7 @@ Par exemple, le slot ``\expword{RESERVATION\_DATE}" du cadre ``\expword{HOTEL\_R
 	\label{fig:sd-tache-frame-exp}
 \end{figure}
 
-Lorsqu'il y a plusieurs domaines, nous devons appliquer la \keyword{détection d'intention} pour savoir quel cadre à utiliser. 
+Lorsqu'il y a plusieurs domaines, nous devons appliquer la \keyword{détection d'intention} pour trouver le cadre adéquat.
 Celle-ci est une tâche de classification qui vise à sélectionner le domaine (Ex. \expword{HOTEL vs. FLIGHT}).
 Afin de remplir les slots, nous pouvons utiliser une grammaire simplifiée. 
 La figure \ref{fig:sd-tache-frame-parse} représente une grammaire sémantique et un arbre sémantique de la phrase ``\expword{Show me flights from Boston to San Fransisco on Tuesday morning}".
@@ -882,8 +882,8 @@ L'exemple indique quels sont les actes valides comme sortie du système et ceux 
 \end{figure}
 
 Un exemple d'un dialogue qui utilise les actes précédemment présentés est donné dans la figure \ref{fig:sd-tache-his-exp}.
-Le système commence par recevoir un acte ``HELLO" et détecter qu'il s'agit d'une tâche de recherche et que le type recherché est une restaurant. 
-Il lance un acte de confirmation de la requête en demandant quel est le plat préféré de l'utilisateur afin de recommander un restaurant. 
+Le système commence par recevoir un acte ``HELLO" et détecter qu'il s'agit d'une tâche de recherche et que le type recherché est un restaurant. 
+Il lance un acte de confirmation de la requête en demandant quel est le plat préféré de l'utilisateur afin d'en recommander un restaurant. 
 
 \begin{figure}[!ht]
 	\centering
@@ -910,9 +910,9 @@ Les \keywordpl[C]{chatbot} ont comme but d'émuler une conversation humaine.
 Les premiers chatbots étaient à base de règles, comme le système ELIZA \cite{1966-Weizenbaum} qui émule une psychologue. 
 Il se base sur des règles de type patrons/transformations. 
 La règle \expword{\small [(.*) YOU (.*) ME]\textsubscript{[Patron]} \textrightarrow\ [WHAT MAKES YOU THINK I \$2 YOU?]\textsubscript{[Transformation]}} peut être utilisée pour répondre à \expword{You hate me \textrightarrow\ WHAT MAKES YOU THINK I HATE YOU?}. 
-Les patrons sont liés à une liste des mots. 
+Les patrons sont liés à une liste de mots. 
 Le mot qui score le plus dans la phrase va déclencher plusieurs patrons. 
-Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilisé.
+Parmi ces derniers, le patron le plus similaire à la phrase de l'utilisateur est utilisé.
 
 \subsection{Chatbot à base de la RI}
 
@@ -1145,7 +1145,7 @@ La reconnaissance de la parole consiste à transformer des paroles vers un forma
 Une telle tâche peut assister la rédaction sans utiliser les mains, communiquer avec des machines (comme le système de recommandation précédemment présenté), etc. 
 La figure \ref{fig:asr-classif} représente une classification des systèmes de reconnaissance des paroles basée sur \cite{2020-malik-al}.
 Dans cette section, je vais présenter les étapes de la  reconnaissance à la place des différentes approches. 
-La classification sera présentée avec plus de détaille ici.
+La classification sera présentée avec plus de détail ici.
 Un système de reconnaissance de la parole peut être conçu seulement pour détecter les paroles d'un seul locuteur, n'importe quel locuteur ou il peut s'adapter aux nouveaux locuteurs.
 Selon le canal d'entrée, le système peut permettre les sons d'arrière-plan ou il exige un son clair en entrée.  
 Nous pouvons, aussi, utiliser la taille du vocabulaire comme critère de classification.
@@ -1321,7 +1321,7 @@ L'approche statistique est similaire à celle de la reconnaissance de paroles, s
 Selon \citet{2017-Hinterleitner}, une architecture générale d'un système de synthèse vocale peut être représentée comme indiqué dans la figure \ref{fig:tts-arch}. 
 Le système peut être divisé sur quatre parties : \ac{taln}, génération de la prosodie, concaténation et génération des paramètres, et génération de la parole. 
 Dans la première partie, nous devons  normaliser le texte par la conversion des abréviations, conversion des valeurs numériques, etc. 
-Aussi, nous devons détecter le stresse d'un mot en utilisant les suffixes et les préfixes. 
+Aussi, nous devons détecter le stress d'un mot en utilisant les suffixes et les préfixes. 
 L'unité de génération de prosodie utilise des informations sur les accents de mots et de phrases ainsi que des informations sur des phrases pour créer la prosodie correspondante du texte orthographique, c'est-à-dire la durée, l'intensité et le ton.
 A partir de la représentation phonétique et les informations prosodiques, l'unité de concaténation crée une séquence continue de paramètres de signaux et/ou de gestes d'articulation.
 La dernière unité sert à générer la parole en utilisant ces paramètres suivant une des approches précédemment expliquées.
@@ -1338,7 +1338,7 @@ La dernière unité sert à générer la parole en utilisant ces paramètres sui
 Quelle est l'intérêt d'étudier un domaine sans applications ? 
 Le traitement automatique du langage naturel est un domaine qui vise à émuler la capacité des être humains à communiquer soit par parole ou par texte. 
 Dans le passé, ce domaine a été motivé seulement par la tâche de traduction automatique (surtout entre russe et anglais). 
-Avec l'arrivé de l'internet et puis les réseaux sociaux, ce domaine serait d'un grand intérêt vu la nécessité de traiter toutes les informations qui circulent chaque jours. 
+Avec l'arrivé de l'internet et puis les réseaux sociaux, ce domaine serait d'un grand intérêt vu la nécessité de traiter toutes les informations qui circulent chaque jour. 
 Comme chaque domaine, \ac{taln} est un arme à double tranchant : il peut aider les peuples à communiquer, il peut automatiser des tâches sur les textes, etc.; mais aussi, il peut être utilisé dans l'espionnage, la manipulation de l'opinion public, etc. 
 Comme le proverbe de Spider-man le dit : ``With great power comes great responsibility" (Avec un grand pouvoir vient une grande responsabilité). 
 

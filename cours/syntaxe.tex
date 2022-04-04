@@ -632,7 +632,7 @@ Afin de représenter l'information du mot racine, nous ajoutons un nœud (ROOT) 
 Pour chaque arc $e$ du graphe $G$, nous affectons un poids $G.p(e)$ qui est estimé en utilisant l'apprentissage automatique.
 En prenant le nœud ``ROOT" comme racine et le graphe $G$, nous essayons de trouver un arbre $T = (V, F)$ couvrant de poids maximal. 
 Un arbre couvrant est un sous-graphe acyclique maximal où tous les nœuds sont connectés et il n'y a plus qu'un arc entrant vers un nœud.
-Deux fonctions sont utilisées dans cette algorithme :
+Deux fonctions sont utilisées dans cet algorithme :
 \begin{itemize}
 	\item \optword{Contracter} : une fonction qui fusionne deux nœuds $u$ et $v$ composant un cycle $C$
 	\begin{itemize}
@@ -700,7 +700,7 @@ L'approche la plus célèbre pour représenter les constituants est la grammaire
 Afin d'analyser une telle structure, nous pouvons utiliser l'algorithme CKY. 
 Cet algorithme est amélioré en ajoutant des probabilités aux règles afin d'avoir une analyse déterministe. 
 Il existe des méthodes qui utilisent des techniques plus récentes comme BERT (voir le chapitre suivant). 
-Pour évaluer une analyse automatique, nous pouvons utiliser le nombre des phrases ayants des arbres syntaxiques justes. 
+Pour évaluer une analyse automatique, nous pouvons utiliser le nombre des phrases ayant des arbres syntaxiques justes. 
 Cette mesure ne peut pas différencier entre deux arbres syntaxiques erronées ; il se peut qu'une des deux est plus juste qu'une autre. 
 
 L'analyse de dépendances peut être accomplie en considérant les relations comme des transitions et donc utiliser un automate à pile pour les détecter.
