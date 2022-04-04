@@ -19,16 +19,16 @@
 	\lettrine{S}{elon} l'interaction avec l'utilisateur, un système peut être interactif ou non.
 	En se basant sur la sortie, un système peut générer un ensemble de classes ou un autre texte. 
 	Un système de traitement du langage naturel peut traiter de la parole ou du texte. 
-	En utilisant ces critères, on peut classifier les applications du TALN en quatre catégories : Transformation, Interaction, Classification et Parole. 
+	En utilisant ces critères, nous pouvons classifier les applications du TALN en quatre catégories : Transformation, Interaction, Classification et Parole. 
 	La transformation sert à prendre un texte en entrée et générer un autre en sortie ; comme la traduction automatique et le résumé automatique. 
 	L'interaction comporte les applications qui interagissent avec l'utilisateur ; comme les systèmes de questions/réponses et de dialogue.
 	La classification prend un texte en entrée et infère un classe ; comme l'analyse des sentiments et la lisibilité.
 	Enfin la parole consiste de la reconnaissance et la synthèse de la parole.
-	Dans ce chapitre, on va présenter deux applications par catégorie.
+	Dans ce chapitre, nous allons présenter deux applications par catégorie.
 \end{introduction} 
 
 Chaque jour beaucoup d'informations sont générées ; en général, sous forme de textes non structurées. 
-L'anglais est la langue la plus répondue ; mais, on peut remarquer une augmentation du contenu des autres langues.
+L'anglais est la langue la plus répondue ; mais, nous pouvons remarquer une augmentation du contenu des autres langues.
 Traiter ces textes sera bénéfique dans la résolution de nous besoins.
 Reprenons quelques motivations mentionnées dans le premier chapitre :
 \begin{itemize}
@@ -48,16 +48,16 @@ Plusieurs méthodes ont été proposées pour cette tâche en utilisant des diff
 En se basant sur le type de ces dernières, les méthodes de traduction automatique peuvent être classifiées comme indiqué dans la figure \ref{fig:mt-class}. 
 L'approche directe est la plus simple ; elle consiste à une traduction mot par mot. 
 Donc, elle est utile seulement pour les langues qui sont proches syntaxiquement.
-On peut citer deux approches à base de règles : par transfert et en utilisant une interlingua.
+Nous pouvons citer deux approches à base de règles : par transfert et en utilisant une interlingua.
 Les méthodes par transfert se basent sur des règles pour transformer un arbre syntaxique de la langue origine vers un arbre syntaxique de la langue destinataire. 
 L'autre idée est de proposer tout un langage qui doit être universel.
-Ensuite, on peut concevoir des encodeurs à partir des langages naturels vers ce langage et des décodeurs de cet langage vers des langages naturels.
-On peut utiliser des corpus pour entraîner un système d'apprentissage automatique à traduire d'une langue vers une autre. 
-Donc, on doit se baser sur des statistiques. 
+Ensuite, nous pouvons concevoir des encodeurs à partir des langages naturels vers ce langage et des décodeurs de cet langage vers des langages naturels.
+Nous pouvons utiliser des corpus pour entraîner un système d'apprentissage automatique à traduire d'une langue vers une autre. 
+Donc, nous devons nous baser sur des statistiques. 
 La terminologie ``statistique" est souvent utilisée pour indiquer qu'il s'agit de l'apprentissage bayésien. 
 Ces méthodes ont besoins de beaucoup de données pour entraîner les probabilités de chaque mot. 
 En plus, des parties de textes sont toujours utilisées telles qu'elles sont. 
-Pour améliorer la classification, on peut utiliser ces parties comme unités ; d'où les méthodes à base d'exemples.
+Pour améliorer la classification, nous pouvons utiliser ces parties comme unités ; d'où les méthodes à base d'exemples.
 Finalement, les méthodes les plus répondues ces jours-là sont à base des réseaux de neurones. 
 Le problème de traduction automatique peut être représenté comme un encodeur/décodeur.
 
@@ -70,7 +70,7 @@ Le problème de traduction automatique peut être représenté comme un encodeur
 
 \subsection{Approche directe}
 
-Dans l'approche directe, on essaye de traduire le texte mot par mot. 
+Dans l'approche directe, nous essayons de traduire le texte mot par mot. 
 Le texte source $S$ est traité comme une série de mots. 
 Chaque mot $S_i$ est remplacé par un mot $T_i$ dans le texte destinataire $T$ en utilisant un dictionnaire bilingue. 
 Donc, pour implémenter une telle méthode, il nous faut un outil d'analyse morphologique de la langue source et un dictionnaire bilingue bien conçu. 
@@ -81,12 +81,12 @@ Les systèmes qui suivent cette approche sont ceux développés avant 1967 : Mé
 
 \subsection{Approche par transfert}
 
-Traduire les textes mot à mot limite le nombre des tuples de langues (source, destinataire) qu'on puisse traiter. 
+Traduire les textes mot à mot limite le nombre des tuples de langues (source, destinataire) que nous puissions traiter. 
 L'idée de cette approche est de trouver l'arbre syntaxique de la phrase source $S$ en utilisant l'analyse syntaxique. 
-Ensuite, on cherche la traduction des mots $S_i$ de la langue source vers des mots $T_i$ de la langue destinataire en utilisant un dictionnaire bilingue.
-Après, on applique des règles pour transformer l'arbre syntaxique de la langue source vers un arbre syntaxique de la langue destinataire (comme l'exemple de la figure \ref{fig:mt-transfert-exp}).
+Ensuite, nous cherchons la traduction des mots $S_i$ de la langue source vers des mots $T_i$ de la langue destinataire en utilisant un dictionnaire bilingue.
+Après, nous appliquons des règles pour transformer l'arbre syntaxique de la langue source vers un arbre syntaxique de la langue destinataire (comme l'exemple de la figure \ref{fig:mt-transfert-exp}).
 Ces règles sont définies manuellement ou inférées en utilisant l'apprentissage automatique.
-Finalement, on génère le texte traduit $T$ à partir de l'arbre syntaxique final.
+Finalement, nous générons le texte traduit $T$ à partir de l'arbre syntaxique final.
 
 \begin{figure}[!ht]
 	\centering
@@ -122,11 +122,11 @@ La figure \ref{fig:apertium-arch} représente l'architecture de ce système qui 
 
 \subsection{Approche interlingue}
 
-Dans la traduction automatique, on doit implémenter un système pour chaque pair de langues (source et destinataire). 
-Par exemple, si on possède un système de traduction du français vers l'anglais et un autre de l'anglais vers l'arabe, on peut utiliser les deux systèmes afin de traduire du français vers l'arabe. 
+Dans la traduction automatique, nous devons implémenter un système pour chaque pair de langues (source et destinataire). 
+Par exemple, si nous possédions un système de traduction du français vers l'anglais et un autre de l'anglais vers l'arabe, nous pourrons utiliser les deux systèmes afin de traduire du français vers l'arabe. 
 Dans ce cas, l'anglais a été utilisée comme langue intermédiaire. 
 L'idée de l'approche interlingue est d'utiliser un langage intermédiaire comme indiqué dans la figure \ref{fig:mt-interlangue}.
-Pour ajouter une langue source, on doit seulement implémenter un analyseur de cette langue vers l'interlingua. 
+Pour ajouter une langue source, nous devons seulement implémenter un analyseur de cette langue vers l'interlingua. 
 Comme ça, cette langue peut être traduite vers toutes les langues disponibles comme langues destinataires du système. 
 Afin d'ajouter une nouvelle langue destinataire, il suffit d'implémenter un générateur de cette langue à partir de l'interlingua. 
 Donc, la traduction passe par les étapes suivantes :
@@ -227,17 +227,17 @@ p(T) = \prod_{j=1}^m p(t_j|t_{j-N+1}\ldots t_{j-1})
 Nous avons vu comment entraîner un modèle de langage. 
 Mais, afin d'entraîner le modèle de traduction $p(S|T)$, il faut avoir un corpus aligné : les mots de la langue source doivent être liés avec ceux correspondants de la langue destinataire.
 Il faut mentionner que la taille pose un problème lors de l'alignement. 
-On peut considérer cette probabilité comme la somme des probabilités de tous les alignements $A$ possibles, comme indiqué par l'équation \ref{eq:mt-stat-align1}.
+Nous pouvons considérer cette probabilité comme la somme des probabilités de tous les alignements $A$ possibles, comme indiqué par l'équation \ref{eq:mt-stat-align1}.
 \begin{equation}\label{eq:mt-stat-align1}
 p(S|T) = \sum_{A} p(S, A | T)
 \end{equation}
 %\begin{equation}\label{eq:mt-stat-align2a}
 %A^* = \arg\max_A p(S, A | T)
 %\end{equation}
-Il faut mentionner qu'on doit avoir $(m + 1)^n$ alignements possibles pour un texte source $S$ de taille $n$ et un texte traduit $T$ de taille $m$.
+Il faut mentionner que nous devions avoir $(m + 1)^n$ alignements possibles pour un texte source $S$ de taille $n$ et un texte traduit $T$ de taille $m$.
 La probabilité qu'un texte source $S$ soit généré avec un alignement $A$ sachant un texte destinataire $T$ peut être calculée en se basant sur les probabilités que chaque mot de $S$ soit aligné avec $A_i$ sachant tous les mots passés de $S$ ($S_1^{i-1} = S_1 \ldots S_{i-1}$), les alignements passés de $A$ et tous les mots du texte traduit. 
 Cette probabilité est formulée par l'équation \ref{eq:mt-stat-align2}.
-%On peut multiplier cette probabilité par la probabilité de générer $m$ 
+%Nus pouvons multiplier cette probabilité par la probabilité de générer $m$ 
 \begin{equation}\label{eq:mt-stat-align2}
 p(S, A | T) = \prod_{i=1}^{n} p(S_i, A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m})
 \end{equation}
@@ -258,7 +258,7 @@ Donc, l'équation \ref{eq:mt-stat-align2} peut être reformulée comme l'équati
 p(S|T) = \frac{1}{(m+1)^n} \sum_{A} \prod_{i=1}^{n} p(S_i | S_1^{i-1}, A_1^{i}, T_1^{m})
 \end{equation}
 Dans le modèle IBM2, la probabilité des alignements se base seulement sur la position actuelle $i$, le mot actuel $A_i$, la taille du texte source $n$ et la taille du texte destinataire $m$. 
-Cette probabilité est entrainée en comparant l'alignement juste avec le reste des alignements.
+Cette probabilité est entraînée en comparant l'alignement juste avec le reste des alignements.
 Elle peut être formulée comme l'équation \ref{eq:mt-stat-ibm2}.
 \begin{equation}\label{eq:mt-stat-ibm2}
 p(A_i | S_1^{i-1}, A_1^{i-1}, T_1^{m}) = p(A_i | i, n, m)
@@ -279,8 +279,8 @@ p(S|T) = \sum_{A} \prod_{i=1}^{n} p(A_i | A_{i-1}, m) p(S_i | S_1^{i-1}, A_1^{i}
 
 \subsection{Approche par exemples}
 
-Des fois, on trouve des segments de la langue source qui sont toujours alignés avec d'autres en langue destinataire.
-Donc, on peut calculer la probabilité d'un segment (ensemble de mots consécutifs) par rapport un autre. 
+Des fois, nous trouvons des segments de la langue source qui sont toujours alignés avec d'autres en langue destinataire.
+Donc, nous pouvons calculer la probabilité d'un segment (ensemble de mots consécutifs) par rapport un autre. 
 Moses\footnote{Moses : \url{http://statmt.org/moses/} [visité le 2021-09-16]} \cite{07-koehn-al} est un système de traduction par exemples.
 Il entraîne quatre modèles statistiques :
 \begin{itemize}
@@ -297,8 +297,8 @@ p(T|S) = \phi(S|T)^{poids_{\phi}} \times LM^{poids_{LM}} \times D(T, S)^{poids_{
 
 \subsection{Approche neuronale}
 
-La traduction automatique est un problème d'encodage-décodage ; on encode le texte source vers une représentation partagée qui sera décodée vers un texte destinataire.
-Donc, on peut utiliser un encodeur-décodeur basé sur un réseau de neurones récurrent ; il est appelé modèle sequence-to-sequence (seq2seq).
+La traduction automatique est un problème d'encodage-décodage ; nous encodons le texte source vers une représentation partagée qui sera décodée vers un texte destinataire.
+Donc, nous pouvons utiliser un encodeur-décodeur basé sur un réseau de neurones récurrent ; il est appelé modèle sequence-to-sequence (seq2seq).
 L'encodeur a comme but d'encoder une phrase de la langue source $S$. 
 Le résultat est une représentation du contexte sous forme d'un vecteur. 
 Ce vecteur du contexte est décodé vers une phrase de la langue destinataire $T$. 
@@ -323,8 +323,8 @@ L'encodeur se compose de huit couches \keyword[L]{LSTM} dont la première est un
 Le texte d'entrée $X = x_1 \ldots x_n$ sera encodé comme une séquence $\bar{x}_1 \ldots \bar{x}_n$. 
 Le décodeur, lui aussi, se compose de 8 \keywordpl[L]{LSTM}.
 Soit $y_{i-1}$ la sortie passée du décodeur, la prochaine entrée est calculée en utilisant un mécanisme d'attention. 
-On passe chaque vecteur $\bar{x}_t$ combiné avec $y_{i-1}$ par un réseau de neurone à propagation avant avec une seule couche cachée, appelé $AttentionFunction$ pour avoir un nouveau vecteur $s_t = AttentionFunction(y_{i-1}, \bar{x}_t)$. 
-Une fois tous les $n$ vecteurs sont encodés, on applique une fonction Softmax sur eux.
+Chaque vecteur $\bar{x}_t$ combiné avec $y_{i-1}$ sont passés par un réseau de neurone à propagation avant avec une seule couche cachée, appelé $AttentionFunction$ pour avoir un nouveau vecteur $s_t = AttentionFunction(y_{i-1}, \bar{x}_t)$. 
+Une fois tous les $n$ vecteurs sont encodés, une fonction Softmax est appliquée sur eux.
 Ensuite, le résultat $p_t$ est utilisé comme pondération du vecteur $\bar{x}_t$ dans une somme pondérée de tous les $n$ vecteurs comme indiqué par l'équation \ref{eq:mt-google-next}
 \begin{equation}\label{eq:mt-google-next}
 a_i = \sum_{t=1}^{n} p_t \cdot \bar{x}_t \quad \text{ où }\quad p_t = \frac{e^{s_t}}{\sum_{j=1}^n e^{s_j}}
@@ -382,7 +382,7 @@ Un système de résumé automatique peut être extractif (extraire des unités c
 Il peut être partiel (il n'ajoute aucune opinion au résumé) ou évaluatif (il ajoute des opinions au résumé).
 Le format du résumé peut être fixe (la même structure des résumés) ou flottant (des structures différentes selon des paramètres utilisateur).
 
-Selon le système de résumé voulu, on peut décider une approche. 
+Selon le système de résumé voulu, nous pouvons décider une approche. 
 Il existe plusieurs classifications des approches, parmi ces classifications :
 \begin{itemize}
 	\item Classification de \citet{12-nenkova-mckeown} : les méthodes sont classifiées selon leur représentation en deux classes.
@@ -398,7 +398,7 @@ Il existe plusieurs classifications des approches, parmi ces classifications :
 \subsection{Approche statistique}
 
 Dans cette approche, les unités du texte (généralement, des phrases) sont attribuées un score de pertinence selon des critères statistiques.
-Parmi ces critères, on peut utiliser la fréquence des mots. 
+Parmi ces critères, nous pouvons utiliser la fréquence des mots. 
 L'équation \ref{eq:ats-tfidf} représente un exemple d'un score d'une phrase $s_i$ basé sur TF-IDF. 
 \begin{equation}\label{eq:ats-tfidf}
 Score_\text{TF-IDF}(s_i) = \sqrt{\sum\limits_{w_{ik} \in s_i} (\text{TF-IDF}(w_{ik}))^2}
@@ -408,7 +408,7 @@ L'équation \ref{eq:ats-pos} représente un score attribué à la phrase $s_i$ d
 \begin{equation}\label{eq:ats-pos}
 Score_\text{pos}(s_i) = \max (\frac{1}{i}, \frac{1}{|D| - i + 1})
 \end{equation}
-La taille de la phrase peut être utilisée comme critère ; on peut fixer une taille maximale ou minimale pour les phrases acceptées dans le résumé.
+La taille de la phrase peut être utilisée comme critère ; nous pouvons fixer une taille maximale ou minimale pour les phrases acceptées dans le résumé.
 L'équation \ref{eq:ats-taille} représente un score attribué à la phrase $s_i$ en utilisant une taille minimale $L_{min}$.
 \begin{equation}\label{eq:ats-taille}
 Score_\text{taille}(s_i) = \left\lbrace 
@@ -427,14 +427,14 @@ Score_{titre}(s_i) = \frac{\sum_{e \in T \bigcap s_i}{\frac{tf(e)}{tf(e)+1}}}
 Il y a plusieurs formulations de ces critères ; pas seulement celles mentionnées ici. 
 Aussi, il existe d'autres critères comme : Centroid, Frequent itemsets, Analyse sémantique latente, etc.
 
-Parmi les méthodes statistiques, on peut mentionner la méthode TCC (\textit{Topic Clustering and Classification}) proposée par \citet{13-aries-al} et implémentée dans un système appelé AllSummarizer\footnote{AllSummarizer : \url{https://github.com/kariminf/allsummarizer} [visité le 2021-09-16]}.
+Parmi les méthodes statistiques, nous pouvons mentionner la méthode TCC (\textit{Topic Clustering and Classification}) proposée par \citet{13-aries-al} et implémentée dans un système appelé AllSummarizer\footnote{AllSummarizer : \url{https://github.com/kariminf/allsummarizer} [visité le 2021-09-16]}.
 L'architecture de cette méthode est illustrée dans la figure \ref{fig:ats-tcc}.
 L'idée est de regrouper les phrases comme sujets en utilisant une méthode de regroupement ; une phrase peut appartenir à plusieurs sujets. 
 Pour ce faire, la similarité cosinus et un seuil de regroupement ($Th$) sont utilisés.
 Chaque phrase est attribuée un score qui indique combien elle peut représenter tous les sujets du document. 
-Naive Bayes est utilisé pour apprendre les propriétés de chaque sujet et noter les phrases.
+Naïve Bayes est utilisé pour apprendre les propriétés de chaque sujet et noter les phrases.
 %
-On utilise un ensemble des caractéristiques $f$ sur la phrase : TF (Uni-gramme, Bi-gramme), la position et la taille avant et après le pré-traitement.
+Uu ensemble des caractéristiques de la phrase $f$ est utilisé : TF (Uni-gramme, Bi-gramme), la position et la taille avant et après le pré-traitement.
 Une phrase $s_i$ est jugée comme représentative du cluster $c_j$ en utilisant une caractéristique $f_k$ selon le score indiqué par l'équation \ref{eq:ats-tcc-score-si}.
 \begin{equation}\label{eq:ats-tcc-score-si}
 Score(s_i , c_j , f_k ) = 1 + \sum_{\phi \in s_i} {P(f_k=\phi | s_i \in c_j)}
@@ -454,21 +454,21 @@ Score(s_i , \bigcap_{j} c_j , F) = \prod_{j} \prod_{k} Score(s_i , c_j , f_k )
 
 Une autre méthode statistique est celle proposée par \citet{15-oufaida-al}.
 Les mots sont représentés en vecteurs en utilisant un \keyword[E]{embedding} pré-entraîné (Polyglot).
-Premièrement, on commence par clustering des phrases pour extraire les sous-sujets du texte. 
-Pour chercher le mot le plus similaire à un mot $w_i$ dans une phrase $S_2$, on utilise une similarité entre les vecteurs (cosinus par exemple) comme indiqué par l'équation \ref{eq:ats-oufaida-match}.
+Premièrement, une étape de clustering des phrases est exécutée afin extraire les sous-sujets du texte. 
+Pour chercher le mot le plus similaire à un mot $w_i$ dans une phrase $S_2$, une similarité entre les vecteurs (cosinus par exemple) est utilisée, comme indiqué par l'équation \ref{eq:ats-oufaida-match}.
 \begin{equation}\label{eq:ats-oufaida-match}
 Match(w_i | S_2) = \arg\max_{w_j \in S_2} sim(Rep(w_i), Rep(w_j))
 \end{equation}
-Pour calculer la similarité entre deux phrases $S_1$ et $S_2$, on peut utiliser la fonction de matching comme précisé dans l'équation \ref{eq:ats-oufaida-sim}.
+Pour calculer la similarité entre deux phrases $S_1$ et $S_2$, une fonction de matching peut être utilisée, comme précisé par l'équation \ref{eq:ats-oufaida-sim}.
 \begin{equation}\label{eq:ats-oufaida-sim}
 Sim(S_1, S_2) = \frac{\sum_{w_i \in S_1} Match(w_i | S_2) + \sum_{w_j \in S_2} Match(w_j | S_1)}{|S_1| + |S_2|}
 \end{equation}
 Cette similarité est utilisée pour regrouper les phrases en sujets. 
-Afin d'attribuer un score à une phrase, on utilise les scores des termes qui lui composent. 
+Afin d'attribuer un score à une phrase, les scores des termes qui lui composent sont utilisés. 
 Le score des termes est calculé selon une méthode appelée mRMR (Minimum Redundancy Maximum Relevance). 
-On commence par la création d'une représentation termes/phrases indiquant la fréquence des termes dans chaque phrase (voir chapitre 6). 
+Premièrement, une représentation termes/phrases indiquant la fréquence des termes dans chaque phrase (voir chapitre 6) est crée. 
 Dans ce cas, un terme est représenté par un vecteur des phrases. 
-Étant donné deux termes $X$ et $Y$, on calcule l'information mutuelle comme indiqué par l'équation \ref{eq:ats-oufaida-mutinf}.
+Étant donné deux termes $X$ et $Y$, l'information mutuelle est calculée, comme indiqué par l'équation \ref{eq:ats-oufaida-mutinf}.
 \begin{equation}\label{eq:ats-oufaida-mutinf}
 I(X, Y) = \sum\limits_{x \in X} \sum\limits_{y \in Y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}
 \end{equation}
@@ -488,13 +488,13 @@ MIQ \equiv \max_{t \in T} Pertinence(t) / Redondance(t)
 \end{equation}
 Le vecteur contenant tous les scores des termes est référencé par $V_{mRMR}$. 
 Le score d'une phrase est sa similarité avec ce vecteur ; la plus similaire est ajoutée au résumé. 
-Lors de l'ajout, on décrémente les scores des termes qui composent cette phrase dans le vecteur $V_{mRMR}$. 
+Lors de l'ajout, les scores des termes qui composent cette phrase dans le vecteur $V_{mRMR}$ sont décrémentés. 
 
 \subsection{Approche par graphes}
 
 Dans cette approche, les phrases sont représentés comme nœuds d'un graphe $G(V, A)$ ; les arcs représentent les similarités entre ces phrases. 
 Une méthode pour sélectionner les phrases pertinentes est d'utiliser les \optword{propriétés du graphe}. 
-Parmi les propriétés, on peut citer ``Bushy paths" qui note une phrase $s_i$ en se basant sur le nombre des arcs qui la relient avec les autres phrases.
+Parmi les propriétés, nous pouvons citer ``Bushy paths" qui note une phrase $s_i$ en se basant sur le nombre des arcs qui la relient avec les autres phrases.
 Ce score est exprimé par l'équation \ref{eq:ats-graph-bushy}.
 \begin{equation}\label{eq:ats-graph-bushy}
 Score_{\#arcs}(s_i) = |\{ s_j : a(s_i, s_j) \in A / s_j \in S, s_i \neq s_j \}|
@@ -504,7 +504,7 @@ Une autre propriété s'appelle ``Aggregate Similarity" qui note une phrase $s_i
 Score_{aggregate}(s_i) = \sum\limits_{(s_i, s_j) \in E} sim(s_i, s_j)
 \end{equation}
 Une autre approche est d'utiliser des \optword{méthodes itératives} en mettant à jours les scores des nœuds par rapport aux voisins jusqu'à arriver à un état d'équilibre. 
-Parmi les méthodes qui se basent sur cette technique, on peut citer TextRank \cite{04-mihalcea-tarau}. 
+Parmi les méthodes qui se basent sur cette technique, nous pouvons citer TextRank \cite{04-mihalcea-tarau}. 
 Le poids $WS$ d'un nœud $V_i$ est calculé selon l'équation \ref{eq:ats-graph-textrank1}.
 \begin{equation}\label{eq:ats-graph-textrank1}
 WS(V_i) = ( 1 - d) + d * \sum\limits_{V_j \in In(V_i)} \frac{w_{ji}}{\sum\limits_{V_k \in Out(V_j)} w_{jk}} WS(V_j)
@@ -515,11 +515,11 @@ Le poids $w_{ij}$ d'un arc entre les phrases $S_i$ et $S_j$ est calculé selon l
 w_{ij} = \frac{|\{w_k \text{ / } w_k \in S_i \text{ and } w_k \in S_j\}|}{\log(|S_i|) + \log(|S_j|)}
 \end{equation}
 
-Les graphes ne sont pas utilisés seulement pour attribuer des scores aux phrases, mais aussi on peut les utiliser pour faire une pré-sélection.
-Dans la méthode SSF-GC (\textit{Sentence statistical features - graph cumulative score})\cite{21-aries-al}, on commence par noter les phrases selon des caractéristiques statistiques (voir la figure \ref{fig:ats-gc}). 
-Ensuite, on crée un graphe en utilisant les similarités entre ces phrases. 
+Les graphes ne sont pas utilisés seulement pour attribuer des scores aux phrases, mais aussi nous pouvons les utiliser pour faire une pré-sélection.
+Dans la méthode SSF-GC (\textit{Sentence statistical features - graph cumulative score})\cite{21-aries-al}, nous commençons par noter les phrases selon des caractéristiques statistiques (voir la figure \ref{fig:ats-gc}). 
+Ensuite, nous créons un graphe en utilisant les similarités entre ces phrases. 
 Le graphe est simplifié afin de garder les phrases les plus probables à être sélectionnées dans le résumé. 
-Ensuite, on améliore le score des phrases en utilisant les propriétés du graphe.
+Ensuite, nous améliorons le score des phrases en utilisant les propriétés du graphe.
 
 \begin{figure}[!ht]
 	\centering
@@ -539,7 +539,7 @@ Les arcs faibles sont, aussi, éliminés selon l'équation \ref{eq:ats-gc-afaibl
 \begin{equation}\label{eq:ats-gc-afaible}
 arc\_faible(v_i, v_j) = ( w_{ij} < \frac{Threshold}{MImpN(v_i)})
 \end{equation}
-Une fois le graphe est simplifié, on score chaque phrase selon des caractéristiques statistiques $f_i \in F$ (vues précédemment). 
+Une fois le graphe est simplifié, nous notons chaque phrase selon des caractéristiques statistiques $f_i \in F$ (vues précédemment). 
 Ces scores sont considérés comme des probabilités, d'où la probabilité totale est la multiplication entre leurs probabilités comme indiqué par l'équation \ref{eq:ats-gc-ssf}.
 \begin{equation}\label{eq:ats-gc-ssf}
 SSF(s_i/ F) = \prod_{f_i \in F} score(s_i/f_i)
@@ -558,7 +558,7 @@ suiv_{e4}  =  \arg\min\limits_i (iord\ gc(s_i) + ord\ sim(dernier_{e4}, s_i)) \t
 
 \subsection{Approche linguistique}
 
-On peut utiliser une liste des mots qui sont pertinents au sujet, comme ``significant", ``impossible", etc. 
+Nous pouvons utiliser une liste des mots qui sont pertinents au sujet, comme ``significant", ``impossible", etc. 
 Ces mots sont appelés \optword{Mots de sujet} et peuvent être utilisés pour noter les phrases. 
 \citet{69-edmundson} a défini deux listes : Bonus (mots positivement pertinents) et Stigma (mots négativement pertinents).
 Le score d'une phrase $s_i$ en se basant sur ces deux listes est indiqué par l'équation \ref{eq:ats-edmundson}.
@@ -594,14 +594,14 @@ La \optword{structure rhétorique} peut être utilisée pour noter des phrases o
 
 \subsection{Approche par apprentissage automatique (ML)}
 
-En utilisant des \optword{caractéristiques} sur les phrases, le document, etc., on peut apprendre à résumer un document en utilisant un algorithme de \ac{ml}.
-On peut soit régler des hyper-paramètres comme les poids des caractéristiques pour le score des phrases. 
-Aussi, on peut utiliser l'apprentissage pour décider si une unité (phrase) appartient au résumé ou non (problème de classement). 
+En utilisant des \optword{caractéristiques} sur les phrases, le document, etc., nous pouvons apprendre à résumer un document en utilisant un algorithme de \ac{ml}.
+Nous pouvons soit régler des hyper-paramètres comme les poids des caractéristiques pour le score des phrases. 
+Aussi, nous pouvons utiliser l'apprentissage pour décider si une unité (phrase) appartient au résumé ou non (problème de classement). 
 ML2ExtraSum\footnote{ML2ExtraSum \url{https://github.com/kariminf/ML2ExtraSum} [visité le 2021-09-16]} \cite{2020-aries} est un système qui se base sur des caractéristiques définies manuellement afin d'estimer le score ROUGE-1 (une métrique pour l'évaluation des résumés).
 La figure \ref{fig:ats-ml2es} représente l'architecture de ce système.
-En entrée, on a plusieurs caractéristiques comme la liste des TF des mots de la phrase ($sent\_tf\_seq$), la liste des TF des mots du document ($doc\_tf\_seq$), la taille de la phrase ($sent\_size$), etc.
+En entrée, nous avons plusieurs caractéristiques comme la liste des TF des mots de la phrase ($sent\_tf\_seq$), la liste des TF des mots du document ($doc\_tf\_seq$), la taille de la phrase ($sent\_size$), etc.
 Ces caractéristiques sont transformées en utilisant un module de transformation configurable. 
-Par exemple, on peut transformer les listes en scalaires. 
+Par exemple, nous pouvons transformer les listes en scalaires. 
 Un bloc de réseau de neurones à propagation avant est utilisé pour détecter la langue (en réalité, il va attribuer à chaque document un vecteur : une forme de clustering).
 Autres blocs sont utilisés pour calculer le score de la phrase en utilisant des critères : TF, Similarité, Taille et Position. 
 Un bloc final est utilisé pour inférer le score ROUGE-1 en utilisant les scores intermédiaires. 
@@ -614,9 +614,9 @@ Un bloc final est utilisé pour inférer le score ROUGE-1 en utilisant les score
 \end{figure}
 
 Une autre approche est d'identifier les concepts principaux à partir des documents et les liens entre eux pour avoir une hiérarchie. 
-On appelle ça ``\optword{Bayesian topic models}". 
+Cela est appelé : ``\optword{Bayesian topic models}". 
 \citet{06-daumeiii-marcu} essayent de générer des résumés en utilisant des requêtes utilisateurs (voir la figure \ref{fig:ats-daumeii-marcu}). 
-Pour ce faire, on essaye d'apprendre des modèles bayésiens à partir d'un ensemble $D$ de $K$ documents et un autre ensemble $Q$ de $J$ requêtes sur ces documents. 
+Pour ce faire, nous essayons d'apprendre des modèles bayésiens à partir d'un ensemble $D$ de $K$ documents et un autre ensemble $Q$ de $J$ requêtes sur ces documents. 
 Un modèle de langage général de l'anglais $P^G$ est entraîné sur des documents génériques.
 Un autre modèle de langage des requêtes $P^Q$ est entraîné sur $Q$. 
 Le troisième modèle de langage $P^D$ est entraîné sur les documents $D$ ; c'est un modèle d'arrière-plan.
@@ -624,7 +624,7 @@ $r[K, J]$ est une matrice booléenne, qui a la valeur $1$ si le document $d \in 
 Chaque mot $w_{dsn}$ d'un document $d$, d'une phrase $s$ et ayant la position $n$ a une variable cachée $z_{dsn}$ qui est un vecteur de taille $K+J+1$. 
 Ce vecteur contient un seul $1$ et le reste de ses éléments est un $0$.
 Il indique de quel document ce mot a été généré : d'un des $K$ documents de $D$, d'un des $J$ requêtes de $Q$ ou d'un document générique.
-Du même, pour chaque phrase $s$ d'un document $d$, on attribue un vecteur $\pi_{ds}$ de taille $K+J+1$. 
+Du même, pour chaque phrase $s$ d'un document $d$, nous attribuons un vecteur $\pi_{ds}$ de taille $K+J+1$. 
 Ce vecteur contient le degré de croyance que la phrase a été générée d'un des documents $D$, $Q$ ou l'anglais général.
 Il peut être utilisé pour décider la phrase qui est générée par $D$ et $Q$ et pas par un document quelque ou par seulement l'un des deux.
 
@@ -654,7 +654,7 @@ Le mécanisme est similaire à celui présenté dans la traduction automatique.
 Une autre méthode pour entraîner un système de résumé automatique est d'utiliser \optword{reinforcement learning}. 
 Il s'agit de l'utilisation des actions et des récompenses pour entrainer un système à générer des résumés.
 La figure \ref{fig:ats-narayan} représente l'architecture du système de résumé proposé par \citet{18-narayan-al} basé sur l'apprentissage par renforcement.
-Étant donné un document $D$ avec $n$ phrases, on veut extraire $m < n$ phrases pour construire le résumé. 
+Étant donné un document $D$ avec $n$ phrases, nous voulons extraire $m < n$ phrases pour construire le résumé. 
 La sélection des phrases peut être formulée comme un problème de classement : classer une phrase comme appartenant au résumé ($1$) ou non ($0$).
 
 \begin{figure}[!ht]
@@ -664,17 +664,17 @@ La sélection des phrases peut être formulée comme un problème de classement 
 	\label{fig:ats-narayan}
 \end{figure}
 
-On commence par décrire les deux encodeurs (phrases et document) et l'extracteur (décodeur).
+Nous commençons par décrire les deux encodeurs (phrases et document) et l'extracteur (décodeur).
 La phrase est encodée en utilisant des CNN sur la matrice contenant les mots (dans l'exemple, 7 mots encodés avec des vecteurs de 4 éléments). 
-On utilise des filtres de déférentes tailles $h$ (ici, $4$ en bleu et $2$ en rouge) plusieurs fois (ici, on a utilisé $3$ différents filtres de même taille). 
+Nous utilisons des filtres de déférentes tailles $h$ (ici, $4$ en bleu et $2$ en rouge) plusieurs fois (ici, nous avons utilisé $3$ différents filtres de même taille). 
 Chaque filtre crée un vecteur $f \in \mathbb{R}^{k-h+1}$ où $k$ est le nombre des mots dans la phrase (ici, le premier vecteur est de taille $7-4+1 = 4$, le deuxième $7-2+1 = 6$). 
 Le vecteur résultat est passé par un Max-Pool pour avoir une seule valeur. 
-Dans l'exemple, on a utilisé trois filtres de taille $4$ et trois de taille $2$, donc on aura deux vecteurs de  taille $3$ qui sont concaténés à un seul vecteur représentant la phrase.
-Afin d'encoder le document, on passe les phrases par un réseaux récurrent \keyword[L]{LSTM} en commençant par la représentation de la première phrase.
+Dans l'exemple, nous avons utilisé trois filtres de taille $4$ et trois de taille $2$, donc nous aurons deux vecteurs de  taille $3$ qui sont concaténés à un seul vecteur représentant la phrase.
+Afin d'encoder le document, nous passons les phrases par un réseaux récurrent \keyword[L]{LSTM} en commençant par la représentation de la première phrase.
 L'extracteur est un \keyword[L]{LSTM} qui prend une phrase $s_i$ et estime une prédiction $y_i$ en prenant en compte la représentation du document : $p(y_i|x_i, D)$.
 
-Lors de l'entrainement, on peut sélectionner les $m$ phrases d'un document $D$ en utilisant la métrique ROUGE-1 avec un résumé manuelle comme phrases de références.
-On va annoter les phrases du document comme $y = y_1 \ldots y_n$ où $y_i \in \{0, 1\}$ ; les phrases de références ont un label de $1$. 
+Lors de l'entraînement, nous pouvons sélectionner les $m$ phrases d'un document $D$ en utilisant la métrique ROUGE-1 avec un résumé manuelle comme phrases de références.
+Nous allons annoter les phrases du document comme $y = y_1 \ldots y_n$ où $y_i \in \{0, 1\}$ ; les phrases de références ont un label de $1$. 
 Le système peut être vu comme un agent qui utilise une politique $p(y_i|s_i, D, \theta)$ où $\theta$ représentent les paramètres du modèle. 
 Il génère des labels $\hat{y} = \hat{y}_1 \ldots \hat{y}_n$ où le résumé automatique est généré à partir des phrases les plus probables. 
 L'agent est attribué une récompense (reward) $r$ indiquant comment le résumé automatique est similaire à celui manuelle. 
@@ -710,7 +710,7 @@ Ces trois approches vont être présentées dans cette section avec quelques mé
 
 \subsection{Approche par RI}
 
-Dans l'approche par \ac{ri}, on utilise un système de recherche d'information afin de récupérer les documents pertinents à la requête, ensuite on extrait le passage contenant la réponse.
+Dans l'approche par \ac{ri}, nous utilisons un système de recherche d'information afin de récupérer les documents pertinents à la requête, ensuite nous extrairons le passage contenant la réponse.
 La figure \ref{fig:qa-ri} représente une architecture d'un système de questions/réponses par \ac{ri}. 
 Le système contient trois modules principaux : traitement de la requête, recherche des documents/passages et extraction de la réponse. 
 
@@ -721,7 +721,7 @@ Le système contient trois modules principaux : traitement de la requête, reche
 	\label{fig:qa-ri}
 \end{figure}
 
-Dans le traitement de la requête, on applique deux tâches : formulation de la requête et détection du type de réponse. 
+Dans le traitement de la requête, nous appliquons deux tâches : formulation de la requête et détection du type de réponse. 
 La formulation de la requête concerne les tâches vues dans le chapitre 2 : séparation des mots, suppression des mots vides et radicalisation. 
 Le résultat est un ensemble des mots clés qui sont utilisés dans la recherche des documents. 
 La réponse peut être : une personne, une place, une organisation, une cause, etc. 
@@ -729,24 +729,24 @@ Détecter le type de la réponse attendue va guider le système vers la bonne r�
 Cela peut être accompli en utilisant une taxonomie comme Wordnet.
 
 La recherche des documents se fait en utilisant les mots clés et l'index inversé des documents. 
-Une fois les documents les plus pertinents (en se basant sur un score) sont retournés, on les divisent en passages (paragraphes ou phrases). 
-Afin de rechercher les passages, on peut appliquer la détection des entités nommées et filtrer ceux qui ne contiennent pas le type de la réponse.
+Une fois les documents les plus pertinents (en se basant sur un score) sont retournés, nous les divisons en passages (paragraphes ou phrases). 
+Afin de rechercher les passages, nous pouvons appliquer la détection des entités nommées et filtrer ceux qui ne contiennent pas le type de la réponse.
 Dans ce cas, la recherche d'une cause plutôt d'une entité nommées sera plus difficile. 
 Une autre solution est d'utiliser un algorithme d'apprentissage automatique afin de noter les passages. 
-Parmi les caractéristiques qu'on puisse utiliser : nombre des entités nommées du type recherché, nombre des termes de la question, la séquence la plus longue similaire à la question, le rang du document, etc.
+Parmi les caractéristiques que nous puissions utiliser : nombre des entités nommées du type recherché, nombre des termes de la question, la séquence la plus longue similaire à la question, le rang du document, etc.
 
-Une fois les passages pertinents sont identifiés, on passe à l'extraction de la réponse qui est une partie de ces passages. 
+Une fois les passages pertinents sont identifiés, nous passons à l'extraction de la réponse qui est une partie de ces passages. 
 Une approche est d'utiliser un algorithme d'apprentissage automatique afin de détecter la réponse. 
 Parmi les caractéristiques qui peuvent être utilisées : type de réponse et celui du syntagme, les mots clés de la question, la nouveauté (est ce qu'il y a un mot qui n'existe pas dans la question), la ponctuation (si la réponse est suivie par un virgule, point, etc.). 
-Aussi, on peut utiliser des patrons comme ``\expword{\textless REP\textgreater comme \textless QES\textgreater; }" qui permettent de détecter des réponses comme ``\expword{des désordres développementaux comme l'autisme.}" à la question ``\expword{C'est quoi l'autisme ?}".
+Aussi, nous pouvons utiliser des patrons comme ``\expword{\textless REP\textgreater comme \textless QES\textgreater; }" qui permettent de détecter des réponses comme ``\expword{des désordres développementaux comme l'autisme.}" à la question ``\expword{C'est quoi l'autisme ?}".
 
 
-En utilisant les réseaux de neurones, on peut implémenter un système de questions-réponses dans le contexte de la tâche de lecture/compréhension. 
-Pour chaque mot du passage, on calcule la probabilité d'être le début de la réponse et la fin de la réponse en se basant sur la question. 
+En utilisant les réseaux de neurones, nous pouvons implémenter un système de questions-réponses dans le contexte de la tâche de lecture/compréhension. 
+Pour chaque mot du passage, nous calculons la probabilité d'être le début de la réponse et la fin de la réponse en se basant sur la question. 
 C'est une tâche d'annotation des séquences qui peut être résolue en utilisant la technique \keyword[I]{IOB}.
 Une méthode est celle de \citet{2017-chen-al}, illustrée dans la figure \ref{fig:qr-ri-chen}. 
-On commence par encoder la question en passant les représentations \keyword[G]{GloVe} de ces mots par un réseaux récurrent Bi-LSTM, les vecteurs sont combinés en utilisant une somme pondérée. 
-Afin d'encoder le passage, on utilise la représentation \keyword[G]{GloVe} des mots, un mécanisme d'attention basé sur les mots de la question, un indicateur si le mot a apparu dans la question ($0$ ou $1$) et des indicateurs de catégorie grammaticale et/ou le type de l'entité nommée.
+Nous commençons par encoder la question en passant les représentations \keyword[G]{GloVe} de ces mots par un réseaux récurrent Bi-LSTM, les vecteurs sont combinés en utilisant une somme pondérée. 
+Afin d'encoder le passage, nous utilisons la représentation \keyword[G]{GloVe} des mots, un mécanisme d'attention basé sur les mots de la question, un indicateur si le mot a apparu dans la question ($0$ ou $1$) et des indicateurs de catégorie grammaticale et/ou le type de l'entité nommée.
 Ces vecteurs sont passés par un réseaux \keyword[B]{Bi-LSTM} afin d'extraire les \keywordpl[E]{embedding} des mots par rapport au passage. 
 Chaque vecteur d'un mot du passage est comparé avec le vecteur de la requête en utilisant une similarité afin de décider si le mot appartient à la réponse.
 
@@ -759,7 +759,7 @@ Chaque vecteur d'un mot du passage est comparé avec le vecteur de la requête e
 
 Nous avons vu dans le chapitre 6 que \keyword[B]{BERT} peut être utilisé dans des tâche d'annotation des séquences.
 \citet{2018-devlin-al} passent la question et le passage au modèle pré-entraîné \keyword[B]{BERT} (voir la figure \ref{fig:qr-ri-devlin}).
-On utilise deux représentations, de début (S) et de fin (E), qui sont multipliés par la représentation de chaque mot et passées par une fonction softmax sur l'ensemble de tous les mots afin d'avoir la probabilité de début et celle de fin.
+Nous utilisons deux représentations, de début (S) et de fin (E), qui sont multipliés par la représentation de chaque mot et passées par une fonction softmax sur l'ensemble de tous les mots afin d'avoir la probabilité de début et celle de fin.
 
 \begin{figure}[!ht]
 	\centering
@@ -770,10 +770,10 @@ On utilise deux représentations, de début (S) et de fin (E), qui sont multipli
 
 \subsection{Approche par connaissance}
 
-Lorsqu'on possède une base de données structurée, cette approche est la plus adéquate. 
-Dans le cas d'une base de connaissance sous forme de graphe (BabelNet), on peut utiliser l'annotation sémantique (Entity linking). 
-Ensuite, on doit déterminer le type de la relation recherchée (Ex. \expword{Place\_naissance}) afin de filtrer les entités.
-S'il y a plusieurs relations comme réponses, on peut calculer la similarité entre la question et la réponse (par exemple, en utilisant les \keywordpl[E]{embedding}). 
+Lorsque nous possédons une base de données structurée, cette approche est la plus adéquate. 
+Dans le cas d'une base de connaissance sous forme de graphe (BabelNet), nous pouvons utiliser l'annotation sémantique (Entity linking). 
+Ensuite, nous devons déterminer le type de la relation recherchée (Ex. \expword{Place\_naissance}) afin de filtrer les entités.
+S'il y a plusieurs relations comme réponses, nous pouvons calculer la similarité entre la question et la réponse (par exemple, en utilisant les \keywordpl[E]{embedding}). 
 Une autre approche est en appliquant l'analyse sémantique sur la question afin de générer une forme structurée comme : lambda calcul, SQL, SPARQL, etc.
 Cette forme est utilisée afin d'interroger la base de données et récupérer la réponse.
 Un exemple des requêtes et leurs formes logiques est donnée dans la figure \ref{fig:qr-conn}.
@@ -787,9 +787,9 @@ Un exemple des requêtes et leurs formes logiques est donnée dans la figure \re
 
 \subsection{Approche par modèles de langage}
 
-Dans cette approche, on utilise un modèle de langage pré-entrainé. 
-Ensuite, on le règle pour répondre aux questions à partir du modèle (pas besoin de passages). 
-Dans \cite{2020-roberts-al}, on a entrainé un modèle T5 sur la tâche de remplissage des textes absents (voir la figure \ref{fig:qr-modele-t5}).
+Dans cette approche, nous utilisons un modèle de langage pré-entraîné. 
+Ensuite, nous le réglons pour répondre aux questions à partir du modèle (pas besoin de passages). 
+Dans \cite{2020-roberts-al}, un modèle T5 a été entraîné  sur la tâche de remplissage des textes absents (voir la figure \ref{fig:qr-modele-t5}).
 Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'informations ou de contextes supplémentaires.
 
 \begin{figure}[!ht]
@@ -824,7 +824,7 @@ Un système de dialogue orienté tâche peut utiliser des cadres (frames) afin d
 Un cadre (frame) est une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot.
 Par exemple, la figure \ref{fig:sd-tache-frame-exp} représente un exemple d'un cadre pour programmer un vol.
 Le système pose les questions correspondantes à un slot vide afin de le remplir.
-Lorsqu'on rempli un slot, on peut remplir les slots d'autres cadres en parallèle. 
+Lorsqu'un slot est remplis, les slots d'autres cadres en parallèle peuvent être remplis. 
 Par exemple, le slot ``\expword{RESERVATION\_DATE}" du cadre ``\expword{HOTEL\_RESERVATION}" peut être rempli à partir du slot ``\expword{ARRIVAL\_DATE}", ayant le même type, du cadre ``\expword{FLIGHT\_RESERVATION}".
 
 \begin{figure}[!ht]
@@ -834,12 +834,12 @@ Par exemple, le slot ``\expword{RESERVATION\_DATE}" du cadre ``\expword{HOTEL\_R
 	\label{fig:sd-tache-frame-exp}
 \end{figure}
 
-Lorsqu'il y a plusieurs domaines, on doit appliquer la \keyword{détection d'intention} pour savoir quel cadre à utiliser. 
+Lorsqu'il y a plusieurs domaines, nous devons appliquer la \keyword{détection d'intention} pour savoir quel cadre à utiliser. 
 Celle-ci est une tâche de classification qui vise à sélectionner le domaine (Ex. \expword{HOTEL vs. FLIGHT}).
-Afin de remplir les slots, on peut utiliser une grammaire simplifiée. 
+Afin de remplir les slots, nous pouvons utiliser une grammaire simplifiée. 
 La figure \ref{fig:sd-tache-frame-parse} représente une grammaire sémantique et un arbre sémantique de la phrase ``\expword{Show me flights from Boston to San Fransisco on Tuesday morning}".
 Puisque le vocabulaire est limité et les phrases sont toujours les mêmes, une telle grammaire est facile à concevoir. 
-En fait, on peut l'exprimer en utilisant des expressions régulières.
+En fait, nous pouvons l'exprimer en utilisant des expressions régulières.
 
 \begin{figure}[!ht]
 	\centering
@@ -892,9 +892,9 @@ Il lance un acte de confirmation de la requête en demandant quel est le plat pr
 	\label{fig:sd-tache-his-exp}
 \end{figure}
 
-Afin de remplir les slots, on doit déterminer le domaine et le slot visés par la phrase de l'utilisateur. 
-Pour ce faire, on peut utiliser un algorithme d'apprentissage automatique afin de classer la phrase par intention, domaine et slot. 
-Afin d'extraire les informations et remplir les slots, on peut utiliser l'étiquetage des séquences avec la technique \keyword[I]{IOB}. 
+Afin de remplir les slots, nous devons déterminer le domaine et le slot visés par la phrase de l'utilisateur. 
+Pour ce faire, nous pouvons utiliser un algorithme d'apprentissage automatique afin de classer la phrase par intention, domaine et slot. 
+Afin d'extraire les informations et remplir les slots, nous pouvons utiliser l'étiquetage des séquences avec la technique \keyword[I]{IOB}. 
 Un exemple d'une telle méthode qui utilise \keyword[B]{BERT} est illustré dans la figure \ref{fig:sd-tache-remp-bert}. 
 
 \begin{figure}[!ht]
@@ -917,12 +917,12 @@ Parmi les, le patron le plus similaire à la phrase de l'utilisateur est utilis�
 \subsection{Chatbot à base de la RI}
 
 Les \keywordpl[C]{chatbot} à base de \ac{ri} se basent sur des corpus de conversations $C$ entre humains. 
-Étant donnée une requête utilisateur $q$, on cherche la réponse $r \in C$ qui est plus similaire à la requête $q$ comme indiqué par l'équation \ref{eq:chatbot-sim}.
+Étant donnée une requête utilisateur $q$, nous cherchons la réponse $r \in C$ qui est plus similaire à la requête $q$ comme indiqué par l'équation \ref{eq:chatbot-sim}.
 \begin{equation}\label{eq:chatbot-sim}
 \text{Réponse}(q, C) = \arg\max_{r \in C} \frac{q . r}{|q| |r|}
 \end{equation}
 Les requêtes et les réponses peuvent être encodées en utilisant TF-IDF ou en utilisant les \keywordpl[E]{embedding}.
-Par exemple, en utilisant \keyword[B]{BERT}, on peut encoder la requête comme un vecteur $h_q$ et la réponse comme un vecteur $h_r$ (la sortie ``[CLS]") comme indiqué par l'équation \ref{eq:chatbot-enc-bert}.
+Par exemple, en utilisant \keyword[B]{BERT}, nous pouvons encoder la requête comme un vecteur $h_q$ et la réponse comme un vecteur $h_r$ (la sortie ``[CLS]") comme indiqué par l'équation \ref{eq:chatbot-enc-bert}.
 \begin{equation}\label{eq:chatbot-enc-bert}
 h_q = BERT_Q(q)[CLS],\quad h_r = BERT_R(r)[CLS]
 \end{equation} 
@@ -934,12 +934,12 @@ La réponse est celle qui maximise la similarité entre les deux vecteurs, comme
 \subsection{Chatbot par génération du texte}
 
 Un \keyword[C]{chatbot} peut être modélisé comme un problème de génération du texte. 
-On peut utiliser un encodeur/décodeur comme celui présenté dans la traduction automatique (voir la figure \ref{fig:chatbot-encdec}).
+Nous pouvons utiliser un encodeur/décodeur comme celui présenté dans la traduction automatique (voir la figure \ref{fig:chatbot-encdec}).
 Un mot de la réponse $\hat{r}_i$ est un mot du vocabulaire $V$ qui est estimé en se basant sur la requête $q$ et les mots précédemment générés comme dans l'équation \ref{eq:chatbot-decodeur}
 \begin{equation}\label{eq:chatbot-decodeur}
 \hat{r}_i = \arg\max_{w \in V} p(w| q, r_1, \ldots, r_{t-1})
 \end{equation}
-On peut aussi utiliser des modèles de langage (comme \keyword[G]{GPT}) entraînés sur des conversations.
+Nous pouvons aussi utiliser des modèles de langage (comme \keyword[G]{GPT}) entraînés sur des conversations.
 
 \begin{figure}[!ht]
 	\centering
@@ -955,8 +955,8 @@ On peut aussi utiliser des modèles de langage (comme \keyword[G]{GPT}) entraîn
 
 L'analyse des sentiments consiste à identifier, extraire et quantifier l'état effectif et l'information subjective à partir d'un texte ou du parole.
 L'analyse des sentiments présente plusieurs tâches (voir la figure \ref{fig:asent}) : la subjectivité (est ce que le texte est subjectif ou objectif), la polarité (est ce que l'avis présent dans le texte est positif, négatif ou neutre), l'émotion (détecter l'émotion du texte : plaisir, colère, etc.). 
-On peut, aussi, détecter l'opinion des utilisateurs sur plusieurs aspects. 
-Par exemple, on peut détecter si les utilisateurs sont satisfaits par des aspects d'un téléphone comme : la taille, l'affichage, la batterie, etc. 
+Nous pouvons, aussi, détecter l'opinion des utilisateurs sur plusieurs aspects. 
+Par exemple, nous pouvons détecter si les utilisateurs sont satisfaits par des aspects d'un téléphone comme : la taille, l'affichage, la batterie, etc. 
 Il existe deux approches (qui peuvent être hybridées) pour analyser les sentiments : à base de connaissance et par apprentissage. 
 Deux classifications plus détaillées peuvent être trouvées dans \cite{19-yue-al} et \cite{14-medhat-al}.
 
@@ -974,26 +974,26 @@ Seuls les mots indicateurs des sentiments qui peuvent être attribués des score
 Les adjectifs et les adverbes sont des bons indicateurs de sentiments. 
 Par exemple, l'adjectif ``\expword{bon}" est un indicateur positif et donc l'adjectif ``\expword{mauvais}" est un indicateur négatif.
 Deux techniques sont utilisées pour identifier un mot : à base de dictionnaire et à base d'un corpus. 
-En utilisant un dictionnaire comme \keyword[W]{WordNet}, on peut enrichir une liste des indicateurs manuellement définie (synonymes, antonymes, etc.).
-En se basant sur un corpus, on peut enrichir une liste manuellement définie par la co-occurrence ; les mots qui sont souvent utilisés ensemble sont plus probables d'avoir la même polarité. 
+En utilisant un dictionnaire comme \keyword[W]{WordNet}, nous pouvons enrichir une liste des indicateurs manuellement définie (synonymes, antonymes, etc.).
+En se basant sur un corpus, nous pouvons enrichir une liste manuellement définie par la co-occurrence ; les mots qui sont souvent utilisés ensemble sont plus probables d'avoir la même polarité. 
 %
-Afin de calculer le score totale (phrase ou document), on fait la somme des scores des mots. 
+Afin de calculer le score totale (phrase ou document), nous calculons la somme des scores des mots. 
 Parmi les problèmes, la présence de la négation ; cela peut être réglé en utilisant la structure de la phrase comme \keyword[R]{\ac{rst}}.
 
 \subsection{Analyse des sentiments par apprentissage automatique}
 
-On peut utiliser un algorithme d'apprentissage automatique avec des caractéristiques comme : la présence d'un mot et sa fréquence, les catégories grammaticales des mots, les mots et les syntagmes d'opinion, la négation, etc.
-Aussi, on peut utiliser les modèles de langage contextuelles afin d'apprendre la classe de sortie. 
+Nous pouvons utiliser un algorithme d'apprentissage automatique avec des caractéristiques comme : la présence d'un mot et sa fréquence, les catégories grammaticales des mots, les mots et les syntagmes d'opinion, la négation, etc.
+Aussi, nous pouvons utiliser les modèles de langage contextuelles afin d'apprendre la classe de sortie. 
 La méthode la plus simple est d'utiliser un modèle \keyword[B]{BERT} pré-entraîné.
-En entrée, on passe le texte et en sortie ``[CLS]" on entraîne le modèle à estimer le sentiment. 
-On peut enrichir le modèle en attachant un réseau à propagation avant (feed-forward) avec cette sortie. 
-Aussi, on peut utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
+En entrée, nous passons le texte et en sortie ``[CLS]" nous entraînons le modèle à estimer le sentiment. 
+Nous pouvons enrichir le modèle en attachant un réseau à propagation avant (feed-forward) avec cette sortie. 
+Aussi, nous pouvons utiliser les derniers états cachés des mots avec des configurations comme CNN, RNN, etc.
 
 \subsection{Analyse des sentiments hybride}
 
-Dans cette approche, on essaye d'utiliser les deux approches précédentes.
-On va présenter deux méthodes proposées à l'ESI. 
-On commence par la méthode de \citet{18-bettiche-al} qui utilise la polarité des mots comme caractéristique d'un algorithme d'apprentissage.
+Dans cette approche, nous essayons d'utiliser les deux approches précédentes.
+Nous allons présenter deux méthodes proposées à l'ESI. 
+Nous commençons par la méthode de \citet{18-bettiche-al} qui utilise la polarité des mots comme caractéristique d'un algorithme d'apprentissage.
 La figure \ref{fig:asent-bettiche} représente l'architecture de leur système qui vise à détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux.
 
 \begin{figure}
@@ -1004,14 +1004,14 @@ La figure \ref{fig:asent-bettiche} représente l'architecture de leur système q
 \end{figure}
 
 La méthode commence par l'enrichissement du vocabulaire vu que la dialecte écrite en lettres latins peut avoir plusieurs variations. 
-Donc, pour regrouper les mots similaires, on utilise un ratio basé sur la distance de Lavenstein. 
+Donc, pour regrouper les mots similaires, nous utilisons un ratio basé sur la distance de Lavenstein. 
 Étant donné deux mots $w_1$ et $w_2$, ce ratio peut être calculé par l'équation \ref{eq:asent-bettiche-ratio}.
 \begin{equation}\label{eq:asent-bettiche-ratio}
 Ratio = 1 - Levenstein(w_1, w_2)/(|w_1|+|w_2|)
 \end{equation}
 Par exemple, \expword{Ratio(kolach, kollach) = 92\%, Ratio(kolach, khlasse) = 38\%.}.
 Supposons que nous ayons un vocabulaire $V_p$ positif et un autre $V_n$ négatif qui sont définis manuellement. 
-Pour chaque mot $w$ du vocabulaire qui n'appartient pas à ces deux vocabulaires, on calcule son orientation sémantique comme indiqué par l'équation \ref{eq:asent-bettiche-orientation}
+Pour chaque mot $w$ du vocabulaire qui n'appartient pas à ces deux vocabulaires, nous calculons son orientation sémantique comme indiqué par l'équation \ref{eq:asent-bettiche-orientation}
 \begin{equation}\label{eq:asent-bettiche-orientation}
 SO(w) = \sum_{w_p \in V_p} PMI(w, w_p) - \sum_{w_n \in V_n} PMI(w, w_n)
 \end{equation}
@@ -1028,11 +1028,11 @@ polarite(w) = \begin{cases}
 Les polarités des mots peuvent être utilisées comme caractéristiques d'un algorithme d'apprentissage automatique.
 
 Une autre méthode hybride est celle proposée par \citet{18-guellil-al} (voir la figure \ref{fig:asent-guellil}).
-En se basant sur un lexicon annoté en anglais (mots avec des scores de polarité), on traduit les mots vers l'arabe. 
+En se basant sur un lexicon annoté en anglais (mots avec des scores de polarité), les mots sont traduits vers l'arabe. 
 Il faut prendre en considération que certains mots vont perdre leurs sens vu que l'utilisation des mots en anglais n'est pas garantie d'être équivalente au mots traduit dans les textes en arabe. 
-En utilisant des messages de facebook, on essaye de les annoter selon les scores de polarités des mots ; chaque message est affecté à la classe positive ou négative.
+Les messages de facebook sont annotés selon les scores de polarités des mots ; chaque message est affecté à la classe positive ou négative.
 Ensuite, le corpus annoté automatiquement est utilisé afin d'entraîner un modèle de classification en utilisant des critères comme les \keywordpl[E]{embedding} des mots. 
-J'ai une autre remarque concernant ça : le modèle entraîné va apprendre exactement la même fonction de celui par règle seulement avec des caractéristiques différentes; il faut mieux annoter les messages manuellement.
+Une autre remarque concernant cela : le modèle entraîné va apprendre exactement la même fonction de celui par règle seulement avec des caractéristiques différentes; il faut mieux annoter les messages manuellement.
 
 \begin{figure}
 	\centering
@@ -1058,13 +1058,13 @@ Il existe deux approches : par règles ou par apprentissage automatique.
 \subsection{Formule}
 
 Les formules attribuent des scores aux textes en se basant sur des caractéristiques comme le nombre des mots, le nombre des phrases, etc. 
-Un des scores utilisés pour juger la lisibilité des textes en anglais, on peut mentionner \optword{Flesch-Kincaid Grade Level}. 
+Un des scores utilisés pour juger la lisibilité des textes en anglais, nous pouvons mentionner \optword{Flesch-Kincaid Grade Level}. 
 Cette formule se base sur le nombre des mots, le nombre des phrases et le nombre des syllabes comme indiqué par l'équation \ref{eq:lisibilite-flesch-kincaid}.
 \begin{equation}\label{eq:lisibilite-flesch-kincaid}
 Score = 206.835 - 1.015 (\frac{\text{\slshape mots totaux}}{\text{\slshape phrases totales}})
 - 84.6 (\frac{\text{\slshape syllabes totales}}{\text{\slshape mots totaux}})
 \end{equation}
-Selon ce score, on peut décider la difficulté d'un texte en se basant sur le tableau \ref{tab:lisibilite-flesch-kincaid}.
+Selon ce score, nous pouvons décider la difficulté d'un texte en se basant sur le tableau \ref{tab:lisibilite-flesch-kincaid}.
 
 \begin{table}[!ht]
 	\centering
@@ -1148,10 +1148,10 @@ Dans cette section, je vais présenter les étapes de la  reconnaissance à la p
 La classification sera présentée avec plus de détaille ici.
 Un système de reconnaissance de la parole peut être conçu seulement pour détecter les paroles d'un seul locuteur, n'importe quel locuteur ou il peut s'adapter aux nouveaux locuteurs.
 Selon le canal d'entrée, le système peut permettre les sons d'arrière-plan ou il exige un son clair en entrée.  
-On peut aussi utiliser la taille du vocabulaire comme critère de classification.
+Nous pouvons, aussi, utiliser la taille du vocabulaire comme critère de classification.
 Un système avec un vocabulaire réduit comme les commandes est plus facile à implémenter qu'un système avec un grand vocabulaire comme le vocabulaire d'une langue.
 Selon l'approche de parole, le locuteur doit parler avec des pauses afin de faciliter la détection ou il peut parler d'une façon normale.
-Le style de la parole peut, aussi, affecter un système de reconnaissance : est-ce que le langage doit être standard ou on peut parler avec des sons qui n'ont pas de sens, comme ``\expword{um}".
+Le style de la parole peut, aussi, affecter un système de reconnaissance : est-ce que le langage doit être standard ou nous pouvons parler avec des sons qui n'ont pas de sens, comme ``\expword{um}".
 
 \begin{figure}[!ht]
 	\centering
@@ -1187,12 +1187,12 @@ Le style de la parole peut, aussi, affecter un système de reconnaissance : est-
 
 L'extraction des caractéristiques consiste à transformer le signal sonore vers des vecteurs de caractéristiques acoustiques.
 Chaque vecteur représente l'information du signal encodée dans une petite fenêtre de temps.
-Premièrement, on commence par transformer le signal analogue à une représentation numérique.
-On doit appliquer un \optword{échantillonnage} (sampling) afin d'extraire les valeurs du signal dans une durée définie. 
+Premièrement, nous commençons par transformer le signal analogue à une représentation numérique.
+Nous devons appliquer un \optword{échantillonnage} (sampling) afin d'extraire les valeurs du signal dans une durée définie. 
 Afin de capturer les parties positives et négatives du signal, il faut prendre 2 échantillons par cycle.
 Les fréquences des paroles sont inférieurs à 10 KHz, d'où l'utilisation d'un taux d'échantillonnage : sampling rate = 20 KHz. 
 Dans la téléphonie, la fréquence est 4KHz d'où : sampling rate = 8 KHz \cite{2019-jurafsky-martin}. 
-Une fois le signal est échantillonné, on passe à la quantification ; stocker les amplitudes sous formes des entiers.
+Une fois le signal est échantillonné, nous passons à la quantification ; stocker les amplitudes sous formes des entiers.
 En général, les valeurs utilisées sont soit 8 bits (-128 à 127) ou 16 bits (-32768 à 32767).
 La valeur d'un échantillon dans un temps $n$ est représentée comme $x[n]$.
 
@@ -1207,7 +1207,7 @@ Un exemple du fenêtrage est donné dans la figure \ref{asr-windowing-exp}.
 	\label{asr-windowing-exp}
 \end{figure}
 
-Pour extraire un cadre $y[n]$, on multiplie un signal de la fenêtre $w[n]$ par le signal initial $s[n]$ dans un temps $n$ : $ y[n] = w[n] s[n] $. 
+Pour extraire un cadre $y[n]$, nous multiplions un signal de la fenêtre $w[n]$ par le signal initial $s[n]$ dans un temps $n$ : $ y[n] = w[n] s[n] $. 
 La figure \ref{fig:asr-windowing-rect-hamm} représente un exemple de deux types de fenêtrage : rectangulaire et de Hamming. 
 La méthode la plus simple est la fenêtre rectangulaire ; la fenêtre est représentée par l'équation \ref{eq:asr-windowing-rect}
 \begin{equation}\label{eq:asr-windowing-rect}
@@ -1233,8 +1233,8 @@ w[n] = \begin{cases}
 \end{figure}
 
 Afin d'extraire les caractéristiques, il existe plusieurs méthodes : Mel Frequency Cepstral Coefficients (MFCC), Linear Prediction Coefficients (LPC), Linear Prediction Cepstral Coefficients (LPCC), Line Spectral Frequencies (LSF), Discrete Wavelet Transform (DWT), Perceptual Linear Prediction (PLP), etc. 
-Ici, on va prendre MFCC comme exemple.
-On commence par l'extraction de la quantité d'énergie un signal contient dans les différentes bandes de fréquence. 
+Ici, nous allons prendre MFCC comme exemple.
+Nous commençons par l'extraction de la quantité d'énergie un signal contient dans les différentes bandes de fréquence. 
 Ceci peut être accompli en utilisant : Discrete Fourier Transform (DFT) (Voir un exemple dans la figure \ref{fig:asr-dft-exp}).
 En se basant sur un signal fenêtré $x[n] \ldots x[m]$, chacune des $N$ bandes discrètes des fréquences peut être représentée sous forme d'un nombre complexe en utilisant l'équation \ref{eq:asr-dft}.
 \begin{equation}\label{eq:asr-dft}
@@ -1287,7 +1287,7 @@ Une méthode naïve pour maximiser cette probabilité est de maximiser la probab
 \hat{y}_i = \arg\max_{c \in V} p(c| y_1, \ldots, y_{i-1}, X)
 \end{equation}
 Ceci est un modèle de langage sur les caractères avec l'information de la parole. 
-Afin d'entraîner ce modèle à bien générer un caractère sachant les caractères passés et le contexte, on doit avoir suffisamment de données. 
+Afin d'entraîner ce modèle à bien générer un caractère sachant les caractères passés et le contexte, nous devons avoir suffisamment de données. 
 Les mots générés doivent appartenir au vocabulaire de la langue.
 Une solution est d'utiliser un modèle de langage séparé $LM$ avec le modèle de reconnaissance afin d'améliorer la qualité du texte généré.
 La probabilité de générer une série de caractères $Y$ sachant l'information de la parole $X$ peut être représentée comme un score qui ajoute l'information du modèle de langage avec un taux $\lambda$, comme indiqué par l'équation \ref{eq:asr-dec-score}.
@@ -1306,10 +1306,10 @@ Une solution est d'utiliser une technique appelée \optword{Connectionist Tempor
 
 Le but de synthèse de la parole est de générer des paroles à partir d'un texte. 
 La figure \ref{fig:tts-classif} représente la classification des différentes méthodes de synthèse. 
-On peut générer la parole d'un manière synthétique (à base de règles) ; on utilise des filtres phonétiques. 
+Nous pouvons générer la parole d'un manière synthétique (à base de règles) ; nous utilisons des filtres phonétiques. 
 Dans ce cas, le son généré n'est pas naturel. 
 Une autre approche est de sauvegarder des phrases, des mots et des phonèmes afin de les concaténer pour avoir le son final. 
-L'approche statistique est similaire à celle de la reconnaissance de paroles, seulement on inverse les entrées et les sorties. 
+L'approche statistique est similaire à celle de la reconnaissance de paroles, seulement nous inversons les entrées et les sorties. 
 
 \begin{figure}[!ht]
 	\centering
@@ -1320,8 +1320,8 @@ L'approche statistique est similaire à celle de la reconnaissance de paroles, s
 
 Selon \citet{2017-Hinterleitner}, une architecture générale d'un système de synthèse vocale peut être représentée comme indiqué dans la figure \ref{fig:tts-arch}. 
 Le système peut être divisé sur quatre parties : \ac{taln}, génération de la prosodie, concaténation et génération des paramètres, et génération de la parole. 
-Dans la première partie, on doit  normaliser le texte par la conversion des abréviations, conversion des valeurs numériques, etc. 
-Aussi, on doit détecter le stresse d'un mot en utilisant les suffixes et les préfixes. 
+Dans la première partie, nous devons  normaliser le texte par la conversion des abréviations, conversion des valeurs numériques, etc. 
+Aussi, nous devons détecter le stresse d'un mot en utilisant les suffixes et les préfixes. 
 L'unité de génération de prosodie utilise des informations sur les accents de mots et de phrases ainsi que des informations sur des phrases pour créer la prosodie correspondante du texte orthographique, c'est-à-dire la durée, l'intensité et le ton.
 A partir de la représentation phonétique et les informations prosodiques, l'unité de concaténation crée une séquence continue de paramètres de signaux et/ou de gestes d'articulation.
 La dernière unité sert à générer la parole en utilisant ces paramètres suivant une des approches précédemment expliquées.
@@ -1342,10 +1342,10 @@ Avec l'arrivé de l'internet et puis les réseaux sociaux, ce domaine serait d'u
 Comme chaque domaine, \ac{taln} est un arme à double tranchant : il peut aider les peuples à communiquer, il peut automatiser des tâches sur les textes, etc.; mais aussi, il peut être utilisé dans l'espionnage, la manipulation de l'opinion public, etc. 
 Comme le proverbe de Spider-man le dit : ``With great power comes great responsibility" (Avec un grand pouvoir vient une grande responsabilité). 
 
-Dans ce chapitre, on a présenté huit applications dont chaque deux représentent un type de tâches. 
+Dans ce chapitre, nous avons présenté huit applications dont chaque deux représentent un type de tâches. 
 Le premier type est la transformation du texte ; un texte en entrée doit être transformé à un autre différent en sortie. 
 Les deux applications qui ont été présentées sont : la traduction automatique (un texte d'une langue vers une autre) et le résumé automatique (un texte long vers un autre plus petit). 
-Le deuxième type est l'interaction avec l'utilisateur ; en utilisant des requêtes de l'utilisateur, on génère des réponses. 
+Le deuxième type est l'interaction avec l'utilisateur ; en utilisant des requêtes de l'utilisateur, nous générons des réponses. 
 Deux applications ont été présentées : les systèmes de questions/réponses et les systèmes de dialogue.
 Ces deux sont différents malgré que le dernier peut utiliser le premier afin de générer les réponses. 
 Mais, les systèmes de dialogue ne répondent pas seulement aux questions ; ils peuvent poser des questions à l'utilisateur.
