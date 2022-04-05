@@ -307,6 +307,32 @@ Dans chaque état $s$ de la séquence, nous nous basons sur l'estimation précé
 Il faut toujours sauvegarder l'état précédent pour revenir en fin d'algorithme. 
 Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:viterbi}).
 
+\begin{algorithm}[ht]
+	\KwData{$w = w_1 \ldots w_T$, HMM $\lambda = (A, B)$ avec $N$ états}
+	\KwResult{$meilleur\_chemin$, $prob\_chemin$}
+	
+	Créer une matrice $viterbi[N, T]$\;
+	
+	\Pour{état $ s = 1 \ldots N$}{
+		$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
+	}
+	
+	\Pour{$ t = 1 \ldots T$}{
+		\Pour{état $ s = 1 \ldots N$}{
+			$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+			$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
+		}
+	}
+	
+	$prob\_chemin = \max\limits_{s=1}^N viterbi[s, T];\, pointeur\_chemin = \arg\max\limits_{s=1}^N viterbi[s, T]$\;
+	
+	$meilleur\_chemin$ est le chemin qui commence par $pointeur\_chemin$ et qui suit $backpointer$
+	
+	\Return $meilleur\_chemin$, $prob\_chemin$\;
+	\caption{Algorithme de Viterbi pour encoder une séquence selon un modèle de Markov caché.}
+	\label{algo:viterbi}
+\end{algorithm}
+
 En utilisant le modèle entraîné dans l'exemple précédent, nous voulons trouver les tags de cette phrase : \expword{il peut aider}. 
 Suivant l'algorithme de Viterbi, nous aurons le tableau \ref{tab:hmm-viterbi-exp} où chaque cellule est remplie par les calculs séparés par des points virgules (les états précédent) et le pointeur de retour entre deux crochets. 
 Dans la dernière séquence (``aider"), l'état qui maximise la probabilité est ``VERB". 
@@ -356,32 +382,6 @@ Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}.
 	\end{tabular}
 	\caption[Exemple d'exécution de l'algorithme de Viterbi]{Exemple d'exécution de l'algorithme de Viterbi \label{tab:hmm-viterbi-exp}}
 \end{table}
-
-\begin{algorithm}[ht]
-	\KwData{$w = w_1 \ldots w_T$, HMM $\lambda = (A, B)$ avec $N$ états}
-	\KwResult{$meilleur\_chemin$, $prob\_chemin$}
-	
-	Créer une matrice $viterbi[N, T]$\;
-	
-	\Pour{état $ s = 1 \ldots N$}{
-		$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
-	}
-	
-	\Pour{$ t = 1 \ldots T$}{
-		\Pour{état $ s = 1 \ldots N$}{
-			$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
-			$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
-		}
-	}
-	
-	$prob\_chemin = \max\limits_{s=1}^N viterbi[s, T];\, pointeur\_chemin = \arg\max\limits_{s=1}^N viterbi[s, T]$\;
-	
-	$meilleur\_chemin$ est le chemin qui commence par $pointeur\_chemin$ et qui suit $backpointer$
-	
-	\Return $meilleur\_chemin$, $prob\_chemin$\;
-	\caption{Algorithme de Viterbi pour encoder une séquence selon un modèle de Markov caché.}
-	\label{algo:viterbi}
-\end{algorithm}
 
 
 \subsection{Maximum entropy}
