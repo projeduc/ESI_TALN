@@ -684,8 +684,8 @@ La figure \ref{fig:cke-exp} représente son analyse en utilisant l'algorithme de
 	\caption[Exemple de l'analyse Chu-Liu-Edmonds]{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}\label{fig:cke-exp}}
 \end{figure}
 
-
-\begin{discussion}
+\sectioni{Discussion}
+%\begin{discussion}
 Qu'est ce qu'un langage sans syntaxe ?
 Essayer d'imaginer un peuple qui parle une langue (exemple, le français) sans utiliser des règles grammaticales et en utilisant seulement le vocabulaire. 
 Aucune personne ne sera capable de comprendre l'autre. 
@@ -708,13 +708,67 @@ L'analyse de dépendances peut être accomplie en considérant les relations com
 Une autre approche est de considérer toutes les relations possibles et d'utiliser les propriétés des graphes afin de trouver un arbre syntaxique. 
 Cette dernière approche est plus adéquate pour les relations à long terme ; lorsque la phrase est trop longue.
 Dans le cas des dépendances, nous pouvons évaluer un arbre en utilisant le nombre des relations correctes.
-\end{discussion}
+%\end{discussion}
+
+
+Les tutoriels sont accessibles via le répertoire Github.
+Dans le premier tutoriel, Stanford CoreNLP est utilisé pour analyser deux phrases syntaxiquement.
+Deux types d'analyse syntaxique sont utilisés : analyse des constituants et analyse des dépendances.
+Il faut mentionner que CoreNLP est un outil implémenté en java destiné pour TALN.
+
+Le deuxième tutoriel utilise NLTK ; un outil en python très connu pour TALN.
+Dans ce tutoriel, nous appliquons des différentes opérations sur les grammaires à contexte libre (CFG).
+Nous montrons comment créer une nouvelle CFG, la lacer à partir d'un fichier et utiliser des treebanks.
+Nous testons des différents algorithmes d'analyse syntaxique (des constituants) ainsi que la génération de texte.
+
+
+\sectioni{Ressources complémentaires}
+
+\subsubsection*{Exercices}
+
+\begin{enumerate}
+	\item ...
+	
+\end{enumerate}
+
+\subsubsection*{Tutoriels}
+
+Les tutoriels sont accessibles via le répertoire Github.
+Dans le premier tutoriel, Stanford CoreNLP est utilisé pour analyser deux phrases syntaxiquement.
+Deux types d'analyse syntaxique sont utilisés : analyse des constituants et analyse des dépendances.
+Il faut mentionner que CoreNLP est un outil implémenté en java destiné pour TALN.
+
+Le deuxième tutoriel utilise NLTK ; un outil en python très connu pour TALN.
+Dans ce tutoriel, nous appliquons des différentes opérations sur les grammaires à contexte libre (CFG).
+Nous montrons comment créer une nouvelle CFG, la lacer à partir d'un fichier et utiliser des treebanks.
+Nous testons des différents algorithmes d'analyse syntaxique (des constituants) ainsi que la génération de texte.
+
+\subsubsection*{TP : Analyse syntaxique CKY}
+
+On veut concevoir un petit programme pour l'analyse syntaxique à partir de zéro. 
+L'étudiant doit implémenter l'algorithme CKY vu dans le cours.
+
+L'énoncé complet du TP ainsi que les codes et les données sont téléchargeables à partir du répertoire Github.
+Le TP est implémenté complètement à partir de zéro (from scratch) : le module CKY et le module qui l'utilise pour l'analyse morphosyntaxique. 
+L'étudiant doit implémenter la fonction ``analyser" du premier module.
+Les langages de programmation disponibles (pour l'instant) sont : Java, Javascript/nodejs et Python.
+
+%\subsubsection*{Lab}
+%
+%Dans la tâche du "Jugements d'acceptabilité", on essaye de deviner si une phrase est acceptable grammaticalement. 
+%Par exemple, l'expression "\textbf{Le livre qu'ont puisse trouvé sur internet ...}" ne peut pas être considérée comme acceptable. 
+%La raison est que le verbe "ont (avoir)" est moins probable de suivre "que" et que le verbe "puisse (pouvoir)" est conjugué en présent subjonctif, or il est plus probable d'être en infinitif s'il suit le verbe "avoir".
+%Dans ce lab, on va essayé de tester des différents modèles de langages afin d'accomplir cette tâche.
+%
+%L'énoncé complet du lab est téléchargeable à partir du répertoire Github.
+%Les outils utilisés sont NLTK et Keras.le{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+
 
 %=====================================================================
 \ifx\wholebook\relax\else
 % \cleardoublepage
-% \bibliographystyle{../use/ESIbib}
-% \bibliography{../bib/RATstat}
+% \bibliographysty\subsubsection*{Tutoriels}
 	\end{document}
 \fi
 %=====================================================================

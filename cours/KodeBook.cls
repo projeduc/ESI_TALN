@@ -186,11 +186,24 @@ title={#1}
 	fontupper=\itshape
 }
 
+\newcommand{\sectioni}[1]{%
+	\section*{#1}
+	\addcontentsline{toc}{section}{#1}
+	\markright{#1}
+}
+
 
 \newenvironment{discussion}{%
 	\section*{Discussion}
 	\addcontentsline{toc}{section}{Discussion}
 	\markright{Discussion}
+}{%
+}
+
+\newenvironment{ressources}{%
+	\section*{Ressources}
+	\addcontentsline{toc}{section}{Ressources}
+	\markright{Ressources}
 }{%
 }
 

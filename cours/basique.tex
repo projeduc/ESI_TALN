@@ -701,8 +701,8 @@ Cette tâche est plus difficile que celle de radicalisation, puisque nous avons 
 		
 	\end{algorithm}
 
-
-\begin{discussion}
+\sectioni{Discussion}
+%\begin{discussion}
 	La morphologie est le niveau le plus simple dans le traitement d'un langage. 
 	Les tâches dans ce niveau sont beaucoup plus basées sur le caractère (graphème) qui est l'unité la plus basique dans le système d'écriture.  
 	La plupart des problèmes peuvent être résolus avec un automate à état fini ; d'où l'utilisation des expressions régulières. 
@@ -726,7 +726,99 @@ Cette tâche est plus difficile que celle de radicalisation, puisque nous avons 
 	Malheureusement, pas toutes les langues fournissent de tels outils.  
 	C'est la responsabilité des gens qui parlent ces langues à les développer dans un monde de plus en plus numérique.
 	
-\end{discussion}
+%\end{discussion}
+
+\sectioni{Ressources supplémentaire}
+%\begin{ressources}
+	
+\subsubsection*{Exercices}
+
+\begin{enumerate}
+	\item Donner l'expression régulière qui cherche les mots ``\textbf{il}" (singulier et pluriel). 
+	Comme par exemple : \expword{Il a passé par son lieu de travail et il a dit : ``j'ai devenu vieil ; ils n'ont plus besoin de moi".}
+	\item Étant donné un log, on veut afficher les lignes qui commencent par ``\textbf{Error}" ; qui contiennent un nombre commençant par un chiffre autre que zéro, ayant des 3 à 5 zéros consécutifs et se terminant par un chiffre autre que zéro ; et qui se terminent par ``\textbf{...}"
+	\item Donner l'expression régulière qui cherche les mots contenant les lettres ``l", ``i" et ``n" dans cet ordre. Le début du mot peut être en majuscule, le reste du mot est en minuscule. Par exemple, \expword{lion, Linux, violine, absolution, Aladin, ...}
+	\item Afin d'écrire le mot "Rassemblement",  on a commis l'erreur suivante : "Rasenlbement". Indiquer la (les) position(s) de chaque opération d'édition par rapport au mot correcte (Si l'opération n'existe pas, écrire 0. La transposition et la substitution sont prioritaires, c-à-d. on ne doit pas les considérer comme des opérations d'insertion/suppression) (examen TALN, master 2021/2022) :
+	
+	\begin{tabular}{|lll|}
+		\hline 
+		Insertion : ............ & & Substitution : ............ \\
+		Suppression : ............ & & Transposition : ............ \\
+		\hline
+	\end{tabular}
+	
+	\item Calculer les distances de Hamming et de  Levenstein des deux mots suivants : ``tray" et ``tary".
+	Indiquer les différentes opérations d'édition pour chaque distance. Refaire la même chose pour la distance de Lavenstein (poids de substitution = 1).
+	
+	\item Quelles sont les caractéristiques suffisantes pour détecter la limite des phrases dans le texte ``\textbf{I met Mr. Karim. He is at Hassiba Ave. He went to buy a PC.}" (Ave.=avenue [FR: rue]), étant donné qu'on a appliqué une phase de normalisation ? Cette dernière transforme les abréviations/acronymes vers leurs versions longues en gardant le point lorsque le mot suivant commence par une majuscule et l'abréviation peut se produire à la fin de la phrase (les caractéristiques utiles mais pas nécessaires dans ce texte sont considérées comme erronées) :
+	
+	\begin{tabular}{|lll|}
+		\hline 
+		\Square\ Casse (après ``.") & \Square\ Catégorie grammaticale (avant ``.") & \Square\ Longueur du mot (avant ``.")\\
+		\Square\ Nom propre (avant ``.")& \Square\ Catégorie grammaticale (après ``.")& \Square\ Longueur du mot (après ``.")\\
+		\Square\ Nom propre (après ``.") & \Square\ Classes des abréviations& \Square\ Aucune ; le ``." est suffisant\\
+		\hline
+	\end{tabular}
+
+	\item Choisir, pour chaque tâche, l'opération (les opérations)  de réduction de forme utilisée(s) souvent (avec élimination des affixes) :
+	
+	\begin{tabular}{|llll|}
+		\hline 
+		Tâche & Lemmatisation & Racinisation & Aucune\\
+		\hline
+		Recherche d'informations (RI) & \Square & \Square & \Square \\
+		Compréhension de la langue (NLU) & \Square & \Square & \Square \\
+		\hline
+	\end{tabular}
+	
+\end{enumerate}
+
+
+\subsubsection*{Tutoriels}
+
+Il existe plusieurs tutoriels accessibles à partir du répertoire Github (CH02).
+Stanford CoreNLP est un outil de TALN qui supporte l'arabe, le chinois, l'anglais, le français, l'allemand et l'espagnol.
+Il est implémenté en java où les tâches sont conçues sous formes des pipelines.
+Dans ce tutoriel, nous présentons la segmentation et la lemmatisation en utilisant cet outil.
+
+LangPi est un autre outil implémenté en java pour TALN.
+Il a été développé par l'auteur de cet ouvrage principalement pour faciliter le prétraitement des textes.
+Les tâches de prétraitement (normalisation, segmentation, radicalisation et filtrage des mots vides) sont accessibles via des interfaces facilitant l'ajout des nouvelles langues.
+Actuellement, cet outil supporte plus de 40 langues.
+Dans ce tutoriels, nous présentons comment pré-traiter un texte avec cet outil.
+
+Apache OpenNLP est un outil implémenté en java pour TALN.
+Il fournit des interfaces pour déférentes tâches où on peut entraîner un modèle pour une certaine langue.
+Dans ce tutoriel, nous présentons le modèle de détection des langues : étant donnée un texte, on détecte sa langue.
+Nous avons essayé d'entraîner un modèle pour différencier entre le langage binaire, décimal et hexadécimal. 
+Le dataset d'entraînement est un peu petit ; donc, le modèle ne sera pas performant.
+Ensuite, nous présentons la segmentation des phrases et des mots, ainsi que l'entraînement d'un modèle de segmentation des phrases.
+
+NLTK est un outil très connu, présentant plusieurs tâches de TALN en python.
+Dans ce tutoriel, nous présentons la segmentation des phrases, mots, syllabes et tweets.
+L'outil supporte plusieurs langues pour les tâches de filtrages des mots vides, la radicalisation  et la lemmatisation. 
+Ces tâches sont présentées en plus des différentes distances d'édition.
+
+
+Spacy est un outil en python où les tâches sont représentées sous forme des pipelines.
+Chaque langue présente des pipelines possibles qu'on stocke sous forme d'un modèle après entraînement.
+Dans ce tutoriel, nous utilisons le modèle de l'anglais pour la segmentation (phrases et mots), le filtrage des mots vides et la lemmatisation.
+
+
+
+\subsubsection*{TP : fouille des contactes}
+
+On veut récupérer les adresses émail, les réseaux sociaux et les numéros de téléphone qui se figurent dans les pages "contactez nous" des sites web en Algérie. 
+Le problème est que ces pages représentent ces informations de plusieurs façons.
+Pour récupérer et unifier la forme de ces informations, on va utiliser les expressions régulières. 
+
+L'énoncé complet du TP ainsi que les codes et les données sont téléchargeables à partir du répertoire Github.
+Le TP est implémenté complètement à partir de zéro (from scratch) : recherche des contactes, évaluation, etc. 
+L'étudiant doit seulement introduire des expressions régulières afin d'améliorer le score F1.
+Les langages de programmation disponibles (pour l'instant) sont : Java, Javascript/nodejs et Python.
+
+
+%\end{ressources}
 
 %=====================================================================
 \ifx\wholebook\relax\else

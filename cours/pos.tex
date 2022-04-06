@@ -469,8 +469,8 @@ Le code résultat sera pris comme l'entrée du réseau récurrent (simple, empil
 	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn4}}
 \end{figure}
 
-
-\begin{discussion}
+\sectioni{Discussion}
+%\begin{discussion}
 Chaque langue doit avoir un mécanisme pour identifier les entités existantes dans le monde (plantes, animaux, villes, etc.) et les actions qu'une entité puisse exécuter (Ex. jouer, lire, exister, etc.). 
 Les linguistes font la différence entre la fonction d'un mot dans la phrase en utilisant des catégories. 
 Par exemple un nom c'est la référence à un objet (concret ou abstrait), or un adjectif est un mot qui représente une propriété d'un nom. 
@@ -493,7 +493,51 @@ Mais la question qui se pose : comment pouvons-nous évaluer un système d'étiq
 Tout simplement, cette tâche est un cas spécial de classification : à la place de classer une phrase, nous classons chaque mot (ou partie) à part en tenant compte de leurs interactions (temporelles). 
 Donc, les métriques d'évaluation de la classification comme la justesse (accuracy), le rappel (recall), la précision (precision), etc. peuvent être utilisées.
 Cela concerne l'évaluation intrinsèque, sinon nous pouvons évaluer l'effet de cette tâche sur une autre (évaluation extrinsèque).
-\end{discussion}
+%\end{discussion}
+
+\sectioni{Ressources supplémentaires}
+%\begin{ressources}
+
+\subsubsection*{Exercices}
+
+\begin{enumerate}
+	\item Voici un modèle de Markov caché pour l'étiquetage morpho-syntaxique : 
+	
+\end{enumerate}
+
+\subsubsection*{Tutoriels}
+
+Les tutoriels sont accessibles via le répertoire Github.
+Dans le premier tutoriel, nous présentons la tâche d'étiquetage morpho-syntaxique avec NLTK qui est un outil implémenté en python destiné pour TALN.
+Plusieurs algorithmes sont utilisés : RegEx, CRF, HMM, Perceptron et Brill.
+Nous présentons, aussi, la tâche d'extraction des entités nommées et celle d'extraction des syntagmes nominaux.
+
+Le deuxième tutoriel utilise flair ; un outil en python pour TALN.
+Nous présentons les deux tâches : étiquetage morphosyntaxique et extraction des entités nommées.
+Dans le tutoriel, nous pouvons apprendre comment utiliser un modèle existant et comment créer un nouveau modèle.
+
+\subsubsection*{TP : Analyse morphosyntaxique}
+
+On veut concevoir un petit programme pour l'analyse morphosyntaxique à partir de zéro. 
+Le modèle HMM avec lissage de Laplace est fourni.
+L'étudiant doit implémenter la méthode de décodage ``viterbi".
+
+L'énoncé complet du TP ainsi que les codes et les données sont téléchargeables à partir du répertoire Github.
+Le TP est implémenté complètement à partir de zéro (from scratch) : le module HMM et le module qui l'utilise pour l'analyse morphosyntaxique. 
+L'étudiant doit compléter deux fonctions du premier module : notation ($p(t_i|t_{i-1}, w_i)$) et décodage viterbi.
+Deux autres algorithmes de décodage sont implémentés : force brute et gourmand.
+L'étudiant doit comparer entre les trois modèles en calculant la complexité en temps.
+Les langages de programmation disponibles (pour l'instant) sont : Java, Javascript/nodejs et Python.
+
+%\subsubsection*{Lab}
+%
+%Dans la tâche du "Jugements d'acceptabilité", on essaye de deviner si une phrase est acceptable grammaticalement. 
+%Par exemple, l'expression "\textbf{Le livre qu'ont puisse trouvé sur internet ...}" ne peut pas être considérée comme acceptable. 
+%La raison est que le verbe "ont (avoir)" est moins probable de suivre "que" et que le verbe "puisse (pouvoir)" est conjugué en présent subjonctif, or il est plus probable d'être en infinitif s'il suit le verbe "avoir".
+%Dans ce lab, on va essayé de tester des différents modèles de langages afin d'accomplir cette tâche.
+%
+%L'énoncé complet du lab est téléchargeable à partir du répertoire Github.
+%Les outils utilisés sont NLTK et Keras.
 
 %=====================================================================
 \ifx\wholebook\relax\else

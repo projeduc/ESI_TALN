@@ -820,7 +820,8 @@ Pour chaque mot $w$, nous cherchons les \keywordpl[E]{embedding} de tous les sen
 \end{figure}
 
 
-\begin{discussion}
+\sectioni{Discussion}
+%\begin{discussion}
 Imaginer le mot ``café". 
 Quelle est l'image que vous avez visualisée ?
 Peut-être, vous avez imaginé un vers plein du café chaud.
@@ -838,7 +839,58 @@ L'utilisation d'un modèle contextuel ne veut pas dire que la tâche va s'améli
 Des fois, nous pouvons trouver des tâches qui sont plus performantes avec des modèles plus simples.
 D'où la nécessité d'appliquer une évaluation extrinsèque afin de choisir le modèle le plus adéquat.
 
-\end{discussion}
+%\end{discussion}
+
+\sectioni{Ressources complémentaires}
+
+\subsubsection*{Exercices}
+
+\begin{enumerate}
+	\item ...
+	
+\end{enumerate}
+
+\subsubsection*{Tutoriels}
+
+Les tutoriels sont accessibles via le répertoire Github.
+Il existe plusieurs outils qui nous permettent l'encodage des mots sémantiquement. 
+Nous présentons les outils suivants : NLTK, gensim, scikit-learn et Tensorflow (BERT et ELMo).
+Tous ces outils sont implémentés en python.
+
+Dans le tutoriel concernant NLTK, nous présentons WordNet : recherche des synsets ainsi que leurs propriétés (définition, PoS, exemples, etc.) et les relations avec d'autres synsets (hyperonymes, hyponymes, etc.).
+Nous testons quelques opérations de similarité entre les concepts.
+Nous présentons, aussi, WordNet multilingue.
+
+Concernant Scikit-learn (un outil destiné pour l'apprentissage automatique), nous présentons la vectorisation TF, TF-IDF et LSA.
+Nous explorons les différents paramètres de lecture et de pré-traitement utilisés avec la vectorisation.
+Enfin, nous testons la similarité cosinus entre plusieurs documents.
+
+Gensim est un outil destiné principalement pour la représentation des mots.
+Dans son tutoriel, nous présentons : TF-IDF, LSA, LDA, Word2Vec et Fasttext.
+Les deux autres tutoriels concernent l'utilisation des modèles BERT et ELMo dans Tensorflow.
+Pour BERT, nous fournissons les étapes pour créer un modèle de prétraitement et un autre BERT qui sont entraînés sur un petit texte en arabe.
+
+
+%\subsubsection*{TP : Analyse syntaxique CKY}
+%
+%On veut concevoir un petit programme pour l'analyse syntaxique à partir de zéro. 
+%L'étudiant doit implémenter l'algorithme CKY vu dans le cours.
+%
+%L'énoncé complet du TP ainsi que les codes et les données sont téléchargeables à partir du répertoire Github.
+%Le TP est implémenté complètement à partir de zéro (from scratch) : le module CKY et le module qui l'utilise pour l'analyse morphosyntaxique. 
+%L'étudiant doit implémenter la fonction ``analyser" du premier module.
+%Les langages de programmation disponibles (pour l'instant) sont : Java, Javascript/nodejs et Python.
+
+%\subsubsection*{Lab}
+%
+%Dans la tâche du "Jugements d'acceptabilité", on essaye de deviner si une phrase est acceptable grammaticalement. 
+%Par exemple, l'expression "\textbf{Le livre qu'ont puisse trouvé sur internet ...}" ne peut pas être considérée comme acceptable. 
+%La raison est que le verbe "ont (avoir)" est moins probable de suivre "que" et que le verbe "puisse (pouvoir)" est conjugué en présent subjonctif, or il est plus probable d'être en infinitif s'il suit le verbe "avoir".
+%Dans ce lab, on va essayé de tester des différents modèles de langages afin d'accomplir cette tâche.
+%
+%L'énoncé complet du lab est téléchargeable à partir du répertoire Github.
+%Les outils utilisés sont NLTK et Keras.le{../use/ESIbib}
+% \bibliography{../bib/RATstat}
 
 %=====================================================================
 \ifx\wholebook\relax\else

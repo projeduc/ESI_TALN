@@ -390,8 +390,8 @@ Dans ce cas, un modèle ayant une perplexité minimale est le meilleur.
 \end{align}
 
 
-
-\begin{discussion}
+\sectioni{Discussion}
+%\begin{discussion}
 
 Un langage est défini par un vocabulaire et une grammaire afin de composer des phrases. 
 Les règles de la grammaire sont définies par des linguistes. 
@@ -424,7 +424,78 @@ Dans ce cas, nous entraînons trois modèles de langage pour chacune de ces lang
 Les modèles de langages ne sont pas seulement utilisés dans le traitement de texte.
 Un modèle de langage peut être entraîné sur des séquences d'ADN où le vocabulaire est : ``A", ``T", ``C", ``G" et ``U". 
 Dans ce cas, ce modèle peut être utilisé pour la détection de l'espèce (animaux, plantes, etc.). 
-\end{discussion}
+%\end{discussion}
+
+\sectioni{Ressources supplémentaires}
+%\begin{ressources}
+
+\subsubsection*{Exercices}
+
+\begin{enumerate}
+	\item Sélectionner les propositions correctes concernant les modèles de langage (LM) et l'étiquetage morpho-syntaxique (PoS) :
+	
+	\begin{longtable}{|p{.95\textwidth}|}
+		\hline 
+		\Square\ Dans PoS avec un modèle de Markov caché (HMM), les transitions entre les états (catégories grammaticales) sont représentées comme un LM. \\
+		\Square\ Certaines méthodes de lissage peuvent régler le problème des mots hors vocabulaire. \\
+		\Square\ Étant donné un modèle unigramme entraîné sur le français standard, la perplexité de la phrase ``\textbf{Karim enseigne un cours}" est supérieure à celle de ``\textbf{un cours Karim enseigne}". \\
+		\Square\ Étant donné un modèle unigramme entraîné sur le français standard, la perplexité de la phrase ``\textbf{Karim enseigne un cours}" est égale à celle de ``\textbf{un cours Karim enseigne}".\\
+		\Square\ Étant donné un modèle unigramme entraîné sur le français standard, la perplexité de la phrase ``\textbf{Karim enseigne un cours}" est inférieure à celle de ``\textbf{un cours Karim enseigne}".\\
+		\Square\ Étant donné un modèle bigramme entraîné sur le français standard, la perplexité de la phrase ``\textbf{Karim enseigne un cours}" est supérieure à celle de ``\textbf{un cours Karim enseigne}".\\
+		\Square\ Étant donné un modèle bigramme entraîné sur le français standard, la perplexité de la phrase ``\textbf{Karim enseigne un cours}" est égale à celle de ``\textbf{un cours Karim enseigne}".\\
+		\Square\ Étant donné un modèle bigramme entraîné sur le français standard, la perplexité de la phrase ``\textbf{Karim enseigne un cours}" est inférieure à celle de ``\textbf{un cours Karim enseigne}".\\
+		
+		\hline
+	\end{longtable}
+
+	\item Voici des phrases d'entraînement : 
+	
+	\begin{tabular}{|lllll|}
+		\hline
+		Les cours sont intéressants && Le cours est intéressant && Il enseigne un cours \\
+		Il enseigne des cours intéressants && Son cours est intéressant &&\\
+		\hline
+	\end{tabular}
+
+	\begin{enumerate}
+		\item En utilisant un modèle bigramme avec lissage de Laplace, calculer la probabilités des trois expressions : ``Les cours sont intéressants", ``Les cours est intéressants" et ``Les cours son intéressants".
+		\item Que remarquez-vous ?
+		\item Maintenant, on va appliquer une phrase de lemmatisation.
+		Calculer la probabilité des deux expressions :  ``Les cours sont intéressants" et ``Les cours est intéressants".
+		\item Est-ce que l'étape de lemmatisation est utile pour la tâche de détection des fautes d'orthographe en utilisant les modèles de langage ? Justifier.
+	\end{enumerate}
+
+\end{enumerate}
+
+\subsubsection*{Tutoriels}
+
+Les tutoriels sont accessibles via le répertoire Github.
+Dans le premier tutoriel, NLTK est utilisé pour créer des Ngrammes, des vocabulaires et des différents modèles de langage.
+Il faut mentionner que NLTK est un outil implémenté en python destiné pour TALN.
+
+Le deuxième tutoriel utilise Keras ; un outil en python destiné pour créer les réseaux de neurones (fourni avec Tensorflow).
+Dans ce tutoriel, nous avons créé deux modèles de langage : le premier est basé sur les réseaux de neurones à propagation avant et le deuxième est basé sur les réseaux de neurones récurrents.
+
+\subsubsection*{TP : autocomplétion}
+
+On veut concevoir un petit programme pour l'autocomplétion des phrases. 
+Le modèle bigramme avec lissage de Laplace doit être utilisé.
+Il est entraîné sur une page Wikipédia et testé sur les mêmes phrases.
+
+L'énoncé complet du TP ainsi que les codes et les données sont téléchargeables à partir du répertoire Github.
+Le TP est implémenté complètement à partir de zéro (from scratch) : le module de calcul du bigramme avec Laplace et le module qui l'utilise pour l'autocomplétion. 
+L'étudiant doit compléter trois fonctions du premier module : entraînement, notation ($p(w_i|w_{i-1})$) et estimation (estimer un ensemble des mots suivants sachant des mots précédents).
+Les langages de programmation disponibles (pour l'instant) sont : Java, Javascript/nodejs et Python.
+
+\subsubsection*{Lab}
+
+Dans la tâche du "Jugements d'acceptabilité", on essaye de deviner si une phrase est acceptable grammaticalement. 
+Par exemple, l'expression "\textbf{Le livre qu'ont puisse trouvé sur internet ...}" ne peut pas être considérée comme acceptable. 
+La raison est que le verbe "ont (avoir)" est moins probable de suivre "que" et que le verbe "puisse (pouvoir)" est conjugué en présent subjonctif, or il est plus probable d'être en infinitif s'il suit le verbe "avoir".
+Dans ce lab, on va essayé de tester des différents modèles de langages afin d'accomplir cette tâche.
+
+L'énoncé complet du lab est téléchargeable à partir du répertoire Github.
+Les outils utilisés sont NLTK et Keras.
 
 %=====================================================================
 \ifx\wholebook\relax\else
