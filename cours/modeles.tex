@@ -25,10 +25,12 @@
 	Dans ce chapitre, nous allons présenter les modèles de langage traditionnels (N-Grammes), ainsi que ceux basés sur les réseaux de neurones.
 \end{introduction} 
 
-
-Une phrase est bien définie si sa probabilité $P(S) = P(w_1, w_2, ..., w_n) $ est égale à $1$. 
+Avant de passer vers les cas d'utilisation d'un modèle de langage, nous devons définir ce concept.
+Un modèle de langage est une distribution probabiliste sur une séquence des mots (ou caractères).
+Un modèle de langage entraîné sur une langue donnée doit pouvoir modéliser l'agencement des mots de cette langue.
+Une phrase serait bien définie dans cette langue si la probabilité d'observer la séquence de ses mots $P(S) = P(w_1, w_2, ..., w_n) $ soit égale à $1$. 
 %Une phrase avec une probabilité plus grande qu'une autre a plus de chance de se produire étant donné le contexte appris. 
-Une phrase avec une probabilité plus grande qu'une autre a plus de chance d'appartenir au langage utilisé pour entraîner le modèle.
+De même, une phrase avec une probabilité plus grande qu'une autre a plus de chance d'appartenir au langage utilisé pour entraîner le modèle.
 Cette hypothèse a plusieurs applications : 
 \begin{itemize}
 	\item Traduction automatique : en traduisant un texte d'une langue vers une autre, nous pouvons trouver des mots avec plusieurs traductions/sens. 

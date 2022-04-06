@@ -494,7 +494,7 @@ Une transition d'un état vers un autre peut être une action sur :
 	\item $\beta$ : retirer un mot ou ajouter un au début
 	\item $A$ : ajouter une dépendance entre 2 mots
 \end{itemize}
-\textbf{Oracle} est un système qui décide la transition suivante.
+\textbf{oracle} est un modèle entraîné pour décider la transition suivante.
 
 \begin{figure}[ht]
 	\centering
@@ -503,7 +503,7 @@ Une transition d'un état vers un autre peut être une action sur :
 \end{figure}
 
 
-Afin de décrire l'algorithme d'analyse, nous utilisons deux fonctions : ``$Oracle$" qui choisit une transition ``$t$", et ``$Appliquer$" qui exécute ``$t$" sur la configuration. 
+Afin de décrire l'algorithme d'analyse, nous utilisons deux fonctions : ``$oracle$" qui choisit une transition ``$t$", et ``$Appliquer$" qui exécute ``$t$" sur la configuration. 
 L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par transitions.
 
 \begin{algorithm}[ht]
@@ -514,20 +514,20 @@ L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par tr
 	
 	
 	\Tq{$\sigma \ne [ROOT]$ OU $\beta \ne \varnothing$}{
-		$t \leftarrow Oracle(C)$\;
+		$t \leftarrow oracle(C)$\;
 		$C \leftarrow Appliquer(C, t)$\;
 	}
 	
 	\caption{Analyse des dépendances par transitions \label{algo:anal-dep-trans}}
 \end{algorithm}
 
-Le système ``Oracle" choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
+Le modèle ``oracle" choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
 Lorsque nous sommes dans la configuration actuelle $ C = (\sigma, \beta, A) $, nous utilisons une fonction $\Psi$ qui calcule un score en utilisant des caractéristiques basées sur cette configuration.
 La transition $\hat{t}$ choisie est celle qui maximise la fonction $\Psi$ ayant des paramètres $\theta$ selon l'équation \ref{eq:orancle-psi}.
 \begin{equation}\label{eq:orancle-psi}
 \hat{t} = \arg\max\limits_{t \in T} \Psi (t, C, w; \theta)
 \end{equation}
-Pour entraîner le système ``Oracle", nous devons annoter le texte en le transformant à une séquence de transitions. 
+Pour entraîner le modèle ``oracle", nous devons annoter le texte en le transformant à une séquence de transitions. 
 Le texte original est annoté avec les relations de dépendance. 
 Pour transformer la sortie à une séquence de transitions, nous utilisons le système d'analyse en tel sorte à générer toutes les dépendances possibles. 
 En utilisant des caractéristiques sur la configuration courante, nous essayons d'estimer la transition suivante par la fonction $\Psi$.  
