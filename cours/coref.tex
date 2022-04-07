@@ -72,7 +72,7 @@ Contrairement aux pronoms qui sont toujours des références, les \keywordpl[S]{
 Donc, en plus de chercher l'antécédent, nous devons aussi décider si c'est une référence ou non.
 
 
-Les \optword{noms propres} ne sont pas considérés comme références, mais ils peuvent être liés avec d'autres noms propres. 
+Les \optword{noms propres} peuvent être liés avec d'autres noms propres. 
 En général, le nom propre référence un autre nom propre complet (avec plus d'information). 
 Nous pouvons citer les abréviations qui peuvent être des références vers leurs versions complètes.
 Un exemple, ``\expword{L'\underline{école nationale supérieure d'informatique} se situe à Alger. Comme toutes les universités algériennes, il faut avoir le BAC pour étudier à l'\underline{ESI}.}".
@@ -289,9 +289,10 @@ Dans ces modèles, la coréférence est considérée comme un problème de class
 Une des méthodes est d'appliquer Mention-Rank sur des clusters et pas sur des entités. 
 Nous commençons par la création des clusters d'une seule mention. 
 Étant donné deux clusters des mentions, nous vérifions si les deux sont compatibles en utilisant un algorithme d'apprentissage.
+Afin de représenter chaque cluster, nous pouvons utiliser des RNN sur les mentions.
+Nous pouvons, aussi, utiliser les caractéristiques des mentions comme le genre, le nombre, etc.
+En utilisant le modèle entraîné, nous vérifions les clusters deux à deux pour décider s'ils sont compatibles ou non.
 Si les clusters sont compatibles, nous les fusionnons et nous appliquons la même opération jusqu'à ce que les clusters restants ne sont plus compatibles.
-Une autre méthode est de préparer tous les clusters possibles et extraire des caractéristiques du cluster.
-Ensuite, entraîner un modèle (en général, réseau de neurones) afin de décider si c'est un cluster valable ou non.
 
 \section{Évaluation}
 

@@ -503,6 +503,58 @@ Cela concerne l'évaluation intrinsèque, sinon nous pouvons évaluer l'effet de
 \begin{enumerate}
 	\item Voici un modèle de Markov caché pour l'étiquetage morpho-syntaxique : 
 	
+	\begin{tikzpicture}[
+	> = stealth, % arrow head style
+	shorten > = 1pt, % don't touch arrow head to node
+	auto,
+	node distance = 3cm, % distance between nodes
+	semithick, % line style
+	font=\small
+	]
+	
+	\tikzstyle{every state}=[
+	draw = black,
+	thick,
+	fill = white,
+	minimum size = 4mm
+	]
+	
+	\node[circle,draw] (qN) {N};
+	\node[align=left,draw] (qNe) [left of=qN] {P("fish"|N)=0.05\\P("river"|N)=0.03};
+	\node[circle,draw] (qV) [right of=qN] {V};
+	\node[align=left,draw] (qVe) [right of=qV] {P("fish"|V)=0.01\\P("eat"|V)=0.02};
+	\node[circle,draw] (qD) [below of=qN] {D};
+	\node[align=left,draw] (qDe) [left of=qD] {P("the"|D)=0.3\\P("a"|D)=0.2\\P("an"|D)=0.15};
+	\node[circle,draw] (qP) [right of=qD] {P};
+	\node[align=left,draw] (qPe) [right of=qP] {P("I"|P)=0.2\\P("he"|P)=0.1\\P("she"|P)=0.1};
+	\node[] () [below of=qD, yshift=1.5cm] {$\pi(P, D, V, N) = (0.4, 0.3, 0.1, 0.2)$};
+	
+	
+	\path[->] 	
+	(qN) 	edge [loop above] node {0.3} ()
+	edge [bend left] node {0.7} (qV)
+	(qV) 	edge [loop above] node {0.1} ()
+	edge [bend left] node {0.5} (qN)
+	edge [bend left] node {0.4} (qD)
+	(qD)	edge [bend left] node {1.0} (qN)
+	(qP)	edge [bend right] node {1.0} (qV);
+	
+	\path[dashed] 	
+	(qN) 	edge [] node {} (qNe)
+	(qV) 	edge [] node {} (qVe)
+	(qD) 	edge [] node {} (qDe)
+	(qP) 	edge [] node {} (qPe);
+	
+	\end{tikzpicture}
+	
+	\begin{enumerate}
+		\item Calculer les deux probabilités : P(V D N | ``fish a fish") et P(N D N | "fish a fish")
+		\item Étant donné que C(N) = 200, C(V) = 100 et C(D)=100, calculer les probabilités suivantes en utilisant le lissage de Laplace : P(D|V), P(D|N) et P(N|D).
+		\item Recalculer les probabilités de la première question après le lissage.
+		\item Combien d'expressions étiquetées ``\textbf{V D N}" existent-elles dans notre dataset d'entraînement ? Le déterminant ``\textbf{D}" ne se produit jamais à la fin de la phrase. 
+		
+	\end{enumerate}
+	
 \end{enumerate}
 
 \subsubsection*{Tutoriels}
