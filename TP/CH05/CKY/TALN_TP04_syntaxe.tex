@@ -1,0 +1,128 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& 2\textsuperscript{ème} année cycle supérieure (2CSSID)\\
+& Traitement automatique du langage naturel (2021-2022)
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{TP04 : Analyse syntaxique (CKY)}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+Afin de bien comprendre l'analyse syntaxique, on veut implémenter l'algorithme CKY de zéro ainsi que l'algorithme d'évaluation naïve.
+Il faut savoir que la structure de l'arbre varie selon le langage de programmation utilisé.
+Donc, il faut lire le code pour comprendre la structure ; sinon, demander d'explication pendant la séance du TP.
+
+\section*{1. Implémentation}
+
+L'algorithme est implémenté dans sa totalité sauf les fonctions à compléter.
+I existe deux classes : 
+\begin{itemize}
+	\item CKY : créée en passant la grammaire en forme normale de Chomsky (FNC) et la lexique (un mot et la liste des catégories grammaticales). 
+	Elle applique l'analyse sur un phrase passée comme liste de mots.
+	\item Syntaxe : Elle utilise la classe CKY pour faire l'analyse syntaxique. 
+	Elle génère un arbre syntaxique graphique (basé sur le langage Dot).
+	Aussi, elle évalue notre modèle d'analyse syntaxique.
+\end{itemize}
+
+Dans ce TP, vous devez implémenter la méthode "analyser" vue en cours.
+Aussi, vous devez implémenter la méthode de comparaison entre deux arbres.
+
+\subsection*{1.1. analyser}
+
+La méthode prend en entrée une liste des mots.
+Elle doit utiliser la grammaire en FNC et la lexique qui sont introduits dans le constructeur.
+A la fin, elle doit retourner la matrice d'analyse vue en cours : 
+\begin{itemize}
+	\item une liste des listes : pour représenter les lignes et les colonnes
+	\item le contenu est une liste : pour représenter les différentes règles possibles
+	\item le contenu est un tuple (A, k, iB, iC) : A est la variable, k est utilisé pour calculer la position de B (avec iB) et de C (avec iC) de la règle $A \leftarrow B C$.
+\end{itemize}
+
+\subsection*{1.2. evaluer\_stricte}
+
+Cette fonction prend un arbre de référence (qui est un nœud) et un arbre généré par le système.
+Elle compare les deux structures et rend 1 s'elles sont équivalentes, sinon 0.
+
+Remarque : si l'un des deux arbres existe et l'autre non, la fonction devrait avoir 0 comme résultat.
+Si les deux n'existent pas, la fonction devait rendre 1.
+
+%\section*{2. Expérimentation}
+%
+%Ici, on va décrire comment on va évaluer un tel modèle.
+%
+%\subsection*{2.1. Dataset}
+%
+%Nous avons utilisé Penn treebank, mais les étiquettes ont été transformées vers universal dependencies. 
+%
+%\subsection*{2.1. Évaluation du modèle}
+%
+%Pour chaque phrase, on calcule l'exactitude (accuracy).
+%Le résultat est la moyenne des exactitudes.
+%
+\section*{2. Questions}
+
+Il faut rendre des réponses de ces questions sous forme d'un fichier texte (.txt) avec le code.
+
+\begin{enumerate}
+	\item On peut remarquer que l'évaluation stricte ne prend pas en considération les arbres syntaxiques qui sont proches de celles de références. Elle les considère comme erronées. Proposer (sans implémentation) une méthode pour affecter un score entre 0 et 1 selon la ressemblance entre l'arbre générée par le système et celle de référence.
+\end{enumerate}
+
+\newpage
+\section*{3. Procédure d'évaluation}
+
+Ici, on va discuter l'évaluation du TP.
+
+\begin{itemize}
+	\item Durée : 1h (il faut rendre le TP à la fin de la séance)
+	\item Note = Note\_analyser + Note\_evaluer\_stricte + Note\_questions
+	\begin{itemize}
+		\item \textbf{Note\_analyser} (10pts) 
+		\item \textbf{Note\_evaluer\_stricte} (8pts), la méthode doit pouvoir rendre le résultat au plus tôt possible.
+		\item \textbf{Note\_questions} (2pts)
+	\end{itemize}
+\end{itemize}
+
+\end{document}

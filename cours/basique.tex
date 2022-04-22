@@ -680,7 +680,7 @@ Cette tâche est plus difficile que celle de radicalisation, puisque nous avons 
 		\KwResult{liste des lemmes possibles}
 		
 		\Si{mot $ \in $  list\_exceptions[catégorie]}{
-			\Return chercher\_dans\_dictionnaire(\{mot\} $ \cup $ list\_exceptions[catégorie])\;
+			\Return chercher\_dans\_dictionnaire(\{mot\} $ \cup $ list\_exceptions[catégorie][mot])\;
 		}
 		
 		formes = \{mot\}
@@ -728,7 +728,7 @@ Cette tâche est plus difficile que celle de radicalisation, puisque nous avons 
 	
 %\end{discussion}
 
-\sectioni{Ressources supplémentaire}
+\sectioni{Ressources supplémentaires}
 %\begin{ressources}
 	
 \subsubsection*{Exercices}

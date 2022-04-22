@@ -1,0 +1,50 @@
+# grammaire en FNC: A \t B \t C ( A --> B C )
+# ===========================================
+
+S	NP	VP
+S	VINF	NP
+S	PRON	VP
+S	VINF	PRON
+S	DET	N
+VP	V	NP
+VP	V	PRON
+VP	MODE	NP
+VP	VMODE	VINF
+NP	DET	AP
+NP	DET	N
+AP	ADJ	N
+AP	ADJ	AP
+MODE	VMODE	VINF
+
+
+# lexique : A \t mot ( A --> mot )
+# =================================
+
+PRON	je
+PRON	tu
+PRON	il
+PRON	elle
+V	forme
+V	veut
+V	veux
+V	mange
+V	est
+VINF	manger
+VINF	nager
+VMODE	veut
+VMODE	veux
+VMODE	peut
+VMODE	peux
+DET	un
+DET	une
+DET	la
+DET	le
+ADJ	petite
+ADJ	petit
+ADJ	grand
+ADJ	bleu
+N	petite
+N	forme
+N	phrase
+N	chat
+N	poisson

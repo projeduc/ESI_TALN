@@ -428,7 +428,7 @@
 			\Pour{$ j = (i+1) \ldots n $}{
 				\Pour{$ k = i \ldots (j-1) $}{
 					\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $T[i, k, B] > 0$ et $T[k+1, j, C] > 0$}{
-						$p \rightarrow P(A \rightarrow B C) * T[i, k, B][1] * T[k+1, j, C][1]$\;
+						$p \leftarrow P(A \rightarrow B C) * T[i, k, B][1] * T[k+1, j, C][1]$\;
 						\Si{$p > T[i, j, A][1]$}{
 							$T[i, j, A] \leftarrow (p, k, B, C)$ \;
 						}
@@ -511,13 +511,13 @@
 \end{minipage}
 
 \begin{itemize}
-	\item \textbf{Transition} : passer d'un état vers un autre en utilisant des actions sur
+	\item \textbf{Transition} : passer d'un état vers un autre en utilisant des actions sur :
 	\begin{itemize}
-		\item $\sigma$ : empiler ou dépiler un mot
-		\item $\beta$ : retirer un mot ou ajouter un au début
-		\item $A$ : ajouter une dépendance entre 2 mots
+		\item $\sigma$ : empiler ou dépiler un mot ;
+		\item $\beta$ : retirer un mot ou ajouter un au début ;
+		\item $A$ : ajouter une dépendance entre 2 mots.
 	\end{itemize}
-	\item \textbf{Oracle} : un système qui décide la transition suivante
+	\item \textbf{Oracle} : un modèle entraîné pour décider la transition suivante
 \end{itemize}
 
 \end{frame}
@@ -527,7 +527,7 @@
 \framesubtitle{Par transition : Algorithme d'analyse}
 
 \begin{itemize}
-	\item Le système ``$Oracle$" choisit une transition ``$t$"
+	\item Le modèle ``$Oracle$" choisit une transition ``$t$"
 	\item La fonction ``$Appliquer$" exécute ``$t$" sur la configuration
 \end{itemize}
 
@@ -552,50 +552,50 @@
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des dépendances}
-\framesubtitle{Par transition : Système Oracle (entraînement)}
+\framesubtitle{Par transition : Modèle Oracle (entraînement)}
 
 \begin{itemize}
-	\item Le système Oracle apprend à inférer la transition $\hat{t}$ étant donné
+	\item Le modèle ``Oracle" apprend à inférer la transition $\hat{t}$ étant donné :
 	\begin{itemize}
-		\item la configuration actuelle $ C = (\sigma, \beta, A) $
-		\item l'ensemble $T$ des transactions possibles
-		\item une fonction $\Psi$ qui calcule un score en utilisant sur des caractéristiques basées sur la configuration 
-		\item un texte annoté (TreeBank)
+		\item la configuration actuelle $ C = (\sigma, \beta, A) $ ;
+		\item l'ensemble $T$ des transactions possibles ;
+		\item une fonction $\Psi$ qui calcule un score en utilisant des caractéristiques basées sur la configuration ;
+		\item un texte annoté (TreeBank).
 	\end{itemize}
 	\[ \hat{t} = \arg\max\limits_{t \in T} \Psi (t, C, w; \theta) \]
 	
-	\item Le texte annoté doit être transformé à une séquence de transactions
-	\item Pour entraîner l'Oracle, on utilise l'algorithme d'analyse 
-	\item La fonction $\Psi$ peut être MaxEnt (le plus utilisé), SVM ou les réseaux de neurones
+	\item Le texte annoté doit être transformé à une séquence de transactions.
+	\item Pour entraîner le modèle ``Oracle", on utilise l'algorithme d'analyse.
+	\item La fonction $\Psi$ peut être MaxEnt (le plus utilisé), SVM ou les réseaux de neurones.
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Analyse syntaxique : Analyse des dépendances}
-\framesubtitle{Par transition : Système Oracle (caractéristiques)}
+\framesubtitle{Par transition : Modèle Oracle (caractéristiques)}
 
 \begin{itemize}
-	\item \textbf{La pile $\sigma$}
+	\item \textbf{La pile $\sigma$} :
 	\begin{itemize}
-		\item Le mot dans le sommet de la pile
-		\item La catégorie grammaticale de ce mot
+		\item Le mot dans le sommet de la pile ;
+		\item La catégorie grammaticale de ce mot.
 	\end{itemize}
 
-	\item \textbf{Le tampon d'entrée $\beta$}
+	\item \textbf{Le tampon d'entrée $\beta$} :
 	\begin{itemize}
-		\item Les trois premiers mots
-		\item Leurs catégories grammaticales
+		\item Les trois premiers mots ;
+		\item Leurs catégories grammaticales.
 	\end{itemize}
 
-	\item \textbf{La liste des dépendances $A$}
+	\item \textbf{La liste des dépendances $A$} :
 	\begin{itemize}
-		\item Les dépendances qui ont été estimées
+		\item Les dépendances qui ont été estimées.
 	\end{itemize}
 
-	\item \textbf{La phrase analysée $w$}
+	\item \textbf{La phrase analysée $w$} :
 	\begin{itemize}
-		\item La distance entre le mot du sommet de la pile et le premier mot dans le tampon (nombre des mots entre eux dans la phrase $w$)
+		\item La distance entre le mot du sommet de la pile et le premier mot dans le tampon (nombre des mots entre eux dans la phrase $w$).
 	\end{itemize}
 
 \end{itemize}

@@ -421,7 +421,7 @@ L'algorithme \ref{algo:cky-prob-recon} représente la version probabiliste de l'
 		\Pour{$ j = (i+1) \ldots n $}{
 			\Pour{$ k = i \ldots (j-1) $}{
 				\PourTous{$A$ tel que $(A \rightarrow B C) \in P $ et $T[i, k, B] > 0$ et $T[k+1, j, C] > 0$}{
-					$p \rightarrow P(A \rightarrow B C) * T[i, k, B][1] * T[k+1, j, C][1]$\;
+					$p \leftarrow P(A \rightarrow B C) * T[i, k, B][1] * T[k+1, j, C][1]$\;
 					\Si{$p > T[i, j, A][1]$}{
 						$T[i, j, A] \leftarrow (p, k, B, C)$ \;
 					}
@@ -487,12 +487,12 @@ C'est une machine abstraite ayant la configuration $C = (\sigma, \beta, A)$ (voi
 	\item $A$ est la liste des arcs créés (dépendances)
 \end{itemize}
 L'analyse commence avec la configuration $C_{initiale} = ([ROOT], w, \emptyset)$ et termine avec la configuration $C_{finale} = ([ROOT], \varnothing, A)$.
-Si nous arrivions à la fin du mot avec une pile non vide (on considère le sommet $ROOT$ comme vide) sans actions de vidage, nous pourrions conclure que ce mot n'appartient pas au langage. 
+Si nous arrivions à la fin du mot avec une pile non vide (ici, nous considérons le sommet $ROOT$ comme vide) sans actions de vidage, nous pourrions conclure que ce mot n'appartient pas au langage. 
 Une transition d'un état vers un autre peut être une action sur :
 \begin{itemize}
-	\item $\sigma$ : empiler ou dépiler un mot
-	\item $\beta$ : retirer un mot ou ajouter un au début
-	\item $A$ : ajouter une dépendance entre 2 mots
+	\item $\sigma$ : empiler ou dépiler un mot ;
+	\item $\beta$ : retirer un mot ou ajouter un au début ;
+	\item $A$ : ajouter une dépendance entre 2 mots.
 \end{itemize}
 \textbf{oracle} est un modèle entraîné pour décider la transition suivante.
 
@@ -503,7 +503,7 @@ Une transition d'un état vers un autre peut être une action sur :
 \end{figure}
 
 
-Afin de décrire l'algorithme d'analyse, nous utilisons deux fonctions : ``$oracle$" qui choisit une transition ``$t$", et ``$Appliquer$" qui exécute ``$t$" sur la configuration. 
+Afin de décrire l'algorithme d'analyse, nous utilisons deux fonctions : ``$Oracle$" qui choisit une transition ``$t$", et ``$Appliquer$" qui exécute ``$t$" sur la configuration. 
 L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par transitions.
 
 \begin{algorithm}[ht]
@@ -514,7 +514,7 @@ L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par tr
 	
 	
 	\Tq{$\sigma \ne [ROOT]$ OU $\beta \ne \varnothing$}{
-		$t \leftarrow oracle(C)$\;
+		$t \leftarrow Oracle(C)$\;
 		$C \leftarrow Appliquer(C, t)$\;
 	}
 	
@@ -527,7 +527,7 @@ La transition $\hat{t}$ choisie est celle qui maximise la fonction $\Psi$ ayant 
 \begin{equation}\label{eq:orancle-psi}
 \hat{t} = \arg\max\limits_{t \in T} \Psi (t, C, w; \theta)
 \end{equation}
-Pour entraîner le modèle ``oracle", nous devons annoter le texte en le transformant à une séquence de transitions. 
+Pour entraîner le modèle ``Oracle", nous devons annoter le texte en le transformant à une séquence de transitions. 
 Le texte original est annoté avec les relations de dépendance. 
 Pour transformer la sortie à une séquence de transitions, nous utilisons le système d'analyse en tel sorte à générer toutes les dépendances possibles. 
 En utilisant des caractéristiques sur la configuration courante, nous essayons d'estimer la transition suivante par la fonction $\Psi$.  
@@ -565,7 +565,7 @@ Les transitions possibles dans cette approche sont :
 Dans Arc-Eager, nous essayons de détecter les relations de dépendance le plus tôt possible. 
 Pour ce faire, les relations doivent être détectées entre le sommet de la pile et le mot courant. 
 Dans ce cas, nous n'avançons pas la tête de lecture automatiquement lorsque nous ajoutons une nouvelle relation. 
-Dans ce cas, la seule méthode pour le faire est d'empiler le mot dans la pile en utilisant la transition ``SHIFT". 
+La seule méthode pour le faire est d'empiler le mot dans la pile en utilisant la transition ``SHIFT". 
 Un exemple de l'analyse de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager est illustré dans la figure \ref{fig:arc-eager-exp}.
 Les transitions possibles dans cette approches sont :
 \begin{itemize}
@@ -711,18 +711,7 @@ Dans le cas des dépendances, nous pouvons évaluer un arbre en utilisant le nom
 %\end{discussion}
 
 
-Les tutoriels sont accessibles via le répertoire Github.
-Dans le premier tutoriel, Stanford CoreNLP est utilisé pour analyser deux phrases syntaxiquement.
-Deux types d'analyse syntaxique sont utilisés : analyse des constituants et analyse des dépendances.
-Il faut mentionner que CoreNLP est un outil implémenté en java destiné pour TALN.
-
-Le deuxième tutoriel utilise NLTK ; un outil en python très connu pour TALN.
-Dans ce tutoriel, nous appliquons des différentes opérations sur les grammaires à contexte libre (CFG).
-Nous montrons comment créer une nouvelle CFG, la lacer à partir d'un fichier et utiliser des treebanks.
-Nous testons des différents algorithmes d'analyse syntaxique (des constituants) ainsi que la génération de texte.
-
-
-\sectioni{Ressources complémentaires}
+\sectioni{Ressources supplémentaires}
 
 \subsubsection*{Exercices}
 
@@ -742,6 +731,7 @@ Le deuxième tutoriel utilise NLTK ; un outil en python très connu pour TALN.
 Dans ce tutoriel, nous appliquons des différentes opérations sur les grammaires à contexte libre (CFG).
 Nous montrons comment créer une nouvelle CFG, la lacer à partir d'un fichier et utiliser des treebanks.
 Nous testons des différents algorithmes d'analyse syntaxique (des constituants) ainsi que la génération de texte.
+
 
 \subsubsection*{TP : Analyse syntaxique CKY}
 

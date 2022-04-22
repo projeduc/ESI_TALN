@@ -34,7 +34,7 @@ L'étiquetage morpho-syntaxique est bénéfique pour plusieurs tâches :
 \begin{itemize}
 	\item c'est une étape préliminaire pour l'analyse syntaxique (chapitre suivant).
 	\item les catégories grammaticales peuvent être considérée comme une caractéristique importante dans des tâche de classification des textes. 
-	Par exemple, la tâche de détection de l'auteur peut bénéficier de cette caractéristiques ; certains auteurs utilisent plus de noms dans les phrases que d'autres.
+	Par exemple, la tâche de détection de l'auteur peut bénéficier de cette caractéristique ; certains auteurs utilisent plus de noms dans les phrases que d'autres.
 \end{itemize}
 
 
@@ -256,10 +256,10 @@ P(w_i | t_i) = \frac{C(t_i, w_i)}{C(t_i)} \label{eq:pos-hmm3}
 Prenons un exemple d'un corpus d'entraînement avec quatre phrases. 
 Nous avons 4 catégories : DET, PRON, VERB et NOUN. 
 \begin{itemize}
-	\item un/DET ordianteur/NOUN peut/VERB vous/PRON aider/VERB
+	\item un/DET ordinateur/NOUN peut/VERB vous/PRON aider/VERB
 	\item il/PRON veut/VERB vous/PRON aider/VERB
 	\item il/PRON veut/VERB un/DET ordinateur/NOUN
-	\item il/PRON peut/VERB nager/VERB
+	\item il/PRON peut/VERB nager/VERB  
 \end{itemize}
 Un exemple de calcul d'une transition est le suivant : $P(VERB | NOUN) = \frac{C(NOUN,\ VERB)}{C(NOUN)} = \frac{1}{2}$. 
 La probabilité d'émission du mot ``veut" lorsque le tag est ``VERB" est calculée comme suit : $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$. 
@@ -317,7 +317,7 @@ Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:
 		$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
 	}
 	
-	\Pour{$ t = 1 \ldots T$}{
+	\Pour{$ t = 2 \ldots T$}{
 		\Pour{état $ s = 1 \ldots N$}{
 			$viterbi[s, t] = \max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;
 			$backpointer[s, t] = \arg\max\limits_{s'=1}^N viterbi[s', t-1] * a_{s',s} * b_s(w_t)$\;

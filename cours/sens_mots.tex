@@ -848,12 +848,37 @@ D'où la nécessité d'appliquer une évaluation extrinsèque afin de choisir le
 
 %\end{discussion}
 
-\sectioni{Ressources complémentaires}
+\sectioni{Ressources supplémentaires}
 
 \subsubsection*{Exercices}
 
 \begin{enumerate}
-	\item ...
+	\item Étant donné deux mots M1 et M2, on veut savoir le type de relation qu'on peut extraire en utilisant des différentes représentations.   Notons HYP(M1, M2) une mesure basée sur le chemin le plus  court qui connecte M1 et M2 en utilisant la relation hyponyme/hyperonyme de Wordnet. Notons COS(X,Y) le cosinus entre deux vecteurs X et Y. Sélectionner le type de relation capturée par chaque mesure :
+	
+	\begin{tabular}{|llll|}
+		\hline 
+		Mesure & Similarité (sens) & Association & Aucune\\
+		\hline
+		HYP(M1, M2) & \Square & \Square & \Square \\
+		COS(OneHot(M1), OneHot(M2)) & \Square & \Square & \Square \\
+		COS(Word2Vec(M1), Word2Vec(M2)) & \Square & \Square & \Square \\
+		\hline
+	\end{tabular}
+
+	\item Voici trois phrases : 
+	
+	\begin{tabular}{|lll|}
+		\hline 
+		I fish a fish in the river & the river where I fish is far & the fish is far in the river\\
+		\hline
+	\end{tabular}
+
+	\begin{enumerate}
+		\item En utilisant TF, encoder les deux premières phrases et calculer Cos(S1, S2) 
+		\item En appliquant un filtrage des mots vides dont la liste est [ I, a, in, the, is, where ], refaire la même chose
+		\item Trouver la représentation Mot-Mot du mot "fish" avec une co-occurrence de 2-2.
+	\end{enumerate}
+
 	
 \end{enumerate}
 

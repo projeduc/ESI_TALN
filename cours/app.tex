@@ -1336,8 +1336,8 @@ La dernière unité sert à générer la parole en utilisant ces paramètres sui
 	\label{fig:tts-arch}
 \end{figure}
 
-
-\begin{discussion}
+\sectioni{Discussion}
+%\begin{discussion}
 Quelle est l'intérêt d'étudier un domaine sans applications ? 
 Le traitement automatique du langage naturel est un domaine qui vise à émuler la capacité des être humains à communiquer soit par parole ou par texte. 
 Dans le passé, ce domaine a été motivé seulement par la tâche de traduction automatique (surtout entre russe et anglais). 
@@ -1361,14 +1361,28 @@ Elle contient deux applications : la reconnaissance de la parole et la synthèse
 La première application prend une parole en entrée et la transforme à un texte, et la deuxième fait l'opération inverse.
 Il existe plusieurs applications qui sont implémentées en utilisant plusieurs approches et méthodes. 
 Ce chapitre ne peut pas présenter le tout ; c'est juste une goutte dans l'océan.
-\end{discussion}
+%\end{discussion}
 
-\sectioni{Ressources complémentaires}
+\sectioni{Ressources supplémentaires}
 
 \subsubsection*{Exercices}
 
 \begin{enumerate}
-	\item ...
+	\item On veut développer un système de traduction automatique français-anglais. Nous avons opté pour une solution basée sur l'approche directe. Dans cette approche, on traduit mot par mot et on applique une phase de post-traitement afin d'ajuster l'ordre des mots, etc.  Cette approche se situe dans le niveau morphologique du traitement de la langue.  Proposer une solution  afin d'introduire le niveau sémantique sans changer d'approche. 
+	
+	\item On veut développer un système de résumé automatique translingue (Texte long en une langue et le résumé généré en une autre langue). Pour ce faire, nous avons utilisé deux systèmes basés sur l'architecture encodeur-décodeur (seq2seq avec des RNNs) : un système de résumé automatique de la langue française et un autre de traduction automatique du français vers l'anglais. 
+	\begin{center}
+		\hgraphpage[.5\textwidth]{app-mt01.pdf}
+	\end{center}
+	\begin{enumerate}
+		\item Nous avons deux datasets : un premier qui contient des phrases alignées (français-anglais) et un deuxième qui contient des textes en français et leurs résumés en anglais. On peut entraîner le deuxième système (traduction) en utilisant le premier dataset. Comment peut-on entraîner le système de résumé automatique (français-français) ? 
+		\item Proposer une nouvelle architecture qui nous assure ces améliorations : 
+		\begin{itemize}
+			\item Moins de consommation de temps, d'effort et de données lors d'entraînement ;
+			\item Prendre en considération des dépendances à-postériori lors de la génération du contexte ;
+			\item Prendre en considération des variations morphologiques d'une manière automatique.
+		\end{itemize}
+	\end{enumerate}
 	
 \end{enumerate}
 
