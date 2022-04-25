@@ -7,16 +7,16 @@
 
 \input{options}
 
-\title[TALN : 06- Sémantique lexicale]%
-{Traitement automatique du langage naturel\\Chapitre 06 : Sémantique lexicale} 
+\title[TALN : 06- Sens des mots]%
+{Traitement automatique du langage naturel\\Chapitre 06 : Sens des mots} 
 
-\changegraphpath{../img/sem-lex/}
+\changegraphpath{../img/sens-mots/}
 
 \begin{document}
 	
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Sémantique lexicale : Introduction}
+\framesubtitle{Sens des mots : Introduction}
 
 \begin{exampleblock}{Exemple de la polysémie en français}
 	\begin{center}
@@ -51,7 +51,7 @@
 
 \begin{frame}
 \frametitle{Traitement automatique du langage naturel}
-\framesubtitle{Sémantique lexicale : Plan}
+\framesubtitle{Sens des mots : Plan}
 
 \begin{multicols}{2}
 %	\small
@@ -64,7 +64,7 @@
 %===================================================================================
 
 \begin{frame}
-	\frametitle{Sémantique lexicale}
+	\frametitle{Sens des mots}
 	\framesubtitle{Bases de données lexicales}
 	
 	\begin{itemize}
@@ -83,7 +83,7 @@
 \subsection{Relations sémantiques}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : BD lexicales}
+	\frametitle{Sens des mots : BD lexicales}
 	\framesubtitle{Relations sémantiques (Rappel)}
 	
 	\begin{itemize}
@@ -102,7 +102,7 @@
 \subsection{Wordnet}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet}
 
 \begin{minipage}{.3\textwidth}
@@ -117,7 +117,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet : description}
 	
 \begin{itemize}
@@ -142,7 +142,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet : Catégories lexicographiques (supersense)}
 	
 \begin{figure}
@@ -153,7 +153,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet : Relations sémantiques}
 
 \vspace{-3pt}
@@ -170,7 +170,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet : Quelques ressources}
 	
 \begin{itemize}
@@ -193,7 +193,7 @@
 \subsection{Autres ressources}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Autres ressources : Autres BD lexicales}
 	
 \begin{itemize}
@@ -216,7 +216,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : BD lexicales}
+\frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Autres ressources : BabelNet}
 
 \begin{itemize}
@@ -236,7 +236,7 @@
 %===================================================================================
 
 \begin{frame}
-\frametitle{Sémantique lexicale}
+\frametitle{Sens des mots}
 \framesubtitle{Représentation vectorielle des mots}
 
 \begin{itemize}
@@ -272,12 +272,12 @@
 \subsection{TF-IDF}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{TF-IDF}
 
 \begin{itemize}
 	\item Le sens d'un document/phrase peut être représenté par ses mots 
-	\item La fréquence d'un mot dans un document/phrase s'appelle \keywords{term frequency (TF)}
+	\item La fréquence d'un mot dans un document/phrase s'appelle \keyword{term frequency (TF)}
 	\item Il y a des mots qui se répètent beaucoup, mais qui n'ont pas de sens ajouté (Ex. \expword{
 	Prépositions})
 	\item Les mots qui apparient dans plusieurs documents sont moins importants
@@ -297,7 +297,7 @@
 
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{TF-IDF : Exemple d'une représentation avec TF}
 
 \begin{exampleblock}{Exemple d'une collection de phrases}
@@ -324,7 +324,7 @@
 
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{TF-IDF : Similarité cosinus}
 
 \begin{minipage}{.68\textwidth}
@@ -350,7 +350,7 @@
 \subsection{Mot-Mot}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{Mot-Mot}
 
 \begin{itemize}
@@ -364,7 +364,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{Mot-Mot : Exemple avec un fenêtre de 1-1}
 
 \begin{exampleblock}{Exemple d'une collection de phrases}
@@ -397,7 +397,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{Mot-Mot : Similarité cosinus}
 
 \begin{itemize}
@@ -421,7 +421,7 @@
 \subsection{Analyse sémantique latente (LSA)}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{Analyse sémantique latente (LSA)}
 
 \begin{itemize}
@@ -446,7 +446,7 @@
 
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : Représentation vectorielle}
+	\frametitle{Sens des mots : Représentation vectorielle}
 	\framesubtitle{Analyse sémantique latente (LSA) : Formulation SVD}
 	
 	\begin{itemize}
@@ -518,7 +518,7 @@
 %===================================================================================
 
 \begin{frame}
-\frametitle{Sémantique lexicale}
+\frametitle{Sens des mots}
 \framesubtitle{Word embedding}
 
 \begin{itemize}
@@ -534,7 +534,7 @@
 
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Un peu d'humour}
 \begin{center}
 		\vgraphpage{humour-embeddings.jpeg}	
@@ -545,7 +545,7 @@
 \subsection{Word2vec}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Word2vec}
 
 \begin{itemize}
@@ -567,7 +567,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : Word embedding}
+	\frametitle{Sens des mots : Word embedding}
 	\framesubtitle{Word2vec : CBOW}
 \begin{minipage}{.58\textwidth}
 	\begin{itemize}
@@ -589,7 +589,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : Word embedding}
+	\frametitle{Sens des mots : Word embedding}
 	\framesubtitle{Word2vec : Skip-gram}
 	\begin{minipage}{.58\textwidth}
 		\begin{itemize}
@@ -613,7 +613,7 @@
 \subsection{GloVe}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{GloVe}
 
 \begin{itemize}
@@ -629,7 +629,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{GloVe : Motivation}
 	
 \begin{minipage}{.5\textwidth}
@@ -661,7 +661,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{GloVe : Formulation (raisonnement)}
 	
 \begin{itemize}
@@ -682,7 +682,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{GloVe : Formulation (version finale)}
 	
 \begin{itemize}
@@ -707,7 +707,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{GloVe : Architecture}
 	
 \begin{center}
@@ -719,7 +719,7 @@
 \subsection{Embeddings contextuels}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embeddings contextuels}
 
 \begin{exampleblock}{Exemple de polysémie (mot avec plusieurs sens)}
@@ -738,7 +738,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embeddings contextuels : ELMo}
 
 \begin{minipage}{.65\textwidth}
@@ -763,7 +763,7 @@
 
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embeddings contextuels : ELMo (architecture)}
 	
 	\hgraphpage{elmo-arch.pdf}
@@ -771,7 +771,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : ELMo (description)}
 
 \begin{itemize}
@@ -799,7 +799,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : ELMo (Illustration comment ça fonctionne)}
 
 \vspace{-3pt}
@@ -810,7 +810,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT}
 
 \begin{minipage}{.68\textwidth}
@@ -834,7 +834,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embeddings contextuels : BERT (architecture)}
 	
 	\hgraphpage{bert-arch.pdf}
@@ -842,7 +842,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT (entrées)}
 	
 \begin{itemize}
@@ -863,7 +863,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT (pré-entraînement)}
 	
 \begin{itemize}
@@ -887,7 +887,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 1)}
 
 	\begin{figure}
@@ -900,7 +900,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sémantique lexicale : Word embedding}
+	\frametitle{Sens des mots : Word embedding}
 	\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 2)}
 	
 	\begin{figure}
@@ -913,7 +913,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Word embedding}
+\frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT (un peu d'humour)}
 	\vspace{-3pt}
 	\begin{center}
@@ -926,7 +926,7 @@
 \subsection{Évaluation des modèles}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{Évaluation des modèles : Évaluation intrinsèque}
 
 \begin{itemize}
@@ -953,7 +953,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Représentation vectorielle}
+\frametitle{Sens des mots : Représentation vectorielle}
 \framesubtitle{Évaluation des modèles : Évaluation extrinsèque et biais}
 	
 \begin{itemize}
@@ -978,7 +978,7 @@
 %===================================================================================
 
 \begin{frame}
-\frametitle{Sémantique lexicale}
+\frametitle{Sens des mots}
 \framesubtitle{Désambigüisation lexicale}
 
 \begin{itemize}
@@ -1005,7 +1005,7 @@
 \subsection{Basée sur des bases de connaissance}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Désambigüisation}
+\frametitle{Sens des mots : Désambigüisation}
 \framesubtitle{Basée sur des bases de connaissance : Algorithme de Lesk}
 
 \vspace{-6pt}
@@ -1036,7 +1036,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Désambigüisation}
+\frametitle{Sens des mots : Désambigüisation}
 \framesubtitle{Basée sur des bases de connaissance : A base de graphes}
 	
 \begin{itemize}
@@ -1064,7 +1064,7 @@
 \subsection{Basée sur l'apprentissage automatique}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Désambigüisation}
+\frametitle{Sens des mots : Désambigüisation}
 \framesubtitle{Basée sur l'apprentissage automatique: Apprentissage automatique supervisé}
 	
 \begin{itemize}
@@ -1079,7 +1079,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Sémantique lexicale : Désambigüisation}
+\frametitle{Sens des mots : Désambigüisation}
 \framesubtitle{Basée sur l'apprentissage automatique: Embeddings contextuels}
 
 \begin{minipage}{.68\textwidth}

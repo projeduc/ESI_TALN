@@ -19,13 +19,78 @@
 
 
 
-\subsection*{Cadre général}
+\section*{Cadre général}
+
+Ce support est destiné aux étudiants du deuxième année cycle supérieure (2CS) ainsi que les étudiants du Master.
+A l'école nationale Supérieure d'Informatique (ESI) d'Alger, la formation passe par un cycle préparatoire qui dure
+2 années suivies par un concours afin de passer au cycle supérieur.
+Ce dernier prend 3 années dont la première est un socle commun et les deux dernières représentent une formation de spécialité.
+La dernière année est réservée au projet de fin d'étude où l'étudiant peuvent suivre une formation accélérer pour obtenir un diplôme du master en parallèle avec celui d'ingénieur.
+Donc, la formation la plus proche au 2CS de l'ESI est Master 2 des universités.
+
+Le traitement automatique du langage naturel (TALN) est souvent enseigné comme un module des spécialités ``intelligence artificielle" et ``science des données".
+Il fait partie des branches de l'intelligence artificielle comme la vision par ordinateur, la robotique, le raisonnement par machine, etc.
+Cela ne veut pas dire que les autres spécialités n'auront pas besoin de ce module ; il est seulement moins important que d'autres modules dans ces mêmes spécialités.
+En génie logiciel, on peut par exemple exploiter ce domaine afin de concevoir un système qui construit toute une architecture logiciel à partir d'une description textuelle.
+Le langage naturel fait partie des modes d'interaction homme-machine.
+En système d'information, les techniques de ce domaine sont souvent utilisées pour la recherche et l'extraction d'information.
+L'extraction de données est une phase d'un système ETL (Extract, Transform, Load) où les données peuvent être textuelles (non structurées).
+En systèmes et réseaux, les différentes attaques par injection, comme l'injection SQL, peuvent être traitées de la même manière qu'un langage naturel.
+
+Il est à savoir que ce module possède une grande similarité avec celui de compilation.
+Les deux partagent presque le même pipeline : analyse lexicale, analyse syntaxique et analyse sémantique.
+Ils ont des techniques en commun ; mais, celles du module compilation ne sont pas toujours applicables à un langage naturel.
+Ce dernier est différent d'un langage de programmation qui est bien défini et donc contient moins d'ambiguïté.
 
 
-\subsection*{Organisation du document}
+
+\section*{Organisation générale du document}
+
+Le traitement automatique d'un langage naturel passe par plusieurs niveaux : lexique, syntaxe, sémantique, pragmatique et discours. 
+Les chapitres de ce document sont organisés par l'ordre de ces niveaux.
+Chaque chapitre décrit une tâche élémentaire qui est utilisée pour construire des applications comme celles décrites dans le dernier chapitre.
+Dans cette section, nous allons décrire chaque chapitre à part en précisant sa motivation.
+Chaque chapitre est terminé par une discussion et quelques ressources (voir la section suivante).
 
 
-\subsection*{Ressources externes}
+Le premier chapitre a comme rôle d'introduire le domaine afin de savoir pourquoi nous devons apprendre ce domaine.
+Nous commençons par une petite histoire sur ce domaine et celui de l'intelligence artificielle.
+Ensuite, nous présentons les différents niveaux de traitement d'un langage naturel en détail.
+Après, nous listons les différentes applications de ce domaine que ce soit les tâches élémentaires, les systèmes ou l'utilisation dans le secteur socio-économique comme dans l'éducation, la santé, etc. 
+
+
+Le deuxième chapitre s'occupe de la tâche de prétraitement.
+C'est une tâche nécessaire pour accomplir les autres tâches du traitement d'un texte.
+Elle peut être vue comme l'étape d'analyse lexicale en compilation.
+Son but est de préparer des unités de traitement de texte (dans notre cas : des mots).
+Afin de traiter un texte il faut le diviser en phrases qui doivent être divisées en mots.
+Quelques mots peuvent ne pas être utiles pour notre traitement ; donc, nous pouvons les supprimer.
+D'autres mots peuvent avoir des variations morphologiques qui ne sont pas nécessaires pour notre application ; donc, nous pouvons garder que leurs radicaux.
+
+
+Dans le troisième chapitre, nous introduisons le concept des modèles de langage.
+Ce dernier essaye de trouver une distribution probabiliste sur les séquences des mots d'un langage.
+Donc, étant donné une séquence des mots, nous pouvons estimer la probabilité d'occurrence d'un autre mot.
+Parmi les applications de cette tâche, nous pouvons citer : l'autocomplétion, la détection des fautes d'orthographe et de syntaxe, etc.
+Cette tâche peut être vue comme la version statistique d'analyse syntaxique, mais qui opère dans le niveau lexical.
+
+
+Le quatrième chapitre s'intéresse par l'étiquetage des séquences : étant donné une séquence des mots, on veut attribuer une catégorie à chaque mot ou groupe de mots.
+La tâche la plus connue dans ce cas est l'étiquetage morpho-syntaxique où nous cherchons la catégorie grammaticale de chaque mot.
+Cette tâche peut être utilisée comme tâche préliminaire de l'analyse syntaxique.
+Elle peut aussi être utilisée comme prétraitement des applications où la catégorie grammaticale d'un mot est importante.
+
+
+L'analyse syntaxique sert à trouver la structure syntaxique d'une phrase.
+Cela nous aide à déterminer si une phrase est grammaticalement correcte vis-à-vis une langue.
+Dans le chapitre 4, nous exploitons deux structure différentes : la structure constituante et la structure fonctionnelle.
+Nous présentons des algorithme pour analyser une phrase donnée en se basant sur chaque structure.
+Le but final de cette analyse est d'avoir un arbre syntaxique dans le cas où l'analyse est réussite.
+
+
+
+
+\section*{Ressources externes}
 
 Tutoriels 
 
