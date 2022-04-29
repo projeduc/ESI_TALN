@@ -263,19 +263,19 @@ Une solution est de ne prendre en considération que les mentions négatives qui
 Ce modèle est similaire au modèle Mention-Pair dans le fait que nous comparons les mentions deux à deux. 
 Mais, la différence est que celui-ci apprenne à classer les antécédents ; il apprend une sorte d'ordre. 
 Dans ce cas, nous utilisons des différentes caractéristiques sur la référence $m_i$ et l'antécédent $m_j$ afin d'estimer une probabilité conditionnelle $P(m_j|m_i)$.
-Donc, la tâche consiste à maximiser la probabilité qu'une mention est un antécédent $\hat{a}$ comme indiqué dans l'équation \ref{eq:mention-rank}
+Donc, la tâche consiste à maximiser la probabilité qu'une mention est un antécédent $\hat{a}$ comme indiqué dans l'équation \ref{eq:mention-rank} où $\epsilon$ veut dire la mention n'a pas d'antécédent. 
 \begin{equation}\label{eq:mention-rank}
 \hat{a} = \arg\max_{j \in \{\epsilon, 1, \ldots, (i-1)\}} P(w_j|w_i) 
 \end{equation}
-$\epsilon$ veut dire la mention n'a pas d'antécédent. 
-La figure \ref{fig:mention-rank-exp} représente un exemple de l'annotation Mention-Rank.
 
-\begin{figure}[ht]
-	\centering
-	\hgraphpage[.8\textwidth]{mention-rank-exp_.pdf}
-	\caption[Exemple d'un modèle Mention-Rank]{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
-	\label{fig:mention-rank-exp}
-\end{figure}
+%La figure \ref{fig:mention-rank-exp} représente un exemple de l'annotation Mention-Rank.
+%
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.8\textwidth]{mention-rank-exp_.pdf}
+%	\caption[Exemple d'un modèle Mention-Rank]{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
+%	\label{fig:mention-rank-exp}
+%\end{figure}
 
 Dans l'étape d'entraînement, nous devons choisir un seul exemple positif parmi ceux possibles. 
 Une approche consiste à prendre la mention la plus proche.
@@ -425,7 +425,8 @@ Afin de classer les mentions, nous pouvons utiliser plusieurs approches :
 
 
 
-\begin{discussion}
+%\begin{discussion}
+\sectioni{Discussion}
 Beaucoup de langues considèrent la répétition comme une forme non naturelle. 
 A notre connaissance, nous ne savons pas s'il existe des langues où nous devons répéter les entités dans chaque phrase. 
 L'être humain a la capacité de détecter le référent (celui qui a été référencé) facilement. 
@@ -442,7 +443,7 @@ Malgré que l'utilisation des entités peut éviter le problème d'incompatibili
 Cette tâche est une sorte de classification, donc nous pouvons utiliser le rappel, la précision et le F-score pour l'évaluer. 
 Mais, comme le problème peut être vu comme des liens ou des entités, ces mesures peuvent être formulées de plusieurs façons. 
 Plusieurs mesures ont été présentées dans ce chapitre, ainsi que des tâches similaires à la  résolution des coréférences.
-\end{discussion}
+%\end{discussion}
 
 \sectioni{Ressources supplémentaires}
 

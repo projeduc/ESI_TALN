@@ -521,7 +521,7 @@ L'algorithme \ref{algo:anal-dep-trans} décrit l'analyse des dépendances par tr
 	\caption{Analyse des dépendances par transitions \label{algo:anal-dep-trans}}
 \end{algorithm}
 
-Le modèle ``oracle" choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
+Le modèle ``Oracle" choisit la transition suivante $\hat{t}$ parmi l'ensemble des transitions possibles $T$.
 Lorsque nous sommes dans la configuration actuelle $ C = (\sigma, \beta, A) $, nous utilisons une fonction $\Psi$ qui calcule un score en utilisant des caractéristiques basées sur cette configuration.
 La transition $\hat{t}$ choisie est celle qui maximise la fonction $\Psi$ ayant des paramètres $\theta$ selon l'équation \ref{eq:orancle-psi}.
 \begin{equation}\label{eq:orancle-psi}
@@ -543,7 +543,7 @@ Les caractéristiques utilisées par la fonction $\Psi$ peuvent être des caract
 Il y a deux approches pour l'analyse de dépendances par transitions : Arc-standard et Arc-eager. 
 Dans Arc-standard, les relations de dépendances sont détectées seulement entre les mots dans la pile. 
 Lorsqu'un mot est considéré comme une tête d'une relation, il sera éliminé de la pile. 
-La figure \ref{fig:arc-standard-exp} représente un exemple d'analyse de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard.
+La figure \ref{fig:arc-standard-exp} représente un exemple d'analyse de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-standard.
 Les transitions possibles dans cette approche sont :
 \begin{itemize}
 	\item \optword{SHIFT} : déplacer le premier élément dans le tampon vers la pile 
@@ -557,16 +557,40 @@ Les transitions possibles dans cette approche sont :
 \end{itemize}
 
 \begin{figure}[ht]
-	\centering
-	\hgraphpage[.8\textwidth]{exp-arc-std_.pdf}
-	\caption[Exemple de dérivations non étiquetées en utilisant Arc-standard]{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}\label{fig:arc-standard-exp}}
+	\centering\footnotesize
+	\begin{tabular}{llll}
+		\hline\hline
+		nb. $\sigma$ (pile) & $\beta$ (tampon) & Action & Arc ajouté à A \\
+		\hline
+		01. [\textbf{ROOT}] & \textbf{Il} écrit la solution et son explication & SHIFT & / \\
+		02. [ROOT, \textbf{Il}] & \textbf{écrit} la solution et son explication & ARC-LEFT & Il \textleftarrow\ écrit\\
+		03. [\textbf{ROOT}] & \textbf{écrit} la solution et son explication & SHIFT & / \\
+		04. [ROOT, \textbf{écrit}] & \textbf{la} solution et son explication & SHIFT & / \\
+		05. [ROOT, écrit, \textbf{la}] & \textbf{solution} et son explication & SHIFT & / \\
+		06. [ROOT, écrit, la, \textbf{solution}] & \textbf{et} son explication & SHIFT & / \\
+		07. [ROOT, écrit, la, solution, \textbf{et}] & \textbf{son} explication & SHIFT & / \\
+		08. [ROOT, écrit, la, solution, et, \textbf{son}] & \textbf{explication} & ARC-LEFT & son \textleftarrow\ explication\\
+		09. [ROOT, écrit, la, solution, \textbf{et}] & \textbf{explication} & ARC-LEFT & et \textleftarrow\ explication\\
+		10. [ROOT, écrit, la, \textbf{solution}] & \textbf{explication} & ARC-RIGHT & solution \textrightarrow\ explication\\
+		11. [ROOT, écrit, \textbf{la}] & \textbf{solution} & ARC-LEFT & la \textleftarrow\ solution\\
+		12. [ROOT, \textbf{écrit}] & \textbf{solution} & ARC-RIGHT & écrit \textrightarrow\ solution\\
+		13. [\textbf{ROOT}] & \textbf{écrit} & ARC-RIGHT & ROOT \textrightarrow\ écrit\\
+		14. [ROOT] & $\emptyset$ & FIN & / \\
+		\hline\hline
+	\end{tabular}
+	\caption[Exemple de dérivations non étiquetées en utilisant Arc-standard]{Exemple de dérivations non étiquetées de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-standard\label{fig:arc-standard-exp}}
 \end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.8\textwidth]{exp-arc-std_.pdf}
+%	\caption[Exemple de dérivations non étiquetées en utilisant Arc-standard]{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}\label{fig:arc-standard-exp}}
+%\end{figure}
 
 Dans Arc-Eager, nous essayons de détecter les relations de dépendance le plus tôt possible. 
 Pour ce faire, les relations doivent être détectées entre le sommet de la pile et le mot courant. 
 Dans ce cas, nous n'avançons pas la tête de lecture automatiquement lorsque nous ajoutons une nouvelle relation. 
 La seule méthode pour le faire est d'empiler le mot dans la pile en utilisant la transition ``SHIFT". 
-Un exemple de l'analyse de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager est illustré dans la figure \ref{fig:arc-eager-exp}.
+Un exemple de l'analyse de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-eager est illustré dans la figure \ref{fig:arc-eager-exp}.
 Les transitions possibles dans cette approches sont :
 \begin{itemize}
 	\item \optword{SHIFT} est le même que ``Arc-standard"
@@ -583,10 +607,34 @@ Les transitions possibles dans cette approches sont :
 \end{itemize}
 
 \begin{figure}[ht]
-	\centering
-	\hgraphpage[.8\textwidth]{exp-arc-eager_.pdf}
-	\caption[Exemple de dérivations non étiquetées en utilisant Arc-eager]{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}\label{fig:arc-eager-exp}}
+		\centering\footnotesize
+	\begin{tabular}{llll}
+		\hline\hline
+		nb. $\sigma$ (pile) & $\beta$ (tampon) & Action & Arc ajouté à A \\
+		\hline
+		01. [\textbf{ROOT}] & \textbf{Il} écrit la solution et son explication & SHIFT & / \\
+		02. [ROOT, \textbf{Il}] & \textbf{écrit} la solution et son explication & ARC-LEFT & Il \textleftarrow\ écrit\\
+		03. [\textbf{ROOT}] & \textbf{écrit} la solution et son explication & ARC-RIGHT & ROOT \textrightarrow\ écrit\\	
+		04. [ROOT, \textbf{écrit}] & \textbf{la} solution et son explication & SHIFT & / \\	
+		05. [ROOT, écrit, \textbf{la}] & \textbf{solution} et son explication & ARC-LEFT & la \textleftarrow\ solution \\
+		06. [ROOT, \textbf{écrit}] & \textbf{solution} et son explication & ARC-RIGHT & écrit \textrightarrow\ solution \\
+		07. [ROOT, écrit, \textbf{solution}] & \textbf{et} son explication & SHIFT & / \\
+		08. [ROOT, écrit, solution, \textbf{et}] & \textbf{son} explication & SHIFT & / \\
+		09. [ROOT, écrit, solution, et, \textbf{son}] & \textbf{explication} & ARC-LEFT & son \textleftarrow\ explication \\
+		10. [ROOT, écrit, solution, \textbf{et}] & \textbf{explication} & ARC-LEFT & et \textleftarrow\ explication\\	
+		11. [ROOT, écrit, \textbf{solution}] & \textbf{explication} & REDUCE & /\\
+		12. [ROOT, \textbf{écrit}] & \textbf{solution} & ARC-RIGHT & écrit \textrightarrow\ solution\\
+		13. [ROOT, \textbf{solution}] & $\emptyset$ & REDUCE & / \\
+		14. [ROOT] & $\emptyset$ & FIN & / \\
+		\hline\hline
+	\end{tabular}
+	\caption[Exemple de dérivations non étiquetées en utilisant Arc-eager]{Exemple de dérivations non étiquetées de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-eager\label{fig:arc-eager-exp}}
 \end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.8\textwidth]{exp-arc-eager_.pdf}
+%	\caption[Exemple de dérivations non étiquetées en utilisant Arc-eager]{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}\label{fig:arc-eager-exp}}
+%\end{figure}
 
 Les relations présentées ici sont des relations non étiquetées ; juste la relation tête-dépendant sans type.
 Afin d'ajouter le type de la relation, nous devons enrichir les transitions ``ARC-LEFT" et ``ARC-RIGHT" avec les types possibles. 

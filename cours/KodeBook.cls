@@ -553,6 +553,8 @@ title={#1}
 \RequirePackage[french,lined,ruled,algochapter]{algorithm2e}
 \renewcommand\AlCapFnt{\small\bfseries\color{indigo}}
 \renewcommand\AlCapNameFnt{\small\itshape}
+%\AtBeginEnvironment{algorithm}{\let\textnormal\codefont}
+\SetAlFnt{\small\codefont\selectfont}
 
 \makeatletter
 \AtBeginDocument{%

@@ -305,6 +305,7 @@ $Cos(S2, S3) = \frac{6}{\sqrt{15} \sqrt{13}} = 0.429$.
 Dans ce cas, la première phrase est plus similaire à la troisième. 
 Cette fois-ci, nous voulons un exemple plus concret.
 Nous allons considérer seulement les deux mots ``ordinateur" et ``vous" pour représenter les trois phrases graphiquement comme indiqué dans la figure \ref{fig:tf-repr-graph-exp}.
+La représentation graphique nous permet de voir l'angle (donc, similarité) entre deux phrases.
 Il est clair que la phrase $S1$ est plus proche de la phrase $S2$.
 En calculant les trois cosinus, nous aurons :
 $Cos(S3, S1) = \frac{3}{\sqrt{5} \sqrt{2}} = 0.948$, 
@@ -541,7 +542,7 @@ Donc :
 	\item Si $\neg R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{fashion}
 \end{itemize}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{exp-glove_.pdf}
 	\caption[Exemple des probabilités conditionnelles et un ratio entre deux probabilités]{Exemple des probabilités conditionnelles et un ratio entre deux probabilités  \cite{2014-pennington-al}}
@@ -640,7 +641,7 @@ R_k = \{x_k^{LM}, \overrightarrow{h}_{LM}^{k, j}, \overleftarrow{h}_{LM}^{k, j} 
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.65\textwidth]{elmo-arch.pdf}
+	\hgraphpage[.6\textwidth]{elmo-arch.pdf}
 	\caption{Architecture du modèle ELMo}
 	\label{fig:elmo-arch}
 \end{figure}
@@ -653,7 +654,7 @@ ELMo_k^{task} = E(R_k; \Theta^{task}) = \gamma^{task} \sum_{j=0}^{L} \theta_j^{t
 \end{equation}
 
 %fin de la page
-\vfill
+%\vfill
 \subsection{BERT}
 
 \keyword[B]{BERT}\footnote{BERT : \url{https://github.com/google-research/bert} [visité le 2021-09-11]} (Bidirectional Encoder Representations from Transformers) est un autre \keyword[E]{embedding} contextuel développé par Google \cite{2019-devlin-al}.
@@ -678,7 +679,7 @@ Chaque token est représenté par 3 \keywordpl[E]{embedding} de taille $N$
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.65\textwidth]{bert-arch.pdf}
+	\hgraphpage[.6\textwidth]{bert-arch.pdf}
 	\caption{Architecture du modèle BERT}
 	\label{fig:bert-arch}
 \end{figure}
@@ -703,11 +704,11 @@ En haut à droit, c'est une tâche de classification d'une phrase ; comme l'anal
 En bas à gauche, c'est la tâche de question/réponse où l'entrée est une question et un paragraphe et la sortie est une partie du paragraphe contenant la réponse. 
 En bas à droit, c'est une tâche d'annotation (tagging) ; comme la reconnaissance des entités nommées.
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{bert-taches1_.pdf}
+	\hgraphpage[.7\textwidth]{bert-taches1_.pdf}
 	
-	\hgraphpage[.8\textwidth]{bert-taches2_.pdf}
+	\hgraphpage[.7\textwidth]{bert-taches2_.pdf}
 	
 	\caption[Réglage de BERT sur des différentes tâches]{Réglage de BERT sur des différentes tâches \cite{2019-devlin-al}}
 	\label{fig:bert-app}

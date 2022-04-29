@@ -25,12 +25,11 @@
 	Dans ce chapitre, nous allons présenter les modèles de langage traditionnels (N-Grammes), ainsi que ceux basés sur les réseaux de neurones.
 \end{introduction} 
 
-Avant de passer vers les cas d'utilisation d'un modèle de langage, nous devons définir ce concept.
 Un modèle de langage est une distribution probabiliste sur une séquence des mots (ou caractères).
 Un modèle de langage entraîné sur une langue donnée doit pouvoir modéliser l'agencement des mots de cette langue.
 Une phrase serait bien définie dans cette langue si la probabilité d'observer la séquence de ses mots $P(S) = P(w_1, w_2, ..., w_n) $ soit égale à $1$. 
 %Une phrase avec une probabilité plus grande qu'une autre a plus de chance de se produire étant donné le contexte appris. 
-De même, une phrase avec une probabilité plus grande qu'une autre a plus de chance d'appartenir au langage utilisé pour entraîner le modèle.
+De même, une phrase avec une probabilité plus grande qu'une autre a plus de chance d'appartenir au langage d'entraînement.
 Cette hypothèse a plusieurs applications : 
 \begin{itemize}
 	\item Traduction automatique : en traduisant un texte d'une langue vers une autre, nous pouvons trouver des mots avec plusieurs traductions/sens. 
@@ -118,10 +117,10 @@ Supposons que nous ayons un corpus d'entraînement avec 4 phrases.
 Si nous voulions utiliser un modèle \keyword[B]{Bi-gramme}, nous devrions encercler chaque phrase par ``\textless s\textgreater" et ``\textless/s\textgreater".
 Voici l'ensemble des phrases :
 \begin{itemize}
-	\item \textless s\textgreater un ordinateur peut vous aider \textless/s\textgreater
-	\item \textless s\textgreater il veut vous aider \textless/s\textgreater
-	\item \textless s\textgreater il veut un ordinateur \textless/s\textgreater
-	\item \textless s\textgreater il peut nager \textless/s\textgreater
+	\item \expword{\textless s\textgreater un ordinateur peut vous aider \textless/s\textgreater}
+	\item \expword{\textless s\textgreater il veut vous aider \textless/s\textgreater}
+	\item \expword{\textless s\textgreater il veut un ordinateur \textless/s\textgreater}
+	\item \expword{\textless s\textgreater il peut nager \textless/s\textgreater}
 \end{itemize}
 %
 Dans ce modèle, nous calculons la probabilité d'occurrence de chaque mot sachant le mot qui le précède. 
@@ -297,7 +296,7 @@ En sortie, nous aurons un vecteur avec des probabilités ; le mot dont la positi
 Ici, nous allons présenter le modèle de \citet{2003-bengio-al} illustré par la figure \ref{fig:bengio-l}.
 Lorsque la taille $n$ du modèle est choisie, les mots $w_{i-n+1}, \ldots, w_{i-1}$ sont représentés sous forme des vecteurs \keyword[O]{One-Hot} $h_{i-n+1}, \ldots, h_{i-1}$. 
 Chacun de ces vecteur est passé par une couche cachée de taille $d$ ; donc nous aurons un vecteur de taille $d$ pour chaque mots de ces $n-1$.
-Ce vecteur est appelé \keyword[E]{embedding} (sera discuté en détail dans le chapitre de sémantique lexicale). 
+Ce vecteur est appelé \keyword[E]{embedding} (sera discuté en détail dans le chapitre du sens des mots). 
 En fusionnant les vecteurs, nous aurons un seul vecteur de contexte $m \in \mathbb{R}^{(n-1) d}$.
 %Ce vecteur va être passé par deux blocs en parallèle :
 Ce vecteur est utilisé comme entrée de deux blocs des réseaux de neurones :

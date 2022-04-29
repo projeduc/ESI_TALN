@@ -152,8 +152,8 @@ Mais, il faut faire attention lorsque nous fusionnons deux treebanks différents
 Lorsqu'il y a plusieurs tags, nous pouvons trouver des inconsistances dans l'annotation.
 Par exemple, dans les corpus ``Brown" et ``WSJ", le mot ``to" a le tag ``TO". 
 Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, sinon ``IN" lorsque c'est une préposition.
-%
-\begin{figure}
+
+\begin{figure}[ht]
 	\centering
 	\begin{tcolorbox}[boxrule=0.4pt,text width=.7\textwidth]
 		\footnotesize
@@ -254,30 +254,30 @@ P(w_i | t_i) = \frac{C(t_i, w_i)}{C(t_i)} \label{eq:pos-hmm3}
 \end{align}
 
 Prenons un exemple d'un corpus d'entraînement avec quatre phrases. 
-Nous avons 4 catégories : DET, PRON, VERB et NOUN. 
+Nous avons 4 catégories : DT, PR, VB et NM. 
 \begin{itemize}
-	\item un/DET ordinateur/NOUN peut/VERB vous/PRON aider/VERB
-	\item il/PRON veut/VERB vous/PRON aider/VERB
-	\item il/PRON veut/VERB un/DET ordinateur/NOUN
-	\item il/PRON peut/VERB nager/VERB  
+	\item un/DT ordinateur/NM peut/VB vous/PR aider/VB
+	\item il/PR veut/VB vous/PR aider/VB
+	\item il/PR veut/VB un/DT ordinateur/NM
+	\item il/PR peut/VB nager/VB  
 \end{itemize}
-Un exemple de calcul d'une transition est le suivant : $P(VERB | NOUN) = \frac{C(NOUN,\ VERB)}{C(NOUN)} = \frac{1}{2}$. 
-La probabilité d'émission du mot ``veut" lorsque le tag est ``VERB" est calculée comme suit : $P(veut | VERB) = \frac{C(VERB,\ veut)}{C(VERB)} = \frac{2}{7}$. 
-La probabilité q'un pronom soit au début de la phrase est calculée comme : $\pi_{PRON} = \frac{C(<s>,\ PRON)}{C(<s>)} = \frac{3}{4} $.
+Un exemple de calcul d'une transition est le suivant : $P(VB | NM) = \frac{C(NM,\ VB)}{C(NM)} = \frac{1}{2}$. 
+La probabilité d'émission du mot ``veut" lorsque le tag est ``VB" est calculée comme suit : $P(veut | VB) = \frac{C(VB,\ veut)}{C(VB)} = \frac{2}{7}$. 
+La probabilité q'un pronom soit au début de la phrase est calculée comme : $\pi_{PR} = \frac{C(<s>,\ PR)}{C(<s>)} = \frac{3}{4} $.
 La matrice des transitions ainsi que la distribution initiale sont illustrés dans le tableau \ref{tab:hmm-trans-init}. 
 Pourtant ce n'est pas utilisé dans le calcul, nous avons ajouté le passage d'un état vers la fin afin de compléter la distribution (avoir une somme de 1 sur les lignes). 
 Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emission}. 
 \begin{table}[ht]
-	\centering
+	\centering\footnotesize
 \begin{tabular}{llllll}
 	\cline{2-6}\noalign{\vskip\doublerulesep
 		\vskip-\arrayrulewidth}\cline{2-6}
-	     & DET & PRON & VERB & NOUN & \textless/s\textgreater\\
+	     & DT & PR & VB & NM & \textless/s\textgreater\\
 	\hline
-	DET  &  0  &  0   &  0   &   1  &  0  \\
-	PRON &  0  &  0   &   1  &  0   &  0  \\
-	VERB & 1/7 & 2/7  & 1/7  &  0   & 3/7 \\
-	NOUN &  0  &  0   & 1/2  &   0  &  1/2 \\
+	DT  &  0  &  0   &  0   &   1  &  0  \\
+	PR &  0  &  0   &   1  &  0   &  0  \\
+	VB & 1/7 & 2/7  & 1/7  &  0   & 3/7 \\
+	NM &  0  &  0   & 1/2  &   0  &  1/2 \\
 	\hline
 	\textless s\textgreater ($\pi$) &  1/4  &  3/4   & 0  &   0  &  0 \\
 	\hline\hline
@@ -286,32 +286,82 @@ Les probabilités d'émission sont illustrées dans le tableau \ref{tab:hmm-emis
 \end{table}
 
 \begin{table}[ht]
-	\centering
+	\centering\footnotesize
 \begin{tabular}{lllllllll}
 	\cline{2-9}\noalign{\vskip\doublerulesep
 		\vskip-\arrayrulewidth}\cline{2-9}
 	     & un & ordinateur & peut & vous & aider & il & veut & nager \\
 	\hline
-	DET  &  1 &  0         &  0   &   0  &  0    & 0  & 0    & 0 \\
-	PRON &  0 &  0         &  0   & 1/4  &  0    &3/4 & 0    & 0 \\
-	VERB &  0 &  0         & 2/7  &   0  &  2/7  & 0  & 2/7  & 1/7 \\
-	NOUN &  0 &  1         &  0   &   0  &  0    & 0  & 0    & 0 \\
+	DT  &  1 &  0         &  0   &   0  &  0    & 0  & 0    & 0 \\
+	PR &  0 &  0         &  0   & 1/4  &  0    &3/4 & 0    & 0 \\
+	VB &  0 &  0         & 2/7  &   0  &  2/7  & 0  & 2/7  & 1/7 \\
+	NM &  0 &  1         &  0   &   0  &  0    & 0  & 0    & 0 \\
 	\hline\hline
 \end{tabular}
 \caption[Exemple des probabilités d'émission]{Exemple des probabilités d'émission \label{tab:hmm-emission}}
 \end{table}
 
+%\begin{figure}
+%	\begin{tikzpicture}[
+%	> = stealth, % arrow head style
+%	shorten > = 1pt, % don't touch arrow head to node
+%	auto,
+%	node distance = 3cm, % distance between nodes
+%	semithick, % line style
+%	font=\small
+%	]
+%	
+%	\tikzstyle{every state}=[
+%	draw = black,
+%	thick,
+%	fill = white,
+%	minimum size = 4mm
+%	]
+%	
+%	\node[circle,draw] (qN) {N};
+%	\node[align=left,draw] (qNe) [left of=qN] {P("fish"|N)=0.05\\P("river"|N)=0.03};
+%	\node[circle,draw] (qV) [right of=qN] {V};
+%	\node[align=left,draw] (qVe) [right of=qV] {P("fish"|V)=0.01\\P("eat"|V)=0.02};
+%	\node[circle,draw] (qD) [below of=qN] {D};
+%	\node[align=left,draw] (qDe) [left of=qD] {P("the"|D)=0.3\\P("a"|D)=0.2\\P("an"|D)=0.15};
+%	\node[circle,draw] (qP) [right of=qD] {P};
+%	\node[align=left,draw] (qPe) [right of=qP] {P("I"|P)=0.2\\P("he"|P)=0.1\\P("she"|P)=0.1};
+%	\node[] () [below of=qD, yshift=1.5cm] {$\pi(P, D, V, N) = (0.4, 0.3, 0.1, 0.2)$};
+%	
+%	
+%	\path[->] 	
+%	(qN) 	edge [loop above] node {0.3} ()
+%	edge [bend left] node {0.7} (qV)
+%	(qV) 	edge [loop above] node {0.1} ()
+%	edge [bend left] node {0.5} (qN)
+%	edge [bend left] node {0.4} (qD)
+%	(qD)	edge [bend left] node {1.0} (qN)
+%	(qP)	edge [bend right] node {1.0} (qV);
+%	
+%	\path[dashed] 	
+%	(qN) 	edge [] node {} (qNe)
+%	(qV) 	edge [] node {} (qVe)
+%	(qD) 	edge [] node {} (qDe)
+%	(qP) 	edge [] node {} (qPe);
+%	
+%	\end{tikzpicture}
+%	\caption{Exemple}
+%\end{figure}
+
 Revenons maintenant au décodage des tags (étiquetage). 
-Après l'entraînement d'un modèle de Markov caché $\lambda = (A, B)$, nous voulons l'utiliser pour estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_n$ à partir d'une séquence des observations (mots) $w = w_1 w_2 \ldots w_n$. 
-Dans chaque état $s$ de la séquence, nous nous basons sur l'estimation précédente pour calculer les probabilités de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
+Après l'entraînement d'un modèle de Markov caché $\lambda = (A, B)$, nous voulons l'utiliser pour estimer la séquence des étiquettes $\hat{t} = \hat{t}_1 \hat{t}_2 \ldots \hat{t}_T$ à partir d'une séquence des observations (mots) $w = w_1 w_2 \ldots w_T$ où nous possédons $N$ tags possibles.
+Si nous utilisions un décodage par force brute, nous aurions une complexité de $O(N^T)$.
+Vu que la maximisation des tags d'une observation (mot) $w_t$ ne dépend que sur les tags de l'observation précédente, nous pouvons résoudre le problème de la recherche en utilisant la programmation dynamique.
+Dans chaque étape $t$ de la séquence, nous nous basons sur l'estimation précédente pour calculer les probabilités de tous les tags afin de choisir celui qui maximise la probabilité comme estimation courante. 
 Il faut toujours sauvegarder l'état précédent pour revenir en fin d'algorithme. 
 Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:viterbi}).
+Dans ce cas, la complexité est réduite à $O(N^2T)$ et la recherche reste toujours exacte.
 
 \begin{algorithm}[ht]
 	\KwData{$w = w_1 \ldots w_T$, HMM $\lambda = (A, B)$ avec $N$ états}
 	\KwResult{$meilleur\_chemin$, $prob\_chemin$}
 	
-	Créer une matrice $viterbi[N, T]$\;
+	Créer deux matrices $viterbi[N, T]$ et $backpointer[N, T]$\;
 	
 	\Pour{état $ s = 1 \ldots N$}{
 		$viterbi[s, 1] = \pi_s * b_s(w_1);\, backpointer[s, 1] = 0$ \;
@@ -335,9 +385,9 @@ Ceci est appelé la recherche \keyword[V]{Viterbi} (voir l'algorithme \ref{algo:
 
 En utilisant le modèle entraîné dans l'exemple précédent, nous voulons trouver les tags de cette phrase : \expword{il peut aider}. 
 Suivant l'algorithme de Viterbi, nous aurons le tableau \ref{tab:hmm-viterbi-exp} où chaque cellule est remplie par les calculs séparés par des points virgules (les états précédent) et le pointeur de retour entre deux crochets. 
-Dans la dernière séquence (``aider"), l'état qui maximise la probabilité est ``VERB". 
-Le retour est l'état 3 (``VERB") ayant un retour vers l'état 2 (``PRON"). 
-Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}. 
+Dans la dernière séquence (``aider"), l'état qui maximise la probabilité est ``VB". 
+Le retour est l'état 3 (``VB") ayant un retour vers l'état 2 (``PR"). 
+Donc, le texte annoté est : \expword{il/PR peut/VB aider/VB}. 
 
 %\begin{table}[ht]
 %	\centering\small
@@ -374,10 +424,10 @@ Donc, le texte annoté est : \expword{il/PRON peut/VERB aider/VERB}.
 			\vskip-\arrayrulewidth}\cline{2-4}
 		& il & peut & aider \\
 		\hline
-		DET  & $\frac{1}{4} * 0$ [0]& $0 * 0 * 0$; $\frac{3}{4} * 0 * 0$; $0 * \frac{1}{7} * 0$; $0 * 0 * 0$ [2] & $0 * 0 * 0$; $0 * 0 * 0$; $\frac{6}{28} * \frac{1}{7} * 0$; $0 * 0 * 0$ [3]\\
-		PRON & $\frac{3}{4} * 1$ [0]&  $0 * 0 * 0$; $\frac{3}{4} * 0 * 0$; $0 * \frac{2}{7} * 0$; $0 * 0 * 0$ [2]&  $0 * 0 * 0$; $0 * 0 * 0$; $\frac{6}{28} * \frac{2}{7} * 0$; $0 * 0 * 0$ [3]\\
-		VERB & $0 * 0$ [0]& $0 * 0 * \frac{2}{7}$; $\frac{3}{4} * 1 * \frac{2}{7}$; $0 * \frac{1}{7} * \frac{2}{7}$; $0 * \frac{1}{2} * \frac{2}{7}$ [2]& $0 * 0 * \frac{2}{7}$; $0 * 1 * \frac{2}{7}$; $\frac{6}{28} * \frac{1}{7} * \frac{2}{7}$; $0 * \frac{1}{7} * \frac{2}{7}$ [3]\\
-		NOUN & $0 * 0$ [0]& $0 * 1 * 0$; $\frac{3}{4} * 0 * 0$; $0 * 0 * 0$; $0 * 0 * 0$ [1]& $0 * 1 * 0$; $\frac{6}{28} * 0 * 0$; $0 * 0 * 0$; $0 * 0 * 0$ [1]\\
+		DT  & $\frac{1}{4} * 0$ [0]& $0 * 0 * 0$; $\frac{3}{4} * 0 * 0$; $0 * \frac{1}{7} * 0$; $0 * 0 * 0$ [2] & $0 * 0 * 0$; $0 * 0 * 0$; $\frac{6}{28} * \frac{1}{7} * 0$; $0 * 0 * 0$ [3]\\
+		PR & $\frac{3}{4} * 1$ [0]&  $0 * 0 * 0$; $\frac{3}{4} * 0 * 0$; $0 * \frac{2}{7} * 0$; $0 * 0 * 0$ [2]&  $0 * 0 * 0$; $0 * 0 * 0$; $\frac{6}{28} * \frac{2}{7} * 0$; $0 * 0 * 0$ [3]\\
+		VB & $0 * 0$ [0]& $0 * 0 * \frac{2}{7}$; $\frac{3}{4} * 1 * \frac{2}{7}$; $0 * \frac{1}{7} * \frac{2}{7}$; $0 * \frac{1}{2} * \frac{2}{7}$ [2]& $0 * 0 * \frac{2}{7}$; $0 * 1 * \frac{2}{7}$; $\frac{6}{28} * \frac{1}{7} * \frac{2}{7}$; $0 * \frac{1}{7} * \frac{2}{7}$ [3]\\
+		NM & $0 * 0$ [0]& $0 * 1 * 0$; $\frac{3}{4} * 0 * 0$; $0 * 0 * 0$; $0 * 0 * 0$ [1]& $0 * 1 * 0$; $\frac{6}{28} * 0 * 0$; $0 * 0 * 0$; $0 * 0 * 0$ [1]\\
 		\hline\hline
 	\end{tabular}
 	\caption[Exemple d'exécution de l'algorithme de Viterbi]{Exemple d'exécution de l'algorithme de Viterbi \label{tab:hmm-viterbi-exp}}
@@ -431,9 +481,14 @@ Nous pouvons, bien sûr, utiliser une couche cachée pour apprendre une représe
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseau de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.55\textwidth]{rnn-simple_.pdf}
-	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
+	\hgraphpage[.55\textwidth]{rnn-simple.pdf}
+	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique\label{fig:pos-rnn1}}
 \end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage[.55\textwidth]{rnn-simple_.pdf}
+%	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn1}}
+%\end{figure}
 
 Si nous voulions avoir des réseaux plus profonds et plus complexes, nous pourrions empiler plusieurs \ac{rnn} ensembles. 
 Cela permet au modèle d'apprendre des traitements plus complexes améliorant la prédiction.
@@ -441,9 +496,14 @@ Pour entraîner ce modèle, nous aurons besoin d'un grand dataset ; la taille de
 La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rnn} empilés.
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.55\textwidth]{rnn-stack_.pdf}
-	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique]{RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn2}}
+	\hgraphpage[.55\textwidth]{rnn-stack.pdf}
+	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique]{RNNs empilés pour l'étiquetage morpho-syntaxique \label{fig:pos-rnn2}}
 \end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage[.55\textwidth]{rnn-stack_.pdf}
+%	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique]{RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn2}}
+%\end{figure}
 
 Dans les modèles neuronaux précédents, l'étiquette courante $t_i$ dépend sur le mot courant $w_i$ et le contexte passé. 
 Des fois, savoir le contexte futur peut améliorer la décision courante ; nous pouvons trouver une dépendance entre le mot courant et les mots après. 
@@ -453,9 +513,14 @@ Nous calculons la somme entre les deux états cachés $h_i^f \oplus h_i^b$ résu
 Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.60\textwidth]{rnn-bi_.pdf}
-	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn3}}
+	\hgraphpage[.60\textwidth]{rnn-bi.pdf}
+	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage \label{fig:pos-rnn3}}
 \end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage[.60\textwidth]{rnn-bi_.pdf}
+%	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn3}}
+%\end{figure}
 
 Les langues sont toujours en amélioration : ajout des nouveaux mots, des nouvelles formes, etc. 
 En plus, nous ne pouvons pas capturer toutes les variations de tous les mots en utilisant un corpus limité surtout dans les langues fortement flexionnelles. 
@@ -464,10 +529,15 @@ Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langa
 Le code résultat sera pris comme l'entrée du réseau récurrent (simple, empilé ou bidirectionnel).
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[0.5\textwidth]{rnn-char1_.pdf}
-	\hgraphpage[0.45\textwidth]{rnn-char2_.pdf}
-	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn4}}
+	\hgraphpage[0.9\textwidth]{rnn-char.pdf}
+	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique\label{fig:pos-rnn4}}
 \end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[0.5\textwidth]{rnn-char1_.pdf}
+%	\hgraphpage[0.45\textwidth]{rnn-char2_.pdf}
+%	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}\label{fig:pos-rnn4}}
+%\end{figure}
 
 \sectioni{Discussion}
 %\begin{discussion}

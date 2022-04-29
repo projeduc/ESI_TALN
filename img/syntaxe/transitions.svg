@@ -26,14 +26,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="413.49392"
-     inkscape:cy="136.38996"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="231.77411"
+     inkscape:cy="47.331542"
      inkscape:document-units="mm"
-     inkscape:current-layer="g2316"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1366"
-     inkscape:window-height="708"
+     inkscape:window-height="695"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1">
@@ -735,7 +735,7 @@
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-73.117454,263.3376)"
+       transform="matrix(0.46625822,0,0,0.48923181,-75.763289,263.3376)"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0"
        xml:space="preserve"><flowRegion
@@ -748,7 +748,7 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000"> tampon d'entrée</flowPara></flowRoot>    <g
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000"> Tampon d'entrée</flowPara></flowRoot>    <g
        id="g2316"
        transform="translate(-1.5875,40.216686)">
       <rect
@@ -757,7 +757,7 @@
          height="8.7312498"
          width="9.7895832"
          id="rect1140"
-         style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
       <flowRoot
          xml:space="preserve"
          id="flowRoot13804-4-7-0-9-8-2-0-3"
@@ -796,7 +796,7 @@
          height="8.7312498"
          width="9.7895832"
          id="rect1140-0"
-         style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
       <flowRoot
          xml:space="preserve"
          id="flowRoot13804-4-7-0-9-8-2-0-3-5"
@@ -835,7 +835,7 @@
          height="8.7312498"
          width="9.7895832"
          id="rect1140-2"
-         style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
       <flowRoot
          xml:space="preserve"
          id="flowRoot13804-4-7-0-9-8-2-0-3-6"
@@ -891,7 +891,7 @@
        x="41.52317"
        y="258.53326" />
     <rect
-       style="opacity:1;fill:#00ffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.8, 0.8;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.8, 0.80000000000000004;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1987-1"
        width="39.056232"
        height="13.676362"
@@ -901,8 +901,8 @@
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-96.661203,323.48806)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       transform="matrix(0.46625822,0,0,0.48923181,-95.602869,325.07557)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-0"
        xml:space="preserve"><flowRegion
          style="fill:#000000"
@@ -914,7 +914,7 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-78" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-8"
-         style="font-size:16px;font-family:Crimson Text;writing-mode:lr-tb;fill:#000000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start">Oracle</flowPara></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">Oracle</flowPara></flowRoot>    <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
        transform="matrix(0.46625822,0,0,0.48923181,-101.20446,306.31771)"
@@ -939,7 +939,7 @@
          height="8.7312498"
          width="9.7895832"
          id="rect1140-6"
-         style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
       <flowRoot
          xml:space="preserve"
          id="flowRoot13804-4-7-0-9-8-2-0-3-0"
@@ -993,7 +993,7 @@
          height="8.7312498"
          width="9.7895832"
          id="rect1140-6-7"
-         style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
       <flowRoot
          xml:space="preserve"
          id="flowRoot13804-4-7-0-9-8-2-0-3-0-1"
@@ -1032,7 +1032,7 @@
          height="8.7312498"
          width="9.7895832"
          id="rect1140-6-3"
-         style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
       <flowRoot
          xml:space="preserve"
          id="flowRoot13804-4-7-0-9-8-2-0-3-0-2"
@@ -1082,7 +1082,7 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-75" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-17"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000"> pile</flowPara></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000"> Pile</flowPara></flowRoot>    <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
        transform="matrix(0.46625822,0,0,0.48923181,-40.404297,314.46724)"
@@ -1170,8 +1170,8 @@
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-30.289737,310.02746)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#ff0000"
+       transform="matrix(0.46625822,0,0,0.48923181,-30.289737,312.14414)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-3-1-9"
        xml:space="preserve"><flowRegion
          style="fill:#ff0000"
@@ -1183,11 +1183,11 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-7-1-7" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-5-70-0"
-         style="font-size:16px;font-family:Crimson Text;writing-mode:lr-tb;fill:#ff0000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start"> r</flowPara></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000"> r</flowPara></flowRoot>    <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-26.980819,311.89835)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#ff0000"
+       transform="matrix(0.46625822,0,0,0.48923181,-26.980819,314.01503)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-35-40-6"
        xml:space="preserve"><flowRegion
          style="fill:#ff0000"
@@ -1199,7 +1199,7 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-9-1-8" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-1-6-5"
-         style="font-size:8.86363506px;font-family:Crimson Text;writing-mode:lr-tb;fill:#ff0000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start"> 1</flowPara></flowRoot>    <path
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.86363506px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000"> 1</flowPara></flowRoot>    <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2669)"
        d="m 63.599218,258.17265 -0.0057,-8.49521 37.741882,-0.28298 -0.0331,-7.49369"
        id="path2659"
@@ -1208,7 +1208,7 @@
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-52.990726,294.32561)"
+       transform="matrix(0.46625822,0,0,0.48923181,-54.04906,294.32561)"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:20.0000003%;font-family:'Crimson Text';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-39"
        xml:space="preserve"><flowRegion
@@ -1221,7 +1221,7 @@
            width="106.42489"
            id="rect13808-0-2-6-4-7-1-4-1" /></flowRegion><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
-         id="flowPara2905"> relations de </flowPara><flowPara
+         id="flowPara2905"> Relations de </flowPara><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
          id="flowPara2907">dépendance </flowPara></flowRoot>    <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2669-1)"

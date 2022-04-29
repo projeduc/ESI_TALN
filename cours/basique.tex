@@ -228,14 +228,14 @@ Parmi ses utilisations, nous pouvons citer la détection des erreurs de transmis
 Par exemple, \expword{D(010\underline{0}101\underline{0}01\underline{1}0, 010\underline{1}101\underline{1}01\underline{0}0) = 3}.
 Pour calculer la distance, nous comparons les deux chaînes caractère par caractère pour avoir le nombre des caractères différents (voir l'algorithme \ref{algo:hamming}).
 
-\begin{algorithm}[H]
+\begin{algorithm}[ht]
 	\KwData{orig, modif}
 	\KwResult{distance: entier}
 	distance $\leftarrow$ 0\;
 	
 	\Pour{pos $ \in 1 \ldots |orig|$ }{
-		\Si{orig[pos] $\ne$ modif[pos]}{
-			incrémenter distance \;
+		\lSi{orig[pos] $\ne$ modif[pos]}{
+			distance $\leftarrow$ distance + 1
 		}
 	}
 
@@ -289,17 +289,38 @@ Il faut savoir que dans cette version, le coût de la suppression et l'insertion
 	\label{eq:lev-distance}
 \end{equation}
 
-Par exemple, \expword{D(intention, execution) = 8}. 
-Dans ce cas, ``i" est supprimé (1), ``n" est substitué par ``e" (2), ``t" est substitué par ``x" (2), ``e" c'est le même, ``c" est inséré après ``e" (1), ``n" est substitué par ``u" (2) et le reste c'est le même.
+Par exemple, \expword{D(amibe, immature) = 9}. 
+Dans ce cas, ``a" et ``m" sont supprimés (1+1) ; ``i" reste le même (0) ; les caractères ``m", ``m", ``a", ``t" et ``u"  sont insérés (1+1+1+1+1), ``b" est substitué par ``r" (2) et ``e" reste le même (0).
 Le calcul est illustré dans la figure \ref{fig:laven-distance} où les flèches représentent d'où vient la valeur et les cellules colorées représentent le chemin choisi.
 Bien sûr, nous pouvons choisir un autre chemin qui donne une autre interprétation.
 Pour aider le choix du chemin, nous pouvons utiliser des probabilités des opérations d'édition.
 Par exemple, dans la correction d'orthographe, des lettres sont plus probables d'être remplacées par d'autres (celles adjacentes dans le clavier).
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.75\textwidth]{exp-levenshtein_.pdf}
-	\caption[Exemple de calcul de distance de Levenshtein]{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin} \label{fig:laven-distance}}
+	\begin{tabular}{|r|r|r|r|r|r|r|r|r|r|}
+		\hline
+		&\bfseries \# &\bfseries i &\bfseries m &\bfseries m &\bfseries a &\bfseries t &\bfseries u &\bfseries r &\bfseries e \\
+		\hline
+		\bfseries \# & 0 & $ \leftarrow $ 1 & $ \leftarrow $ 2 & $ \leftarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 & $ \leftarrow $ 8\\
+		\hline
+		\bfseries a & \cellcolor{green!25} $ \uparrow $ 1 & $ \nwarrow\leftarrow\uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $ \nwarrow\leftarrow\uparrow $ 4 & $ \nwarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 \\
+		\hline
+		\bfseries m & \cellcolor{green!25} $ \uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $\nwarrow $ 2 & $\nwarrow\leftarrow $ 3 & $\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8\\
+		\hline
+		\bfseries i & $ \uparrow $ 3 & \cellcolor{green!25} $ \nwarrow $ 2 & \cellcolor{green!25} $\leftarrow\uparrow $ 3 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 4 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 5 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 6 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9\\
+		\hline
+		\bfseries b & $ \uparrow $ 4 & $ \uparrow $ 3 & $\nwarrow\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10\\
+		\hline
+		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10 & \cellcolor{green!25} $\nwarrow $ 9\\
+		\hline
+	\end{tabular}
+	\caption[Exemple de calcul de distance de Levenshtein]{Exemple de calcul de distance de Levenshtein des mots ``amibe"  et ``immature"\label{fig:laven-distance}}
 \end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.75\textwidth]{exp-levenshtein_.pdf}
+%	\caption[Exemple de calcul de distance de Levenshtein]{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin} \label{fig:laven-distance}}
+%\end{figure}
 
 \subsubsection{Distance de Damerau–Levenshtein}
 
@@ -322,6 +343,34 @@ D[i, j] = \min
 	\label{eq:lev-dem-distance}
 \end{equation}
 
+Par exemple, \expword{D(amibe, immature) = 6}. 
+Dans ce cas, ``i" et ``m" sont insérés (1+1) ; ``a" est transposé avec ``m" (1) ; ``t" est inséré (1) ; ``i" est substitué par ``u" (1) ;  ``b" est substitué par ``r" (1) et ``e" reste le même (0).
+Le calcul est illustré dans la figure \ref{fig:dam-laven-distance} où les flèches représentent d'où vient la valeur et les cellules colorées représentent le chemin choisi.
+Bien sûr, nous pouvons choisir un autre chemin qui donne une autre interprétation.
+Pour aider le choix du chemin, nous pouvons utiliser des probabilités des opérations d'édition.
+Par exemple, dans la correction d'orthographe, des lettres sont plus probables d'être remplacées par d'autres (celles adjacentes dans le clavier).
+\begin{figure}[ht]
+	\centering
+	\begin{tabular}{|r|r|r|r|r|r|r|r|r|r|}
+		\hline
+		&\bfseries \# &\bfseries i &\bfseries m &\bfseries m &\bfseries a &\bfseries t &\bfseries u &\bfseries r &\bfseries e \\
+		\hline
+		\bfseries \# & 0 & \cellcolor{green!25} $ \leftarrow $ 1 & \cellcolor{green!25} $ \leftarrow $ 2 & $ \leftarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 & $ \leftarrow $ 8\\
+		\hline
+		\bfseries a & $ \uparrow $ 1 & $ \nwarrow $ 1 & $ \nwarrow\leftarrow $ 2 & $ \nwarrow\leftarrow $ 3 & $ \nwarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 \\
+		\hline
+		\bfseries m & $ \uparrow $ 2 & $ \nwarrow\uparrow $ 2 & $\nwarrow $ 1 & $\nwarrow\leftarrow $ 2 & \cellcolor{green!25} $\leftrightharpoons\leftarrow $ 3 & \cellcolor{green!25} $\leftarrow $ 4 & $\leftarrow $ 5 & $\leftarrow $ 6 & $\leftarrow $ 7\\
+		\hline
+		\bfseries i & $ \uparrow $ 3 & $ \nwarrow $ 2 & $\leftrightharpoons\uparrow $ 2 & $\nwarrow\leftarrow\uparrow $ 3 & $\nwarrow $ 3 &  $\nwarrow\leftarrow $ 4 & \cellcolor{green!25} $\nwarrow\leftarrow $ 5 & $\nwarrow\leftarrow $ 6 & $\nwarrow\leftarrow $ 7\\
+		\hline
+		\bfseries b & $ \uparrow $ 4 & $ \uparrow $ 3 & $\nwarrow\uparrow $ 3 & $\nwarrow $ 3 & $\nwarrow\leftarrow\uparrow $ 4 & $\nwarrow $ 4 & $\nwarrow\leftarrow $ 5 & \cellcolor{green!25} $\nwarrow\leftarrow $ 6 & $\nwarrow\leftarrow $ 7\\
+		\hline
+		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\uparrow $ 4 & $\nwarrow\uparrow $ 5 & $\nwarrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow $ 5 & $\nwarrow\leftarrow $ 6 & \cellcolor{green!25} $\nwarrow $ 6\\
+		\hline
+	\end{tabular}
+	\caption[Exemple de calcul de distance de Damerau–Levenshtein]{Exemple de calcul de distance de Damerau–Levenshtein des mots ``amibe"  et ``immature"\label{fig:dam-laven-distance}}
+\end{figure}
+
 \subsubsection{Distance de Jaro}
 
 Cette distance permet seulement la transposition.
@@ -340,26 +389,25 @@ La distance de Jaro est calculée selon l'équation \ref{eq:jaro-distance}.
 
 Le nombre des caractères correspondants $c$  est le nombre des caractères identiques de $X$ et de $Y$ avec un éloignement $ e= \max (m, n)/2 - 1$. Dans ce cas, si nous soyons dans le caractère $i$ (allant de $0$ jusqu'à $n-1$) du mot $X$, nous commencerions la comparaison par le caractère $j=\max(0, i - e)$ du mot $Y$ et nous terminerions par le caractère $j=\min(i+e, m-1)$.
 Dans cette opération, nous pouvons préparer deux vecteurs des booléens qui indiquent la position du caractère ayant un correspondant dans l'autre mot.
-
+%
 Le nombre des transpositions $t$ est calculé en comparant le i\textsuperscript{ème} caractère correspondant de $X$ avec le i\textsuperscript{ème} caractère correspondant de $Y$. 
-Nous comptons le nombre des fois $x_i \ne y_i$  et nous le divisons par deux.
-\begin{algorithm}[H]
+Nous comptons le nombre des fois $x_i \ne y_i$  et nous le divisons par deux (voir l'algorithme \ref{algo:jaro-transpo}).
+\vspace{-6pt}
+\begin{algorithm}[ht]
 	\KwData{Xmatch, Ymatch : vecteurs de booléens}
 	\KwResult{t: entier}
-	t $\leftarrow$ 0\;
-	
-	j $\leftarrow$ 0\;
+	t $\leftarrow$ 0 ; j $\leftarrow$ 0\;
 	
 	\Pour{i $ \in 0 \ldots m$ }{
 		\Si{Xmatch[i] = Vrai}{
-			\Tq{Ymatch[j] $\ne$ Vrai}{
-				incrémenter j\;
+			\lTq{Ymatch[j] $\ne$ Vrai}{
+				j $\leftarrow$ j + 1
 			}
 			
-		    \Si{$x_i \ne y_j$}{
-		    	incrémenter t\;
+		    \lSi{$x_i \ne y_j$}{
+		    	t $\leftarrow$ t + 1
 		    }
-	    	incrémenter j\;
+	    	j $\leftarrow$ j + 1\;
 		}
 	}
     
@@ -380,7 +428,7 @@ Les correspondances soulignées des vecteurs des deux mots représentent des tra
 \begin{figure}[!ht]
 	
 \begin{minipage}{0.45\textwidth}
-
+\small
 \begin{tabular}{|l|l|l|l|l|l|l|l|}
 	\cline{1-6}
 	  & a & m & i & b & e & \multicolumn{2}{l}{ }\\
@@ -738,7 +786,7 @@ Cette tâche est plus difficile que celle de radicalisation, puisque nous avons 
 	Comme par exemple : \expword{Il a passé par son lieu de travail et il a dit : ``j'ai devenu vieil ; ils n'ont plus besoin de moi".}
 	\item Étant donné un log, on veut afficher les lignes qui commencent par ``\textbf{Error}" ; qui contiennent un nombre commençant par un chiffre autre que zéro, ayant des 3 à 5 zéros consécutifs et se terminant par un chiffre autre que zéro ; et qui se terminent par ``\textbf{...}"
 	\item Donner l'expression régulière qui cherche les mots contenant les lettres ``l", ``i" et ``n" dans cet ordre. Le début du mot peut être en majuscule, le reste du mot est en minuscule. Par exemple, \expword{lion, Linux, violine, absolution, Aladin, ...}
-	\item Afin d'écrire le mot "Rassemblement",  on a commis l'erreur suivante : "Rasenlbement". Indiquer la (les) position(s) de chaque opération d'édition par rapport au mot correcte (Si l'opération n'existe pas, écrire 0. La transposition et la substitution sont prioritaires, c-à-d. on ne doit pas les considérer comme des opérations d'insertion/suppression) (examen TALN, master 2021/2022) :
+	\item Afin d'écrire le mot "Rassemblement",  on a commis l'erreur suivante : "Rasenlbement". Indiquer la (les) position(s) de chaque opération d'édition par rapport au mot correcte (Si l'opération n'existe pas, écrire 0. La transposition et la substitution sont prioritaires, c-à-d. on ne doit pas les considérer comme des opérations d'insertion/suppression) :
 	
 	\begin{tabular}{|lll|}
 		\hline 
