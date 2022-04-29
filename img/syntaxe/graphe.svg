@@ -27,10 +27,10 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="269.48165"
-     inkscape:cy="164.07802"
+     inkscape:cx="331.99346"
+     inkscape:cy="84.07802"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g22326"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="695"
@@ -1037,15 +1037,16 @@
        width="38.492924"
        height="68.725121"
        x="47.630695"
-       y="223.51039" />
+       y="223.51039"
+       ry="7.1437502" />
     <rect
-       style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.73741651;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.7374165, 0.73741650000000003;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.50000001;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1987-1"
        width="33.033398"
        height="13.738946"
        x="50.412472"
        y="262.2352"
-       ry="5.7298965" />
+       ry="3.6132224" />
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
@@ -1058,11 +1059,11 @@
            style="fill:#000000"
            y="-85.272057"
            x="318.19806"
-           height="66.46804"
-           width="388.90872"
+           height="17.195108"
+           width="66.453163"
            id="rect13808-0-2-6-4-7-1-4-78" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-8"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">Notation</flowPara></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1">Notation</flowPara></flowRoot>    <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
        transform="matrix(0.46625822,0,0,0.48923181,-98.195217,281.7904)"
@@ -1085,7 +1086,7 @@
          transform="translate(-11.22532,-2.6192414)"
          id="g1303">
         <path
-           style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+           style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
            id="path1218"
            sodipodi:type="arc"
            sodipodi:cx="26.987499"
@@ -1133,7 +1134,7 @@
          transform="translate(-12.181848,-5.3292734)"
          id="g1314">
         <path
-           style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+           style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
            id="path1218-3"
            sodipodi:type="arc"
            sodipodi:cx="52.879108"
@@ -1181,7 +1182,7 @@
          transform="translate(-5.8318481,-4.2709401)"
          id="g1325">
         <path
-           style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+           style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
            id="path1218-3-6"
            sodipodi:type="arc"
            sodipodi:cx="18.5208"
@@ -1515,7 +1516,7 @@
          transform="translate(76.102772,94.892488)"
          id="g1303-8">
         <path
-           style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+           style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
            id="path1218-7"
            sodipodi:type="arc"
            sodipodi:cx="26.987499"
@@ -1563,7 +1564,7 @@
          transform="translate(62.975407,74.190791)"
          id="g1314-5">
         <path
-           style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+           style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
            id="path1218-3-9"
            sodipodi:type="arc"
            sodipodi:cx="52.879108"
@@ -1611,7 +1612,7 @@
          transform="translate(109.80664,68.63454)"
          id="g1325-5">
         <path
-           style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+           style="opacity:1;fill:#6496ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
            id="path1218-3-6-9"
            sodipodi:type="arc"
            sodipodi:cx="18.5208"

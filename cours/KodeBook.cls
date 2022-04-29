@@ -105,6 +105,7 @@
 \RequirePackage{fontspec}
 \defaultfontfeatures{Mapping=tex-text}
 
+
 \setmainfont
 [Path = fonts/CrimsonText/,
 Extension = .ttf,
@@ -124,7 +125,15 @@ Scale=2
 ]{EuphoriaScript} %
 
 
-
+%\newfontfamily\robotomono
+%[Path = fonts/RobotoMono/,
+%Extension = .ttf,
+%Ligatures=TeX,
+%UprightFont=*-Regular,
+%BoldFont=*-Bold,
+%ItalicFont=*-Italic,
+%BoldItalicFont=*-BoldItalic
+%]{RobotoMono} %
 
 \newfontface\quotefont
 [Path = fonts/Handlee/,
@@ -142,6 +151,8 @@ Ligatures=TeX
 %Scale=1.5
 ]{SourceCodePro-Bold} %
 
+
+
 %https://www.dafont.com/decorated-roman-ini.font?l[]=1
 %Decorated Roman Initials by Dieter Steffmann
 %First seen on DaFont: before 2005
@@ -152,6 +163,12 @@ Ligatures=TeX
 %Scale=1.5
 ]{DecoratedRomanInitials} %
 
+%\setmonofont{Latin Modern Mono Prop}
+
+%\RequirePackage{unicode-math}
+%\defaultfontfeatures{Ligatures=TeX}
+
+%\setmathfont{fonts/RobotoMono/RobotoMono-Regular.ttf}
 
 \newtcolorbox{kodequote}[1]{%
 colback=white,
@@ -553,8 +570,12 @@ title={#1}
 \RequirePackage[french,lined,ruled,algochapter]{algorithm2e}
 \renewcommand\AlCapFnt{\small\bfseries\color{indigo}}
 \renewcommand\AlCapNameFnt{\small\itshape}
-%\AtBeginEnvironment{algorithm}{\let\textnormal\codefont}
-\SetAlFnt{\small\codefont\selectfont}
+%\AtBeginEnvironment{algorithm}{\setmathfont(Digits,Latin,Greek){RobotoMono}}
+%\SetAlFnt{\footnotesize\robotomono}
+%\SetFuncSty{robotomono}
+%\SetDataSty{robotomono}
+%\SetFuncArgSty{robotomono}
+%\SetKwSty{robotomono}
 
 \makeatletter
 \AtBeginDocument{%
