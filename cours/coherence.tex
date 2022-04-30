@@ -429,10 +429,16 @@ Ensuite, chaque mot est classé comme : début d'un \ac{edu} (1) ou continuation
 
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.6\textwidth]{EDU_seg_.pdf}
-	\caption[Segmentation en EDUs par embeddings]{Segmentation en EDUs proposée par \citet{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+	\hgraphpage[.4\textwidth]{EDU_seg.pdf}
+	\caption[Segmentation en EDUs par embeddings]{Segmentation en EDUs proposée par \citet{2018-wang-al} ; figure inspirée de \cite{2019-jurafsky-martin}}
 	\label{fig:edu-embedding}
 \end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage[.6\textwidth]{EDU_seg_.pdf}
+%	\caption[Segmentation en EDUs par embeddings]{Segmentation en EDUs proposée par \citet{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+%	\label{fig:edu-embedding}
+%\end{figure}
 
 \subsubsection{Classification des relations}
 
@@ -632,32 +638,80 @@ Reprenons deux phrases de l'exemple précédent, et essayons de calculer la cent
 \subsection{Entity Grid model}
 
 Dans le modèle ``entity grid", un document est représenté par une matrice où les phrases représentent les lignes et les entités représentent les colonnes. 
-Chaque cellule de cette matrice contient la fonction grammaticale de l'entité dans la phrase : sujet (S), Objet (O), Autre (X) ou l'entité n'existe pas (\_). 
+Chaque cellule de cette matrice contient la fonction grammaticale de l'entité dans la phrase : sujet (s), objet (o), Autre (x) ou l'entité n'existe pas (\_). 
 La figure \ref{fig:entity-grid-rep} représente un texte et sa représentation phrases/entités selon le modèle ``entity grid". 
 
 \begin{figure}[!ht]
-	\centering
-	\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
+	\centering\footnotesize
+	\begin{minipage}{.8\textwidth}
+	\begin{enumerate}
+		\item\ [The Justice Department]\textsubscript{s} is conducting an [anti-trust trial]\textsubscript{o} against [Microsoft Corp.]\textsubscript{x} with [evidence]\textsubscript{x} that [the company]\textsubscript{s} is increasingly attempting to crush [competitors]\textsubscript{o}.
+		\item\ [Microsoft]\textsubscript{o} is accused of trying to forcefully buy into [markets]\textsubscript{x} where [its own products]\textsubscript{s} are not competitive enough to unseat [established brands]\textsubscript{o}.
+		\item\ [The case]\textsubscript{s} revolves around [evidence]\textsubscript{o} of [Microsoft]\textsubscript{s} aggressively pressuring [Netscape]\textsubscript{o} into merging [browser software]\textsubscript{o}.
+		\item\ [Microsoft]\textsubscript{s} claims [its tactics]\textsubscript{s} are commonplace and good economically.
+		\item\ [The government]\textsubscript{s} may file [a civil suit]\textsubscript{o} ruling that [conspiracy]\textsubscript{s} to curb [competition]\textsubscript{o} through [collision]\textsubscript{x} is [a violation of the Sherman Act]\textsubscript{o}.
+		\item\ [Microsoft]\textsubscript{s} continues to show [inscreased earnings]\textsubscript{o} despite [the trial]\textsubscript{x}.
+	\end{enumerate}
+	\end{minipage}
 	
-	\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
-	\caption[Exemple de la représentation d'un document par entités]{Exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+	\begin{tabular}{ccccccccccccccccc}
+		& \rotatebox[origin=c]{90}{Department} & \rotatebox[origin=c]{90}{Trial} & \rotatebox[origin=c]{90}{Microsoft} &
+		\rotatebox[origin=c]{90}{Evidence} & \rotatebox[origin=c]{90}{Competitors} & \rotatebox[origin=c]{90}{Markets} &
+		\rotatebox[origin=c]{90}{Products} & \rotatebox[origin=c]{90}{Brands} & \rotatebox[origin=c]{90}{Case} &
+		\rotatebox[origin=c]{90}{Netscape} & \rotatebox[origin=c]{90}{Software} & \rotatebox[origin=c]{90}{Tactics} &
+		\rotatebox[origin=c]{90}{Government} & \rotatebox[origin=c]{90}{Suit} & \rotatebox[origin=c]{90}{Earnings} & \\
+		
+		1. & s & o & s & x & o & - & - & - & - & - & - & - & - & - & - & 1. \\
+		2. & - & - & o & - & - & x & s & o & - & - & - & - & - & - & - & 2. \\
+		3. & - & - & s & o & - & - & - & - & s & o & o & - & - & - & - & 3. \\
+		4. & - & - & s & - & - & - & - & - & - & - & - & s & - & - & - & 4. \\
+		5. & - & - & - & - & - & - & - & - & - & - & - & - & s & o & - & 5. \\
+		6. & - & x & s & - & - & - & - & - & - & - & - & - & - & - & o & 6. \\
+		
+	\end{tabular}
+	
+	\caption[Exemple de la représentation d'un document par entités]{Exemple de la représentation d'un document par entités ; figure reconstruite de \cite{2008-barzilay-lapata}}
 	\label{fig:entity-grid-rep}
 \end{figure}
 
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
+%	
+%	\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
+%	\caption[Exemple de la représentation d'un document par entités]{Exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+%	\label{fig:entity-grid-rep}
+%\end{figure}
+
 Un document est considéré comme cohérent s'il suit une certaine forme de pattern.
-Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. ``\expword{SS, SO, SX, S\_, OS, OO, OX, O\_, ...}".
-Dans l'exemple précédent, la transition ``S\_" a une fréquence de 6.
+Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. ``\expword{ss, so, sx, s\_, os, oo, ox, o\_, ...}".
+Dans l'exemple précédent, la transition ``s\_" a une fréquence de 6.
 Un document peut être représenté par les probabilités des transitions grammaticales.
 Une probabilité est le ratio entre le nombre d'une transition et le nombre de toutes les transitions.
-Dans l'exemple précédent : \expword{P(S\_) = 6/75}.
-La figure \ref{fig:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
+Dans l'exemple précédent : \expword{P(s\_) = 6/75}.
+Le tableau \ref{tab:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
+%La figure \ref{fig:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
 
-\begin{figure}[!ht]
+\begin{table}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{EGM_doc_vec_exp_.pdf}
+	\begin{tabular}{lllllllllllllllll}
+		\hline
+		& s s & s o & s x & s - & o s & o o & o x & o - & x s & x o & x x & x - & - s & - o & - x & - - \\
+		\hline
+		d1 & .01 & .01 & .00 & .08 & .01 & .00 & .00 & .09 & .00 & .00 & .00 & .03 & .05 & .07 & .03 & .59 \\
+		d2 & .02 & .01 & .01 & .02 & .00 & .07 & .00 & .02 & .14 & .14 & .06 & .04 & .03 & .07 & .01 & .36 \\
+		d3 & .02 & .00 & .00 & .03 & .09 & .00 & .09 & .06 & .00 & .00 & .00 & .05 & .03 & .07 & .17 & .39 \\
+		\hline
+	\end{tabular}
 	\caption[Exemple de la représentation des documents par transitions grammaticales]{Exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
-	\label{fig:entity-grid-prob}
-\end{figure}
+	\label{tab:entity-grid-prob}
+\end{table}
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage[.8\textwidth]{EGM_doc_vec_exp_.pdf}
+%	\caption[Exemple de la représentation des documents par transitions grammaticales]{Exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
+%	\label{fig:entity-grid-prob}
+%\end{figure}
 
 Afin de juger qu'un texte soit cohérent, nous utilisons un algorithme d'apprentissage automatique où les probabilités des transitions grammaticales sont utilisées comme caractéristiques. 
 Le modèle d'apprentissage peut être entraîné à attribuer des scores selon le niveau de cohérence.

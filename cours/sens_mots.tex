@@ -532,7 +532,8 @@ Elle essaye d'exploiter les deux approches : matrice mot-mot (comme LSA) et appr
 Nous préparons une matrice Mot-Mot $X[V, V]$ où $X_{ij}$ est le nombre des occurrence du mot $w_j$ dans le contexte de $w_i$, et $X_i$ est le nombre d'occurrences de $w_i$ dans le corpus. 
 La probabilité d'occurrence de $w_j$ dans le contexte de $w_i$ est estimée comme $P_{ij}= \frac{X_{ij}}{X_i}$.
 
-La figure \ref{fig:glove-prob-exp} représente un exemple des probabilités conditionnelles. 
+%La figure \ref{fig:glove-prob-exp} représente un exemple des probabilités conditionnelles.
+Le tableau \ref{tab:glove-prob-exp} représente un exemple des probabilités conditionnelles. 
 Si nous voulions trouver la relation entre deux mots (Ex. $w_i = ice$ et $w_j = steam$) par rapport à un mot $w_k$, nous pourrions calculer le ratio entre leurs probabilités $R(w_i, w_j) = \frac{P_{ik}}{P{jk}}$. 
 Donc : 
 \begin{itemize}
@@ -542,12 +543,29 @@ Donc :
 	\item Si $\neg R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio tend vers $1$ . Ex. \expword{fashion}
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{exp-glove_.pdf}
+	\begin{tabular}{lllll}
+		\hline\hline
+		\textbf{Probabilité et Ratio} & \textbf{k = solid} & \textbf{k = gas} & \textbf{k = water} & \textbf{k = fashion} \\
+		\hline
+		P(k|ice) & 1.9 * 10\textsubscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
+		P(k|steam) & 2.2 * 10\textsuperscript{-5} & 7.8 * 10\textsuperscript{-4} & 2.2 * 10\textsuperscript{-3} & 1.8 * 10\textsuperscript{-5} \\
+		\hline
+		P(k|ice)/P(k|steam) & 8.9 & 8.5 * 10\textsuperscript{-2} & 1.36 & 0.96 \\
+		\hline\hline
+		
+	\end{tabular}
 	\caption[Exemple des probabilités conditionnelles et un ratio entre deux probabilités]{Exemple des probabilités conditionnelles et un ratio entre deux probabilités  \cite{2014-pennington-al}}
-	\label{fig:glove-prob-exp}
-\end{figure}
+	\label{tab:glove-prob-exp}
+\end{table}
+
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.6\textwidth]{exp-glove_.pdf}
+%	\caption[Exemple des probabilités conditionnelles et un ratio entre deux probabilités]{Exemple des probabilités conditionnelles et un ratio entre deux probabilités  \cite{2014-pennington-al}}
+%	\label{fig:glove-prob-exp}
+%\end{figure}
 
 nous voulons entraîner une fonction $F$ qui estime le ratio de $w_i$, $w_j$ par rapport à un mot $\tilde{w_k}$ comme indiqué dans l'équation \ref{eq:glove-f-estime}.
 \begin{equation}

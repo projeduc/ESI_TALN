@@ -117,8 +117,9 @@ Mais, nous pouvons trouver certaines catégories qui sont partagées.
 Le projet ``Universal dependencies" cherche à normaliser ces catégories comme indiqué dans le tableau \ref{tab:pos-cat}.
 
 \begin{table}[ht]
-	\footnotesize
-\begin{tabular}{p{.25\textwidth}p{.4\textwidth}p{.25\textwidth}}
+	\centering
+%	\footnotesize
+\begin{tabular}{lll}
 	\hline\hline
 	\textbf{Classe ouverte} & \textbf{Classe fermée} & \textbf{Autres} \\
 	\hline%\hline
@@ -155,7 +156,7 @@ Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, 
 
 \begin{figure}[ht]
 	\centering
-	\begin{tcolorbox}[boxrule=0.4pt,text width=.7\textwidth]
+	\begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.62\textwidth]
 		\footnotesize
 		\begin{alltt}
 			Battle-tested\keyword{/JJ} Japanese\keyword{/JJ} industrial\keyword{/JJ} managers\keyword{/NNS}
@@ -166,7 +167,8 @@ Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, 
 			ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyword{/.}
 		\end{alltt}
 	\end{tcolorbox}
-	\caption[Exemple d'un texte annoté de Penn TreeBank]{Exemple d'un texte annoté de Penn TreeBank \cite{2003-taylor}\label{fig:penn-exp}}
+	\caption[Exemple d'un texte annoté de Penn TreeBank]{Exemple d'un texte annoté de Penn TreeBank ; figure reconstruite de \cite{2003-taylor}}
+	\label{fig:penn-exp}
 \end{figure}
 
 Voici quelques applications qui fournissent la tâche d'annotation morpho-syntaxique :
@@ -211,9 +213,39 @@ P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.4\textwidth]{exp-markov_.pdf}
-	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps]{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}\label{fig:cm-exp}}
+	\begin{tikzpicture}[
+	> = stealth, % arrow head style
+	shorten > = 1pt, % don't touch arrow head to node
+	auto,
+	node distance = 2.5cm, % distance between nodes
+	semithick, % line style
+	font=\scriptsize\bfseries
+	]
+	
+	\node[circle,draw] (qC) {C};
+	\node[circle,draw] (qH) [below left of=qC] {H};
+	\node[circle,draw] (qW) [below right of=qC] {W};
+	
+	\path[->] 	
+	(qC) 	edge [loop above] node {0.8} ()
+			edge [] node {0.1} (qH)
+			edge [bend left] node {0.1} (qW)
+	(qH) 	edge [loop left] node {0.6} ()
+			edge [bend left] node {0.1} (qC)
+			edge [] node {0.3} (qW)
+	(qW)	edge [loop right] node {0.6} ()
+			edge [bend left] node {0.3} (qH)
+			edge [] node {0.1} (qC);
+	\end{tikzpicture}
+	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps]{Exemple d'un chaîne de Markov pour la prédiction du temps ; figure reconstruite de \cite{2019-jurafsky-martin}.}
+	\label{fig:cm-exp}
 \end{figure}
+
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.4\textwidth]{exp-markov_.pdf}
+%	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps]{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}\label{fig:cm-exp}}
+%\end{figure}
 
 Ceci est un modèle de langage qui ne représente que les probabilités de transition. 
 Dans ce cas, nous pouvons seulement représenter la probabilité de transition d'une catégorie à une autre. 
@@ -227,9 +259,48 @@ Une observation $o_t$ peut être générée dans un état $q_i$ avec une probabi
 Un exemple d'un \keyword[H]{\ac{hmm}} est illustré dans la figure \ref{fig:hmm-exp}. 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{exp-hmm_.pdf}
-	\caption[Exemple d'une représentation HMM]{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}\label{fig:hmm-exp}}
+	\begin{tikzpicture}[
+	> = stealth, % arrow head style
+	shorten > = 1pt, % don't touch arrow head to node
+	auto,
+	node distance = 3cm, % distance between nodes
+	semithick, % line style
+	font=\scriptsize\bfseries
+	]
+	
+	\node[circle,draw] (q2) {MD};
+	\node[align=center,draw] (q2e) [left of=q2] {B2\\ \\P(``will"|MD)\\...\\P(``the"|MD)\\...\\P(``back"|MD)};
+	\node[circle,draw] (q3) [right of=q2] {NN};
+	\node[align=center,draw] (q3e) [right of=q3] {B3\\ \\P(``will"|NN)\\...\\P(``the"|NN)\\...\\P(``back"|NN)};
+	\node[circle,draw] (q1) [below of=q2] {VB};
+	\node[align=center,draw] (q1e) [left of=q1] {B1\\ \\P(``will"|VB)\\...\\P(``the"|VB)\\...\\P(``back"|VB)};
+	
+	\path[->] 	
+	(q1) 	edge [loop below] node {a11} ()
+			edge [bend left] node {a12} (q2)
+			edge [] node {a13} (q3)
+	(q2) 	edge [loop above] node {a22} ()
+			edge [bend left] node {a21} (q1)
+			edge [bend right] node {a23} (q3)
+	(q3)	edge [loop above] node {a33} ()
+			edge [bend left] node {a31} (q1)
+			edge [bend right] node {a32} (q2);
+	
+	\path[dashed] 	
+	(q1) 	edge [] node {} (q1e)
+	(q2) 	edge [] node {} (q2e)
+	(q3) 	edge [] node {} (q3e);
+	
+	\end{tikzpicture}
+	\caption[Exemple d'une représentation HMM]{Exemple d'une représentation HMM ; figure reconstruite de \cite{2019-jurafsky-martin}.}
+	\label{fig:hmm-exp}
 \end{figure}
+
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.6\textwidth]{exp-hmm_.pdf}
+%	\caption[Exemple d'une représentation HMM]{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}\label{fig:hmm-exp}}
+%\end{figure}
 
 La séquence estimée $\hat{t}$ est celle qui maximise la probabilité $P(t)$ et la probabilité $P(w | t)$ selon l'équation \ref{eq:hmm-detail}.
 En utilisant un modèle \keyword[B]{Bi-gramme}, la probabilité $P(t)$ est calculée en utilisant les transitions de l'état initial $t_1$ jusqu'à le dernier $t_n$. 
@@ -479,9 +550,9 @@ Nous avons vu qu'un \ac{rnn} peut être utilisé comme modèle de langage en pas
 Nous modifions la sortie : à la place des probabilités des mots du vocabulaire, nous essayons d'estimer les probabilités des catégories possibles. 
 Nous pouvons, bien sûr, utiliser une couche cachée pour apprendre une représentation plus compacte des mots en entrée (\keyword[E]{embedding}). 
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseau de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{rnn-simple.pdf}
+	\hgraphpage[.6\textwidth]{rnn-simple.pdf}
 	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique\label{fig:pos-rnn1}}
 \end{figure}
 %\begin{figure}[!ht]
@@ -494,9 +565,9 @@ Si nous voulions avoir des réseaux plus profonds et plus complexes, nous pourri
 Cela permet au modèle d'apprendre des traitements plus complexes améliorant la prédiction.
 Pour entraîner ce modèle, nous aurons besoin d'un grand dataset ; la taille de ce dernier augmente avec le nombre des réseaux empilés.
 La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rnn} empilés.
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{rnn-stack.pdf}
+	\hgraphpage[.6\textwidth]{rnn-stack.pdf}
 	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique]{RNNs empilés pour l'étiquetage morpho-syntaxique \label{fig:pos-rnn2}}
 \end{figure}
 %\begin{figure}[!ht]
@@ -511,9 +582,9 @@ Afin d'estimer l'étiquette courante en se basant sur le contexte futur, nous ut
 Afin d'exprimer la bidirectionnalité, nous utilisons deux \ac{rnn} : en avant $RNN_{forward}(w_1^i)$ et en arrière $RNN_{backword}(w_i^n)$. 
 Nous calculons la somme entre les deux états cachés $h_i^f \oplus h_i^b$ résultant à un vecteur qui doit passer par une fonction ``softmax" afin d'estimer les probabilités des tags. 
 Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.70\textwidth]{rnn-bi.pdf}
+	\hgraphpage[.6\textwidth]{rnn-bi.pdf}
 	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage \label{fig:pos-rnn3}}
 \end{figure}
 %\begin{figure}[!ht]
@@ -529,7 +600,7 @@ Une idée (voir la figure \ref{fig:pos-rnn4}) est d'utiliser un modèle de langa
 Le code résultat sera pris comme l'entrée du réseau récurrent (simple, empilé ou bidirectionnel).
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[0.9\textwidth]{rnn-char.pdf}
+	\hgraphpage[0.8\textwidth]{rnn-char.pdf}
 	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique\label{fig:pos-rnn4}}
 \end{figure}
 %\begin{figure}[ht]

@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="140mm"
-   height="80mm"
-   viewBox="0 0 140 80"
+   width="170mm"
+   height="50mm"
+   viewBox="0 0 170 50"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
@@ -27,10 +27,10 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="331.99346"
-     inkscape:cy="84.07802"
+     inkscape:cx="296.0456"
+     inkscape:cy="77.591111"
      inkscape:document-units="mm"
-     inkscape:current-layer="g22326"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="695"
@@ -60,10 +60,10 @@
     </marker>
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 40 : 1"
+       inkscape:vp_x="0 : 40.000001 : 1"
        inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="134.94861 : 35.696961 : 1"
-       inkscape:persp3d-origin="70 : 26.666667 : 1"
+       inkscape:vp_z="134.9486 : 35.696962 : 1"
+       inkscape:persp3d-origin="69.999996 : 26.666668 : 1"
        id="perspective5360" />
     <inkscape:path-effect
        effect="spiro"
@@ -1011,12 +1011,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(0,-217)"
+     transform="translate(0,-247)"
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Calque 1">
@@ -1024,33 +1024,33 @@
        id="text15659"
        y="223.84216"
        x="63.367706"
-       style="stroke-width:0.26458332px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:10.58333302px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          style="stroke-width:0.26458332px"
-         y="226.76056"
+         y="225.96089"
          x="63.367706"
          id="tspan15657"
          sodipodi:role="line" /></text>
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.9981733;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.99817331, 0.99817331;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1987"
-       width="38.492924"
-       height="68.725121"
-       x="47.630695"
-       y="223.51039"
+       width="38.305832"
+       height="46.274487"
+       x="59.45945"
+       y="249.136"
        ry="7.1437502" />
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.50000001;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1987-1"
        width="33.033398"
        height="13.738946"
-       x="50.412472"
-       y="262.2352"
+       x="62.054138"
+       y="278.11026"
        ry="3.6132224" />
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-95.900926,309.27956)"
+       transform="matrix(0.46625822,0,0,0.48923181,-84.259258,325.1546)"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-0"
        xml:space="preserve"><flowRegion
@@ -1066,8 +1066,8 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1">Notation</flowPara></flowRoot>    <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-98.195217,281.7904)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       transform="matrix(0.46625822,0,0,0.48923181,-86.553549,305.07378)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-0-6"
        xml:space="preserve"><flowRegion
          style="fill:#000000"
@@ -1079,9 +1079,9 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-78-4" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-8-6"
-         style="font-size:16px;font-family:Crimson Text;writing-mode:lr-tb;fill:#000000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start">Analyseur</flowPara></flowRoot>    <g
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">Analyseur</flowPara></flowRoot>    <g
        id="g22326"
-       transform="translate(-5.2916669,7.9375004)">
+       transform="translate(-5.2916669,34.395846)">
       <g
          transform="translate(-11.22532,-2.6192414)"
          id="g1303">
@@ -1511,7 +1511,7 @@
     </g>
     <g
        id="g22230"
-       transform="translate(-7.1093694,-50.513941)">
+       transform="translate(18.290633,-50.513941)">
       <g
          transform="translate(76.102772,94.892488)"
          id="g1303-8">
@@ -1705,21 +1705,11 @@
          d="m 123.41632,328.25108 -5.75182,7.15617"
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.50000001, 0.50000001;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1337-50-8-0-5)" />
     </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.4208107;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 91.904862,224.55689 v 6.10522 h 10.423078 v 10.68417 h -2.978026 l 5.956056,7.63156 5.95603,-7.63156 h -2.97801 v -16.78939 z"
-       id="path23040-6"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.4208107;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 19.385301,268.73488 h 6.105223 v 10.42307 h 10.684172 v -2.97802 l 7.63156,5.95605 -7.63156,5.95603 V 285.114 H 19.385301 Z"
-       id="path23040-6-9"
-       inkscape:connector-curvature="0" />
     <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-145.08647,264.12573)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       transform="matrix(0.46625822,0,0,0.48923181,-145.08647,290.58419)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-0-6-3"
        xml:space="preserve"><flowRegion
          style="fill:#000000"
@@ -1731,11 +1721,11 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-78-4-7" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-8-6-5"
-         style="font-size:16px;font-family:Crimson Text;writing-mode:lr-tb;fill:#000000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start">G :</flowPara></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">G :</flowPara></flowRoot>    <flowRoot
        inkscape:transform-center-y="0.37417772"
        inkscape:transform-center-x="0.37417738"
-       transform="matrix(0.46625822,0,0,0.48923181,-58.547576,297.85132)"
-       style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:Crimson Text;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:0%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#000000"
+       transform="matrix(0.46625822,0,0,0.48923181,-33.147572,290.97213)"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0%;font-family:'Crimson Text';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot13804-4-7-0-9-8-2-0-0-6-3-3"
        xml:space="preserve"><flowRegion
          style="fill:#000000"
@@ -1747,5 +1737,17 @@
            width="388.90872"
            id="rect13808-0-2-6-4-7-1-4-78-4-7-6" /></flowRegion><flowPara
          id="flowPara13810-86-4-1-6-0-3-1-8-6-5-2"
-         style="font-size:16px;font-family:Crimson Text;writing-mode:lr-tb;fill:#000000;font-variant-numeric:normal;-inkscape-font-specification:Crimson Text;font-variant-ligatures:normal;font-stretch:normal;font-feature-settings:normal;text-anchor:start;font-variant-caps:normal;font-variant:normal;font-weight:bold;font-style:normal;text-align:start">T :</flowPara></flowRoot>  </g>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">T :</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 99.616713,275.03826 h 9.260427 v -2.64583 l 5.29167,4.7625 -5.29167,4.49792 v -2.64584 h -9.260427 z"
+       id="path5380"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 42.995876,275.03826 h 9.26042 v -2.64583 l 5.29167,4.7625 -5.29167,4.49792 v -2.64584 h -9.26042 z"
+       id="path5380-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+  </g>
 </svg>

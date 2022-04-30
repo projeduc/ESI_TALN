@@ -259,7 +259,7 @@ Lorsque nous arrivons à la dernière cellule de la première ligne, nous devons
 	\Res{$T[n, n]$}
 	
 	\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
-		$\robotomono\selectfont T[i, i] \leftarrow \{ (A, 0, 0, 0) / (A \rightarrow w_i) \in P \}$\;
+		$\selectfont T[i, i] \leftarrow \{ (A, 0, 0, 0) / (A \rightarrow w_i) \in P \}$\;
 	}
 	
 	\Pour{$ i = (n-1) \ldots 1$ }{
@@ -660,7 +660,7 @@ $\theta$ est l'ensemble des paramètres utilisés dans la fonction du score.
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.38\textwidth]{graphe.pdf}
+	\hgraphpage[.5\textwidth]{graphe.pdf}
 	\caption{Architecture d'un analyseur des dépendances par graphe \label{fig:dep-graph-arch}}
 \end{figure}
 
