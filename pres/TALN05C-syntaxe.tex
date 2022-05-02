@@ -47,7 +47,7 @@
 \framesubtitle{Analyse syntaxique : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-parse.jpg}
+	\vgraphpage{humour/humour-parse.jpg}
 \end{center}
 
 \end{frame}
@@ -131,7 +131,7 @@
 \end{itemize}
 \end{minipage}
 \begin{minipage}{.3\textwidth}
-	\hgraphpage{humour-chomsky.jpg}
+	\hgraphpage{humour/humour-chomsky.jpg}
 \end{minipage}
 
 \begin{itemize}
@@ -281,8 +281,8 @@
 		\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
 		\Res{$T[n, n]$}
 		
-		\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
-			$T[i, i] \leftarrow \{ (A, 0, 0, 0) / (A \rightarrow w_i) \in P \} $\;
+		\lPour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
+			$T[i, i] \leftarrow \{ (A, 0, 0, 0) / (A \rightarrow w_i) \in P \} $
 		}
 		
 		\Pour{$ i = (n-1) \ldots 1$ }{
@@ -297,8 +297,8 @@
 			}
 		}
 		
-		\Si{$``S" \notin T[1, n] $} {
-			Erreur ``La phrase n'a pas été reconnue"\;
+		\lSi{$``S" \notin T[1, n] $} {
+			Erreur ``La phrase n'a pas été reconnue"
 		}
 		\vspace{-3pt}
 	\end{algorithm}
@@ -387,7 +387,7 @@
 \end{itemize}
 \end{minipage}
 \begin{minipage}{.45\textwidth}
-	\hgraphpage{humour-ambiguity.jpg}
+	\hgraphpage{humour/humour-ambiguity.jpg}
 \end{minipage}
 
 \end{frame}
@@ -420,8 +420,8 @@
 		\Donnees{une grammaire $G <\Sigma, N, P, S>$ en FNC; une phrase $w = w_1 \ldots w_n$}
 		\Res{$T[n, n, |N|]$}
 		
-		\Pour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
-			$T[i, i, A] \leftarrow \{ (P(A \rightarrow w_i), 0, A, A) / (A \rightarrow w_i) \in P \} $\;
+		\lPour{$ i = 1 \ldots n$}{ %\tcc*{Initialiser le diagonal}
+			$T[i, i, A] \leftarrow \{ (P(A \rightarrow w_i), 0, A, A) / (A \rightarrow w_i) \in P \} $
 		}
 		
 		\Pour{$ i = (n-1) \ldots 1$ }{
@@ -437,8 +437,8 @@
 			}
 		}
 		
-		\Si{$T[1, n, S] = 0 $} {
-			Erreur ``La phrase n'a pas été reconnue"\;
+		\lSi{$T[1, n, S] = 0 $} {
+			Erreur ``La phrase n'a pas été reconnue"
 		}
 		\vspace{-3pt}
 	\end{algorithm}
@@ -624,10 +624,35 @@
 \frametitle{Analyse syntaxique : Analyse des dépendances}
 \framesubtitle{Par transition : Arc-standard (exemple)}
 
-\begin{figure}
-	\hgraphpage{exp-arc-std_.pdf}
-	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}}
-\end{figure}
+%\begin{figure}
+%	\hgraphpage{exp-arc-std_.pdf}
+%	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-standard \cite{2018-eisenstein}}
+%\end{figure}
+\begin{exampleblock}{Exemple de dérivations non étiquetées de la phrase ``Il écrit la solution et son explication" en utilisant Arc-standard}
+	\centering\bfseries\fontsize{6}{10}\selectfont
+	\rowcolors{2}{lightblue}{lightyellow}
+	\begin{tabular}{llll}
+%		\hline\hline
+		\rowcolor{darkblue}
+		\textcolor{white}{nb. $\sigma$ (pile)} & \textcolor{white}{$\beta$ (tampon)} & \textcolor{white}{Action} & \textcolor{white}{Arc ajouté à A} \\
+%		\hline
+		01. [\textcolor{red}{ROOT}] & \textcolor{red}{Il} écrit la solution et son explication & SHIFT & / \\
+		02. [ROOT, \textcolor{red}{Il}] & \textcolor{red}{écrit} la solution et son explication & ARC-LEFT & Il \textleftarrow\ écrit\\
+		03. [\textcolor{red}{ROOT}] & \textcolor{red}{écrit} la solution et son explication & SHIFT & / \\
+		04. [ROOT, \textcolor{red}{écrit}] & \textcolor{red}{la} solution et son explication & SHIFT & / \\
+		05. [ROOT, écrit, \textcolor{red}{la}] & \textcolor{red}{solution} et son explication & SHIFT & / \\
+		06. [ROOT, écrit, la, \textcolor{red}{solution}] & \textcolor{red}{et} son explication & SHIFT & / \\
+		07. [ROOT, écrit, la, solution, \textcolor{red}{et}] & \textcolor{red}{son} explication & SHIFT & / \\
+		08. [ROOT, écrit, la, solution, et, \textcolor{red}{son}] & \textcolor{red}{explication} & ARC-LEFT & son \textleftarrow\ explication\\
+		09. [ROOT, écrit, la, solution, \textcolor{red}{et}] & \textcolor{red}{explication} & ARC-LEFT & et \textleftarrow\ explication\\
+		10. [ROOT, écrit, la, \textcolor{red}{solution}] & \textcolor{red}{explication} & ARC-RIGHT & solution \textrightarrow\ explication\\
+		11. [ROOT, écrit, \textcolor{red}{la}] & \textcolor{red}{solution} & ARC-LEFT & la \textleftarrow\ solution\\
+		12. [ROOT, \textcolor{red}{écrit}] & \textcolor{red}{solution} & ARC-RIGHT & écrit \textrightarrow\ solution\\
+		13. [\textcolor{red}{ROOT}] & \textcolor{red}{écrit} & ARC-RIGHT & ROOT \textrightarrow\ écrit\\
+		14. [ROOT] & $\emptyset$ & FIN & / \\
+%		\hline\hline
+	\end{tabular}
+\end{exampleblock}
 
 \end{frame}
 
@@ -656,10 +681,36 @@
 \frametitle{Analyse syntaxique : Analyse des dépendances}
 \framesubtitle{Par transition : Arc-Eager (exemple)}
 
-\begin{figure}
-	\hgraphpage{exp-arc-eager_.pdf}
-	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}}
-\end{figure}
+%\begin{figure}
+%	\hgraphpage{exp-arc-eager_.pdf}
+%	\caption{Exemple de dérivations non étiquetées de la phrase ``\expword{they like bagels with lox}" en utilisant Arc-eager \cite{2018-eisenstein}}
+%\end{figure}
+\begin{exampleblock}{Exemple de dérivations non étiquetées de la phrase ``Il écrit la solution et son explication" en utilisant Arc-eager}
+	\centering\bfseries\fontsize{6}{10}\selectfont
+	\rowcolors{2}{lightblue}{lightyellow}
+	\begin{tabular}{llll}
+%		\hline\hline
+		\rowcolor{darkblue}
+%		nb. $\sigma$ (pile) & $\beta$ (tampon) & Action & Arc ajouté à A \\
+		\textcolor{white}{nb. $\sigma$ (pile)} & \textcolor{white}{$\beta$ (tampon)} & \textcolor{white}{Action} & \textcolor{white}{Arc ajouté à A} \\
+%		\hline
+		01. [\textcolor{red}{ROOT}] & \textcolor{red}{Il} écrit la solution et son explication & SHIFT & / \\
+		02. [ROOT, \textcolor{red}{Il}] & \textcolor{red}{écrit} la solution et son explication & ARC-LEFT & Il \textleftarrow\ écrit\\
+		03. [\textcolor{red}{ROOT}] & \textcolor{red}{écrit} la solution et son explication & ARC-RIGHT & ROOT \textrightarrow\ écrit\\	
+		04. [ROOT, \textcolor{red}{écrit}] & \textcolor{red}{la} solution et son explication & SHIFT & / \\	
+		05. [ROOT, écrit, \textcolor{red}{la}] & \textcolor{red}{solution} et son explication & ARC-LEFT & la \textleftarrow\ solution \\
+		06. [ROOT, \textcolor{red}{écrit}] & \textcolor{red}{solution} et son explication & ARC-RIGHT & écrit \textrightarrow\ solution \\
+		07. [ROOT, écrit, \textcolor{red}{solution}] & \textcolor{red}{et} son explication & SHIFT & / \\
+		08. [ROOT, écrit, solution, \textcolor{red}{et}] & \textcolor{red}{son} explication & SHIFT & / \\
+		09. [ROOT, écrit, solution, et, \textcolor{red}{son}] & \textcolor{red}{explication} & ARC-LEFT & son \textleftarrow\ explication \\
+		10. [ROOT, écrit, solution, \textcolor{red}{et}] & \textcolor{red}{explication} & ARC-LEFT & et \textleftarrow\ explication\\	
+		11. [ROOT, écrit, \textcolor{red}{solution}] & \textcolor{red}{explication} & REDUCE & /\\
+		12. [ROOT, \textcolor{red}{écrit}] & \textcolor{red}{solution} & ARC-RIGHT & écrit \textrightarrow\ solution\\
+		13. [ROOT, \textcolor{red}{solution}] & $\emptyset$ & REDUCE & / \\
+		14. [ROOT] & $\emptyset$ & FIN & / \\
+%		\hline\hline
+	\end{tabular}
+\end{exampleblock}
 
 \end{frame}
 

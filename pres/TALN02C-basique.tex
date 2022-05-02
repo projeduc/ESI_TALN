@@ -188,7 +188,7 @@
 \framesubtitle{Expressions régulières : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-regex.jpeg}
+	\vgraphpage{humour/humour-regex.jpeg}
 \end{center}
 
 \end{frame}
@@ -300,11 +300,31 @@ D[i-1, j-1] + \begin{cases}
 \frametitle{Traitements basiques du texte : Caractères}
 \framesubtitle{Distance d'édition : Distance de Levenshtein (exemple)}
 
-\begin{figure}
-	\centering
-	\hgraphpage{exp-levenshtein_.pdf}
-	\caption{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin}.}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\hgraphpage{exp-levenshtein_.pdf}
+%	\caption{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin}.}
+%\end{figure}
+\begin{exampleblock}{Exemple de calcul de distance de Levenshtein}
+	\centering\bfseries\tiny
+	\begin{tabular}{|r|r|r|r|r|r|r|r|r|r|}
+		\hline
+		&\bfseries \# &\bfseries i &\bfseries m &\bfseries m &\bfseries a &\bfseries t &\bfseries u &\bfseries r &\bfseries e \\
+		\hline
+		\bfseries \# & 0 & $ \leftarrow $ 1 & $ \leftarrow $ 2 & $ \leftarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 & $ \leftarrow $ 8\\
+		\hline
+		\bfseries a & \cellcolor{green!25} $ \uparrow $ 1 & $ \nwarrow\leftarrow\uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $ \nwarrow\leftarrow\uparrow $ 4 & $ \nwarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 \\
+		\hline
+		\bfseries m & \cellcolor{green!25} $ \uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $\nwarrow $ 2 & $\nwarrow\leftarrow $ 3 & $\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8\\
+		\hline
+		\bfseries i & $ \uparrow $ 3 & \cellcolor{green!25} $ \nwarrow $ 2 & \cellcolor{green!25} $\leftarrow\uparrow $ 3 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 4 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 5 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 6 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9\\
+		\hline
+		\bfseries b & $ \uparrow $ 4 & $ \uparrow $ 3 & $\nwarrow\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10\\
+		\hline
+		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10 & \cellcolor{green!25} $\nwarrow $ 9\\
+		\hline
+	\end{tabular}
+\end{exampleblock}
 
 \end{frame}
 
@@ -346,9 +366,9 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Distance d'édition : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage[.4\textheight]{humour-spell.jpg}
-	\vgraphpage[.4\textheight]{humour-spell1.jpg}
-	\vgraphpage[.4\textheight]{humour-spell2.jpg}
+	\vgraphpage[.4\textheight]{humour/humour-spell.jpg}
+	\vgraphpage[.4\textheight]{humour/humour-spell1.jpg}
+	\vgraphpage[.4\textheight]{humour/humour-spell2.jpg}
 \end{center}
 
 \end{frame}
@@ -414,7 +434,7 @@ D[i-1, j-1] + \begin{cases}
 \frametitle{Traitements basiques du texte : Segmentation du texte}
 \framesubtitle{Délimitation de la phrase : Un peu d'humour} 
 
-\hgraphpage{humour-segmentation.jpg}
+\hgraphpage{humour/humour-segmentation.jpg}
 
 \end{frame}
 
@@ -463,7 +483,7 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Séparation des mots : Un peu d'humour} 
 
 \begin{center}
-	\vgraphpage{humour-punctuation.jpg}
+	\vgraphpage{humour/humour-punctuation.jpg}
 \end{center}
 
 \end{frame}
@@ -581,7 +601,7 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Filtrage du texte : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-stopwords.jpg}
+	\vgraphpage{humour/humour-stopwords.jpg}
 \end{center}
 
 \end{frame}
@@ -654,7 +674,7 @@ D[i-1, j-1] + \begin{cases}
 \framesubtitle{Formation des mots : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-formation.jpg}
+	\vgraphpage{humour/humour-formation.jpg}
 \end{center}
 
 \end{frame}
@@ -766,7 +786,7 @@ D[i-1, j-1] + \begin{cases}
 \frametitle{Traitements basiques du texte : Morphologie}
 \framesubtitle{Réduction des formes : Un peu d'humour}
 
-\hgraphpage{humour-lemmatisation.jpg}
+\hgraphpage{humour/humour-lemmatisation.jpg}
 
 \end{frame}
 

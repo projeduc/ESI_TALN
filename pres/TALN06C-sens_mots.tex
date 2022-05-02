@@ -74,7 +74,7 @@
 
 	\begin{figure}
 		\centering 
-		\hgraphpage[.5\textwidth]{exp-bd-lex_.pdf}
+		\hgraphpage[.5\textwidth]{exp-bd-lex.pdf}
 		\caption{Exemple des informations et leurs relations dans une base lexicale \cite{2019-white-al}}
 	\end{figure}
 	
@@ -105,14 +105,35 @@
 \frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet}
 
-\begin{minipage}{.3\textwidth}
-	\begin{figure}
-		\caption{Un exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
-	\end{figure}
-\end{minipage}
-\begin{minipage}{.68\textwidth}
-	\hgraphpage{exp-wordnet_.pdf}
-\end{minipage}
+\vspace{-6pt}
+\begin{exampleblock}{Exemple de WordNet : \small\url{http://wordnetweb.princeton.edu/perl/webwn}}
+	\fontsize{6}{6}\selectfont
+	%		\begin{alltt}
+	{\small\bfseries Noun}
+	\begin{itemize}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason}, \textcolor{blue}{\underline{ground}} (a rational motive for a belief or action) \textit{"the reason that war was declared"; "the grounds for their declaration"}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason} (an explanation of the cause of some phenomenon) \textit{"the reason a steady state was never reached was that the back pressure built up too slowly"}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason}, \textcolor{blue}{\underline{understanding}}, \textcolor{blue}{\underline{intellect}} (the capacity for rational thought or inference or discrimination) \textit{"we are told that man is endowed with reason and capable of distinguishing good from evil"}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textcolor{blue}{\underline{rationality}}, \textbf{reason}, \textcolor{blue}{\underline{reasonableness}} (the state of having good sense and sound judgment) \textit{"his rationality may have been impaired"; "he had to rely less on reason than on rousing their emotions"}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textcolor{blue}{\underline{cause}}, \textbf{reason}, \textcolor{blue}{\underline{grounds}} (a justification for something existing or happening) \textit{"he had no cause to complain"; "they had good reason to rejoice"}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason} (a fact that logically justifies some premise or conclusion) \textit{"there is reason to believe he is lying"}
+	\end{itemize}
+	
+	{\small\bfseries Verb}
+	\begin{itemize}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(v)} \textbf{reason}, \textcolor{blue}{\underline{reason out}}, \textcolor{blue}{\underline{conclude}} (decide by reasoning; draw or come to a conclusion) \textit{"We reasoned that it was cheaper to rent than to buy a house"}
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(v)} \textcolor{blue}{\underline{argue}}, \textbf{reason} (present reasons and arguments)
+		\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(v)} \textbf{reason} (think logically) \textit{"The children must learn to reason"}
+	\end{itemize}
+\end{exampleblock}
+%\begin{minipage}{.3\textwidth}
+%	\begin{figure}
+%		\caption{Un exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
+%	\end{figure}
+%\end{minipage}
+%\begin{minipage}{.68\textwidth}
+%%	\hgraphpage{exp-wordnet_.pdf}
+%\end{minipage}
 	
 \end{frame}
 
@@ -145,10 +166,29 @@
 \frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet : Catégories lexicographiques (supersense)}
 	
-\begin{figure}
-	\hgraphpage{wordnet-supersenses_.pdf}
-	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
-\end{figure}
+%\begin{figure}
+%	\hgraphpage{wordnet-supersenses_.pdf}
+%	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
+%\end{figure}
+
+\begin{block}{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
+	\fontsize{9}{12}\selectfont
+	\begin{tabular}{@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}}
+		\hline\hline
+		\textbf{Catégorie} & \textbf{Exemple} & \textbf{Catégorie} & \textbf{Exemple} &\textbf{Catégorie} & \textbf{Exemple} \\
+		\hline
+		ACT & service & GROUP & place & PLANT & tree \\
+		ANIMAL &  dog & LOCATION & area & POSSESSION & price \\
+		ARTIFACT & car & MOTIVE & reason & PROCESS & process \\
+		ATTRIBUTE & quality & NATURAL EVENT & experience & QUANTITY & amount \\
+		BODY & hair & NATURAL OBJECT & flower & RELATION & portion \\
+		COGNITION & way & OTHER & stuff & SHAPE & square\\
+		COMMUNICATION & review & PERSON & people & STATE & pain\\
+		FEELING & discomfort & PHENOMENON & result & SUBSTANCE & oil \\
+		FOOD & food & & & TIME & day\\
+		\hline\hline
+	\end{tabular}
+\end{block}
 	
 \end{frame}
 
@@ -156,16 +196,45 @@
 \frametitle{Sens des mots : BD lexicales}
 \framesubtitle{Wordnet : Relations sémantiques}
 
-\vspace{-3pt}
-\begin{figure}
-	\hgraphpage{wordnet-rel-nom_.pdf}\vspace{-9pt}
-	\caption{Quelques relations des noms \cite{2019-jurafsky-martin}}
-\end{figure}\vspace{-6pt}
+%\vspace{-3pt}
+%\begin{figure}
+%	\hgraphpage{wordnet-rel-nom_.pdf}\vspace{-9pt}
+%	\caption{Quelques relations des noms \cite{2019-jurafsky-martin}}
+%\end{figure}\vspace{-6pt}
+%
+%\begin{figure}
+%	\hgraphpage{wordnet-rel-verbe_.pdf}\vspace{-9pt}
+%	\caption{Quelques relations des verbes \cite{2019-jurafsky-martin}}
+%\end{figure}
 
-\begin{figure}
-	\hgraphpage{wordnet-rel-verbe_.pdf}\vspace{-9pt}
-	\caption{Quelques relations des verbes \cite{2019-jurafsky-martin}}
-\end{figure}
+\begin{block}{Quelques relations des noms et des verbes \cite{2019-jurafsky-martin}}
+	\fontsize{8}{14}\selectfont
+	\begin{tabular}{@{\hskip0pt}p{.2\textwidth}@{\hskip3pt}p{.48\textwidth}@{\hskip3pt}p{.25\textwidth}@{\hskip0pt}}
+		\hline\hline
+		\multicolumn{3}{c}{\textbf{Noms}}\\
+		\hline
+		\textbf{Relation} & \textbf{Définition} & \textbf{Exemple} \\
+		\hline
+		Hypernym & d'un concept spécifique vers un autre générique & \expword{breakfast\textsuperscript{1} \textrightarrow\ meal\textsuperscript{1} }\\
+		Hyponym & d'un concept générique vers un autre spécifique & \expword{meal\textsuperscript{1} \textrightarrow\ lunch\textsuperscript{1}} \\
+		Instance Hypernym & d'une instance vers son concept & \expword{Austen\textsuperscript{1} \textrightarrow\ author\textsuperscript{1}} \\
+		Instance Hyponym & d'un concept vers son instance & \expword{composer\textsuperscript{1} \textrightarrow\ Bach\textsuperscript{1}} \\
+		Part Meronym & d'un concept entier vers une partie & \expword{table\textsuperscript{2} \textrightarrow\ leg\textsuperscript{3}} \\
+		Part Holonym & d'une partie vers un entier & \expword{course\textsuperscript{7} \textrightarrow\ meal\textsuperscript{1}} \\
+		Antonym & d'un concept vers son opposition sémantique & \expword{leader\textsuperscript{1} $ \leftrightarrow $ follower\textsuperscript{1}}\\
+		Derivation & d'un mot vers un autre ayant la même racine & \expword{destruction\textsuperscript{1} $ \leftrightarrow $ destroy\textsuperscript{1}} \\
+		\hline\hline
+		\multicolumn{3}{c}{\textbf{Verbes}}\\
+		\hline
+		\textbf{Relation} & \textbf{Définition} & \textbf{Exemple} \\
+		\hline
+		Hypernym & d'un évènement spécifique vers un autre générique & \expword{fly\textsuperscript{9} \textrightarrow\ travel\textsuperscript{5}} \\
+		Troponym & d'un évènement générique vers un autre spécifique & \expword{walk\textsuperscript{1} \textrightarrow\ stroll\textsuperscript{1}} \\
+		Entails & d'un évènement vers un autre qui l'implique & \expword{snore\textsuperscript{1} \textrightarrow\ sleep\textsuperscript{1}} \\ 
+		Antonym & d'un évènement vers son opposition sémantique & \expword{increase\textsuperscript{1} $ \leftrightarrow $ decrease\textsuperscript{1}} \\
+		\hline\hline
+	\end{tabular}
+\end{block}
 	
 \end{frame}
 
@@ -225,7 +294,7 @@
 \end{itemize}
 
 \begin{figure}
-	\hgraphpage{babelnet.png}
+	\hgraphpage{babelnet.pdf}
 	\caption{Structure de BabelNet \cite{2012-navigli-ponzetto}}
 \end{figure}
 	
@@ -450,8 +519,9 @@
 	\framesubtitle{Analyse sémantique latente (LSA) : Formulation SVD}
 	
 	\begin{itemize}
-		\item $T^\top T = \mathbb{I}_{N \times N}$ 
-		\item $D^\top D = \mathbb{I}_{M \times M}$ 
+		\item $T^\top T = \mathbb{I}_{L \times L}$ 
+		\item $D^\top D = \mathbb{I}_{L \times L}$ 
+		\item $S$ : poids des concepts avec ordre décroissant $s_{11} < ... < s_{LL}$ 
 		\item SVD peut être résolue en utilisant par exemple l'\keyword{algorithme de Lanczos}, la \keyword{décomposition QR}
 	\end{itemize}
 	
@@ -479,10 +549,10 @@
 			\ldots \\ 
 			\end{matrix}
 			\begin{bmatrix}
-			t_{L1} \\ 
+			t_{1L} \\ 
 			\vdots \\
 			\vdots \\
-			t_{L1} \\ 
+			t_{NL} \\ 
 			\end{bmatrix}
 			\right]
 		}^{T \text{ : terme-concept}}
@@ -502,7 +572,7 @@
 			\end{bmatrix}\\
 			\vdots \\
 			\begin{bmatrix}
-			d_{11} & \ldots & \ldots & \ldots & d_{1M} \\
+			d_{L1} & \ldots & \ldots & \ldots & d_{LM} \\
 			\end{bmatrix}\\
 			\end{bmatrix}
 		}^{D^\top \text{ : concept-document}}
@@ -537,7 +607,7 @@
 \frametitle{Sens des mots : Word embedding}
 \framesubtitle{Un peu d'humour}
 \begin{center}
-		\vgraphpage{humour-embeddings.jpeg}	
+		\vgraphpage{humour/humour-embeddings.jpeg}	
 \end{center}
 \end{frame}
 
@@ -569,20 +639,21 @@
 \begin{frame}
 	\frametitle{Sens des mots : Word embedding}
 	\framesubtitle{Word2vec : CBOW}
-\begin{minipage}{.58\textwidth}
+\begin{minipage}{.6\textwidth}
 	\begin{itemize}
-		\item Le contexte ici est deux mots avant et deux après
 		\item Inférer le mot $w_i$ étant donné son contexte
+		\item Le contexte ici est deux mots avant et deux après le mot
+		\item $T$ : le nombre des mots dans le corpus
 	\end{itemize}
-	\begin{block}{Fonction à maximiser}
+	\begin{block}{Fonction à minimiser}
 		\[%
-		J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
+		J(\theta) = \frac{-1}{T} \sum_{i=1}^{T} \log p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
 		\]
 	\end{block}
 \end{minipage}
 \begin{minipage}{.08\textwidth}
 \end{minipage}	
-\begin{minipage}{.4\textwidth}
+\begin{minipage}{.38\textwidth}
 	\hgraphpage{word2vec-cbow.pdf}
 \end{minipage}
 	
@@ -593,12 +664,13 @@
 	\framesubtitle{Word2vec : Skip-gram}
 	\begin{minipage}{.58\textwidth}
 		\begin{itemize}
-			\item Le contexte ici est deux mots avant et deux après
 			\item Inférer le contexte étant donné le mot $w_i$
+			\item Le contexte ici est deux mots avant et deux après le mot
+			\item $T$ : le nombre des mots dans le corpus
 		\end{itemize}
-		\begin{block}{Fonction à maximiser}
+		\begin{block}{Fonction à minimiser}
 			\[%
-			J(\theta) = \frac{-1}{V} \sum_{i=1}^{V} \sum_{j= i-2; j \ne i}^{i+2} p(w_j |w_i)
+			J(\theta) = \frac{-1}{T} \sum_{i=1}^{T} \sum_{j= i-2; j \ne i}^{i+2} \log p(w_j |w_i)
 			\]
 		\end{block}
 	\end{minipage}
@@ -641,7 +713,18 @@
 \end{minipage}
 \begin{minipage}{.48\textwidth}
 	\begin{figure}
-		\hgraphpage{exp-glove_.pdf}
+%		\hgraphpage{exp-glove_.pdf}
+		\fontsize{5}{9}\selectfont
+		\begin{tabular}{@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}}
+			\hline\hline
+			\textbf{Probabilité et Ratio} & \textbf{k = solid} & \textbf{k = gas} & \textbf{k = water} & \textbf{k = fashion} \\
+			\hline
+			P(k|ice) & 1.9 * 10\textsuperscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
+			P(k|steam) & 2.2 * 10\textsuperscript{-5} & 7.8 * 10\textsuperscript{-4} & 2.2 * 10\textsuperscript{-3} & 1.8 * 10\textsuperscript{-5} \\
+			\hline
+			P(k|ice)/P(k|steam) & 8.9 & 8.5 * 10\textsuperscript{-2} & 1.36 & 0.96 \\
+			\hline\hline
+		\end{tabular}
 		\caption{Exemple de probabilités et un ratio \cite{2014-pennington-al}}
 	\end{figure}
 \end{minipage}
@@ -804,7 +887,7 @@
 
 \vspace{-3pt}
 \begin{center}
-	\vgraphpage{humour-elmo.png}
+	\vgraphpage{humour/humour-elmo.png}
 \end{center}
 	
 \end{frame}
@@ -813,7 +896,7 @@
 \frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT}
 
-\begin{minipage}{.68\textwidth}
+\begin{minipage}{.70\textwidth}
 	\begin{itemize}
 		\item \keyword{BERT} : Bidirectional Encoder Representations from Transformers
 		\item \url{https://github.com/google-research/bert}
@@ -826,7 +909,7 @@
 		\end{itemize}
 	\end{itemize}
 \end{minipage}
-\begin{minipage}{.3\textwidth}
+\begin{minipage}{.28\textwidth}
 	\vspace{.5cm}
 	\hgraphpage{Bert-img.png}
 \end{minipage}
@@ -888,36 +971,46 @@
 
 \begin{frame}
 \frametitle{Sens des mots : Word embedding}
-\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 1)}
+\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning)}
 
-	\begin{figure}
-		\hgraphpage{bert-taches1_.pdf}
-		\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
-		(a) Relation entre deux phrases comme la similarité (b) Classification d'une phrase comme analyse de sentiments
-	}
-	\end{figure}
+	\begin{center}
+		\vgraphpage{bert-taches.pdf}
+	\end{center}
 	
 \end{frame}
 
-\begin{frame}
-	\frametitle{Sens des mots : Word embedding}
-	\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 2)}
-	
-	\begin{figure}
-		\hgraphpage{bert-taches2_.pdf}
-		\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
-			(a) Tâches de Question-réponse (b) Les tâches de tagging comme reconnaissance des entités nommées
-		}
-	\end{figure}
-	
-\end{frame}
+%\begin{frame}
+%\frametitle{Sens des mots : Word embedding}
+%\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 1)}
+%
+%	\begin{figure}
+%		\hgraphpage{bert-taches1_.pdf}
+%		\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
+%		(a) Relation entre deux phrases comme la similarité (b) Classification d'une phrase comme analyse de sentiments
+%	}
+%	\end{figure}
+%	
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Sens des mots : Word embedding}
+%	\framesubtitle{Embedding contextuel : BERT (réglage : fine-tuning 2)}
+%	
+%	\begin{figure}
+%		\hgraphpage{bert-taches2_.pdf}
+%		\caption{Illustration de réglage de BERT sur des tâches différentes \cite{2019-devlin-al}
+%			(a) Tâches de Question-réponse (b) Les tâches de tagging comme reconnaissance des entités nommées
+%		}
+%	\end{figure}
+%	
+%\end{frame}
 
 \begin{frame}
 \frametitle{Sens des mots : Word embedding}
 \framesubtitle{Embedding contextuel : BERT (un peu d'humour)}
 	\vspace{-3pt}
 	\begin{center}
-		\vgraphpage{humour-bert.jpg}
+		\vgraphpage{humour/humour-bert.jpg}
 	\end{center}
 	
 \end{frame}

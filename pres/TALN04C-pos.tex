@@ -41,7 +41,7 @@
 \framesubtitle{Étiquetage morpho-syntaxique : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-pos.jpg}
+	\vgraphpage{humour/humour-pos.jpg}
 \end{center}
 
 \end{frame}
@@ -272,7 +272,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \framesubtitle{Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-identify.jpg}
+	\vgraphpage{humour/humour-identify.jpg}
 \end{center}
 
 \end{frame}
@@ -318,16 +318,41 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 	\end{itemize}
 \end{minipage}
 \begin{minipage}{.35\textwidth}
-	\begin{figure}
-		\hgraphpage{exp-markov_.pdf}
-		\caption{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}}
-	\end{figure}
+%	\begin{figure}
+%		\hgraphpage{exp-markov_.pdf}
+%		\caption{Exemple d'un chaîne de Markov pour la prédiction du temps \cite{2019-jurafsky-martin}}
+%	\end{figure}
+	\hspace*{-1cm}
+	\begin{tikzpicture}[
+	> = stealth, % arrow head style
+	shorten > = 1pt, % don't touch arrow head to node
+	auto,
+	node distance = 2cm, % distance between nodes
+	semithick, % line style
+	font=\tiny\bfseries
+	]
+	
+	\node[circle,draw] (qC) {C};
+	\node[circle,draw] (qH) [below left of=qC] {H};
+	\node[circle,draw] (qW) [below right of=qC] {W};
+	
+	\path[->] 	
+	(qC) 	edge [loop above] node {0.8} ()
+	edge [] node {0.1} (qH)
+	edge [bend left] node {0.1} (qW)
+	(qH) 	edge [loop left] node {0.6} ()
+	edge [bend left] node {0.1} (qC)
+	edge [] node {0.3} (qW)
+	(qW)	edge [loop right] node {0.6} ()
+	edge [bend left] node {0.3} (qH)
+	edge [] node {0.1} (qC);
+	\end{tikzpicture}
 \end{minipage}
 
 \begin{itemize}
 	\item $\pi = [\pi_1, \pi_2, \ldots, \pi_n ]$ : la distribution initiale des probabilités des états
 	\item $\sum_i \pi_i = 1$
-	\item Ex. \expword{Calculer la probabilité $P(HOT\, WARM\, COLD\, COLD)$ lorsque $\pi = [0.1, 0.7, 0.2]$}
+	\item Ex. \expword{Calculer la probabilité $P(H\, W\, C\, C)$ lorsque $\pi = [0.1, 0.7, 0.2]$}
 \end{itemize}
 
 \end{frame}
@@ -348,10 +373,43 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 	\end{itemize}
 \end{minipage}
 \begin{minipage}{.45\textwidth}
-	\begin{figure}
-		\hgraphpage{exp-hmm_.pdf}
-		\caption{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}}
-	\end{figure}
+%	\begin{figure}
+%		\hgraphpage{exp-hmm_.pdf}
+%		\caption{Exemple d'une représentation HMM \cite{2019-jurafsky-martin}}
+%	\end{figure}
+	\begin{tikzpicture}[
+	> = stealth, % arrow head style
+	shorten > = 1pt, % don't touch arrow head to node
+	auto,
+	node distance = 1.5cm, % distance between nodes
+	semithick, % line style
+	font=\bfseries\fontsize{4}{4}\selectfont
+	]
+	
+	\node[circle,draw] (q2) {MD};
+	\node[align=center,draw] (q2e) [left of=q2] {B2\\ \\P(``will"|MD)\\...\\P(``the"|MD)\\...\\P(``back"|MD)};
+	\node[circle,draw] (q3) [right of=q2] {NN};
+	\node[align=center,draw] (q3e) [right of=q3] {B3\\ \\P(``will"|NN)\\...\\P(``the"|NN)\\...\\P(``back"|NN)};
+	\node[circle,draw] (q1) [below of=q2] {VB};
+	\node[align=center,draw] (q1e) [left of=q1] {B1\\ \\P(``will"|VB)\\...\\P(``the"|VB)\\...\\P(``back"|VB)};
+	
+	\path[->] 	
+	(q1) 	edge [loop below] node {a11} ()
+	edge [bend left] node {a12} (q2)
+	edge [] node {a13} (q3)
+	(q2) 	edge [loop above] node {a22} ()
+	edge [bend left] node {a21} (q1)
+	edge [bend right] node {a23} (q3)
+	(q3)	edge [loop above] node {a33} ()
+	edge [bend left] node {a31} (q1)
+	edge [bend right] node {a32} (q2);
+	
+	\path[dashed] 	
+	(q1) 	edge [] node {} (q1e)
+	(q2) 	edge [] node {} (q2e)
+	(q3) 	edge [] node {} (q3e);
+	
+	\end{tikzpicture}
 \end{minipage}
 
 \begin{itemize}
@@ -553,11 +611,12 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \frametitle{Étiquetage morpho-syntaxique : Approches}
 \framesubtitle{Modèle neuronal : RNN simple}
 
-\begin{figure}
-	\centering
-	\vgraphpage[0.7\textheight]{rnn-simple_.pdf}
-	\caption{Un RNN simple pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\vgraphpage[0.7\textheight]{rnn-simple.pdf}
+%	\caption{Un RNN simple pour l'étiquetage morpho-syntaxique}
+%\end{figure}
+\hgraphpage{rnn-simple.pdf}
 
 \end{frame}
 
@@ -565,11 +624,13 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \frametitle{Étiquetage morpho-syntaxique : Approches}
 \framesubtitle{Modèle neuronal : RNNs empilés}
 
-\begin{figure}
-	\centering
-	\vgraphpage[0.7\textheight]{rnn-stack_.pdf}
-	\caption{Des RNNs empilés pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\vgraphpage[0.7\textheight]{rnn-stack.pdf}
+%	\caption{Des RNNs empilés pour l'étiquetage morpho-syntaxique}
+%\end{figure}
+
+\hgraphpage{rnn-stack.pdf}
 
 \end{frame}
 
@@ -577,11 +638,12 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \frametitle{Étiquetage morpho-syntaxique : Approches}
 \framesubtitle{Modèle neuronal : RNN bidirectionnel}
 
-\begin{figure}
-	\centering
-	\vgraphpage[0.7\textheight]{rnn-bi_.pdf}
-	\caption{RNN bidirectionnel pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\vgraphpage[0.7\textheight]{rnn-bi.pdf}
+%	\caption{RNN bidirectionnel pour l'étiquetage morpho-syntaxique}
+%\end{figure}
+\hgraphpage{rnn-bi.pdf}
 
 \end{frame}
 
@@ -589,12 +651,12 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \frametitle{Étiquetage morpho-syntaxique : Approches}
 \framesubtitle{Modèle neuronal : RNN avec des embedding de caractères}
 
-\begin{figure}
-	\centering
-	\vgraphpage[0.40\textheight]{rnn-char1_.pdf}
-	\vgraphpage[0.40\textheight]{rnn-char2_.pdf}
-	\caption{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique \cite{2019-jurafsky-martin}}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\vgraphpage[0.80\textheight]{rnn-char.pdf}
+%	\caption{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique}
+%\end{figure}
+\hgraphpage{rnn-char.pdf}
 
 \end{frame}
 
@@ -603,7 +665,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \framesubtitle{Modèle neuronal : Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour-learn.jpg}
+	\vgraphpage{humour/humour-learn.jpg}
 \end{center}
 
 \end{frame}

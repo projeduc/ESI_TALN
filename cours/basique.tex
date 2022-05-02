@@ -154,7 +154,8 @@ Dans ce cas, nous capturons la chaîne ``ch" pour la garder et remplacer le rest
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.75\textwidth]{expreg_exp_kate.png}
-	\caption[Exemple de remplacement par RegEx dans l'éditeur de texte ``kate"]{Exemple de remplacement par expressions régulières dans l'éditeur de texte ``kate" \label{fig:kate_regex}}
+	\caption[Exemple de remplacement par RegEx dans l'éditeur de texte ``kate".]{Exemple de remplacement par expressions régulières dans l'éditeur de texte ``kate".}
+	\label{fig:kate_regex}
 \end{figure}
 
 
@@ -314,7 +315,7 @@ Par exemple, dans la correction d'orthographe, des lettres sont plus probables d
 		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10 & \cellcolor{green!25} $\nwarrow $ 9\\
 		\hline
 	\end{tabular}
-	\caption[Exemple de calcul de distance de Levenshtein]{Exemple de calcul de distance de Levenshtein des mots ``amibe"  et ``immature" ; figure inspirée de \cite{2019-jurafsky-martin}.}
+	\caption[Exemple de calcul de distance de Levenshtein.]{Exemple de calcul de distance de Levenshtein des mots ``amibe"  et ``immature" ; figure inspirée de \cite{2019-jurafsky-martin}.}
 	\label{fig:laven-distance}
 \end{figure}
 %\begin{figure}[ht]
@@ -347,9 +348,7 @@ D[i, j] = \min
 Par exemple, \expword{D(amibe, immature) = 6}. 
 Dans ce cas, ``i" et ``m" sont insérés (1+1) ; ``a" est transposé avec ``m" (1) ; ``t" est inséré (1) ; ``i" est substitué par ``u" (1) ;  ``b" est substitué par ``r" (1) et ``e" reste le même (0).
 Le calcul est illustré dans la figure \ref{fig:dam-laven-distance} où les flèches représentent d'où vient la valeur et les cellules colorées représentent le chemin choisi.
-Bien sûr, nous pouvons choisir un autre chemin qui donne une autre interprétation.
-Pour aider le choix du chemin, nous pouvons utiliser des probabilités des opérations d'édition.
-Par exemple, dans la correction d'orthographe, des lettres sont plus probables d'être remplacées par d'autres (celles adjacentes dans le clavier).
+Lorsqu'il y a une transposition, nous sautons deux cellules diagonales.
 \begin{figure}[ht]
 	\centering
 	\begin{tabular}{|r|r|r|r|r|r|r|r|r|r|}
@@ -427,7 +426,7 @@ Les cases en gras représentent la plage de recherche en utilisant l'éloignemen
 Les cases soulignées représentent l'intersection entre la ième correspondance de X et la ième correspondance de Y.
 Les correspondances soulignées des vecteurs des deux mots représentent des transpositions. 
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	
 \begin{minipage}{0.45\textwidth}
 \small
@@ -480,7 +479,8 @@ Les correspondances soulignées des vecteurs des deux mots représentent des tra
 	\cline{2-9}
 \end{tabular}
 \end{minipage}
-\caption[Exemple de calcul de la distance de Jaro]{Exemple de calcul de la distance de Jaro des mots ``amibe"  et ``immature" \label{fig:jaro}}
+\caption[Exemple de calcul de la distance de Jaro.]{Exemple de calcul de la distance de Jaro des mots ``amibe"  et ``immature".}
+\label{fig:jaro}
 \end{figure}
 
 %===================================================================================

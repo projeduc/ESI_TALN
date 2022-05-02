@@ -69,8 +69,8 @@ Un lexème peut représenter plusieurs sens ; qui sont référencés ici par \ke
  
 \begin{figure}[ht]
 	\centering 
-	\hgraphpage[.5\textwidth]{exp-bd-lex_.pdf}
-	\caption[Exemple des informations et leurs relations dans une base lexicale]{Exemple des informations et leurs relations dans une base lexicale \cite{2019-white-al}}
+	\hgraphpage[.6\textwidth]{exp-bd-lex.pdf}
+	\caption[Exemple des informations et leurs relations dans une base lexicale.]{Exemple des informations et leurs relations dans une base lexicale ; figure reconstruite de \cite{2019-white-al}.}
 	\label{fig:base-lex-exp}
 \end{figure}
 
@@ -100,10 +100,38 @@ Exemple, \expword{05659525 : (the capacity for rational thought or inference or 
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{exp-wordnet_.pdf}
-	\caption[Exemple de WordNet]{Exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
+	\begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.90\textwidth]
+%		\footnotesize
+		\fontsize{11}{8}\selectfont
+%		\begin{alltt}
+			{\normalsize\bfseries Noun}
+			\begin{itemize}[label=$\bullet$]
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason}, \textcolor{blue}{\underline{ground}} (a rational motive for a belief or action) \textit{"the reason that war was declared"; "the grounds for their declaration"}
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason} (an explanation of the cause of some phenomenon) \textit{"the reason a steady state was never reached was that the back pressure built up too slowly"}
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason}, \textcolor{blue}{\underline{understanding}}, \textcolor{blue}{\underline{intellect}} (the capacity for rational thought or inference or discrimination) \textit{"we are told that man is endowed with reason and capable of distinguishing good from evil"}
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textcolor{blue}{\underline{rationality}}, \textbf{reason}, \textcolor{blue}{\underline{reasonableness}} (the state of having good sense and sound judgment) \textit{"his rationality may have been impaired"; "he had to rely less on reason than on rousing their emotions"}
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textcolor{blue}{\underline{cause}}, \textbf{reason}, \textcolor{blue}{\underline{grounds}} (a justification for something existing or happening) \textit{"he had no cause to complain"; "they had good reason to rejoice"}
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(n)} \textbf{reason} (a fact that logically justifies some premise or conclusion) \textit{"there is reason to believe he is lying"}
+			\end{itemize}
+			
+			{\normalsize\bfseries Verb}
+			\begin{itemize}[label=$\bullet$]
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(v)} \textbf{reason}, \textcolor{blue}{\underline{reason out}}, \textcolor{blue}{\underline{conclude}} (decide by reasoning; draw or come to a conclusion) \textit{"We reasoned that it was cheaper to rent than to buy a house"}
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(v)} \textcolor{blue}{\underline{argue}}, \textbf{reason} (present reasons and arguments)
+				\item \textcolor{blue}{\underline{S:}} \textcolor{red}{(v)} \textbf{reason} (think logically) \textit{"The children must learn to reason"}
+			\end{itemize}
+%		\end{alltt}
+	\end{tcolorbox}
+	\caption[Exemple de WordNet]{Exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn} [visité le 2022-05-01].}
 	\label{fig:wordnet-exp}
 \end{figure}
+
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.7\textwidth]{exp-wordnet_.pdf}
+%	\caption[Exemple de WordNet]{Exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn}}
+%	\label{fig:wordnet-exp}
+%\end{figure}
 
 Un sens est marqué par une catégorie lexicographique (\keyword{supersense}).
 Exemple. \expword{05659525 : noun.cognition}
@@ -144,12 +172,12 @@ Le tableau \ref{tab:rel-sem-wordnet} représente les relations sémantiques des 
 		\hline
 		\textbf{Relation} & \textbf{Définition} & \textbf{Exemple} \\
 		\hline
-		Hypernym & d'un concept spécifique vers un autre générique & \expword{breakfast\textsuperscript{1} \textrightarrow meal\textsuperscript{1} }\\
-		Hyponym & d'un concept générique vers un autre spécifique & \expword{meal\textsuperscript{1} \textrightarrow lunch\textsuperscript{1}} \\
-		Instance Hypernym & d'une instance vers son concept & \expword{Austen\textsuperscript{1} \textrightarrow author\textsuperscript{1}} \\
-		Instance Hyponym & d'un concept vers son instance & \expword{composer\textsuperscript{1} \textrightarrow Bach\textsuperscript{1}} \\
-		Part Meronym & d'un concept entier vers une partie & \expword{table\textsuperscript{2} \textrightarrow leg\textsuperscript{3}} \\
-		Part Holonym & d'une partie vers un entier & \expword{course\textsuperscript{7} \textrightarrow meal\textsuperscript{1}} \\
+		Hypernym & d'un concept spécifique vers un autre générique & \expword{breakfast\textsuperscript{1} \textrightarrow\ meal\textsuperscript{1} }\\
+		Hyponym & d'un concept générique vers un autre spécifique & \expword{meal\textsuperscript{1} \textrightarrow\ lunch\textsuperscript{1}} \\
+		Instance Hypernym & d'une instance vers son concept & \expword{Austen\textsuperscript{1} \textrightarrow\ author\textsuperscript{1}} \\
+		Instance Hyponym & d'un concept vers son instance & \expword{composer\textsuperscript{1} \textrightarrow\ Bach\textsuperscript{1}} \\
+		Part Meronym & d'un concept entier vers une partie & \expword{table\textsuperscript{2} \textrightarrow\ leg\textsuperscript{3}} \\
+		Part Holonym & d'une partie vers un entier & \expword{course\textsuperscript{7} \textrightarrow\ meal\textsuperscript{1}} \\
 		Antonym & d'un concept vers son opposition sémantique & \expword{leader\textsuperscript{1} $ \leftrightarrow $ follower\textsuperscript{1}}\\
 		Derivation & d'un mot vers un autre ayant la même racine & \expword{destruction\textsuperscript{1} $ \leftrightarrow $ destroy\textsuperscript{1}} \\
 		\hline\hline
@@ -157,9 +185,9 @@ Le tableau \ref{tab:rel-sem-wordnet} représente les relations sémantiques des 
 		\hline
 		\textbf{Relation} & \textbf{Définition} & \textbf{Exemple} \\
 		\hline
-		Hypernym & d'un évènement spécifique vers un autre générique & \expword{fly\textsuperscript{9} \textrightarrow travel\textsuperscript{5}} \\
-		Troponym & d'un évènement générique vers un autre spécifique & \expword{walk\textsuperscript{1} \textrightarrow stroll\textsuperscript{1}} \\
-		Entails & d'un évènement vers un autre qui l'implique & \expword{snore\textsuperscript{1} \textrightarrow sleep\textsuperscript{1}} \\
+		Hypernym & d'un évènement spécifique vers un autre générique & \expword{fly\textsuperscript{9} \textrightarrow\ travel\textsuperscript{5}} \\
+		Troponym & d'un évènement générique vers un autre spécifique & \expword{walk\textsuperscript{1} \textrightarrow\ stroll\textsuperscript{1}} \\
+		Entails & d'un évènement vers un autre qui l'implique & \expword{snore\textsuperscript{1} \textrightarrow\ sleep\textsuperscript{1}} \\ 
 		Antonym & d'un évènement vers son opposition sémantique & \expword{increase\textsuperscript{1} $ \leftrightarrow $ decrease\textsuperscript{1}} \\
 		\hline\hline
 	\end{tabular}
@@ -206,8 +234,8 @@ C'est un réseau sémantique multilingue qui utilise plusieurs sources comme Wor
 Chaque concept a un synset comme dans \keyword[W]{WordNet} et qui est partagé par plusieurs langues. 
 La structure de BabelNet est illustrée dans la figure \ref{fig:babelnet-struc}.
 \begin{figure}[ht]
-	\hgraphpage{babelnet.png}
-	\caption[Structure de BabelNet]{Structure de BabelNet \cite{2012-navigli-ponzetto}}
+	\hgraphpage{babelnet.pdf}
+	\caption[Structure de BabelNet]{Structure de BabelNet ; figure reconstruite de \cite{2012-navigli-ponzetto}.}
 	\label{fig:babelnet-struc}
 \end{figure}
 
@@ -412,10 +440,10 @@ L'équation \ref{eq:svd} représente cette décomposition en plus de détail.
 	\ldots \\ 
 	\end{matrix}
 	\begin{bmatrix}
-	t_{L1} \\ 
+	t_{1L} \\ 
 	\vdots \\
 	\vdots \\
-	t_{L1} \\ 
+	t_{NL} \\ 
 	\end{bmatrix}
 	\right]
 }^{T \text{ : terme-concept}}
@@ -435,16 +463,18 @@ L'équation \ref{eq:svd} représente cette décomposition en plus de détail.
 	\end{bmatrix}\\
 	\vdots \\
 	\begin{bmatrix}
-	d_{11} & \ldots & \ldots & \ldots & d_{1M} \\
+	d_{L1} & \ldots & \ldots & \ldots & d_{LM} \\
 	\end{bmatrix}\\
 	\end{bmatrix}
 }^{D^\top \text{ : concept-document}}
 \label{eq:svd}
 \end{equation}
-Dans cette composition, les deux vecteurs décomposés sont conditionnés comme dans l'équation \ref{eq:svd-cnd1} et l'équation \ref{eq:svd-cnd2}. 
+La matrice $S$ est une matrice diagonale avec des valeurs non négatives.
+Les valeurs du diagonal représentent le poids (force) du concept ; elles doivent être ordonnées de la plus forte à la plus faible.
+Les deux autres vecteurs décomposés sont orthonormales comme indiqué dans l'équation \ref{eq:svd-cnd1} et l'équation \ref{eq:svd-cnd2}. 
 \begin{align}
-T^\top T = \mathbb{I}_{N \times N} \label{eq:svd-cnd1} \\
-D^\top D = \mathbb{I}_{M \times M} \label{eq:svd-cnd2}
+T^\top T = \mathbb{I}_{L \times L} \label{eq:svd-cnd1} \\
+D^\top D = \mathbb{I}_{L \times L} \label{eq:svd-cnd2}
 \end{align}
 Afin de résoudre \ac{svd}, nous pouvons utiliser des méthodes de programmation dynamique comme l'algorithme de Lanczos et la décomposition QR.
 
@@ -491,9 +521,10 @@ Word2vec est un outil fourni par Google implémentant deux méthodes de Word \ke
 
 Les mots sont encodés sur un petit vecteur (50-1000) en utilisant un encodeur-décodeur. 
 Dans la méthode CBOW, nous essayons d'estimer le mot $w_i$ en utilisant les mots avant et après. 
-Cela revient à maximiser sa probabilité comme indiqué dans l'équation \ref{eq:cbow}.
+Cela revient à maximiser sa probabilité étant donné les mots de son contexte ($p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})$).
+Donc, il faut minimiser la fonction du coût indiquée dans l'équation \ref{eq:cbow} où $T$ est le nombre des mots existants dans le dataset d'entraînement.
 \begin{equation}
-\max \frac{-1}{V} \sum_{i=1}^{V} p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
+J = \frac{-1}{V} \sum_{i=1}^{T} \log p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
 \label{eq:cbow}
 \end{equation}
 La figure \ref{fig:word2vec}(a) représente l'architecture CBOW avec un contexte de 2-2. 
@@ -502,9 +533,10 @@ La couche de sortie contient $|V|$ neurones avec $L * |V|$ paramètres.
 En appliquant une fonction ``Softmax" sur ce vecteur, nous aurons un vecteur de probabilités où nous devons maximiser la probabilité du mot destinataire $w_i$ (elle doit être $1$) et minimiser les probabilités des autres mots du vocabulaire (elles doivent être $0$). 
 
 Dans la méthode Skip-gram, nous essayons d'estimer le contexte étant donné le mot $w_i$. 
-Cela revient à maximiser les probabilités du contexte comme indiqué dans l'équation \ref{eq:skipgram}. 
+Cela revient à maximiser la probabilité $p(w_j |w_i)$ où $w_j$ est un mot du contexte du mot $w_i$.
+Donc, il faut minimiser la fonction du coût indiquée dans l'équation \ref{eq:skipgram} où $T$ est le nombre des mots existants dans le dataset d'entraînement.
 \begin{equation}
-\max \frac{-1}{V} \sum_{i=1}^{V} \sum_{j= i-2; j \ne i}^{i+2} p(w_j |w_i)
+J = \frac{-1}{T} \sum_{i=1}^{T} \sum_{j= i-2; j \ne i}^{i+2} \log p(w_j |w_i)
 \label{eq:skipgram}
 \end{equation}
 La figure \ref{fig:word2vec}(b) représente l'architecture Skip-gram avec un contexte de 2-2. 
@@ -624,7 +656,7 @@ f(x) = \begin{cases}
 \end{cases}
 \label{eq:glove-f-estime7}
 \end{equation}
-La fonction du coût sera calculée en utilisant l'équation \ref{eq:glove-f-estime8}.
+La fonction du coût sera calculée en utilisant l'équation \ref{eq:glove-f-estime8} où $\theta \equiv \{w_i, \tilde{w_j}, b_i, \tilde{b_j}\}$.
 \begin{equation}
 J(\theta) = \sum_{i=1}^{V} \sum_{j=1}^{V} f(X_{ij}) (w_i^\top \tilde{w_j} + b_i + \tilde{b_j} - \log X_{ij})^2
 \label{eq:glove-f-estime8}
@@ -645,7 +677,7 @@ Nous utilisons $L$ couches des cellules \keyword[B]{Bi-LSTM} (LSTMs bidirectionn
 Pour chaque  phrase de $N$ mot, nous essayons de maximiser la somme des logarithmes des probabilités en avant et en arrière, comme indiqué dans l'équation \ref{eq:elmo-erreur}. 
 Les paramètres à entraîner sont : $\Theta_x$ (embedding des caractères), $\overrightarrow{\Theta}_{LSTM}$ (les LSTMs en avant), $\overleftarrow{\Theta}_{LSTM}$ (les LSTMs en arrière) et $\Theta_s$ (combinaison entre les deux directions : en avant et en arrière).
 \begin{equation}
-\sum_{k=1}^{N} 
+\max \sum_{k=1}^{N} 
 \log P(w_k | w_1,\ldots,w_{k-1}; \Theta_x, \overrightarrow{\Theta}_{LSTM}, \Theta_s)
 +
 \log P(w_k | w_{k+1},\ldots,w_{N}; \Theta_x, \overleftarrow{\Theta}_{LSTM}, \Theta_s)
@@ -697,7 +729,7 @@ Chaque token est représenté par 3 \keywordpl[E]{embedding} de taille $N$
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{bert-arch.pdf}
+	\hgraphpage[.7\textwidth]{bert-arch.pdf}
 	\caption{Architecture du modèle BERT}
 	\label{fig:bert-arch}
 \end{figure}
@@ -717,20 +749,33 @@ Dans le cas de \keyword[B]{BERT}, nous utilisons deux tâches afin d'avoir un mo
 Puisque \keyword[B]{BERT} se base sur le concept de l'apprentissage par transfert, nous pouvons régler le modèle sur d'autres tâches. 
 Dans ce cas, la représentation vectorielle est le modèle neuronale lui-même. 
 La figure \ref{fig:bert-app} représente quelques tâches accomplies avec \keyword[B]{BERT}. 
-En haut à gauche, c'est une tâche qui classifie la relation entre deux phrases ; comme la similarité (similaire/non similaire).
-En haut à droit, c'est une tâche de classification d'une phrase ; comme l'analyse de sentiments.
-En bas à gauche, c'est la tâche de question/réponse où l'entrée est une question et un paragraphe et la sortie est une partie du paragraphe contenant la réponse. 
-En bas à droit, c'est une tâche d'annotation (tagging) ; comme la reconnaissance des entités nommées.
+En haut à gauche, c'est une tâche de classification d'une phrase ; comme l'analyse de sentiments.
+En haut à droit, c'est une tâche qui classifie la relation entre deux phrases ; comme la similarité (similaire/non similaire).
+En bas à gauche, c'est une tâche d'annotation (tagging) ; comme la reconnaissance des entités nommées.
+En bas à droit, c'est la tâche de question/réponse où l'entrée est une question et un paragraphe et la sortie est une partie du paragraphe contenant la réponse. 
+
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{bert-taches1_.pdf}
+	\hgraphpage[.7\textwidth]{bert-taches.pdf}
 	
-	\hgraphpage[.7\textwidth]{bert-taches2_.pdf}
-	
-	\caption[Réglage de BERT sur des différentes tâches]{Réglage de BERT sur des différentes tâches \cite{2019-devlin-al}}
+	\caption[Réglage de BERT sur des différentes tâches]{Réglage de BERT sur des différentes tâches ; figure reconstruite de \cite{2019-devlin-al}}
 	\label{fig:bert-app}
 \end{figure}
+
+%En haut à gauche, c'est une tâche qui classifie la relation entre deux phrases ; comme la similarité (similaire/non similaire).
+%En haut à droit, c'est une tâche de classification d'une phrase ; comme l'analyse de sentiments.
+%En bas à gauche, c'est la tâche de question/réponse où l'entrée est une question et un paragraphe et la sortie est une partie du paragraphe contenant la réponse. 
+%En bas à droit, c'est une tâche d'annotation (tagging) ; comme la reconnaissance des entités nommées.
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.7\textwidth]{bert-taches1_.pdf}
+%	
+%	\hgraphpage[.7\textwidth]{bert-taches2_.pdf}
+%	
+%	\caption[Réglage de BERT sur des différentes tâches]{Réglage de BERT sur des différentes tâches \cite{2019-devlin-al}}
+%	\label{fig:bert-app}
+%\end{figure}
 
 
 \subsection{Évaluation des modèles}
@@ -783,15 +828,15 @@ Le sens avec un nombre maximum est le sens voulu.
 	\Donnees{un mot $w$; une phrase $s$ contenant $w$}
 	\Res{Le sens de $w$}
 	
-	meilleur\_sens \textleftarrow plus fréquent parmi les sens de $w$\;
-	superposition\_max \textleftarrow 0\;
-	contexte \textleftarrow l'ensemble des mots de $s$\; 
+	meilleur\_sens \textleftarrow\ plus fréquent parmi les sens de $w$\;
+	superposition\_max \textleftarrow\ 0\;
+	contexte \textleftarrow\ l'ensemble des mots de $s$\; 
 	
 	\PourTous{sens $w_i$ de $w$}{ 
-		signature \textleftarrow l'ensemble des mots dans le \textbf{gloss} et exemples du sens $w_i$\;
-		superposition \textleftarrow nombre des mots en commun entre \textbf{contexte} et \textbf{signature}\;
+		signature \textleftarrow\ l'ensemble des mots dans le \textbf{gloss} et exemples du sens $w_i$\;
+		superposition \textleftarrow\ nombre des mots en commun entre \textbf{contexte} et \textbf{signature}\;
 		\Si{superposition $>$ superposition\_max}{
-			superposition\_max \textleftarrow superposition\;
+			superposition\_max \textleftarrow\ superposition\;
 			meilleur\_sens \textleftarrow $w_i$\;
 		}
 	}
@@ -888,14 +933,21 @@ D'où la nécessité d'appliquer une évaluation extrinsèque afin de choisir le
 	
 	\begin{tabular}{|lll|}
 		\hline 
-		I fish a fish in the river & the river where I fish is far & the fish is far in the river\\
+		I fish a fish in the river & the river where I fish is far & fish live in the river\\
 		\hline
 	\end{tabular}
 
 	\begin{enumerate}
-		\item En utilisant TF, encoder les deux premières phrases et calculer Cos(S1, S2) 
-		\item En appliquant un filtrage des mots vides dont la liste est [ I, a, in, the, is, where ], refaire la même chose
-		\item Trouver la représentation Mot-Mot du mot "fish" avec une co-occurrence de 2-2.
+		\item En utilisant TF, encoder ces phrases et calculer la similarité cosinus entre les phrases deux à deux (ordonner les mots alphabétiquement).
+		Calculer la similarité entre les mots : ``far", ``fish", ``live" et ``river".
+		\item En appliquant un filtrage des mots vides dont la liste est [ I, a, in, the, is, where ], refaire la même chose.
+		\item Trouver la représentation Mot-Mot de tous les mots avec une co-occurrence de 2-2 (ordonner les mots alphabétiquement). Calculer la similarité cosinus entre les mots : ``far", ``fish", ``live" et ``river".
+		\item Calculer la corrélation entre la similarité des mots en se basant sur TF avec celle en se basant Mot-Mot. 
+		La corrélation peut être Pearson, Spearman ou Kendall. Que pouvons-nous conclure ?
+		\item Si on encode une phrase par le centre des vecteurs des mots qui la composent, quelle seront les représentations vectorielles des phrases en se basant sur la représentation Mot-Mot ?
+		\item Calculer la corrélation entre la similarité des phrases en se basant sur TF avec celle en se basant Mot-Mot. 
+		Que pouvons-nous conclure ?
+		
 	\end{enumerate}
 
 	

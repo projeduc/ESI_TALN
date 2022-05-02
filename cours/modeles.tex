@@ -79,7 +79,7 @@ ce modèle est appelé \keyword[N]{N-gramme}.
 Étant donné un processus stochastique, ceci vérifie la propriété de Markov si l'état futur ne dépend que de l'état présent. 
 Donc, la probabilité d'occurrence d'un mot $w_i$ sachant l'occurrence de plusieurs mots $w_1, \ldots, w_{i-1}$ ne dépend que sur le mot précédent $w_{i-1}$ suivant la propriété de Markov (voir l'équation \ref{eq:markov}). 
 Ce modèle est appelé un modèle \keyword[B]{Bi-gramme}.
-Ce modèle peut être représenté graphiquement comme un automate à état fini où les mots sont représentés comme des états et les transitions sont représentées par des probabilités.
+Ce modèle peut être représenté graphiquement comme un automate à états finis où les mots sont représentés comme des états et les transitions sont représentées par des probabilités.
 \begin{equation}
 	P(w_i | w_1,\ldots, w_{i-1}) = P(w_i | w_{i-1})
 	\label{eq:markov}
@@ -348,7 +348,7 @@ Pour ce faire, il passe par une couche de sortie ayant des paramètres $U \in \m
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[0.6\textwidth]{rnn-model.pdf}
+	\hgraphpage[0.65\textwidth]{rnn-model.pdf}
 	\caption[Modèle de langage à base des réseaux de neurones récurrents]{Modèle de langage à base des réseaux de neurones récurrents proposé par \citet{2010-mokolov-al} ; figure inspirée de la description.}
 	\label{fig:mokolov}
 \end{figure}

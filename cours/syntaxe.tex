@@ -1,7 +1,7 @@
 % !TEX TS-program = xelatex
 % !TeX program = xelatex
 % !TEX encoding = UTF-8
-% !TEX spellcheck = fr
+% !TeX spellcheck = fr
 
 %=====================================================================
 \ifx\wholebook\relax\else
@@ -125,7 +125,8 @@ Dans notre exemple, nous pouvons ajouter l'information que les outils d'écritur
 		\hgraphpage[0.45\textwidth]{cfg-ambigue2.pdf} \\
 		(1) & (2) \\
 	\end{tabular}
-	\caption[Exemple de deux arbres syntaxiques d'une même phrase]{Exemple de deux arbres syntaxiques de la phrase ``L'élève a écrit une solution avec son explication" \label{fig:cfg-ambigue}}
+	\caption[Exemple de deux arbres syntaxiques d'une même phrase.]{Exemple de deux arbres syntaxiques de la phrase ``L'élève a écrit une solution avec son explication".}
+	\label{fig:cfg-ambigue}
 \end{figure}
 
 Une autre méthode pour faire face à ce problème est d'utiliser les \ac{cfg} probabilistes : \ac{pcfg}.
@@ -152,7 +153,8 @@ Un exemple de l'annotation fonctionnelle des deux phrases ``\expword{L'élève a
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.65\textwidth]{exp-parse-fonct_.pdf}
-	\caption[Exemple d'une analyse fonctionnelle de deux phrases]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/} [visité le 2021-09-25]\label{fig:parse-fct-exp}}
+	\caption[Exemple d'une analyse fonctionnelle de deux phrases.]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/} [visité le 2021-09-25].}
+	\label{fig:parse-fct-exp}
 \end{figure}
 
 La structure de dépendance est formalisée comme un graphe orienté $G=(V, A)$ où les mots sont représentés par des sommets $V$ et les relations sont représentées par des arcs $A$. 
@@ -384,7 +386,8 @@ Le tableau d'analyse est illustré dans la figure \ref{fig:exp-cky-trait}.
 	\multicolumn{5}{l|}{}& \textbf{(N, 0, 0, 0)} \\
 	\cline{6-6}
 \end{tabular}
-\caption[Exemple de l'analyse CKY]{Exemple de l'analyse CKY de la phrase ``la petite forme une petite phrase" \label{fig:exp-cky-trait}}
+\caption[Exemple de l'analyse CKY.]{Exemple de l'analyse CKY de la phrase ``la petite forme une petite phrase".}
+\label{fig:exp-cky-trait}
 \end{figure}
 
 
@@ -494,12 +497,13 @@ Une transition d'un état vers un autre peut être une action sur :
 	\item $\beta$ : retirer un mot ou ajouter un au début ;
 	\item $A$ : ajouter une dépendance entre 2 mots.
 \end{itemize}
-\textbf{oracle} est un modèle entraîné pour décider la transition suivante.
+\textbf{Oracle} est un modèle entraîné pour décider la transition suivante.
 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.38\textwidth]{transitions.pdf}
-	\caption{Architecture d'un analyseur des dépendances par transition \label{fig:dep-trans-arch}}
+	\caption{Architecture d'un analyseur des dépendances par transition.}
+	\label{fig:dep-trans-arch}
 \end{figure}
 
 
@@ -543,7 +547,7 @@ Les caractéristiques utilisées par la fonction $\Psi$ peuvent être des caract
 Il y a deux approches pour l'analyse de dépendances par transitions : Arc-standard et Arc-eager. 
 Dans Arc-standard, les relations de dépendances sont détectées seulement entre les mots dans la pile. 
 Lorsqu'un mot est considéré comme une tête d'une relation, il sera éliminé de la pile. 
-La figure \ref{fig:arc-standard-exp} représente un exemple d'analyse de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-standard.
+Le tableau \ref{tab:arc-standard-exp} représente un exemple d'analyse de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-standard.
 Les transitions possibles dans cette approche sont :
 \begin{itemize}
 	\item \optword{SHIFT} : déplacer le premier élément dans le tampon vers la pile 
@@ -556,7 +560,7 @@ Les transitions possibles dans cette approche sont :
 	\[ (\sigma|w_i, w_j|\beta, A) \Rightarrow  (\sigma, w_i|\beta, A \cup \{w_i \rightarrow w_j \}) \] 
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 	\centering\footnotesize
 	\begin{tabular}{llll}
 		\hline\hline
@@ -578,8 +582,9 @@ Les transitions possibles dans cette approche sont :
 		14. [ROOT] & $\emptyset$ & FIN & / \\
 		\hline\hline
 	\end{tabular}
-	\caption[Exemple de dérivations non étiquetées en utilisant Arc-standard]{Exemple de dérivations non étiquetées de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-standard\label{fig:arc-standard-exp}}
-\end{figure}
+	\caption[Exemple de dérivations non étiquetées en utilisant Arc-standard.]{Exemple de dérivations non étiquetées de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-standard.}
+	\label{tab:arc-standard-exp}
+\end{table}
 %\begin{figure}[ht]
 %	\centering
 %	\hgraphpage[.8\textwidth]{exp-arc-std_.pdf}
@@ -590,7 +595,7 @@ Dans Arc-Eager, nous essayons de détecter les relations de dépendance le plus 
 Pour ce faire, les relations doivent être détectées entre le sommet de la pile et le mot courant. 
 Dans ce cas, nous n'avançons pas la tête de lecture automatiquement lorsque nous ajoutons une nouvelle relation. 
 La seule méthode pour le faire est d'empiler le mot dans la pile en utilisant la transition ``SHIFT". 
-Un exemple de l'analyse de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-eager est illustré dans la figure \ref{fig:arc-eager-exp}.
+Un exemple de l'analyse de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-eager est illustré dans le tableau \ref{tab:arc-eager-exp}.
 Les transitions possibles dans cette approches sont :
 \begin{itemize}
 	\item \optword{SHIFT} est le même que ``Arc-standard"
@@ -606,7 +611,7 @@ Les transitions possibles dans cette approches sont :
 	%	\[ (\sigma|w_i, \beta, \mathcal{A}) \overset{\exists w_k (w_k \rightarrow w_i) \in \mathcal{A}}{\Longrightarrow} (\sigma, \beta, \mathcal{A}) \] 
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 		\centering\footnotesize
 	\begin{tabular}{llll}
 		\hline\hline
@@ -628,8 +633,9 @@ Les transitions possibles dans cette approches sont :
 		14. [ROOT] & $\emptyset$ & FIN & / \\
 		\hline\hline
 	\end{tabular}
-	\caption[Exemple de dérivations non étiquetées en utilisant Arc-eager]{Exemple de dérivations non étiquetées de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-eager\label{fig:arc-eager-exp}}
-\end{figure}
+	\caption[Exemple de dérivations non étiquetées en utilisant Arc-eager.]{Exemple de dérivations non étiquetées de la phrase ``\expword{Il écrit la solution et son explication}" en utilisant Arc-eager.}
+	\label{tab:arc-eager-exp}
+\end{table}
 %\begin{figure}[ht]
 %	\centering
 %	\hgraphpage[.8\textwidth]{exp-arc-eager_.pdf}
@@ -645,6 +651,8 @@ Dans Arc-standard, à la place de 3 transitions, nous aurons $1+2R$ transitions 
 Le filtrage des relations non probables est une autre approche pour trouver l'arbre de dépendance d'un mot donné $w$. 
 Dans un premier temps, nous considérons toutes les dépendances possibles entre les mots. 
 Ensuite, nous commençons à éliminer les relations non probables jusqu'à arriver au résultat final. 
+La figure \ref{fig:dep-graph-arch} représente l'architecture générale d'un analyseur des dépendances par graphe.
+L'analyseur fournit un module ``Notation" qui note les arcs.
 D'une façon plus formelle, nous commençons l'analyse par un graphe complet $G = (V, E)$ où $V$ est l'ensemble de nœuds (mots) et $E$ l'ensemble d'arcs (relations de dépendance). 
 Ensuite, nous cherchons l'arbre $T = (V, F)$ parmi les arbres possibles $\mathcal{T}(G)$ qui est un sous-graphe de $G$ maximisant un certain score comme indiqué dans l'équation \ref{eq:arbre-rela-max}.
 \begin{equation}
@@ -661,7 +669,8 @@ $\theta$ est l'ensemble des paramètres utilisés dans la fonction du score.
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.5\textwidth]{graphe.pdf}
-	\caption{Architecture d'un analyseur des dépendances par graphe \label{fig:dep-graph-arch}}
+	\caption{Architecture d'un analyseur des dépendances par graphe.}
+	\label{fig:dep-graph-arch}
 \end{figure}
 
 Afin d'estimer le score d'un arc $e$, nous pouvons utiliser un certain nombre de caractéristiques $f$ comme : le mot de l'entête, sa catégorie grammaticale, son lemme, ses préfixes et suffixes, la direction de l'arc, la distance entre l'entête et le dépendant, etc.
@@ -725,11 +734,18 @@ Deux fonctions sont utilisées dans cet algorithme :
 
 Prenons l'exemple de la phrase ``\expword{Book a flight}".
 La figure \ref{fig:cke-exp} représente son analyse en utilisant l'algorithme de Chu-Liu-Edmonds. 
+Dans le premier graphe, nous avons bouclé trois fois pour choisir les arcs : (Root, Book), (that, flight) et (flight, that). 
+A chaque fois un arc est choisi, nous réglons la pondération jusqu'à avoir le deuxième graphe.
+Parmi les arcs ajoutés, il y a un cycle \{(that, flight) et (flight, that)\}.
+Donc, nous devons fusionner les deux nœuds (contracter) ce qui nous donne le troisième graphe.
+Nous appliquons les mêmes opérations sur le graphe résultat.
+Lorsqu'il n'y aura plus de cycles, nous commençons à étendre le graphe pour supprimer les arcs non nécessaires. 
 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-graphe-analyse_.pdf}
-	\caption[Exemple de l'analyse Chu-Liu-Edmonds]{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}\label{fig:cke-exp}}
+	\caption[Exemple de l'analyse Chu-Liu-Edmonds]{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}}
+	\label{fig:cke-exp}
 \end{figure}
 
 \sectioni{Discussion}
@@ -764,7 +780,64 @@ Dans le cas des dépendances, nous pouvons évaluer un arbre en utilisant le nom
 \subsubsection*{Exercices}
 
 \begin{enumerate}
-	\item ...
+	\item Voici une grammaire (syntagmes et lexicon) : 
+	
+	\begin{tabular}{|lllll|}
+		\hline
+		S \textrightarrow\ NP VP & NP \textrightarrow\ DET N && DET \textrightarrow\ le | la & NN \textrightarrow\ Toma | Jerry \\
+		NP \textrightarrow\ NN & VP \textrightarrow\ VT NP &&  N \textrightarrow\  souris | chat | fromage | maison & P \textrightarrow\ de\\
+		VP \textrightarrow\ VI & PP \textrightarrow\ P NP && VT \textrightarrow\ mange | vole & VI \textrightarrow\ dort | sort\\
+		\hline
+	\end{tabular}
+	
+	\begin{enumerate}
+		\item Ajouter des règles à ajouter pour pouvoir générer les phrases suivantes : (1) Le chat dors (2) La souris mange le fromage (3) Tom vole le fromage de la souris (4) Tom sort de la maison.
+		\item Pourquoi les noms propres sont séparés de l'ensemble des noms ?
+		\item Nous voulons pouvoir générer la phrase suivante : Nora vole le fromage du chat. 
+		La grammaire ne doit pas générer une phrase comme : Jerry vole la fromage de le chat. 
+		Quelles sont les règles à ajouter et à supprimer ? (En français : "de le" devient "du".)
+	\end{enumerate}
+
+	\item Voici une grammaire (syntagmes et lexicon) : 
+	
+	\begin{tabular}{|lllll|}
+		\hline
+		S \textrightarrow\ NP VP & NP \textrightarrow\ AJ NM | NM | PN & AJ \textrightarrow\ small | big  & VB \textrightarrow\ fish | like | swim &  \\
+		PP \textrightarrow\ PR NP & VP \textrightarrow\ VB NP | VB PP & NM \textrightarrow\ fish | ducks & PR \textrightarrow\ like & PN \textrightarrow\ I \\
+		\hline
+	\end{tabular}
+	
+	\begin{enumerate}
+		\item Analyser et dessiner l'arbre syntaxique des phrases ``big ducks like small fish", ``I fish like big ducks" et ``I swim like fish swim" en utilisant CKY.
+		\item Analyser et dessigner l'arbre syntaxique des mêmes phrases en utilisant Arc-standard et Arc-Eager où le choix est supposé être parfait.
+	\end{enumerate}
+
+	\item Voici un treebank  (4 phrases où chaque mot est annoté par sa catégorie grammaticale) :
+	
+	\begin{tabular}{|lll|}
+		\hline
+		I/PN fish/VB small/AJ fish/NM &&
+		I/PN swim/VB like/PR fish/NM\\
+		ducks/NM swim/VB &&
+		I/PN like/VB big/AJ fish/NM \\
+		\hline
+	\end{tabular}
+	
+	\begin{enumerate}
+		\item Calculer la probabilité de chaque règle de l'exercice précédent.
+		\item Analyser les phrases précédentes en utilisant CKY probabiliste.
+		\item Analyser les 4 phrases avec Arc-standard. 
+		\item Entraîner un modèle de régression qui décide l'action suivante (3 classes) en se basant sur le mot et le tag (vecteur de 12 entiers : 5 tags + 7 mots). 
+		Pour simplifier le calcul : appliquer seulement 5 itérations ; utiliser la normalisation à la place de Softmax comme fonction d'activation ; utiliser la fonction de coût sans la partie ``\textbf{log}".
+	\end{enumerate}
+
+	\item Supposons que nous avions un modèle d'encodage des mots comme suit : 
+	$Em(w_1\dots w_n) = \frac{\sum_{i=1}^{n} Pos(w_i)}{n}$ où $Pos$ est la position du caractère dans l'alphabet. 
+	Un modèle $Et$ pour encoder les tags consiste à ordonner les tags selon l'ordre alphabétique et retourne l'ordre du tag comme code.
+	Supposons que nous avions entraîné un modèle de notation des arcs (liens entre deux phrases) où 
+	$Notation((u, v)) = \frac{Et(u) - Et(v)}{1+ Em(u)*Em(v)}$.
+	Nous prenons $Em(Root) = 0$ et $Et(Root) = 0$. 
+	Analyser les dépendances de la phrase ``ducks like fish" en utilisant la méthode par graphe.
 	
 \end{enumerate}
 

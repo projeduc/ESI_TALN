@@ -78,7 +78,8 @@ Un exemple d'une phrase en anglais étiquetée morpho-syntaxiquement est illustr
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-pos_.pdf}
-	\caption[Exemple d'étiquetage morpho-syntaxique]{Exemple d'étiquetage morpho-syntaxique par \url{https://corenlp.run/} [visité le 2021-09-25]\label{fig:ems-exp}}
+	\caption[Exemple d'étiquetage morpho-syntaxique.]{Exemple d'étiquetage morpho-syntaxique par \url{https://corenlp.run/} [visité le 2021-09-25].}
+	\label{fig:ems-exp}
 \end{figure}
 
 Une autre tâche de ce type est la reconnaissance d'entités nommées.
@@ -95,7 +96,8 @@ La figure \ref{fig:ner-exp} représente un exemple d'une phrase en anglais conte
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{exp-ner_.pdf}
-	\caption[Exemple de la reconnaissance d'entités nommées]{Exemple de la reconnaissance d'entités nommées par \url{https://corenlp.run/} [visité le 2021-09-25]\label{fig:ner-exp}}
+	\caption[Exemple de la reconnaissance d'entités nommées.]{Exemple de la reconnaissance d'entités nommées par \url{https://corenlp.run/} [visité le 2021-09-25].}
+	\label{fig:ner-exp}
 \end{figure}
 
 L'analyse syntaxique de surface (Chunking) est un autre exemple d'étiquetage des séquences.
@@ -167,7 +169,7 @@ Dans le corpus ``Switchboard", il a le tag ``TO" lorsqu'il indique l'infinitif, 
 			ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyword{/.}
 		\end{alltt}
 	\end{tcolorbox}
-	\caption[Exemple d'un texte annoté de Penn TreeBank]{Exemple d'un texte annoté de Penn TreeBank ; figure reconstruite de \cite{2003-taylor}}
+	\caption[Exemple d'un texte annoté de Penn TreeBank.]{Exemple d'un texte annoté de Penn TreeBank ; figure reconstruite de \cite{2003-taylor}.}
 	\label{fig:penn-exp}
 \end{figure}
 
@@ -203,8 +205,8 @@ a_{n1} & a_{n2} & \ldots & a_{nn} \\
 $
 
 La figure \ref{fig:cm-exp} représente un exemple d'une chaîne de Markov pour la prédiction du temps. 
-Il est clair que les états sont $Q = [HOT, COLD, WARM]$. 
-Si nous supposions que la distribution initiale soit $\pi = [0.1, 0.7, 0.2]$, la probabilité de la séquence $HOT\, WARM\, COLD\, COLD$ serait calculée comme suit :
+Il est clair que les états sont $Q = [H, C, W]$ (Hot, Cold, Warm). 
+Si nous supposions que la distribution initiale soit $\pi = [0.1, 0.7, 0.2]$, la probabilité de la séquence $H\, W\, C\, C$ serait calculée comme suit :
 \begin{align*}
 P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 & = \pi(H) P(W | H) P(C | W) P(C | C) \\
@@ -237,7 +239,7 @@ P(H\, W\, C\, C) & = P(H) P(W | H) P(C | H\, W) P(C | H\, W\, C) \\
 			edge [bend left] node {0.3} (qH)
 			edge [] node {0.1} (qC);
 	\end{tikzpicture}
-	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps]{Exemple d'un chaîne de Markov pour la prédiction du temps ; figure reconstruite de \cite{2019-jurafsky-martin}.}
+	\caption[Exemple d'un chaîne de Markov pour la prédiction du temps.]{Exemple d'un chaîne de Markov pour la prédiction du temps ; figure reconstruite de \cite{2019-jurafsky-martin}.}
 	\label{fig:cm-exp}
 \end{figure}
 
@@ -257,6 +259,8 @@ La distribution initiale des probabilités de ces états est annotée $\pi = [\p
 Un mot $w_i$ est représenté comme une observation dans la séquences des évènements observés $O = o_1 o_2 \ldots o_T$. 
 Une observation $o_t$ peut être générée dans un état $q_i$ avec une probabilités d'observation (probabilités d'émission) $B = b_i(o_t)$.
 Un exemple d'un \keyword[H]{\ac{hmm}} est illustré dans la figure \ref{fig:hmm-exp}. 
+Les transitions représentent les probabilités de passer d'une étiquette à une autre.
+Les missions représentent les probabilités d'occurrence des mots dans les étiquettes.
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[
@@ -308,6 +312,8 @@ Il faut savoir que la probabilité $P(t_1|t_0)$ est en réalité la probabilité
 La probabilité $P(w_i | t_i)$ est une probabilité d'émission dans le modèle de Markov caché.
 \begin{align}
 \hat{t} & = \arg\max\limits_t P(t) P(w | t) \nonumber\\
+		& = \arg\max\limits_t P(t_1 \dots t_n) P(w_1 \dots w_n | t_1 \dots t_n) \nonumber\\
+		& = \arg\max\limits_t \pi_{t1} \prod_{i=2}^{n} P(t_i|t_{i-1}) \prod_{i=1}^{n} P(w_i| t_i) \nonumber\\
         & = \arg\max\limits_t \prod_{i=1}^{n} \underbrace{P(t_i|t_{i-1})}_{a_{i-1,i}} \underbrace{P(w_i | t_i)}_{b_i(w_i)} \label{eq:hmm-detail}
 \end{align}
 
@@ -552,8 +558,9 @@ Nous pouvons, bien sûr, utiliser une couche cachée pour apprendre une représe
 La figure \ref{fig:pos-rnn1} représente un exemple d'un réseau de neurones récurrent pour la détection des étiquettes morpho-syntaxique suivant cette modification.
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{rnn-simple.pdf}
-	\caption[RNN simple pour l'étiquetage morpho-syntaxique]{RNN simple pour l'étiquetage morpho-syntaxique\label{fig:pos-rnn1}}
+	\hgraphpage[.7\textwidth]{rnn-simple.pdf}
+	\caption[RNN simple pour l'étiquetage morpho-syntaxique.]{RNN simple pour l'étiquetage morpho-syntaxique.}
+	\label{fig:pos-rnn1}
 \end{figure}
 %\begin{figure}[!ht]
 %	\centering
@@ -564,11 +571,12 @@ La figure \ref{fig:pos-rnn1} représente un exemple d'un réseau de neurones ré
 Si nous voulions avoir des réseaux plus profonds et plus complexes, nous pourrions empiler plusieurs \ac{rnn} ensembles. 
 Cela permet au modèle d'apprendre des traitements plus complexes améliorant la prédiction.
 Pour entraîner ce modèle, nous aurons besoin d'un grand dataset ; la taille de ce dernier augmente avec le nombre des réseaux empilés.
-La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec trois \ac{rnn} empilés.
+La figure \ref{fig:pos-rnn2} est une illustration d'un modèle avec deux \ac{rnn} empilés.
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{rnn-stack.pdf}
-	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique]{RNNs empilés pour l'étiquetage morpho-syntaxique \label{fig:pos-rnn2}}
+	\hgraphpage[.7\textwidth]{rnn-stack.pdf}
+	\caption[RNNs empilés pour l'étiquetage morpho-syntaxique.]{RNNs empilés pour l'étiquetage morpho-syntaxique.}
+	\label{fig:pos-rnn2}
 \end{figure}
 %\begin{figure}[!ht]
 %	\centering
@@ -584,8 +592,9 @@ Nous calculons la somme entre les deux états cachés $h_i^f \oplus h_i^b$ résu
 Cette architecture est illustrée dans la figure \ref{fig:pos-rnn3}.
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{rnn-bi.pdf}
-	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique]{RNN bidirectionnel pour l'étiquetage \label{fig:pos-rnn3}}
+	\hgraphpage[.7\textwidth]{rnn-bi.pdf}
+	\caption[RNN bidirectionnel pour l'étiquetage morpho-syntaxique.]{RNN bidirectionnel pour l'étiquetage.}
+	\label{fig:pos-rnn3}
 \end{figure}
 %\begin{figure}[!ht]
 %	\centering
@@ -601,7 +610,8 @@ Le code résultat sera pris comme l'entrée du réseau récurrent (simple, empil
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[0.8\textwidth]{rnn-char.pdf}
-	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique\label{fig:pos-rnn4}}
+	\caption[Embedding de caractères pour l'étiquetage morpho-syntaxique.]{RNN avec des embedding de caractères pour l'étiquetage morpho-syntaxique.}
+	\label{fig:pos-rnn4}
 \end{figure}
 %\begin{figure}[ht]
 %	\centering
