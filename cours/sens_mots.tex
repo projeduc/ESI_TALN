@@ -359,11 +359,11 @@ Une autre technique pour exprimer la co-occurrence est l'utilisation d'une fenê
 Prenons l'exemple des phrases précédente. 
 Nous allons les rappeler ici : 
 \begin{itemize}
-	\item S1 : \expword{\underline{un ordinateur peut} vous aider}
+	\item S1 : \expword{\underline{un ordinateur peut vous} aider}
 	\item S2 : \expword{il peut vous aider et il veut vous aider}
-	\item S3 : \expword{il veut \underline{un ordinateur et} \underline{un ordinateur pour} vous}
+	\item S3 : \expword{il \underline{veut un ordinateur et un ordinateur pour vous}}
 \end{itemize}
-Les parties soulignées sont un exemple d'une fenêtre 1-1 qui capture le contexte du mot ``ordinateur". 
+Les parties soulignées sont un exemple d'une fenêtre 2-2 qui capture le contexte du mot ``ordinateur". 
 En utilisant la même fenêtre, le vocabulaire est encodé selon le tableau \ref{tab:catmot-mot}. 
 Afin de calculer la similarité entre deux mots, nous pouvons utiliser la similarité cosinus présentée précédemment.
 Nous pouvons remarquer que cet encodage soufre du problème des zéros ; il y a un gaspillage de l'espace.
@@ -372,20 +372,20 @@ Un document peut être encoder comme le centre des vecteurs des mots qui lui com
 \centering
 \begin{tabular}{llllllllll}
 	\hline\hline
-	& un & ordinateur & peut & vous & aider & il & et & veut & pour \\
+	& aider & et & un & il & ordinateur & peut & pour & veut & vous \\
 	\hline
-	un & 0 & 3 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
-	ordinateur & 3 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1\\
-	peut & 0 & 1 & 0 & 2 & 0 & 1 & 0 & 0 & 0\\
-	vous & 0 & 0 & 2 & 0 & 3 & 0 & 0 & 1 & 1\\
-	aider & 0 & 0 & 0 & 3 & 0 & 0 & 1 & 0 & 0\\
-	il & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 2 & 0\\
-	et & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-	veut & 1 & 0 & 0 & 1 & 0 & 2 & 0 & 0 & 0\\
-	pour & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+	aider & 0 & 1 & 0 & 1 & 0 & 2 & 0 & 1 & 3 \\
+	et & 1 & 0 & 2 & 1 & 2 & 0 & 0 & 1 & 1 \\
+	un & 0 & 2 & 0 & 1 & 4 & 1 & 1 & 1 & 0 \\
+	il & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 2 & 2 \\
+	ordinateur & 0 & 2 & 4 & 0 & 0 & 1 & 1 & 1 & 2 \\
+	peut & 2 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 2 \\
+	pour & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+	veut & 1 & 1 & 1 & 2 & 1 & 0 & 0 & 0 & 1 \\
+	vous & 3 & 1 & 0 & 2 & 2 & 2 & 1 & 1 & 0 \\
 	\hline\hline
 \end{tabular}
-\caption{Exemple d'encodage Mot-Mot}
+\caption{Exemple d'encodage Mot-Mot.}
 \label{tab:catmot-mot}
 \end{table}
 
@@ -524,7 +524,7 @@ Dans la méthode CBOW, nous essayons d'estimer le mot $w_i$ en utilisant les mot
 Cela revient à maximiser sa probabilité étant donné les mots de son contexte ($p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})$).
 Donc, il faut minimiser la fonction du coût indiquée dans l'équation \ref{eq:cbow} où $T$ est le nombre des mots existants dans le dataset d'entraînement.
 \begin{equation}
-J = \frac{-1}{V} \sum_{i=1}^{T} \log p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
+J(\theta) = \frac{-1}{T} \sum_{i=1}^{T} \log p(w_i |w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2})
 \label{eq:cbow}
 \end{equation}
 La figure \ref{fig:word2vec}(a) représente l'architecture CBOW avec un contexte de 2-2. 
@@ -536,7 +536,7 @@ Dans la méthode Skip-gram, nous essayons d'estimer le contexte étant donné le
 Cela revient à maximiser la probabilité $p(w_j |w_i)$ où $w_j$ est un mot du contexte du mot $w_i$.
 Donc, il faut minimiser la fonction du coût indiquée dans l'équation \ref{eq:skipgram} où $T$ est le nombre des mots existants dans le dataset d'entraînement.
 \begin{equation}
-J = \frac{-1}{T} \sum_{i=1}^{T} \sum_{j= i-2; j \ne i}^{i+2} \log p(w_j |w_i)
+J(\theta) = \frac{-1}{T} \sum_{i=1}^{T} \sum_{j= i-2; j \ne i}^{i+2} \log p(w_j |w_i)
 \label{eq:skipgram}
 \end{equation}
 La figure \ref{fig:word2vec}(b) représente l'architecture Skip-gram avec un contexte de 2-2. 
@@ -885,8 +885,8 @@ Pour chaque mot $w$, nous cherchons les \keywordpl[E]{embedding} de tous les sen
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.35\textwidth]{exp-wsd-nn_.pdf}
-	\caption[Exemple de désambigüisation avec le plus proche voisin]{Exemple de désambigüisation avec le plus proche voisin \cite{2019-jurafsky-martin}}
+	\hgraphpage[.35\textwidth]{exp-wsd-nn.pdf}
+	\caption[Exemple de désambigüisation avec le plus proche voisin.]{Exemple de désambigüisation avec le plus proche voisin ; figure reconstruite de \cite{2019-jurafsky-martin}.}
 	\label{fig:swd-embeddings}
 \end{figure}
 
@@ -947,6 +947,8 @@ D'où la nécessité d'appliquer une évaluation extrinsèque afin de choisir le
 		\item Si on encode une phrase par le centre des vecteurs des mots qui la composent, quelle seront les représentations vectorielles des phrases en se basant sur la représentation Mot-Mot ?
 		\item Calculer la corrélation entre la similarité des phrases en se basant sur TF avec celle en se basant Mot-Mot. 
 		Que pouvons-nous conclure ?
+		\item Entraîner un modèle Word2Vec (CBOW) qui encode les mots par un vecteur de deux éléments. 
+		Pour simplifier le calcul : appliquer seulement 5 itérations ; utiliser la normalisation à la place de Softmax comme fonction d'activation ; utiliser la fonction de coût sans la partie ``\textbf{log}".
 		
 	\end{enumerate}
 

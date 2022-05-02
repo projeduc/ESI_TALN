@@ -172,11 +172,14 @@
 %\end{figure}
 
 \begin{block}{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
-	\fontsize{9}{12}\selectfont
-	\begin{tabular}{@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}}
-		\hline\hline
-		\textbf{Catégorie} & \textbf{Exemple} & \textbf{Catégorie} & \textbf{Exemple} &\textbf{Catégorie} & \textbf{Exemple} \\
-		\hline
+	\fontsize{8}{12}\selectfont\bfseries
+	\rowcolors{2}{lightblue}{lightyellow}
+	\setlength\tabcolsep{4pt}
+	\begin{tabular}{llllll}
+%		\hline\hline
+		\rowcolor{darkblue}
+		\textcolor{white}{Catégorie} & \textcolor{white}{Exemple} & \textcolor{white}{Catégorie} & \textcolor{white}{Exemple} &\textcolor{white}{Catégorie} & \textcolor{white}{Exemple} \\
+%		\hline
 		ACT & service & GROUP & place & PLANT & tree \\
 		ANIMAL &  dog & LOCATION & area & POSSESSION & price \\
 		ARTIFACT & car & MOTIVE & reason & PROCESS & process \\
@@ -186,7 +189,7 @@
 		COMMUNICATION & review & PERSON & people & STATE & pain\\
 		FEELING & discomfort & PHENOMENON & result & SUBSTANCE & oil \\
 		FOOD & food & & & TIME & day\\
-		\hline\hline
+%		\hline\hline
 	\end{tabular}
 \end{block}
 	
@@ -194,7 +197,7 @@
 
 \begin{frame}
 \frametitle{Sens des mots : BD lexicales}
-\framesubtitle{Wordnet : Relations sémantiques}
+\framesubtitle{Wordnet : Relations sémantiques (Noms)}
 
 %\vspace{-3pt}
 %\begin{figure}
@@ -207,14 +210,13 @@
 %	\caption{Quelques relations des verbes \cite{2019-jurafsky-martin}}
 %\end{figure}
 
-\begin{block}{Quelques relations des noms et des verbes \cite{2019-jurafsky-martin}}
-	\fontsize{8}{14}\selectfont
-	\begin{tabular}{@{\hskip0pt}p{.2\textwidth}@{\hskip3pt}p{.48\textwidth}@{\hskip3pt}p{.25\textwidth}@{\hskip0pt}}
-		\hline\hline
-		\multicolumn{3}{c}{\textbf{Noms}}\\
-		\hline
-		\textbf{Relation} & \textbf{Définition} & \textbf{Exemple} \\
-		\hline
+\begin{block}{Quelques relations des noms \cite{2019-jurafsky-martin}}
+	\fontsize{7}{14}\selectfont\bfseries\centering
+	\rowcolors{2}{lightblue}{lightyellow}
+	\setlength\tabcolsep{4pt}
+	\begin{tabular}{lll}
+		\rowcolor{darkblue}
+		\textcolor{white}{Relation} & \textcolor{white}{Définition} & \textcolor{white}{Exemple} \\
 		Hypernym & d'un concept spécifique vers un autre générique & \expword{breakfast\textsuperscript{1} \textrightarrow\ meal\textsuperscript{1} }\\
 		Hyponym & d'un concept générique vers un autre spécifique & \expword{meal\textsuperscript{1} \textrightarrow\ lunch\textsuperscript{1}} \\
 		Instance Hypernym & d'une instance vers son concept & \expword{Austen\textsuperscript{1} \textrightarrow\ author\textsuperscript{1}} \\
@@ -223,18 +225,29 @@
 		Part Holonym & d'une partie vers un entier & \expword{course\textsuperscript{7} \textrightarrow\ meal\textsuperscript{1}} \\
 		Antonym & d'un concept vers son opposition sémantique & \expword{leader\textsuperscript{1} $ \leftrightarrow $ follower\textsuperscript{1}}\\
 		Derivation & d'un mot vers un autre ayant la même racine & \expword{destruction\textsuperscript{1} $ \leftrightarrow $ destroy\textsuperscript{1}} \\
-		\hline\hline
-		\multicolumn{3}{c}{\textbf{Verbes}}\\
-		\hline
-		\textbf{Relation} & \textbf{Définition} & \textbf{Exemple} \\
-		\hline
-		Hypernym & d'un évènement spécifique vers un autre générique & \expword{fly\textsuperscript{9} \textrightarrow\ travel\textsuperscript{5}} \\
-		Troponym & d'un évènement générique vers un autre spécifique & \expword{walk\textsuperscript{1} \textrightarrow\ stroll\textsuperscript{1}} \\
-		Entails & d'un évènement vers un autre qui l'implique & \expword{snore\textsuperscript{1} \textrightarrow\ sleep\textsuperscript{1}} \\ 
-		Antonym & d'un évènement vers son opposition sémantique & \expword{increase\textsuperscript{1} $ \leftrightarrow $ decrease\textsuperscript{1}} \\
-		\hline\hline
 	\end{tabular}
 \end{block}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sens des mots : BD lexicales}
+	\framesubtitle{Wordnet : Relations sémantiques (Verbes)}
+	
+	\begin{block}{Quelques relations des verbes \cite{2019-jurafsky-martin}}
+		\fontsize{7}{14}\selectfont\bfseries\centering
+		\rowcolors{2}{lightblue}{lightyellow}
+		\setlength\tabcolsep{4pt}
+		\begin{tabular}{lll}
+			\rowcolor{darkblue}
+			\textcolor{white}{Relation} & \textcolor{white}{Définition} & \textcolor{white}{Exemple} \\
+			Hypernym & d'un évènement spécifique vers un autre générique & \expword{fly\textsuperscript{9} \textrightarrow\ travel\textsuperscript{5}} \\
+			Troponym & d'un évènement générique vers un autre spécifique & \expword{walk\textsuperscript{1} \textrightarrow\ stroll\textsuperscript{1}} \\
+			Entails & d'un évènement vers un autre qui l'implique & \expword{snore\textsuperscript{1} \textrightarrow\ sleep\textsuperscript{1}} \\ 
+			Antonym & d'un évènement vers son opposition sémantique & \expword{increase\textsuperscript{1} $ \leftrightarrow $ decrease\textsuperscript{1}} \\
+%			\hline\hline
+		\end{tabular}
+	\end{block}
 	
 \end{frame}
 
@@ -434,7 +447,7 @@
 
 \begin{frame}
 \frametitle{Sens des mots : Représentation vectorielle}
-\framesubtitle{Mot-Mot : Exemple avec un fenêtre de 1-1}
+\framesubtitle{Mot-Mot : Exemple avec une fenêtre de 2-2}
 
 \begin{exampleblock}{Exemple d'une collection de phrases}
 	\begin{itemize}
@@ -448,17 +461,17 @@
 	\scriptsize
 	\begin{tabular}{llllllllll}
 		\hline\hline
-		& un & ordinateur & peut & vous & aider & il & et & veut & pour \\
-		\hline
-		un & 0 & 3 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
-		ordinateur & 3 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1\\
-		peut & 0 & 1 & 0 & 2 & 0 & 1 & 0 & 0 & 0\\
-		vous & 0 & 0 & 2 & 0 & 3 & 0 & 0 & 1 & 1\\
-		aider & 0 & 0 & 0 & 3 & 0 & 0 & 1 & 0 & 0\\
-		il & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 2 & 0\\
-		et & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-		veut & 1 & 0 & 0 & 1 & 0 & 2 & 0 & 0 & 0\\
-		pour & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		 & aider & et & un & il & ordinateur & peut & pour & veut & vous \\
+		 \hline
+		aider & 0 & 1 & 0 & 1 & 0 & 2 & 0 & 1 & 3 \\
+		et & 1 & 0 & 2 & 1 & 2 & 0 & 0 & 1 & 1 \\
+		un & 0 & 2 & 0 & 1 & 4 & 1 & 1 & 1 & 0 \\
+		il & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 2 & 2 \\
+		ordinateur & 0 & 2 & 4 & 0 & 0 & 1 & 1 & 1 & 2 \\
+		peut & 2 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 2 \\
+		pour & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+		veut & 1 & 1 & 1 & 2 & 1 & 0 & 0 & 0 & 1 \\
+		vous & 3 & 1 & 0 & 2 & 2 & 2 & 1 & 1 & 0 \\
 		\hline\hline
 	\end{tabular}
 \end{center}
@@ -474,16 +487,25 @@
 	\item Une mesure de similarité est cosinus (vue précédemment)
 \end{itemize}
 
-\hgraphpage{exp-word-v1_.pdf}
+\begin{exampleblock}{Exemple de similarité cosinus entre ``ordinateur" et ``vous"}
+	\fontsize{6}{16}\selectfont\bfseries\boldmath
+	\begin{align*}
+	\text{Cos(``ordinateur", ``vous")} & = \frac{0*3+2*1+4*0+0*2+0*2+1*2+1*1+1*1+2*0}{\sqrt{0^2+2^2+4^2+0^2+0^2+1^2+1^2+1^2+2^2} \sqrt{3^2+1^2+0^2+2^2+2^2+2^2+1^2+1^2+0^2}}\\
+	& = \frac{6}{\sqrt{27}\sqrt{24}}\\
+	& = \frac{1}{3\sqrt{2}}\\
+	\end{align*}
+\end{exampleblock}
 
-\begin{minipage}{.58\textwidth}
-	\begin{figure}
-		\caption{Un exemple des vecteurs de co-occurrence à partir de Wikipedia et une visualisation de deux mots \cite{2019-jurafsky-martin} }
-	\end{figure}
-\end{minipage}
-\begin{minipage}{.4\textwidth}
-	\hgraphpage{exp-word-v2_.pdf}
-\end{minipage}
+%\hgraphpage{exp-word-v1_.pdf}
+
+%\begin{minipage}{.58\textwidth}
+%	\begin{figure}
+%		\caption{Un exemple des vecteurs de co-occurrence à partir de Wikipedia et une visualisation de deux mots \cite{2019-jurafsky-martin} }
+%	\end{figure}
+%\end{minipage}
+%\begin{minipage}{.4\textwidth}
+%	\hgraphpage{exp-word-v2_.pdf}
+%\end{minipage}
 
 \end{frame}
 
@@ -693,7 +715,7 @@
 	\item une méthode développée par Stanford \cite{2014-pennington-al}
 	\item essaye d'exploiter les deux approches : matrice mot-mot (comme LSA) et apprentissage par contexte (comme CBOW)
 	\item $X[V, V]$ est la matrice Mot-Mot où $X_{ij}$ est le nombre des occurrence du mot $w_j$ dans le contexte de $w_i$, et $X_i$ est le nombre d'occurrences de $w_i$ dans le corpus
-	\item $P_ij= \frac{X_{ij}}{X_i}$ est la probabilité d'occurrence de $w_j$ dans le contexte de $w_i$
+	\item $P_{ij} = \frac{X_{ij}}{X_i}$ est la probabilité d'occurrence de $w_j$ dans le contexte de $w_i$
 \end{itemize}
 
 %\hgraphpage[.5\textwidth]{exp-glove_.pdf}
@@ -712,21 +734,25 @@
 	\end{itemize}
 \end{minipage}
 \begin{minipage}{.48\textwidth}
-	\begin{figure}
+%	\begin{figure}
 %		\hgraphpage{exp-glove_.pdf}
-		\fontsize{5}{9}\selectfont
-		\begin{tabular}{@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}@{\hskip0pt}l@{\hskip3pt}}
-			\hline\hline
-			\textbf{Probabilité et Ratio} & \textbf{k = solid} & \textbf{k = gas} & \textbf{k = water} & \textbf{k = fashion} \\
-			\hline
-			P(k|ice) & 1.9 * 10\textsuperscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
-			P(k|steam) & 2.2 * 10\textsuperscript{-5} & 7.8 * 10\textsuperscript{-4} & 2.2 * 10\textsuperscript{-3} & 1.8 * 10\textsuperscript{-5} \\
-			\hline
-			P(k|ice)/P(k|steam) & 8.9 & 8.5 * 10\textsuperscript{-2} & 1.36 & 0.96 \\
-			\hline\hline
+		\rowcolors{2}{lightblue}{lightyellow}
+		\fontsize{7}{14}\selectfont\bfseries
+		\hspace{-.5cm}
+		\begin{tabular}{p{1.3cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.2cm}@{\hskip0pt}}
+%			\hline\hline
+			
+			\rowcolor{darkblue}
+			\textcolor{white}{\textbf{Probabilité et Ratio}} & \textcolor{white}{\textbf{k = solid}} & \textcolor{white}{\textbf{k = gas}} & \textcolor{white}{\textbf{k = water}} & \textcolor{white}{\textbf{k = fashion}} \\
+%			\hline
+			P(k\textbar ice) & 1.9 * 10\textsuperscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
+			P(k\textbar steam) & 2.2 * 10\textsuperscript{-5} & 7.8 * 10\textsuperscript{-4} & 2.2 * 10\textsuperscript{-3} & 1.8 * 10\textsuperscript{-5} \\
+%			\hline
+			\boldmath\footnotesize$\frac{P(k|ice)}{P(k|steam)}$ & 8.9 & 8.5 * 10\textsuperscript{-2} & 1.36 & 0.96 \\
+%			\hline\hline
 		\end{tabular}
-		\caption{Exemple de probabilités et un ratio \cite{2014-pennington-al}}
-	\end{figure}
+%		\caption{Exemple de probabilités et un ratio \cite{2014-pennington-al}}
+%	\end{figure}
 \end{minipage}
 	
 \begin{itemize}
@@ -1186,7 +1212,7 @@
 \end{minipage}
 \begin{minipage}{.3\textwidth}
 	\begin{figure}
-		\hgraphpage{exp-wsd-nn_.pdf}
+		\hgraphpage{exp-wsd-nn.pdf}
 		\caption{Exemple de désambigüisation avec le plus proche voisin \cite{2019-jurafsky-martin}}
 	\end{figure}
 \end{minipage}
