@@ -122,7 +122,7 @@ Exemple, \expword{05659525 : (the capacity for rational thought or inference or 
 			\end{itemize}
 %		\end{alltt}
 	\end{tcolorbox}
-	\caption[Exemple de WordNet]{Exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn} [visité le 2022-05-01].}
+	\caption[Exemple de WordNet.]{Exemple de WordNet généré par \url{http://wordnetweb.princeton.edu/perl/webwn} [visité le 2022-05-01].}
 	\label{fig:wordnet-exp}
 \end{figure}
 
@@ -235,7 +235,7 @@ Chaque concept a un synset comme dans \keyword[W]{WordNet} et qui est partagé p
 La structure de BabelNet est illustrée dans la figure \ref{fig:babelnet-struc}.
 \begin{figure}[ht]
 	\hgraphpage{babelnet.pdf}
-	\caption[Structure de BabelNet]{Structure de BabelNet ; figure reconstruite de \cite{2012-navigli-ponzetto}.}
+	\caption[Structure de BabelNet.]{Structure de BabelNet ; figure reconstruite de \cite{2012-navigli-ponzetto}.}
 	\label{fig:babelnet-struc}
 \end{figure}
 
@@ -342,7 +342,7 @@ $Cos(S3, S2) = \frac{2}{\sqrt{5} \sqrt{4}} = 0.447$.
 \begin{figure}[ht]
 	\centering
 \hgraphpage[.3\textwidth]{exp-cos.pdf}
-\caption{Représentation graphique des vecteurs TF de trois phrases en utilisant deux mots}
+\caption{Représentation graphique des vecteurs TF de trois phrases en utilisant deux mots.}
 \label{fig:tf-repr-graph-exp}
 \end{figure}
 
@@ -553,7 +553,7 @@ En appliquant une fonction ``Softmax" sur chaque vecteur, nous aurons un vecteur
 		(a) CBOW && (b) Skip-Gram \\
 	\end{tabular}
 	
-	\caption{Architecture Word2vec avec un contexte 2-2}
+	\caption{Architecture Word2vec avec un contexte 2-2.}
 	\label{fig:word2vec}
 \end{figure}
 
@@ -581,7 +581,7 @@ Donc :
 		\hline\hline
 		\textbf{Probabilité et Ratio} & \textbf{k = solid} & \textbf{k = gas} & \textbf{k = water} & \textbf{k = fashion} \\
 		\hline
-		P(k|ice) & 1.9 * 10\textsubscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
+		P(k|ice) & 1.9 * 10\textsuperscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
 		P(k|steam) & 2.2 * 10\textsuperscript{-5} & 7.8 * 10\textsuperscript{-4} & 2.2 * 10\textsuperscript{-3} & 1.8 * 10\textsuperscript{-5} \\
 		\hline
 		P(k|ice)/P(k|steam) & 8.9 & 8.5 * 10\textsuperscript{-2} & 1.36 & 0.96 \\
@@ -640,10 +640,10 @@ Donc, la fonction d'estimation est représentée par l'équation \ref{eq:glove-f
 w_i^\top \tilde{w_j} + b_i + \tilde{b_j} = \log X_{ij}
 \label{eq:glove-f-estime6}
 \end{equation}
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.4\textwidth]{glove.pdf}
-	\caption{Architecture de la méthode GloVe}
+	\caption{Architecture de la méthode GloVe.}
 	\label{fig:glove-arch}
 \end{figure}
 Afin d'entraîner le modèle, la fonction objective $J$ utilisée est la méthode des moindres carrés.
@@ -692,7 +692,7 @@ R_k = \{x_k^{LM}, \overrightarrow{h}_{LM}^{k, j}, \overleftarrow{h}_{LM}^{k, j} 
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{elmo-arch.pdf}
-	\caption{Architecture du modèle ELMo}
+	\caption{Architecture du modèle ELMo.}
 	\label{fig:elmo-arch}
 \end{figure}
 
@@ -717,7 +717,7 @@ Cette représentation est basée sur les tokens ; les mots sont séparés en rad
 
 La figure \ref{fig:bert-arch} représente l'architecture du modèle \keyword[B]{BERT}.
 Le texte est séparé en tokens en utilisant ``Wordpiece" \cite{2016-wu-al}.
-L'entrée a un maximum de $T = 512$ tokens.
+L'entrée a un maximum de $T = 512$ tokens (nous pouvons définir un modèle avec un maximum plus ou moins).
 Le premier token est un marqueur spécial ``[CLS]" utilisé pour la classification.
 En cas de deux phrases en entrée, nous utilisons un token ``[SEP]" pour les séparer. 
 Chaque token est représenté par 3 \keywordpl[E]{embedding} de taille $N$ 
@@ -730,7 +730,7 @@ Chaque token est représenté par 3 \keywordpl[E]{embedding} de taille $N$
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{bert-arch.pdf}
-	\caption{Architecture du modèle BERT}
+	\caption{Architecture du modèle BERT.}
 	\label{fig:bert-arch}
 \end{figure}
 
@@ -754,12 +754,11 @@ En haut à droit, c'est une tâche qui classifie la relation entre deux phrases 
 En bas à gauche, c'est une tâche d'annotation (tagging) ; comme la reconnaissance des entités nommées.
 En bas à droit, c'est la tâche de question/réponse où l'entrée est une question et un paragraphe et la sortie est une partie du paragraphe contenant la réponse. 
 
-
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{bert-taches.pdf}
 	
-	\caption[Réglage de BERT sur des différentes tâches]{Réglage de BERT sur des différentes tâches ; figure reconstruite de \cite{2019-devlin-al}}
+	\caption[Réglage de BERT sur des différentes tâches.]{Réglage de BERT sur des différentes tâches ; figure reconstruite de \cite{2019-devlin-al}.}
 	\label{fig:bert-app}
 \end{figure}
 
@@ -874,7 +873,7 @@ En sortie, nous aurons un vecteur \keyword[O]{One-Hot} représentant la classe (
 
 Une autre méthode pour la \ac{wsd}  est d'utiliser les \keywordpl[E]{embedding} contextuels. 
 La figure \ref{fig:swd-embeddings} représente la désambigüisation des mots d'une phrase en utilisant un modèle d'un \keyword[E]{embedding} contextuel comme \keyword[E]{ELMo} ou \keyword[B]{BERT}. 
-Étant donné un modèle pré-entrainé, nous le réglons sur un corpus annoté afin de capturer les \keywordpl[E]{embedding} de chaque sens. 
+Étant donné un modèle pré-entraîné, nous le réglons sur un corpus annoté afin de capturer les \keywordpl[E]{embedding} de chaque sens. 
 Pour avoir le \keyword[E]{embedding} d'un sens $v_s$, nous calculons la moyenne des \keywordpl[E]{embedding} $c_i$ qui l'appartiennent (voir l'équation \ref{eq:wsd-embeddings-sens}).
 \begin{equation}
 v_s = \frac{1}{n} \sum_{i=1}^{n} c_i 
@@ -950,6 +949,29 @@ D'où la nécessité d'appliquer une évaluation extrinsèque afin de choisir le
 		\item Entraîner un modèle Word2Vec (CBOW) qui encode les mots par un vecteur de deux éléments. 
 		Pour simplifier le calcul : appliquer seulement 5 itérations ; utiliser la normalisation à la place de Softmax comme fonction d'activation ; utiliser la fonction de coût sans la partie ``\textbf{log}".
 		
+	\end{enumerate}
+
+	\item Voici un extrait de WordNet  :
+	
+	\hgraphpage[.95\textwidth]{wn-exp.pdf}
+	
+	Voici quelques phrases contenant les deux mots ``fish" et ``chicken" :
+	
+	\begin{tabular}{|ll|}
+		\hline 
+		(1) I had chicken for dinner & (2) River's fish are not delicious \\
+		(3) Fish is a zodiac sign & (4) Astrologically speaking, I am not a fish \\
+		(5) Sea contains all kind of fish & (6) We have chicken at home \\
+		(7) That kid is a chicken & (8) I fish on the river\\
+		\hline
+	\end{tabular}
+	
+	\begin{enumerate}
+		\item Remplacer les deux mots dans chaque phrase en conservant le sens.
+	
+		\item La similarité PATH est définie comme $Sim_{PATH}(sysnset1, synset2)=\frac{1}{P + 1}$ où $P$ est le nombre des arcs basés sur la relation ``IS-A" reliant ``synset1" et ``synset2". Calculer es similarités entre les tuples suivants : (1.chicken, 2.fish) ; (3.fish, 4.fish) ; (5.fish, 6.chicken) ; (7.chicken, 8.fish) ; (6.chicken, 7.chicken) ; (1.chicken, 5.fish) ; (2.fish, 6.chicken). S'il n'y a pas de relation, la similarité sera 0.
+		\item Pour ces tuples, mentionner l'ancêtre commun le plus proche.
+		\item Essayer de remplacer les mots des phrases avec cet ancêtre. Que remarquez-vous ?
 	\end{enumerate}
 
 	

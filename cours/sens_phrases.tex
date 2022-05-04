@@ -58,9 +58,11 @@ Ici, nous allons présenter quelques rôles sémantiques et deux ressources pour
 
 Le rôle thématique (sémantique) décrit le  sens d'un groupe nominal par rapport un évènement exprimé par un verbe de la phrase. 
 Le tableau \ref{tab:roles-them} représente quelques rôles thématiques avec leurs descriptions et exemples.
-\begin{table}[!ht]
+Contrairement aux relations de dépendance, ces rôles ne décrivent pas la structure de la phrase.
+Par exemple, l'agent (celui qui a fait l'action) peut être un sujet (``\expword{\underline{Karim} présente le cours}") où un objet indirect (``\expword{Le cours est présenté par Karim}").
+\begin{table}[ht]
 	\centering\small
-	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
+	\begin{tabular}{p{.14\textwidth}p{.35\textwidth}p{.43\textwidth}}
 		\hline\hline
 		\textbf{Rôle} & \textbf{Description} & \textbf{Exemple}\\
 		\hline
@@ -105,7 +107,7 @@ Le tableau \ref{tab:roles-them} représente quelques rôles thématiques avec le
 		\expword{Je suis allé à \ul{Portland}.}\\
 		\hline\hline
 	\end{tabular}
-	\caption[Quelques rôles thématiques]{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
+	\caption[Quelques rôles thématiques.]{Quelques rôles thématiques \cite{2019-jurafsky-martin}.}
 	\label{tab:roles-them}
 \end{table}
 
@@ -137,14 +139,14 @@ Une unité lexicale déclenche le cadre lorsqu'elle est rencontrée.
 Le tableau \ref{tab:framenet-cadre-partie-exp} représente le cadre sémantique appelé ``Cause\_to\_fragment" (faire fragmenter). 
 Les éléments essentiels d'un cadre sont : l'agent qui est un être sensible, une cause, un patient complet et des pièces. 
 La définition décrit comment ces éléments interagissent.
-Il existe des éléments secondaires comme l'instrument utilisé dans la fragmentation. 
+Il existe des éléments secondaires comme le degrés de fracture, l'instrument utilisé dans la fragmentation. 
 Concernant les relations avec les autres cadres, nous pouvons citer ``Is Causative of : Breaking\_apart". 
 Donc, le fait de fragmenter une chose est la cause de se briser. 
 Ce cadre peut être activé par plusieurs mots comme les verbes : break apart, dissect, smash, etc.
 
 \begin{table}[!htbp]
-	\centering\small
-	\begin{tabular}{p{.3\textwidth}p{.58\textwidth}}
+	\centering\footnotesize
+	\begin{tabular}{p{.23\textwidth}p{.7\textwidth}}
 		\hline\hline
 		\multicolumn{2}{c}{\textbf{Cause\_to\_fragment}} \\
 		\hline
@@ -153,7 +155,7 @@ Ce cadre peut être activé par plusieurs mots comme les verbes : break apart, d
 		\hline\hline
 		\multicolumn{2}{c}{\textbf{FEs (Core)}} \\
 		\hline
-		Agent [Agt] \newline \textcolor{blue}{Semantic Type: Sentient} & 
+		Agent [Agt] \newline \textcolor{blue}{\scriptsize Semantic Type: Sentient} & 
 		The conscious entity, generally a person, that performs the intentional action that results in the \textcolor{red}{Whole\_patient} being broken into \textcolor{red}{Pieces}. \newline \expword{\underline{I and I alone} can SHATTER the gem and break the curse.} \\
 		
 		Cause [cau] & 
@@ -171,22 +173,22 @@ Ce cadre peut être activé par plusieurs mots comme les verbes : break apart, d
 		\hline\hline
 		\multicolumn{2}{c}{\textbf{FEs (None-Core)}} \\
 		\hline
-		Degree [Degr] \newline \textcolor{blue}{Semantic Type: Degree} &
+		Degree [Degr] \newline \textcolor{blue}{\scriptsize Semantic Type: Degree} &
 		The degree to which the fracturing is completed. 
 		\newline
 		\expword{I SHATTERED the vase \underline{completely}.} \\
 		
-		Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &
-		A state of affairs that the Agent is responding to in performing the action. \newline
-		\expword{He TORE the treaty UP out of frustration.} \\
+%		Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &
+%		A state of affairs that the Agent is responding to in performing the action. \newline
+%		\expword{He TORE the treaty UP out of frustration.} \\
 		
 		
-		Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &	
+		Explanation [Exp] \newline \textcolor{blue}{\scriptsize Semantic Type: State\_of\_affairs} &	
 		A state of affairs that the \textcolor{red}{Agent} is responding to in performing the action.
 		\newline
 		\expword{He TORE the treaty UP \underline{out of frustration}.} \\
 		
-		Instrument [Ins] \newline \textcolor{blue}{Semantic Type: Physical\_entity} &
+		Instrument [Ins] \newline \textcolor{blue}{\scriptsize Semantic Type: Physical\_entity} &
 		An entity directed by the  \textcolor{red}{Agent} that interacts with a \textcolor{red}{Whole\_patient} to accomplish its fracture. \\
 		
 		
@@ -205,7 +207,7 @@ Ce cadre peut être activé par plusieurs mots comme les verbes : break apart, d
 		& break apart.v, break down.v, break up.v, break.v, chip.v, cleave.v, dissect.v, dissolve.v, fracture.v, fragment.v, rend.v, rip up.v, rip.v, rive.v, shatter.v, shiver.v, shred.v, sliver.v, smash.v, snap.v, splinter.v, split.v, take apart.v, tear up.v, tear.v \\
 		\hline\hline
 	\end{tabular}
-	\caption[Exemple d'une partie d'un cadre sémantique de FrameNet]{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment", \url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment} [visité le 2021-09-11]
+	\caption[Exemple d'une partie d'un cadre sémantique de FrameNet.]{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment", \url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment} [visité le 2021-09-11].
 	}
 	\label{tab:framenet-cadre-partie-exp}
 \end{table}
@@ -234,7 +236,7 @@ En général, les verbes sont les déclencheurs les plus utilisés dans \keyword
 		break.v & Breaking\_apart & \expword{The handle broke off of the pot.}\\
 		\hline\hline
 	\end{tabular}
-	\caption{Quelques unités lexicales du mot ``break"}
+	\caption{Quelques unités lexicales du mot ``break".}
 	\label{tab:framenet-cadres-exp}
 \end{table}
 
@@ -247,7 +249,7 @@ Chaque ligne représente l'ordre des éléments de cadre par rapport à la struc
 Un exemple de la liste de patrons de valence du verbe ``fracture" du cadre ``Cause\_to\_fragment" est donné dans le tableau \ref{tab:framenet-entree-exp}. 
 Chaque patron est accompagné par le nombre des exemples annotés.
  
-\begin{table}[!htpb]
+\begin{table}[ht]
 	\centering\small
 	\begin{tabular}{|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|p{.12\textwidth}|}
 		\hline
@@ -275,7 +277,7 @@ Chaque patron est accompagné par le nombre des exemples annotés.
 		(4) & NP \newline Ext & INI \newline - - & NP \newline Obj & & \\
 		\hline
 	\end{tabular}
-	\caption[Extrait de liste de patrons de valence de FrameNet]{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence}
+	\caption[Extrait de liste de patrons de valence de FrameNet.]{Entrée lexicale du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment" : extrait de liste de patrons de valence.}
 	\label{tab:framenet-entree-exp}
 \end{table}
 
@@ -284,7 +286,7 @@ La figure \ref{fig:framenet-lex} représente un extrait des annotations lexicogr
 Ici, les éléments de cadres absents dans l'annotation sont marqués par ``[INI]" (indefinite null instantiation).
 Le corpus annoté est généralement utilisé pour entraîner ou tester un système d'étiquetage des rôles sémantiques.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering 
 \begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.8\textwidth]
 	\footnotesize
@@ -310,7 +312,7 @@ Le corpus annoté est généralement utilisé pour entraîner ou tester un syst�
 	\end{itemize}\vspace*{-1cm}
 \end{tcolorbox}
 	
-	\caption[Extrait des annotations lexicographiques dans FrameNet]{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
+	\caption[Extrait des annotations lexicographiques dans FrameNet.]{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment".}
 	\label{fig:framenet-lex}
 \end{figure}
 
@@ -327,6 +329,7 @@ Il peut aussi être affectée par un autre participant.
 
 \keyword[P]{PropBank} est structuré comme un ensemble des fichiers de prédicats (verbes) ; en général sous formes de fichiers XML. 
 Chaque prédicat définit plusieurs ensembles de rôles (rolesets) qui représentent les différents sens.
+La figure \ref{fig:propbank-predicat} représente un extrait du premier sens du prédicat ``know" dans \keyword[P]{PropBank}.
 Chaque roleset est structuré comme suit : 
 \begin{itemize}
 	\item Un identifiant numérique et un ensemble des verbes ayant le même sens.
@@ -340,7 +343,6 @@ Chaque roleset est structuré comme suit :
 	Par exemple, ArgM-TMP : Quand ? ArgM-LOC : Où ? ArgM-MNR : Comment ?
 	\item Des exemples annotés
 \end{itemize} 
-La figure \ref{fig:propbank-predicat} représente un extrait du premier sens du prédicat ``know" dans \keyword[P]{PropBank}.
 
 
 \begin{figure}[ht]
@@ -370,7 +372,7 @@ La figure \ref{fig:propbank-predicat} représente un extrait du premier sens du 
 		\end{itemize}
 	\end{itemize}\vspace*{-1cm}
 \end{tcolorbox}
-	\caption[Extrait des annotations ProBank d'un prédicat]{Extrait des annotations ProBank du prédicat ``know", \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html} [visité le 2021-09-11]}
+	\caption[Extrait des annotations ProBank d'un prédicat.]{Extrait des annotations ProBank du prédicat ``know", \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html} [visité le 2021-09-11].}
 	\label{fig:propbank-predicat}
 \end{figure}
 
@@ -385,8 +387,8 @@ Elle peut être implémentée soit en utilisant des caractéristiques ou en util
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{exp-srl_.pdf}
-	\caption[Exemple d'étiquetage de rôles sémantiques en se basant sur PropBank]{Exemple d'étiquetage de rôles sémantiques en se basant sur PropBank, \url{https://demo.allennlp.org/semantic-role-labeling/} [visité le 2021-09-11]}
+	\hgraphpage[.8\textwidth]{exp-srl2_.pdf}
+	\caption[Exemple d'étiquetage de rôles sémantiques en se basant sur PropBank.]{Exemple d'étiquetage de rôles sémantiques en se basant sur PropBank, \url{https://demo.allennlp.org/semantic-role-labeling/} [visité le 2022-05-02].}
 	\label{fig:srl-exp}
 \end{figure}
 
@@ -413,8 +415,8 @@ Un classificateur est entraîné afin de classer un nœud en utilisant des carac
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{srl-arbre_.pdf}
-	\caption[Exemple d'un arbre syntaxique avec le chemin vers le prédicat principal]{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
+	\hgraphpage[.7\textwidth]{srl-arbre.pdf}
+	\caption[Exemple d'un arbre syntaxique avec le chemin vers le prédicat principal.]{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal ; figure reconstruite de \cite{2019-jurafsky-martin}.}
 	\label{fig:srl-arbre-chemin}
 \end{figure}
 
@@ -435,7 +437,7 @@ La sortie est un vecteur des probabilités des classes \keyword[P]{PropBank}.
 \begin{figure}[ht]
 	\centering
 	\hgraphpage[.5\textwidth]{srl-lstm_.pdf}
-	\caption[Système d'étiquetage de rôles sémantiques avec LSTM]{Système d'étiquetage de rôles sémantiques avec LSTM \cite{2017-he-al}}
+	\caption[Système d'étiquetage de rôles sémantiques avec LSTM.]{Système d'étiquetage de rôles sémantiques avec LSTM \cite{2017-he-al}.}
 	\label{fig:srl-embedding}
 \end{figure}
 
@@ -574,7 +576,7 @@ La représentation \ac{amr} est illustrée sous deux formats : textuelle et grap
 		
 		\hgraphpage{amr-graphe-exp.pdf}
 	\end{minipage}
-	\caption[Exemple d'une représentation AMR]{Exemple de la représentation AMR de la phrase : ``The boy wants to go"}
+	\caption[Exemple d'une représentation AMR.]{Exemple de la représentation AMR de la phrase : ``The boy wants to go".}
 	\label{fig:amr-exp}
 \end{figure}
 
@@ -617,7 +619,7 @@ Par exemple, la représentation ``\expword{(d / die-01 :location (p / park))}" v
 		:op6, :op7, :op8, :op9, :op10\\
 		\hline\hline
 	\end{tabular}
-	\caption{Relations AMR}
+	\caption{Relations AMR.}
 	\label{tab:amr-rel}
 \end{table}
 
@@ -657,14 +659,14 @@ Cette analyse est appliquée au fur et à mesure avec l'analyse syntaxique en ut
 Ces dernières peuvent être des $\lambda $-expressions qui décrivent des fonctions anonymes sur des variables. 
 Une $\lambda $-expression est écrite sous forme ``$ \lambda x.P(x)$" ; elle représente une fonction. 
 Ces fonctions peuvent être appliquées par une opération appelée $\lambda $-Reduction qui sert à substituer une variable par une expression. 
-Il y a deux annotations $ \lambda x.P(x)(A)$ ou $ \lambda x.P(x)@A$ pour dire : substituer la première variable par ``A" (dans ce qui suit, nous allons utiliser la deuxième). 
-Prenons une fonction avec deux variables qui représente le fait que la première variable aime la deuxième : 
-\[\lambda y.\lambda x.LIKES(x, y)\]
+Il y a deux annotations $ \lambda x.P(x)(A)$ ou $ \lambda x.P(x)@A$ pour dire : substituer la première variable par ``A" (dans ce qui suit, nous allons utiliser la première). 
+Prenons une fonction avec deux variables qui représente le fait que la variable $x$ utilise $y$ : 
+\[\lambda y.\lambda x.UTILISER(x, y)\]
 Le remplacement commence toujours par le premier $\lambda$ :
-\[\lambda y.\lambda x.LIKES(x, y)@BRIT = \lambda x.LIKES(x, BRIT)\] 
+\[\lambda y.\lambda x.UTILISER(x, y)\ BERT = \lambda x.UTILISER(x, y)[y := BERT] = \lambda x.UTILISER(x, BERT)\] 
 Après la réduction, le résultat reste toujours une $\lambda $-expression. 
 Donc, nous pouvons appliquer une deuxième $\lambda $-Reduction :
-\[\lambda x.LIKES(x, BRIT)@ALEX = LIKES(ALEX, BRIT)\]
+\[\lambda x.UTILISER(x, BERT)\ KARIM = UTILISER(KARIM, BERT)\]
 
 Maintenant, nous revenons à l'analyse sémantique. 
 Étant donné la grammaire $G <\Sigma, N, P, S>$, nous affectons pour chaque variable de $N$ une réalisation sémantique (Ex. \expword{NP.sem}). 
@@ -676,53 +678,53 @@ Prenons l'exemple des règles syntaxiques annotées sémantiquement présentées
 	\centering
 	\begin{tabular}{llll}
 		\hline\hline
-		S  & \textrightarrow\ NP VP && VP.sem@NP.sem \\
-		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem@NP.sem\\
+		S  & \textrightarrow\ NP VP && VP.sem(NP.sem) \\
+		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem(NP.sem)\\
 		VP & \textrightarrow\ V\textsubscript{i} && V\textsubscript{i}.sem \\
-		V\textsubscript{t}  & \textrightarrow\ likes && $ \lambda $y.$ \lambda $x.LIKES(x, y) \\
-		V\textsubscript{i}  & \textrightarrow\ sleeps && $ \lambda $x.SLEEPS(x) \\
-		NP  & \textrightarrow\  Alex && ALEX \\
-		NP  & \textrightarrow\  Brit && BRIT \\
+		V\textsubscript{t}  & \textrightarrow\ utilise && $ \lambda $y.$ \lambda $x.UTILISER(x, y) \\
+		V\textsubscript{i}  & \textrightarrow\ dort && $ \lambda $x.DORMIR(x) \\
+		NP  & \textrightarrow\  Karim && KARIM \\
+		NP  & \textrightarrow\  BERT && BERT \\
 		\hline\hline
 	\end{tabular}
-	\caption{Grammaire à contexte libre minimale avec les annotations sémantiques}
+	\caption{Grammaire à contexte libre minimale avec les annotations sémantiques.}
 	\label{tab:regles-sem1}
 \end{table}
 
 Lors de l'analyse syntaxique, nous calculons la valeur sémantique de chaque variable visitée dans l'arbre syntaxique.
 Dans notre cas, nous allons utiliser une analyse ascendante ; parcours postfixe de l'arbre syntaxique.
-La figure \ref{fig:arbre-sem1} est un exemple d'une arbre syntaxique/sémantique de la phrase ``\expword{A dog likes Alex}".
-Nous commençons par appliquer la règle ``NP \textrightarrow\ Alex" pour avoir la réalisation sémantique : 
-\[NP.sem = ALEX\]
-Ensuite, nous appliquons la règle ``V\textsubscript{t} \textrightarrow\ likes" pour avoir :
-\[V_t.sem = \lambda y.\lambda x.LIKES(x, y)\]
-Après, nous appliquons la règle ``NP \textrightarrow\ Brit" pour avoir la réalisation sémantique : 
-\[NP.sem = BRIT\]
+La figure \ref{fig:arbre-sem1} est un exemple d'une arbre syntaxique/sémantique de la phrase ``\expword{Karim utilise BERT}".
+Nous commençons par appliquer la règle ``NP \textrightarrow\ Karim" pour avoir la réalisation sémantique : 
+\[NP.sem = KARIM\]
+Ensuite, nous appliquons la règle ``V\textsubscript{t} \textrightarrow\ utilise" pour avoir :
+\[V_t.sem = \lambda y.\lambda x.UTILISER(x, y)\]
+Après, nous appliquons la règle ``NP \textrightarrow\ BERT" pour avoir la réalisation sémantique : 
+\[NP.sem = BERT\]
 Ces deux dernière variables nous permet d'appliquer la règle ``VP \textrightarrow\ V\textsubscript{t} NP" pour avoir la réalisation sémantique :
 \begin{align*}
- VP.sem & = V_t.sem@NP.sem \\
-        & = \textcolor{red}{\lambda y}.\lambda x.LIKES(x, \textcolor{red}{y})@\textcolor{blue}{BRIT}\\
-        & = \lambda x.LIKES(x, BRIT)
+ VP.sem & = V_t.sem(NP.sem) \\
+        & = \textcolor{red}{\lambda y}.\lambda x.UTILISER(x, \textcolor{red}{y})(\textcolor{blue}{BERT})\\
+        & = \lambda x.UTILISER(x, BERT)
 \end{align*}
 Finalement, nous pouvons appliquer la règle ``S \textrightarrow\ NP VP" pour avoir :
 \begin{align*}
-S.sem & = VP.sem@NP.sem \\
-       & = \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, BRIT)@\textcolor{blue}{ALEX}\\
-       & = LIKES(ALEX, BRIT)
+S.sem & = VP.sem(NP.sem) \\
+       & = \textcolor{red}{\lambda x}.UTILISER(\textcolor{red}{x}, BERT)(\textcolor{blue}{KARIM})\\
+       & = UTILISER(KARIM, BERT)
 \end{align*}
 
 \begin{figure}[ht]
 	\centering
 %	\begin{tabular}{ll}
 %		\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
-		\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
+		\hgraphpage[0.6\textwidth]{sem-arbre.pdf}
 %	\end{tabular}
-	\caption[Exemple d'une grammaire syntaxique-sémantique et une dérivation]{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein}}
+	\caption[Exemple d'une grammaire syntaxique-sémantique et une dérivation.]{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Karim utilise BERT}" ; figure inspirée de \cite{2018-eisenstein}.}
 	\label{fig:arbre-sem1}
 \end{figure}
 
-Maintenant, essayons d'analyser la phrase ``\expword{A dog likes Alex}" (certain chien aime Alex).
-Nous pouvons la représenter en \ac{fol} comme ``\expword{$\exists x\ DOG(x) \wedge LIKES(x, ALEX)$}".
+Maintenant, essayons d'analyser la phrase ``\expword{un étudiant utilise BERT}".
+Nous pouvons la représenter en \ac{fol} comme ``\expword{$\exists x\ ETUDIANT(x) \wedge UTILISER(x, BERT)$}".
 Les règles sémantiques pour prendre les quantificateurs en considération sont indiquées dans le tableau \ref{tab:regles-sem2}. 
 Le quantificateur doit être ajouté lorsque nous rencontrons un déterminant (a, an) et donc nous aurons $\exists x$. 
 Aussi, nous savons qu'avec un quantificateur, nous devons avoir un prédicat qui décrit le type de $x$, donc $\exists x P(x)$.
@@ -731,86 +733,86 @@ Il faut aussi ajouter un ou plusieurs prédicats qui définissent la relation de
 Vu que nous puissions générer plusieurs prédicats avec une seule $\lambda $-expression, nous pouvons définir une seule $\lambda P.P(x)$.
 $\lambda P$ doit être réduite avant $\lambda Q$ (le nom est plus proche au déterminant), donc $\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)$. 
 Dans ce cas : 
-\[\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x) @DOG = \lambda Q.\exists x\ DOG(x) \wedge Q(x)\]
+\[\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)(CHAT) = \lambda Q.\exists x\ CHAT(x) \wedge Q(x)\]
 
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{lllllllll}
 		\cline{1-4}\cline{6-9}\noalign{\vskip\doublerulesep
 			\vskip-\arrayrulewidth}\cline{1-4}\cline{6-9}
-		S  & \textrightarrow\ NP VP && NP.sem@VP.sem &&
-		DET & \textrightarrow\ every && $\lambda P.\lambda Q.\forall x (P(x) \Rightarrow Q(x))$ \\
+		S  & \textrightarrow\ NP VP && NP.sem(VP.sem) &&
+		DET & \textrightarrow\ chaque && $\lambda P.\lambda Q.\forall x (P(x) \Rightarrow Q(x))$ \\
 		
-		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem@NP.sem &&
-		V\textsubscript{t}  & \textrightarrow\ likes && $\lambda P.\lambda x.P(\lambda y.LIKES(x, y))$ \\
+		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem(NP.sem) &&
+		V\textsubscript{t}  & \textrightarrow\ utilise && $\lambda P.\lambda x.P(\lambda y.UTILISER(x, y))$ \\
 		
 		VP & \textrightarrow\ V\textsubscript{i} && V\textsubscript{i}.sem &&
-		V\textsubscript{i}  & \textrightarrow\ sleeps && $ \lambda $x.SLEEPS(x) \\
+		V\textsubscript{i}  & \textrightarrow\ dort && $ \lambda $x.DORMIR(x) \\
 		
-		NP & \textrightarrow\ DET NN && DET.sem@NN.sem  &&
-		NN  & \textrightarrow\  Dog && DOG \\
+		NP & \textrightarrow\ DET NN && DET.sem(NN.sem)  &&
+		NN  & \textrightarrow\  étudiant && ETUDIANT \\
 		
 		NP & \textrightarrow\ NNP && $\lambda P.P(NNP.sem)$  &&
-		NNP  & \textrightarrow\  Alex && ALEX \\
+		NNP  & \textrightarrow\  Karim && KARIM \\
 		
-		DET & \textrightarrow\ a && $\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)$  &&
-		NNP  & \textrightarrow\  Brit && BRIT \\
+		DET & \textrightarrow\ un && $\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)$  &&
+		NNP  & \textrightarrow\  BERT && BERT \\
 		\cline{1-4}\cline{6-9}\noalign{\vskip\doublerulesep
 			\vskip-\arrayrulewidth}\cline{1-4}\cline{6-9}
 	\end{tabular}
-	\caption{Grammaire à contexte libre minimale avec les annotations sémantiques}
+	\caption{Grammaire à contexte libre minimale avec les annotations sémantiques.}
 	\label{tab:regles-sem2}
 \end{table}
 
 Supposons que le $NP$ précédent est celui généré par la racine ``S \textrightarrow NP VP". 
-Si nous gardions la grammaire précédente (tableau \ref{tab:regles-sem1}), le contenu du syntagme verbale serait $\lambda x.LIKES(x, BRIT)$ et la sémantique de la phrase serait :
+Si nous gardions la grammaire précédente (tableau \ref{tab:regles-sem1}), le contenu du syntagme verbale serait $\lambda x.UTILISER(x, BERT)$ et la sémantique de la phrase serait :
 \begin{align*}
-S.sem & = VP.sem@NP.sem \\
-& = \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, ALEX)@(\textcolor{blue}{\lambda Q.\exists x\ DOG(x) \wedge Q(x)})\\
-& = LIKES(\lambda Q.\exists x\ DOG(x) \wedge Q(x), BRIT)
+S.sem & = VP.sem(NP.sem) \\
+& = \textcolor{red}{\lambda x}.UTILISER(\textcolor{red}{x}, BERT)(\textcolor{blue}{\lambda Q.\exists x\ ETUDIANT(x) \wedge Q(x)})\\
+& = UTILISER(\lambda Q.\exists x\ ETUDIANT(x) \wedge Q(x), BERT)
 \end{align*}
 Cela n'est pas juste ; nous pouvons voir que ce soit toujours une $\lambda $-expression. 
 Ce que nous voulons faire est de réduire $\lambda Q$ avec le contenu sémantique du syntagme verbale, et donc :
 \begin{align*}
-S.sem & = NP.sem@VP.sem \\
-& = (\textcolor{red}{\lambda Q}.\exists x\ DOG(x) \wedge \textcolor{red}{Q}(x))@(\textcolor{blue}{\lambda x.LIKES(x, ALEX)})\\
-& = \exists x\ DOG(x) \wedge \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, ALEX))@x \\
-& = \exists x\ DOG(x) \wedge LIKES(x, ALEX)
+S.sem & = NP.sem(VP.sem) \\
+& = \textcolor{red}{\lambda Q}.\exists x\ ETUDIANT(x) \wedge \textcolor{red}{Q}(x)(\textcolor{blue}{\lambda x.UTILISER(x, BERT)})\\
+& = \exists x\ ETUDIANT(x) \wedge \textcolor{red}{\lambda x}.UTILISER(\textcolor{red}{x}, BERT))(x) \\
+& = \exists x\ ETUDIANT(x) \wedge UTILISER(x, BERT)
 \end{align*}
 
-Lorsque nous voulons générer l'exemple du début (\expword{Alex loves Brits}), nous devons appliquer ``NP.sem@VP.sem". 
-Mais, nous savons clairement que $NP.sem = ALEX$ n'est pas une $\lambda $-expression ; nous ne pouvons pas la réduire. 
-La solution est d'appliquer ``VP.sem@NP.sem" sans changer la règle sémantique ``NP.sem@VP.sem". 
+Lorsque nous voulons générer l'exemple du début (\expword{Karim utilise BERT}), nous devons appliquer ``NP.sem(VP.sem)". 
+Mais, nous savons clairement que $NP.sem = KARIM$ n'est pas une $\lambda $-expression ; nous ne pouvons pas la réduire. 
+La solution est d'appliquer ``VP.sem(NP.sem)" sans changer la règle sémantique ``NP.sem(VP.sem)". 
 Nous devons, donc, ajouter une expression $\lambda P.P(NNP.sem)$ dans le syntagme nominal qui génère un nom propre. 
-Dans notre cas, $NNP.sem = ALEX$ et donc :
+Dans notre cas, $NNP.sem = KARIM$ et donc :
 \begin{align*}
-S.sem & = NP.sem@VP.sem \\
-& = (\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX))@(\textcolor{blue}{\lambda x.LIKES(x, BRITS)})\\
-& = \textcolor{red}{\lambda x}.LIKES(\textcolor{red}{x}, BRITS))@\textcolor{blue}{ALEX} \\
-& = LIKES(ALEX, BRITS)
+S.sem & = NP.sem(VP.sem) \\
+& = \textcolor{red}{\lambda P}.\textcolor{red}{P}(KARIM)(\textcolor{blue}{\lambda x.UTILISER(x, BERT)})\\
+& = \textcolor{red}{\lambda x}.UTILISER(\textcolor{red}{x}, BERT))(\textcolor{blue}{KARIM}) \\
+& = UTILISER(KARIM, BERT)
 \end{align*}
 
-Nous avons supposé que la réalisation sémantique du \keyword[S]{syntagme} verbal est $\lambda x.LIKES(x, BRITS)$. 
+Nous avons supposé que la réalisation sémantique du \keyword[S]{syntagme} verbal est $\lambda x.UTILISER(x, BERT)$. 
 Nous allons essayer de calculer la réalisation avec la règle sémantique de $VP \rightarrow\ V\textsubscript{t} NP$ avant sa modification (tableau \ref{tab:regles-sem1}).
 \begin{align*}
-VP.sem & = V_t.sem@NP.sem \\
-& = \textcolor{red}{\lambda y}.\lambda x.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{\lambda P.P(BRIT)})\\
-& = \lambda x.LIKES(x, \lambda P.P(BRIT))
+VP.sem & = V_t.sem(NP.sem )\\
+& = \textcolor{red}{\lambda y}.\lambda x.UTILISER(x, \textcolor{red}{y})(\textcolor{blue}{\lambda P.P(BERT)})\\
+& = \lambda x.UTILISER(x, \lambda P.P(BERT))
 \end{align*}
 Ce n'est pas le résultat voulu. 
 Pour un verbe transitif, nous voulons résoudre le deuxième argument $y$ en premier. 
-Donc, nous devons lui passer ``BRIT" et pour le faire nous devons nous débarrasser de $\lambda P$. 
+Donc, nous devons lui passer ``TALN" et pour le faire nous devons nous débarrasser de $\lambda P$. 
 Dans ce cas, nous laissons $\lambda x$ à coté et nous essayons d'appliquer $\lambda P$ sur le reste. 
-La règle sémantique sera $\lambda P.\lambda x.P(\lambda y.LIKES(x, y))$, et donc :
+La règle sémantique sera $\lambda P.\lambda x.P(\lambda y.UTILISER(x, y))$, et donc :
 \begin{align*}
-VP.sem & = V_t.sem@NP.sem \\
-& = \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))@(\textcolor{blue}{\lambda P.P(BRIT)}) \\
-& = \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(BRIT)@(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
-& = \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{BRIT}) \\
-& = \lambda x.LIKES(x, BRIT) \\
+VP.sem & = V_t.sem(NP.sem) \\
+& = \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.UTILISER(x, y))(\textcolor{blue}{\lambda P.P(BERT)}) \\
+& = \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(BERT)(\textcolor{blue}{\lambda y.UTILISER(x, y)}) \\
+& = \lambda x.\textcolor{red}{\lambda y}.UTILISER(x, \textcolor{red}{y})(\textcolor{blue}{BERT}) \\
+& = \lambda x.UTILISER(x, BERT) \\
 \end{align*}
 
-L'analyse sémantique de la phrase ``\expword{A dog likes Alex}" est illustrée sous forme d'un arbre dans la figure \ref{fig:regles-sem2}.
+L'analyse sémantique de la phrase ``\expword{un étudiant utilise BERT}" est illustrée sous forme d'un arbre dans la figure \ref{fig:regles-sem2}.
 Cette analyse se fait en parallèle avec l'analyse syntaxique comme l'analyse \keyword[C]{CKY}. 
 Lorsqu'une règle syntaxique est appliquée, nous appliquons sa règle sémantique équivalente.
 Nous avons vu que les grammaires des langages naturels sont plus complexes et donc non déterministes. 
@@ -834,9 +836,9 @@ Dans ce cas, lors de l'entraînement, nous n'allons pas tester si la requête SQ
 	\centering
 %	\begin{tabular}{ll}
 %		\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
-		\hgraphpage[0.8\textwidth]{sem-qarbre_.pdf}
+		\hgraphpage[0.8\textwidth]{sem-qarbre.pdf}
 %	\end{tabular}
-	\caption[Exemple d'une grammaire syntaxique-sémantique avec quantificateurs]{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein}}
+	\caption[Exemple d'une grammaire syntaxique-sémantique avec quantificateurs.]{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{un chat aime Karim}" ; figure inspirée de \cite{2018-eisenstein}.}
 	\label{fig:regles-sem2}
 \end{figure}
 

@@ -116,6 +116,7 @@ ItalicFont=*-Italic,
 BoldItalicFont=*-BoldItalic
 ]{CrimsonText} %
 
+
 \newfontfamily\euphoria
 [Path = fonts/EuphoriaScript/,
 Extension = .ttf,
@@ -748,3 +749,7 @@ title={#1}
 
 \renewcommand{\cite}[1]{\citep{#1}}
 \renewcommand{\UrlFont}{\ttfamily\footnotesize}
+
+
+%\RequirePackage[cochineal]{newtxmath}
+\RequirePackage[italic]{mathastext}
