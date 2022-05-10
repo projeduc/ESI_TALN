@@ -10,7 +10,7 @@
 \title[TALN : 07- Sémantique de phrase]%
 {Traitement automatique du langage naturel\\Chapitre 07 : Sémantique de phrase} 
 
-\changegraphpath{../img/sem-phrase/}
+\changegraphpath{../img/sens-phrases/}
 
 \begin{document}
 	
@@ -125,6 +125,10 @@
 		GOAL &
 		La destination de l'objet d'un évènement de transfert &
 		\expword{Je suis allé à \underline{Portland}.}\\
+		
+		LOCATIVE & 
+		La spécification du lieu où se situe l'action ou l'événement désigné par le prédicat &
+		\expword{J'habite à \underline{Jijel}.}\\
 	\end{tabular}
 	\caption{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
 \end{table}
@@ -539,7 +543,7 @@
 \framesubtitle{Étiquetage de rôles sémantiques}
 
 \begin{figure}
-	\hgraphpage{exp-srl_.pdf}
+	\hgraphpage{exp-srl2_.pdf}
 	\caption{Exemple d'étiquetage de rôles sémantiques en se basant sur ProbBank [\url{https://demo.allennlp.org/semantic-role-labeling/}]}
 \end{figure}
 %\begin{itemize}
@@ -576,7 +580,7 @@
 	
 	\vspace{-0.2cm}
 	\begin{figure}
-		\hgraphpage{srl-arbre_.pdf}
+		\hgraphpage{srl-arbre.pdf}
 		\caption{Exemple d'un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal \cite{2019-jurafsky-martin}}
 	\end{figure}
 	
@@ -615,7 +619,7 @@
 	\end{minipage}
 	\begin{minipage}{.5\textwidth}
 		\begin{figure}
-			\hgraphpage{srl-lstm_.pdf}
+			\hgraphpage{srl-lstm.pdf}
 			\caption{Un système d'étiquetage de rôles sémantiques en utilisant les LSTM \cite{2017-he-al}}
 		\end{figure}
 	\end{minipage}
@@ -698,7 +702,27 @@
 	\framesubtitle{Logique du premier ordre : Formalisme}
 	
 	\begin{figure}
-		\vgraphpage[0.6\textheight]{LPO-gram_.pdf}
+%		\vgraphpage[0.6\textheight]{LPO-gram_.pdf}
+		\scriptsize
+		\begin{tabular}{rcl}
+			\hline\hline
+			Formula & \textrightarrow & AtomicFormula \\
+			        & \textbar        & Formula Connective Formula \\
+			        & \textbar        & Quantifier Variable, ... Formula \\
+			        & \textbar        & $\textlnot$ Formula \\
+			        & \textbar        & (Formula) \\
+			AtomicFormula & \textrightarrow & Predicate (Term, ...) \\
+			Term    & \textrightarrow & Function(Term, ...) \\
+			        & \textbar        & Constant \\
+			        & \textbar        & Variable \\
+			Connective & \textrightarrow & $\wedge$ \textbar $\vee$ \textbar $\Rightarrow$ \\
+			Quantifier & \textrightarrow & $\forall$ \textbar $\exists$ \\
+			Constant & \textrightarrow & ESI \textbar Karim \textbar Algérie ...\\
+			Variable & \textrightarrow & x \textbar y \textbar ... \\
+			Predicate & \textrightarrow & Ecole \textbar EnseignatA \textbar Utiliser \textbar ... \\
+			Function & \textrightarrow & EmplacementDe \textbar ... \\
+			\hline\hline
+		\end{tabular}
 		\caption{La grammaire spécifiant le syntaxe du logique du premier ordre d'après \cite{2019-jurafsky-martin} (Adaptée de \cite{2002-russell-norvig})}
 	\end{figure}
 	
@@ -713,14 +737,14 @@
 		\begin{itemize}
 			\item Description des fonctions anonymes sur des variables
 			\item \keyword{$ \lambda $x.P(x)}
-			\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)} pour représenter l'expression \expword{likes Brit}
+			\item Exemple : \expword{$ \lambda $x.UTILISER(x, BERT)} pour représenter l'expression \expword{utilise BERT}
 		\end{itemize}
 	
 		\item \keyword{$ \lambda $-Reduction}
 		\begin{itemize}
 			\item Substitution de la variable par une expression
-			\item \keyword{$ \phi@\psi $}
-			\item Exemple : \expword{$ \lambda $x.LIKES(x, BRIT)@ALEX = LIKES(ALEX, BRIT)}
+			\item \keyword{$ \phi (\psi) $}
+			\item Exemple : \expword{$ \lambda $x.UTILISER(x, BERT)\ KARIM = UTILISER(KARIM, BERT)}
 		\end{itemize}
 	\end{itemize}
 	
@@ -730,39 +754,82 @@
 	\frametitle{Sémantique de phrase : Représentation}
 	\framesubtitle{Logique du premier ordre : Analyse sémantique}
 	
-	\begin{figure}
-		\begin{tabular}{ll}
-			\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
-			\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
+%	\begin{figure}
+%		\begin{tabular}{ll}
+%			\hgraphpage[0.35\textwidth]{sem-gram_.pdf} & 
+%			\hgraphpage[0.6\textwidth]{sem-arbre_.pdf}
+%		\end{tabular}
+%		\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
+%	\end{figure}
+
+
+\begin{center}
+	\small\bfseries
+	\begin{tabular}{llll}
+		\hline\hline
+		S  & \textrightarrow\ NP VP && VP.sem(NP.sem) \\
+		VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem(NP.sem)\\
+		VP & \textrightarrow\ V\textsubscript{i} && V\textsubscript{i}.sem \\
+		V\textsubscript{t}  & \textrightarrow\ utilise && $ \lambda $y.$ \lambda $x.UTILISER(x, y) \\
+		V\textsubscript{i}  & \textrightarrow\ dort && $ \lambda $x.DORMIR(x) \\
+		NP  & \textrightarrow\  Karim && KARIM \\
+		NP  & \textrightarrow\  BERT && BERT \\
+		\hline\hline
 		\end{tabular}
-		\caption{Exemple d'une grammaire syntaxique-sémantique, ainsi que l'arbre de dérivation de la phrase ``\expword{Alex likes Brit}" \cite{2018-eisenstein})}
-	\end{figure}
 	
+		\hgraphpage[0.7\textwidth]{sem-arbre.pdf}
+\end{center}
+	
+
 \end{frame}
 
 \begin{frame}
 	\frametitle{Sémantique de phrase : Représentation}
-	\framesubtitle{Logique du premier ordre : Analyse sémantique (Les quantificateurs)}
+	\framesubtitle{Logique du premier ordre : Analyse sémantique (Les quantificateurs : grammaire)}
 	
-	\vspace{-.6cm}
-	\begin{figure}
-		\begin{tabular}{ll}
-			\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
-			\hgraphpage[0.65\textwidth]{sem-qarbre_.pdf} \\
+	\begin{center}
+		\small\bfseries
+		\begin{tabular}{llll}
+			\hline\hline
+			S  & \textrightarrow\ NP VP && NP.sem(VP.sem) \\
+			DET & \textrightarrow\ chaque && $\lambda P.\lambda Q.\forall x (P(x) \Rightarrow Q(x))$ \\
+			
+			VP & \textrightarrow\ V\textsubscript{t} NP && V\textsubscript{t}.sem(NP.sem) \\
+			V\textsubscript{t}  & \textrightarrow\ utilise && $\lambda P.\lambda x.P(\lambda y.UTILISER(x, y))$ \\
+			
+			VP & \textrightarrow\ V\textsubscript{i} && V\textsubscript{i}.sem \\
+			V\textsubscript{i}  & \textrightarrow\ dort && $ \lambda $x.DORMIR(x) \\
+			
+			NP & \textrightarrow\ DET NN && DET.sem(NN.sem) \\
+			NN  & \textrightarrow\  étudiant && ETUDIANT \\
+			
+			NP & \textrightarrow\ NNP && $\lambda P.P(NNP.sem)$ \\
+			NNP  & \textrightarrow\  Karim && KARIM \\
+			
+			DET & \textrightarrow\ un && $\lambda P.\lambda Q.\exists x\ P(x) \wedge Q(x)$ \\
+			NNP  & \textrightarrow\  BERT && BERT \\
+			\hline\hline
 		\end{tabular}
-		\caption{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{A dog likes Alex}" \cite{2018-eisenstein})}
-	\end{figure}
+	\end{center}
 
-\vspace{-.6cm}
-{\small 
-	\begin{align*}
-	& VP.sem & = &V_t.sem@NP.sem \\
-	& & = & \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))@(\textcolor{blue}{\lambda P.P(ALEX)}) \\
-	& & = & \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX)@(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
-	& & = & \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})@(\textcolor{blue}{ALEX}) \\
-	& & = & \lambda x.LIKES(x, ALEX) \\
-	\end{align*}
-}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sémantique de phrase : Représentation}
+	\framesubtitle{Logique du premier ordre : Analyse sémantique (Les quantificateurs : exemple)}
+	
+	
+	\begin{center}
+		\hgraphpage[0.8\textwidth]{sem-qarbre.pdf}
+		\small
+		\begin{align*}
+		& VP.sem & = &V_t.sem(NP.sem) \\
+		& & = & \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))(\textcolor{blue}{\lambda P.P(ALEX)}) \\
+		& & = & \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX)(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
+		& & = & \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})(\textcolor{blue}{ALEX}) \\
+		& & = & \lambda x.LIKES(x, ALEX) \\
+		\end{align*}
+	\end{center}
 	
 \end{frame}
 
@@ -887,7 +954,7 @@ all z2.(dog(z2) -> exists z1.(bone(z1) & give(angus,z1,z2)))
 	\framesubtitle{Un peu d'humour}
 	
 	\begin{center}
-		\vgraphpage{humour-sens.jpg}
+		\vgraphpage{humour/humour-sens.jpg}
 	\end{center}
 	
 \end{frame}

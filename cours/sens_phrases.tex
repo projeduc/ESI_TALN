@@ -105,6 +105,10 @@ Par exemple, l'agent (celui qui a fait l'action) peut être un sujet (``\expword
 		GOAL &
 		La destination de l'objet d'un évènement de transfert &
 		\expword{Je suis allé à \ul{Portland}.}\\
+		
+		LOCATIVE & 
+		La spécification du lieu où se situe l'action ou l'événement désigné par le prédicat &
+		\expword{J'habite à \ul{Jijel}.}\\
 		\hline\hline
 	\end{tabular}
 	\caption[Quelques rôles thématiques.]{Quelques rôles thématiques \cite{2019-jurafsky-martin}.}
@@ -406,8 +410,9 @@ Un classificateur est entraîné afin de classer un nœud en utilisant des carac
 	Celui-ci peut être détecté en se basant sur la grammaire du langage.
 	\item La catégorie grammaticale du mot principal.
 	\item Le chemin du nœud concerné vers le prédicat. 
-	Exemple, \expword{NP\textuparrow S\textdownarrow VP \textdownarrow VPD}.
 	La figure \ref{fig:srl-arbre-chemin} représente un arbre syntaxique avec le chemin d'un syntagme vers le prédicat principal.
+	Dans cet exemple, le syntagme ``NP" est loin de la racine qui est loin du prédicat (verbe) de 2 arcs.
+	Dans ce cas, le chemin sera \expword{NP\textuparrow S\textdownarrow VP \textdownarrow VPD} (de NP aller en haut vers S ; aller en bas vers VP ; et enfin, aller en bas vers VPD).
 	\item La voie : active ou passive.
 	\item La position par rapport au prédicat : avant ou après.
 	\item ...
@@ -432,12 +437,15 @@ Ensuite, entraîner un autre classificateur seulement avec les nœuds avec ``Arg
 Nous avons vu que l'étiquetage des séquences peut être implémenté en utilisant la méthode \keyword[I]{IOB}  (inside, outside, begins). 
 La figure \ref{fig:srl-embedding} représente un système d'étiquetage de rôles sémantiques en utilisant les \keywordpl[L]{LSTM} proposé par \citet{2017-he-al}. 
 Dans un moment donné, l'entrée est le \keyword[E]{embedding} du mot courant fusionné avec un indicateur de prédicat (prédicat ou non). 
-La sortie est un vecteur des probabilités des classes \keyword[P]{PropBank}.
+Chaque couche $l$ est une cellule \keyword[L]{LSTM} qui peut être en avant ($l$ est impaire) ou en arrière.
+Pour contrôler la quantité de l'information qui vient de la couche précédente ($h'_{l-1, t}$), les auteurs utilisent une porte de transformation similaire à celle d'initialisation des cellules \keyword[G]{GRU}.
+Cette cellule apprend une pondération $r_{l, t}$ qui décide combien d'information nous devons passer de la couche actuelle $h'_{l, t}$ et de la couche précédente $h'_{l-1, t}$.
+La sortie est un vecteur des probabilités des classes \keyword[P]{PropBank} encodées en utilisant la méthode \keyword[I]{IOB}.
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{srl-lstm_.pdf}
-	\caption[Système d'étiquetage de rôles sémantiques avec LSTM.]{Système d'étiquetage de rôles sémantiques avec LSTM \cite{2017-he-al}.}
+	\hgraphpage[.7\textwidth]{srl-lstm.pdf}
+	\caption[Système d'étiquetage de rôles sémantiques avec LSTM.]{Système d'étiquetage de rôles sémantiques avec LSTM \cite{2017-he-al} ; figure adaptée.}
 	\label{fig:srl-embedding}
 \end{figure}
 
@@ -838,7 +846,7 @@ Dans ce cas, lors de l'entraînement, nous n'allons pas tester si la requête SQ
 %		\hgraphpage[0.3\textwidth]{sem-qgram_.pdf} & 
 		\hgraphpage[0.8\textwidth]{sem-qarbre.pdf}
 %	\end{tabular}
-	\caption[Exemple d'une grammaire syntaxique-sémantique avec quantificateurs.]{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{un chat aime Karim}" ; figure inspirée de \cite{2018-eisenstein}.}
+	\caption[Exemple d'une grammaire syntaxique-sémantique avec quantificateurs.]{Exemple d'une grammaire syntaxique-sémantique avec quantificateurs, ainsi que l'arbre de dérivation de la phrase ``\expword{un étudiant utilise BERT}" ; figure inspirée de \cite{2018-eisenstein}.}
 	\label{fig:regles-sem2}
 \end{figure}
 
@@ -886,7 +894,36 @@ Aussi, elle pourrait être une commande, si nous voulions implémenter un assist
 \subsubsection*{Exercices}
 
 \begin{enumerate}
-	\item ...
+	\item Voici deux phrases 
+	
+	\begin{tabular}{|l|}
+		\hline 
+		\ul{Chaque étudiant} prépare \ul{un rapport} avec \ul{\LaTeX} \\
+		Si \ul{un étudiant} est inscrit à \ul{l'ESI} donc \ul{il} étudie \ul{l'informatique}\\
+		\hline 
+	\end{tabular}
+
+	\begin{enumerate}
+		\item Pour chaque expression soulignée, indiquer le rôle thématique en utilisant le tableau vu en cours.
+		\item Supposons que nous avons utilisé un LSTM pour estimer ces rôles. 
+		Écrire le résultat de chaque phrase en utilisant la représentation IOB.
+		\item En utilisant la version française de FrameNet (\url{http://asfalda.linguist.univ-paris-diderot.fr/luIndex.xml} [visité le 2022-05-09]), indiquer les cadres sémantiques activées pour chaque phrase.
+		\item En utilisant la version française de PropBank (\url{https://alanakbik.github.io/UniversalPropositions_French/} [visité le 2022-05-09]), indiquer les prédicats activés.
+		\item Annoter les deux phrases en se basant sur les arguments de chaque prédicat.
+		\item Proposer une grammaire hors contexte pour générer ces phrases.
+		\item Représenter les deux phrases en logique du premier ordre où le domaine fournit les prédicats suivants : 
+		Rapport(x) ; Etudiant(x) ; Preparer(x, y) ; Préparer-Avec(x) ; Inscrit-A(x, y). 
+		Il fournit, aussi, les constantes suivantes : ESI ; LATEX.
+		\item Enrichir la grammaire précédente par des règles sémantiques afin de générer ces représentations.
+		\item Dessiner l'arbre sémantique de chaque phrase.
+		\item Maintenant, nous voulons utiliser une représentation néo-Davidsonienne. 
+		Le domaine, dans ce cas, fournit les prédicats suivants : 
+		Etudiant(x) ; Preparer(e) ; Preparer-Agent(e, x) ; Preparer-Theme(e, x) ; Preparer-Instrument(e, x) ; Inscrire-Location(e, x).
+		Il fournit, aussi, les constantes suivantes : ESI ; LATEX.
+		\item Enrichir la grammaire précédente par des règles sémantiques afin de générer ces représentations.
+		\item Dessiner l'arbre sémantique de chaque phrase.
+	\end{enumerate}
+
 	
 \end{enumerate}
 

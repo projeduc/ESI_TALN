@@ -566,7 +566,7 @@ La probabilité d'occurrence de $w_j$ dans le contexte de $w_i$ est estimée com
 
 %La figure \ref{fig:glove-prob-exp} représente un exemple des probabilités conditionnelles.
 Le tableau \ref{tab:glove-prob-exp} représente un exemple des probabilités conditionnelles. 
-Si nous voulions trouver la relation entre deux mots (Ex. $w_i = ice$ et $w_j = steam$) par rapport à un mot $w_k$, nous pourrions calculer le ratio entre leurs probabilités $R(w_i, w_j) = \frac{P_{ik}}{P{jk}}$. 
+Si nous voulions trouver la relation entre deux mots (Ex. $w_i = ice$ et $w_j = steam$) par rapport à un mot $w_k$, nous pourrions calculer le ratio entre leurs probabilités $R(w_i, w_j) = \frac{P_{ik}}{P_{jk}}$. 
 Donc : 
 \begin{itemize}
 	\item Si $R(w_k, w_i) \wedge \neg R(w_k, w_j)$, le ratio sera grand. Ex. \expword{solid}
