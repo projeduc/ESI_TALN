@@ -27,14 +27,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284272"
-     inkscape:cx="272.87749"
-     inkscape:cy="-11.581553"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="233.04351"
+     inkscape:cy="23.84151"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1366"
-     inkscape:window-height="708"
+     inkscape:window-height="695"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1">
@@ -721,7 +721,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -742,15 +742,15 @@
          id="tspan15657"
          sodipodi:role="line" /></text>
     <rect
-       style="opacity:1;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:0.50662178;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.50662177, 0.50662177;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.50000001;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1987-1"
        width="23.8125"
        height="8.9958801"
        x="29.104166"
        y="286.68143"
-       ry="3.7517769" />
+       ry="2.381073" />
     <path
-       style="fill:#aaccee;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.44721326;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.44721326;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 15.345847,289.0625 h 7.408321 v -2.64583 l 4.233313,4.7625 -4.233313,4.49792 v -2.64584 h -7.408321 z"
        id="path5380"
        inkscape:connector-curvature="0"
@@ -758,7 +758,7 @@
     <use
        id="use12420"
        transform="matrix(0.38333333,0,0,0.44444443,-0.46302085,283.18304)"
-       style="fill:#aaccee;stroke:#000000"
+       style="fill:#6496ff;stroke:none;fill-opacity:1"
        xlink:href="#Document"
        x="0"
        y="0"
@@ -777,10 +777,10 @@
            height="28.999989"
            width="90"
            id="rect12440" /></flowRegion><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ff0000;fill-opacity:1"
          id="flowPara12442">Détection </flowPara><flowPara
          id="flowPara12444"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">de mention</flowPara></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ff0000;fill-opacity:1">de mention</flowPara></flowRoot>    <flowRoot
        transform="matrix(0.26458333,0,0,0.26458333,-28.310425,291.1316)"
        style="stroke-width:1px;stroke-linejoin:miter;font-size:40px;font-family:Crimson Text;fill:#000000;stroke-opacity:1;fill-opacity:1;letter-spacing:0px;text-anchor:middle;line-height:20.0000003%;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;text-align:center"
        id="flowRoot12436-1"
@@ -795,7 +795,7 @@
            id="rect12440-2" /></flowRegion><flowPara
          id="flowPara12444-5"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.0000002px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr;text-anchor:middle">Texte</flowPara></flowRoot>    <rect
-       style="opacity:1;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:0.48344955;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.48344948, 0.48344948;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.50000001;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1987-1-4-8"
        width="21.064571"
        height="9.2604361"
@@ -816,10 +816,10 @@
            width="136.00002"
            id="rect12440-0-0" /></flowRegion><flowPara
          id="flowPara12444-9-3"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.0000002px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr;text-anchor:middle">Liaison</flowPara></flowRoot>    <use
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.0000002px;line-height:20.0000003%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr;text-anchor:middle;fill:#ff0000;fill-opacity:1">Liaison</flowPara></flowRoot>    <use
        id="use12935"
        transform="matrix(0,-0.33333318,2.1017641,0,80.674579,297.52916)"
-       style="fill:#aaccee;stroke:#000000;stroke-width:0.5695653;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#6496ff;stroke:none;stroke-width:0.5695653;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
        xlink:href="#PunchedTape"
        x="0"
        y="0"
@@ -827,30 +827,30 @@
        height="100%" />
     <flowRoot
        transform="matrix(0.26458333,0,0,0.26458333,78.955411,288.16616)"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:20.0000003%;font-family:'Crimson Text';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:20.0000003%;font-family:'Crimson Text';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        id="flowRoot12436-1-0"
        xml:space="preserve"><flowRegion
-         style="line-height:20.0000003%;text-align:center;text-anchor:middle"
+         style="line-height:20.0000003%;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;"
          id="flowRegion12438-2-8"><rect
-           style="line-height:20.0000003%;text-align:center;text-anchor:middle"
+           style="line-height:20.0000003%;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;"
            y="-8.8188934"
            x="90"
            height="47.206635"
            width="131.58585"
            id="rect12440-2-9" /></flowRegion><flowPara
          id="flowPara12444-5-8"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">Annotations </flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;">Annotations </flowPara><flowPara
          id="flowPara13914"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">des </flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;">des </flowPara><flowPara
          id="flowPara13916"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">           coréférences</flowPara></flowRoot>    <path
-       style="fill:#aaccee;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.44721329;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:40.0000006%;font-family:'Crimson Text';-inkscape-font-specification:'Crimson Text, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;">           coréférences</flowPara></flowRoot>    <path
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.44721329;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 55.033345,289.06248 h 7.408321 v -2.64583 l 4.233314,4.7625 -4.233314,4.49792 v -2.64584 h -7.408321 z"
        id="path5380-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccc" />
     <path
-       style="fill:#aaccee;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.44721329;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.44721329;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 93.133349,289.59165 h 7.408291 v -2.64583 l 4.23332,4.7625 -4.23332,4.49792 v -2.64584 h -7.408291 z"
        id="path5380-4-4"
        inkscape:connector-curvature="0"

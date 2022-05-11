@@ -214,22 +214,42 @@ Nous parcourons les nœuds et nous classons les syntagmes nominaux comme coréf�
 Les caractéristiques utilisées sont les propriétés présentées précédemment comme le nombre, le genre, etc.
 D'autres systèmes ont été développés, mais ils sont liés à une tâche spécifique et ne peuvent pas être utilisés séparément. 
 La figure \ref{fig:det-mention-yu} représente trois architectures de détection des mentions proposées par \citet{2020-yu-al}. 
-Étant donné un document $D$, nous commençons par considérer toutes les mentions possibles $x^*_i$ marquées par le mot du début $s_i$ et le mot de fin $e_i$. 
-Dans le système (c), nous utilisons un modèle \keyword[B]{BERT} pré-entraîné pour générer les représentations des mots $x^*_t$. 
-Pour chaque mention possible de cette phrase, nous prenons les représentations du début $x^*_{si}$ et de fin $x^*_{ei}$ et les concaténer pour avoir la représentation du mention. 
-Cette dernière est utilisée comme entrée à un réseau de neurones à propagation avant (FFNN) afin de classer le mention comme coréférence ou non. 
-Dans le système (b), nous utilisons un modèle \keyword[E]{ELMo} pré-entraîné afin de générer les représentations des mots comme dans le système (c). 
+Étant donné un document $D$, nous commençons par considérer toutes les expressions possibles marquées par le mot du début $w_{si}$ et le mot de fin $w_{ei}$ comme mentions candidates. 
+Par exemple, la phrase ``\expword{La boite de développement est loin}" contient $\frac{6 * 7}{2} = 21$ mentions candidates : ``\expword{La}", ``\expword{La boite}", ``\expword{La boite de}", ``\expword{La boite de dévelopement}", ``\expword{La boite de développement est}", ``\expword{La boite de développement est loin}", ``\expword{boite}", ``\expword{boite de}", ``\expword{boite de dévelopement}", ``\expword{boite de développement est}", ``\expword{boite de développement est loin}", ``\expword{de}", ``\expword{de dévelopement}", ``\expword{de développement est}", ``\expword{de développement est loin}",
+``\expword{dévelopement}", ``\expword{développement est}", ``\expword{développement est loin}", ``\expword{est}", ``\expword{est loin}" et ``\expword{loin}".
+%Système (a)
+Le système (a) est un peu plus complexe : chaque mot $w_i$ est représenté par la concaténation de trois embeddings $x_i$  : \keyword[G]{GloVe}, \keyword[E]{ELMo} et un embedding basé sur les caractères en utilisant les CNNs. 
+Nous passons la phrase par un réseau \keyword[B]{Bi-LSTM} pour avoir une autre représentation $x_i^*$ qui est la concaténation des deux sorties en avant et en arrière.
+Pour représenter une mention $i$ (supposons la 4ième dans la liste passée) par un embedding $h^*_i$, nous appliquons une attention sur $\{x^*_{si}\ldots x^*_{ei}\}$ ; où $si$ et $ei$ sont les indices de début et de la fin de la mention respectivement.
+L'attention peut être formulée comme suit (on fixe un nombre maximal des mots dans une mention) :
+\begin{align*}
+\alpha_t & = FFNN_\alpha(x_t^*) \\
+a_{i, t} & = \frac{exp(\alpha_t)}{\sum_{k=si}^{ei} exp(\alpha_k)} \\
+h_i^* & = \sum_{t=si}^{ei} a_{i, t} \cdot x_t \\
+\end{align*}
+La sortie $h^*_i$ est concaténée avec le embedding du mot du début $x^*_{si}$, celui du mot de fin $x^*_{ei}$ et le \keyword[E]{embedding} de la taille de la mention $\phi_i$.
+Cette représentation est passée par un réseau de neurones à propagation en avant (FFNN) afin de décider si l'expression est une mention ou non.
+% Système b
+Dans le système (b), chaque mot est représenté seulement en utilisant \keyword[E]{ELMo} pré-entraîné ; vu que les auteurs ont remarqué que les deux autres représentations n'améliorent pas la tâche.
+Ensuite, la phrase est passée par 
 Le code de chaque mot est une concaténation des couches cachées du modèle.
-Nous utilisons deux réseaux de neurones à propagation avant (FFNN) afin d'encoder le début et la fin sous forme de deux vecteurs. 
-Ces derniers sont utilisés comme entrée d'un troisième FFNN afin de classer la mention comme coréférence ou non. 
-Le système (a) est un peu plus complexe : pour chaque mot, il utilise une représentation en utilisant \keyword[G]{GloVe}, une autre en utilisant \keyword[E]{ELMo} et une troisième basée sur les caractères en utilisant les CNNs. 
-Nous appliquons une attention sur $\{x^*_{si}\ldots x^*_{ei}\}$ pour avoir une représentation de la mention $h^*_i$. 
-Comme les deux autres systèmes, nous utilisons un FFNN pour classer la mention comme coréférence ou non. 
-Comme entrée, nous utilisons la représentation du mot du début $x^*_{si}$, du mot de fin $x^*_{ei}$, de la mention $h^*_i$ et le \keyword[E]{embedding} de la taille de la mention $\phi(i)$.
+Nous utilisons deux réseaux de neurones à propagation avant (FFNN) afin d'encoder le début ($ h_s(i) = FFNN_s(x_{si}^*)$) et la fin ($ h_e(i) = FFNN_e(x_{ei}^*)$) de l'expression $i$ sous forme de deux vecteurs. 
+Le début et la fin encodés sont passés par un classifieur Biaffine \cite{2017-dozat-manning} qui rend un score comme suit : 
+\begin{align*}
+r_m(i) & = h_s(i)^\top W_m h_e + h_s(i) b_m \\
+p_m(i) & = \sigma(r_m(i)) \\
+\end{align*}
+$W_m$ est une matrice de $d\times d$ où $d$ est la taille de l'embedding.
+$b_m$ est un vecteur d'une dimension $d$ représentant le biais.
+% Système C
+Dans le système (c), un modèle \keyword[B]{BERT} pré-entraîné est utilisé afin de générer les représentations des mots $x^*_t$. 
+Pour chaque mention candidate $i$ de cette phrase, nous prenons les représentations du début $x^*_{si}$ et de fin $x^*_{ei}$ et les concaténer pour avoir la représentation de l'expression. 
+Cette dernière est utilisée comme entrée à un réseau de neurones à propagation avant (FFNN) afin de classer l'expression comme mention ou non. 
+
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.85\textwidth]{mention-detection-arch_.pdf}
-	\caption[Trois architectures pour la détection des mentions]{Trois architectures pour la détection des mentions \cite{2020-yu-al}}
+	\hgraphpage[\textwidth]{mention-detection-arch.pdf}
+	\caption[Trois architectures pour la détection des mentions]{Trois architectures pour la détection des mentions ; figure reconstruite de \cite{2020-yu-al}}
 	\label{fig:det-mention-yu}
 \end{figure}
 
@@ -246,11 +266,12 @@ Nous entraînons un modèle de classement binaire qui prend deux mentions $m_i$ 
 Les caractéristiques utilisées peuvent être des propriétés des deux mentions comme la personne, le genre, le nombre, etc.
 Afin de détecter les coréférences, le modèle est appliqué deux à deux.
 Dans la figure \ref{fig:mention-pair-exp}, le modèle doit estimer une grande probabilité P(coref| ``Victoria Chen", ``she") et une petite probabilité P(coref| ``Megabucks Banking", ``she").
+Ici, le mot ``she" est lié avec plusieurs mots sans prendre en considération de leurs relations.
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.75\textwidth]{mention-pair-exp_.pdf}
-	\caption[Exemple d'un modèle Mention-Pair]{Exemple d'un modèle Mention-Pair \cite{2019-jurafsky-martin}}
+	\hgraphpage[.8\textwidth]{mention-pair-exp.pdf}
+	\caption[Exemple d'un modèle Mention-Pair]{Exemple d'un modèle Mention-Pair ; figure reconstruite de \cite{2019-jurafsky-martin}}
 	\label{fig:mention-pair-exp}
 \end{figure}
 
@@ -267,19 +288,20 @@ Donc, la tâche consiste à maximiser la probabilité qu'une mention est un ant�
 \begin{equation}\label{eq:mention-rank}
 \hat{a} = \arg\max_{j \in \{\epsilon, 1, \ldots, (i-1)\}} P(w_j|w_i) 
 \end{equation}
-
-%La figure \ref{fig:mention-rank-exp} représente un exemple de l'annotation Mention-Rank.
-%
-%\begin{figure}[ht]
-%	\centering
-%	\hgraphpage[.8\textwidth]{mention-rank-exp_.pdf}
-%	\caption[Exemple d'un modèle Mention-Rank]{Exemple d'un modèle Mention-Rank \cite{2019-jurafsky-martin}}
-%	\label{fig:mention-rank-exp}
-%\end{figure}
-
 Dans l'étape d'entraînement, nous devons choisir un seul exemple positif parmi ceux possibles. 
 Une approche consiste à prendre la mention la plus proche.
 Une fois un antécédent est détecté, le reste des antécédents sont détectés en utilisant la transitivité. 
+La figure \ref{fig:mention-rank-exp} représente un exemple de l'annotation Mention-Rank.
+Dans cette exemple si nous choisissions ``Victoria Chen" comme antécédent du pronom ``she", nous devrions ignorer le reste des grandes probabilités (ligne continue).
+Cela nous assure qu'il n'aura pas des coréférences contradictoires.
+\begin{figure}[ht]
+	\centering
+	\hgraphpage[.8\textwidth]{mention-rank-exp.pdf}
+	\caption[Exemple d'un modèle Mention-Rank]{Exemple d'un modèle Mention-Rank ; figure reconstruite de \cite{2019-jurafsky-martin}}
+	\label{fig:mention-rank-exp}
+\end{figure}
+
+
 
 \subsubsection{Modèles Entity-based}
 
@@ -387,7 +409,7 @@ Cette tâche est liée à la base de connaissance utilisée ; lorsque nous utili
 Avant d'appliquer cette étape, nous devons détecter les mentions dans le texte (comme dans la résolution des coréférences).
 Afin d'annoter une mention du texte, nous suivons deux étapes :
 \begin{itemize}
-	\item \optword{Détection de la mention} : détecter l'ensemble des entités d'un base de connaissance liées à une mention en utilisant des requêtes.
+	\item \optword{Détection de la mention} : détecter l'ensemble des entités d'une base de connaissance liées à une mention en utilisant des requêtes.
 	Vu que la base est structurée, la recherche sera facile ; dans Wikipedia, nous utilisons les titres.
 	\item \optword{Désambigüisation de la mention} : trouver l'entité la plus probable en utilisant l'apprentissage automatique. 
 	Comme caractéristiques, nous prenons celles de la mention et celles de l'entité.
@@ -405,7 +427,7 @@ Afin de classer les mentions, nous pouvons utiliser plusieurs approches :
 	\item \optword{Apprentissage avec caractéristiques} : utiliser les \keywordpl[E]{embedding} du mot et ses voisins, les préfixes et les suffixes, l'appartenance à une liste, etc.
 	\item \optword{Étiquetage de séquences} : classer les mots en entités en les traitant comme une séquence en utilisant \keyword[I]{IOB} vue dans le chapitre 4.
 	
-	\expword{\scriptsize
+	\expword{
 		$ \underbrace{Google}_{B-ORG} $ 
 		$ \underbrace{LLC}_{I-ORG} $ 
 		$ \underbrace{est}_{O} $ 
@@ -450,7 +472,28 @@ Plusieurs mesures ont été présentées dans ce chapitre, ainsi que des tâches
 \subsubsection*{Exercices}
 
 \begin{enumerate}
-	\item ...
+	\item Voici un texte :
+	
+	\begin{tabular}{|p{0.9\textwidth}|}
+		\hline
+		La fille a cueilli une fleur. 
+		Elle l'a sentie. 
+		Elle a une très bonne odeur.
+		Cette belle fleur est dans l'école nationale supérieure d'informatique où la fille étudie.
+		L'ESI se situe à Alger ; une ville dans le nord de l'Algérie.\\
+		\hline
+	\end{tabular}
+
+	\begin{enumerate}
+		\item Trouver toutes les mentions en indiquant les formes de références.
+		\item Annoter les co-références.
+		\item Écrire une procédure qui prend deux mentions comme arguments et rendre un booléen indiquant si le premier est un antécédent du deuxième en se basant sur les propriétés des deux.
+		\item Appliquer l'algorithme Mention-Pair avec cette procédure sur les mentions de la première question et vérifier si les co-références générées sont similaires à celles manuellement annotées.
+		\item Écrire une procédure qui prend deux mentions avec un tableau des mentions entre les deux comme arguments et rendre un score indiquant si le premier est un antécédent du deuxième en se basant sur les propriétés des deux.
+		\item Appliquer l'algorithme Mention-Rank avec cette procédure sur les mentions de la première question et vérifier si les co-références générées sont similaires à celles manuellement annotées.
+		\item Écrire une procédure récursive qui implémente un modèle Entity-based. Cette procédure prend un ensemble des clusters comme argument et rend un autre ensemble de clusters. 
+	\end{enumerate}
+
 	
 \end{enumerate}
 
