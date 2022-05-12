@@ -373,7 +373,7 @@ Par exemple, la relation de succession indiquée par des connectives comme ``aft
 		\end{itemize}
 	\end{itemize}
 \end{minipage}\vspace{-0.5cm}
-	\caption[Hiérarchie des sens dans PDTB]{Hiérarchie des sens dans PDTB \cite{2008-prasad-al}}
+	\caption[Hiérarchie des sens dans PDTB]{Hiérarchie des sens dans PDTB ; figure reconstruite de \cite{2008-prasad-al}.}
 	\label{fig:pdtb-rel}
 \end{figure}
 
@@ -425,7 +425,8 @@ Ce problème peut être vu comme annotation des séquences.
 Dans \cite{2018-wang-al}, les auteurs ont proposé un système neuronal\footnote{EDU avec réseau de neurones : \url{https://github.com/PKU-TANGENT/NeuralEDUSeg} [visité le 2021-09-15]} qui utilise le \keyword[E]{embedding} des mots. 
 La figure \ref{fig:edu-embedding} représente leur architecture où l'entrée est une concaténation entre deux \keywordpl[E]{embedding} : \keyword[G]{GloVe} et \keyword[B]{BERT}. 
 Nous utilisons un réseau \keyword[B]{Bi-LSTM} afin d'avoir le contexte en avant et en arrière pour chaque mot. 
-Ensuite, chaque mot est classé comme : début d'un \ac{edu} (1) ou continuation d'un \ac{edu} (0). 
+Ensuite, chaque mot est classé comme : début d'un \ac{edu} (1) ou continuation d'un \ac{edu} (0) en utilisant un réseau \keyword[C]{CRF} (Conditional random field : Champ aléatoire conditionnel).
+Nous pouvons imaginer ce réseau comme un réseau de Markov caché mais qui considère l'état passé et l'état futur.
 
 \begin{figure}[!ht]
 	\centering
@@ -463,14 +464,54 @@ Les opérations permises par cette machine sont :
 	\item \optword{Reduce}\textbf{(l, d)} : fusionne les deux sous-arbres supérieurs de la pile, où \textbf{l} est l'étiquette de relation de cohérence, et \textbf{d} est la direction de nucléarité : \textbf{d $ \in $ \{NN, NS, SN\}}.
 	\item \optword{Pop Root} : enlever la racine de l'arbre final de la pile.
 \end{itemize}
+%
 Un exemple d'une analyse \keyword[R]{\ac{rst}} en utilisant la méthode SHIFT-REDUCE est illustré das la figure \ref{fig:rst-shred-yu-al}.
+La figure représente quatre expressions, les relations \ac{rst} entre elles ainsi que le tableau d'analyse.
+Ce dernier représente la pile où chaque élément (expression) est ajouté par l'action SHIFT et supprimé du tampon.
+Lorsque l'action REDUCE est exécutée, les deux sous-arbres dans le sommet de la pile sont fusionnés pour construire un arbre dans le sommet.
+L'action REDUCE doit fournir deux informations : l'étiquette de la relation de cohérence et la direction de nucléarité.
+Les actions sont détectées en utilisant le composant ``Oracle" qui sera décrit après.
+
+%\begin{figure}[!ht]
+%	\centering
+%	\hgraphpage{RST_exp_.pdf}
+%	
+%	\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
+%	\caption[Exemple d'analyse RST en utilisant Shif-Reduce]{Exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+%	\label{fig:rst-shred-yu-al}
+%\end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage{RST_exp_.pdf}
+	\begin{minipage}{0.25\textwidth}
+		\hgraphpage{RST_exp.pdf}
+	\end{minipage}
+	\begin{minipage}{0.70\textwidth}
+		\small
+		\begin{itemize}
+			\item e\textsubscript{1} : American Telephone \& Telegraph Co. said it
+			\item e\textsubscript{2} : will lay off 75 to 85 technicians here , effective Nov. 1.
+			\item e\textsubscript{3} : The workers install , maintain and repair its private branch exchanges,
+			\item e\textsubscript{4} : which are large intracompany telephone networks.
+		\end{itemize}
+	\end{minipage}
 	
-	\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
-	\caption[Exemple d'analyse RST en utilisant Shif-Reduce]{Exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+	\begin{tabular}{lllll}
+		\hline\hline 
+		étape & Pile & Tampon & Action & Relation ajoutée \\
+		\hline
+		01 & $\emptyset$ & $e_1, e_2, e_3, e_4$ & SH & / \\
+		02 & $e_1$ & $e_2, e_3, e_4$ & SH & / \\
+		03 & $e_1, e_2$ & $e_3, e_4$ & RD(attr, SN) & $\widehat{e_1 \mathbf{e_2}}$ \\
+		04 & $e_{1:2}$ & $e_4$ & SH & / \\
+		05 & $e_{1:2}, e_3$ & $e_4$ & SH & / \\
+		06 & $e_{1:2}, e_3, e_4$ & $\emptyset$ & RD(elab, NS) & $\widehat{\mathbf{e_3} e_4}$ \\
+		07 & $e_{1:2}, e_{3:4}$ & $\emptyset$ & RD(elab, SN) & $\widehat{e_{1:2}\mathbf{e_{3:4}}}$ \\
+		08 & $e_{1:4}$ & $\emptyset$ & PR & / \\
+		\hline\hline
+	\end{tabular}
+	
+	\caption[Exemple d'analyse RST en utilisant Shif-Reduce]{Exemple d'analyse RST en utilisant Shif-Reduce ; figure reconstruite de \cite{2018-yu-al}.}
 	\label{fig:rst-shred-yu-al}
 \end{figure}
 
@@ -529,15 +570,19 @@ Ensuite, nous marquons la relation entre les deux en utilisant la connective.
 Dans le cas où la connective est implicite, nous devons l'inférer étant donnée deux parties sans connectives. 
 Une méthode est d'utiliser \keyword[B]{BERT} avec les parties séparées par ``[SEP]" comme entrée. 
 Dans la sortie ``[CLS]", nous attachons un réseau de neurones à propagation avant afin d'inférer la connective.
+%LSTM based
 Une autre méthode similaire est l'utilisation de deux réseaux \keyword[L]{LSTM} pour représenter chacune des deux parties. 
 Cette méthode a été proposée par \citet{2020-liang-al}, où l'architecture est illustrée dans la figure \ref{fig:pdtb-liang}.
-Le ``Max-Pool" est utilisé sur les représentations récurrentes des mots afin de composer le sens d'une partie et aussi pour réduire les paramètres du modèle.
-Dans chaque position dans les vecteurs des mots, il prend le nombre max pour avoir un autre vecteur de même taille.
-
-\begin{figure}[!ht]
+Premièrement; les mots de chaque argument sont encodés par une méthode d'embedding comme \keyword[W]{Word2Vec}.
+Les deux réseaux \keyword[L]{LSTM} sont utilisés pour encoder les mots comme un modèle de langage.
+Le ``Max-Pool" est utilisé sur les représentations récurrentes des mots afin de composer le sens de chaque argument et aussi pour réduire les paramètres du modèle.
+Ici, pour construire le premier élément du vecteur, nous prenons le maximum entre les premiers éléments de tous les mots, etc.
+Les deux représentations des deux arguments sont passées par un réseau de neurones à propagation avant (FFNN).
+Enfin, nous utilisons une couche ``Softmax" afin d'encoder la relation \ac{pdtb}.
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{PDTB_exp_.pdf}
-	\caption[Architecture pour la détection de relations PDTB implicites]{Architecture pour la détection de relations PDTB implicites \cite{2020-liang-al}}
+	\hgraphpage[.8\textwidth]{PDTB_exp.pdf}
+	\caption[Architecture pour la détection de relations PDTB implicites]{Architecture pour la détection de relations PDTB implicites ; figure inspirée de \cite{2020-liang-al}.}
 	\label{fig:pdtb-liang}
 \end{figure}
 
@@ -589,7 +634,7 @@ La deuxième règle concerne les transitions mentionnées précédemment, où ``
 Ces transitions sont calculée selon le tableau \ref{tab:center-trans}.
 L'intuition de cette règle est que les discours qui continuent à se center sur la même entité sont plus cohérents que ceux qui basculent vers d'autres centres.
 
-\begin{table}[!ht]
+\begin{table}[ht]
 	\centering
 	\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
 		\hline\hline
@@ -640,8 +685,11 @@ Reprenons deux phrases de l'exemple précédent, et essayons de calculer la cent
 Dans le modèle ``entity grid", un document est représenté par une matrice où les phrases représentent les lignes et les entités représentent les colonnes. 
 Chaque cellule de cette matrice contient la fonction grammaticale de l'entité dans la phrase : sujet (s), objet (o), Autre (x) ou l'entité n'existe pas (\_). 
 La figure \ref{fig:entity-grid-rep} représente un texte et sa représentation phrases/entités selon le modèle ``entity grid". 
+Nous commençons par détecter les sujets, les objets et les autres fonctions syntaxiques.
+Par exemple, nous pouvons appliquer une analyse syntaxique pour extraire les dépendances.
+Les différentes têtes de ces dépendances sont utilisées pour représenter les phrases en indiquant la fonction grammaticale.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering\footnotesize
 	\begin{minipage}{.8\textwidth}
 	\begin{enumerate}

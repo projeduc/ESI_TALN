@@ -41,7 +41,7 @@
 \framesubtitle{Cohérence du discours :  Un peu d'humour}
 
 \begin{center}
-	\vgraphpage{humour1.jpg}
+	\vgraphpage{humour/humour1.jpg}
 \end{center}
 
 \end{frame}
@@ -368,9 +368,98 @@
 	\framesubtitle{Penn Discourse TreeBank (PDTB) : Sens des connectives}
 	
 	\begin{figure}
-		\vgraphpage[.7\textheight]{pdtb-sens_.pdf}
+		\begin{minipage}{.3\textwidth}
+			\tiny\bfseries
+			\begin{itemize}
+				\item CONTINGENCY
+				\begin{itemize}\tiny\bfseries
+					\item Cause
+					\begin{itemize}\tiny\bfseries
+						\item Reason
+						\item Result
+					\end{itemize}
+					\item Pragmatic Cause
+					\begin{itemize}\tiny\bfseries
+						\item Justification
+					\end{itemize}
+					\item Condition
+					\begin{itemize}\tiny\bfseries
+						\item Hypothetical
+						\item General
+						\item Unreal Present
+						\item Unreal Past
+						\item Factual Present
+						\item Factual Past
+					\end{itemize}
+					\item Pragmatic Condition
+					\begin{itemize}\tiny\bfseries
+						\item Relevance
+						\item Implicit Assertion
+					\end{itemize}
+				\end{itemize}
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{.3\textwidth}
+			\tiny\bfseries
+			\begin{itemize}\tiny\bfseries
+				\item TEMPORAL
+				\begin{itemize}\tiny\bfseries
+					\item Asynchronous
+					\item Synchronous
+					\begin{itemize}\tiny\bfseries
+						\item Precedence
+						\item Succession
+					\end{itemize}
+				\end{itemize}
+				\item COMPARISON
+				\begin{itemize}\tiny\bfseries
+					\item Contrast
+					\begin{itemize}\tiny\bfseries
+						\item Juxtaposition 
+						\item Opposition
+					\end{itemize}
+					\item Pragmatic Contrast
+					\item Concession
+					\begin{itemize}\tiny\bfseries
+						\item Expectation
+						\item Contra-expectation
+					\end{itemize}
+					\item Pragmatic Concession
+				\end{itemize}
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{.3\textwidth}
+			\tiny\bfseries
+			\begin{itemize}\tiny\bfseries
+				\item EXPANSION
+				\begin{itemize}\tiny\bfseries
+					\item Conjunction
+					\item Instantiation
+					\item Restatement
+					\begin{itemize}\tiny\bfseries
+						\item Specification
+						\item Equivalence
+						\item Generalization
+					\end{itemize}
+					\item Alternative
+					\begin{itemize}\tiny\bfseries
+						\item Conjunction
+						\item Disjunction
+						\item Chosen Alternative
+					\end{itemize}
+					\item Exception
+					\item List
+				\end{itemize}
+			\end{itemize}
+		\end{minipage}
 		\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
 	\end{figure}
+
+
+%	\begin{figure}
+%		\vgraphpage[.7\textheight]{pdtb-sens_.pdf}
+%		\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
+%	\end{figure}
 	
 \end{frame}
 
@@ -445,8 +534,8 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.7\textwidth]{EDU_seg_.pdf}
-		\caption{Segmentation en UEDs proposée par \cite{2018-wang-al} ; figure prise de \cite{2019-jurafsky-martin}}
+		\hgraphpage[.45\textwidth]{EDU_seg.pdf}
+		\caption{Segmentation en UEDs proposée par \cite{2018-wang-al} ; figure inspirée de \cite{2019-jurafsky-martin}}
 	\end{figure}
 	
 \end{frame}
@@ -492,10 +581,35 @@
 	\framesubtitle{Analyse RST : Classification des relations (exemple)}
 	
 	\begin{figure}
-		\hgraphpage{RST_exp_.pdf}
+		\begin{minipage}{0.25\textwidth}
+			\hgraphpage{RST_exp.pdf}
+		\end{minipage}
+		\begin{minipage}{0.70\textwidth}
+			\scriptsize
+			\begin{itemize}
+				\item e\textsubscript{1} : American Telephone \& Telegraph Co. said it
+				\item e\textsubscript{2} : will lay off 75 to 85 technicians here , effective Nov. 1.
+				\item e\textsubscript{3} : The workers install , maintain and repair its private branch exchanges,
+				\item e\textsubscript{4} : which are large intracompany telephone networks.
+			\end{itemize}
+		\end{minipage}
 		
-		\hgraphpage[.7\textwidth]{RST_SR_exp_.pdf}
-		\caption{Un exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
+		\small
+		\begin{tabular}{lllll}
+			\hline\hline 
+			étape & Pile & Tampon & Action & Relation ajoutée \\
+			\hline
+			01 & $\emptyset$ & $e_1, e_2, e_3, e_4$ & SH & / \\
+			02 & $e_1$ & $e_2, e_3, e_4$ & SH & / \\
+			03 & $e_1, e_2$ & $e_3, e_4$ & RD(attr, SN) & $\widehat{e_1 \mathbf{e_2}}$ \\
+			04 & $e_{1:2}$ & $e_4$ & SH & / \\
+			05 & $e_{1:2}, e_3$ & $e_4$ & SH & / \\
+			06 & $e_{1:2}, e_3, e_4$ & $\emptyset$ & RD(elab, NS) & $\widehat{\mathbf{e_3} e_4}$ \\
+			07 & $e_{1:2}, e_{3:4}$ & $\emptyset$ & RD(elab, SN) & $\widehat{e_{1:2}\mathbf{e_{3:4}}}$ \\
+			08 & $e_{1:4}$ & $\emptyset$ & PR & / \\
+			\hline\hline
+		\end{tabular}
+		\caption{Exemple d'analyse RST en utilisant Shif-Reduce \cite{2018-yu-al}}
 	\end{figure}
 	
 \end{frame}
@@ -576,7 +690,7 @@
 	\framesubtitle{Analyse basée structure :  Un peu d'humour}
 	
 	\begin{center}
-		\vgraphpage{humour2.jpg}
+		\vgraphpage{humour/humour2.jpg}
 	\end{center}
 	
 \end{frame}
@@ -706,11 +820,44 @@
 	\framesubtitle{Entity Grid model : Exemple d'une représentation de document}
 	
 	\begin{figure}
-		\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
+		\centering\tiny\bfseries
+		\begin{minipage}{.8\textwidth}
+			\begin{enumerate}
+				\item\ [The Justice Department]\textsubscript{s} is conducting an [anti-trust trial]\textsubscript{o} against [Microsoft Corp.]\textsubscript{x} with [evidence]\textsubscript{x} that [the company]\textsubscript{s} is increasingly attempting to crush [competitors]\textsubscript{o}.
+				\item\ [Microsoft]\textsubscript{o} is accused of trying to forcefully buy into [markets]\textsubscript{x} where [its own products]\textsubscript{s} are not competitive enough to unseat [established brands]\textsubscript{o}.
+				\item\ [The case]\textsubscript{s} revolves around [evidence]\textsubscript{o} of [Microsoft]\textsubscript{s} aggressively pressuring [Netscape]\textsubscript{o} into merging [browser software]\textsubscript{o}.
+				\item\ [Microsoft]\textsubscript{s} claims [its tactics]\textsubscript{s} are commonplace and good economically.
+				\item\ [The government]\textsubscript{s} may file [a civil suit]\textsubscript{o} ruling that [conspiracy]\textsubscript{s} to curb [competition]\textsubscript{o} through [collision]\textsubscript{x} is [a violation of the Sherman Act]\textsubscript{o}.
+				\item\ [Microsoft]\textsubscript{s} continues to show [inscreased earnings]\textsubscript{o} despite [the trial]\textsubscript{x}.
+			\end{enumerate}
+		\end{minipage}
 		
-		\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
-		\caption{Un exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+		\color{blue}
+		\begin{tabular}{ccccccccccccccccc}
+			& \rotatebox[origin=c]{90}{Department} & \rotatebox[origin=c]{90}{Trial} & \rotatebox[origin=c]{90}{Microsoft} &
+			\rotatebox[origin=c]{90}{Evidence} & \rotatebox[origin=c]{90}{Competitors} & \rotatebox[origin=c]{90}{Markets} &
+			\rotatebox[origin=c]{90}{Products} & \rotatebox[origin=c]{90}{Brands} & \rotatebox[origin=c]{90}{Case} &
+			\rotatebox[origin=c]{90}{Netscape} & \rotatebox[origin=c]{90}{Software} & \rotatebox[origin=c]{90}{Tactics} &
+			\rotatebox[origin=c]{90}{Government} & \rotatebox[origin=c]{90}{Suit} & \rotatebox[origin=c]{90}{Earnings} & \\
+			
+			1. & s & o & s & x & o & - & - & - & - & - & - & - & - & - & - & 1. \\
+			2. & - & - & o & - & - & x & s & o & - & - & - & - & - & - & - & 2. \\
+			3. & - & - & s & o & - & - & - & - & s & o & o & - & - & - & - & 3. \\
+			4. & - & - & s & - & - & - & - & - & - & - & - & s & - & - & - & 4. \\
+			5. & - & - & - & - & - & - & - & - & - & - & - & - & s & o & - & 5. \\
+			6. & - & x & s & - & - & - & - & - & - & - & - & - & - & - & o & 6. \\
+			
+		\end{tabular}
+		\caption{Exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
 	\end{figure}
+
+
+%	\begin{figure}
+%		\hgraphpage[.7\textwidth]{EGM_doc_exp_.pdf}
+%		
+%		\hgraphpage[.4\textwidth]{EGM_doc_rep_exp_.pdf}
+%		\caption{Un exemple de la représentation d'un document par entités \cite{2008-barzilay-lapata}}
+%	\end{figure}
 	
 \end{frame}
 
@@ -724,7 +871,16 @@
 		\item Ex. Dans l'exemple précédent : \expword{P(S\_) = 2/75}
 	\end{itemize}
 	\begin{figure}
-		\hgraphpage{EGM_doc_vec_exp_.pdf}
+		\tiny\bfseries
+		\begin{tabular}{lllllllllllllllll}
+			\hline
+			& s s & s o & s x & s - & o s & o o & o x & o - & x s & x o & x x & x - & - s & - o & - x & - - \\
+			\hline
+			d1 & .01 & .01 & .00 & .08 & .01 & .00 & .00 & .09 & .00 & .00 & .00 & .03 & .05 & .07 & .03 & .59 \\
+			d2 & .02 & .01 & .01 & .02 & .00 & .07 & .00 & .02 & .14 & .14 & .06 & .04 & .03 & .07 & .01 & .36 \\
+			d3 & .02 & .00 & .00 & .03 & .09 & .00 & .09 & .06 & .00 & .00 & .00 & .05 & .03 & .07 & .17 & .39 \\
+			\hline
+		\end{tabular}
 		\caption{Un exemple de la représentation des documents par transitions grammaticales \cite{2008-barzilay-lapata}}
 	\end{figure}
 	
@@ -753,7 +909,7 @@
 	\framesubtitle{Analyse basée entité :  Un peu d'humour}
 	
 	\begin{center}
-		\vgraphpage{humour3.png}
+		\vgraphpage{humour/humour3.png}
 	\end{center}
 	
 \end{frame}
