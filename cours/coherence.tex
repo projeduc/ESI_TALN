@@ -796,7 +796,27 @@ Afin de juger la cohérence d'un texte, il vaut mieux utiliser les deux afin de 
 \subsubsection*{Exercices}
 
 \begin{enumerate}
-	\item ...
+	\item Voici un texte : 
+	
+	\begin{tabular}{|p{0.9\textwidth}|}
+		\hline
+		L'hiver est une des quatre saisons de l'année. Le rapport était bien exposé. 
+		La pluie est une des caractéristiques de cette saison. 
+		J'ai lu un rapport sur cette saison. \\
+		\hline 
+	\end{tabular}
+
+	\begin{enumerate}
+		\item Représenter chaque phrase en utilisant TF (éliminer les mots vides)
+		\item Calculer les similarités cosinus entre toutes les phrases.
+		\item Essayer de réorganiser les phrases en maximisant la somme des similarités entre les phrases consécutives.
+		\item Est-ce que l'ordre trouvé est le meilleur ?
+		\item En se basant sur le bon ordre, trouver les relations RST en dessinant l'arbre d'analyse.
+		\item Appliquer ``Centering theory" sur le texte mal-ordonné et celui correct.
+		\item Supposons que les transitions CONTINUE, RETAIN, Smooth-SHIFT et Rough-SHIFT veulent 3, 2, 1 et 0 respectivement.
+		Calculer le score de chaque texte en se basant sur le résultat de la question précédente.
+		\item En utilisant ``Entity Grid model", représenter les phrases par entités et par les probabilités des transitions grammaticales pour les deux textes : erroné et correct.
+	\end{enumerate}
 	
 \end{enumerate}
 
