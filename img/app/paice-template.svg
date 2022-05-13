@@ -1,171 +1,732 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="14cm" height="5cm" viewBox="0 6 263 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="4.58888" y="37.2546">
-    <tspan x="4.58888" y="37.2546">In</tspan>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="14cm"
+   height="5cm"
+   viewBox="0 6 263 96"
+   version="1.1"
+   id="svg238"
+   sodipodi:docname="paice-template.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata244">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs242" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="695"
+     id="namedview240"
+     showgrid="false"
+     inkscape:zoom="1.0583334"
+     inkscape:cx="393.21403"
+     inkscape:cy="124.16619"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg238" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="4.58888"
+     y="37.2546"
+     id="text4">
+    <tspan
+       x="4.58888"
+       y="37.2546"
+       id="tspan2">In</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="51.9638,15.7674 45.836,15.7674 45.836,60.7506 51.4186,60.7506 "/>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="11.733,36.2656 16.5758,36.2656 16.5758,59.6086 11.4088,59.6086 "/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="0.486236" y="60.8346">
-    <tspan x="0.486236" y="60.8346">For</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="51.9638,15.7674 45.836,15.7674 45.836,60.7506 51.4186,60.7506 "
+     id="polyline6" />
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="11.733,36.2656 16.5758,36.2656 16.5758,59.6086 11.4088,59.6086 "
+     id="polyline8" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="0.486236"
+     y="60.8346"
+     id="text12">
+    <tspan
+       x="0.486236"
+       y="60.8346"
+       id="tspan10">For</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="21.6842" y="49.2264">
-    <tspan x="21.6842" y="49.2264">[0]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="21.6842"
+     y="49.2264"
+     id="text16">
+    <tspan
+       x="21.6842"
+       y="49.2264"
+       id="tspan14"
+       style="fill:#ff0000;fill-opacity:1">[0]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="29.7676" y="49.6428">
-    <tspan x="29.7676" y="49.6428">this</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="29.7676"
+     y="49.6428"
+     id="text20">
+    <tspan
+       x="29.7676"
+       y="49.6428"
+       id="tspan18">this</tspan>
   </text>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="16.6568" y1="48.1807" x2="21.3825" y2="48.2173"/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="40.4758" y1="48.2635" x2="45.7791" y2="48.2983"/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="46.0222" y1="36.0595" x2="51.5338" y2="36.0595"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="53.348" y="17.8087">
-    <tspan x="53.348" y="17.8087">[2]</tspan>
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="16.6568"
+     y1="48.1807"
+     x2="21.3825"
+     y2="48.2173"
+     id="line22" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="40.4758"
+     y1="48.2635"
+     x2="45.7791"
+     y2="48.2983"
+     id="line24" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="46.0222"
+     y1="36.0595"
+     x2="51.5338"
+     y2="36.0595"
+     id="line26" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="53.348"
+     y="17.8087"
+     id="text30">
+    <tspan
+       x="53.348"
+       y="17.8087"
+       id="tspan28"
+       style="fill:#ff0000;fill-opacity:1">[2]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="61.704" y="17.1347">
-    <tspan x="61.704" y="17.1347">method</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="61.704"
+     y="17.1347"
+     id="text34">
+    <tspan
+       x="61.704"
+       y="17.1347"
+       id="tspan32">method</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="52.2574" y="37.1652">
-    <tspan x="52.2574" y="37.1652">[2]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="52.2574"
+     y="37.1652"
+     id="text38">
+    <tspan
+       x="52.2574"
+       y="37.1652"
+       id="tspan36"
+       style="fill:#ff0000;fill-opacity:1">[2]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="60.886" y="36.2184">
-    <tspan x="60.886" y="36.2184">paper</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="60.886"
+     y="36.2184"
+     id="text42">
+    <tspan
+       x="60.886"
+       y="36.2184"
+       id="tspan40">paper</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="51.9302" y="60.7746">
-    <tspan x="51.9302" y="60.7746">[2]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="51.9302"
+     y="60.7746"
+     id="text46">
+    <tspan
+       x="51.9302"
+       y="60.7746"
+       id="tspan44"
+       style="fill:#ff0000;fill-opacity:1">[2]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="59.741" y="60.9184">
-    <tspan x="59.741" y="60.9184">investigation</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="59.741"
+     y="60.9184"
+     id="text50">
+    <tspan
+       x="59.741"
+       y="60.9184"
+       id="tspan48">investigation</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="78.484,35.6768 102.721,35.6768 102.721,59.3952 97.5678,59.3952 "/>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="113.032,25.582 107.852,25.582 107.852,69.7474 113.579,69.7474 "/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="113.871" y="26.8054">
-    <tspan x="113.871" y="26.8054">[0]</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="78.484,35.6768 102.721,35.6768 102.721,59.3952 97.5678,59.3952 "
+     id="polyline52" />
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="113.032,25.582 107.852,25.582 107.852,69.7474 113.579,69.7474 "
+     id="polyline54" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="113.871"
+     y="26.8054"
+     id="text58">
+    <tspan
+       x="113.871"
+       y="26.8054"
+       id="tspan56"
+       style="fill:#ff0000;fill-opacity:1">[0]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="122.5" y="26.6766">
-    <tspan x="122.5" y="26.6766">the</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="122.5"
+     y="26.6766"
+     id="text62">
+    <tspan
+       x="122.5"
+       y="26.6766"
+       id="tspan60">the</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="146.368,14.9572 136.893,14.9572 136.893,35.595 145.55,35.595 "/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="132.181" y1="25.5759" x2="136.796" y2="25.6038"/>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="82.2462" y="14.2646">
-    <tspan x="82.2462" y="14.2646">+3</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="146.368,14.9572 136.893,14.9572 136.893,35.595 145.55,35.595 "
+     id="polyline64" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="132.181"
+     y1="25.5759"
+     x2="136.796"
+     y2="25.6038"
+     id="line66" />
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#0000ff;fill-opacity:1;"
+     x="80.214203"
+     y="13.2486"
+     id="text70">
+    <tspan
+       x="80.214203"
+       y="13.2486"
+       id="tspan68"
+       style="fill:#0000ff;fill-opacity:1;">+3</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="77.339" y="34.3472">
-    <tspan x="77.339" y="34.3472">+3</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="75.306999"
+     y="33.3312"
+     id="text74">
+    <tspan
+       x="75.306999"
+       y="33.3312"
+       id="tspan72"
+       style="fill:#0000ff;fill-opacity:1">+3</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="92.8242" y="57.1388">
-    <tspan x="92.8242" y="57.1388">+3</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="90.792206"
+     y="57.138802"
+     id="text78">
+    <tspan
+       x="90.792206"
+       y="57.138802"
+       id="tspan76"
+       style="fill:#0000ff;fill-opacity:1">+3</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="148.222" y="16.8992">
-    <tspan x="148.222" y="16.8992">[3]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="148.222"
+     y="16.8992"
+     id="text82">
+    <tspan
+       x="148.222"
+       y="16.8992"
+       id="tspan80"
+       style="fill:#ff0000;fill-opacity:1">[3]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="158.759" y="16.7704">
-    <tspan x="158.759" y="16.7704">method</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="158.759"
+     y="16.7704"
+     id="text86">
+    <tspan
+       x="158.759"
+       y="16.7704"
+       id="tspan84">method</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="179.301" y="11.7193">
-    <tspan x="179.301" y="11.7193">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="176.25298"
+     y="11.7193"
+     id="text90">
+    <tspan
+       x="176.25298"
+       y="11.7193"
+       id="tspan88"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="146.859" y="36.5282">
-    <tspan x="146.859" y="36.5282">[3]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="146.859"
+     y="36.5282"
+     id="text94">
+    <tspan
+       x="146.859"
+       y="36.5282"
+       id="tspan92"
+       style="fill:#ff0000;fill-opacity:1">[3]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="157.396" y="36.3994">
-    <tspan x="157.396" y="36.3994">result</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="157.396"
+     y="36.3994"
+     id="text98">
+    <tspan
+       x="157.396"
+       y="36.3994"
+       id="tspan96">result</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="173.023" y="32.7484">
-    <tspan x="173.023" y="32.7484">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="170.99098"
+     y="32.748402"
+     id="text102">
+    <tspan
+       x="170.99098"
+       y="32.748402"
+       id="tspan100"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="182.303,14.5952 187.146,14.5952 187.146,47.3257 102.866,47.3257 "/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="187.357" y1="26.4143" x2="192.105" y2="26.3778"/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="174.437" y1="35.4921" x2="186.97" y2="35.4613"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="114.886" y="70.9098">
-    <tspan x="114.886" y="70.9098">[0]</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="182.303,14.5952 187.146,14.5952 187.146,47.3257 102.866,47.3257 "
+     id="polyline104" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="187.357"
+     y1="26.4143"
+     x2="192.105"
+     y2="26.3778"
+     id="line106" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="174.437"
+     y1="35.4921"
+     x2="186.97"
+     y2="35.4613"
+     id="line108" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="114.886"
+     y="70.9098"
+     id="text112">
+    <tspan
+       x="114.886"
+       y="70.9098"
+       id="tspan110"
+       style="fill:#ff0000;fill-opacity:1">[0]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="123.787" y="70.781">
-    <tspan x="123.787" y="70.781">we</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="123.787"
+     y="70.781"
+     id="text116">
+    <tspan
+       x="123.787"
+       y="70.781"
+       id="tspan114">we</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="192.586" y="27.835">
-    <tspan x="192.586" y="27.835">[30]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="192.586"
+     y="27.835"
+     id="text120">
+    <tspan
+       x="192.586"
+       y="27.835"
+       id="tspan118"
+       style="fill:#ff0000;fill-opacity:1">[30]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="204.486" y="27.7062">
-    <tspan x="204.486" y="27.7062">is</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="204.486"
+     y="27.7062"
+     id="text124">
+    <tspan
+       x="204.486"
+       y="27.7062"
+       id="tspan122">is</tspan>
   </text>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="208.988" y1="26.3352" x2="218.4" y2="26.3333"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="219.304" y="27.7966">
-    <tspan x="219.304" y="27.7966">[1]</tspan>
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="208.988"
+     y1="26.3352"
+     x2="218.4"
+     y2="26.3333"
+     id="line126" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="219.304"
+     y="27.7966"
+     id="text130">
+    <tspan
+       x="219.304"
+       y="27.7966"
+       id="tspan128"
+       style="fill:#ff0000;fill-opacity:1">[1]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="229.84" y="27.6678">
-    <tspan x="229.84" y="27.6678">discussed</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="229.84"
+     y="27.6678"
+     id="text134">
+    <tspan
+       x="229.84"
+       y="27.6678"
+       id="tspan132">discussed</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="254.744" y="22.6168">
-    <tspan x="254.744" y="22.6168">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="251.69598"
+     y="22.6168"
+     id="text138">
+    <tspan
+       x="251.69598"
+       y="22.6168"
+       id="tspan136"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="144.877" y="60.5118">
-    <tspan x="144.877" y="60.5118">[3]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="144.877"
+     y="60.5118"
+     id="text142">
+    <tspan
+       x="144.877"
+       y="60.5118"
+       id="tspan140"
+       style="fill:#ff0000;fill-opacity:1">[3]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="153.586" y="60.7588">
-    <tspan x="153.586" y="60.7588">show</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="153.586"
+     y="60.7588"
+     id="text146">
+    <tspan
+       x="153.586"
+       y="60.7588"
+       id="tspan144">show</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="166.237" y="56.8277">
-    <tspan x="166.237" y="56.8277">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="164.20499"
+     y="56.827702"
+     id="text150">
+    <tspan
+       x="164.20499"
+       y="56.827702"
+       id="tspan148"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="143.568,59.3876 137.91,59.3876 137.91,81.0433 143.896,81.0433 "/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="132.166" y1="69.5339" x2="137.803" y2="69.5194"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="145.422" y="82.0492">
-    <tspan x="145.422" y="82.0492">[3]</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="143.568,59.3876 137.91,59.3876 137.91,81.0433 143.896,81.0433 "
+     id="polyline152" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="132.166"
+     y1="69.5339"
+     x2="137.803"
+     y2="69.5194"
+     id="line154" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="145.422"
+     y="82.0492"
+     id="text158">
+    <tspan
+       x="145.422"
+       y="82.0492"
+       id="tspan156"
+       style="fill:#ff0000;fill-opacity:1">[3]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="154.743" y="82.3257">
-    <tspan x="154.743" y="82.3257">discuss</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="154.743"
+     y="82.3257"
+     id="text162">
+    <tspan
+       x="154.743"
+       y="82.3257"
+       id="tspan160">discuss</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="172.964" y="78.284">
-    <tspan x="172.964" y="78.284">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="170.93199"
+     y="78.283997"
+     id="text166">
+    <tspan
+       x="170.93199"
+       y="78.283997"
+       id="tspan164"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="168.698" y1="59.3157" x2="189.853" y2="59.3214"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="190.39" y="59.9664">
-    <tspan x="190.39" y="59.9664">[2]</tspan>
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="168.698"
+     y1="59.3157"
+     x2="189.853"
+     y2="59.3214"
+     id="line168" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="190.39"
+     y="59.9664"
+     id="text172">
+    <tspan
+       x="190.39"
+       y="59.9664"
+       id="tspan170"
+       style="fill:#ff0000;fill-opacity:1">[2]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="200.928" y="59.8376">
-    <tspan x="200.928" y="59.8376">how</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="200.928"
+     y="59.8376"
+     id="text176">
+    <tspan
+       x="200.928"
+       y="59.8376"
+       id="tspan174">how</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="211.656" y="55.8772">
-    <tspan x="211.656" y="55.8772">+1</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="210.64"
+     y="55.877201"
+     id="text180">
+    <tspan
+       x="210.64"
+       y="55.877201"
+       id="tspan178"
+       style="fill:#0000ff;fill-opacity:1">+1</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="189.914,72.7462 183.711,72.7462 183.711,89.2296 189.772,89.2296 "/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="176.681" y1="81.0433" x2="183.553" y2="81.0287"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="190.405" y="74.4156">
-    <tspan x="190.405" y="74.4156">[2]</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="189.914,72.7462 183.711,72.7462 183.711,89.2296 189.772,89.2296 "
+     id="polyline182" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="176.681"
+     y1="81.0433"
+     x2="183.553"
+     y2="81.0287"
+     id="line184" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="190.405"
+     y="74.4156"
+     id="text188">
+    <tspan
+       x="190.405"
+       y="74.4156"
+       id="tspan186"
+       style="fill:#ff0000;fill-opacity:1">[2]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="200.942" y="74.2868">
-    <tspan x="200.942" y="74.2868">how</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="200.942"
+     y="74.2868"
+     id="text192">
+    <tspan
+       x="200.942"
+       y="74.2868"
+       id="tspan190">how</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="211.942" y="70.5988">
-    <tspan x="211.942" y="70.5988">+1</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="210.92599"
+     y="70.598801"
+     id="text196">
+    <tspan
+       x="210.92599"
+       y="70.598801"
+       id="tspan194"
+       style="fill:#0000ff;fill-opacity:1">+1</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="190.457" y="89.9936">
-    <tspan x="190.457" y="89.9936">[2]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="190.457"
+     y="89.9936"
+     id="text200">
+    <tspan
+       x="190.457"
+       y="89.9936"
+       id="tspan198"
+       style="fill:#ff0000;fill-opacity:1">[2]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="200.67" y="89.8648">
-    <tspan x="200.67" y="89.8648">the</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="200.67"
+     y="89.8648"
+     id="text204">
+    <tspan
+       x="200.67"
+       y="89.8648"
+       id="tspan202">the</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="210.58" y="89.8648">
-    <tspan x="210.58" y="89.8648">?</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="210.58"
+     y="89.8648"
+     id="text208">
+    <tspan
+       x="210.58"
+       y="89.8648"
+       id="tspan206"
+       style="fill:#0000ff;fill-opacity:1">?</tspan>
   </text>
-  <polyline style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" points="224.81,78.744 219.152,78.744 219.152,98.9182 225.084,98.9182 "/>
-  <line style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000" x1="214.345" y1="89.3917" x2="219.076" y2="89.3621"/>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="226.392" y="80.686">
-    <tspan x="226.392" y="80.686">[5]</tspan>
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     points="224.81,78.744 219.152,78.744 219.152,98.9182 225.084,98.9182 "
+     id="polyline210" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.6; stroke: #000000"
+     x1="214.345"
+     y1="89.3917"
+     x2="219.076"
+     y2="89.3621"
+     id="line212" />
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="226.392"
+     y="80.686"
+     id="text216">
+    <tspan
+       x="226.392"
+       y="80.686"
+       id="tspan214"
+       style="fill:#ff0000;fill-opacity:1">[5]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="236.928" y="80.5572">
-    <tspan x="236.928" y="80.5572">method</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="236.928"
+     y="80.5572"
+     id="text220">
+    <tspan
+       x="236.928"
+       y="80.5572"
+       id="tspan218">method</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="257.472" y="75.5062">
-    <tspan x="257.472" y="75.5062">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="254.42398"
+     y="75.506203"
+     id="text224">
+    <tspan
+       x="254.42398"
+       y="75.506203"
+       id="tspan222"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="225.028" y="100.315">
-    <tspan x="225.028" y="100.315">[3]</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:normal;font-weight:normal"
+     x="225.028"
+     y="100.315"
+     id="text228">
+    <tspan
+       x="225.028"
+       y="100.315"
+       id="tspan226"
+       style="fill:#ff0000;fill-opacity:1">[3]</tspan>
   </text>
-  <text font-size="6.77333" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:italic;font-weight:normal" x="235.566" y="100.186">
-    <tspan x="235.566" y="100.186">result</tspan>
+  <text
+     font-size="6.77333"
+     style="fill: #000000;text-anchor:start;font-family:'Crimson Text';font-style:italic;font-weight:normal"
+     x="235.566"
+     y="100.186"
+     id="text232">
+    <tspan
+       x="235.566"
+       y="100.186"
+       id="tspan230">result</tspan>
   </text>
-  <text font-size="5.64444" style="fill: #000000;text-anchor:start;font-family:Times New Roman;font-style:normal;font-weight:normal" x="251.194" y="96.5352">
-    <tspan x="251.194" y="96.5352">+2</tspan>
+  <text
+     font-size="5.64444"
+     style="font-style:normal;font-weight:normal;font-size:5.64444017px;font-family:'Crimson Text';text-anchor:start;fill:#000000"
+     x="249.16199"
+     y="96.535202"
+     id="text236">
+    <tspan
+       x="249.16199"
+       y="96.535202"
+       id="tspan234"
+       style="fill:#0000ff;fill-opacity:1">+2</tspan>
   </text>
 </svg>

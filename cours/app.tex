@@ -61,7 +61,7 @@ Pour améliorer la classification, nous pouvons utiliser ces parties comme unit�
 Finalement, les méthodes les plus répandues actuellement sont à base des réseaux de neurones. 
 Le problème de traduction automatique peut être représenté comme un encodeur/décodeur.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{translation-classif_noir.pdf}
 	\caption{Approches de la traduction automatique}
@@ -88,10 +88,10 @@ Après, nous appliquons des règles pour transformer l'arbre syntaxique de la la
 Ces règles sont définies manuellement ou inférées en utilisant l'apprentissage automatique.
 Finalement, nous générons le texte traduit $T$ à partir de l'arbre syntaxique final.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.55\textwidth]{MT-tranfert-exp_.pdf}
-	\caption[Exemple de règles de transfert syntaxique]{Exemple de règles de transfert syntaxique \cite{06-quah}}
+	\hgraphpage[.9\textwidth]{MT-tranfert-exp.pdf}
+	\caption[Exemple de règles de transfert syntaxique]{Exemple de règles de transfert syntaxique ; figure reconstruite de \cite{06-quah}.}
 	\label{fig:mt-transfert-exp}
 \end{figure}
 
@@ -115,8 +115,8 @@ La figure \ref{fig:apertium-arch} représente l'architecture de ce système qui 
 
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.85\textwidth]{apertium-arch_.pdf}
-	\caption[Architecture du système Apertium]{Architecture du système Apertium \cite{11-forcada-al}}
+	\hgraphpage[.9\textwidth]{apertium-arch.pdf}
+	\caption[Architecture du système Apertium]{Architecture du système Apertium ; figure reconstruite de \cite{11-forcada-al}}
 	\label{fig:apertium-arch}
 \end{figure}
 
@@ -139,7 +139,7 @@ Donc, la traduction passe par les étapes suivantes :
 	\item Générer le texte destinataire $T$
 \end{itemize}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{MT-Interlingua_noir.pdf}
 	\caption{Motivation de l'approche interlingue}
@@ -148,8 +148,11 @@ Donc, la traduction passe par les étapes suivantes :
 
 L'interlingua doit être une représentation abstraite indépendante des langues ; elle doit être un langage universel.
 KANT \cite{98-czuba-al} est un exemple d'une interlingua (voir la figure \ref{fig:kant-exp}).
+Ici, la phrase est représentée par une action ``A-REMAIN" qui est un concept parmi les concepts du langage.
+L'action possède des arguments pour spécifier le temps, le thème, etc.
 
-\begin{figure}[!ht]
+
+\begin{figure}[ht]
 	\centering
 \begin{multicols}{2}
 \bfseries\tiny
@@ -190,44 +193,47 @@ KANT \cite{98-czuba-al} est un exemple d'une interlingua (voir la figure \ref{fi
                         (PERSON THIRD))))))))
 \end{verbatim}
 \end{multicols}
-	\caption[Exemple de la représentation KANT]{Représentation de la phrase ``\textit{The default rate remained close to zero during this time.}" avec KANT interlingua \cite{98-czuba-al}}
+	\caption[Exemple de la représentation KANT]{Représentation de la phrase ``\textit{The default rate remained close to zero during this time.}" avec KANT interlingua ; figure reconstruite de \cite{98-czuba-al}.}
 	\label{fig:kant-exp}
 \end{figure}
 
 KANTOO \cite{00-nyberg-al} est un système de traduction automatique qui utilise KANT comme interlingua.
 Son architecture est illustrée dans la figure \ref{fig:mt-kantoo-arch}.
 Le système garde une base de connaissance contenant des règles manuelles pour la transformation entre les langages naturels et KANT. 
-L'analyseur applique une analyse syntaxique pour ensuite transférer la représentation sémantiquement vers KANT. 
+L'analyseur applique une analyse syntaxique pour transférer la représentation sémantiquement vers KANT. 
 Le générateur applique l'opération inverse : générer un texte à partir de la représentation KANT.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[\textwidth]{kantoo-arch_noir.pdf}
-	\caption[Architecture du système KANTOO]{Architecture du système KANTOO, traduit à partir de \cite{00-nyberg-al}}
+	\caption[Architecture du système KANTOO]{Architecture du système KANTOO ; figure traduite de \cite{00-nyberg-al}.}
 	\label{fig:mt-kantoo-arch}
 \end{figure}
 
 
 \subsection{Approche statistique}
 
-Étant donné un texte source $S$ et un autre destinataire $T$, la probabilité que $T$ soit généré à partir de $S$ est estimée en utilisant la théorie de Bayes comme indiqué par l'équation \ref{eq:mt-stat-nb}.
+Étant donné un texte source $S$ (Ex. ``\expword{fish are food.}") et un autre destinataire $T$ (Ex. ``\expword{Les poissons sont de la nourriture.}"), la probabilité que $T$ soit généré à partir de $S$ est estimée en utilisant la théorie de Bayes comme indiqué par l'équation \ref{eq:mt-stat-nb}.
 \begin{equation}\label{eq:mt-stat-nb} 
 p(T|S) = \frac{p(T) p(S|T)}{p(S)} \propto \underbrace{p(T)}_\text{Cohérence} \underbrace{p(S|T)}_\text{Fidélité}
 \end{equation}
+Dans ce cas, \expword{p(``Les poissons sont de la nourriture" | ``fish are food") $\propto$ p(``Les poissons sont de la nourriture") p(``fish are food" | ``Les poissons sont de la nourriture")}.
 Le problème de traduction automatique revient à trouver le texte destinataire $\hat{T}$ qui maximise cette probabilité comme indiqué par l'équation \ref{eq:mt-stat-max}
 \begin{equation}\label{eq:mt-stat-max} 
 \hat{T} = \arg\max_{T} p(T) p(S|T)
 \end{equation}
-La probabilité $p(T)$ peut être calculée en utilisant un modèle de langage entrainé sur la langue destinataire. 
+La probabilité $p(T)$ peut être calculée en utilisant un modèle de langage entraîné sur la langue destinataire. 
 Supposant que le modèle de langage est un modèle \keyword[N]{N-gramme}, cette probabilité peut être calculée par l'équation \ref{eq:mt-stat-ngramme}
 \begin{equation}\label{eq:mt-stat-ngramme} 
 p(T) = \prod_{j=1}^m p(t_j|t_{j-N+1}\ldots t_{j-1})
 \end{equation}
+La probabilité de cohérence de notre exemple avec un modèle bigramme sera \expword{p(``Les poissons sont de la nourriture") = p(\textless \\s\textgreater | nourriture) ... p(poissons | Les) p(Les| \textless s\textgreater)}.
 
 Nous avons vu comment entraîner un modèle de langage. 
 Mais, afin d'entraîner le modèle de traduction $p(S|T)$, il faut avoir un corpus aligné : les mots de la langue source doivent être liés avec ceux correspondants de la langue destinataire.
 Il faut mentionner que la taille pose un problème lors de l'alignement. 
-Nous pouvons considérer cette probabilité comme la somme des probabilités de tous les alignements $A$ possibles, comme indiqué par l'équation \ref{eq:mt-stat-align1}.
+Dans notre exemple, le texte en anglais contient 3 mots et celui en français contient 6 mots.
+Donc, afin de calculer la probabilité de fidélité, nous pouvons la considérer comme la somme des probabilités de tous les alignements $A$ possibles, comme indiqué par l'équation \ref{eq:mt-stat-align1}.
 \begin{equation}\label{eq:mt-stat-align1}
 p(S|T) = \sum_{A} p(S, A | T)
 \end{equation}
@@ -360,7 +366,7 @@ Un système de résumé automatique peut être classifié en utilisant plusieurs
 Ces critères sont regroupées en trois catégories : document d'entrée, but et document de sortie \cite{98-hovy-lin,99-sparckjones}.
 Cette classification est représentée par la figure \ref{fig:ats-class}.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{sum-classif_noir.pdf}
 	\caption[Classification des méthodes de résumé automatique]{Classification des méthodes de résumé automatique selon \citet{98-hovy-lin,99-sparckjones}}
@@ -645,9 +651,9 @@ Le mécanisme est similaire à celui présenté dans la traduction automatique.
 
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.35\textwidth]{2015-rush-al_.pdf}
-	\hgraphpage[.35\textwidth]{2015-rush-al-exp_.pdf}
-	\caption[Architecture du système NAMAS (résumé automatique)]{Architecture du système NAMAS utilisant deep learning pour le résumé automatique abstractif \cite{15-rush-al}}
+	\hgraphpage[.35\textwidth]{2015-rush-al.pdf}
+	\hgraphpage[.35\textwidth]{2015-rush-al-exp.pdf}
+	\caption[Architecture du système NAMAS (résumé automatique)]{Architecture du système NAMAS utilisant deep learning pour le résumé automatique abstractif ; figure reconstruite de \cite{15-rush-al}.}
 	\label{fig:ats-namas} 
 \end{figure}
 
@@ -714,10 +720,10 @@ Dans l'approche par \ac{ri}, nous utilisons un système de recherche d'informati
 La figure \ref{fig:qa-ri} représente une architecture d'un système de questions/réponses par \ac{ri}. 
 Le système contient trois modules principaux : traitement de la requête, recherche des documents/passages et extraction de la réponse. 
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{qa-ri_.pdf}
-	\caption[Architecture d'un système de questions/réponses par RI]{Architecture d'un système de questions/réponses par RI \cite{2019-jurafsky-martin}}
+	\hgraphpage[.9\textwidth]{qa-ri.pdf}
+	\caption[Architecture d'un système de questions/réponses par RI.]{Architecture d'un système de questions/réponses par RI ; figure modifiée de \cite{2019-jurafsky-martin}.}
 	\label{fig:qa-ri}
 \end{figure}
 
@@ -750,10 +756,10 @@ Afin d'encoder le passage, nous utilisons la représentation \keyword[G]{GloVe} 
 Ces vecteurs sont passés par un réseaux \keyword[B]{Bi-LSTM} afin d'extraire les \keywordpl[E]{embedding} des mots par rapport au passage. 
 Chaque vecteur d'un mot du passage est comparé avec le vecteur de la requête en utilisant une similarité afin de décider si le mot appartient à la réponse.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage{qa-bilstm-exp_.pdf}
-	\caption[Extraction de la réponse par Bi-LSTM]{Extraction de la réponse par Bi-LSTM \cite{2019-jurafsky-martin}}
+	\hgraphpage[0.9\textwidth]{qa-bilstm-exp.pdf}
+	\caption[Extraction de la réponse par Bi-LSTM.]{Extraction de la réponse par Bi-LSTM ; figure reconstruite de \cite{2019-jurafsky-martin}.}
 	\label{fig:qr-ri-chen}
 \end{figure}
 
@@ -763,8 +769,8 @@ Nous utilisons deux représentations, de début (S) et de fin (E), qui sont mult
 
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[.5\textwidth]{qa-bert-exp_.pdf}
-	\caption[Extraction de la réponse par BERT]{Extraction de la réponse par BERT \cite{2019-jurafsky-martin}}
+	\hgraphpage[.5\textwidth]{qa-bert-exp.pdf}
+	\caption[Extraction de la réponse par BERT.]{Extraction de la réponse par BERT ;  figure reconstruite de \cite{2019-jurafsky-martin}.}
 	\label{fig:qr-ri-devlin}
 \end{figure}
 
@@ -776,14 +782,52 @@ Ensuite, nous devons déterminer le type de la relation recherchée (Ex. \expwor
 S'il y a plusieurs relations comme réponses, nous pouvons calculer la similarité entre la question et la réponse (par exemple, en utilisant les \keywordpl[E]{embedding}). 
 Une autre approche est en appliquant l'analyse sémantique sur la question afin de générer une forme structurée comme : lambda calcul, SQL, SPARQL, etc.
 Cette forme est utilisée afin d'interroger la base de données et récupérer la réponse.
-Un exemple des requêtes et leurs formes logiques est donnée dans la figure \ref{fig:qr-conn}.
+Un exemple des requêtes et leurs formes logiques est donnée dans le tableau \ref{tab:qr-conn}.
 
-\begin{figure}[!ht]
-	\centering
-	\hgraphpage[.8\textwidth]{qa-logfrm-exp_.pdf}
-	\caption[Exemple des formes logiques des questions]{Exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
-	\label{fig:qr-conn}
-\end{figure}
+\begin{table}[ht]
+	\centering\small
+	\begin{tabular}{p{0.5\textwidth}p{0.45\textwidth}}
+		\hline\hline
+		Question & Forme logique \\
+		\hline
+		Quelles sont les wilayas limitrophes de Jijel ? & $\lambda x.wilaya(x) \wedge limitrophe(x, Jijel)$ \\
+		
+		Quelle est la wilaya la plus grande ? & $\arg\max(\lambda x.wilaya(x), \lambda x.superficie(x))$ \\
+		
+		Je souhaite réserver un vol de Jijel vers Alger. & SELECT DISTINCT f1.flight id
+		
+		FROM vol v1, aeroport  a1,
+		
+		wilaya w1, service\_aeroport a2, wilaya w2
+		
+		WHERE v1.depart=a1.code\_aeroport
+		
+		AND a1.code\_wilaya=w1.code\_wilaya
+	
+		AND w1.nom\_wilaya= 'Jijel'
+		
+		AND v1.destination=a2.code\_aeroport
+		
+		AND a2.code\_wilaya=w2.code\_wilaya
+		
+		AND w2.nom\_wilaya= 'Alger' \\
+		
+		
+		Combien de personnes ont survécu au naufrage du Titanic ? & (count (!fb:event.disaster.survivors
+		
+		fb:en.sinking of the titanic))\\
+		
+		Combien de yards de plus a duré le touché le plus long de Johnson par rapport à son touché le plus court du premier quart-temps ? & 
+		ARITHMETIC diff( SELECT num( ARGMAX(
+		
+		SELECT ) ) SELECT num( ARGMIN( FILTER(
+		
+		SELECT ) ) ) )\\
+		\hline\hline
+	\end{tabular}
+	\caption[Exemple des formes logiques des questions.]{Exemple des formes logiques des questions ; exemple traduit de \cite{2020-jurafsky-martin}.}
+	\label{tab:qr-conn}
+\end{table}
 
 \subsection{Approche par modèles de langage}
 
@@ -792,10 +836,10 @@ Ensuite, nous le réglons pour répondre aux questions à partir du modèle (pas
 Dans \cite{2020-roberts-al}, un modèle T5 a été entraîné  sur la tâche de remplissage des textes absents (voir la figure \ref{fig:qr-modele-t5}).
 Ensuite, le modèle est réglé pour répondre aux questions sans saisir d'informations ou de contextes supplémentaires.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{qa-t5_.pdf}
-	\caption[T5 comme modèle de réponse aux questions]{T5 comme modèle de réponse aux questions \cite{2020-roberts-al}}
+	\hgraphpage[.7\textwidth]{qa-t5.pdf}
+	\caption[T5 comme modèle de réponse aux questions.]{T5 comme modèle de réponse aux questions ; figure reconstruite de \cite{2020-roberts-al}.}
 	\label{fig:qr-modele-t5}
 \end{figure}
 
@@ -822,20 +866,38 @@ Ils peuvent être des systèmes à base des règles, de la RI ou de la générat
 
 Un système de dialogue orienté tâche peut utiliser des cadres (frames) afin d'accomplir une tâche précise. 
 Un cadre (frame) est une structure contenant des slots à remplir et des questions prédéfinies pour chaque slot.
-Par exemple, la figure \ref{fig:sd-tache-frame-exp} représente un exemple d'un cadre pour programmer un vol.
+Par exemple, le tableau \ref{tab:sd-tache-frame-exp} représente un exemple d'un cadre pour programmer un vol.
 Le système pose les questions correspondantes à un slot vide afin de le remplir.
 Lorsqu'un slot est remplis, les slots d'autres cadres en parallèle peuvent être remplis. 
-Par exemple, le slot ``\expword{RESERVATION\_DATE}" du cadre ``\expword{HOTEL\_RESERVATION}" peut être rempli à partir du slot ``\expword{ARRIVAL\_DATE}", ayant le même type, du cadre ``\expword{FLIGHT\_RESERVATION}".
+Par exemple, le slot ``\expword{DATE\_RESERVATION}" du cadre ``\expword{RESERVATION\_HOTEL}" peut être rempli à partir du slot ``\expword{DATE\_ARRIVEE}", ayant le même type, du cadre ``\expword{RESERVATION\_VOL}".
 
-\begin{figure}[!ht]
+%\begin{figure}[ht]
+%	\centering
+%	\hgraphpage[.7\textwidth]{sd-frame-exp_.pdf}
+%	\caption[Exemple d'un cadre pour programmer un vol]{Exemple d'un cadre pour programmer un vol \cite{2020-jurafsky-martin}}
+%	\label{fig:sd-tache-frame-exp}
+%\end{figure}
+
+\begin{table}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{sd-frame-exp_.pdf}
-	\caption[Exemple d'un cadre pour programmer un vol]{Exemple d'un cadre pour programmer un vol \cite{2020-jurafsky-martin}}
-	\label{fig:sd-tache-frame-exp}
-\end{figure}
+	\begin{tabular}{lll}
+		\hline\hline
+		Slot & Type & Modèle de questions \\
+		\hline
+		VILLE DEPART & ville & ``De quelle ville partez-vous ?" \\
+		VILLE DESTINATION & ville & ``Où allez-vous?" \\
+		HEURE DEPART & temps & ``Quand souhaitez-vous partir ?" \\
+		DATE DEPART & date & ``Quel jour souhaitez-vous partir ?" \\
+		HEURE ARRIVEE & temps & ``Quand voulez-vous arriver ?" \\
+		DATE ARRIVEE & date & ``Quel jour souhaitez-vous arriver ?" \\
+		\hline\hline
+	\end{tabular}
+	\caption[Exemple d'un cadre pour programmer un vol.]{Exemple d'un cadre pour programmer un vol ; exemple traduit de \cite{2020-jurafsky-martin}}
+	\label{tab:sd-tache-frame-exp}
+\end{table}
 
 Lorsqu'il y a plusieurs domaines, nous devons appliquer la \keyword{détection d'intention} pour trouver le cadre adéquat.
-Celle-ci est une tâche de classification qui vise à sélectionner le domaine (Ex. \expword{HOTEL vs. FLIGHT}).
+Celle-ci est une tâche de classification qui vise à sélectionner le domaine (Ex. \expword{HOTEL ou VOL}).
 Afin de remplir les slots, nous pouvons utiliser une grammaire simplifiée. 
 La figure \ref{fig:sd-tache-frame-parse} représente une grammaire sémantique et un arbre sémantique de la phrase ``\expword{Show me flights from Boston to San Fransisco on Tuesday morning}".
 Puisque le vocabulaire est limité et les phrases sont toujours les mêmes, une telle grammaire est facile à concevoir. 
@@ -858,7 +920,7 @@ Le système utilise des actes de dialogue afin de définir la conversation entre
 Il garde les actes passés afin de décider quel est l'acte suivant.
 Comme les systèmes à base des cadres, il utilise des cadres avec des slots à remplir. 
 En plus, il utilise une politique de dialogue pour l'aider à décider ce qu'il va faire où les questions qu'il peut poser. 
-Cette politique est entaînée en utilisant un algorithme d'apprentissage afin de détecter l'action suivante $ \hat{A}_i $ en se basant sur l'action précédente $\hat{A}_{i-1}$, le cadre précédent $Frame_{i-1}$ et le dernier tours système/utilisateur $ U_{i-1}$ (voir l'équation \ref{eq:sd-tache-politique}).
+Cette politique est entraînée en utilisant un algorithme d'apprentissage afin de détecter l'action suivante $ \hat{A}_i $ en se basant sur l'action précédente $\hat{A}_{i-1}$, le cadre précédent $Frame_{i-1}$ et le dernier tours système/utilisateur $ U_{i-1}$ (voir l'équation \ref{eq:sd-tache-politique}).
 \begin{equation}\label{eq:sd-tache-politique}
 \hat{A}_i = \arg\max_{A_i \in A} P(A_i | Frame_{i-1}, A_{i-1}, U_{i-1})
 \end{equation}
@@ -871,26 +933,56 @@ Cette politique est entaînée en utilisant un algorithme d'apprentissage afin d
 \end{figure}
 
 Un acte de dialogue représente la fonction interactive de la phrase. 
-La figure \ref{fig:sd-tache-his-acts} représente un exemple des actes de dialogue du système de recommandation des restaurants HIS \cite{2010-young-al}. 
+Le tableau \ref{tab:sd-tache-his-acts} représente un exemple des actes de dialogue du système de recommandation des restaurants HIS \cite{2010-young-al}. 
 L'exemple indique quels sont les actes valides comme sortie du système et ceux valides comme entrée de l'utilisateur. 
 
-\begin{figure}[!ht]
-	\centering
-	\hgraphpage[.7\textwidth]{sd-dialog-act-exp1_.pdf}
-	\caption[Actes de dialogue du système HIS]{Actes de dialogue du système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
-	\label{fig:sd-tache-his-acts}
-\end{figure}
+\begin{table}[ht]
+	\centering\small
+	\begin{tabular}{llll}
+		\hline\hline
+		Tag & Sys & User & Description \\
+		\hline
+		HELLO (a = x, b = y, ...) & \CheckedBox & \CheckedBox & Ouvrir un dialogue et donne l'info a = x, b = y, ... \\
+		INFORM(a = x, b = y, ...) & \CheckedBox & \CheckedBox & Donner l'info a = x, b = y, ... \\
+		REQUEST(a, b = x, ...) & \CheckedBox & \CheckedBox & Demander une valeur pour une donnée b = x, ... \\
+		REQALTS(a = x, ...) & \XBox & \CheckedBox & Demander une alternative avec a = x, ... \\
+		CONFIRM(a = x, b = y, ...) & \CheckedBox & \CheckedBox & Confirmer explicitement a = x, b = y, ... \\
+		CONFREQ (a = x, ..., d) & \CheckedBox & \XBox & Confirmer implicitement a = x, ... et demander la valeur de d \\
+		SELECT(a = x, a = y) & \CheckedBox & \XBox & Confirmer implicitement a = x, ... et demander la valeur de d \\
+		AFFIRM(a = x, b = y, ...) & \CheckedBox & \CheckedBox & Confirmer et donner plus d'info a = x, b = y, ... \\
+		NEGATE(a = x) & \XBox & \CheckedBox & Annuler et donner la valeur correcte a = x \\
+		DENY(a = x) & \XBox & \CheckedBox & Refuser a = x \\
+		BYE () & \CheckedBox & \CheckedBox & Fermer une dialogue \\
+		\hline\hline
+	\end{tabular}
+	\caption[Actes de dialogue du système HIS]{Actes de dialogue du système HIS \cite{2010-young-al}, exemple traduit de \cite{2020-jurafsky-martin}.}
+	\label{tab:sd-tache-his-acts}
+\end{table}
 
-Un exemple d'un dialogue qui utilise les actes précédemment présentés est donné dans la figure \ref{fig:sd-tache-his-exp}.
+Un exemple d'un dialogue qui utilise les actes précédemment présentés est donné dans le tableau \ref{tab:sd-tache-his-exp}.
 Le système commence par recevoir un acte ``HELLO" et détecter qu'il s'agit d'une tâche de recherche et que le type recherché est un restaurant. 
 Il lance un acte de confirmation de la requête en demandant quel est le plat préféré de l'utilisateur afin d'en recommander un restaurant. 
 
-\begin{figure}[!ht]
-	\centering
-	\hgraphpage[.7\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
-	\caption[Exemple d'un dialogue du système HIS]{Exemple d'un dialogue du système HIS \cite{2010-young-al}, figure prise de \cite{2020-jurafsky-martin}}
-	\label{fig:sd-tache-his-exp}
-\end{figure}
+\begin{table}[ht]
+	\centering\small
+	\begin{tabular}{p{0.5\textwidth}p{0.4\textwidth}}
+		\hline\hline
+		Énoncé & Acte de dialogue \\
+		\hline
+		U: Salut, je cherche un endroit pour manger.  & hello(task=find, type=restaurant) \\
+		S: Vous recherchez un restaurant. Quel type de nourriture aimez-vous?  & confreq(type=restaurant, food) \\
+		U: Je voudrais un plat italien quelque part près du musée.  & inform(food=Italian, near=museum)\\
+		S: ``Roma" est un bon restaurant italien près du musée.  & inform(name=``Roma", type=restaurant, food=Italian, near=museum) \\
+		U: Les prix sont-ils raisonnables ? & confirm(pricerange=moderate) \\
+		S: Oui, les prix de ``Roma" sont raisonnables.  & affirm(name=``Roma", pricerange=moderate) \\
+		U: Quel est son numéro de téléphone ? & request(phone) \\
+		S: Le nombre de ``Roma" est 385456. & inform(name=``Roma", phone=``385456") \\
+		U: Ok, merci. Au revoir. & bye() \\
+		\hline\hline
+	\end{tabular}
+	\caption[Exemple d'un dialogue du système HIS.]{Exemple d'un dialogue du système HIS \cite{2010-young-al}, exemple traduit de \cite{2020-jurafsky-martin}.}
+	\label{tab:sd-tache-his-exp}
+\end{table}
 
 Afin de remplir les slots, nous devons déterminer le domaine et le slot visés par la phrase de l'utilisateur. 
 Pour ce faire, nous pouvons utiliser un algorithme d'apprentissage automatique afin de classer la phrase par intention, domaine et slot. 
