@@ -338,20 +338,20 @@ a_i = \sum_{t=1}^{n} p_t \cdot \bar{x}_t \quad \text{ où }\quad p_t = \frac{e^{
 Le vecteur résultat est utilisé comme entrée du décodeur pour générer le mot suivant $y_i$.
 Afin de décoder la sortie, les auteurs utilisent \keyword[B]{Beam search}.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.89\textwidth]{googlet_.pdf}
-	\caption[Architecture de Google Translate (traduction automatique)]{Architecture du système de traduction automatique neuronale de Google \cite{2016-wu-al}}
+	\hgraphpage[.89\textwidth]{googlet.pdf}
+	\caption[Architecture de Google Translate (traduction automatique).]{Architecture du système de traduction automatique neuronale de Google ; figure reconstruite de \cite{2016-wu-al}.}
 	\label{fig:mt-google}
 \end{figure}
 
 Un autre système qui suit l'approche neuronale est OpenNMT\footnote{OpenNMT : \url{https://opennmt.net/} [visité le 2021-09-19]} \cite{17-klein-al} dont l'architecture est indiquée dans la figure \ref{fig:mt-opennmt}.
 Il utilise un modèle \keyword[S]{seq2seq} avec le mécanisme d'attention.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.6\textwidth]{opennmt_.pdf}
-	\caption[Architecture de OpenNMT (traduction automatique)]{Architecture du système de traduction automatique neuronale OpenNMT \cite{17-klein-al}}
+	\hgraphpage[.6\textwidth]{opennmt.pdf}
+	\caption[Architecture de OpenNMT (traduction automatique)]{Architecture du système de traduction automatique neuronale OpenNMT ;  figure reconstruite de \cite{17-klein-al}.}
 	\label{fig:mt-opennmt}
 \end{figure}
 
@@ -454,7 +454,7 @@ Score(s_i , \bigcap_{j} c_j , F) = \prod_{j} \prod_{k} Score(s_i , c_j , f_k )
 \begin{figure}[!ht]
 	\centering
 	\hgraphpage[.8\textwidth]{tcc-arch_noir.pdf}
-	\caption[Architecture de la méthode TCC (résumé automatique)]{Architecture de la méthode TCC pour le résumé automatique statistique \cite{13-aries-al}}
+	\caption[Architecture de la méthode TCC (résumé automatique)]{Architecture de la méthode TCC pour le résumé automatique statistique \cite{13-aries-al}.}
 	\label{fig:ats-tcc}
 \end{figure}
 
@@ -527,10 +527,10 @@ Ensuite, nous créons un graphe en utilisant les similarités entre ces phrases.
 Le graphe est simplifié afin de garder les phrases les plus probables à être sélectionnées dans le résumé. 
 Ensuite, nous améliorons le score des phrases en utilisant les propriétés du graphe.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{gc-archi_noir.pdf}
-	\caption[Architecture de la méthode SSF-GC (résumé automatique)]{Architecture de la méthode SSF-GC pour le résumé automatique statistique \cite{21-aries-al}}
+	\hgraphpage[.7\textwidth]{gc-archi_noir.pdf}
+	\caption[Architecture de la méthode SSF-GC (résumé automatique)]{Architecture de la méthode SSF-GC pour le résumé automatique statistique \cite{21-aries-al}.}
 	\label{fig:ats-gc}
 \end{figure}
 
@@ -587,10 +587,10 @@ La figure \ref{fig:paice-template} représente un patron défini par \citet{81-p
 Le score d'une phrase est incrémenté avec la valeur \keyword{+y}.
 Les mots optionnels sont annotés par \keyword{?}.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{paice-template.pdf}
-	\caption[Exemple d'un patron simplifié (résumé automatique)]{Exemple d'un patron simplifié \cite{81-paice}.}
+	\caption[Exemple d'un patron simplifié (résumé automatique).]{Exemple d'un patron simplifié ; figure reconstruite de \cite{81-paice}.}
 	\label{fig:paice-template}
 \end{figure}
 
@@ -612,10 +612,10 @@ Un bloc de réseau de neurones à propagation avant est utilisé pour détecter 
 Autres blocs sont utilisés pour calculer le score de la phrase en utilisant des critères : TF, Similarité, Taille et Position. 
 Un bloc final est utilisé pour inférer le score ROUGE-1 en utilisant les scores intermédiaires. 
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.7\textwidth]{ml2es-archi_noir.pdf}
-	\caption[Architecture du système ML2ExtraSum (résumé automatique)]{Architecture du système ML2ExtraSum qui utilise des caractéristiques avec ML \cite{2020-aries}}
+	\caption[Architecture du système ML2ExtraSum (résumé automatique)]{Architecture du système ML2ExtraSum qui utilise des caractéristiques avec ML \cite{2020-aries}.}
 	\label{fig:ats-ml2es}
 \end{figure}
 
@@ -634,10 +634,10 @@ Du même, pour chaque phrase $s$ d'un document $d$, nous attribuons un vecteur $
 Ce vecteur contient le degré de croyance que la phrase a été générée d'un des documents $D$, $Q$ ou l'anglais général.
 Il peut être utilisé pour décider la phrase qui est générée par $D$ et $Q$ et pas par un document quelque ou par seulement l'un des deux.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.4\textwidth]{btm-daumeiii_.pdf}
-	\caption[Représentation du réseau bayésien pour le résumé automatique]{Représentation du réseau bayésien utilisé dans le résumé automatique par \citet{06-daumeiii-marcu}}
+	\hgraphpage[.4\textwidth]{btm-daumeiii.pdf}
+	\caption[Représentation du réseau bayésien pour le résumé automatique.]{Représentation du réseau bayésien utilisé dans le résumé automatique par \citet{06-daumeiii-marcu} ; figure reconstruite.}
 	\label{fig:ats-daumeii-marcu}
 \end{figure}
 
@@ -649,7 +649,7 @@ La partie (a) représente un décodeur qui cherche le mot prochain du résumé $
 La partie (b) représente un encodeur avec attention. 
 Le mécanisme est similaire à celui présenté dans la traduction automatique.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.35\textwidth]{2015-rush-al.pdf}
 	\hgraphpage[.35\textwidth]{2015-rush-al-exp.pdf}
@@ -663,10 +663,10 @@ La figure \ref{fig:ats-narayan} représente l'architecture du système de résum
 Étant donné un document $D$ avec $n$ phrases, nous voulons extraire $m < n$ phrases pour construire le résumé. 
 La sélection des phrases peut être formulée comme un problème de classement : classer une phrase comme appartenant au résumé ($1$) ou non ($0$).
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.85\textwidth]{narayan-al_.pdf}
-	\caption[Architecture de résumé automatique par renforcement]{Architecture du système de \citet{18-narayan-al} utilisant l'apprentissage par renforcement}
+	\hgraphpage[.85\textwidth]{narayan-al.pdf}
+	\caption[Architecture de résumé automatique par renforcement.]{Architecture du système de \citet{18-narayan-al} utilisant l'apprentissage par renforcement ; figure reconstruite.}
 	\label{fig:ats-narayan}
 \end{figure}
 
@@ -903,12 +903,22 @@ La figure \ref{fig:sd-tache-frame-parse} représente une grammaire sémantique e
 Puisque le vocabulaire est limité et les phrases sont toujours les mêmes, une telle grammaire est facile à concevoir. 
 En fait, nous pouvons l'exprimer en utilisant des expressions régulières.
 
-\begin{figure}[!ht]
-	\centering
-	\hgraphpage[.6\textwidth]{sd-frame-semgram-exp_.pdf}
+\begin{figure}[ht]
+	\centering\footnotesize
+	\begin{tabular}{lll}
+		MONTRER & \textrightarrow & montrez-moi \textbar\ Je veux savoir \textbar\ puis-je voir \\
+		HEURE\_DEP & \textrightarrow & (après \textbar\ environ \textbar\ avant) HEURE \textbar HEURE \textbar\\
+		 &  & matin \textbar\ après-midi \textbar\ soir\\
+		DATE\_DEP & \textrightarrow & samedi \textbar\ ... \textbar\ vendredi\\
+		HEURE & \textrightarrow & (un \textbar\ deux \textbar\ ... \textbar\ vingt) (am \textbar\ pm) \\
+		VOLS & \textrightarrow & (un \textbar\ le) vol \textbar\ (les \textbar\ des) vols \\
+		ORIGINE & \textrightarrow & (de \textbar\ à partir de) WILAYA \\
+		DESTINATION & \textrightarrow & (à \textbar\ jusqu'à) WILAYA \\
+		WILAYA & \textrightarrow & Adrar \textbar\ ... \textbar\ El Meniaa \\
+	\end{tabular}
 	
-	\hgraphpage[.8\textwidth]{sd-frame-parse-exp_.pdf}
-	\caption[Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase]{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase \cite{2020-jurafsky-martin}}
+	\hgraphpage[.7\textwidth]{sd-frame-parse-exp.pdf}
+	\caption[Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase.]{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:sd-tache-frame-parse}
 \end{figure}
 
@@ -925,10 +935,10 @@ Cette politique est entraînée en utilisant un algorithme d'apprentissage afin 
 \hat{A}_i = \arg\max_{A_i \in A} P(A_i | Frame_{i-1}, A_{i-1}, U_{i-1})
 \end{equation}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{sd-dialog-arch_.pdf}
-	\caption[Architecture d'un système utilisant dialogue-state]{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
+	\hgraphpage[.8\textwidth]{sd-dialog-arch.pdf}
+	\caption[Architecture d'un système utilisant dialogue-state.]{Architecture d'un système utilisant dialogue-state ; figure reconstruite de \cite{2016-williams-al}.}
 	\label{fig:sd-tache-dial-state}
 \end{figure}
 
@@ -989,10 +999,10 @@ Pour ce faire, nous pouvons utiliser un algorithme d'apprentissage automatique a
 Afin d'extraire les informations et remplir les slots, nous pouvons utiliser l'étiquetage des séquences avec la technique \keyword[I]{IOB}. 
 Un exemple d'une telle méthode qui utilise \keyword[B]{BERT} est illustré dans la figure \ref{fig:sd-tache-remp-bert}. 
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{sd-dialog-remp-exp_.pdf}
-	\caption[Exemple de remplissage des slots en utilisant BERT]{Exemple de remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
+	\hgraphpage[.5\textwidth]{sd-dialog-remp-exp.pdf}
+	\caption[Exemple de remplissage des slots en utilisant BERT.]{Exemple de remplissage des slots en utilisant BERT ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:sd-tache-remp-bert}
 \end{figure}
 
@@ -1033,10 +1043,10 @@ Un mot de la réponse $\hat{r}_i$ est un mot du vocabulaire $V$ qui est estimé 
 \end{equation}
 Nous pouvons aussi utiliser des modèles de langage (comme \keyword[G]{GPT}) entraînés sur des conversations.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp_.pdf}
-	\caption[Exemple d'un chatbot à base d'un encodeur/décodeur]{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
+	\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp.pdf}
+	\caption[Exemple d'un chatbot à base d'un encodeur/décodeur.]{Exemple d'un chatbot à base d'un encodeur/décodeur ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:chatbot-encdec}
 \end{figure}
 
@@ -1090,8 +1100,8 @@ La figure \ref{fig:asent-bettiche} représente l'architecture de leur système q
 
 \begin{figure}
 	\centering
-	\hgraphpage[.7\textwidth]{sent-bettiche-al_.pdf}
-	\caption[Architecture hybride pour détecter la polarité en dialecte algérienne]{Architecture hybride proposée par \citet{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
+	\hgraphpage[.7\textwidth]{sent-bettiche-al.pdf}
+	\caption[Architecture hybride pour détecter la polarité en dialecte algérienne.]{Architecture hybride proposée par \citet{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux ; figure reconstruite.}
 	\label{fig:asent-bettiche}
 \end{figure}
 
@@ -1130,8 +1140,8 @@ En conclusion, il faut mieux annoter les messages manuellement que d'utiliser un
 
 \begin{figure}
 	\centering
-	\hgraphpage[.5\textwidth]{sent-guellil-al_.pdf}
-	\caption[Architecture hybride pour l'analyse des sentiments en arabizi]{Architecture hybride proposée par \citet{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
+	\hgraphpage[.5\textwidth]{sent-guellil-al.pdf}
+	\caption[Architecture hybride pour l'analyse des sentiments en arabizi.]{Architecture hybride proposée par \citet{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux ; figure reconstruite.}
 	\label{fig:asent-guellil}
 \end{figure}
 
@@ -1226,8 +1236,8 @@ Les classes de difficulté peuvent être définies selon le besoin : niveau de l
 
 \begin{figure}[!ht]
 	\centering
-	\hgraphpage[0.8\textwidth]{lisibilite-ML_.pdf}
-	\caption[Pipeline d'estimation de difficulté de lecture avec apprentissage automatique]{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
+	\hgraphpage[0.8\textwidth]{lisibilite-ML.pdf}
+	\caption[Pipeline d'estimation de difficulté de lecture avec apprentissage automatique.]{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique ; figure reconstruite de \cite{2014-collins}.}
 	\label{fig:lisibilite-collins}
 \end{figure}
 
@@ -1351,10 +1361,10 @@ La figure \ref{fig:asr-mel} représente un exemple du filtre de Mel qui peut êt
 mel(f) = 1127 \ln (1 + \frac{f}{700})
 \end{equation}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{ASR-mel-exp_.pdf}
-	\caption[Exemple du filtre de Mel]{Exemple du filtre de Mel \cite{2020-jurafsky-martin}}
+	\hgraphpage[.5\textwidth]{ASR-mel-exp.pdf}
+	\caption[Exemple du filtre de Mel.]{Exemple du filtre de Mel ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:asr-mel}
 \end{figure}
 
@@ -1365,10 +1375,10 @@ La figure \ref{fig:asr-enc-dec} représente l'architecture d'un système de reco
 L'encodeur commence à encoder les séquences du signal sous forme des représentations internes (contexte). 
 Ce dernier est utilisé avec le mécanisme d'attention pour générer le texte caractère par caractère.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{ASR-rec-exp_.pdf}
-	\caption[Exemple de reconnaissance en utilisant un encodeur-décodeur]{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
+	\hgraphpage[.8\textwidth]{ASR-rec-exp.pdf}
+	\caption[Exemple de reconnaissance en utilisant un encodeur-décodeur.]{Exemple de reconnaissance en utilisant un encodeur-décodeur ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:asr-enc-dec}
 \end{figure}
 
@@ -1406,10 +1416,10 @@ Dans ce cas, le son généré n'est pas naturel.
 Une autre approche est de sauvegarder des phrases, des mots et des phonèmes afin de les concaténer pour avoir le son final. 
 L'approche statistique est similaire à celle de la reconnaissance de paroles, seulement nous inversons les entrées et les sorties. 
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.8\textwidth]{tts-classif_noir.pdf}
-	\caption{Classification des systèmes de synthèse vocale}
+	\caption{Classification des systèmes de synthèse vocale.}
 	\label{fig:tts-classif}
 \end{figure}
 
@@ -1421,10 +1431,10 @@ L'unité de génération de prosodie utilise des informations sur les accents de
 A partir de la représentation phonétique et les informations prosodiques, l'unité de concaténation crée une séquence continue de paramètres de signaux et/ou de gestes d'articulation.
 La dernière unité sert à générer la parole en utilisant ces paramètres suivant une des approches précédemment expliquées.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{tts-arch_.pdf}
-	\caption[Architecture d'un système de synthèse vocale]{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
+	\hgraphpage[.7\textwidth]{tts-arch.pdf}
+	\caption[Architecture d'un système de synthèse vocale.]{Architecture d'un système de synthèse vocale ; figure reconstruite de \cite{2017-Hinterleitner}.}
 	\label{fig:tts-arch}
 \end{figure}
 

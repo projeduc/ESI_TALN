@@ -12,12 +12,12 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
 
 ## Contenu du module
 
-1. **Introduction**
+1. **Introduction au TALN**
     - Histoire
         - Naissance de l'IA et âge d'or
         - Hiver de l'IA
         - Printemps de l'IA
-    - Les niveaux de traitement d'une langue
+    - Niveaux de traitement d'un langage
         - Phonétique, phonologie et orthographe
         - Morphologie et syntaxe
         - Sémantique
@@ -32,39 +32,32 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
         - Évaluation
         - Éthique
 1. **Traitements basiques du texte**
-    - Caractères
+    - Traitements sur les caractères
         - Expressions régulières
         - Distance d'édition
     - Segmentation du texte
         - Délimitation de la phrase
         - Séparation des mots
-    - Normalisation et filtrage du texte
-        - Normalisation du texte
-        - Filtrage du texte
+    - Normalisation du texte
+    - Filtrage du texte
     - Morphologie
         - Formation des mots
         - Réduction des formes
-1. **Modèles de langues**
+1. **Modèles de langage**
     - Modèle N-gramme
         - Formulation
         - Lissage (Smoothing)
     - Modèles neuronaux
-        -  Réseau de neurones à propagation avant
+        - Réseau de neurones à propagation avant
         - Réseau de neurones récurrents
-        - Quelques améliorations
     - Évaluation
         - Approches
         - Perplexité
 1. **Étiquetage morpho-syntaxique**
     - Étiquetage de séquences
-        - Description
-        - Applications
-    - Description de la tâche
-        - Classes universelles
-        - Treebanks
-        - Difficulté et outils
-    - Approches
-        - Modèle de Markov
+    - Ressources pour l'étiquetage morpho-syntaxique
+    - Approches d'étiquetage
+        - Modèle de Markov caché
         - Maximum entropy
         - Modèle neuronal
 1. **Analyse syntaxique**
@@ -77,7 +70,7 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Analyse des dépendances
         - Par transition
         - Par graphe
-1. **Sématique lexicale**
+1. **Sématique des mots**
     - Bases de données lexicales
         - Relations sémantiques
         - Wordnet
@@ -94,7 +87,7 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Désambigüisation lexicale
         - Basée sur des bases de connaissance
         - Basée sur l'apprentissage automatique
-1. **Sémantique de phrase**
+1. **Sémantique des phrases**
     - Rôles sémantiques
         - Rôles thématiques
         - FrameNet
@@ -105,6 +98,7 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
     - Représentation sémantique des phrases
         - Logique du premier ordre
         - Graphes (AMR)
+    - Analyse sémantique
 1. **Détection de la coréférence**
     - Références
         - Formes des références
@@ -112,8 +106,8 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
         - Propriétés des relations de coréférence
     - Résolution des coréférences
         - Détection de mention
-        - Liaison
-        - Évaluation
+        - Liaison des coréférences
+    - Évaluation
     - Tâches connexes
         - Annotation sémantique (Entity linking)
         - Reconnaissance des entités nommées
@@ -128,22 +122,43 @@ Ceci est le répo contenant les cours et les TD/TP du module "Traitement automat
         - Centering theory
         - Entity Grid model
 1. **Quelques applications**
-    - Transformation
-        - Traduction automatique
-        - Résumé automatique
-    - Interaction
-        - Questions/Réponses
-        - Systèmes de dialogue
-    - Classification
-        - Analyse des sentiments
-        - Lisibilité
-    - Parole
-        - Reconnaissance de la parole
-        - Synthèse de la parole
+    - Traduction automatique
+        - Approche directe
+        - Approche par transfert
+        - Approche interlingue
+        - Approche statistique
+        - Approche par exemples
+        - Approche neuronale
+    - Résumé automatique
+        - Approche statistique
+        - Approche par graphes
+        - Approche linguistique
+        - Approche par apprentissage automatique (ML)
+    - Questions/Réponses
+        - Approche par RI
+        - Approche par connaissance
+        - Approche par modèles de langage
+    - Systèmes de dialogue
+        - Orienté tâche : Frame-based
+        - Orienté tâche : Dialogue-State
+        - Chatbot à base des règles
+        - Chatbot à base de la RI
+        - Chatbot par génération du texte
+    - Analyse des sentiments
+        - Analyse des sentiments à base de connaissance
+        - Analyse des sentiments par apprentissage automatique
+        - Analyse des sentiments hybride
+    - Lisibilité
+        - Formule
+        - Apprentissage automatique
+    - Reconnaissance de la parole
+        - Extraction des caractéristiques
+        - Reconnaissance
+    - Synthèse de la parole
 
 ## Licence
 
-Copyright (C) 2020  Abdelkrime Aries
+Copyright (C) 2020-2021  Abdelkrime Aries
 
 
 Attribution 4.0 International (CC BY 4.0)
