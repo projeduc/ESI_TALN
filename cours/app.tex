@@ -1305,10 +1305,10 @@ Maintenant, nous avons un signal numérisé qui doit être divisé sous forme de
 Cette opération utilise une fenêtre pour capturer une partie d'un phonème appelée cadre (frame).
 Elle a deux paramètres : taille de la fenêtre (Window size) et décalage (Frame stride, shift, offset).
 Un exemple du fenêtrage est donné dans la figure \ref{asr-windowing-exp}.
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{ASR-windowing-exp_.pdf}
-	\caption[Exemple de l'opération du fenêtrage]{Exemple de l'opération du fenêtrage \cite{2020-jurafsky-martin}}
+	\hgraphpage[.6\textwidth]{ASR-windowing-exp.pdf}
+	\caption[Exemple de l'opération du fenêtrage]{Exemple de l'opération du fenêtrage ; figure inspirée de \cite{2020-jurafsky-martin}.}
 	\label{asr-windowing-exp}
 \end{figure}
 
@@ -1330,10 +1330,10 @@ w[n] = \begin{cases}
 \end{cases}
 \end{equation}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{ASR-windowing2-exp_.pdf}
-	\caption[Fenêtrage rectangulaire vs. Hamming]{Fenêtrage rectangulaire vs. Hamming \cite{2020-jurafsky-martin}}
+	\hgraphpage[.9\textwidth]{ASR-windowing2-exp.pdf}
+	\caption[Fenêtrage rectangulaire vs. Hamming]{Fenêtrage rectangulaire vs. Hamming ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:asr-windowing-rect-hamm}
 \end{figure}
 
@@ -1346,10 +1346,10 @@ En se basant sur un signal fenêtré $x[n] \ldots x[m]$, chacune des $N$ bandes 
 X[k] = \sum\limits_{n=0}^{N-1} x[n] e^{-j\frac{2\pi}{N} k n}
 \end{equation}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{ASR-DFT-exp_.pdf}
-	\caption[Exemple de la transformation DFT]{Exemple de la transformation DFT (a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
+	\hgraphpage[.8\textwidth]{ASR-DFT-exp.pdf}
+	\caption[Exemple de la transformation DFT]{Exemple de la transformation DFT (a) une portion du signal du voyelle [iy] (b) son DFT ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:asr-dft-exp}
 \end{figure}
 
@@ -1363,7 +1363,7 @@ mel(f) = 1127 \ln (1 + \frac{f}{700})
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.5\textwidth]{ASR-mel-exp.pdf}
+	\hgraphpage[.65\textwidth]{ASR-mel-exp.pdf}
 	\caption[Exemple du filtre de Mel.]{Exemple du filtre de Mel ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:asr-mel}
 \end{figure}

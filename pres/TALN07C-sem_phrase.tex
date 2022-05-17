@@ -823,11 +823,11 @@
 		\hgraphpage[0.8\textwidth]{sem-qarbre.pdf}
 		\small
 		\begin{align*}
-		& VP.sem & = &V_t.sem(NP.sem) \\
-		& & = & \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.LIKES(x, y))(\textcolor{blue}{\lambda P.P(ALEX)}) \\
-		& & = & \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(ALEX)(\textcolor{blue}{\lambda y.LIKES(x, y)}) \\
-		& & = & \lambda x.\textcolor{red}{\lambda y}.LIKES(x, \textcolor{red}{y})(\textcolor{blue}{ALEX}) \\
-		& & = & \lambda x.LIKES(x, ALEX) \\
+		VP.sem & = V_t.sem(NP.sem) \\
+		& = \textcolor{red}{\lambda P}.\lambda x.\textcolor{red}{P}(\lambda y.UTILISER(x, y))(\textcolor{blue}{\lambda P.P(BERT)}) \\
+		& = \lambda x.\textcolor{red}{\lambda P}.\textcolor{red}{P}(BERT)(\textcolor{blue}{\lambda y.UTILISER(x, y)}) \\
+		& = \lambda x.\textcolor{red}{\lambda y}.UTILISER(x, \textcolor{red}{y})(\textcolor{blue}{BERT}) \\
+		& = \lambda x.UTILISER(x, BERT) \\
 		\end{align*}
 	\end{center}
 	
