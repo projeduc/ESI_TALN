@@ -155,7 +155,7 @@ L'action possède des arguments pour spécifier le temps, le thème, etc.
 \begin{figure}[ht]
 	\centering
 \begin{multicols}{2}
-\bfseries\tiny
+\bfseries\scriptsize
 \begin{verbatim}
 (*A-REMAIN  ; action rep for 'remain'
     (FORM FINITE)
@@ -163,7 +163,7 @@ L'action possède des arguments pour spécifier le temps, le thème, etc.
     (MOOD DECLARATIVE)
     (PUNCTUATION PERIOD)
     (IMPERSONAL -) ; passive + expletive subject
-    (ARGUMENT-CLASS THEME+PREDICATE) ; predicate argument structure
+    (ARGUMENT-CLASS THEME+PREDICATE) ; pred. arg. structure
     (Q-MODIFIER ; PP semrole (generic)
         (*K-DURING ; PP interlingua
             (POSITION FINAL) ; clue for translation
@@ -794,23 +794,23 @@ Un exemple des requêtes et leurs formes logiques est donnée dans le tableau \r
 		
 		Quelle est la wilaya la plus grande ? & $\arg\max(\lambda x.wilaya(x), \lambda x.superficie(x))$ \\
 		
-		Je souhaite réserver un vol de Jijel vers Alger. & SELECT DISTINCT f1.flight id
+		Je souhaite réserver un vol de Jijel vers Alger. & {\color{blue}SELECT DISTINCT} f1.flight id
 		
-		FROM vol v1, aeroport  a1,
+		{\color{blue}FROM} vol v1, aeroport  a1,
 		
 		wilaya w1, service\_aeroport a2, wilaya w2
 		
-		WHERE v1.depart=a1.code\_aeroport
+		{\color{blue}WHERE} v1.depart=a1.code\_aeroport
 		
-		AND a1.code\_wilaya=w1.code\_wilaya
+		{\color{blue}AND} a1.code\_wilaya=w1.code\_wilaya
 	
-		AND w1.nom\_wilaya= 'Jijel'
+		{\color{blue}AND} w1.nom\_wilaya= '{\color{red}Jijel}'
 		
-		AND v1.destination=a2.code\_aeroport
+		{\color{blue}AND} v1.destination=a2.code\_aeroport
 		
-		AND a2.code\_wilaya=w2.code\_wilaya
+		{\color{blue}AND} a2.code\_wilaya=w2.code\_wilaya
 		
-		AND w2.nom\_wilaya= 'Alger' \\
+		{\color{blue}AND} w2.nom\_wilaya= '{\color{red}Alger}' \\
 		
 		
 		Combien de personnes ont survécu au naufrage du Titanic ? & (count (!fb:event.disaster.survivors
@@ -1332,8 +1332,8 @@ w[n] = \begin{cases}
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.9\textwidth]{ASR-windowing2-exp.pdf}
-	\caption[Fenêtrage rectangulaire vs. Hamming]{Fenêtrage rectangulaire vs. Hamming ; figure reconstruite de \cite{2020-jurafsky-martin}.}
+	\hgraphpage[.6\textwidth]{ASR-windowing2-exp.pdf}
+	\caption[Fenêtrage rectangulaire vs. Hamming.]{Fenêtrage rectangulaire vs. Hamming ; figure reconstruite de \cite{2020-jurafsky-martin}.}
 	\label{fig:asr-windowing-rect-hamm}
 \end{figure}
 

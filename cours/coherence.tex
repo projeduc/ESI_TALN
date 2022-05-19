@@ -683,7 +683,7 @@ Reprenons deux phrases de l'exemple précédent, et essayons de calculer la cent
 \subsection{Entity Grid model}
 
 Dans le modèle ``entity grid", un document est représenté par une matrice où les phrases représentent les lignes et les entités représentent les colonnes. 
-Chaque cellule de cette matrice contient la fonction grammaticale de l'entité dans la phrase : sujet (s), objet (o), Autre (x) ou l'entité n'existe pas (\_). 
+Chaque cellule de cette matrice contient la fonction grammaticale de l'entité dans la phrase : sujet (s), objet (o), Autre (x) ou l'entité n'existe pas (-). 
 La figure \ref{fig:entity-grid-rep} représente un texte et sa représentation phrases/entités selon le modèle ``entity grid". 
 Nous commençons par détecter les sujets, les objets et les autres fonctions syntaxiques.
 Par exemple, nous pouvons appliquer une analyse syntaxique pour extraire les dépendances.
@@ -732,11 +732,11 @@ Les différentes têtes de ces dépendances sont utilisées pour représenter le
 %\end{figure}
 
 Un document est considéré comme cohérent s'il suit une certaine forme de pattern.
-Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. ``\expword{ss, so, sx, s\_, os, oo, ox, o\_, ...}".
-Dans l'exemple précédent, la transition ``s\_" a une fréquence de 6.
+Ce pattern peut-être représenté par les fréquences de transitions grammaticales. Ex. ``\expword{ss, so, sx, s-, os, oo, ox, o-, ...}".
+Dans l'exemple précédent, la transition ``s-" a une fréquence de 6.
 Un document peut être représenté par les probabilités des transitions grammaticales.
 Une probabilité est le ratio entre le nombre d'une transition et le nombre de toutes les transitions.
-Dans l'exemple précédent : \expword{P(s\_) = 6/75}.
+Dans l'exemple précédent : \expword{P(s-) = 6/75}.
 Le tableau \ref{tab:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
 %La figure \ref{fig:entity-grid-prob} représente les probabilités des transitions de longueur 2 du document précédent.
 
