@@ -1,9 +1,9 @@
 %
-%    Copyright (C) 2017  Abdelkrime Aries <kariminfo0@gmail.com>
+%    Copyright (C) 2017-2022  Abdelkrime Aries <kariminfo0@gmail.com>
 %
 
 \NeedsTeXFormat{LaTeX2e} %[2009/09/24]
-\ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
+\ProvidesClass{KBook}[2022/05/18 Create a book]
 \LoadClass[12pt, a4paper]{book}
 
 \raggedbottom
@@ -116,6 +116,16 @@ ItalicFont=*-Italic,
 BoldItalicFont=*-BoldItalic
 ]{CrimsonText} %
 
+
+%\setmainfont
+%[Path = fonts/CrimsonPro/,
+%Extension = .ttf,
+%Ligatures=TeX,
+%UprightFont=*-Regular,
+%BoldFont=*-Bold,
+%ItalicFont=*-Italic,
+%BoldItalicFont=*-BoldItalic
+%]{CrimsonPro} %
 
 \newfontfamily\euphoria
 [Path = fonts/EuphoriaScript/,
@@ -410,16 +420,16 @@ title={#1}
 		\replace\@title
 	};
 
-	\node[anchor=north west,minimum width=2\textwidth,minimum height=2cm,fill=white] (headerline)
-	at ([shift={(0cm,0cm)}] current page.north west)
-	{};
+%	\node[anchor=north west,minimum width=2\textwidth,minimum height=2cm,fill=white] (headerline)
+%	at ([shift={(0cm,0cm)}] current page.north west)
+%	{};
 	
-	\node[text width=20cm,anchor=north west, align=center] at ([shift={(0cm, -0.25cm)}] headerline.north west){
-		\bfseries
-		République Algérienne démocratique et populaire\\
-		Ministère de l'enseignement supérieur et de la recherche scientifique\\
-		Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger
-	};
+%	\node[text width=20cm,anchor=north west, align=center] at ([shift={(0cm, -0.25cm)}] headerline.north west){
+%		\bfseries
+%		République Algérienne démocratique et populaire\\
+%		Ministère de l'enseignement supérieur et de la recherche scientifique\\
+%		Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger
+%	};
 
 	\node[anchor=south west,minimum width=2\textwidth,minimum height=3.4cm,fill=white] (authorline)
 	at ([shift={(0cm,0cm)}] current page.south west)
@@ -432,7 +442,8 @@ title={#1}
 		\multirow{3}{*}{\the\@publisherimage} &
 		Support de cours \\
 		& 2ième année cycle supérieur (2CS) \& Master\\
-		& \textit{Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger, Algérie}
+		& \textit{Ecole nationale supérieure d'informatique (ESI), Alger}
+%		& \textit{Ecole nationale supérieure d'informatique (ESI, ex. INI), Alger, Algérie}
 		\end{tabular}\\[.4cm]
 		\Huge
 		\ifx\isplain\relax\else \color{indigo}\fi

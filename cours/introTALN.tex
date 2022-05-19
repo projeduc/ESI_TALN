@@ -52,7 +52,7 @@ Ce test est connu sous le nom de ``Test de Turing".
 Depuis cette proposition, le domaine de l'\ac{ia} a reconnu des hauts et des bas.
 La figure~\ref{fig:histoire} illustre quelques points dans cette histoire riche des évènements, qui seront détaillés par la suite.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering
 	\hgraphpage[.6\textwidth]{histoire.pdf}
 	\caption{Quelques points historiques du TALN.}
@@ -151,7 +151,7 @@ Reprenons la définition du langage par Larousse : ``\textit{capacité, observé
 Ce langage est doté d'une sémantique ainsi qu'une structure. 
 La capacité d'un langage naturel (humain) comprend plusieurs fonctions linguistiques (niveaux) qui sont représentées dans la figure \ref{fig:niveaux}.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering 
 	\hgraphpage[.9\textwidth]{niveaux3.pdf}
 	\caption{Niveaux de traitement d'un langage naturel.}
@@ -191,27 +191,59 @@ Les consonnes sont divisées, selon la voie orale, en 5 groupes :
 	Ex., \expword{\textipa{[h],} \<'> \textipa{[P]}}
 \end{itemize}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 	\centering 
-	\hgraphpage[.5\textwidth]{oraltract_.pdf}
-	\caption[Voie orale.]{Voie orale \cite{2009-ball}.}
+	\hgraphpage[.5\textwidth]{oraltract.pdf}
+	\caption[Voie orale.]{Voie orale ; figure reconstruite de \cite{2009-ball}.}
 	\label{fig:articulation}
 \end{figure}
 
 \ac{ipa2} est un alphabet utilisé pour la transcription phonétique des sons du langage parlé.  
 La parole est découpée en segments sonores distincts (phones). 
 A chaque phone, il est attribué un symbole unique. 
-La figure~\ref{fig:ipa} représente une partie de l'alphabet phonétique international.
-Les consonnes pulmonaires sont classées selon la voie orale, où les zones ombragées représentent les sons impossibles.
-Les consonnes non pulmonaires sont celles qui n'utilisent pas pas poumons comme les clics.
-Les voyelles sont distribuées sur un schéma qui ressemble un visage et le cou.
+%La figure~\ref{fig:ipa} représente une partie de l'alphabet phonétique international.
+%Les consonnes pulmonaires sont classées selon la voie orale, où les zones ombragées représentent les sons impossibles.
+%Les consonnes non pulmonaires sont celles qui n'utilisent pas les poumons comme les clics.
+%Les voyelles sont distribuées sur un schéma qui ressemble un visage et le cou.
+%
+%\begin{figure}[ht]
+%	\centering 
+%	\hgraphpage[\textwidth]{IPA2020_.pdf}
+%	\caption[Alphabet phonétique internationale : IPA.]{Alphabet phonétique internationale, \url{https://www.internationalphoneticassociation.org/IPAcharts/IPA_chart_orig/pdfs/IPA_DejaVu_2020_full.pdf} [visité le 2021-09-08].}
+%	\label{fig:ipa}
+%\end{figure}
+Le tableau~\ref{tab:ipa} représente les consonnes pulmonaires de l'alphabet phonétique international.
+Elles sont classées selon la voie orale, où les zones ombragées représentent les sons impossibles.
 
-\begin{figure}[!ht]
-	\centering 
-	\hgraphpage[\textwidth]{IPA2020_.pdf}
-	\caption[Alphabet phonétique internationale : IPA.]{Alphabet phonétique internationale, \url{https://www.internationalphoneticassociation.org/IPAcharts/IPA_chart_orig/pdfs/IPA_DejaVu_2020_full.pdf} [visité le 2021-09-08].}
-	\label{fig:ipa}
-\end{figure}
+\setlength\tabcolsep{2pt}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|p{1.6cm}|p{0.8cm}|p{1.3cm}|p{0.8cm}|p{1.1cm}|p{1cm}|p{1.2cm}|p{0.8cm}|p{1cm}|p{1cm}|p{0.6cm}|p{0.4cm}|p{0.4cm}|p{0.4cm}|}
+		\hline
+		& \scriptsize Bilabial & \scriptsize Labiodental & \scriptsize Dental & \scriptsize Alvéolaire & \scriptsize Post-alvéolaire & \scriptsize Rétroflexe & \scriptsize Palatal & \scriptsize Vélaire & \scriptsize Uvulaire & \multicolumn{2}{c|}{\scriptsize Pharyngal} & \multicolumn{2}{c|}{\scriptsize Glottal}\\
+		\hline
+		\scriptsize Plosive & p b & & \multicolumn{3}{c|}{t d} & \textrtailt\ \textrtaild & c \textbardotlessj & k g & q \textscg & & \cellcolor{gray!50} & \textglotstop & \cellcolor{gray!50} \\
+		\hline
+		\scriptsize Nasale & m & \textltailm & \multicolumn{3}{c|}{n} & \textrtailn & \textltailn & \ng & \textscn & \multicolumn{2}{c|}{\cellcolor{gray!50}}  & \multicolumn{2}{c|}{\cellcolor{gray!50}} \\
+		\hline 
+		\scriptsize Vibrante & \textscb & & \multicolumn{3}{c|}{r} &  &  & \cellcolor{gray!50}  & \textscr & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{\cellcolor{gray!50}} \\
+		\hline
+		\scriptsize Battue &  & \char"2C71 & \multicolumn{3}{c|}{\textfishhookr} & \textrtailr  &  & \cellcolor{gray!50} &  & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{\cellcolor{gray!50}} \\
+		\hline
+		\scriptsize Fricative & \textphi\ \textbeta& f v  & \texttheta\ \dh & s z & \textesh\ \textyogh & \textrtails\ \textrtailz  & \c{c} \textctj  & x \textgamma & \textchi\ \textinvscr  & \multicolumn{2}{c|}{\textcrh\ \textrevglotstop}  & \multicolumn{2}{c|}{h \texthth} \\
+		\hline
+		\scriptsize Fricative latérale & \cellcolor{gray!50} & \cellcolor{gray!50} & \multicolumn{3}{c|}{\textbeltl\ \textlyoghlig} &   &   &  &  & \multicolumn{2}{c|}{\cellcolor{gray!50}}  & \multicolumn{2}{c|}{\cellcolor{gray!50}} \\
+		\hline
+		\scriptsize Approximante &  & \textscriptv & \multicolumn{3}{c|}{\textturnr} & \textturnrrtail  & j & \textturnmrleg &  & \multicolumn{2}{c|}{}  & \multicolumn{2}{c|}{\cellcolor{gray!50}} \\
+		\hline
+		\scriptsize Approximante latérale & \cellcolor{gray!50} & \cellcolor{gray!50} & \multicolumn{3}{c|}{l} & \textrtaill  & \textturny  & \textscl &  & \multicolumn{2}{c|}{\cellcolor{gray!50}}  & \multicolumn{2}{c|}{\cellcolor{gray!50}} \\
+		\hline
+		
+	\end{tabular}
+	\caption[Alphabet phonétique internationale.]{Alphabet phonétique internationale, \url{https://www.internationalphoneticassociation.org/} [visité le 2022-05-17].}
+	\label{tab:ipa}
+\end{table}
+\setlength\tabcolsep{6pt}
 
 
 \subsection{Phonologie}
@@ -375,7 +407,7 @@ Le tableau~\ref{tab:ordre} représente une étude sur 402 langues qui nous donne
 		OVS & 1.24 \% & apalai, hixkaryana, klingon (langue) \\
 		\hline\hline
 	\end{tabular}
-	\caption[Ordres syntaxiques et leurs proportions d'après l'étude de 402 langues]{Ordres syntaxique et leurs proportions d'après l'étude de 402 langues \cite{1988-blake}}
+	\caption[Ordres syntaxiques et leurs proportions d'après l'étude de 402 langues.]{Ordres syntaxique et leurs proportions d'après l'étude de 402 langues \cite{1988-blake}.}
 	\label{tab:ordre}
 \end{table}
 
@@ -414,7 +446,7 @@ Un exemple d'une grammaire de dépendance est donné dans la figure~\ref{fig:exp
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.7\textwidth]{gram-dep_.pdf}
+	\hgraphpage[.7\textwidth]{gram-dep2_.pdf}
 	\caption[Exemple de dépendances.]{Exemple de dépendances, généré par \url{https://corenlp.run/} [visité le 2021-09-08].}
 	\label{fig:exp-gram-dep}
 \end{figure}
@@ -467,7 +499,8 @@ Ces dernières peuvent être :
 		Chien & + & + & - \\
 		\hline
 	\end{tabular}
-	\caption[Exemple de l'analyse sémique]{Exemple de l'analyse sémique \label{tab:semique}}
+	\caption[Exemple de l'analyse sémique.]{Exemple de l'analyse sémique.}
+	\label{tab:semique}
 \end{table}
 
 Une proposition prend son sens des sens des mots qui la composent. 

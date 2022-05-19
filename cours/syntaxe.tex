@@ -152,8 +152,8 @@ Un exemple de l'annotation fonctionnelle des deux phrases ``\expword{L'élève a
 %
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[0.65\textwidth]{exp-parse-fonct_.pdf}
-	\caption[Exemple d'une analyse fonctionnelle de deux phrases.]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/} [visité le 2021-09-25].}
+	\hgraphpage[0.65\textwidth]{exp-parse-fonct2_.pdf}
+	\caption[Exemple d'une analyse fonctionnelle de deux phrases.]{Exemple d'une analyse fonctionnelle de deux phrases en utilisant \url{https://corenlp.run/} [visité le 2022-05-18].}
 	\label{fig:parse-fct-exp}
 \end{figure}
 
@@ -365,7 +365,7 @@ Nous transformons cette grammaire en FNC en remplaçant la règle en gras par :
 	\item NP \textrightarrow\ DET AP
 	\item AP \textrightarrow\ ADJ N
 \end{itemize}
-La règle unitaire $S \textrightarrow\ VP$ sera remplacée par $S \textrightarrow\ V NP$.
+La règle unitaire ``S \textrightarrow\ VP" sera remplacée par ``S \textrightarrow\ V NP".
 Le tableau d'analyse est illustré dans la figure \ref{fig:exp-cky-trait}.
 
 \begin{figure}[ht]
@@ -732,19 +732,19 @@ Deux fonctions sont utilisées dans cet algorithme :
 	\caption{Analyse de Chu-Liu-Edmonds : Arbre couvrant de poids maximal\label{algo:chu-liu-edmonds}}
 \end{algorithm}
 
-Prenons l'exemple de la phrase ``\expword{Book a flight}".
+Prenons l'exemple de la phrase ``\expword{Lisez le cours}".
 La figure \ref{fig:cke-exp} représente son analyse en utilisant l'algorithme de Chu-Liu-Edmonds. 
-Dans le premier graphe, nous avons bouclé trois fois pour choisir les arcs : (Root, Book), (that, flight) et (flight, that). 
+Dans le premier graphe, nous avons bouclé trois fois pour choisir les arcs : (Root, Lisez), (le, cours) et (cours, le). 
 A chaque fois un arc est choisi, nous réglons la pondération jusqu'à avoir le deuxième graphe.
-Parmi les arcs ajoutés, il y a un cycle \{(that, flight) et (flight, that)\}.
+Parmi les arcs ajoutés, il y a un cycle \{(le, cours) et (cours, le)\}.
 Donc, nous devons fusionner les deux nœuds (contracter) ce qui nous donne le troisième graphe.
 Nous appliquons les mêmes opérations sur le graphe résultat.
 Lorsqu'il n'y aura plus de cycles, nous commençons à étendre le graphe pour supprimer les arcs non nécessaires. 
 
 \begin{figure}[ht]
 	\centering
-	\hgraphpage[.8\textwidth]{exp-graphe-analyse_.pdf}
-	\caption[Exemple de l'analyse Chu-Liu-Edmonds]{Exemple de l'analyse de la phrase ``Book a flight" en utilisant l'algorithme de Chu-Liu-Edmonds \cite{2019-jurafsky-martin}}
+	\hgraphpage[.8\textwidth]{exp-graphe-analyse.pdf}
+	\caption[Exemple de l'analyse Chu-Liu-Edmonds]{Exemple de l'analyse de la phrase ``Lisez le cours" en utilisant l'algorithme de Chu-Liu-Edmonds ; figure inspirée de \cite{2019-jurafsky-martin}.}
 	\label{fig:cke-exp}
 \end{figure}
 
