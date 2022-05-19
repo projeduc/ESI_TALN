@@ -145,8 +145,8 @@
 	
 	\begin{figure}
 		\centering
-		\vgraphpage[.7\textheight]{MT-tranfert-exp_.pdf}
-		\caption{Un exemple de règles de transfert syntaxique \cite{06-quah}}
+		\vgraphpage[.7\textheight]{MT-tranfert-exp.pdf}
+		\caption{Exemple de règles de transfert syntaxique \cite{06-quah}}
 	\end{figure}
 \end{frame}
 
@@ -158,7 +158,7 @@
 		\item \url{https://www.apertium.org/}
 	\end{itemize}
 
-	\hgraphpage{apertium-arch_.pdf}
+	\hgraphpage{apertium-arch.pdf}
 \end{frame}
 
 \begin{frame}
@@ -373,7 +373,7 @@
 		\item \url{https://translate.google.com/}
 	\end{itemize}
 	\begin{center}
-		\hgraphpage[.9\textwidth]{googlet_.pdf}
+		\hgraphpage[.9\textwidth]{googlet.pdf}
 	\end{center}
 \end{frame}
 
@@ -383,7 +383,7 @@
 	\begin{itemize}
 		\item \url{https://opennmt.net/}
 	\end{itemize}
-	\hgraphpage{opennmt_.pdf}
+	\hgraphpage{opennmt.pdf}
 \end{frame}
 
 \begin{frame}
@@ -391,8 +391,8 @@
 	\framesubtitle{Traduction automatique : Un peu d'humour}
 	
 	\begin{center}
-		\hgraphpage[0.65\textwidth]{humour-translation1.jpg}
-		\hgraphpage[0.25\textwidth]{humour-translation2.jpeg}
+		\hgraphpage[0.65\textwidth]{humour/humour-translation1.jpg}
+		\hgraphpage[0.25\textwidth]{humour/humour-translation2.jpeg}
 	\end{center}
 	
 \end{frame}
@@ -762,7 +762,7 @@
 		\end{itemize}
 	\end{minipage}
 	\begin{minipage}{.38\textwidth}
-		\hgraphpage{btm-daumeiii_.pdf}
+		\hgraphpage{btm-daumeiii.pdf}
 	\end{minipage}
 	
 \end{frame}
@@ -772,8 +772,8 @@
 	\framesubtitle{Résumé automatique : Approche par AA (Exemple : \cite{15-rush-al})}
 	
 	\begin{center}
-		\hgraphpage[.35\textwidth]{2015-rush-al_.pdf}
-		\hgraphpage[.35\textwidth]{2015-rush-al-exp_.pdf}
+		\hgraphpage[.35\textwidth]{2015-rush-al.pdf}
+		\hgraphpage[.35\textwidth]{2015-rush-al-exp.pdf}
 	\end{center}
 	
 	\begin{itemize}
@@ -787,7 +787,7 @@
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Résumé automatique : Approche par AA (Exemple : \cite{18-narayan-al})}
 	
-	\hgraphpage{narayan-al_.pdf}
+	\hgraphpage{narayan-al.pdf}
 	
 \end{frame}
 
@@ -796,8 +796,8 @@
 	\framesubtitle{Résumé automatique : Un peu d'umour}
 	
 	\begin{center}
-		\hgraphpage[0.6\textwidth]{humour-summarize1.jpg}
-		\hgraphpage[0.3\textwidth]{humour-summarize2.jpg}
+		\hgraphpage[0.6\textwidth]{humour/humour-summarize1.jpg}
+		\hgraphpage[0.3\textwidth]{humour/humour-summarize2.jpg}
 	\end{center}
 	
 \end{frame}
@@ -836,7 +836,7 @@
 	\framesubtitle{Questions-Réponses : Approche par RI}
 	
 	\begin{figure}
-		\hgraphpage{qa-ri_.pdf}
+		\hgraphpage{qa-ri.pdf}
 		\caption{Architecture d'un système de questions/réponses \cite{2019-jurafsky-martin}}
 	\end{figure}
 	
@@ -913,7 +913,7 @@
 	\framesubtitle{Questions-Réponses : Approche par RI (extraction par Bi-LSTM \cite{2017-chen-al})}
 	
 	\begin{figure}
-		\hgraphpage{qa-bilstm-exp_.pdf}
+		\hgraphpage{qa-bilstm-exp.pdf}
 		\caption{Extraction de réponse dans le système DrQA \cite{2019-jurafsky-martin}}
 	\end{figure}
 	
@@ -925,7 +925,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{qa-bert-exp_.pdf}
+		\hgraphpage[.5\textwidth]{qa-bert-exp.pdf}
 		\caption{Extraction de réponse dans le système DrQA \cite{2019-jurafsky-martin}}
 	\end{figure}
 	
@@ -958,11 +958,49 @@
 	\frametitle{Quelques applications : Interaction}
 	\framesubtitle{Questions-Réponses : Approche par connaissance (Exemple)}
 	
-	\begin{figure}
-		\centering
-		\hgraphpage[.9\textwidth]{qa-logfrm-exp_.pdf}
-		\caption{An exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
-	\end{figure}
+	\begin{exampleblock}{Exemple des formes logiques des questions \cite{2020-jurafsky-martin}}
+		\centering\tiny\bfseries
+		\begin{tabular}{p{0.5\textwidth}p{0.45\textwidth}}
+			\hline\hline
+			Question & Forme logique \\
+			\hline
+			Quelles sont les wilayas limitrophes de Jijel ? & $\lambda x.wilaya(x) \wedge limitrophe(x, Jijel)$ \\
+			
+			Quelle est la wilaya la plus grande ? & $\arg\max(\lambda x.wilaya(x), \lambda x.superficie(x))$ \\
+			
+			Je souhaite réserver un vol de Jijel vers Alger. & {\color{blue}SELECT DISTINCT} f1.flight id
+			
+			{\color{blue}FROM} vol v1, aeroport  a1,
+			
+			wilaya w1, service\_aeroport a2, wilaya w2
+			
+			{\color{blue}WHERE} v1.depart=a1.code\_aeroport
+			
+			{\color{blue}AND} a1.code\_wilaya=w1.code\_wilaya
+			
+			{\color{blue}AND} w1.nom\_wilaya= '{\color{red}Jijel}'
+			
+			{\color{blue}AND} v1.destination=a2.code\_aeroport
+			
+			{\color{blue}AND} a2.code\_wilaya=w2.code\_wilaya
+			
+			{\color{blue}AND} w2.nom\_wilaya= '{\color{red}Alger}' \\
+			
+			
+			Combien de personnes ont survécu au naufrage du Titanic ? & (count (!fb:event.disaster.survivors
+			
+			fb:en.sinking of the titanic))\\
+			
+			Combien de yards de plus a duré le touché le plus long de Johnson par rapport à son touché le plus court du premier quart-temps ? & 
+			ARITHMETIC diff( SELECT num( ARGMAX(
+			
+			SELECT ) ) SELECT num( ARGMIN( FILTER(
+			
+			SELECT ) ) ) )\\
+			\hline\hline
+		\end{tabular}
+	\end{exampleblock}
+	
 	
 \end{frame}
 
@@ -977,7 +1015,7 @@
 
 	\begin{figure}
 		\centering
-		\hgraphpage[.6\textwidth]{qa-t5_.pdf}
+		\hgraphpage[.6\textwidth]{qa-t5.pdf}
 		\caption{T5 est pré-entraîné pour remplir le texte absent, ensuite réglé pour répondre aux questions sans saisir d'informations ou de contexte supplémentaires. \cite{2020-roberts-al}}
 	\end{figure}
 	
@@ -989,12 +1027,12 @@
 	
 	\begin{columns}
 		\begin{column}{0.3\textwidth}
-			\hgraphpage{humour-QR1.jpg}
+			\hgraphpage{humour/humour-QR1.jpg}
 			
-			\hgraphpage{humour-QR3.jpeg}
+			\hgraphpage{humour/humour-QR3.jpeg}
 		\end{column}
 		\begin{column}{0.4\textwidth}
-			\hgraphpage{humour-QR2.jpeg}
+			\hgraphpage{humour/humour-QR2.jpeg}
 		\end{column}
 	\end{columns}
 
@@ -1033,12 +1071,28 @@
 		Ex. \expword{Le slot RESERVATION\_DATE dans le cadre HOTEL\_RESERVATION à partir du slot ARRIVAL\_DATE du cadre FLIGHT\_RESERVATION}
 		\item Appliquer \keyword{Détection d'intention} pour savoir quel cadre à utiliser
 	\end{itemize}
+
+	\begin{exampleblock}{Exemple d'un cadre pour programmer un vol \cite{2020-jurafsky-martin}}
+		\centering\tiny\bfseries
+		\begin{tabular}{lll}
+			\hline\hline
+			Slot & Type & Modèle de questions \\
+			\hline
+			VILLE DEPART & ville & ``De quelle ville partez-vous ?" \\
+			VILLE DESTINATION & ville & ``Où allez-vous?" \\
+			HEURE DEPART & temps & ``Quand souhaitez-vous partir ?" \\
+			DATE DEPART & date & ``Quel jour souhaitez-vous partir ?" \\
+			HEURE ARRIVEE & temps & ``Quand voulez-vous arriver ?" \\
+			DATE ARRIVEE & date & ``Quel jour souhaitez-vous arriver ?" \\
+			\hline\hline
+		\end{tabular}
+	\end{exampleblock}
 	
-	\begin{figure}
-		\centering
-		\hgraphpage[.6\textwidth]{sd-frame-exp_.pdf}
-		\caption{Exemple d'un cadre pour programmer un vol. \cite{2020-jurafsky-martin}}
-	\end{figure}
+%	\begin{figure}
+%		\centering
+%		\hgraphpage[.6\textwidth]{sd-frame-exp.pdf}
+%		\caption{Exemple d'un cadre pour programmer un vol. \cite{2020-jurafsky-martin}}
+%	\end{figure}
 	
 \end{frame}
 
@@ -1046,13 +1100,23 @@
 	\frametitle{Quelques applications : Interaction}
 	\framesubtitle{Systèmes de dialogue : orienté tâche - Frame-based (Réponses multiples)}
 	
-	\begin{figure}
-		\centering
-		\hgraphpage[.6\textwidth]{sd-frame-semgram-exp_.pdf}
+%	\begin{figure}
+		\centering\footnotesize
+		\begin{tabular}{lll}
+			MONTRER & \textrightarrow & montrez-moi \textbar\ Je veux savoir \textbar\ puis-je voir \\
+			HEURE\_DEP & \textrightarrow & (après \textbar\ environ \textbar\ avant) HEURE \textbar HEURE \textbar\\
+			&  & matin \textbar\ après-midi \textbar\ soir\\
+			DATE\_DEP & \textrightarrow & samedi \textbar\ ... \textbar\ vendredi\\
+			HEURE & \textrightarrow & (un \textbar\ deux \textbar\ ... \textbar\ vingt) (am \textbar\ pm) \\
+			VOLS & \textrightarrow & (un \textbar\ le) vol \textbar\ (les \textbar\ des) vols \\
+			ORIGINE & \textrightarrow & (de \textbar\ à partir de) WILAYA \\
+			DESTINATION & \textrightarrow & (à \textbar\ jusqu'à) WILAYA \\
+			WILAYA & \textrightarrow & Adrar \textbar\ ... \textbar\ El Meniaa \\
+		\end{tabular}
 		
-		\hgraphpage[.8\textwidth]{sd-frame-parse-exp_.pdf}
-		\caption{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase. \cite{2020-jurafsky-martin}}
-	\end{figure}
+		\hgraphpage[.8\textwidth]{sd-frame-parse-exp.pdf}
+%		\caption{Exemple d'une grammaire sémantique et un arbre sémantique d'une phrase. \cite{2020-jurafsky-martin}}
+%	\end{figure}
 	
 \end{frame}
 
@@ -1062,7 +1126,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.7\textwidth]{sd-dialog-arch_.pdf}
+		\hgraphpage[.7\textwidth]{sd-dialog-arch.pdf}
 		\caption{Architecture d'un système utilisant dialogue-state \cite{2016-williams-al}}
 	\end{figure}
 	
@@ -1074,11 +1138,42 @@
 	
 	\vspace{-6pt}
 	\begin{figure}
-		\centering
-		\hgraphpage[.5\textwidth]{sd-dialog-act-exp1_.pdf}
+		\centering\tiny\bfseries
+		\begin{tabular}{llll}
+			\hline
+			Tag & Sys & User & Description \\
+			\hline
+			HELLO (a = x, b = y, ...) & \CheckedBox & \CheckedBox & Ouvrir un dialogue et donne l'info a = x, b = y, ... \\
+			INFORM(a = x, b = y, ...) & \CheckedBox & \CheckedBox & Donner l'info a = x, b = y, ... \\
+			REQUEST(a, b = x, ...) & \CheckedBox & \CheckedBox & Demander une valeur pour une donnée b = x, ... \\
+			REQALTS(a = x, ...) & \XBox & \CheckedBox & Demander une alternative avec a = x, ... \\
+			CONFIRM(a = x, b = y, ...) & \CheckedBox & \CheckedBox & Confirmer explicitement a = x, b = y, ... \\
+			CONFREQ (a = x, ..., d) & \CheckedBox & \XBox & Confirmer implicitement a = x, ... et demander la valeur de d \\
+			SELECT(a = x, a = y) & \CheckedBox & \XBox & Confirmer implicitement a = x, ... et demander la valeur de d \\
+			AFFIRM(a = x, b = y, ...) & \CheckedBox & \CheckedBox & Confirmer et donner plus d'info a = x, b = y, ... \\
+			NEGATE(a = x) & \XBox & \CheckedBox & Annuler et donner la valeur correcte a = x \\
+			DENY(a = x) & \XBox & \CheckedBox & Refuser a = x \\
+			BYE () & \CheckedBox & \CheckedBox & Fermer une dialogue \\
+			\hline
+		\end{tabular}
+	
+		\begin{tabular}{p{0.5\textwidth}p{0.4\textwidth}}
+			\hline
+			Énoncé & Acte de dialogue \\
+			\hline
+			U: Salut, je cherche un endroit pour manger.  & hello(task=find, type=restaurant) \\
+			S: Vous recherchez un restaurant. Quel type de nourriture aimez-vous?  & confreq(type=restaurant, food) \\
+			U: Je voudrais un plat italien quelque part près du musée.  & inform(food=Italian, near=museum)\\
+			S: ``Roma" est un bon restaurant italien près du musée.  & inform(name=``Roma", type=restaurant, food=Italian, near=museum) \\
+			U: Les prix sont-ils raisonnables ? & confirm(pricerange=moderate) \\
+			S: Oui, les prix de ``Roma" sont raisonnables.  & affirm(name=``Roma", pricerange=moderate) \\
+			U: Quel est son numéro de téléphone ? & request(phone) \\
+			S: Le nombre de ``Roma" est 385456. & inform(name=``Roma", phone=``385456") \\
+			U: Ok, merci. Au revoir. & bye() \\
+			\hline
+		\end{tabular}
 		
-		\hgraphpage[.5\textwidth]{sd-dialog-act-exp2_.pdf}\vspace{-6pt}
-		\caption{Des actes de dialogue ainsi qu'un exemple d'un dialogue d'un système de recommandation des restaurants appelé HIS \cite{2010-young-al}. Il est indiqué ce qui est permété d'être une entrée du système et une sortie de l'utilisateur \cite{2020-jurafsky-martin}}
+		\caption{\vspace{-1cm}Recommandation des restaurants HIS \cite{2010-young-al}}
 	\end{figure}
 	
 \end{frame}
@@ -1094,7 +1189,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{sd-dialog-remp-exp_.pdf}
+		\hgraphpage[.4\textwidth]{sd-dialog-remp-exp.pdf}
 		\caption{Exemple d'une architecture pour le remplissage des slots en utilisant BERT \cite{2020-jurafsky-martin}}
 	\end{figure}
 	
@@ -1175,7 +1270,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp_.pdf}
+		\hgraphpage[.7\textwidth]{sd-chatbot-encdec-exp.pdf}
 		\caption{Exemple d'un chatbot à base d'un encodeur/décodeur \cite{2020-jurafsky-martin}}
 	\end{figure}
 	
@@ -1187,8 +1282,8 @@
 	\framesubtitle{Systèmes de dialogue : Un peu d'humour}
 	
 	\begin{center}
-		\hgraphpage[0.5\textwidth]{humour-chatbots1.jpeg}
-		\hgraphpage[0.4\textwidth]{humour-chatbots2.jpeg}
+		\hgraphpage[0.5\textwidth]{humour/humour-chatbots1.jpeg}
+		\hgraphpage[0.4\textwidth]{humour/humour-chatbots2.jpeg}
 	\end{center}
 \end{frame}
 
@@ -1279,8 +1374,8 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.7\textwidth]{sent-bettiche-al_.pdf}
-		\caption{Architecture hybride proposée par \cite{18-bettiche-al} pour détecter la polarité des messages en dialecte algérienne sur les réseaux sociaux}
+		\hgraphpage[.6\textwidth]{sent-bettiche-al.pdf}
+		\caption{Architecture hybride proposée par \cite{18-bettiche-al} pour  en dialecte algérienne sur les réseaux sociaux}
 	\end{figure}
 	
 \end{frame}
@@ -1327,7 +1422,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.45\textwidth]{sent-guellil-al_.pdf}
+		\hgraphpage[.45\textwidth]{sent-guellil-al.pdf}
 		\caption{Architecture hybride proposée par \cite{18-guellil-al} pour l'analyse des sentiments des messages en arabizi sur les réseaux sociaux}
 	\end{figure}
 	
@@ -1338,7 +1433,7 @@
 	\framesubtitle{Analyse des sentiments : Un peu d'humour}
 	
 	\begin{center}
-		\vgraphpage{humour-sentiment.jpg}
+		\vgraphpage{humour/humour-sentiment.jpg}
 	\end{center}
 	
 \end{frame}
@@ -1406,7 +1501,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[0.8\textwidth]{lisibilite-ML_.pdf}
+		\hgraphpage[0.8\textwidth]{lisibilite-ML.pdf}
 		\caption{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
 	\end{figure}
 	
@@ -1417,7 +1512,7 @@
 	\framesubtitle{Analyse des sentiments : Un peu d'humour}
 	
 	\begin{center}
-		\vgraphpage{humour-readability1.jpg}
+		\vgraphpage{humour/humour-readability1.jpg}
 	\end{center}
 	
 \end{frame}
@@ -1530,7 +1625,7 @@
 	\end{itemize}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{ASR-windowing-exp_.pdf}
+		\hgraphpage[.5\textwidth]{ASR-windowing-exp.pdf}
 		\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
 	\end{figure}
 \end{frame}
@@ -1566,7 +1661,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[.7\textwidth]{ASR-windowing2-exp_.pdf}
+		\hgraphpage[.6\textwidth]{ASR-windowing2-exp.pdf}
 		\caption{Exemple d'un fenêtrage \cite{2020-jurafsky-martin}}
 	\end{figure}
 	
@@ -1584,7 +1679,7 @@
 	\end{itemize}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{ASR-DFT-exp_.pdf}
+		\hgraphpage[.5\textwidth]{ASR-DFT-exp.pdf}
 		\caption{(a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
 	\end{figure}
 \end{frame}
@@ -1602,7 +1697,7 @@
 	\end{itemize}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{ASR-mel-exp_.pdf}
+		\hgraphpage[.5\textwidth]{ASR-mel-exp.pdf}
 		\caption{Un exemple du filtre de Mel \cite{2020-jurafsky-martin}}
 	\end{figure}
 \end{frame}
@@ -1612,7 +1707,7 @@
 	\framesubtitle{Reconnaissance vocale : Reconnaissance}
 	\begin{figure}
 		\centering
-		\hgraphpage[.8\textwidth]{ASR-rec-exp_.pdf}
+		\hgraphpage[.75\textwidth]{ASR-rec-exp.pdf}
 		\caption{Exemple de reconnaissance en utilisant un encodeur-décodeur \cite{2020-jurafsky-martin}}
 	\end{figure}
 \end{frame}
@@ -1637,7 +1732,7 @@
 	\frametitle{Quelques applications : Parole}
 	\framesubtitle{Reconnaissance vocale : Un peu d'humour}
 		\begin{center}
-			\vgraphpage{humour-ASR.jpg}
+			\vgraphpage{humour/humour-ASR.jpg}
 		\end{center}
 \end{frame}
 
@@ -1654,7 +1749,7 @@
 	\framesubtitle{Synthèse vocale : Architecture}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{tts-arch_.pdf}
+		\hgraphpage[.5\textwidth]{tts-arch.pdf}
 		\caption{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
 	\end{figure}
 \end{frame}
@@ -1664,7 +1759,7 @@
 	\frametitle{Quelques applications : Parole}
 	\framesubtitle{Synthèse vocale : Un peu d'humour}
 	\begin{center}
-		\vgraphpage{humour-TTS.jpg}
+		\vgraphpage{humour/humour-TTS.jpg}
 	\end{center}
 \end{frame}
 

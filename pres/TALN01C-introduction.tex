@@ -240,7 +240,7 @@
 \end{minipage}
 \begin{minipage}{0.48\textwidth}
 	\begin{figure}
-		\hgraphpage{oraltract_.pdf}\caption{Voie orale \cite{2009-ball}}
+		\hgraphpage{oraltract.pdf}\caption{Voie orale \cite{2009-ball}}
 	\end{figure}
 \end{minipage}
 
@@ -568,7 +568,7 @@
 \end{itemize}
 
 \begin{figure}
-	\hgraphpage{gram-dep_.pdf}
+	\hgraphpage{gram-dep2_.pdf}
 	\caption{Un exemple de dépendances généré par \url{https://corenlp.run/}}
 \end{figure}
 
@@ -697,7 +697,26 @@
 \end{minipage}
 \begin{minipage}{0.48\textwidth}
 	\begin{figure}
-		\hgraphpage{sem-logique_.pdf}
+		\tiny\bfseries
+		\begin{tabular}{rcl}
+			\hline\hline
+			Formula & \textrightarrow & AtomicFormula \\
+			& \textbar        & Formula Connective Formula \\
+			& \textbar        & Quantifier Variable, ... Formula \\
+			& \textbar        & $\textlnot$ Formula \\
+			& \textbar        & (Formula) \\
+			AtomicFormula & \textrightarrow & Predicate (Term, ...) \\
+			Term    & \textrightarrow & Function(Term, ...) \\
+			& \textbar        & Constant \\
+			& \textbar        & Variable \\
+			Connective & \textrightarrow & $\wedge$ \textbar $\vee$ \textbar $\Rightarrow$ \\
+			Quantifier & \textrightarrow & $\forall$ \textbar $\exists$ \\
+			Constant & \textrightarrow & ESI \textbar Karim \textbar Algérie ...\\
+			Variable & \textrightarrow & x \textbar y \textbar ... \\
+			Predicate & \textrightarrow & Ecole \textbar EnseignatA \textbar Utiliser \textbar ... \\
+			Function & \textrightarrow & EmplacementDe \textbar ... \\
+			\hline\hline
+		\end{tabular}
 		\caption{Une syntaxe adaptée de \cite{2002-russell-norvig} décrivant la représentation du logique du premier ordre \cite{2019-jurafsky-martin}}
 	\end{figure}
 \end{minipage}
