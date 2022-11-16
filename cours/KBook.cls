@@ -633,13 +633,45 @@ title={#1}
 %	punct = true ,
 %	punct-symbol = \dotfill
 %} 
+%
+%\DeclareAcroListStyle{longtabu}{table}{
+%	table = longtabu ,
+%	table-spec = @{}>{\color{indigo}\bfseries}lX@{}
+%}
 
-\DeclareAcroListStyle{longtabu}{table}{
-	table = longtabu ,
-	table-spec = @{}>{\color{indigo}\bfseries}lX@{}
+\NewAcroTemplate[list] {kodeacro}
+{
+	\AcroNeedPackage {array,longtable}
+	\acronymsmapF
+	{
+		\AcroAddRow
+		{
+			{\color{indigo}\bfseries\acrowrite {short}}
+			\acroifT {alt} { / } \acrowrite {alt}
+			&
+			\acrowrite {list}
+			\acroifanyT {foreign,extra} {~(}
+			\acrowrite {foreign}
+			\acroifallT {foreign,extra} {,~}
+			\acrowrite {extra}
+			\acroifanyT {foreign,extra} {)}
+			\acropagefill
+			\acropages
+			{ \acrotranslate {page} \nobreakspace }
+			{ \acrotranslate {pages} \nobreakspace }
+			\tabularnewline
+		}
+	}
+	{ \AcroRerun }  
+	\acroheading
+	\acropreamble
+	\par \noindent
+	\begin {longtable} {>{\bfseries}lp{.8\linewidth}}
+	\AcronymTable
+	\end {longtable}
 }
 
-\acsetup{list-style=longtabu}
+\acsetup{list/template=kodeacro,list/sort=true}
 
 
 \def\kodeabbrev{%
@@ -647,7 +679,7 @@ title={#1}
 	\chapter*{Liste des abréviations}
 	\addcontentsline{toc}{section}{Liste des abréviations}
 	\vspace*{-1cm}
-	\printacronyms[include-classes=abbrev,name=]
+	\printacronyms[include=abbrev,heading=none,pages={display=all,seq/use=false}]
 %	\printglossaries
 %	\printglossary[type=\acronymtype]
 %	\printglossary

@@ -1,7 +1,7 @@
 % !TEX TS-program = pdflatex
 % !TeX program = pdflatex
 % !TEX encoding = UTF-8
-% !TEX spellcheck = fr
+% !TeX spellcheck = fr_FR
 
 \documentclass[xcolor=table]{beamer}
 
@@ -70,12 +70,16 @@
 \subsection{Expressions régulières}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Expressions régulières : Règles (1)}
 
-\rowcolors{2}{lightblue}{lightyellow}
-\begin{tabular}{p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}}
-	\rowcolor{darkblue}
+\SetTblrInner{rowsep=1pt,colsep=5pt}
+\begin{tblr}{
+		colspec = {p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}},
+		row{odd} = {lightblue},
+		row{even} = {lightyellow},
+		row{1} = {darkblue},
+	} 
 	\textcolor{white}{ER} & \textcolor{white}{Sens} & \textcolor{white}{Exemple} \\
 	
 	. & n'importe quel caractère & \keyword{beg.n} : I \expword{begun} at the \expword{begin}ning. \\
@@ -100,12 +104,12 @@
 	
 	c\{,m\} & au plus m occurrences & \keyword{No\{,2\}n} : \expword{Nn}! \expword{Non}! \expword{Noon}! Nooon! \\
 	
-\end{tabular}
+\end{tblr}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Expressions régulières : Règles (2)}
 
 \begin{minipage}{.6\textwidth}
@@ -133,9 +137,13 @@
 \end{itemize}
 \end{minipage}
 \begin{minipage}{.38\textwidth}
-\rowcolors{2}{lightblue}{lightyellow}
-\begin{tabular}{p{.2\textwidth}p{.6\textwidth}}
-	\rowcolor{darkblue}
+\begin{tblr}{
+		colspec = {p{.2\textwidth}p{.6\textwidth}},
+		row{odd} = {lightblue},
+		row{even} = {lightyellow},
+		row{1} = {darkblue},
+	} 
+
 	\textcolor{white}{ER} & \textcolor{white}{Équivalence} \\
 	
 	\textbackslash d & [0-9] \\
@@ -144,14 +152,14 @@
 	\textbackslash W & [\textasciicircum \textbackslash w] \\
 	\textbackslash s & [ \textbackslash r\textbackslash t\textbackslash n\textbackslash f] \\
 	\textbackslash S & [\textasciicircum \textbackslash s] \\
-\end{tabular}
+\end{tblr}
 
 \end{minipage}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Expressions régulières : Cas d'utilisation}
 
 \begin{itemize}
@@ -171,7 +179,7 @@
 
 
 \begin{frame}
-	\frametitle{Traitements basiques du texte : Caractères}
+	\frametitle{Traitements basiques : Caractères}
 	\framesubtitle{Expressions régulières : Exercice}
 	
 	\begin{itemize}
@@ -184,7 +192,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Expressions régulières : Un peu d'humour}
 
 \begin{center}
@@ -196,7 +204,7 @@
 \subsection{Distance d'édition}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Distance d'édition : Opérations d'édition}
 
 \begin{itemize}
@@ -228,7 +236,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Distance d'édition : Algorithmes}
 
 \begin{itemize}
@@ -243,7 +251,7 @@
 
 
 \begin{frame}
-	\frametitle{Traitements basiques du texte : Caractères}
+	\frametitle{Traitements basiques : Caractères}
 	\framesubtitle{Distance d'édition : Distance de Hamming}
 	
 	\begin{itemize}
@@ -271,7 +279,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Distance d'édition : Distance de Levenshtein}
 
 \begin{itemize}
@@ -297,7 +305,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Distance d'édition : Distance de Levenshtein (exemple)}
 
 %\begin{figure}
@@ -305,31 +313,40 @@ D[i-1, j-1] + \begin{cases}
 %	\hgraphpage{exp-levenshtein_.pdf}
 %	\caption{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin}.}
 %\end{figure}
+%\setlength{\tabcolsep}{2pt}
+%\renewcommand{\arraystretch}{2}
 \begin{exampleblock}{Exemple de calcul de distance de Levenshtein}
-	\centering\bfseries\tiny
-	\begin{tabular}{|r|r|r|r|r|r|r|r|r|r|}
+	\centering\scriptsize
+	\begin{tblr}{
+			colspec = {|Q[c,m,wd=3em]|Q[c,m,wd=3em]|c|c|c|c|c|c|c|c|},
+			row{1} = {bg=darkblue, fg=white, font=\bfseries},
+			column{1} = {bg=darkblue, fg=white, font=\bfseries},
+			stretch=1.5,
+			colsep=2pt,
+		} 	
+		
 		\hline
-		&\bfseries \# &\bfseries i &\bfseries m &\bfseries m &\bfseries a &\bfseries t &\bfseries u &\bfseries r &\bfseries e \\
+		& \# & i &\bfseries m &\bfseries m & a & t & u & r & e \\
 		\hline
-		\bfseries \# & 0 & $ \leftarrow $ 1 & $ \leftarrow $ 2 & $ \leftarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 & $ \leftarrow $ 8\\
+		\bfseries \# & \SetCell{bg=green!70} 0 & $ \leftarrow $ 1 & $ \leftarrow $ 2 & $ \leftarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 & $ \leftarrow $ 8\\
 		\hline
-		\bfseries a & \cellcolor{green!25} $ \uparrow $ 1 & $ \nwarrow\leftarrow\uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $ \nwarrow\leftarrow\uparrow $ 4 & $ \nwarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 \\
+		\bfseries a & \SetCell{bg=green!70} $ \uparrow $ 1 & $ \nwarrow\leftarrow\uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $ \nwarrow\leftarrow\uparrow $ 4 & $ \nwarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 \\
 		\hline
-		\bfseries m & \cellcolor{green!25} $ \uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $\nwarrow $ 2 & $\nwarrow\leftarrow $ 3 & $\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8\\
+		\bfseries m & \SetCell{bg=green!70} $ \uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $\nwarrow $ 2 & $\nwarrow\leftarrow $ 3 & $\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8\\
 		\hline
-		\bfseries i & $ \uparrow $ 3 & \cellcolor{green!25} $ \nwarrow $ 2 & \cellcolor{green!25} $\leftarrow\uparrow $ 3 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 4 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 5 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 6 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9\\
+		\bfseries i & $ \uparrow $ 3 & \SetCell{bg=green!70} $ \nwarrow $ 2 & \SetCell{bg=green!70} $\leftarrow\uparrow $ 3 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 4 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 5 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 6 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9\\
 		\hline
-		\bfseries b & $ \uparrow $ 4 & $ \uparrow $ 3 & $\nwarrow\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & \cellcolor{green!25} $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10\\
+		\bfseries b & $ \uparrow $ 4 & $ \uparrow $ 3 & $\nwarrow\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10\\
 		\hline
-		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10 & \cellcolor{green!25} $\nwarrow $ 9\\
+		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10 & \SetCell{bg=green!70} $\nwarrow $ 9\\
 		\hline
-	\end{tabular}
+	\end{tblr}
 \end{exampleblock}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Distance d'édition : Quelques applications}
 
 \begin{itemize}
@@ -343,7 +360,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Traitements basiques du texte : Caractères}
+	\frametitle{Traitements basiques : Caractères}
 	\framesubtitle{Distance d'édition : Exercice}
 	
 	\begin{itemize}
@@ -362,7 +379,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Caractères}
+\frametitle{Traitements basiques : Caractères}
 \framesubtitle{Distance d'édition : Un peu d'humour}
 
 \begin{center}
@@ -374,12 +391,12 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 %===================================================================================
-\section{Segmentation du texte}
+\section{Segmentation}
 %===================================================================================
 
 \begin{frame}
 \frametitle{Traitements basiques du texte}
-\framesubtitle{Segmentation du texte}
+\framesubtitle{Segmentation}
 
 \begin{itemize}
 	\item Un nouveau paragraphe est marqué par un retour à la ligne ou en utilisant la balise \keyword{\textless p\textgreater} en HTML.
@@ -401,7 +418,7 @@ D[i-1, j-1] + \begin{cases}
 \subsection{Délimitation de la phrase}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Segmentation du texte}
+\frametitle{Traitements basiques : Segmentation}
 \framesubtitle{Délimitation de la phrase : Problématique} 
 
 \begin{itemize}
@@ -416,7 +433,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Segmentation du texte}
+\frametitle{Traitements basiques : Segmentation}
 \framesubtitle{Délimitation de la phrase : Facteurs de segmentation} 
 
 \begin{itemize}
@@ -431,7 +448,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Segmentation du texte}
+\frametitle{Traitements basiques : Segmentation}
 \framesubtitle{Délimitation de la phrase : Un peu d'humour} 
 
 \hgraphpage{humour/humour-segmentation.jpg}
@@ -441,7 +458,7 @@ D[i-1, j-1] + \begin{cases}
 \subsection{Séparation des mots}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Segmentation du texte}
+\frametitle{Traitements basiques : Segmentation}
 \framesubtitle{Séparation des mots : Problématique}
 
 \acolor{everything}{olivegreen}
@@ -457,7 +474,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Segmentation du texte}
+\frametitle{Traitements basiques : Segmentation}
 \framesubtitle{Séparation des mots : Approches}
 
 \begin{itemize}
@@ -479,7 +496,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Segmentation du texte}
+\frametitle{Traitements basiques : Segmentation}
 \framesubtitle{Séparation des mots : Un peu d'humour} 
 
 \begin{center}
@@ -490,7 +507,7 @@ D[i-1, j-1] + \begin{cases}
 
 
 %===================================================================================
-\section{Normalisation et filtrage du texte}
+\section{Normalisation et filtrage}
 %===================================================================================
 
 \begin{frame}
@@ -514,10 +531,10 @@ D[i-1, j-1] + \begin{cases}
 
 \end{frame}
 
-\subsection{Normalisation du texte}
+\subsection{Normalisation}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\frametitle{Traitements basiques : Normalisation et filtrage}
 \framesubtitle{Normalisation du texte (1)}
 
 \begin{itemize}
@@ -546,7 +563,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\frametitle{Traitements basiques : Normalisation et filtrage}
 \framesubtitle{Normalisation du texte (2)}
 \acolor{everything}{olivegreen}
 \begin{itemize}
@@ -574,7 +591,7 @@ D[i-1, j-1] + \begin{cases}
 \subsection{Filtrage du texte}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\frametitle{Traitements basiques : Normalisation et filtrage}
 \framesubtitle{Filtrage du texte}
 
 \begin{itemize}
@@ -597,7 +614,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Normalisation et filtrage}
+\frametitle{Traitements basiques : Normalisation et filtrage}
 \framesubtitle{Filtrage du texte : Un peu d'humour}
 
 \begin{center}
@@ -626,7 +643,7 @@ D[i-1, j-1] + \begin{cases}
 \subsection{Formation des mots}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Formation des mots}
 \acolor{everything}{olivegreen}
 \begin{itemize}
@@ -646,7 +663,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Formation des mots : Exemple (conjugaison automatique)}
 
 \begin{itemize}
@@ -670,7 +687,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Formation des mots : Un peu d'humour}
 
 \begin{center}
@@ -682,7 +699,7 @@ D[i-1, j-1] + \begin{cases}
 \subsection{Réduction des formes}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Réduction des formes : Racinisation}
 
 \begin{itemize}
@@ -702,7 +719,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Réduction des formes : Racinisation (exemple, algorithme de Porter)}
 
 \begin{itemize}
@@ -727,7 +744,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Réduction des formes : Lemmatisation}
 
 \begin{itemize}
@@ -750,7 +767,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Réduction des formes : Lemmatisation (exemple, morphy)}
 
 \begin{block}{Lemmatisation "morphy" de Wordnet}
@@ -783,7 +800,7 @@ D[i-1, j-1] + \begin{cases}
 \end{frame}
 
 \begin{frame}
-\frametitle{Traitements basiques du texte : Morphologie}
+\frametitle{Traitements basiques : Morphologie}
 \framesubtitle{Réduction des formes : Un peu d'humour}
 
 \hgraphpage{humour/humour-lemmatisation.jpg}

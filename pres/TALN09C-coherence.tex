@@ -183,9 +183,16 @@
 	\frametitle{Cohérence du discours : Relations de cohérence}
 	\framesubtitle{Rhetorical Structure Theory (RST) : Relations thématiques vs. présentationnelles}
 	
-	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
-	\begin{tabular}{p{.4\textwidth}lp{.4\textwidth}}
-		\rowcolor{darkblue}
+	\begin{center}
+		\footnotesize
+	\begin{tblr}{
+			colspec = {p{.4\textwidth}lp{.4\textwidth}},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep = 0pt,
+		}
+
 		\bfseries\textcolor{white}{thématique} && \bfseries\textcolor{white}{présentationnelle}\\
 		
 		Élaboration
@@ -232,7 +239,8 @@
 		Justification
 		
 		Concession\\
-	\end{tabular}
+	\end{tblr}
+	\end{center}
 	
 \end{frame}
 
@@ -240,9 +248,16 @@
 	\frametitle{Cohérence du discours : Relations de cohérence}
 	\framesubtitle{Rhetorical Structure Theory (RST) : Relations sémantiques vs. pragmatiques vs. textuelles}
 	
-	\rowcolors{2}{lightblue}{lightyellow}\footnotesize
-	\begin{tabular}{p{.3\textwidth}lp{.25\textwidth}lp{.2\textwidth}}
-		\rowcolor{darkblue}
+	\begin{center}
+		\footnotesize
+	\begin{tblr}{
+			colspec = {p{.3\textwidth}lp{.25\textwidth}lp{.2\textwidth}},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep = 0pt,
+		}
+
 		\bfseries\textcolor{white}{Sémantique} && \bfseries\textcolor{white}{Pragmatique} && \bfseries\textcolor{white}{Textuelle} \\
 		
 		Élaboration
@@ -292,7 +307,8 @@
 		Reformulation
 		
 		Résumé\\
-	\end{tabular}
+	\end{tblr}
+	\end{center}
 	
 \end{frame}
 
@@ -334,9 +350,15 @@
 	\framesubtitle{Penn Discourse TreeBank (PDTB) : Sens des connectives}
 	
 	\begin{table}
-	\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
-	\begin{tabular}{p{.1\textwidth}lp{.8\textwidth}}
-		\rowcolor{darkblue}
+	\tiny\bfseries
+	\begin{tblr}{
+			colspec = {p{.1\textwidth}lp{.8\textwidth}},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep = 1pt,
+		}
+
 		\bfseries\textcolor{white}{Connective} && \bfseries\textcolor{white}{Sens}\\
 		
 		after && succession (523), succession-reason (50), other (4) \\
@@ -357,7 +379,7 @@
 		and && Conjunction (2543), List (210), result-Conjunction (138), result (38), precedence-Conjunction (30),
 		juxtaposition (11), other(30)\\
 		if && hypothetical (682), general (175), unreal present (122), factual present (73), unreal past (53), expectation (34), implicit assertion (29), relevance (20), other (31)\\
-	\end{tabular}
+	\end{tblr}
 	\caption{Quelques connectives et des statistiques sur leurs sens \cite{2008-prasad-al}}
 	\end{table}
 	
@@ -368,8 +390,10 @@
 	\framesubtitle{Penn Discourse TreeBank (PDTB) : Sens des connectives}
 	
 	\begin{figure}
+		\centering\vspace{-6pt}
+		\begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.9\textwidth]
 		\begin{minipage}{.3\textwidth}
-			\tiny\bfseries
+			\tiny\bfseries\vspace{-6pt}
 			\begin{itemize}
 				\item CONTINGENCY
 				\begin{itemize}\tiny\bfseries
@@ -451,7 +475,8 @@
 					\item List
 				\end{itemize}
 			\end{itemize}
-		\end{minipage}
+		\end{minipage}\vspace{-6pt}
+		\end{tcolorbox}
 		\caption{Hierarchie des sens dans PDTB \cite{2008-prasad-al}}
 	\end{figure}
 
@@ -774,9 +799,15 @@
 	\end{itemize}
 
 	\begin{center}
-		\rowcolors{2}{lightblue}{lightyellow}\tiny\bfseries
-		\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
-			\rowcolor{darkblue}
+		\tiny\bfseries
+		\begin{tblr}{
+				colspec = {p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}},
+				row{odd} = {lightblue},
+				row{even} = {lightyellow},
+				row{1} = {darkblue},
+				rowsep = 2pt,
+			}
+			
 			& \bfseries\color{white}$\mathbf{C_b(U_n) = C_b(U_{n-1})}$
 			
 			OU $\mathbf{C_b(U_n) = NULL}$
@@ -787,7 +818,7 @@
 			
 			$\mathbf{C_b(U_n) \ne C_p(U_n)}$ &
 			RETAIN & Rough-SHIFT\\
-		\end{tabular}
+		\end{tblr}
 	\end{center}
 	
 \end{frame}

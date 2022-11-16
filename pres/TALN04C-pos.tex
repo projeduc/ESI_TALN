@@ -63,7 +63,7 @@
 \subsection{Description}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Séquences}
+\frametitle{Étiquetage : Séquences}
 \framesubtitle{Description}
 
 
@@ -92,7 +92,7 @@
 \subsection{Applications}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Séquences}
+\frametitle{Étiquetage : Séquences}
 \framesubtitle{Applications}
 
 %eisenstein
@@ -115,7 +115,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Séquences}
+\frametitle{Étiquetage : Séquences}
 \framesubtitle{Applications (exemple)}
 
 \begin{figure}
@@ -171,14 +171,18 @@
 \subsection{Classes universelles}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\frametitle{Étiquetage : Description de la tâche}
 \framesubtitle{Classes universelles}
 
 \url{https://universaldependencies.org/u/pos/}
 
-\rowcolors{2}{lightblue}{lightyellow}
-\begin{tabular}{p{.3\textwidth}p{.3\textwidth}p{.3\textwidth}}
-	\rowcolor{darkblue}
+\begin{tblr}{
+		colspec = {p{.3\textwidth}p{.3\textwidth}p{.3\textwidth}},
+		row{odd} = {lightblue},
+		row{even} = {lightyellow},
+		row{1} = {darkblue},
+		rowsep = 1pt,
+	} 
 	\textcolor{white}{Classe ouverte} & \textcolor{white}{Classe fermée} & \textcolor{white}{Autres} \\
 	
 	\keyword{ADJ} :  adjectif & \keyword{ADP} : adposition & \keyword{PUNCT} : ponctuation \\
@@ -190,19 +194,19 @@
 	 & \keyword{PRON} : pronom &  \\
 	 & \keyword{SCONJ} : conjonction de subordination &  \\
 	
-\end{tabular}
+\end{tblr}
 
 \end{frame}
 
 \subsection{Treebanks}
 
 \begin{frame}[fragile]
-\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\frametitle{Étiquetage : Description de la tâche}
 \framesubtitle{Treebanks}
 
 
 \begin{figure}
-	\begin{tcolorbox}
+	\begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.9\textwidth]
 		\small
 \begin{alltt}
 Battle-tested\keyword{/JJ} Japanese\keyword{/JJ} industrial\keyword{/JJ} managers\keyword{/NNS}
@@ -230,7 +234,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \subsection{Difficulté et outils}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\frametitle{Étiquetage : Description de la tâche}
 \framesubtitle{Difficulté et outils : Difficulté}
 
 \begin{itemize}
@@ -254,7 +258,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\frametitle{Étiquetage : Description de la tâche}
 \framesubtitle{Difficulté et outils : Outils}
 
 \begin{itemize}
@@ -268,7 +272,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Description de la tâche}
+\frametitle{Étiquetage : Description de la tâche}
 \framesubtitle{Un peu d'humour}
 
 \begin{center}
@@ -300,7 +304,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \subsection{Modèle de Markov}
 
 \begin{frame}[fragile]
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov}
 
 \begin{minipage}{.64\textwidth}
@@ -359,7 +363,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 
 \begin{frame}[fragile]
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov : Modèle de Markov caché (HMM)}
 
 \begin{minipage}{.54\textwidth}
@@ -420,7 +424,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov : Entraînement}
 
 \begin{itemize}
@@ -444,7 +448,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov : Entraînement (exemple)}
 
 \begin{exampleblock}{Exemple d'un corpus d'entraînement}
@@ -465,7 +469,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov : Étiquetage (décodage des tags)}
 
 \begin{itemize}
@@ -496,7 +500,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov : Viterbi}
 \vspace{-6pt}
 \begin{block}{Viterbi }
@@ -531,7 +535,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle de Markov : Exercice}
 
 \begin{exampleblock}{Exemple d'un corpus d'entraînement}
@@ -557,7 +561,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \subsection{Maximum entropy}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Maximum entropy : Maximum entropy Markov model (MEMM)}
 
 \begin{itemize}
@@ -586,7 +590,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Maximum entropy : Les caractéristiques}
 
 \begin{itemize}
@@ -608,7 +612,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \subsection{Modèle neuronal}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle neuronal : RNN simple}
 
 %\begin{figure}
@@ -621,7 +625,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle neuronal : RNNs empilés}
 
 %\begin{figure}
@@ -635,7 +639,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle neuronal : RNN bidirectionnel}
 
 %\begin{figure}
@@ -648,7 +652,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle neuronal : RNN avec des embedding de caractères}
 
 %\begin{figure}
@@ -661,7 +665,7 @@ ashore\keyword{/RB} 375\keyword{/CD} years\keyword{/NNS} ago\keyword{/RB} .\keyw
 \end{frame}
 
 \begin{frame}
-\frametitle{Étiquetage morpho-syntaxique : Approches}
+\frametitle{Étiquetage : Approches}
 \framesubtitle{Modèle neuronal : Un peu d'humour}
 
 \begin{center}

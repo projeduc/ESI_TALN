@@ -247,6 +247,47 @@
 \end{frame}
 
 
+\begin{frame}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Détection de mention : Par règles \cite{2013-lee-al}}
+	
+	\begin{itemize}
+		\item Supprimer une mention s'il existait une autre mention plus grande ayant la même tête syntaxique. 
+		Ex., ``\expword{La boite de développement}" vs. ``\expword{La boite de développement située à Alger}". 
+		
+		\item Écarter les entités numériques telles que les pourcentages, l'argent, les cardinaux et les quantités. 
+		Ex., ``\expword{9\%}", ``\expword{100\$}", ``\expword{cent neuf}".
+		
+		\item Éliminer les mentions qui sont une partie d'une autre (quantificateur + ``of"). 
+		Ex., ``\expword{a total of 177 projects}", ``\expword{none of them}", ``\expword{millions of people}".
+		
+		\item Supprimer les pronoms qui ne sont pas utilisés comme référence (``it" pléonastique). 
+		Ex., ``\expword{It is thought that ...}", le pronom ``it" n'est pas une référence. 
+		Nous pouvons détecter un tel pronom en utilisant une liste des verbes cognitifs (Ex. ``\expword{believe, think, etc.}").
+		
+		\item Éliminer les formes adjectivales des nations ou les acronymes nationales.
+		Ex., ``\expword{American}", ``\expword{U.S.}", ``\expword{U.K.}".
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Détection de la coréférence : Résolution}
+	\framesubtitle{Détection de mention : Par RN \cite{2020-yu-al}}
+	
+	\begin{figure}[ht]
+		\centering
+		\hgraphpage[\textwidth]{mention-detection-arch.pdf}
+		\caption[Trois architectures pour la détection des mentions]{Trois architectures pour la détection des mentions ; figure inspirée de \cite{2020-yu-al}}
+		\label{fig:det-mention-yu}
+	\end{figure}
+	
+\end{frame}
+
+
+
 \subsection{Liaison}
 
 \begin{frame}

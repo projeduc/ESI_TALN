@@ -81,9 +81,14 @@
 \framesubtitle{Rôles thématiques}
 	
 \begin{table}
-	\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
-	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
-		\rowcolor{darkblue}
+	\tiny\bfseries
+	\begin{tblr}{
+			colspec = {p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep=1pt,
+		}
 		\textcolor{white}{Rôle} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
 		
 		AGENT &
@@ -129,7 +134,7 @@
 		LOCATIVE & 
 		La spécification du lieu où se situe l'action ou l'événement désigné par le prédicat &
 		\expword{J'habite à \underline{Jijel}.}\\
-	\end{tabular}
+	\end{tblr}
 	\caption{Quelques rôles thématiques \cite{2019-jurafsky-martin}}
 \end{table}
 	
@@ -204,9 +209,14 @@
 
 \vspace{-12pt}
 \begin{table}
-	\rowcolors{2}{lightblue}{lightyellow} \scriptsize\bfseries
-	\begin{tabular}{p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}}
-		\rowcolor{darkblue}
+	\scriptsize\bfseries
+	\begin{tblr}{
+			colspec = {p{.15\textwidth}p{.3\textwidth}p{.45\textwidth}},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+		}
+	
 		\textcolor{white}{Lexical Unit} & \textcolor{white}{Frame} & \textcolor{white}{Exemple}\\
 
 		break.n & Opportunity & \\	
@@ -218,7 +228,7 @@
 		break.v & Breaking\_off & \expword{The handle broke off of the pot.}\\
 		break.v & Breaking\_apart & \expword{The handle broke off of the pot.}\\
 
-	\end{tabular}
+	\end{tblr}
 	\caption{Les cadres sémantiques activées par l'unité lexicale ``break"}
 \end{table}
 
@@ -230,14 +240,19 @@
 	
 	\vspace{-6pt}
 	\begin{table}
-		\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
-		\begin{tabular}{p{.15\textwidth}p{.75\textwidth}}
-			\rowcolor{darkblue}
+		\tiny\bfseries
+		\begin{tblr}{
+				colspec = {p{.15\textwidth}p{.75\textwidth}},
+				row{odd} = {lightblue},
+				row{even} = {lightyellow},
+				row{1,3,8} = {darkblue},
+				rowsep=0pt,
+			}
 			\multicolumn{2}{c}{\textcolor{white}{Cause\_to\_fragment}} \\
 			
 			Définition & An \textcolor{red}{Agent} suddenly and often violently separates the \textcolor{red}{Whole\_patient} into two or more smaller \textcolor{red}{Pieces}, resulting in the \textcolor{red}{Whole\_patient} no longer existing as such. Several lexical items are marked with the semantic type Negative, which indicates that the fragmentation is necessarily judged as injurious to the original \textcolor{red}{Whole\_patient}. Compare this frame with Damaging, Render\_non-functional, and Removing. \\	
 			
-			\rowcolor{darkblue}
+%			\rowcolor{darkblue}
 			\multicolumn{2}{c}{\textcolor{white}{FEs (Core)}} \\
 			
 			Agent [Agt] \newline \textcolor{blue}{Semantic Type: Sentient} & 
@@ -255,7 +270,7 @@
 			\newline
 			\expword{Shattering someone's confidence is a little different than SHATTERING \underline{a dish}.} \\
 			
-			\rowcolor{darkblue}
+%			\rowcolor{darkblue}
 			\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core)}} \\
 			
 			Degree [Degr] \newline \textcolor{blue}{Semantic Type: Degree} &
@@ -267,7 +282,7 @@
 			A state of affairs that the Agent is responding to in performing the action. \newline
 			\expword{He TORE the treaty UP out of frustration.}
 			
-		\end{tabular}
+		\end{tblr}
 		\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment"
 			\newline
 			{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
@@ -282,15 +297,20 @@
 	
 	\vspace{-6pt}
 	\begin{table}
-		\rowcolors{2}{lightblue}{lightyellow} \tiny\bfseries
-		\begin{tabular}{p{.15\textwidth}p{.75\textwidth}}
-			\rowcolor{darkblue}
+		\tiny\bfseries
+		\begin{tblr}{
+				colspec = {p{.15\textwidth}p{.75\textwidth}},
+				row{odd} = {lightblue},
+				row{even} = {lightyellow},
+				row{1,3,7,11} = {darkblue},
+				rowsep = 0pt,
+			}
 			\multicolumn{2}{c}{\textcolor{white}{Cause\_to\_fragment}} \\
 			
 			 & \\	
 			 
 			
-			\rowcolor{darkblue}
+%			\rowcolor{darkblue}
 			\multicolumn{2}{c}{\textcolor{white}{FEs (None-Core) [Suite]}} \\
 			
 			Explanation [Exp] \newline \textcolor{blue}{Semantic Type: State\_of\_affairs} &	
@@ -304,19 +324,19 @@
 			
 			\multicolumn{2}{c}{\large ...} \\
 			
-			\rowcolor{darkblue}
+%			\rowcolor{darkblue}
 			\multicolumn{2}{c}{\textcolor{white}{Frame-frame Relations}} \\
 			
 			Inherits from & Transitive\_action \\
 			Uses & Destroying \\
 			Is Causative of & Breaking\_apart \\
 			
-			\rowcolor{darkblue}
+%			\rowcolor{darkblue}
 			\multicolumn{2}{c}{\textcolor{white}{Lexical Units}} \\
 			
 			& break apart.v, break down.v, break up.v, break.v, chip.v, cleave.v, dissect.v, dissolve.v, fracture.v, fragment.v, rend.v, rip up.v, rip.v, rive.v, shatter.v, shiver.v, shred.v, sliver.v, smash.v, snap.v, splinter.v, split.v, take apart.v, tear up.v, tear.v \\
 			
-		\end{tabular}
+		\end{tblr}
 		\caption{Exemple d'une partie du cadre sémantique ``Cause\_to\_fragment" [suite]
 			\newline
 			{\tiny\url{ https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml?frame=Cause_to_fragment}}%
@@ -378,7 +398,8 @@
 	\vspace{-6pt}
 	\begin{figure}
 		\tiny\bfseries
-		
+		\begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.91\textwidth]
+			\vspace{-6pt}
 		\begin{itemize}
 			\item 429-s20-rcoll-skull
 			\begin{enumerate}\tiny
@@ -406,8 +427,9 @@
 %			\item 880-s20-intrans-simple
 %			\item 890-s20-intrans-adverb
 %			\item 900-s20-other
-		\end{itemize}
-		
+		\end{itemize}\vspace{-6pt}
+	\end{tcolorbox}
+
 		\caption{Extrait des annotations lexicographiques du déclencheur ``fracture" (verbe) du cadre ``Cause\_to\_fragment"}
 	\end{figure}
 	
@@ -494,6 +516,7 @@
 \begin{figure}
 %	\tiny
 	\scriptsize
+	\begin{tcolorbox}[colback=white, colframe=blue, boxrule=1pt, text width=.91\textwidth]
 	\begin{itemize}
 		\item \textbf{Roleset id}
 		\begin{itemize}\scriptsize
@@ -516,6 +539,7 @@
 			\item \ [\textsubscript{\color{red}Arg0} He] did[\textsubscript{\color{red}ArgM-NEG} n't] know [\textsubscript{\color{red}Arg1} (anything)] [\textsubscript{\color{red}Arg2} about most of the cases] [\textsubscript{\color{red}ArgM-TMP} until Wednesday].
 		\end{itemize}
 	\end{itemize}
+	\end{tcolorbox}
 		
 	\caption{Extrait des annotations ProBank du prédicat ``know" de \url{http://verbs.colorado.edu/propbank/framesets-english-aliases/know.html}}
 \end{figure}
@@ -668,15 +692,15 @@
 		\item \optword{terme} : représente un objet
 		\begin{itemize}
 			\item \optword{constante} : un objet spécifique
-			
+			%
 			\expword{Karim, ESI, Algérie}
 			
 			\item \optword{fonction} : retourne un objet en fonction d'un autre
-			
+			%
 			\expword{EmplacementDe(ESI)}
 			
 			\item \optword{variable} : référence vers un objet inconnu 
-			
+			%
 			\expword{x, y, z}
 			
 		\end{itemize}

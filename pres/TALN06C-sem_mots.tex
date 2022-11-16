@@ -171,13 +171,17 @@
 %	\caption{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
 %\end{figure}
 
-\begin{block}{Les catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
+\begin{block}{Catégories lexicographiques des noms dans WordNet \cite{2019-jurafsky-martin}}
 	\fontsize{8}{12}\selectfont\bfseries
-	\rowcolors{2}{lightblue}{lightyellow}
-	\setlength\tabcolsep{4pt}
-	\begin{tabular}{llllll}
-%		\hline\hline
-		\rowcolor{darkblue}
+	\centering
+	\begin{tblr}{
+		colspec = {llllll},
+		row{odd} = {lightblue},
+		row{even} = {lightyellow},
+		row{1} = {darkblue},
+		rowsep=1pt,
+		colsep=3pt,
+	} 
 		\textcolor{white}{Catégorie} & \textcolor{white}{Exemple} & \textcolor{white}{Catégorie} & \textcolor{white}{Exemple} &\textcolor{white}{Catégorie} & \textcolor{white}{Exemple} \\
 %		\hline
 		ACT & service & GROUP & place & PLANT & tree \\
@@ -190,7 +194,7 @@
 		FEELING & discomfort & PHENOMENON & result & SUBSTANCE & oil \\
 		FOOD & food & & & TIME & day\\
 %		\hline\hline
-	\end{tabular}
+	\end{tblr}
 \end{block}
 	
 \end{frame}
@@ -212,10 +216,14 @@
 
 \begin{block}{Quelques relations des noms \cite{2019-jurafsky-martin}}
 	\fontsize{7}{14}\selectfont\bfseries\centering
-	\rowcolors{2}{lightblue}{lightyellow}
-	\setlength\tabcolsep{4pt}
-	\begin{tabular}{lll}
-		\rowcolor{darkblue}
+	\begin{tblr}{
+			colspec = {lll},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep=1pt,
+			colsep=4pt,
+		} 
 		\textcolor{white}{Relation} & \textcolor{white}{Définition} & \textcolor{white}{Exemple} \\
 		Hypernym & d'un concept spécifique vers un autre générique & \expword{breakfast\textsuperscript{1} \textrightarrow\ meal\textsuperscript{1} }\\
 		Hyponym & d'un concept générique vers un autre spécifique & \expword{meal\textsuperscript{1} \textrightarrow\ lunch\textsuperscript{1}} \\
@@ -225,7 +233,7 @@
 		Part Holonym & d'une partie vers un entier & \expword{course\textsuperscript{7} \textrightarrow\ meal\textsuperscript{1}} \\
 		Antonym & d'un concept vers son opposition sémantique & \expword{leader\textsuperscript{1} $ \leftrightarrow $ follower\textsuperscript{1}}\\
 		Derivation & d'un mot vers un autre ayant la même racine & \expword{destruction\textsuperscript{1} $ \leftrightarrow $ destroy\textsuperscript{1}} \\
-	\end{tabular}
+	\end{tblr}
 \end{block}
 	
 \end{frame}
@@ -236,17 +244,21 @@
 	
 	\begin{block}{Quelques relations des verbes \cite{2019-jurafsky-martin}}
 		\fontsize{7}{14}\selectfont\bfseries\centering
-		\rowcolors{2}{lightblue}{lightyellow}
-		\setlength\tabcolsep{4pt}
-		\begin{tabular}{lll}
-			\rowcolor{darkblue}
+		\begin{tblr}{
+				colspec = {lll},
+				row{odd} = {lightblue},
+				row{even} = {lightyellow},
+				row{1} = {darkblue},
+				rowsep=1pt,
+				colsep=4pt,
+			} 
 			\textcolor{white}{Relation} & \textcolor{white}{Définition} & \textcolor{white}{Exemple} \\
 			Hypernym & d'un évènement spécifique vers un autre générique & \expword{fly\textsuperscript{9} \textrightarrow\ travel\textsuperscript{5}} \\
 			Troponym & d'un évènement générique vers un autre spécifique & \expword{walk\textsuperscript{1} \textrightarrow\ stroll\textsuperscript{1}} \\
 			Entails & d'un évènement vers un autre qui l'implique & \expword{snore\textsuperscript{1} \textrightarrow\ sleep\textsuperscript{1}} \\ 
 			Antonym & d'un évènement vers son opposition sémantique & \expword{increase\textsuperscript{1} $ \leftrightarrow $ decrease\textsuperscript{1}} \\
 %			\hline\hline
-		\end{tabular}
+		\end{tblr}
 	\end{block}
 	
 \end{frame}
@@ -548,7 +560,7 @@
 	\end{itemize}
 	
 	\begin{block}{Décomposition en valeurs singulières (SVD) de la matrice terme-document}
-		\scriptsize\bfseries
+		\scriptsize\bfseries\vspace{-6pt}
 		\[
 		\overbrace{
 			\begin{bmatrix}
@@ -736,13 +748,17 @@
 \begin{minipage}{.48\textwidth}
 %	\begin{figure}
 %		\hgraphpage{exp-glove_.pdf}
-		\rowcolors{2}{lightblue}{lightyellow}
+		
 		\fontsize{7}{14}\selectfont\bfseries
 		\hspace{-.5cm}
-		\begin{tabular}{p{1.3cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.2cm}@{\hskip0pt}}
+		\begin{tblr}{
+				colspec = {p{1.3cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.1cm}@{\hskip3pt}p{1.2cm}@{\hskip0pt}},
+				row{odd} = {lightblue},
+				row{even} = {lightyellow},
+				row{1} = {darkblue},
+			} 
 %			\hline\hline
 			
-			\rowcolor{darkblue}
 			\textcolor{white}{\textbf{Probabilité et Ratio}} & \textcolor{white}{\textbf{k = solid}} & \textcolor{white}{\textbf{k = gas}} & \textcolor{white}{\textbf{k = water}} & \textcolor{white}{\textbf{k = fashion}} \\
 %			\hline
 			P(k\textbar ice) & 1.9 * 10\textsuperscript{-4} & 6.6 * 10\textsuperscript{-5} & 3.0 * 10\textsuperscript{-3} & 1.7 * 10\textsuperscript{-5} \\
@@ -750,7 +766,7 @@
 %			\hline
 			\boldmath\footnotesize$\frac{P(k|ice)}{P(k|steam)}$ & 8.9 & 8.5 * 10\textsuperscript{-2} & 1.36 & 0.96 \\
 %			\hline\hline
-		\end{tabular}
+		\end{tblr}
 %		\caption{Exemple de probabilités et un ratio \cite{2014-pennington-al}}
 %	\end{figure}
 \end{minipage}

@@ -142,10 +142,10 @@
 \begin{frame}
 	\frametitle{Quelques applications : Transformation}
 	\framesubtitle{Traduction automatique : Approche par transfert (Exemple de règles de transfert)}
-	
+%	\vspace{-1cm}
 	\begin{figure}
 		\centering
-		\vgraphpage[.7\textheight]{MT-tranfert-exp.pdf}
+		\hgraphpage[\textwidth]{MT-tranfert-exp.pdf}
 		\caption{Exemple de règles de transfert syntaxique \cite{06-quah}}
 	\end{figure}
 \end{frame}
@@ -1455,9 +1455,13 @@
 	\]
 	
 	\begin{center}
-			\rowcolors{2}{lightblue}{lightyellow}\footnotesize
-		\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
-			\rowcolor{darkblue}
+			\footnotesize
+	    \begin{tblr}{
+	    		colspec = {p{.15\textwidth}lp{.5\textwidth}},
+	    		row{odd} = {lightblue},
+	    		row{even} = {lightyellow},
+	    		row{1} = {darkblue},
+	    	} 
 			\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
 			90-100 && Très facile à lire (Élève de 11 ans). \\
 			80-90 && Facile à lire. \\
@@ -1466,7 +1470,7 @@
 			50-60 && Plutôt difficile à lire. \\
 			30-50 && Difficile à lire (Université). \\
 			0-30 && Très difficile à lire (Diplôme universitaire). \\
-		\end{tabular}
+		\end{tblr}
 	\end{center}
 	
 \end{frame}
@@ -1480,9 +1484,13 @@
 	\]
 	
 	\begin{center}
-		\rowcolors{2}{lightblue}{lightyellow}\footnotesize
-		\begin{tabular}{p{.15\textwidth}lp{.5\textwidth}}
-			\rowcolor{darkblue}
+		\footnotesize
+		\begin{tblr}{
+				colspec = {p{.15\textwidth}lp{.5\textwidth}},
+				row{odd} = {lightblue},
+				row{even} = {lightyellow},
+				row{1} = {darkblue},
+			} 
 			\bfseries\textcolor{white}{Score} && \bfseries\textcolor{white}{Difficulté}\\
 			\textless= 4.9 && Étudiant du 4ième. \\
 			5-5.9 && Étudiant du 5ième et 6ième. \\
@@ -1490,7 +1498,7 @@
 			7-7.9 && Étudiant du 9ième et 10ième. \\
 			8-8.9 && Étudiant du 11ième et 12ième. \\
 			9-9.9 && Étudiant du 13ième et 15ième (collège). \\
-		\end{tabular}
+		\end{tblr}
 	\end{center}
 	
 \end{frame}
@@ -1501,7 +1509,7 @@
 	
 	\begin{figure}
 		\centering
-		\hgraphpage[0.8\textwidth]{lisibilite-ML.pdf}
+		\hgraphpage[0.95\textwidth]{lisibilite-ML.pdf}
 		\caption{Pipeline d'estimation de difficulté de lecture avec apprentissage automatique \cite{2014-collins}}
 	\end{figure}
 	
@@ -1679,7 +1687,7 @@
 	\end{itemize}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{ASR-DFT-exp.pdf}
+		\hgraphpage[.65\textwidth]{ASR-DFT-exp.pdf}
 		\caption{(a) une portion du signal du voyelle [iy] (b) son DFT \cite{2020-jurafsky-martin}}
 	\end{figure}
 \end{frame}
@@ -1697,7 +1705,7 @@
 	\end{itemize}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{ASR-mel-exp.pdf}
+		\hgraphpage[.65\textwidth]{ASR-mel-exp.pdf}
 		\caption{Un exemple du filtre de Mel \cite{2020-jurafsky-martin}}
 	\end{figure}
 \end{frame}
@@ -1749,7 +1757,7 @@
 	\framesubtitle{Synthèse vocale : Architecture}
 	\begin{figure}
 		\centering
-		\hgraphpage[.5\textwidth]{tts-arch.pdf}
+		\hgraphpage[.53\textwidth]{tts-arch.pdf}
 		\caption{Architecture d'un système de synthèse vocale \cite{2017-Hinterleitner}}
 	\end{figure}
 \end{frame}

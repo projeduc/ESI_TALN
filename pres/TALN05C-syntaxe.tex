@@ -193,23 +193,30 @@
 \framesubtitle{Annotation fonctionnelle : Relations de dépendance}
 
 \begin{table}
-	\rowcolors{2}{lightblue}{lightyellow}
-	\begin{tabular}{p{.2\textwidth}p{.35\textwidth}p{.35\textwidth}}
-		\rowcolor{darkblue}
+	\small
+	\begin{tblr}{
+			colspec = {p{.25\textwidth}p{.35\textwidth}p{.35\textwidth}},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			row{6} = {darkblue},
+			colsep = 2pt,
+			rowsep= 1pt,
+		}
 		\textcolor{white}{Dép. de base} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
 		nsubj & sujet nominal & Le \underline{people} \textbf{gagne}\\
 		obj & objet direct & On \textbf{présente} le \underline{cours}\\
 		iobj & objet indirect & Il \underline{m'}\textbf{envoie}\\
 		csubj & sujet propositionnel & \underline{Suivre} le cours \textbf{permet} ...\\
 		
-		\rowcolor{darkblue}
+%		\rowcolor{darkblue}
 		\textcolor{white}{Dép. des noms} & \textcolor{white}{Description} & \textcolor{white}{Exemple}\\
 		amod & modificateur adjectival & La \textbf{fille} \underline{modeste}\\
 		det & déterminant & \underline{La} \textbf{fille}\\
 		nmod & modificateur nominal & Le \underline{résultat} de la \textbf{course}\\
 		nummod & modificateur numérique & J'ai mangé \underline{3} \textbf{bonbons}\\
 		
-	\end{tabular}
+	\end{tblr}
 	\caption{Quelques relations de dépendances universelles de Stanford \cite{2014-de-marneffe-al} (\url{https://universaldependencies.org/u/dep/index.html})}
 \end{table}
 
@@ -630,10 +637,13 @@
 %\end{figure}
 \begin{exampleblock}{Exemple de dérivations non étiquetées de la phrase ``Il écrit la solution et son explication" en utilisant Arc-standard}
 	\centering\bfseries\fontsize{6}{10}\selectfont
-	\rowcolors{2}{lightblue}{lightyellow}
-	\begin{tabular}{llll}
-%		\hline\hline
-		\rowcolor{darkblue}
+	\begin{tblr}{
+			colspec = {llll},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep=0pt,
+		}
 		\textcolor{white}{nb. $\sigma$ (pile)} & \textcolor{white}{$\beta$ (tampon)} & \textcolor{white}{Action} & \textcolor{white}{Arc ajouté à A} \\
 %		\hline
 		01. [\textcolor{red}{ROOT}] & \textcolor{red}{Il} écrit la solution et son explication & SHIFT & / \\
@@ -651,7 +661,7 @@
 		13. [\textcolor{red}{ROOT}] & \textcolor{red}{écrit} & ARC-RIGHT & ROOT \textrightarrow\ écrit\\
 		14. [ROOT] & $\emptyset$ & FIN & / \\
 %		\hline\hline
-	\end{tabular}
+	\end{tblr}
 \end{exampleblock}
 
 \end{frame}
@@ -687,10 +697,13 @@
 %\end{figure}
 \begin{exampleblock}{Exemple de dérivations non étiquetées de la phrase ``Il écrit la solution et son explication" en utilisant Arc-eager}
 	\centering\bfseries\fontsize{6}{10}\selectfont
-	\rowcolors{2}{lightblue}{lightyellow}
-	\begin{tabular}{llll}
-%		\hline\hline
-		\rowcolor{darkblue}
+	\begin{tblr}{
+			colspec = {llll},
+			row{odd} = {lightblue},
+			row{even} = {lightyellow},
+			row{1} = {darkblue},
+			rowsep=0pt,
+		}
 %		nb. $\sigma$ (pile) & $\beta$ (tampon) & Action & Arc ajouté à A \\
 		\textcolor{white}{nb. $\sigma$ (pile)} & \textcolor{white}{$\beta$ (tampon)} & \textcolor{white}{Action} & \textcolor{white}{Arc ajouté à A} \\
 %		\hline
@@ -709,7 +722,7 @@
 		13. [ROOT, \textcolor{red}{solution}] & $\emptyset$ & REDUCE & / \\
 		14. [ROOT] & $\emptyset$ & FIN & / \\
 %		\hline\hline
-	\end{tabular}
+	\end{tblr}
 \end{exampleblock}
 
 \end{frame}
