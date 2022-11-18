@@ -1,0 +1,275 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass{beamer}
+
+\input{options}
+
+\title[TALN : Présentation] %
+{Traitement automatique du langage naturel\\Présentation du module} 
+
+\begin{document}
+
+
+\begin{frame}
+\frametitle{Pré-requis}
+
+\begin{itemize}
+	\item Théorie des langages et programmation (THP)
+	\item Probabilités et statistiques
+	\item Algèbre et analyse 
+	\item Apprentissage automatique 
+	\item Recherche opérationnelle
+	\item Connaissance basique sur les langues
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Objectifs}
+
+\begin{itemize}
+	\item Apprendre quelques notions linguistiques ;
+	\item Appliquer des concepts vus dans les modules prérequis afin de résoudre des taches TALN ;
+	\item Découvrir quelques outils et ressources du TALN ;
+	\item Savoir les axes de recherche dans ce domaine ;
+	\item Apprendre comment décrire une nouvelle méthode TALN et la tester dans le contexte d'un article scientifique.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Informations}
+
+\begin{itemize}
+	\item 5 jours (24h)
+	\item Cours (15h)
+	\begin{itemize}
+		\item Cours interactifs (questions pendant le cours)
+		\item QCM à la fin de chacun des 3 premiers jours
+	\end{itemize}
+	\item TP (9h)
+	\begin{itemize}
+		\item 3 TPs notés
+		\item Découverte de quelques outils TALN
+		\item Réalisation d'une application TALN
+		\item Rédaction d'un article sur cette application
+	\end{itemize}
+	\item Examen écrit 
+	\item Note = 20\% (QCM) + 30\% (TP) + 50\% (Examen)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Programme}
+
+\scriptsize
+\begin{tblr}{
+		colspec = {p{.12\textwidth}lp{.37\textwidth}lp{.38\textwidth}},
+		row{odd} = {lightblue},
+		row{1} = {darkblue, fg=white, font=\bfseries, valign=m, halign=c},
+		column{2,4}={white},
+		column{1}={bg=darkblue, fg=white, font=\bfseries, valign=m},
+		row{even} = {white},
+		cell{1}{1}={white},
+		colsep=3pt,
+		rowsep=0pt,
+	}
+
+
+%	\hline
+	&& 9H00 - 12H00 && 13H00 - 16H00 \\
+	
+	&&&&\\
+	
+%	\hline
+	Dimanche \newline 20/11/2022 && \textbf{CM01.} Introduction au TALN \newline 
+	\textbf{CM02.} Traitements basiques du texte &&  / \\
+	
+	&&&&\\
+	
+%	\hline
+	Lundi \newline 21/11/2022 && \textbf{CM03.} Apprentissage automatique pour TALN &&  
+	\textbf{CM04.} Modèles de langage \newline \textbf{CM05.} Étiquetage morpho-syntaxique \\
+	
+	&&&&\\
+	
+%	\hline
+	Mardi \newline 22/11/2022 && \textbf{CM06.} Sémantique lexicale &&  / \\
+	
+	&&&&\\
+	
+%	\hline
+	Mercredi \newline 23/11/2022 && \textbf{TP01.} Découverte de quelques outils TALN &&  
+	\textbf{TP02.} Implémentation d'une application TALN \\
+	
+	&&&&\\
+	
+%	\hline
+	Jeudi \newline 24/11/2022 && \textbf{CM07.} Quelques applications &&  
+	\textbf{TP03.} Rédaction d'un article concernant cette application \\
+	
+%	&&\\
+%	
+%	\hline
+\end{tblr}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Préparation}
+	
+	\begin{itemize}
+		\item Environnement de développement (au choix)
+		\begin{itemize}
+			\item Google Colab (il faut une connexion Internet)
+			\item Sur machine :
+			\begin{itemize}
+				\item Installer Anaconda ({\tiny \url{https://www.anaconda.com/products/distribution\#Downloads}})
+				\item Installer NLTK (Anaconda navigator)
+				\item Installer tensorflow (Anaconda navigator)
+			\end{itemize}
+		\end{itemize}
+		\item Environnement \LaTeX\ pour l'édition de l'article (au choix)
+		\begin{itemize}
+			\item Overleaf (il faut une connexion Internet)
+			\item Sur machine :
+			\begin{itemize}
+				\item Installer \LaTeX ({\tiny \url{https://www.latex-project.org/get/}})
+				\item Installer TexStudio ({\tiny \url{https://www.texstudio.org}})
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cours similaires}
+	
+	\begin{itemize}
+		
+		\item Natural Language Processing S21 (à jours).
+		Carnegie Mellon University. 
+		\url{http://demo.clab.cs.cmu.edu/NLP/}
+		
+		\item CS388: Natural Language Processing (2018). 
+		University of Texas. 
+		\url{https://www.cs.utexas.edu/~mooney/cs388/}
+		
+		\item CSE 517: Natural Language Processing ().
+		University of Washington.
+		\url{https://courses.cs.washington.edu/courses/cse517/}
+		
+		\item CS 294-5: Statistical Natural Language Processing (2005). 
+		University of Berkely. 
+		\url{https://people.eecs.berkeley.edu/~klein/cs294-5/index.html}
+		
+		\item CS224n: Natural Language Processing with Deep Learning (à jours).
+		Stanford university.
+		\url{https://web.stanford.edu/class/cs224n/}
+		
+		\item CS 5340/6340: Natural Language Processing (à jours). 
+		University of Utah.
+		\url{https://my.eng.utah.edu/~cs5340/schedule.html}
+		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{A lire (NLP)}
+	
+	\begin{itemize}
+		
+		\item \textbf{Traitement automatique du langage naturel - support de cours}
+		
+		par Abdelkrime Aries
+		
+		\url{https://github.com/projeduc/ESI_2CS_TALN/releases/download/4.0/taln_v2.pdf}
+		
+		
+		\item \textbf{Speech and Language Processing} 
+		
+		par Dan Jurafsky et James H. Martin
+		
+		\url{https://web.stanford.edu/~jurafsky/slp3/}
+		
+		\item \textbf{Natural langguage processing}
+		
+		par Jacob Esenstein 
+		
+		\url{https://cseweb.ucsd.edu/~nnakashole/teaching/eisenstein-nov18.pdf}
+		
+		\item \textbf{Modern Approaches in Natural Language Processing - support de cours (LMU Munich)}
+		
+		par Carolin Becker, et al.
+		
+		\url{https://slds-lmu.github.io/seminar_nlp_ss20/index.html}
+		
+		
+		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{A lire (ML)}
+	
+	\begin{itemize}
+		
+		
+		\item \textbf{Dive into Deep Learning} (online)
+		
+		\url{https://d2l.ai/index.html}
+		
+		\item \textbf{DEEP LEARNING, support de cours NYU CENTER FOR DATA SCIENCE} 
+		
+		par Yann LeCun et  Alfredo Canziani
+		
+		\url{https://atcold.github.io/pytorch-Deep-Learning/}
+		
+		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clause de non-responsabilité}
+	
+	\begin{tcolorbox}[colback=red,
+		colframe=red,  
+		arc=0pt,outer arc=0pt,
+		valign=top, 
+		halign=center,
+		width=\textwidth]
+		
+		\color{white}
+		{\bfseries Clause de non-responsabilité}
+		
+	\end{tcolorbox}\vspace{-.5cm}
+	\begin{tcolorbox}[colback=my-grey,
+		colframe=my-grey,  
+		center, arc=0pt,outer arc=0pt,
+		valign=top, 
+		halign=left,
+		width=\textwidth]
+		
+		\begin{itemize}
+			\item Un ingénieur doit être une force du bien ; il ne faut pas utiliser notre connaissance pour nuire aux autres.
+			\item Ce cours n'encourage pas l'utilisation malicieuse des techniques TALN comme l'espionnage, la collecte illégale d'information, la mis-information via des chatbots, etc.
+			\item Tout exemple qui peut contenir une de ces applications est purement éducatif.	
+		\end{itemize}
+		
+		
+	\end{tcolorbox}
+	
+\end{frame}
+
+
+\end{document}
+

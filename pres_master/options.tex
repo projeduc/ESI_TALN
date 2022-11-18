@@ -1,0 +1,255 @@
+
+%\usepackage{fullpage}
+%\usepackage[left=2.8cm,right=2.2cm,top=2 cm,bottom=2 cm]{geometry}
+\setbeamersize{text margin left=10pt,text margin right=10pt}
+
+
+\usepackage{amsmath,amssymb} 
+\usepackage{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage[french]{babel}
+\usepackage{arabtex,acolor}
+\usepackage{txfonts}
+\usepackage{tipa}
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{colortbl}
+\usepackage{tabularray}
+\usepackage{listingsutf8}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage[export]{adjustbox} %for images in table, also for frame
+\usepackage[many]{tcolorbox}
+\usepackage{wasysym}
+\usepackage[french,lined]{algorithm2e}
+\usepackage{alltt} %verbatim with commands
+\usepackage{longtable}
+\usepackage{tabu}
+
+
+\definecolor{lightblue}{HTML}{D0D2FF}
+\definecolor{lightyellow}{HTML}{FFFFAA}
+\definecolor{darkblue}{HTML}{0000BB}
+\definecolor{olivegreen}{HTML}{006600}
+\definecolor{darkgreen}{HTML}{008B45} %009B55
+\definecolor{violet}{HTML}{6600CC}
+%\definecolor{deeppink}{HTML}{FF1493}
+\definecolor{orangey}{HTML}{FFBB00}
+
+\usetheme{Warsaw} % Antibes Boadilla Warsaw
+
+\beamertemplatenavigationsymbolsempty
+
+\let\oldcite\cite
+\renewcommand{\cite}[1]{{\bfseries\color{orangey}\oldcite{#1}}}
+
+\tcbuselibrary{listings}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+\def\supit#1{\raisebox{0.8ex}{\small\it #1}\hspace{0.05em}}
+
+\AtBeginSection{%
+	\begin{frame}
+		\sectionpage
+	\end{frame}
+}
+
+\newcommand{\rottext}[2]{%
+	\rotatebox{90}{%
+	\begin{minipage}{#1}%
+		\raggedleft#2%
+	\end{minipage}%
+	}%
+}
+
+
+\institute{ %
+Laboratoire de la Communication dans les Systèmes Informatiques (LCSI)
+
+\vspace{6pt}
+École  nationale Supérieure d'Informatique (ESI, ex. INI), Alger, Algérie
+}
+\author[ \textbf{\footnotesize\insertframenumber/\inserttotalframenumber} \hspace*{1cm} ESI - ARIES Abdelkrime (Master 2022/2023)] %
+{ARIES Abdelkrime}
+%\titlegraphic{\includegraphics[height=1cm]{../img/esi-logo.png}%\hspace*{4.75cm}~
+	
+	
+	\date{Master 2022/2023} %\today
+
+\titlegraphic{%
+	\includegraphics[height=1cm]{../img/esi-logo.png}%
+	\hspace{2cm}
+	\includegraphics[height=1cm]{../img/lcsi-logo.png}%
+}
+
+
+%\setbeamertemplate{headline}{}
+
+
+
+\newcommand{\keyword}[1]{\textcolor{red}{\bfseries\itshape #1}}
+\newcommand{\expword}[1]{\textcolor{olivegreen}{#1}}
+\newcommand{\optword}[1]{\textcolor{violet}{\bfseries #1}}
+
+\makeatletter
+\newcommand\mysphere{%
+	\parbox[t]{10pt}{\raisebox{0.2pt}{\beamer@usesphere{item projected}{bigsphere}}}}
+\makeatother
+
+%\let\oldtabular\tabular
+%\let\endoldtabular\endtabular
+%\renewenvironment{tabular}{\rowcolors{2}{white}{lightblue}\oldtabular\rowcolor{blue}}{\endoldtabular}
+
+
+\NoAutoSpacing %french autospacing after ":"
+
+\def\graphpath{}
+
+\newcommand{\changegraphpath}[1]{\def\graphpath{#1}}
+
+
+\newcommand{\vgraphpage}[2][.84\textheight]{%
+%	\begin{center}%
+		\includegraphics[height=#1]{\graphpath #2}%
+%	\end{center}%
+}
+
+\newcommand{\hgraphpage}[2][\textwidth]{%
+%	\begin{center}%
+		\includegraphics[width=#1]{\graphpath #2}%
+%	\end{center}%
+}
+
+\newcommand{\graphpage}[2][]{%
+	\includegraphics[#1]{\graphpath #2}%
+}
+
+\bibliographystyle{apalike}
+
+\newcommand{\insertbibliography}[2]{
+	\appendix
+	\section*{Bibliographie}
+	\nocite{#2}
+%	\makeatletter % to change template
+%	\setbeamertemplate{headline}[default] % not mandatory, but I though it was better to set it blank
+%	\def\beamer@entrycode{\vspace*{-\headheight}} % here is the part we are interested in :)
+%	\makeatother
+	\begin{multicols*}{2}[\frametitle{\insertsection} \usebeamertemplate*{frametitle}]%\usebeamertemplate*{frametitle}\frametitle{Références}
+		\tiny
+		\bibliography{#1}
+	\end{multicols*}
+}
+
+\definecolor{my-grey}{RGB}{233, 233, 233}
+
+\newcommand{\insertlicence}{
+	\begin{frame}[plain]
+	\frametitle{Licence : CC-BY 4.0}
+%	\framesubtitle{Licence: CC-BY-NC 4.0}
+
+	\begin{tcolorbox}[colback=cyan,
+		colframe=cyan,  
+		arc=0pt,outer arc=0pt,
+		valign=top, 
+		halign=center,
+		width=\textwidth]
+		
+		\includegraphics[width=.5cm]{../img/licence/cc_icon_white_x2.png}
+		\includegraphics[width=.5cm]{../img/licence/attribution_icon_white_x2.png}
+		
+		\color{white}
+		\bfseries Attribution 4.0 International (CC BY 4.0) \\
+		\tiny \url{https://creativecommons.org/licenses/by/4.0/deed.fr}
+		
+	\end{tcolorbox}\vspace{-.5cm}
+	\begin{tcolorbox}[colback=my-grey,
+		colframe=my-grey,  
+		center, arc=0pt,outer arc=0pt,
+		valign=top, 
+		halign=left,
+		width=\textwidth]
+		
+		\tiny
+		
+		\begin{center}
+			\bfseries\Large
+			Vous êtes autorisé à :
+		\end{center}
+		
+		\begin{minipage}{0.83\textwidth}
+			\begin{itemize}
+				\item[] \textbf{Partager} — copier, distribuer et communiquer le matériel par tous moyens et sous tous formats
+				\item[] \textbf{Adapter} — remixer, transformer et créer à partir du matériel
+				pour toute utilisation, y compris commerciale.
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{0.15\textwidth}
+			\includegraphics[width=\textwidth]{../img/licence/FreeCulturalWorks_seal_x2.jpg}
+		\end{minipage}
+	
+		
+		\begin{center}
+			\bfseries\Large
+			Selon les conditions suivantes :
+		\end{center}
+		
+		\begin{itemize}
+			\item[] \textbf{Attribution} — Vous devez créditer l'Œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'Oeuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'Offrant vous soutient ou soutient la façon dont vous avez utilisé son Oeuvre. 
+			\item[] \textbf{Pas de restrictions complémentaires} — Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Oeuvre dans les conditions décrites par la licence.
+		\end{itemize}
+		
+	\end{tcolorbox}
+	
+%	\begin{center}
+%		\bfseries Attribution 4.0 International (CC BY 4.0)
+%		\url{https://creativecommons.org/licenses/by/4.0/deed.fr}
+%	\end{center}
+
+%	\tiny
+%
+%	Vous êtes autorisé à : 
+%	\begin{itemize}
+%		\item \textbf{Partager} — copier, distribuer et communiquer le matériel par tous moyens et sous tous formats
+%		\item \textbf{Adapter} — remixer, transformer et créer à partir du matériel
+%	\end{itemize}
+%	
+%	Selon les conditions suivantes : 
+%	\begin{itemize}
+%		\item \textbf{Attribution} — Vous devez créditer l'Œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'Oeuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'Offrant vous soutient ou soutient la façon dont vous avez utilisé son Oeuvre.
+%		\item \textbf{Pas d'Utilisation Commerciale} — Vous n'êtes pas autorisé à faire un usage commercial de cette Oeuvre, tout ou partie du matériel la composant. 
+%		\item \textbf{Pas de restrictions complémentaires} — Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Oeuvre dans les conditions décrites par la licence.
+%	\end{itemize}
+
+	\end{frame}
+}
+
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{\labelsep}
+
+\AtBeginDocument{
+	\newcolumntype{L}[2]{>{\vbox to #2\bgroup\vfill\flushleft}p{#1}<{\egroup}} 
+	
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+	\insertlicence
+}
+
+
+% needs etoolbox; to break links after -
+\appto\UrlBreaks{\do\-}
+
+
+\makeatletter
+\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2}}
+\makeatother
+
+
+\usefonttheme{structurebold}
+%\usefonttheme{professionalfonts}

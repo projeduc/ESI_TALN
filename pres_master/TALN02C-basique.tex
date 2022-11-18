@@ -1,0 +1,813 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TeX spellcheck = fr_FR
+
+\documentclass[xcolor=table]{beamer}
+
+\input{options}
+
+\title[TALN : 02- Traitements basiques]%
+{Traitement automatique du langage naturel\\Chapitre 02 : Traitements basiques du texte} 
+
+\changegraphpath{../img/basique/}
+
+\begin{document}
+	
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{Traitements basiques du texte : Introduction}
+
+\begin{itemize}
+	\item Un texte est structuré en paragraphes, phrases, mots et caractères.
+	\item Certaines tâches exploitent cette structure.
+	\item Plusieurs tâches se basent sur les mots comme unité de traitement.
+	\item Avant de procéder à un traitement, il faut d'abord exécuter une phase de prétraitement :
+	\begin{itemize}
+		\item Segmenter le texte ;
+		\item Filtrer les données non nécessaires ;
+		\item Normaliser les mots pour limiter les variations à traiter.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{Traitements basiques du texte : Plan}
+
+\begin{multicols}{2}
+%	\small
+\tableofcontents
+\end{multicols}
+\end{frame}
+
+%===================================================================================
+\section{Caractères}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Traitements basiques du texte}
+\framesubtitle{Caractères}
+
+\begin{itemize}
+	\item \optword{Expressions régulières}
+	\begin{itemize}
+		\item utilisées pour chercher des chaînes de caractères dans un texte.
+		\item reconnaissent des langages de types 3 (langages réguliers) dans la hiérarchie de Chomsky. 
+		\item utiles pour l'analyse lexicale (séparation des mots).
+	\end{itemize}
+	\item \optword{Distance d'édition}
+	\begin{itemize}
+		\item utilisée pour mesurer la différence entre deux chaînes de caractères.
+		\item utile pour la recherche approximative.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Expressions régulières}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Expressions régulières : Règles (1)}
+
+\SetTblrInner{rowsep=1pt,colsep=5pt}
+\begin{tblr}{
+		colspec = {p{.1\textwidth}p{.34\textwidth}p{.46\textwidth}},
+		row{odd} = {lightblue},
+		row{even} = {lightyellow},
+		row{1} = {darkblue},
+	} 
+	\textcolor{white}{ER} & \textcolor{white}{Sens} & \textcolor{white}{Exemple} \\
+	
+	. & n'importe quel caractère & \keyword{beg.n} : I \expword{begun} at the \expword{begin}ning. \\
+	
+	 \empty [aeuio] & caractères spécifiques & \keyword{[Ll][ae]} : \expword{Le} chat mange \expword{la} sourie. \\
+	 
+	\empty [a-e] & plage de caractères & \keyword{[A-Z]..} : \expword{J'a}i vu \expword{Kar}im. \\
+	
+	\empty [\textasciicircum aeuio] & exclure des caractères & \keyword{[\textasciicircum A-Z]a.} : J\expword{'ai} vu Karim. \\
+	
+	c? & un ou zéro & \keyword{colou?r} : It is \expword{colour} or \expword{color}. \\
+	
+	c* & zéro ou plus & \keyword{No*n} : \expword{Nn}! \expword{Non}! \expword{Nooooooon}! \\
+	
+	c+ & un ou plus & \keyword{No+n} : Nn! \expword{Non}! \expword{Nooooooon}! \\
+	
+	c\{n\} & n occurrences & \keyword{No\{3\}n} : Nn! Non! Noon! \expword{Nooon}! \\
+	
+	c\{n,m\} & de n à m occurrences & \keyword{No\{1,2\}n} : Nn! \expword{Non}! \expword{Noon}! Nooon! \\
+	
+	c\{n,\} & au moins n occurrences & \keyword{No\{2,\}n} : Nn! Non! \expword{Noon}! \expword{Nooon}! \\
+	
+	c\{,m\} & au plus m occurrences & \keyword{No\{,2\}n} : \expword{Nn}! \expword{Non}! \expword{Noon}! Nooon! \\
+	
+\end{tblr}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Expressions régulières : Règles (2)}
+
+\begin{minipage}{.6\textwidth}
+\begin{itemize}
+	\item pour le groupement, utiliser \keyword{( )}
+	\begin{itemize}
+		\item Exemple, \expword{/(bla)+/} : Ceci est du \expword{blabla}.
+	\end{itemize}
+	\item pour la disjonction, utiliser \keyword{\textbar}
+	\begin{itemize}
+		\item Exemple, \expword{/continu(er\textbar ation\textbar el(le)?s?)/}
+	\end{itemize}
+	\item pour le début du texte, utiliser \keyword{\textasciicircum}
+	\begin{itemize}
+		\item Exemple, \expword{/\textasciicircum K/} :  \expword{K}ill Karim.
+	\end{itemize}
+	\item pour la fin du texte, utiliser \keyword{\$}
+	\begin{itemize}
+		\item Exemple, \expword{/\textbackslash .[\textasciicircum .]+\$/} :  fichier.tar\expword{.gz}
+	\end{itemize}
+	\item pour capturer un groupe, utiliser le regroupement avec \keyword{\$n} ou \keyword{\textbackslash n} où \expword{n} est la position du groupe.
+	\begin{itemize}
+		\item Exemple, \expword{/(.*)(ement\textbar ation)\$/\textbackslash 1er/}.
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}{.38\textwidth}
+\begin{tblr}{
+		colspec = {p{.2\textwidth}p{.6\textwidth}},
+		row{odd} = {lightblue},
+		row{even} = {lightyellow},
+		row{1} = {darkblue},
+	} 
+
+	\textcolor{white}{ER} & \textcolor{white}{Équivalence} \\
+	
+	\textbackslash d & [0-9] \\
+	\textbackslash D & [\textasciicircum 0-9] \\
+	\textbackslash w & [a-zA-Z0-9\_] \\
+	\textbackslash W & [\textasciicircum \textbackslash w] \\
+	\textbackslash s & [ \textbackslash r\textbackslash t\textbackslash n\textbackslash f] \\
+	\textbackslash S & [\textasciicircum \textbackslash s] \\
+\end{tblr}
+
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Expressions régulières : Cas d'utilisation}
+
+\begin{itemize}
+	\item Les éditeurs de texte utilisent les expressions régulières (ER) pour la recherche et le remplacement.
+	\item La plupart des langages de programmation introduisent des mécanismes pour utiliser les ER.
+	\item Extraction de données : par exemple, \expword{extraire les émails et les numéros de téléphones à partir des blogs et des réseaux sociaux}.
+	\item \url{https://github.com/kariminf/aruudy}
+	\begin{itemize}
+		\item \textit{One of my crazy projects}.
+		\item Détection du mètre d'une verse des poèmes arabes.
+		\item Avantage : les règles sont lisibles.
+		\item Inconvénient : plusieurs passes pour traiter une verse.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Traitements basiques : Caractères}
+	\framesubtitle{Expressions régulières : Exercice}
+	
+	\begin{itemize}
+		\item Donner l'expression régulière qui cherche les mots ``\textbf{il}" (singulier et pluriel). 
+		Comme par exemple : \expword{Il a passé par son lieu de travail et il a dit : ``j'ai devenu vieil ; ils n'ont plus besoin de moi".}
+		\item Étant donné un log, on veut afficher les lignes qui commencent par ``\textbf{Error}" ; qui contiennent un nombre commençant par un chiffre autre que zéro, ayant des 3 à 5 zéros consécutifs et se terminant par un chiffre autre que zéro ; et qui se terminent par ``\textbf{...}"
+		\item Donner l'expression régulière qui cherche les mots contenant les lettres ``l", ``i" et ``n" dans cet ordre. Le début du mot peut être en majuscule, le reste du mot est en minuscule. Par exemple, \expword{lion, Linux, violine, absolution, Aladin, ...}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Expressions régulières : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour/humour-regex.jpeg}
+\end{center}
+
+\end{frame}
+
+\subsection{Distance d'édition}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Distance d'édition : Opérations d'édition}
+
+\begin{itemize}
+	\item \optword{Insertion} : insertion d'un caractère dans une chaîne.\\
+	$uv \rightarrow uxv \,/\, u, v \in X^*;\, uv \in X^+;\, x \in X$
+	\begin{itemize}
+		\item \expword{courir $ \rightarrow $ courrir, entraînement $ \rightarrow $ entraînnement }
+	\end{itemize}
+	
+	\item \optword{Suppression} : suppression d'un caractère d'une chaîne.\\
+	$uxv \rightarrow uv \,/\, u, v \in X^*;\, uv \in X^+;\, x \in X$
+	\begin{itemize}
+		\item \expword{héros $ \rightarrow $ héro, meilleur $ \rightarrow $ meileur}
+	\end{itemize}
+	
+	\item \optword{Substitution} : substitution d'un caractère par un autre.\\
+	$uxv \rightarrow uyv \,/\, u, v \in X^*;\, x, y \in X;\, x \ne y$
+	\begin{itemize}
+		\item \expword{cela $ \rightarrow $ celà, croient $ \rightarrow $ croyent }
+	\end{itemize}
+	
+	\item \optword{Transposition} : changement de l'ordre de deux caractères.\\
+	$uxwyv \rightarrow uywxv \,/\, u, v, w \in X^*;\, x, y \in X;\, x \ne y$
+	\begin{itemize}
+		\item \expword{cueillir $ \rightarrow $ ceuillir}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Distance d'édition : Algorithmes}
+
+\begin{itemize}
+	\item \optword{Distance de Hamming} : permet seulement la substitution. Les chaînes doivent être de la même longueur. 
+	\item \optword{Plus longue sous-séquence commune} : permet l'insertion et la suppression.
+	\item \optword{Distance de Levenshtein} : permet l'insertion, la suppression et la substitution.
+	\item \optword{Distance de Jaro} : permet la transposition.
+	\item \optword{Distance de Damerau–Levenshtein} : permet l'insertion, la suppression, la substitution et la transposition entre deux caractères adjacents.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Traitements basiques : Caractères}
+	\framesubtitle{Distance d'édition : Distance de Hamming}
+	
+	\begin{itemize}
+		\item X ; une chaîne source de longueur $n$.
+		\item Y : chaîne destinataire de longueur $m$.
+	\end{itemize}
+	
+	\[
+	D_{i} = D_{i-1} + 
+	\begin{cases}
+	0 \text{ si } X_i = Y_i\\
+	1 \text{ sinon}
+	\end{cases}
+	\]
+	
+	\begin{exampleblock}{Exemples des distances de Hamming}
+		\begin{itemize}
+			\item D(100100, 101001) = 3
+			\item D(abdelkrim, abderahim) = 3
+		\end{itemize}
+	\end{exampleblock}
+	
+	
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Distance d'édition : Distance de Levenshtein}
+
+\begin{itemize}
+	\item X ; une chaîne source de longueur $n$.
+	\item Y : chaîne destinataire de longueur $m$.
+	\item D : une matrice où D[i, j] est la distance d'édition entre les sous-chaînes X[1..i] et Y[1..j].
+	\item pour calculer $D[n, m]$, on utilise la programmation dynamique.
+	\item $D[0, 0] = 0$.
+\end{itemize}
+
+\[
+D[i, j] = \min 
+\begin{cases}
+D[i - 1, j] + 1 \text{ //Suppression}\\
+D[i, j-1] + 1 \text{ //Insertion}\\
+D[i-1, j-1] + \begin{cases}
+2 & \text{si } X[i] \ne Y[j] \\
+0 & \text{sinon}
+\end{cases}
+\end{cases}
+\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Distance d'édition : Distance de Levenshtein (exemple)}
+
+%\begin{figure}
+%	\centering
+%	\hgraphpage{exp-levenshtein_.pdf}
+%	\caption{Exemple de calcul de distance de Levenshtein \cite{2019-jurafsky-martin}.}
+%\end{figure}
+%\setlength{\tabcolsep}{2pt}
+%\renewcommand{\arraystretch}{2}
+\begin{exampleblock}{Exemple de calcul de distance de Levenshtein}
+	\centering\scriptsize
+	\begin{tblr}{
+			colspec = {|Q[c,m,wd=3em]|Q[c,m,wd=3em]|c|c|c|c|c|c|c|c|},
+			row{1} = {bg=darkblue, fg=white, font=\bfseries},
+			column{1} = {bg=darkblue, fg=white, font=\bfseries},
+			stretch=1.5,
+			colsep=2pt,
+		} 	
+		
+		\hline
+		& \# & i &\bfseries m &\bfseries m & a & t & u & r & e \\
+		\hline
+		\bfseries \# & \SetCell{bg=green!70} 0 & $ \leftarrow $ 1 & $ \leftarrow $ 2 & $ \leftarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 & $ \leftarrow $ 8\\
+		\hline
+		\bfseries a & \SetCell{bg=green!70} $ \uparrow $ 1 & $ \nwarrow\leftarrow\uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $ \nwarrow\leftarrow\uparrow $ 4 & $ \nwarrow $ 3 & $ \leftarrow $ 4 & $ \leftarrow $ 5 & $ \leftarrow $ 6 & $ \leftarrow $ 7 \\
+		\hline
+		\bfseries m & \SetCell{bg=green!70} $ \uparrow $ 2 & $ \nwarrow\leftarrow\uparrow $ 3 & $\nwarrow $ 2 & $\nwarrow\leftarrow $ 3 & $\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8\\
+		\hline
+		\bfseries i & $ \uparrow $ 3 & \SetCell{bg=green!70} $ \nwarrow $ 2 & \SetCell{bg=green!70} $\leftarrow\uparrow $ 3 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 4 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 5 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 6 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9\\
+		\hline
+		\bfseries b & $ \uparrow $ 4 & $ \uparrow $ 3 & $\nwarrow\leftarrow\uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & \SetCell{bg=green!70} $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10\\
+		\hline
+		\bfseries e & $ \uparrow $ 5 & $ \uparrow $ 4 & $\nwarrow\leftarrow\uparrow $ 5 & $\nwarrow\leftarrow\uparrow $ 6 & $\nwarrow\leftarrow\uparrow $ 7 & $\nwarrow\leftarrow\uparrow $ 8 & $\nwarrow\leftarrow\uparrow $ 9 & $\nwarrow\leftarrow\uparrow $ 10 & \SetCell{bg=green!70} $\nwarrow $ 9\\
+		\hline
+	\end{tblr}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Distance d'édition : Quelques applications}
+
+\begin{itemize}
+	\item \optword{Révision des fichiers} : par exemple, la commande Unix \expword{diff} qui compare entre deux fichiers.
+	\item \optword{Correction d'orthographe} : suggérer des corrections possibles d'une faute (ex. \expword{Hunspell}).
+	\item \optword{Détection du plagiat} : ici, on utilise des mots à la place des caractères.
+	\item \optword{Filtrage de spam} : parfois, les spammeurs commettent des fautes d'orthographe intentionnellement pour tromper l'outil de détection de spam.
+	\item \optword{Bio-informatique} : quantification de la similarité entre deux séquences d'ADN.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Traitements basiques : Caractères}
+	\framesubtitle{Distance d'édition : Exercice}
+	
+	\begin{itemize}
+		\item Afin d'écrire le mot "Rassemblement",  on a commis l'erreur suivante : "Rasenlbement". Indiquer la (les) position(s) de chaque opération d'édition par rapport au mot correcte (Si l'opération n'existe pas, écrire 0. La transposition et la substitution sont prioritaires, c-à-d. on ne doit pas les considérer comme des opérations d'insertion/suppression) (examen TALN, master 2021/2022) :
+		\begin{tabular}{|lll|}
+			\hline 
+			Insertion : ............ & & Substitution : ............ \\
+			Suppression : ............ & & Transposition : ............ \\
+			\hline
+		\end{tabular}
+		
+		\item Calculer les distances de Hamming et de  Levenstein des deux mots suivants : ``tray" et ``tary".
+		Indiquer les différentes opérations d'édition pour chaque distance. Refaire la même chose pour la distance de Lavenstein (poids de substitution = 1).
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Caractères}
+\framesubtitle{Distance d'édition : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage[.4\textheight]{humour/humour-spell.jpg}
+	\vgraphpage[.4\textheight]{humour/humour-spell1.jpg}
+	\vgraphpage[.4\textheight]{humour/humour-spell2.jpg}
+\end{center}
+
+\end{frame}
+
+%===================================================================================
+\section{Segmentation}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Traitements basiques du texte}
+\framesubtitle{Segmentation}
+
+\begin{itemize}
+	\item Un nouveau paragraphe est marqué par un retour à la ligne ou en utilisant la balise \keyword{\textless p\textgreater} en HTML.
+	\begin{itemize}
+		\item Lorsqu'on utilise un outil pour extraire du texte à partir des pdfs, on aura plusieurs retours à la ligne. 
+	\end{itemize}
+	\item Une nouvelle phrase est marquée par un point (ou une autre marque).
+	\begin{itemize}
+		\item Le point n'est pas seulement utilisé pour marquer une phrase.
+	\end{itemize}
+	\item Un mot est délimité par une espace.
+	\begin{itemize}
+		\item Pas toujours!
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Délimitation de la phrase}
+
+\begin{frame}
+\frametitle{Traitements basiques : Segmentation}
+\framesubtitle{Délimitation de la phrase : Problématique} 
+
+\begin{itemize}
+	\item \expword{/[.?!]/} est une ER simple utilisée pour délimiter les phrases (français, anglais, etc.).
+	\item Le point est utilisé dans les nombres : \expword{123,456.78 (style américain) 123.456,78 (style européen)}
+	\item Les abréviations contiennent des points.
+	\item Des phrases longues sont difficiles à traiter ; il faut mieux les séparer.
+	\item Les phrases entre guillemets.
+	\item Des langues, comme le thaï, n'utilisent pas des marqueurs pour séparer les phrases.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Segmentation}
+\framesubtitle{Délimitation de la phrase : Facteurs de segmentation} 
+
+\begin{itemize}
+	\item \optword{La casse} : les phrases commencent par un majuscule.
+	\item \optword{Catégorie grammaticale} : les catégories des mots avant le point peuvent aider la décision (limite ou non).
+	\item \optword{Longueur du mot} : les abréviations sont moins longues.
+	\item \optword{Préfixes et suffixes} : les mots avec des infixes sont moins probables d'être des abréviations.
+	\item \optword{Classes des abréviations} 
+	\item \optword{Noms propres} : les noms propres se commencent par un majuscule ; ils peuvent ne pas être le début d'une phrase.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Segmentation}
+\framesubtitle{Délimitation de la phrase : Un peu d'humour} 
+
+\hgraphpage{humour/humour-segmentation.jpg}
+
+\end{frame}
+
+\subsection{Séparation des mots}
+
+\begin{frame}
+\frametitle{Traitements basiques : Segmentation}
+\framesubtitle{Séparation des mots : Problématique}
+
+\acolor{everything}{olivegreen}
+
+\begin{itemize}
+	\item \expword{/[ ]+/} est une ER simple utilisée pour séparer les mots (arabe, français, anglais, etc.)
+	\item Des langues, comme le japonais, n'utilisent pas de marqueurs pour séparer les mots (\expword{\begin{CJK}{UTF8}{min}今年は本当に忙しかったです。\end{CJK}}).
+	\item Il existe des mots composés : par attachement (allemand : ``\expword{Lebensversicherung}, assurance vie"; arabe : ``\expword{\RL{y_htbrwnhm}}, ils les testent") ou par trait d'union (\expword{va-t-il, c-à-dire}).
+	\item Confusion entre des caractères : l'apostrophe est utilisée pour la citation, la contraction (\expword{She's, J'ai}).
+	\item Les expressions avec des mots multiples : \expword{les expressions numériques comme les dates}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Segmentation}
+\framesubtitle{Séparation des mots : Approches}
+
+\begin{itemize}
+	\item \optword{Par règles} : en utilisant des expressions régulières.
+	\begin{itemize}
+		\item \url{https://www.nltk.org/api/nltk.tokenize.html}
+		\item \url{https://nlp.stanford.edu/software/tokenizer.shtml}
+		\item \url{https://spacy.io/}
+		\item \url{https://github.com/kariminf/jslingua}
+		\item \url{https://github.com/linuxscout/pyarabic}
+	\end{itemize}
+	\item \optword{Statistique} : en utilisant un modèle de langue pour calculer la probabilité qu'un caractère marque la  fin d'un mot.
+	\begin{itemize}
+		\item \url{https://nlp.stanford.edu/software/segmenter.html}
+		\item \url{https://opennlp.apache.org/}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Segmentation}
+\framesubtitle{Séparation des mots : Un peu d'humour} 
+
+\begin{center}
+	\vgraphpage{humour/humour-punctuation.jpg}
+\end{center}
+
+\end{frame}
+
+
+%===================================================================================
+\section{Normalisation et filtrage}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Traitements basiques du texte}
+\framesubtitle{Normalisation et filtrage du texte}
+
+\begin{itemize}
+	\item \optword{Normalisation du texte}
+	\begin{itemize}
+		\item \textbf{PROBLÉMATIQUE} : Un texte peut contenir des variations du même terme. 
+		Aussi, dans des tâches comme la recherche d'information, on n'a pas besoin d'avoir le contenu exacte du texte.
+		\item \textbf{SOLUTION} : transformer le texte à une forme canonique.
+		\item \url{https://www.kaggle.com/c/text-normalization-challenge-english-language}
+	\end{itemize}
+	\item \optword{Filtrage du texte}
+	\begin{itemize}
+		\item \textbf{PROBLÉMATIQUE} : le texte peut contenir des caractères, des mots et des expressions qui peuvent entraver son traitement.
+		\item \textbf{SOLUTION} : suppression.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Normalisation}
+
+\begin{frame}
+\frametitle{Traitements basiques : Normalisation et filtrage}
+\framesubtitle{Normalisation du texte (1)}
+
+\begin{itemize}
+%	\item \optword{Tâche} : transformer le texte à une forme canonique
+	
+	\item Acronymes et les abréviations ;
+	\begin{itemize}
+		\item forme standard : \expword{US \textrightarrow\ USA, U.S.A. \textrightarrow\ USA}
+		\item version longue : \expword{M. \textrightarrow\ Monsieur}
+	\end{itemize}
+	
+	\item Formater les valeurs comme les dates et les nombres de la même façon ;
+	\begin{itemize}
+		\item conversion à la forme textuelle : \expword{1205 DZD \textrightarrow\ Mille deux cents cinq dinars algériens}.
+		\item format spécifique : \expword{12 Janvier 1986, 12.01.86 \textrightarrow\ 1986-01-12}.
+		\item remplacement par le type : \expword{12 Janvier 1986 \textrightarrow\ DATE, kariminfo0@gmail.com \textrightarrow\ EMAIL}.
+	\end{itemize}
+	
+	\item Transformer les majuscules en minuscules ;
+	\begin{itemize}
+		\item \expword{Texte \textrightarrow\ texte}
+		\item Des fois, il faut laisser la casse telle qu'elle est, comme dans les noms propres (\expword{Will})
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Normalisation et filtrage}
+\framesubtitle{Normalisation du texte (2)}
+\acolor{everything}{olivegreen}
+\begin{itemize}
+	
+	\item Contractions ;
+	\begin{itemize}
+		\item \expword{y'll \textrightarrow\ you all, s'il \textrightarrow\ si il}
+	\end{itemize}
+	
+	\item Diacritiques ;
+	\begin{itemize}
+		\item désaccentuation :  \expword{système \textrightarrow\ systeme}
+		\item dé-vocalisation :  \expword{\RL{yadrusu} \textrightarrow\ \RL{ydrs}}. Sauf dans les cas où on a besoin des diacritiques (poèmes)
+	\end{itemize}
+
+	\item Encodage.
+	\begin{itemize}
+		\item il faut utiliser le même encodage supporté dans le traitement
+	\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\subsection{Filtrage du texte}
+
+\begin{frame}
+\frametitle{Traitements basiques : Normalisation et filtrage}
+\framesubtitle{Filtrage du texte}
+
+\begin{itemize}
+	\item Les caractères spéciaux comme les caractères non imprimables ;
+	\begin{itemize}
+		\item ils peuvent mener à des traitements erronés. 
+	\end{itemize}
+	\item Les mots clés dans les formats textuelles ;
+	\begin{itemize}
+		\item les balises HTML, XML, etc. 
+	\end{itemize}
+	\item Les \keyword{mots vides} : les mots non significatifs comme les prépositions, articles et les pronoms.
+	\begin{itemize}
+		\item en anglais : \keyword{stop words}.
+		\item dans la recherche d'information, il est inutile de les indexer.
+		\item dans le résumé automatique, ces mots peuvent dégrader les scores des phrases.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Normalisation et filtrage}
+\framesubtitle{Filtrage du texte : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour/humour-stopwords.jpg}
+\end{center}
+
+\end{frame}
+
+%===================================================================================
+\section{Morphologie}
+%===================================================================================
+
+\begin{frame}
+\frametitle{Traitements basiques du texte}
+\framesubtitle{Morphologie}
+
+\begin{itemize}
+	\item Des langues permettent la formation des mots en utilisant la flexion (ex. \expword{conjugaison}) et la dérivation (ex. \expword{nominalisation}).
+	\item La  méthode la plus utilisée est l'affixation.
+	\item Automatiser cette tâche peut aider d'autres tâches, comme la génération du langage naturel (anglais : NLG).
+	\item Aussi, la tâche inverse peut aider d'autres tâches, comme la compréhension du langage naturel (anglais : NLU).
+\end{itemize}
+
+\end{frame}
+
+\subsection{Formation des mots}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Formation des mots}
+\acolor{everything}{olivegreen}
+\begin{itemize}
+	\item \optword{Flexion} : variation morphologique d'un mot selon les traits grammaticaux (nombre, genre, etc.).
+	\begin{itemize}
+		\item Conjugaison des verbes.
+		\item Déclinaison des noms, pronoms, adjectifs et déterminants. 
+		Ex. \expword{\RL{qi.t.t} \textrightarrow\ \RL{qi.ta.t}}.
+	\end{itemize}
+	\item \optword{Dérivation} : variation morphologique d'un mot pour créer un nouveau lexème ou pour changer de catégorie.
+	\begin{itemize}
+		\item Créer un nouveau lexème : \expword{couper \textrightarrow\ découper, \RL{`ml} \textrightarrow\ \RL{ist`ml}}.
+		\item Changer de catégorie : nominalisation (\expword{classer \textrightarrow\ classement, classeur ; \RL{darasa}. \textrightarrow\ \RL{darsuN, madrasaTuN, mudarrisuN, dArisuN}}), l'adjectif (\expword{fatiguer \textrightarrow\ fatigant}).
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Formation des mots : Exemple (conjugaison automatique)}
+
+\begin{itemize}
+	\item \optword{Base de données} :
+	\begin{itemize}
+		\item stocker la conjugaison des verbes dans une base de données.
+	\end{itemize}
+	\item \optword{Modèles (\textit{template})} :
+	\begin{itemize}
+		\item stocker la conjugaison de certains verbes modèles et utiliser une liste pour indexer les verbes similaires.
+		\item Exemple, \expword{la conjugaison des verbes en français}.
+	\end{itemize}
+	\item \optword{Règles} :
+	\begin{itemize}
+		\item utilisation des règles SI-SINON et des expressions régulières
+		\item Exemple, conjugaison des verbes en arabe, anglais, français et japonais : \url{https://github.com/kariminf/jslingua}
+		\item Exemple, conjugaison des verbes en arabe : \url{https://github.com/linuxscout/qutrub}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Formation des mots : Un peu d'humour}
+
+\begin{center}
+	\vgraphpage{humour/humour-formation.jpg}
+\end{center}
+
+\end{frame}
+
+\subsection{Réduction des formes}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Réduction des formes : Racinisation}
+
+\begin{itemize}
+	\item Suppression des affixes (anglais : \keyword{stemming}).
+	\item Résultat \keyword{radical} (\keyword{racine}) (anglais : \keyword{stem}).
+	\item Exemple, \expword{chercher \textrightarrow\ cherch}.
+	\item \optword{Base de données} : stocker tous les termes et leurs racines dans une table.
+	\item \optword{Statistiques} : utiliser un modèle de langue (N-Gram) pour estimer la position de troncation.
+	\item \optword{Règles} :
+	\begin{itemize}
+		\item algorithme de Porter \cite{1980-porter}.
+		\item \url{https://github.com/assem-ch/arabicstemmer}
+		\item \url{https://snowballstem.org/algorithms/}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Réduction des formes : Racinisation (exemple, algorithme de Porter)}
+
+\begin{itemize}
+	\item Un ensemble de règles condition/action.
+	\item \url{https://snowballstem.org/} : un framework pour créer des racinateurs
+	\item \optword{Condition sur la racine} :
+	\begin{itemize}
+		\item la longueur, la fin, si elle contient des voyelles, etc.
+		\item Exemple, \expword{(*v*) Y \textrightarrow\ I : happy \textrightarrow\ happi, sky \textrightarrow\ sky}
+	\end{itemize}
+	\item \optword{Condition sur l'affixe} :
+	\begin{itemize}
+		\item dans le cas de porter, il n'y a que le suffixe 
+		\item Exemple, \expword{SSES \textrightarrow\ SS, ATIONAL \textrightarrow\ ATE}
+	\end{itemize}
+	\item \optword{Condition sur la règle} :
+	\begin{itemize}
+		\item si une règle est exécutée, d'autres sont désactivées.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Réduction des formes : Lemmatisation}
+
+\begin{itemize}
+	\item Chercher la forme canonique d'un mot (anglais : \keyword{lemmatization}).
+	\item Résultat : \keyword{lemme} (anglais : \keyword{lemma}).
+	\item Exemple, \expword{comprennent \textrightarrow comprendre, better \textrightarrow good}.
+	\item On doit avoir le contexte du mot. Ex. \expword{saw \textrightarrow\ (V) see ou (N) saw}.
+	\item \optword{Bases lexicales} :
+	\begin{itemize}
+		\item \url{https://www.nltk.org/api/nltk.stem.html} (NLTK WordNetLemmatizer)
+		\item \url{https://github.com/sloria/textblob}
+		\item \url{https://spacy.io/}
+	\end{itemize}
+	\item \optword{Apprentissage automatique} :
+	\begin{itemize}
+		\item \url{https://opennlp.apache.org/}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Réduction des formes : Lemmatisation (exemple, morphy)}
+
+\begin{block}{Lemmatisation "morphy" de Wordnet}
+	\footnotesize
+	\begin{algorithm}[H]
+		\KwData{mot, catégorie}
+		\KwResult{liste des lemmes possibles}
+		
+		\Si{mot $ \in $  list\_exceptions[catégorie]}{
+			\Return chercher\_dans\_dictionnaire(\{mot\} $ \cup $ list\_exceptions[catégorie])\;
+		}
+		
+		formes = \{mot\}
+		
+		\Tq{formes $ \ne \emptyset $}{
+			formes = supprimer\_les\_affixes(formes, catégorie)\;
+			
+			résultats = chercher\_dans\_dictionnaire(\{mot\} $ \cup $ formes)\;
+			
+			\Si{résultats $ \ne \emptyset $ }{
+				\Return résultats \;
+			}
+		}
+		
+		\Return $ \emptyset $\;
+
+	\end{algorithm}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Traitements basiques : Morphologie}
+\framesubtitle{Réduction des formes : Un peu d'humour}
+
+\hgraphpage{humour/humour-lemmatisation.jpg}
+
+\end{frame}
+
+\insertbibliography{TALN02}{*}
+
+\end{document}
+
