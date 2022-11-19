@@ -43,10 +43,13 @@
 
 \beamertemplatenavigationsymbolsempty
 
+
 \let\oldcite\cite
 \renewcommand{\cite}[1]{{\bfseries\color{orangey}\oldcite{#1}}}
 
 \tcbuselibrary{listings}
+
+\newcommand{\kurl}[1]{{\scriptsize\bfseries\color{orangey}\url{#1}}}
 
 
 %\renewcommand{\baselinestretch}{1.5}
