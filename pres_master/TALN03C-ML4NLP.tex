@@ -1,0 +1,516 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[xcolor=table]{beamer}
+
+\input{options}
+
+\title[TALN : 03- ML pour TALN]%
+{Traitement automatique du langage naturel\\Chapitre 03 : Apprentissage automatique pour TALN} 
+
+\changegraphpath{../img/ml4nlp/}
+
+\begin{document}
+	
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{ML pour TALN : Introduction}
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Traitement automatique du langage naturel}
+	\framesubtitle{ML pour TALN : Algorithmes}
+	
+	\begin{itemize}
+		\item \optword{NB} (Naive Bayes)
+		\item \optword{LR} (Logistic regression) : Régression logique
+		\item \optword{SVM} (Support-Vector Machine) : Machines à vecteurs de support 
+		\item \optword{NN} (Neural Network) : Réseau de neurones
+		\item \optword{FFN} (Feed Forward Network) : Réseau à propagation avant
+		\begin{itemize}
+			\item \optword{MLP} (Multi-Layer Perceptron) : Perceptron multicouche
+			\item \optword{CNN} (Convolutional Neural Network) : Réseau de neurones convolutif
+		\end{itemize}
+		\item \optword{RNN} (Recurrent Neural Network) : Réseau de neurones récurrents
+		\item \optword{HMM} (Hidden Markov Model) : Modèle de Markov caché
+		\item \optword{MEMM} (Maximum-Entropy Markov Model) : Modèle de Markov à entropie maximale
+		\item \optword{CRF} (Conditional Random Field) : Champ aléatoire conditionnel
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Traitement automatique du langage naturel}
+	\framesubtitle{ML pour TALN : Types des modèles}
+	
+	\scriptsize
+	\begin{tblr}{
+			colspec = {p{.12\textwidth}lp{.37\textwidth}lp{.38\textwidth}},
+			row{odd} = {lightblue},
+			row{1} = {darkblue, fg=white, font=\bfseries, valign=m, halign=c},
+			column{2,4}={white},
+			column{1}={bg=darkblue, fg=white, font=\bfseries, valign=m},
+			row{even} = {white},
+			cell{1}{1}={white},
+			colsep=3pt,
+			rowsep=1pt,
+		}
+		
+		&& Génératif && Discriminatif \\
+		
+		&&&&\\
+		
+		Texte && NB && LR, SVM, MLP, RNN, CNN \\
+		
+		&&&&\\
+		
+		Séquence && HMM  && MEMM, CRF, MLP \\
+		
+	\end{tblr}
+
+	\vfill
+	
+	\begin{itemize}
+		\item Modèle génératif : un modèle qui apprend à générer des caractéristiques étant donnée la classe
+		
+		$\hat{Y} = \arg\max_k P(Y_k) P(X | Y_k)$
+		
+		\item Modèle discriminatif : un modèle qui apprend à estimer la classe directement 
+		
+		$\hat{Y} = \arg\max_k P(Y_k | X)$
+		
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Traitement automatique du langage naturel}
+\framesubtitle{ML pour TALN : Plan}
+
+\begin{multicols}{2}
+%	\small
+\tableofcontents
+\end{multicols}
+\end{frame}
+
+%===================================================================================
+\section{Apprentissage automatique}
+%===================================================================================
+
+\begin{frame}
+\frametitle{ML pour TALN}
+\framesubtitle{\insertsection}
+
+\end{frame}
+
+\subsection{ML traditionnel}
+
+\begin{frame}
+\frametitle{ML pour TALN : \insertsection}
+\framesubtitle{\insertsubsection\ : Naive Bayes}
+
+Classement 
+\[\hat{Y} = \arg\max_{Y_k} \log P(Y_k) + \sum_{j=1}^{N} \log P(X_j|Y_k)\]
+
+Apprentissage
+\[P(Y_k) = \frac{|\{y / y \in Y \wedge y = k\}|}{M}\]
+
+\begin{itemize}
+	\item $|\{y / y \in Y \wedge y = k\}|$ est le nombre des échantillons appartenant à la classe $k$ dans le dataset d'entraînement
+	\item $M$ est le nombre des échantillons dans le dataset d'entraînement
+	\item $P(X_j|Y_k)$ est calculée selon une des trois lois : lois multinomiale, lois normale et lois de Bernoulli
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Régression logistique}
+	
+	Classement 
+	\[\hat{Y} = \arg\max_{k} Softmax(\sum_{j=1}^{N} \theta_j X_j + \theta_0)\]
+	
+	Apprentissage
+	\[J_\theta = \frac{-1}{M} \sum\limits_{i=1}^{M} \sum_{k=1}^{L} Y^{(i)}_k \log(H^{(i)}_k)\]
+	\[\theta_j = \theta_j - \alpha \frac{\partial J_\theta}{\partial \theta_j}\]
+	
+	\begin{itemize}
+		\item $\theta$ est mis à jours avec un algorithme d'optimisation comme la \keyword{descente du gradient}
+		\item $\theta[N, K]$ est une matrice de $N$ caractéristiques et $K$ classes
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Machine à vecteur de support}
+	
+	Classement 
+	\[\hat{Y_t} = \arg\max_{k} \sum^M_{i=1} \alpha^k_i y^{(i)} K(x^{(i)}, x_t) - b^k\]
+	
+	Apprentissage
+	\[J_\alpha = \sum\limits_{i=1}^{M} \alpha_i - \frac{1}{2} \sum\limits_{i=1}^{M} \sum\limits_{j=1}^{M} \alpha_i \alpha_j y^{(i)} y^{(j)} K(x^{(i)}, x^{(j)}) \]
+	
+	\begin{itemize}
+		\item $\alpha$ est mis à jours avec un algorithme d'optimisation comme la \keyword{Sequential minimal optimization}
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{MLP}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+	\vgraphpage{RN.pdf}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Architecture}
+	
+	\vgraphpage{RNPA.pdf}
+	
+\end{frame}
+
+
+\subsection{CNN}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection : traitement d'image traditionnel}
+	
+	\begin{center}
+		\hgraphpage[\textwidth]{img-learn.pdf}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : convolution (principe)}
+	
+	\begin{itemize}
+		\item Une image est une matrice des pixels
+		\item Convolution : modifier la valeur d'un pixel par rapport à ces voisins
+		\item deux paramètres : \optword{padding} (entourer l'image avec des 0 afin de préserver la taille originale), \optword{stride} (le pas de défilement du noyau/masque)
+	\end{itemize}
+	
+	\begin{center}
+		\hgraphpage[.8\textwidth]{conv.pdf}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Conv2D}
+	
+	\begin{minipage}{0.60\textwidth} 
+		\begin{itemize}
+			\item On préserve la structure spatiale des images
+			\item La couche apprend un ou plusieurs noyaux
+			\item $ w' = \frac{w - w_f + 2P}{S} + 1$,  $ h' = \frac{h - h_f + 2P}{S} + 1$
+			\item On peut spécifier le nombres des filtres $k$ à générer 
+			\item Le nombre des paramètres sera $w_f * h_f * c * k$ plus $k$ biais
+			\item Exemple, \expword{image : 32x32x3; noyau : 5x5; s : 1; p: 0; k : 6.} Dans ce cas, on aura \expword{81} paramètres à entraîner
+		\end{itemize}
+	\end{minipage}
+	%
+	\begin{minipage}{0.39\textwidth}
+		\hgraphpage[\textwidth]{conv2d.pdf}
+	\end{minipage}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Pooling}
+	
+	\begin{minipage}{0.60\textwidth} 
+		\begin{itemize}
+			\item Rendre la représentation plus petite et plus gérable
+			\item $ w' = \frac{w - w_f + 2P}{S} + 1$,  $ h' = \frac{h - h_f + 2P}{S} + 1$
+			\item Pas de paramètres 
+			\item \optword{Max Pool} : le gradient est passé seulement à la cellule gagnante (qui a le max) 
+			\item \optword{Average Pool} : le gradient passé aux cellules participantes à la moyennes est $\frac{\text{gradient}}{w_f * h_f}$ 
+		\end{itemize}
+	\end{minipage}
+	%
+	\begin{minipage}{0.39\textwidth}
+		\hgraphpage[\textwidth]{maxpool.pdf}
+	\end{minipage}
+	
+\end{frame}
+
+\subsection{RNN}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Architecture}
+	
+	\begin{minipage}{0.49\textwidth} 
+		\begin{itemize}
+			\item \optword{Elman network}
+			\begin{align*}
+				h_t = f(w_x x_t + w_h \textcolor{red}{h_{t-1}} + b_h) \\
+				\hat{y}_t = g(w_y h_t + b_y)
+			\end{align*}
+			\item \optword{Jordan network}
+			\begin{align*}
+				h_t = f(w_x x_t + w_h \textcolor{red}{\hat{y}_{t-1}} + b_h) \\
+				\hat{y}_t = g(w_y h_t + b_y)
+			\end{align*}
+		\end{itemize}
+	\end{minipage}
+	%
+	\begin{minipage}{0.5\textwidth}
+		\hgraphpage[\textwidth]{RNN.pdf}
+	\end{minipage}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Applications}
+	
+	\begin{tabular}{p{.32\textwidth}p{.15\textwidth}p{.4\textwidth}}
+		\hline\hline
+		Type & Illustration & Exemple \\
+		\hline
+		Plusieurs à plusieurs & 
+		\vgraphpage[1.5cm, valign=c]{RNNpp1.pdf} & 
+		Détection d'entités nommées \\
+		
+		\hline
+		Plusieurs à plusieurs & 
+		\vgraphpage[1.5cm, valign=c]{RNNpp2.pdf} & 
+		Traduction automatique \\
+		
+		\hline
+		Plusieurs à un & 
+		\vgraphpage[1.5cm, valign=c]{RNNp1.pdf} & 
+		Classification de sentiments \\
+		
+		\hline
+		Un à plusieurs & 
+		\vgraphpage[1.5cm, valign=c]{RNN1p.pdf} & 
+		Sous-titrage d'images \\
+		
+		\hline\hline
+		
+	\end{tabular}
+	
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{ML pour TALN : \insertsection}
+%	\framesubtitle{\insertsubsection : Un peu d'humour}
+%	\hgraphpage{humour/humour-ngram.png}
+%\end{frame}
+
+%===================================================================================
+\section{Classement des textes}
+%===================================================================================
+
+\begin{frame}
+	\frametitle{ML pour TALN}
+	\framesubtitle{\insertsection}
+	
+	\begin{itemize}
+		\item Classer un texte entier 
+		\begin{itemize}
+			\item \optword{Analyse des sentiments} : classer un texte (comme les tweets) comme positif, négatif ou neutre
+			\item \optword{Détection de spam} : classer un message comme spam ou non spam
+			\item \optword{Détection de langage figuratif} : classer un texte comme métaphore, ironie, etc.
+		\end{itemize}
+		\item Classer une phrase du texte
+		\begin{itemize}
+			\item \optword{Résumé automatique} : classer une phrase du texte comme phrase du résumé ou non
+			\item \optword{Détection de spam} : classer un message comme spam ou non spam
+			\item \optword{Implication textuelle} : vérifier si la première phrase implique la deuxième
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{ML traditionnel et MLP}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+	\begin{itemize}
+		\item On doit trouver une représentation globale du texte.
+		\item Cette représentation est introduite à l'algorithme pour le classement.
+		\item Exemples :
+		\begin{itemize}
+			\item \expword{Nombre d'occurence de chaque mot du vocabulaire}
+			\item \expword{Nombre des adjectifs dans le texte}
+			\item \expword{Position de la phrase dans le texte}
+			\item \expword{Trouver les représentations vectorielles des mots et calculer le centre pour représenter le texte }
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Exemples}
+	
+	\vgraphpage{text_class_trad_exp.pdf}
+	
+\end{frame}
+
+
+\subsection{CNN}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+	\begin{itemize}
+		\item On doit trouver une représentation vectorielle de chaque mot du texte (vecteur de \keyword{N} éléments)
+		\item Les représentations sont concaténées verticalement (\keyword{M} mots)
+		\item On aura un matrice de \keyword{M X N}
+		\item On applique une convolution à une dimension (dimension = \keyword{K}) ; c.à.d. un filtre de dimension \keyword{K X N}
+		\item On peut utiliser plusieurs filtres à la fois pour apprendre plusieurs représentations
+		\item On peut utiliser le Pooling
+		\item On utilise une couche \keyword{MLP} (ou plusieurs) à la fin pour estimer la classe
+		\item \textbf{Problème} : Techniquement, on ne peut pas définir un réseau de neurones avec un nombre variable des mots 
+		\item \textbf{Solution} : \textcolor{yellow!50}{On définit un nombre maximal ; si le nombre de mots est inférieur, on ajoute des paddings ; sinon, on supprime les mots en plus}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Exemples}
+	
+	\vgraphpage{text_class_CNN_exp.pdf}
+	
+\end{frame}
+
+
+\subsection{RNN}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+	\begin{itemize}
+		\item On doit trouver une représentation vectorielle de chaque mot du texte (vecteur de \keyword{N} éléments)
+		\item Le réseau RNN crée M cellules correspondantes aux \keyword{M} mots
+		\item Chaque cellule calcule un état intermédiaire et le passe au cellule suivante
+		\item La dernière cellule génère une représentation du texte (la probabilité d'occurene de ce mot sachant les mots passés)
+		\item Cette représentation est introduite à un \keyword{MLP} pour estimer la classe du texte
+		\item \textbf{Problème} : Techniquement, lors de l'entrainement, on ne peut pas traiter les mots de tailles différentes avec une seule opération matricielle
+		\item \textbf{Solution} : \textcolor{yellow!50}{On définit un nombre maximal ; si le nombre de mots est inférieur, on ajoute des paddings ; sinon, on supprime les mots en plus}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection\ : Exemples}
+	
+	\vgraphpage{text_class_RNN_exp.pdf}
+	
+\end{frame}
+
+%===================================================================================
+\section{Classement des séquences}
+%===================================================================================
+
+\begin{frame}
+	\frametitle{ML pour TALN}
+	\framesubtitle{\insertsection}
+	
+\end{frame}
+
+\subsection{HMM}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+\subsection{MEMM}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+\subsection{CRF}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+\subsection{RNN}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+%===================================================================================
+\section{Attention}
+%===================================================================================
+
+\begin{frame}
+	\frametitle{ML pour TALN}
+	\framesubtitle{\insertsection}
+	
+\end{frame}
+
+\subsection{Seq2Seq}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+\subsection{Seq2Seq avec attention}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+\subsection{Types d'attention}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+
+\subsection{Trasformers}
+
+\begin{frame}
+	\frametitle{ML pour TALN : \insertsection}
+	\framesubtitle{\insertsubsection}
+	
+\end{frame}
+
+\insertbibliography{TALN03}{*}
+
+\end{document}
+
