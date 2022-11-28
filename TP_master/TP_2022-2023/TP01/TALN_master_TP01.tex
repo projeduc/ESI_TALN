@@ -1,0 +1,107 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& Master (2022-2023) \\
+& Traitement automatique du langage naturel
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{TP01 : Découverte de quelques outils TALN}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+Dans ce TP guidé, nous allons développer quelques modèles pour l'analyse de sentiments (classement de textes).
+Le dataset utilisé est un dataset d'analyse de sentiments dans le contexte de la finance (\url{https://www.kaggle.com/datasets/sbhatti/financial-sentiment-analysis}).
+Nous allons utiliser \textbf{pandas}, \textbf{scikit-learn} et \textbf{nltk} :
+
+\begin{verbatim}
+import nltk
+import numpy  as np
+import pandas as pd
+from sklearn.metrics                 import classification_report
+from sklearn.preprocessing           import LabelBinarizer
+from sklearn.neural_network          import MLPClassifier
+from sklearn.model_selection         import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+
+import re
+token_pattern = re.compile(r'(?u)\b\w\w+\b')
+tokenizer = token_pattern.findall
+\end{verbatim}
+
+\section{Préparation de données}
+
+\begin{itemize}
+	\item Importer le dataset CSV fourni en utilisant \textbf{pandas} et afficher les 10 premiers échantillons.
+	\item Encoder les sentiments en utilisant \textbf{LabelBinarizer} pour avoir un encodage OneHot.
+	\item Diviser le dataset en entrainement et test, en utilisant \textbf{train\_test\_split}, la taille du test est 30\% et random\_state=0.
+	\item Entrainer un modèle de vectorisation \textbf{TF} sur le texte d'entrainement et vectoriser le. 
+	\item En utilisant le même modèle, vectoriser le dataset de test.
+	\item Définir une fonction \textbf{tokenstem} qui prend un texte et qui utilise \textbf{tokenizer} pour avoir une liste des tokens ensuite elle génère une liste des tokens radicalisés en utilisant \textbf{nltk.stem.porter.PorterStemmer} et elle ne considère pas les tokens appartenant à \textbf{nltk.corpus.stopwords.words('english')}
+	\item Refaire les deux étapes précédentes, mais en limitant la taille du vecteur \textbf{max\_features = 3000} et en utilisant  \textbf{tokenstem} comme \textbf{tokenizer}.
+	\item Refaire la même chose, mais sans limiter la taille du vecteur.
+	
+\end{itemize}
+
+\section{Entrainement}
+
+\begin{itemize}
+	\item Créer trois modèles de type \textbf{MLPClassifier} avec une couche cachée et un maximum d'iérations de 50.
+	\item Entrainer ces trois modèles sur les trois représentations vectorielles.
+	\item Prédire les classes en appliquant les trois modèles sur les trois représentations d'entrainement.
+	\item Afficher le rapport de classification en précisant \textbf{target\_names} à partir du modèle \textbf{LabelBinarizer} et en spécifiant \textbf{zero\_division=0}.
+	
+\end{itemize}
+
+\section{Test}
+
+\begin{itemize}
+	\item Prédire les classes en appliquant les trois modèles sur les trois représentations de test.
+	\item En utilisant \textbf{timeit}, calculer le temps de prédiction.
+	\item Afficher le rapport de classification en précisant \textbf{target\_names} à partir du modèle \textbf{LabelBinarizer} et en spécifiant \textbf{zero\_division=0}.
+	
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,114 @@
+% !TEX TS-program = pdflatex
+% !TeX program = pdflatex
+% !TEX encoding = UTF-8
+% !TEX spellcheck = fr
+
+\documentclass[11pt, a4paper]{article}
+%\usepackage{fullpage}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+%\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{txfonts} 
+\usepackage[]{graphicx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\usepackage{turnstile}%Induction symbole
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+\usetikzlibrary{decorations.pathmorphing}
+
+\renewcommand{\baselinestretch}{1}
+
+\setlength{\parindent}{24pt}
+
+
+\begin{document}
+
+\selectlanguage {french}
+%\pagestyle{empty} 
+
+\noindent
+\begin{tabular}{ll}
+\multirow{3}{*}{\includegraphics[width=2cm]{../../../img/esi-logo.png}} & \'Ecole national Supérieure d'Informatique\\
+& Master (2022-2023) \\
+& Traitement automatique du langage naturel
+\end{tabular}\\[.25cm]
+\noindent\rule{\textwidth}{1pt}\\%[-0.25cm]
+\begin{center}
+{\LARGE \textbf{TP02 : Implémentation d'une application TALN}}
+\begin{flushright}
+	ARIES Abdelkrime
+\end{flushright}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+
+Nous voulons améliorer le modèle développé dans TP01.
+Ce modèle a quelques inconvénients (rien n'est parfait).
+Dans ce TP, vous devez étudier quelques limites de ce modèle (garder ceci pour le TP prochain) et les améliorer.
+
+
+\section{Améliorations possibles}
+Il faut au moins améliorer une chose sans détériorer le reste (une petite détérioration est acceptable).
+
+\begin{itemize}
+	\item taille d'encodage : un modèle avec moins de paramètres est préférable
+	\item Précision (micro-avg)
+	\item Rappel (micro-avg)
+	\item Temps de test : utile lorsqu'on veut utiliser ce modèle avec une application qui doit être rapide comme moteur de recherche.
+\end{itemize}
+
+\section{Ressources utilisées}
+
+\begin{itemize}
+	\item Vous pouvez changer d'algorithme d'apprentissage : utiliser les autres algorithmes de scikit-learn
+	\item Vous pouvez paramétrer le MLP existant : ajouter des couches, changer la fonction d'activation, etc.
+	\item Vous pouvez utiliser d'autres méthodes de vectorisation (quelques modèles entrainés sont fournis avec ce TP)
+\end{itemize}
+
+Voici une description des modèles fournis où :
+\begin{itemize}
+	\item \textbf{Modèle} : le nom du modèle
+	\item \textbf{Algorithme} : l'algorithme utilisé pour entrainer le modèle
+	\item \textbf{vecteur} : la taille du vecteur de représentation
+	\item \textbf{fenêtre} : la fenêtre utilisée pour calculer le contexte d'un mot
+	\item \textbf{phrases} : est-ce que le modèle peut représenter les phrases
+	\item \textbf{mots} : est-ce que le modèle peut représenter les mots
+\end{itemize}
+
+\begin{tabular}{llllll}
+	\hline \hline
+	Modèle & Algorithme & vecteur & fenêtre & phrases & mots \\
+	\hline
+	gensim\_lsa\_100 & LSA & 100 & / & oui & oui \\
+	gensim\_lsa\_50 & LSA & 100 & / & oui & oui \\
+	gensim\_lsa\_10 & LSA & 100 & / & oui & oui \\
+	
+	gensim\_word2vec\_100\_w2 & Word2Vec-CBOW & 100 & 2 & non & oui \\
+	gensim\_word2vec\_100\_w4 & Word2Vec-CBOW & 100 & 4 & non & oui \\
+	gensim\_word2vec\_50\_w2 & Word2Vec-CBOW & 50 & 2 & non & oui \\
+	gensim\_word2vec\_50\_w4 & Word2Vec-CBOW & 50 & 4 & non & oui \\
+	gensim\_word2vec\_10\_w2 & Word2Vec-CBOW & 10 & 2 & non & oui \\
+	gensim\_word2vec\_10\_w4 & Word2Vec-CBOW & 10 & 4 & non & oui \\
+	
+	gensim\_word2vec\_100sg\_w2 & Word2Vec-Skip-gram & 100 & 2 & non & oui \\
+	gensim\_word2vec\_100sg\_w4 & Word2Vec-Skip-gram & 100 & 4 & non & oui \\
+	gensim\_word2vec\_50sg\_w2 & Word2Vec-Skip-gram & 50 & 2 & non & oui \\
+	gensim\_word2vec\_50sg\_w4 & Word2Vec-Skip-gram & 50 & 4 & non & oui \\
+	gensim\_word2vec\_10sg\_w2 & Word2Vec-Skip-gram & 10 & 2 & non & oui \\
+	gensim\_word2vec\_10sg\_w4 & Word2Vec-Skip-gram & 10 & 4 & non & oui \\
+	
+	\hline \hline
+	
+\end{tabular}
+
+Un tutoriel sur \textbf{gensim} est dans \url{https://github.com/projeduc/ESI_2CS_TALN/blob/master/tuto/CH06/encoding_python_gensim.ipynb}
+\end{document}
